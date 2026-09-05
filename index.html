@@ -1,5540 +1,2183 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>Gramin Grahak Sewa | Digital & Citizen Services</title>
-
-<meta name="description"
-content="Gramin Grahak Sewa - AI, Digital, Document, Photo और Citizen Online Services Portal. Aadhaar, PAN, Voter ID, Government, Farmer, Banking, Education, Transport और Digital Services.">
-
-<meta name="keywords"
-content="Gramin Grahak Sewa, ग्रामिण ग्राहक सेवा, Digital Seva, Online Seva, Citizen Services, Aadhaar, PAN, Voter ID, CSC, Rajasthan Online Services">
-
-<meta name="author"
-content="Gramin Grahak Sewa">
-
-<meta name="robots"
-content="index, follow, max-image-preview:large">
-
-<link rel="canonical"
-href="https://citizen-id-services2026.github.io/citizen-id-services2026/">
-
-<meta property="og:title"
-content="Gramin Grahak Sewa | Digital & Citizen Services">
-
-<meta property="og:description"
-content="AI, Digital, Document, Photo और Citizen Online Services Portal">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:url"
-content="https://citizen-id-services2026.github.io/citizen-id-services2026/">
-
-<meta property="og:site_name"
-content="Gramin Grahak Sewa">
-
-<meta property="og:locale"
-content="hi_IN">
-
-<meta name="twitter:card"
-content="summary">
-
-<meta name="twitter:title"
-content="Gramin Grahak Sewa">
-
-<meta name="twitter:description"
-content="Digital, Document, Photo और Citizen Online Services Portal">
-
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"Gramin Grahak Sewa",
-  "alternateName":"ग्रामीण ग्राहक सेवा",
-  "url":"https://citizen-id-services2026.github.io/citizen-id-services2026/",
-  "description":"AI, Digital, Document, Photo और Citizen Online Services Portal",
-  "inLanguage":"hi-IN"
-}
-</script>
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>3D Story Maker PRO — Part 17C</title>
 
 <style>
-
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-
-    font-family:
-    Arial,
-    "Noto Sans Devanagari",
-    sans-serif;
-
-    background:#eef3f8;
-
-    color:#17202a;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b1020;
+  color:#fff;
+  min-height:100vh;
 }
 
 button,
-input,
 select,
-textarea{
-    font-family:inherit;
+input{
+  font:inherit;
 }
 
-
-/* =====================================================
-HEADER
-===================================================== */
+button{
+  cursor:pointer;
+}
 
 .header{
-
-    background:
-    linear-gradient(
-        90deg,
-        #ff8c00 0%,
-        #ff8c00 33%,
-        #ffffff 33%,
-        #ffffff 66%,
-        #138808 66%,
-        #138808 100%
-    );
-
-    padding:12px 3%;
-
-    border-bottom:4px solid #0756b8;
+  padding:18px;
+  background:linear-gradient(135deg,#111a35,#18254d);
+  border-bottom:1px solid #33446f;
 }
 
-.header-inner{
-
-    max-width:1500px;
-
-    margin:auto;
-
-    background:
-    linear-gradient(
-        135deg,
-        #043b78,
-        #0876d1
-    );
-
-    border-radius:14px;
-
-    padding:12px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:15px;
-
-    box-shadow:
-    0 5px 18px #0004;
+.header h1{
+  font-size:24px;
+  margin-bottom:5px;
 }
 
-
-/* =====================================================
-LOGO
-===================================================== */
-
-.logo-area{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    color:white;
+.header p{
+  color:#aebbd8;
+  font-size:14px;
 }
 
-.india-logo{
-
-    width:82px;
-    height:82px;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    border:4px solid white;
-
-    background:white;
-
-    position:relative;
-
-    box-shadow:
-    0 3px 12px #0005;
-
-    flex:none;
+.app{
+  display:grid;
+  grid-template-columns:230px 1fr 300px;
+  min-height:calc(100vh - 82px);
 }
 
-.flag-top{
-    height:33.33%;
-    background:#ff9933;
+.sidebar{
+  background:#0f172c;
+  border-right:1px solid #27365c;
+  padding:15px;
 }
 
-.flag-middle{
-
-    height:33.33%;
-
-    background:white;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
+.sidebar h2{
+  font-size:16px;
+  margin-bottom:12px;
 }
 
-.flag-bottom{
-    height:33.33%;
-    background:#138808;
+.charBtn,
+.sceneBtn{
+  width:100%;
+  border:1px solid #33466f;
+  background:#172342;
+  color:#fff;
+  padding:11px;
+  border-radius:9px;
+  margin-bottom:8px;
+  text-align:left;
+  transition:.2s;
 }
 
-.chakra{
-
-    width:42px;
-    height:42px;
-
-    border:
-    3px solid #0756b8;
-
-    border-radius:50%;
-
-    position:relative;
+.charBtn:hover,
+.sceneBtn:hover{
+  background:#24365f;
+  transform:translateY(-1px);
 }
 
-.chakra:before{
-
-    content:"";
-
-    position:absolute;
-
-    width:7px;
-    height:7px;
-
-    background:#0756b8;
-
-    border-radius:50%;
-
-    left:50%;
-    top:50%;
-
-    transform:
-    translate(-50%,-50%);
+.sceneTitle{
+  margin-top:20px;
 }
 
-.chakra span{
-
-    position:absolute;
-
-    width:2px;
-    height:17px;
-
-    background:#0756b8;
-
-    left:50%;
-    top:50%;
-
-    transform-origin:
-    center bottom;
+.viewerArea{
+  position:relative;
+  min-width:0;
+  background:#070b15;
 }
 
-.chakra span:nth-child(1){
-    transform:translate(-50%,-100%) rotate(0deg);
+#viewer{
+  width:100%;
+  height:100%;
+  min-height:650px;
+  display:block;
 }
 
-.chakra span:nth-child(2){
-    transform:translate(-50%,-100%) rotate(30deg);
+.loading{
+  position:absolute;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111d39;
+  border:1px solid #3c568d;
+  padding:10px 16px;
+  border-radius:20px;
+  display:none;
+  z-index:5;
 }
 
-.chakra span:nth-child(3){
-    transform:translate(-50%,-100%) rotate(60deg);
+.errorBox{
+  position:absolute;
+  left:15px;
+  right:15px;
+  bottom:15px;
+  padding:14px;
+  background:#431a25;
+  border:1px solid #a94b5e;
+  border-radius:10px;
+  color:#ffdce2;
+  display:none;
+  z-index:5;
+  white-space:pre-wrap;
 }
 
-.chakra span:nth-child(4){
-    transform:translate(-50%,-100%) rotate(90deg);
+.viewerHint{
+  position:absolute;
+  bottom:15px;
+  right:15px;
+  background:rgba(10,15,30,.8);
+  border:1px solid #344568;
+  padding:8px 12px;
+  border-radius:8px;
+  color:#aab8d5;
+  font-size:12px;
 }
 
-.chakra span:nth-child(5){
-    transform:translate(-50%,-100%) rotate(120deg);
+.panel{
+  background:#0f172c;
+  border-left:1px solid #27365c;
+  padding:15px;
+  overflow:auto;
 }
 
-.chakra span:nth-child(6){
-    transform:translate(-50%,-100%) rotate(150deg);
+.panel h2{
+  font-size:17px;
+  margin-bottom:10px;
 }
 
-.logo-text h1{
-
-    font-size:27px;
-
-    line-height:1.1;
-
-    font-weight:800;
-
-    text-shadow:
-    0 2px 3px #0005;
+.card{
+  background:#131e38;
+  border:1px solid #2b3c63;
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:12px;
 }
 
-.logo-text h2{
-
-    font-size:15px;
-
-    margin-top:4px;
-
-    color:#ffdf70;
+.label{
+  display:block;
+  color:#9eafd1;
+  font-size:12px;
+  margin-bottom:5px;
 }
 
-.logo-text p{
-
-    font-size:10px;
-
-    margin-top:5px;
-
-    color:#e5efff;
+.value{
+  font-size:14px;
+  word-break:break-word;
 }
 
-
-/* =====================================================
-HOME BUTTON
-===================================================== */
-
-.home-btn{
-
-    border:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ff9933,
-        #ff6f00
-    );
-
-    color:white;
-
-    padding:11px 16px;
-
-    border-radius:8px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 3px 8px #0003;
+.status{
+  padding:8px;
+  border-radius:7px;
+  background:#18284a;
+  color:#b9c9ea;
+  font-size:13px;
 }
 
-.home-btn:hover{
-    transform:translateY(-2px);
+.status.ok{
+  background:#123624;
+  color:#9de0b5;
 }
 
-
-/* =====================================================
-NAVIGATION
-===================================================== */
-
-.nav{
-
-    background:#06366d;
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    box-shadow:
-    0 3px 10px #0003;
+.status.bad{
+  background:#3d1923;
+  color:#ffc0ca;
 }
 
-.nav-inner{
-
-    max-width:1500px;
-
-    margin:auto;
-
-    padding:7px 3%;
-
-    display:flex;
-
-    gap:6px;
-
-    overflow-x:auto;
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
 }
 
-.nav button{
-
-    border:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        #0a75d8,
-        #064b9d
-    );
-
-    color:white;
-
-    padding:9px 13px;
-
-    border-radius:7px;
-
-    white-space:nowrap;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    cursor:pointer;
+.stat{
+  padding:9px;
+  background:#0c1428;
+  border-radius:7px;
+  border:1px solid #25365c;
 }
 
-.nav button:hover{
-
-    background:
-    linear-gradient(
-        135deg,
-        #ff9933,
-        #ef6500
-    );
+.stat small{
+  display:block;
+  color:#8394b8;
+  font-size:11px;
 }
 
-
-/* =====================================================
-MAIN
-===================================================== */
-
-.container{
-
-    max-width:1500px;
-
-    margin:auto;
-
-    padding:18px 3%;
+.stat strong{
+  display:block;
+  margin-top:3px;
+  font-size:16px;
 }
 
-.page{
-    display:none;
+select,
+input[type="number"]{
+  width:100%;
+  background:#0b1428;
+  color:#fff;
+  border:1px solid #33476e;
+  border-radius:7px;
+  padding:8px;
+  outline:none;
 }
 
-.page.active{
+.rangeRow{
+  display:grid;
+  grid-template-columns:1fr 70px;
+  gap:8px;
+  align-items:center;
+}
+
+input[type="range"]{
+  width:100%;
+}
+
+.controlGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.smallBtn{
+  border:1px solid #33476e;
+  background:#182542;
+  color:#fff;
+  padding:8px;
+  border-radius:7px;
+}
+
+.smallBtn:hover{
+  background:#25375e;
+}
+
+.danger{
+  background:#3b1823;
+  border-color:#723443;
+}
+
+.sceneItem{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+
+.sceneItem span{
+  flex:1;
+  font-size:12px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.sceneItem button{
+  padding:5px 7px;
+  border-radius:6px;
+  border:1px solid #33476e;
+  background:#182542;
+  color:#fff;
+  font-size:11px;
+}
+
+@media(max-width:1000px){
+  .app{
+    grid-template-columns:190px 1fr;
+  }
+
+  .panel{
+    grid-column:1 / -1;
+    border-left:0;
+    border-top:1px solid #27365c;
+    max-height:none;
+  }
+
+  #viewer{
+    min-height:560px;
+  }
+}
+
+@media(max-width:650px){
+  .app{
     display:block;
-}
-
-
-/* =====================================================
-HERO
-===================================================== */
-
-.hero{
-
-    background:
-    linear-gradient(
-        135deg,
-        #06366d,
-        #087bd8
-    );
-
-    color:white;
-
-    border-radius:14px;
-
-    padding:25px;
-
-    margin-bottom:18px;
-
-    box-shadow:
-    0 5px 16px #0003;
-}
-
-.hero h2{
-    font-size:25px;
-}
-
-.hero p{
-
-    font-size:12px;
-
-    margin-top:7px;
-
-    color:#e6f2ff;
-}
-
-.search{
-
-    width:100%;
-
-    margin-top:15px;
-
-    padding:12px;
-
-    border:0;
-
-    border-radius:8px;
-
-    outline:none;
-
-    font-size:13px;
-}
-
-
-/* =====================================================
-CATEGORY
-===================================================== */
-
-.category-title{
-
-    margin:18px 0 10px;
-
-    padding:10px 13px;
-
-    color:white;
-
-    border-radius:8px;
-
-    background:
-    linear-gradient(
-        90deg,
-        #06366d,
-        #087bd8
-    );
-
-    font-size:15px;
-
-    box-shadow:
-    0 3px 8px #0002;
-}
-
-
-/* =====================================================
-SERVICE GRID
-===================================================== */
-
-.service-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(6,1fr);
-
-    gap:10px;
-}
-
-
-/* =====================================================
-SERVICE
-===================================================== */
-
-.service{
-
-    min-height:105px;
-
-    border:0;
-
-    border-radius:12px;
-
-    color:white;
-
-    padding:12px 6px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:7px;
-
-    box-shadow:
-    0 4px 10px #0003;
-
-    transition:
-    transform .15s,
-    box-shadow .15s;
-}
-
-.service:hover{
-
-    transform:
-    translateY(-4px);
-
-    box-shadow:
-    0 8px 16px #0004;
-}
-
-.service:nth-child(6n+1){
-    background:
-    linear-gradient(135deg,#0756b8,#008bd2);
-}
-
-.service:nth-child(6n+2){
-    background:
-    linear-gradient(135deg,#168544,#22a65a);
-}
-
-.service:nth-child(6n+3){
-    background:
-    linear-gradient(135deg,#e98616,#f3b51b);
-}
-
-.service:nth-child(6n+4){
-    background:
-    linear-gradient(135deg,#7138b5,#9b54d6);
-}
-
-.service:nth-child(6n+5){
-    background:
-    linear-gradient(135deg,#c93636,#ef5350);
-}
-
-.service:nth-child(6n+6){
-    background:
-    linear-gradient(135deg,#087f8c,#11aeb9);
-}
-
-.service-icon{
-
-    width:44px;
-    height:44px;
-
-    background:#ffffff33;
-
-    border:
-    2px solid #ffffff66;
-
-    border-radius:10px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:23px;
-
-    backdrop-filter:
-    blur(3px);
-}
-
-.service b{
-
-    font-size:11px;
-
-    line-height:1.2;
-}
-
-.service small{
-
-    font-size:8px;
-
-    opacity:.9;
-}
-
-
-/* =====================================================
-BACK
-===================================================== */
-
-.back-btn{
-
-    border:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        #0756b8,
-        #087bd8
-    );
-
-    color:white;
-
-    padding:9px 13px;
-
-    border-radius:7px;
-
-    cursor:pointer;
-
-    margin-bottom:13px;
-
-    font-weight:bold;
-}
-
-
-/* =====================================================
-STUDIO
-===================================================== */
-
-.studio{
-
-    display:grid;
-
-    grid-template-columns:
-    290px 1fr;
-
-    gap:15px;
-}
-
-
-/* =====================================================
-CONTROLS
-===================================================== */
-
-.controls{
-
-    background:white;
-
-    border-radius:12px;
-
-    padding:13px;
-
-    border:1px solid #d5e0eb;
-
-    box-shadow:
-    0 3px 10px #0002;
-}
-
-.control-group{
-
-    border-bottom:
-    1px solid #e0e7ef;
-
-    padding-bottom:12px;
-
-    margin-bottom:12px;
-}
-
-.control-group:last-child{
-
-    border-bottom:0;
-
-    margin-bottom:0;
-}
-
-.control-group h3{
-
-    color:#06366d;
-
-    font-size:13px;
-
-    margin-bottom:7px;
-}
-
-.control-group label{
-
-    display:block;
-
-    color:#53687b;
-
-    font-size:10px;
-
-    margin:
-    7px 0 3px;
-}
-
-.controls select,
-.controls input[type=file],
-.controls input[type=number]{
-
-    width:100%;
-
-    padding:8px;
-
-    border:
-    1px solid #cbd8e5;
-
-    border-radius:6px;
-
-    background:white;
-
-    font-size:10px;
-}
-
-.range{
-    width:100%;
-}
-
-.two{
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    gap:5px;
-}
-
-.action-btn{
-
-    width:100%;
-
-    border:0;
-
-    padding:9px;
-
-    border-radius:7px;
-
-    color:white;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    margin-top:5px;
-}
-
-.blue{
-    background:
-    linear-gradient(135deg,#0756b8,#087bd8);
-}
-
-.green{
-    background:
-    linear-gradient(135deg,#168544,#25a85a);
-}
-
-.orange{
-    background:
-    linear-gradient(135deg,#e98616,#f5a623);
-}
-
-.red{
-    background:
-    linear-gradient(135deg,#c93636,#e84d4d);
-}
-
-.gray{
-    background:
-    linear-gradient(135deg,#536273,#758698);
-}
-
-
-/* =====================================================
-PREVIEW
-===================================================== */
-
-.preview{
-
-    background:#dfe7ef;
-
-    border-radius:12px;
-
-    padding:13px;
-
-    overflow:auto;
-
-    min-height:650px;
-}
-
-.a4{
-
-    width:794px;
-
-    min-height:1123px;
-
-    background:white;
-
-    margin:auto;
-
-    padding:8px;
-
-    box-shadow:
-    0 3px 12px #0004;
-}
-
-.a4.landscape{
-
-    width:1123px;
-
-    min-height:794px;
-}
-
-.preview-title{
-
-    text-align:center;
-
-    font-size:8px;
-
-    color:#777;
-
-    margin-bottom:5px;
-}
-
-
-/* =====================================================
-DOCUMENT
-===================================================== */
-
-.document-output{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:3px;
-}
-
-.document-pair{
-
-    display:flex;
-
-    gap:3px;
-
-    align-items:flex-start;
-}
-
-.id-card{
-
-    background:white;
-
-    border:
-    1px dashed #888;
-
-    overflow:hidden;
-
-    flex:none;
-}
-
-.id-card img{
-
-    display:block;
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:fill;
-}
-
-
-/* =====================================================
-PHOTO
-===================================================== */
-
-.photo-output{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    align-content:flex-start;
-
-    gap:3px;
-}
-
-.photo-card{
-
-    overflow:hidden;
-
-    border:
-    1px dashed #888;
-
-    background:white;
-
-    flex:none;
-}
-
-.photo-card img{
-
-    display:block;
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-}
-
-
-/* =====================================================
-EMPTY
-===================================================== */
-
-.empty{
-
-    text-align:center;
-
-    padding:60px 10px;
-
-    color:#8190a0;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-CUSTOMER FACILITY
-===================================================== */
-
-.facility-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(7,1fr);
-
-    gap:10px;
-
-    margin:
-    18px 0;
-}
-
-.facility-btn{
-
-    min-height:82px;
-
-    border:0;
-
-    border-radius:11px;
-
-    color:white;
-
-    text-decoration:none;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:5px;
-
-    font-weight:bold;
-
-    font-size:10px;
-
-    cursor:pointer;
-
-    box-shadow:
-    0 4px 10px #0003;
-
-    transition:
-    transform .2s;
-}
-
-.facility-btn:hover{
-
-    transform:
-    translateY(-4px);
-}
-
-.facility-btn span{
-
-    font-size:24px;
-}
-
-.contact-f{
-    background:
-    linear-gradient(135deg,#0756b8,#087bd8);
-}
-
-.whatsapp-f{
-    background:
-    linear-gradient(135deg,#168544,#25d366);
-}
-
-.location-f{
-    background:
-    linear-gradient(135deg,#e98616,#f5a623);
-}
-
-.time-f{
-    background:
-    linear-gradient(135deg,#7138b5,#9b54d6);
-}
-
-.charge-f{
-    background:
-    linear-gradient(135deg,#c93636,#ef5350);
-}
-
-.review-f{
-    background:
-    linear-gradient(135deg,#087f8c,#11aeb9);
-}
-
-.faq-f{
-    background:
-    linear-gradient(135deg,#536273,#758698);
-}
-
-
-/* =====================================================
-INFO BOX
-===================================================== */
-
-.info-box{
-
-    background:white;
-
-    border-radius:12px;
-
-    padding:18px;
-
-    margin-top:15px;
-
-    box-shadow:
-    0 3px 10px #0002;
-
-    border:
-    1px solid #d5e0eb;
-}
-
-.info-box h3{
-
-    color:#06366d;
-
-    font-size:18px;
-
-    margin-bottom:12px;
-}
-
-.info-box p{
-
-    font-size:12px;
+  }
 
-    line-height:1.7;
+  .sidebar{
+    border-right:0;
+    border-bottom:1px solid #27365c;
+  }
 
-    color:#53687b;
-}
-
-
-/* =====================================================
-CHARGES TABLE
-===================================================== */
-
-.charges-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    font-size:11px;
-}
-
-.charges-table th{
-
-    background:#06366d;
-
-    color:white;
-
-    padding:9px;
-
-    text-align:left;
-}
-
-.charges-table td{
-
-    padding:9px;
-
-    border-bottom:
-    1px solid #e0e7ef;
-}
-
-.charges-table tr:nth-child(even){
-
-    background:#f5f8fb;
-}
-
-
-/* =====================================================
-FAQ
-===================================================== */
-
-.faq-item{
-
-    border-bottom:
-    1px solid #dce5ee;
-
-    padding:11px 0;
-}
-
-.faq-question{
-
-    width:100%;
-
-    border:0;
-
-    background:none;
-
-    text-align:left;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    color:#06366d;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:10px;
-}
-
-.faq-answer{
-
-    display:none;
-
-    padding-top:8px;
-
-    font-size:11px;
-
-    color:#53687b;
-
-    line-height:1.6;
-}
-
-.faq-item.open .faq-answer{
-
-    display:block;
-}
-
-
-/* =====================================================
-REVIEW
-===================================================== */
-
-.review-form{
-
-    display:grid;
-
-    gap:8px;
-
-    max-width:600px;
-}
-
-.review-form input,
-.review-form textarea,
-.review-form select{
-
-    width:100%;
-
-    border:
-    1px solid #ccd9e5;
-
-    border-radius:7px;
-
-    padding:9px;
-
-    font-size:11px;
-
-    outline:none;
-}
-
-.review-form textarea{
-
-    min-height:90px;
-
-    resize:vertical;
-}
-
-.review-list{
-
-    margin-top:18px;
-
-    display:grid;
-
-    gap:8px;
-}
-
-.review-card{
-
-    background:#f6f9fc;
-
-    border-radius:8px;
-
-    padding:10px;
-
-    border-left:
-    4px solid #087bd8;
-}
-
-.review-card b{
-
-    color:#06366d;
-
-    font-size:11px;
-}
-
-.review-card .stars{
-
-    color:#f3a400;
-
-    margin:4px 0;
-}
-
-.review-card p{
-
-    font-size:10px;
-
-    color:#53687b;
-}
-
-
-/* =====================================================
-SOCIAL FOOTER
-===================================================== */
-
-.footer{
-
-    background:
-    linear-gradient(
-        135deg,
-        #06366d,
-        #0756b8
-    );
-
-    color:white;
-
-    text-align:center;
-
-    padding:22px 10px 15px;
-
-    margin-top:25px;
-
-    font-size:11px;
-
-    border-top:
-    4px solid #ff9933;
-}
-
-.footer-title{
-
-    font-size:19px;
-
-    font-weight:800;
-
-    margin-bottom:5px;
-}
-
-.footer-subtitle{
-
-    font-size:10px;
-
-    color:#e8f3ff;
-
-    margin-bottom:4px;
-}
-
-.footer-note{
-
-    font-size:9px;
-
-    color:#d6e6f7;
-
-    margin-bottom:15px;
-}
-
-.social-title{
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    margin-bottom:8px;
-}
-
-.social-icons{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:9px;
+  .charBtn{
+    display:inline-block;
+    width:48%;
+  }
 
-    margin:0 auto 5px;
-}
-
-.social{
-
-    width:35px;
-
-    height:35px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    color:white;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    font-size:18px;
-
-    box-shadow:
-    0 3px 8px #0005;
-
-    transition:
-    transform .2s,
-    box-shadow .2s;
-}
-
-.social:hover{
-
-    transform:
-    translateY(-3px)
-    scale(1.08);
-
-    box-shadow:
-    0 6px 12px #0006;
-}
-
-.facebook{
-
-    background:#1877f2;
-}
-
-.instagram{
-
-    background:
-    linear-gradient(
-        135deg,
-        #833ab4,
-        #fd1d1d,
-        #fcb045
-    );
-}
-
-.whatsapp{
-
-    background:#25d366;
-}
-
-.youtube{
-
-    background:#ff0000;
-}
-
-.social-labels{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:15px;
-
-    font-size:7px;
-
-    color:#dbeaff;
-
-    margin-bottom:14px;
-}
-
-.footer-contact{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:7px;
-
-    margin-bottom:14px;
-}
-
-.contact-btn{
-
-    text-decoration:none;
-
-    color:white;
-
-    background:#ffffff22;
-
-    border:
-    1px solid #ffffff55;
-
-    border-radius:6px;
-
-    padding:7px 13px;
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    transition:
-    background .2s,
-    transform .2s;
-}
-
-.contact-btn:hover{
-
-    background:#ffffff44;
-
-    transform:
-    translateY(-2px);
-}
-
-.copyright{
-
-    border-top:
-    1px solid #ffffff33;
-
-    padding-top:10px;
-
-    font-size:8px;
+  #viewer{
+    min-height:430px;
+  }
 
-    color:#dceaff;
-}
-
-
-/* =====================================================
-MOBILE
-===================================================== */
-
-@media(max-width:1100px){
-
-    .service-grid{
-
-        grid-template-columns:
-        repeat(4,1fr);
-    }
-
-    .facility-grid{
-
-        grid-template-columns:
-        repeat(4,1fr);
-    }
-
-    .studio{
-
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:700px){
-
-    .header-inner{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-    }
-
-    .logo-area{
-
-        width:100%;
-    }
-
-    .india-logo{
-
-        width:70px;
-        height:70px;
-    }
-
-    .logo-text h1{
-
-        font-size:20px;
-    }
-
-    .logo-text h2{
-
-        font-size:12px;
-    }
-
-    .home-btn{
-
-        width:100%;
-    }
-
-    .service-grid{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .service{
-
-        min-height:95px;
-    }
-
-    .facility-grid{
-
-        grid-template-columns:
-        repeat(2,1fr);
-    }
-
-    .facility-btn{
+  .panel{
+    border-top:1px solid #27365c;
+  }
 
-        min-height:75px;
-    }
-
-    .social{
-
-        width:32px;
-        height:32px;
-
-        font-size:17px;
-    }
-
-    .social-icons{
-
-        gap:8px;
-    }
-
-    .social-labels{
-
-        gap:12px;
-    }
-
-    .footer{
-
-        padding:
-        18px 8px 12px;
-    }
-
-    .footer-title{
-
-        font-size:16px;
-    }
-
-    .a4{
-
-        transform-origin:
-        top left;
-    }
-
-}
-
-
-/* =====================================================
-PRINT
-===================================================== */
-
-@media print{
-
-    body *{
-
-        visibility:hidden !important;
-    }
-
-    #docPrint,
-    #docPrint *,
-    #photoPrint,
-    #photoPrint *{
-
-        visibility:visible !important;
-    }
-
-    #docPrint,
-    #photoPrint{
-
-        position:absolute;
-
-        left:0;
-        top:0;
-
-        margin:0;
-        padding:0;
-    }
-
-    .a4{
-
-        box-shadow:none !important;
-
-        margin:0 !important;
-    }
-
-    @page{
-
-        size:A4 portrait;
-
-        margin:0;
-    }
+  .header h1{
+    font-size:20px;
+  }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-HEADER
-===================================================== -->
-
 <header class="header">
-
-<div class="header-inner">
-
-<div class="logo-area">
-
-<div class="india-logo">
-
-<div class="flag-top"></div>
-
-<div class="flag-middle">
-
-<div class="chakra">
-
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-
-</div>
-
-</div>
-
-<div class="flag-bottom"></div>
-
-</div>
-
-
-<div class="logo-text">
-
-<h1>
-Gramin Grahak Sewa
-</h1>
-
-<h2>
-🇮🇳 AI • Digital • Citizen Service Centre
-</h2>
-
-<p>
-Document • Photo • Online • Digital Services
-</p>
-
-</div>
-
-</div>
-
-
-<button
-class="home-btn"
-onclick="showPage('home')"
->
-🏠 Home
-</button>
-
-</div>
-
+  <h1>🎬 3D Story Maker PRO</h1>
+  <p>PART 17C — Scene & Character Studio</p>
 </header>
 
+<div class="app">
 
-<!-- =====================================================
-NAVIGATION
-===================================================== -->
+  <!-- LEFT -->
+  <aside class="sidebar">
 
-<nav class="nav">
+    <h2>👤 Characters</h2>
 
-<div class="nav-inner">
+    <button class="charBtn" data-character="king">👑 King</button>
+    <button class="charBtn" data-character="minister">🧑‍💼 Minister</button>
+    <button class="charBtn" data-character="sage">🧙 Sage</button>
+    <button class="charBtn" data-character="woodcutter">🪓 Woodcutter</button>
+    <button class="charBtn" data-character="boy">👦 Boy</button>
+    <button class="charBtn" data-character="girl">👧 Girl</button>
+    <button class="charBtn" data-character="merchant">🧑‍💼 Merchant</button>
+    <button class="charBtn" data-character="warrior">⚔️ Warrior</button>
 
-<button onclick="showPage('document')">
-📄 Document Studio
-</button>
+    <h2 class="sceneTitle">🎬 Scene</h2>
 
-<button onclick="showPage('photo')">
-📸 Customer Photo Studio
-</button>
+    <button class="sceneBtn" id="addCharacterBtn">
+      ➕ Add Character
+    </button>
 
-<button onclick="showPage('farmer')">
-🌾 किसान
-</button>
+    <button class="sceneBtn" id="resetSceneBtn">
+      🔄 Reset Scene
+    </button>
 
-<button onclick="showPage('bank')">
-🏦 Banking
-</button>
+  </aside>
 
-<button onclick="showPage('gov')">
-🏛️ Government
-</button>
 
-<button onclick="showPage('bill')">
-⚡ Bills & Gas
-</button>
+  <!-- VIEWER -->
+  <main class="viewerArea">
 
-<button onclick="showPage('land')">
-📑 भूमि
-</button>
+    <canvas id="viewer"></canvas>
 
-<button onclick="showPage('education')">
-🎓 Education
-</button>
+    <div class="loading" id="loading">
+      ⏳ Character loading...
+    </div>
 
-<button onclick="showPage('transport')">
-🚗 Transport
-</button>
+    <div class="errorBox" id="errorBox"></div>
 
-<button onclick="showPage('business')">
-🏢 Business
-</button>
+    <div class="viewerHint">
+      🖱️ Drag = Rotate &nbsp; | &nbsp;
+      Wheel = Zoom &nbsp; | &nbsp;
+      Right Drag = Move
+    </div>
 
-<button onclick="showPage('digital')">
-💻 Digital
-</button>
+  </main>
 
-</div>
 
-</nav>
+  <!-- RIGHT PANEL -->
+  <aside class="panel">
 
+    <div class="card">
+      <h2>🎯 Selected Character</h2>
 
-<main class="container">
+      <span class="label">Name</span>
+      <div class="value" id="selectedName">King</div>
 
+      <br>
 
-<!-- =====================================================
-HOME
-===================================================== -->
+      <span class="label">Model File</span>
+      <div class="value" id="selectedFile">Character/King.GLB</div>
 
-<section
-id="home"
-class="page active"
->
+      <br>
 
-<div class="hero">
+      <span class="label">Model Status</span>
+      <div class="status" id="modelStatus">
+        Waiting...
+      </div>
 
-<h2>
-🇮🇳 Gramin Grahak Sewa
-</h2>
+      <br>
 
-<p>
-AI, Digital, Document, Photo और Online Citizen Services Portal
-</p>
+      <span class="label">Rig Status</span>
+      <div class="status" id="rigStatus">
+        Checking...
+      </div>
+    </div>
 
-<input
-id="search"
-class="search"
-placeholder="🔎 सेवा खोजें..."
-oninput="searchServices()"
->
 
-</div>
+    <div class="card">
+      <h2>📊 Rig Statistics</h2>
 
+      <div class="stats">
 
-<!-- CUSTOMER FACILITY -->
+        <div class="stat">
+          <small>Bones</small>
+          <strong id="bonesCount">0</strong>
+        </div>
 
-<h3 class="category-title">
-⭐ ग्राहक सुविधा
-</h3>
+        <div class="stat">
+          <small>Skinned Mesh</small>
+          <strong id="skinnedCount">0</strong>
+        </div>
 
-<div class="facility-grid">
+        <div class="stat">
+          <small>Meshes</small>
+          <strong id="meshCount">0</strong>
+        </div>
 
+        <div class="stat">
+          <small>Animations</small>
+          <strong id="animationCount">0</strong>
+        </div>
 
-<a
-href="tel:8890922880"
-class="facility-btn contact-f"
->
+      </div>
+    </div>
 
-<span>📞</span>
 
-Contact Us
+    <div class="card">
+      <h2>🎞️ Animation</h2>
 
-<small>
-8890922880
-</small>
+      <span class="label">Animation</span>
 
-</a>
+      <select id="animationSelect">
+        <option value="">No animation</option>
+      </select>
 
+      <br><br>
 
-<a
-href="https://wa.me/918890922880"
-target="_blank"
-rel="noopener noreferrer"
-class="facility-btn whatsapp-f"
->
+      <div class="controlGrid">
+        <button class="smallBtn" id="playBtn">▶ Play</button>
+        <button class="smallBtn" id="pauseBtn">⏸ Pause</button>
+        <button class="smallBtn" id="stopBtn">⏹ Stop</button>
+        <button class="smallBtn" id="speedBtn">⚡ Speed</button>
+      </div>
 
-<span>💬</span>
+      <br>
 
-WhatsApp
+      <span class="label">Speed</span>
 
-<small>
-सीधे संपर्क करें
-</small>
+      <div class="rangeRow">
+        <input
+          type="range"
+          id="speedRange"
+          min="0.1"
+          max="2"
+          step="0.1"
+          value="1"
+        >
 
-</a>
+        <input
+          type="number"
+          id="speedValue"
+          min="0.1"
+          max="2"
+          step="0.1"
+          value="1"
+        >
+      </div>
+    </div>
 
 
-<a
-href="https://maps.app.goo.gl/6mqS2mqj1v7wUVJTA?g_st=ac"
-target="_blank"
-rel="noopener noreferrer"
-class="facility-btn location-f"
->
+    <div class="card">
+      <h2>📐 Transform</h2>
 
-<span>📍</span>
+      <span class="label">Position X</span>
+      <input type="number" id="posX" step="0.1" value="0">
 
-हमारी Location
+      <br>
 
-<small>
-Google Maps
-</small>
+      <span class="label">Position Y</span>
+      <input type="number" id="posY" step="0.1" value="0">
 
-</a>
+      <br>
 
+      <span class="label">Position Z</span>
+      <input type="number" id="posZ" step="0.1" value="0">
 
-<button
-class="facility-btn time-f"
-onclick="showInfo('time')"
->
+      <br>
 
-<span>🕐</span>
+      <span class="label">Rotation Y</span>
+      <input type="number" id="rotY" step="1" value="0">
 
-सेवा का समय
+      <br>
 
-<small>
-9 AM - 5 PM
-</small>
+      <span class="label">Scale</span>
+      <input type="number" id="scaleValue" step="0.1" min="0.1" value="1">
 
-</button>
+      <br>
 
+      <button class="smallBtn" id="resetTransformBtn">
+        🔄 Reset Transform
+      </button>
+    </div>
 
-<button
-class="facility-btn charge-f"
-onclick="showInfo('charges')"
->
 
-<span>💰</span>
+    <div class="card">
+      <h2>📷 Camera</h2>
 
-Service Charges
+      <div class="controlGrid">
+        <button class="smallBtn" id="frontCamera">Front</button>
+        <button class="smallBtn" id="sideCamera">Side</button>
+        <button class="smallBtn" id="topCamera">Top</button>
+        <button class="smallBtn" id="resetCamera">Reset</button>
+      </div>
+    </div>
 
-<small>
-शुल्क देखें
-</small>
 
-</button>
+    <div class="card">
+      <h2>🌄 Background</h2>
 
+      <select id="backgroundSelect">
 
-<button
-class="facility-btn review-f"
-onclick="showInfo('reviews')"
->
+        <option value="dark">
+          Dark
+        </option>
 
-<span>⭐</span>
+        <option value="blue">
+          Blue
+        </option>
 
-Customer Reviews
+        <option value="forest">
+          Forest
+        </option>
 
-<small>
-Review देखें
-</small>
+        <option value="sunset">
+          Sunset
+        </option>
 
-</button>
+        <option value="white">
+          Studio White
+        </option>
 
+      </select>
+    </div>
 
-<button
-class="facility-btn faq-f"
-onclick="showInfo('faq')"
->
 
-<span>❓</span>
+    <div class="card">
 
-FAQ
+      <h2>🎭 Scene Characters</h2>
 
-<small>
-सामान्य सवाल
-</small>
+      <div id="sceneList">
+        <div style="color:#8292b4;font-size:12px;">
+          No characters added
+        </div>
+      </div>
 
-</button>
+    </div>
 
-
-</div>
-
-
-<div id="homeServices"></div>
-
-
-<!-- =====================================================
-CUSTOMER INFORMATION
-===================================================== -->
-
-<div
-id="customerInfo"
-class="info-box"
-style="display:none"
->
-
-<div id="infoContent"></div>
-
-</div>
-
-
-</section>
-
-
-<!-- =====================================================
-DOCUMENT STUDIO
-===================================================== -->
-
-<section
-id="document"
-class="page"
->
-
-<button
-class="back-btn"
-onclick="showPage('home')"
->
-← Home
-</button>
-
-<div class="hero">
-
-<h2>
-📄 Document Copy Editor Studio
-</h2>
-
-<p>
-ID Card Front, Back और Front + Back को वास्तविक card size में A4 paper पर तैयार करें।
-</p>
+  </aside>
 
 </div>
 
 
-<div class="studio">
-
-
-<aside class="controls">
-
-
-<div class="control-group">
-
-<h3>
-1️⃣ ID Card Size
-</h3>
-
-<select
-id="docPreset"
-onchange="documentPreset()"
->
-
-<option value="85.6x53.98">
-PAN / Aadhaar / Voter / DL — 85.60 × 53.98 mm
-</option>
-
-<option value="86x54">
-Standard PVC Card — 86 × 54 mm
-</option>
-
-<option value="90x55">
-90 × 55 mm
-</option>
-
-<option value="88x58">
-88 × 58 mm
-</option>
-
-<option value="100x65">
-100 × 65 mm
-</option>
-
-<option value="105x70">
-105 × 70 mm
-</option>
-
-<option value="120x80">
-120 × 80 mm
-</option>
-
-<option value="custom">
-Custom Size
-</option>
-
-</select>
-
-
-<label>
-Width (mm)
-</label>
-
-<input
-id="docWidth"
-type="number"
-value="85.6"
-step=".01"
->
-
-
-<label>
-Height (mm)
-</label>
-
-<input
-id="docHeight"
-type="number"
-value="53.98"
-step=".01"
->
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-2️⃣ Document Upload
-</h3>
-
-<label>
-Front
-</label>
-
-<input
-id="frontFile"
-type="file"
-accept="image/*"
-onchange="loadDocument(event,'front')"
->
-
-
-<label>
-Back
-</label>
-
-<input
-id="backFile"
-type="file"
-accept="image/*"
-onchange="loadDocument(event,'back')"
->
-
-
-<div class="two">
-
-<button
-class="action-btn blue"
-onclick="autoCrop('front')"
->
-✂ Front Crop
-</button>
-
-<button
-class="action-btn blue"
-onclick="autoCrop('back')"
->
-✂ Back Crop
-</button>
-
-</div>
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-3️⃣ Print Layout
-</h3>
-
-<select
-id="docMode"
-onchange="renderDocuments()"
->
-
-<option value="front">
-Front Only
-</option>
-
-<option value="back">
-Back Only
-</option>
-
-<option value="both">
-Front + Back
-</option>
-
-</select>
-
-
-<label>
-A4 Paper
-</label>
-
-<select
-id="docPaper"
-onchange="renderDocuments()"
->
-
-<option value="portrait">
-A4 Portrait
-</option>
-
-<option value="landscape">
-A4 Landscape
-</option>
-
-</select>
-
-
-<label>
-Copies
-</label>
-
-<input
-id="docCopies"
-type="number"
-value="1"
-min="1"
-max="100"
-onchange="renderDocuments()"
->
-
-
-<label>
-Gap (mm)
-</label>
-
-<input
-id="docGap"
-type="number"
-value="1"
-min="0"
-max="10"
-step=".5"
-onchange="renderDocuments()"
->
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-4️⃣ Document Editor
-</h3>
-
-<label>
-Zoom
-</label>
-
-<input
-id="docZoom"
-class="range"
-type="range"
-min="50"
-max="200"
-value="100"
-oninput="editDocument()"
->
-
-
-<label>
-Brightness
-</label>
-
-<input
-id="docBrightness"
-class="range"
-type="range"
-min="50"
-max="160"
-value="100"
-oninput="editDocument()"
->
-
-
-<label>
-Contrast
-</label>
-
-<input
-id="docContrast"
-class="range"
-type="range"
-min="50"
-max="160"
-value="100"
-oninput="editDocument()"
->
-
-
-<div class="two">
-
-<button
-class="action-btn gray"
-onclick="rotateDocument()"
->
-↻ Rotate
-</button>
-
-<button
-class="action-btn gray"
-onclick="flipDocument()"
->
-↔ Flip
-</button>
-
-<button
-class="action-btn gray"
-onclick="grayDocument()"
->
-◐ Gray
-</button>
-
-<button
-class="action-btn orange"
-onclick="resetDocument()"
->
-Reset
-</button>
-
-</div>
-
-</div>
-
-
-<button
-class="action-btn green"
-onclick="renderDocuments()"
->
-🔄 Update A4 Preview
-</button>
-
-
-<button
-class="action-btn green"
-onclick="printDocument()"
->
-🖨️ Print A4
-</button>
-
-
-<button
-class="action-btn red"
-onclick="clearDocuments()"
->
-🗑 Clear
-</button>
-
-
-</aside>
-
-
-<div class="preview">
-
-<div id="docPrint">
-
-<div
-id="docA4"
-class="a4"
->
-
-<div class="preview-title">
-A4 DOCUMENT PREVIEW
-</div>
-
-<div
-id="documentOutput"
-class="document-output"
->
-
-<div class="empty">
-Front या Back document upload करें।
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-PHOTO STUDIO
-===================================================== -->
-
-<section
-id="photo"
-class="page"
->
-
-<button
-class="back-btn"
-onclick="showPage('home')"
->
-← Home
-</button>
-
-
-<div class="hero">
-
-<h2>
-📸 Customer Photo Studio
-</h2>
-
-<p>
-Passport Photo, Form Photo, 4×6, 4×12, A4 और Custom Photo Print
-</p>
-
-</div>
-
-
-<div class="studio">
-
-
-<aside class="controls">
-
-
-<div class="control-group">
-
-<h3>
-1️⃣ Customer Photo
-</h3>
-
-<input
-id="photoFile"
-type="file"
-accept="image/*"
-onchange="loadPhoto(event)"
->
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-2️⃣ Photo Size
-</h3>
-
-<select
-id="photoPreset"
-onchange="photoPreset()"
->
-
-<option value="35x45mm">
-Passport / Form — 35 × 45 mm
-</option>
-
-<option value="25x35mm">
-Small Form — 25 × 35 mm
-</option>
-
-<option value="30x40mm">
-30 × 40 mm
-</option>
-
-<option value="40x50mm">
-40 × 50 mm
-</option>
-
-<option value="50x70mm">
-50 × 70 mm
-</option>
-
-<option value="2x2in">
-2 × 2 inch
-</option>
-
-<option value="2x3in">
-2 × 3 inch
-</option>
-
-<option value="3x4in">
-3 × 4 inch
-</option>
-
-<option value="4x6in">
-4 × 6 inch
-</option>
-
-<option value="4x12in">
-4 × 12 inch
-</option>
-
-<option value="5x7in">
-5 × 7 inch
-</option>
-
-<option value="6x8in">
-6 × 8 inch
-</option>
-
-<option value="8x10in">
-8 × 10 inch
-</option>
-
-<option value="8x12in">
-8 × 12 inch
-</option>
-
-<option value="8x20in">
-8 × 20 inch
-</option>
-
-<option value="a4">
-A4 — 210 × 297 mm
-</option>
-
-<option value="custom">
-Custom
-</option>
-
-</select>
-
-
-<label>
-Width
-</label>
-
-<input
-id="photoWidth"
-type="number"
-value="35"
-step=".01"
->
-
-
-<label>
-Height
-</label>
-
-<input
-id="photoHeight"
-type="number"
-value="45"
-step=".01"
->
-
-
-<label>
-Unit
-</label>
-
-<select id="photoUnit">
-
-<option value="mm">
-mm
-</option>
-
-<option value="inch">
-inch
-</option>
-
-</select>
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-3️⃣ Photo Editor
-</h3>
-
-<label>
-Zoom
-</label>
-
-<input
-id="photoZoom"
-class="range"
-type="range"
-min="50"
-max="200"
-value="100"
-oninput="editPhoto()"
->
-
-
-<label>
-Brightness
-</label>
-
-<input
-id="photoBrightness"
-class="range"
-type="range"
-min="50"
-max="160"
-value="100"
-oninput="editPhoto()"
->
-
-
-<label>
-Contrast
-</label>
-
-<input
-id="photoContrast"
-class="range"
-type="range"
-min="50"
-max="160"
-value="100"
-oninput="editPhoto()"
->
-
-
-<label>
-Saturation
-</label>
-
-<input
-id="photoSaturation"
-class="range"
-type="range"
-min="0"
-max="180"
-value="100"
-oninput="editPhoto()"
->
-
-
-<div class="two">
-
-<button
-class="action-btn gray"
-onclick="rotatePhoto()"
->
-↻ Rotate
-</button>
-
-<button
-class="action-btn orange"
-onclick="resetPhoto()"
->
-Reset
-</button>
-
-</div>
-
-</div>
-
-
-<div class="control-group">
-
-<h3>
-4️⃣ A4 Layout
-</h3>
-
-<select
-id="photoPaper"
-onchange="renderPhoto()"
->
-
-<option value="portrait">
-A4 Portrait
-</option>
-
-<option value="landscape">
-A4 Landscape
-</option>
-
-</select>
-
-
-<label>
-Copies
-</label>
-
-<input
-id="photoCopies"
-type="number"
-value="1"
-min="1"
-max="200"
-onchange="renderPhoto()"
->
-
-
-<label>
-Gap (mm)
-</label>
-
-<input
-id="photoGap"
-type="number"
-value="1"
-min="0"
-max="10"
-step=".5"
-onchange="renderPhoto()"
->
-
-</div>
-
-
-<button
-class="action-btn green"
-onclick="renderPhoto()"
->
-🔄 Update A4 Preview
-</button>
-
-
-<button
-class="action-btn green"
-onclick="printPhoto()"
->
-🖨️ Print A4
-</button>
-
-
-<button
-class="action-btn red"
-onclick="clearPhoto()"
->
-🗑 Clear
-</button>
-
-
-</aside>
-
-
-<div class="preview">
-
-<div id="photoPrint">
-
-<div
-id="photoA4"
-class="a4"
->
-
-<div class="preview-title">
-A4 PHOTO PREVIEW
-</div>
-
-<div
-id="photoOutput"
-class="photo-output"
->
-
-<div class="empty">
-Customer photo upload करें।
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-FARMER
-===================================================== -->
-
-<section id="farmer" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🌾 किसान एवं कृषि सेवाएँ</h2>
-
-<p>
-कृषि और किसान से संबंधित online portals
-</p>
-
-</div>
-
-<div id="farmerGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-BANK
-===================================================== -->
-
-<section id="bank" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🏦 Banking Services</h2>
-
-<p>
-Banking और financial services
-</p>
-
-</div>
-
-<div id="bankGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-GOVERNMENT
-===================================================== -->
-
-<section id="gov" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🏛️ Government Services</h2>
-
-<p>
-Citizen और government portals
-</p>
-
-</div>
-
-<div id="govGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-BILLS
-===================================================== -->
-
-<section id="bill" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>⚡ Bills, Gas & Recharge</h2>
-
-<p>
-Utility और gas services
-</p>
-
-</div>
-
-<div id="billGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-LAND
-===================================================== -->
-
-<section id="land" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>📑 Land & Revenue</h2>
-
-<p>
-जमाबंदी, नकल, खसरा, भू-नक्शा आदि
-</p>
-
-</div>
-
-<div id="landGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-EDUCATION
-===================================================== -->
-
-<section id="education" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🎓 Education Services</h2>
-
-<p>
-School, college, scholarship और examination services
-</p>
-
-</div>
-
-<div id="educationGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-TRANSPORT
-===================================================== -->
-
-<section id="transport" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🚗 Transport Services</h2>
-
-<p>
-Driving Licence, RC, Challan आदि
-</p>
-
-</div>
-
-<div id="transportGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-BUSINESS
-===================================================== -->
-
-<section id="business" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>🏢 Business & Tax</h2>
-
-<p>
-GST, PAN, Udyam, Tax आदि
-</p>
-
-</div>
-
-<div id="businessGrid" class="service-grid"></div>
-
-</section>
-
-
-<!-- =====================================================
-DIGITAL
-===================================================== -->
-
-<section id="digital" class="page">
-
-<button class="back-btn" onclick="showPage('home')">
-← Home
-</button>
-
-<div class="hero">
-
-<h2>💻 Digital Services</h2>
-
-<p>
-Online portals और digital services
-</p>
-
-</div>
-
-<div id="digitalGrid" class="service-grid"></div>
-
-</section>
-
-
-</main>
-
-
-<!-- =====================================================
-FOOTER
-===================================================== -->
-
-<footer class="footer">
-
-
-<div class="footer-title">
-🇮🇳 Gramin Grahak Sewa
-</div>
-
-
-<div class="footer-subtitle">
-AI • Digital • Document • Photo • Citizen Services
-</div>
-
-
-<div class="footer-note">
-Private Digital Service Centre
-</div>
-
-
-<div class="social-title">
-हमें Social Media पर Follow करें
-</div>
-
-
-<div class="social-icons">
-
-
-<!-- FACEBOOK -->
-
-<a
-href="https://www.facebook.com/share/1JE2QRvJR1/"
-target="_blank"
-rel="noopener noreferrer"
-class="social facebook"
-title="Facebook"
->
-
-<span>f</span>
-
-</a>
-
-
-<!-- INSTAGRAM -->
-
-<a
-href="https://www.instagram.com/foji__ki_life?igsi=ZTJqMXRwbjE2c2dj"
-target="_blank"
-rel="noopener noreferrer"
-class="social instagram"
-title="Instagram"
->
-
-<span>◎</span>
-
-</a>
-
-
-<!-- WHATSAPP -->
-
-<a
-href="https://wa.me/918890922880"
-target="_blank"
-rel="noopener noreferrer"
-class="social whatsapp"
-title="WhatsApp"
->
-
-<span>◉</span>
-
-</a>
-
-
-<!-- YOUTUBE -->
-
-<a
-href="#"
-class="social youtube"
-title="YouTube"
-onclick="youtubeComingSoon(event)"
->
-
-<span>▶</span>
-
-</a>
-
-
-</div>
-
-
-<div class="social-labels">
-
-<span>Facebook</span>
-
-<span>Instagram</span>
-
-<span>WhatsApp</span>
-
-<span>YouTube</span>
-
-</div>
-
-
-<div class="footer-contact">
-
-
-<a
-href="tel:8890922880"
-class="contact-btn"
->
-📞 Call
-</a>
-
-
-<a
-href="https://wa.me/918890922880"
-target="_blank"
-rel="noopener noreferrer"
-class="contact-btn"
->
-💬 WhatsApp
-</a>
-
-
-<a
-href="https://maps.app.goo.gl/6mqS2mqj1v7wUVJTA?g_st=ac"
-target="_blank"
-rel="noopener noreferrer"
-class="contact-btn"
->
-📍 Location
-</a>
-
-
-</div>
-
-
-<div class="copyright">
-
-© 2026 Gramin Grahak Sewa • All Rights Reserved
-
-</div>
-
-
-</footer>
-
-
-
-<script>
-
-/* =====================================================
-SERVICES
-===================================================== */
-
-const services={
-
-
-farmer:[
-
-["🌾","PM-KISAN","https://pmkisan.gov.in/"],
-
-["🌱","Soil Health Card","https://soilhealth.dac.gov.in/"],
-
-["🧺","e-NAM","https://enam.gov.in/"],
-
-["🌦️","Weather","https://mausam.imd.gov.in/"],
-
-["🌾","Crop Insurance","https://pmfby.gov.in/"],
-
-["🚜","Agriculture Schemes","https://agriwelfare.gov.in/"],
-
-["🐄","Animal Husbandry","https://dahd.gov.in/"],
-
-["🐟","Fisheries","https://dof.gov.in/"],
-
-["🌿","Horticulture","https://agrihorticulture.gov.in/"],
-
-["💰","Kisan Credit Card","https://www.myscheme.gov.in/"],
-
-["📋","Farmer Schemes","https://www.myscheme.gov.in/"],
-
-["💹","Mandi Services","https://enam.gov.in/"]
-
-],
-
-
-bank:[
-
-["🏦","IPPB","https://www.ippbonline.com/"],
-
-["🛡️","Insurance","https://www.irdai.gov.in/"],
-
-["👴","Pension","https://www.pfrda.org.in/"],
-
-["📱","UPI / NPCI","https://www.npci.org.in/"],
-
-["🏦","Banking Information","https://www.rbi.org.in/"]
-
-],
-
-
-gov:[
-
-["🪪","Aadhaar","https://myaadhaar.uidai.gov.in/"],
-
-["💳","PAN / Income Tax","https://www.incometax.gov.in/"],
-
-["🗳️","Voter ID","https://voters.eci.gov.in/"],
-
-["🛂","Passport","https://www.passportindia.gov.in/"],
-
-["🔐","Rajasthan SSO","https://sso.rajasthan.gov.in/"],
-
-["🏛️","DigiLocker","https://www.digilocker.gov.in/"],
-
-["👷","e-Shram","https://eshram.gov.in/"],
-
-["🏥","Ayushman Bharat","https://beneficiary.nha.gov.in/"],
-
-["🪪","ABHA","https://abha.abdm.gov.in/"],
-
-["🍚","Ration Card","https://food.rajasthan.gov.in/"],
-
-["👨‍👩‍👧","Jan Aadhaar","https://janaadhaar.rajasthan.gov.in/"],
-
-["📜","Birth Certificate","https://pehchan.rajasthan.gov.in/"],
-
-["⚰️","Death Certificate","https://pehchan.rajasthan.gov.in/"],
-
-["💍","Marriage Certificate","https://pehchan.rajasthan.gov.in/"],
-
-["📢","Jan Soochna","https://jansoochna.rajasthan.gov.in/"],
-
-["⚖️","e-Courts","https://ecourts.gov.in/"],
-
-["🏛️","CSC Digital Seva","https://digitalseva.csc.gov.in/"]
-
-],
-
-
-bill:[
-
-["🔥","HP Gas","https://www.hindustanpetroleum.com/hp-gas"],
-
-["🔥","My HP Gas","https://myhpgas.in/"],
-
-["🔥","Bharatgas","https://www.ebharatgas.com/"],
-
-["🔥","Indane Gas","https://iocl.com/indane-cooking-gas-overview"],
-
-["🔥","My LPG","https://www.mylpg.in/"],
-
-["💰","LPG Subsidy","https://www.mylpg.in/"],
-
-["📅","LPG Booking","https://www.mylpg.in/"],
-
-["📍","LPG Distributor","https://www.mylpg.in/"],
-
-["👤","LPG Consumer Services","https://www.mylpg.in/"],
-
-["⚡","Rajasthan Electricity","https://energy.rajasthan.gov.in/"],
-
-["💡","Electricity Services","https://energy.rajasthan.gov.in/"],
-
-["🚘","FASTag / NPCI","https://www.npci.org.in/"]
-
-],
-
-
-land:[
-
-["📑","जमाबंदी","https://apnakhata.rajasthan.gov.in/"],
-
-["📄","नकल","https://apnakhata.rajasthan.gov.in/"],
-
-["🗺️","भू-नक्शा","https://bhunaksha.rajasthan.gov.in/"],
-
-["📍","खसरा","https://apnakhata.rajasthan.gov.in/"],
-
-["📚","खाता","https://apnakhata.rajasthan.gov.in/"],
-
-["🌾","गिरदावरी","https://apnakhata.rajasthan.gov.in/"],
-
-["🔄","नामांतरण","https://apnakhata.rajasthan.gov.in/"],
-
-["📜","राजस्व रिकॉर्ड","https://apnakhata.rajasthan.gov.in/"],
-
-["🏠","भूमि विवरण","https://apnakhata.rajasthan.gov.in/"],
-
-["🧾","Land Print","https://apnakhata.rajasthan.gov.in/"]
-
-],
-
-
-education:[
-
-["🎓","Scholarship","https://scholarships.gov.in/"],
-
-["🏫","Shala Darpan","https://rajshaladarpan.nic.in/"],
-
-["📊","CBSE Result","https://results.cbse.nic.in/"],
-
-["📝","CBSE","https://www.cbse.gov.in/"],
-
-["📚","NCERT","https://ncert.nic.in/"],
-
-["💻","DigiLocker","https://www.digilocker.gov.in/"],
-
-["🏅","Scheme Search","https://www.myscheme.gov.in/"]
-
-],
-
-
-transport:[
-
-["🚗","Driving Licence","https://parivahan.gov.in/"],
-
-["📝","Learner Licence","https://parivahan.gov.in/"],
-
-["🔄","DL Renewal","https://parivahan.gov.in/"],
-
-["🚘","Vehicle Registration","https://parivahan.gov.in/"],
-
-["📄","RC Services","https://parivahan.gov.in/"],
-
-["🧾","e-Challan","https://echallan.parivahan.gov.in/"],
-
-["🚦","Vehicle Search","https://parivahan.gov.in/"],
-
-["🚘","Permit","https://parivahan.gov.in/"],
-
-["🚗","FASTag","https://www.npci.org.in/"],
-
-["📋","Transport Forms","https://parivahan.gov.in/"]
-
-],
-
-
-business:[
-
-["🏢","Udyam Registration","https://udyamregistration.gov.in/"],
-
-["🧾","GST","https://www.gst.gov.in/"],
-
-["📊","Income Tax","https://www.incometax.gov.in/"],
-
-["💳","PAN","https://www.incometax.gov.in/"],
-
-["🍴","FSSAI","https://www.fssai.gov.in/"],
-
-["🏪","MSME","https://udyamregistration.gov.in/"],
-
-["💼","Business Schemes","https://www.myscheme.gov.in/"],
-
-["🚀","Startup India","https://www.startupindia.gov.in/"],
-
-["📈","GST Return","https://www.gst.gov.in/"],
-
-["🧮","Tax Services","https://www.incometax.gov.in/"]
-
-],
-
-
-digital:[
-
-["☁️","DigiLocker","https://www.digilocker.gov.in/"],
-
-["🏛️","CSC Digital Seva","https://digitalseva.csc.gov.in/"],
-
-["🪪","Aadhaar Portal","https://myaadhaar.uidai.gov.in/"],
-
-["🗳️","Voter Portal","https://voters.eci.gov.in/"],
-
-["🛂","Passport Portal","https://www.passportindia.gov.in/"],
-
-["🔐","Rajasthan SSO","https://sso.rajasthan.gov.in/"],
-
-["🏛️","Jan Soochna","https://jansoochna.rajasthan.gov.in/"],
-
-["⚖️","e-Courts","https://ecourts.gov.in/"]
-
-]
-
-};
-
-
-/* =====================================================
-SERVICE CARD
-===================================================== */
-
-function makeCard(item){
-
-return `
-
-<div
-class="service"
-data-service="${item[1].toLowerCase()}"
-onclick="openPortal('${item[2]}')"
->
-
-<div class="service-icon">
-${item[0]}
-</div>
-
-<b>
-${item[1]}
-</b>
-
-<small>
-Official Portal
-</small>
-
-</div>
-
-`;
-
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+  }
 }
-
-
-/* =====================================================
-BUILD SERVICES
-===================================================== */
-
-function buildServices(){
-
-for(
-const category in services
-){
-
-const grid=
-document.getElementById(
-category+'Grid'
-);
-
-if(grid){
-
-grid.innerHTML=
-services[category]
-.map(makeCard)
-.join('');
-
-}
-
-}
-
-
-const sections=[
-
-["🌾 किसान एवं कृषि सेवाएँ","farmer"],
-
-["🏦 Banking Services","bank"],
-
-["🏛️ Government Citizen Services","gov"],
-
-["⚡ Bills / Gas / Recharge","bill"],
-
-["📑 Land & Revenue Services","land"],
-
-["🎓 Education Services","education"],
-
-["🚗 Transport Services","transport"],
-
-["🏢 Business & Tax Services","business"],
-
-["💻 Digital & Online Services","digital"]
-
-];
-
-
-document.getElementById(
-'homeServices'
-).innerHTML=
-
-sections.map(
-s=>`
-
-<h3 class="category-title">
-${s[0]}
-</h3>
-
-<div class="service-grid">
-
-${services[s[1]]
-.map(makeCard)
-.join('')}
-
-</div>
-
-`
-).join('');
-
-}
-
-
-/* =====================================================
-PAGE
-===================================================== */
-
-function showPage(id){
-
-document
-.querySelectorAll('.page')
-.forEach(
-p=>p.classList.remove('active')
-);
-
-const page=
-document.getElementById(id);
-
-if(page){
-
-page.classList.add('active');
-
-}
-
-window.scrollTo(
-0,
-0
-);
-
-}
-
-
-/* =====================================================
-PORTAL
-===================================================== */
-
-function openPortal(url){
-
-if(!url)
-return;
-
-window.open(
-url,
-'_blank',
-'noopener,noreferrer'
-);
-
-}
-
-
-/* =====================================================
-SEARCH
-===================================================== */
-
-function searchServices(){
-
-const q=
-document
-.getElementById('search')
-.value
-.toLowerCase()
-.trim();
-
-document
-.querySelectorAll(
-'#homeServices .service'
-)
-.forEach(
-card=>{
-
-card.style.display=
-card.innerText
-.toLowerCase()
-.includes(q)
-?
-'flex'
-:
-'none';
-
-});
-
-}
-
-
-/* =====================================================
-CUSTOMER FACILITY
-===================================================== */
-
-function showInfo(type){
-
-const box=
-document.getElementById(
-'customerInfo'
-);
-
-const content=
-document.getElementById(
-'infoContent'
-);
-
-box.style.display='block';
-
-
-if(type==='time'){
-
-content.innerHTML=`
-
-<h3>🕐 सेवा का समय</h3>
-
-<p>
-
-<strong>
-Gramin Grahak Sewa
-</strong>
-
-<br><br>
-
-🕘 सुबह <strong>9:00 बजे</strong>
-से
-
-<br>
-
-🕔 शाम <strong>5:00 बजे</strong>
-तक
-
-<br><br>
-
-ग्राहकों के लिए Digital, Document,
-Photo और Online Services उपलब्ध हैं।
-
-</p>
-
-`;
-
-}
-
-
-if(type==='charges'){
-
-content.innerHTML=`
-
-<h3>💰 Service Charges</h3>
-
-<table class="charges-table">
-
-<tr>
-<th>सेवा</th>
-<th>शुल्क</th>
-</tr>
-
-<tr>
-<td>📄 Document Print</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-<tr>
-<td>📸 Passport Photo</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-<tr>
-<td>🖨️ Colour Print</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-<tr>
-<td>📑 Online Form</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-<tr>
-<td>🏛️ Government Service</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-<tr>
-<td>📋 Land / Revenue Work</td>
-<td>सेवा के अनुसार</td>
-</tr>
-
-</table>
-
-<p style="margin-top:12px">
-
-<strong>
-नोट:
-</strong>
-
-सरकारी शुल्क और सेवा केंद्र शुल्क
-अलग-अलग हो सकते हैं।
-
-</p>
-
-`;
-
-}
-
-
-if(type==='reviews'){
-
-content.innerHTML=`
-
-<h3>⭐ Customer Reviews</h3>
-
-<div class="review-form">
-
-<input
-id="reviewName"
-placeholder="आपका नाम"
->
-
-<select id="reviewRating">
-
-<option value="5">
-⭐⭐⭐⭐⭐ 5 Star
-</option>
-
-<option value="4">
-⭐⭐⭐⭐ 4 Star
-</option>
-
-<option value="3">
-⭐⭐⭐ 3 Star
-</option>
-
-<option value="2">
-⭐⭐ 2 Star
-</option>
-
-<option value="1">
-⭐ 1 Star
-</option>
-
-</select>
-
-<textarea
-id="reviewText"
-placeholder="अपना अनुभव लिखें..."
-></textarea>
-
-<button
-class="action-btn green"
-onclick="addReview()"
->
-⭐ Review Submit करें
-</button>
-
-</div>
-
-<div
-id="reviewList"
-class="review-list"
-></div>
-
-`;
-
-loadReviews();
-
-}
-
-
-if(type==='faq'){
-
-content.innerHTML=`
-
-<h3>❓ Frequently Asked Questions</h3>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-📸 क्या फोटो का size बदला जा सकता है?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-हाँ। Customer Photo Studio में
-Passport, Form, 4×6, 4×12, A4 और
-Custom Size उपलब्ध हैं।
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-📄 क्या Document की Front और Back दोनों बना सकते हैं?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-हाँ। Document Studio में Front,
-Back और Front + Back तीनों विकल्प हैं।
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-🖨️ क्या A4 पर Print Layout बनाया जा सकता है?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-हाँ। A4 Portrait और Landscape दोनों
-layout उपलब्ध हैं।
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-💬 WhatsApp से संपर्क कैसे करें?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-नीचे WhatsApp button पर क्लिक करके
-सीधे WhatsApp पर संपर्क कर सकते हैं।
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-🕐 सेवा केंद्र कितने बजे खुलता है?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-सेवा का समय सुबह 9:00 बजे से
-शाम 5:00 बजे तक है।
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)"
->
-📍 Location कहाँ है?
-<span>+</span>
-</button>
-
-<div class="faq-answer">
-
-Home Page या Footer में
-📍 Location button पर क्लिक करके
-Google Maps पर Location देख सकते हैं।
-
-</div>
-
-</div>
-
-`;
-
-}
-
-}
-
-
-/* =====================================================
-FAQ
-===================================================== */
-
-function toggleFAQ(button){
-
-const item=
-button.parentElement;
-
-item.classList.toggle('open');
-
-const span=
-button.querySelector('span');
-
-span.textContent=
-item.classList.contains('open')
-?
-'−'
-:
-'+';
-
-}
-
-
-/* =====================================================
-REVIEWS
-===================================================== */
-
-function addReview(){
-
-const name=
-document.getElementById(
-'reviewName'
-).value.trim();
-
-const rating=
-document.getElementById(
-'reviewRating'
-).value;
-
-const text=
-document.getElementById(
-'reviewText'
-).value.trim();
-
-
-if(!name || !text){
-
-alert(
-'कृपया नाम और Review दोनों भरें।'
-);
-
-return;
-
-}
-
-
-const reviews=
-JSON.parse(
-localStorage.getItem(
-'graminReviews'
-) || '[]'
-);
-
-
-reviews.push({
-
-name:name,
-
-rating:rating,
-
-text:text,
-
-date:new Date()
-.toLocaleDateString('hi-IN')
-
-});
-
-
-localStorage.setItem(
-'graminReviews',
-JSON.stringify(reviews)
-);
-
-
-document.getElementById(
-'reviewName'
-).value='';
-
-document.getElementById(
-'reviewText'
-).value='';
-
-
-loadReviews();
-
-
-alert(
-'धन्यवाद! आपका Review सेव हो गया।'
-);
-
-}
-
-
-/* =====================================================
-LOAD REVIEWS
-===================================================== */
-
-function loadReviews(){
-
-const list=
-document.getElementById(
-'reviewList'
-);
-
-if(!list)
-return;
-
-
-const reviews=
-JSON.parse(
-localStorage.getItem(
-'graminReviews'
-) || '[]'
-);
-
-
-if(reviews.length===0){
-
-list.innerHTML=`
-
-<div class="empty">
-
-अभी कोई Customer Review नहीं है।
-
-पहला Review आप लिख सकते हैं।
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-list.innerHTML=
-reviews
-.slice()
-.reverse()
-.map(
-r=>`
-
-<div class="review-card">
-
-<b>
-${escapeHTML(r.name)}
-</b>
-
-<div class="stars">
-
-${'⭐'.repeat(
-Number(r.rating)
-)}
-
-</div>
-
-<p>
-${escapeHTML(r.text)}
-</p>
-
-<small>
-${r.date}
-</small>
-
-</div>
-
-`
-)
-.join('');
-
-}
-
-
-/* =====================================================
-SECURITY FOR REVIEW TEXT
-===================================================== */
-
-function escapeHTML(text){
-
-return text
-.replace(/&/g,'&amp;')
-.replace(/</g,'&lt;')
-.replace(/>/g,'&gt;')
-.replace(/"/g,'&quot;')
-.replace(/'/g,'&#039;');
-
-}
-
-
-/* =====================================================
-DOCUMENT STUDIO
-===================================================== */
-
-let documents={
-
-front:null,
-
-back:null
-
-};
-
-let selectedSide='front';
-
-
-function documentPreset(){
-
-const value=
-document
-.getElementById(
-'docPreset'
-).value;
-
-if(value==='custom')
-return;
-
-const p=
-value.split('x');
-
-document.getElementById(
-'docWidth'
-).value=
-p[0];
-
-document.getElementById(
-'docHeight'
-).value=
-p[1];
-
-renderDocuments();
-
-}
-
-
-/* =====================================================
-LOAD DOCUMENT
-===================================================== */
-
-function loadDocument(event,side){
-
-const file=
-event.target.files[0];
-
-if(!file)
-return;
-
-
-const reader=
-new FileReader();
-
-
-reader.onload=function(e){
-
-const image=
-new Image();
-
-
-image.onload=function(){
-
-documents[side]={
-
-image:image,
-
-rotation:0,
-
-flip:false,
-
-gray:false,
-
-brightness:100,
-
-contrast:100,
-
-zoom:100,
-
-crop:{
-
-x:0,
-
-y:0,
-
-w:image.naturalWidth,
-
-h:image.naturalHeight
-
-}
-
-};
-
-
-selectedSide=side;
-
-loadDocumentEditor();
-
-renderDocuments();
-
-};
-
-
-image.src=e.target.result;
-
-};
-
-
-reader.readAsDataURL(file);
-
-}
-
-
-/* =====================================================
-EDITOR
-===================================================== */
-
-function loadDocumentEditor(){
-
-const d=
-documents[selectedSide];
-
-if(!d)
-return;
-
-
-document.getElementById(
-'docZoom'
-).value=
-d.zoom;
-
-
-document.getElementById(
-'docBrightness'
-).value=
-d.brightness;
-
-
-document.getElementById(
-'docContrast'
-).value=
-d.contrast;
-
-}
-
-
-function editDocument(){
-
-const d=
-documents[selectedSide];
-
-if(!d)
-return;
-
-
-d.zoom=
-+document.getElementById(
-'docZoom'
-).value;
-
-
-d.brightness=
-+document.getElementById(
-'docBrightness'
-).value;
-
-
-d.contrast=
-+document.getElementById(
-'docContrast'
-).value;
-
-
-renderDocuments();
-
-}
-
-
-function rotateDocument(){
-
-if(!documents[selectedSide])
-return;
-
-
-documents[selectedSide].rotation=
-(
-documents[selectedSide].rotation+
-90
-)%360;
-
-
-renderDocuments();
-
-}
-
-
-function flipDocument(){
-
-if(!documents[selectedSide])
-return;
-
-
-documents[selectedSide].flip=
-!documents[selectedSide].flip;
-
-
-renderDocuments();
-
-}
-
-
-function grayDocument(){
-
-if(!documents[selectedSide])
-return;
-
-
-documents[selectedSide].gray=
-!documents[selectedSide].gray;
-
-
-renderDocuments();
-
-}
-
-
-function resetDocument(){
-
-const d=
-documents[selectedSide];
-
-if(!d)
-return;
-
-
-d.rotation=0;
-
-d.flip=false;
-
-d.gray=false;
-
-d.brightness=100;
-
-d.contrast=100;
-
-d.zoom=100;
-
-
-d.crop={
-
-x:0,
-
-y:0,
-
-w:d.image.naturalWidth,
-
-h:d.image.naturalHeight
-
-};
-
-
-loadDocumentEditor();
-
-renderDocuments();
-
-}
-
-
-/* =====================================================
-AUTO CROP
-===================================================== */
-
-function autoCrop(side){
-
-const d=
-documents[side];
-
-if(!d){
-
-alert(
-'पहले document upload करें।'
-);
-
-return;
-
-}
-
-
-const image=
-d.image;
-
-
-const canvas=
-document.createElement(
-'canvas'
-);
-
-
-canvas.width=
-image.naturalWidth;
-
-canvas.height=
-image.naturalHeight;
-
-
-const ctx=
-canvas.getContext('2d');
-
-
-ctx.drawImage(
-image,
-0,
-0
-);
-
-
-const data=
-ctx.getImageData(
-0,
-0,
-canvas.width,
-canvas.height
-).data;
-
-
-let minX=
-canvas.width;
-
-let minY=
-canvas.height;
-
-let maxX=0;
-
-let maxY=0;
-
-let found=false;
-
-
-for(
-let y=0;
-y<canvas.height;
-y+=3
-){
-
-for(
-let x=0;
-x<canvas.width;
-x+=3
-){
-
-const i=
-(
-y*
-canvas.width+
-x
-)*4;
-
-
-const r=data[i];
-
-const g=data[i+1];
-
-const b=data[i+2];
-
-
-if(
-r<245 ||
-g<245 ||
-b<245
-){
-
-found=true;
-
-minX=
-Math.min(
-minX,
-x
-);
-
-minY=
-Math.min(
-minY,
-y
-);
-
-maxX=
-Math.max(
-maxX,
-x
-);
-
-maxY=
-Math.max(
-maxY,
-y
-);
-
-}
-
-}
-
-}
-
-
-if(!found){
-
-alert(
-'Auto crop boundary नहीं मिली।'
-);
-
-return;
-
-}
-
-
-d.crop={
-
-x:minX,
-
-y:minY,
-
-w:maxX-minX+1,
-
-h:maxY-minY+1
-
-};
-
-
-renderDocuments();
-
-}
-
-
-/* =====================================================
-EDITED DOCUMENT
-===================================================== */
-
-function editedDocument(side){
-
-const d=
-documents[side];
-
-
-const c0=
-d.crop;
-
-
-const canvas=
-document.createElement(
-'canvas'
-);
-
-
-const rotated=
-d.rotation%180!==0;
-
-
-canvas.width=
-rotated
-?
-c0.h
-:
-c0.w;
-
-
-canvas.height=
-rotated
-?
-c0.w
-:
-c0.h;
-
-
-const ctx=
-canvas.getContext('2d');
-
-
-ctx.save();
-
-
-ctx.translate(
-canvas.width/2,
-canvas.height/2
-);
-
-
-ctx.rotate(
-d.rotation*
-Math.PI/
-180
-);
-
-
-ctx.scale(
-d.flip?-1:1,
-1
-);
-
-
-ctx.filter=
-`brightness(${d.brightness}%)
-contrast(${d.contrast}%)
-${d.gray?'grayscale(100%)':'grayscale(0%)'}`;
-
-
-const z=
-d.zoom/100;
-
-
-const w=
-c0.w*z;
-
-const h=
-c0.h*z;
-
-
-ctx.drawImage(
-
-d.image,
-
-c0.x,
-c0.y,
-c0.w,
-c0.h,
-
--w/2,
--h/2,
-w,
-h
-
-);
-
-
-ctx.restore();
-
-
-return canvas;
-
-}
-
-
-/* =====================================================
-DOCUMENT A4
-===================================================== */
-
-function renderDocuments(){
-
-const output=
-document.getElementById(
-'documentOutput'
-);
-
-output.innerHTML='';
-
-
-const mode=
-document.getElementById(
-'docMode'
-).value;
-
-
-const paper=
-document.getElementById(
-'docPaper'
-).value;
-
-
-const width=
-+document.getElementById(
-'docWidth'
-).value;
-
-
-const height=
-+document.getElementById(
-'docHeight'
-).value;
-
-
-const copies=
-Math.max(
-1,
-+document.getElementById(
-'docCopies'
-).value
-);
-
-
-const gap=
-(
-+document.getElementById(
-'docGap'
-).value
-||
-0
-)
-*
-96/25.4;
-
-
-document
-.getElementById('docA4')
-.classList.toggle(
-'landscape',
-paper==='landscape'
-);
-
-
-let sides=[];
-
-
-if(
-mode==='front' &&
-documents.front
-){
-
-sides=['front'];
-
-}
-
-
-if(
-mode==='back' &&
-documents.back
-){
-
-sides=['back'];
-
-}
-
-
-if(
-mode==='both' &&
-documents.front &&
-documents.back
-){
-
-sides=[
-'front',
-'back'
-];
-
-}
-
-
-if(sides.length===0){
-
-output.innerHTML=
-`
-
-<div class="empty">
-
-Selected Front / Back document upload करें।
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-const scale=
-96/25.4;
-
-
-const cardW=
-width*scale;
-
-
-const cardH=
-height*scale;
-
-
-for(
-let i=0;
-i<copies;
-i++
-){
-
-
-if(
-mode==='both'
-){
-
-const row=
-document.createElement(
-'div'
-);
-
-
-row.className=
-'document-pair';
-
-
-row.style.gap=
-gap+'px';
-
-
-sides.forEach(
-side=>{
-
-
-const card=
-document.createElement(
-'div'
-);
-
-
-card.className=
-'id-card';
-
-
-card.style.width=
-cardW+'px';
-
-
-card.style.height=
-cardH+'px';
-
-
-const img=
-document.createElement(
-'img'
-);
-
-
-img.src=
-editedDocument(side)
-.toDataURL(
-'image/jpeg',
-.96
-);
-
-
-card.appendChild(img);
-
-
-row.appendChild(card);
-
-
-});
-
-
-output.appendChild(row);
-
-
-}
-
-else{
-
-
-const card=
-document.createElement(
-'div'
-);
-
-
-card.className=
-'id-card';
-
-
-card.style.width=
-cardW+'px';
-
-
-card.style.height=
-cardH+'px';
-
-
-const img=
-document.createElement(
-'img'
-);
-
-
-img.src=
-editedDocument(sides[0])
-.toDataURL(
-'image/jpeg',
-.96
-);
-
-
-card.appendChild(img);
-
-
-output.appendChild(card);
-
-}
-
-}
-
-}
-
-
-/* =====================================================
-PRINT DOCUMENT
-===================================================== */
-
-function printDocument(){
-
-showPage('document');
-
-renderDocuments();
-
-
-setTimeout(
-function(){
-
-window.print();
-
-},
-250
-);
-
-}
-
-
-/* =====================================================
-CLEAR DOCUMENT
-===================================================== */
-
-function clearDocuments(){
-
-documents={
-
-front:null,
-
-back:null
-
-};
-
-
-document.getElementById(
-'frontFile'
-).value='';
-
-
-document.getElementById(
-'backFile'
-).value='';
-
-
-renderDocuments();
-
-}
-
-
-/* =====================================================
-PHOTO STUDIO
-===================================================== */
-
-let customerPhoto=null;
-
-let photoRotation=0;
-
-
-function photoPreset(){
-
-const value=
-document
-.getElementById(
-'photoPreset'
-)
-.value;
-
-
-if(value==='custom')
-return;
-
-
-const map={
-
-'35x45mm':
-[35,45,'mm'],
-
-'25x35mm':
-[25,35,'mm'],
-
-'30x40mm':
-[30,40,'mm'],
-
-'40x50mm':
-[40,50,'mm'],
-
-'50x70mm':
-[50,70,'mm'],
-
-'2x2in':
-[2,2,'inch'],
-
-'2x3in':
-[2,3,'inch'],
-
-'3x4in':
-[3,4,'inch'],
-
-'4x6in':
-[4,6,'inch'],
-
-'4x12in':
-[4,12,'inch'],
-
-'5x7in':
-[5,7,'inch'],
-
-'6x8in':
-[6,8,'inch'],
-
-'8x10in':
-[8,10,'inch'],
-
-'8x12in':
-[8,12,'inch'],
-
-'8x20in':
-[8,20,'inch'],
-
-'a4':
-[210,297,'mm']
-
-};
-
-
-const p=
-map[value];
-
-
-if(!p)
-return;
-
-
-document.getElementById(
-'photoWidth'
-).value=
-p[0];
-
-
-document.getElementById(
-'photoHeight'
-).value=
-p[1];
-
-
-document.getElementById(
-'photoUnit'
-).value=
-p[2];
-
-
-renderPhoto();
-
-}
-
-
-/* =====================================================
-LOAD PHOTO
-===================================================== */
-
-function loadPhoto(event){
-
-const file=
-event.target.files[0];
-
-if(!file)
-return;
-
-
-const reader=
-new FileReader();
-
-
-reader.onload=function(e){
-
-const image=
-new Image();
-
-
-image.onload=function(){
-
-customerPhoto={
-
-image:image,
-
-zoom:100,
-
-brightness:100,
-
-contrast:100,
-
-saturation:100
-
-};
-
-
-photoRotation=0;
-
-
-document.getElementById(
-'photoZoom'
-).value=100;
-
-
-document.getElementById(
-'photoBrightness'
-).value=100;
-
-
-document.getElementById(
-'photoContrast'
-).value=100;
-
-
-document.getElementById(
-'photoSaturation'
-).value=100;
-
-
-renderPhoto();
-
-};
-
-
-image.src=e.target.result;
-
-};
-
-
-reader.readAsDataURL(file);
-
-}
-
-
-/* =====================================================
-PHOTO EDIT
-===================================================== */
-
-function editPhoto(){
-
-if(!customerPhoto)
-return;
-
-
-customerPhoto.zoom=
-+document.getElementById(
-'photoZoom'
-).value;
-
-
-customerPhoto.brightness=
-+document.getElementById(
-'photoBrightness'
-).value;
-
-
-customerPhoto.contrast=
-+document.getElementById(
-'photoContrast'
-).value;
-
-
-customerPhoto.saturation=
-+document.getElementById(
-'photoSaturation'
-).value;
-
-
-renderPhoto();
-
-}
-
-
-function rotatePhoto(){
-
-if(!customerPhoto)
-return;
-
-
-photoRotation=
-(
-photoRotation+
-90
-)%360;
-
-
-renderPhoto();
-
-}
-
-
-function resetPhoto(){
-
-if(!customerPhoto)
-return;
-
-
-photoRotation=0;
-
-
-customerPhoto.zoom=100;
-
-customerPhoto.brightness=100;
-
-customerPhoto.contrast=100;
-
-customerPhoto.saturation=100;
-
-
-document.getElementById(
-'photoZoom'
-).value=100;
-
-
-document.getElementById(
-'photoBrightness'
-).value=100;
-
-
-document.getElementById(
-'photoContrast'
-).value=100;
-
-
-document.getElementById(
-'photoSaturation'
-).value=100;
-
-
-renderPhoto();
-
-}
-
-
-/* =====================================================
-PHOTO CANVAS
-===================================================== */
-
-function photoCanvas(){
-
-const image=
-customerPhoto.image;
-
-
-const rotated=
-photoRotation%180!==0;
-
-
-const canvas=
-document.createElement(
-'canvas'
-);
-
-
-canvas.width=
-rotated
-?
-image.naturalHeight
-:
-image.naturalWidth;
-
-
-canvas.height=
-rotated
-?
-image.naturalWidth
-:
-image.naturalHeight;
-
-
-const ctx=
-canvas.getContext('2d');
-
-
-ctx.save();
-
-
-ctx.translate(
-canvas.width/2,
-canvas.height/2
-);
-
-
-ctx.rotate(
-photoRotation*
-Math.PI/
-180
-);
-
-
-ctx.filter=
-`brightness(${customerPhoto.brightness}%)
-contrast(${customerPhoto.contrast}%)
-saturate(${customerPhoto.saturation}%)`;
-
-
-const z=
-customerPhoto.zoom/100;
-
-
-const w=
-image.naturalWidth*z;
-
-const h=
-image.naturalHeight*z;
-
-
-ctx.drawImage(
-image,
--w/2,
--h/2,
-w,
-h
-);
-
-
-ctx.restore();
-
-
-return canvas;
-
-}
-
-
-/* =====================================================
-PHOTO A4
-===================================================== */
-
-function renderPhoto(){
-
-const output=
-document.getElementById(
-'photoOutput'
-);
-
-
-output.innerHTML='';
-
-
-const paper=
-document.getElementById(
-'photoPaper'
-).value;
-
-
-document
-.getElementById('photoA4')
-.classList.toggle(
-'landscape',
-paper==='landscape'
-);
-
-
-if(!customerPhoto){
-
-output.innerHTML=
-`
-
-<div class="empty">
-
-Customer photo upload करें।
-
-</div>
-
-`;
-
-return;
-
-}
-
-
-let width=
-+document.getElementById(
-'photoWidth'
-).value;
-
-
-let height=
-+document.getElementById(
-'photoHeight'
-).value;
-
-
-const unit=
-document.getElementById(
-'photoUnit'
-).value;
-
-
-if(unit==='inch'){
-
-width*=25.4;
-
-height*=25.4;
-
-}
-
-
-const scale=
-96/25.4;
-
-
-const w=
-width*scale;
-
-const h=
-height*scale;
-
-
-const copies=
-Math.max(
-1,
-+document.getElementById(
-'photoCopies'
-).value
-);
-
-
-const gap=
-(
-+document.getElementById(
-'photoGap'
-).value||
-0
-)
-*
-scale;
-
-
-const source=
-photoCanvas();
-
-
-for(
-let i=0;
-i<copies;
-i++
-){
-
-const card=
-document.createElement(
-'div'
-);
-
-
-card.className=
-'photo-card';
-
-
-card.style.width=
-w+'px';
-
-
-card.style.height=
-h+'px';
-
-
-card.style.marginRight=
-gap+'px';
-
-
-card.style.marginBottom=
-gap+'px';
-
-
-const img=
-document.createElement(
-'img'
-);
-
-
-img.src=
-source.toDataURL(
-'image/jpeg',
-.96
-);
-
-
-card.appendChild(img);
-
-
-output.appendChild(card);
-
-}
-
-}
-
-
-/* =====================================================
-PRINT PHOTO
-===================================================== */
-
-function printPhoto(){
-
-showPage('photo');
-
-renderPhoto();
-
-
-setTimeout(
-function(){
-
-window.print();
-
-},
-250
-);
-
-}
-
-
-/* =====================================================
-CLEAR PHOTO
-===================================================== */
-
-function clearPhoto(){
-
-customerPhoto=null;
-
-document.getElementById(
-'photoFile'
-).value='';
-
-
-renderPhoto();
-
-}
-
-
-/* =====================================================
-YOUTUBE
-===================================================== */
-
-function youtubeComingSoon(event){
-
-event.preventDefault();
-
-
-alert(
-'YouTube channel का link अभी नहीं जोड़ा गया है।'
-);
-
-}
-
-
-/* =====================================================
-START
-===================================================== */
-
-buildServices();
-
-documentPreset();
-
-photoPreset();
-
 </script>
 
 
-</body>
+<script type="module">
 
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+
+/* =========================================================
+   CHARACTER LIBRARY
+   IMPORTANT:
+   GitHub folder/file name must match EXACTLY.
+   ========================================================= */
+
+const CHARACTER_LIBRARY = {
+
+  king:{
+    name:"King",
+    file:"Character/King.GLB"
+  },
+
+  minister:{
+    name:"Minister",
+    file:"Character/Minister.GLB"
+  },
+
+  sage:{
+    name:"Sage",
+    file:"Character/Sage.GLB"
+  },
+
+  woodcutter:{
+    name:"Woodcutter",
+    file:"Character/Woodcutter.GLB"
+  },
+
+  boy:{
+    name:"Boy",
+    file:"Character/Boy.GLB"
+  },
+
+  girl:{
+    name:"Girl",
+    file:"Character/Girl.GLB"
+  },
+
+  merchant:{
+    name:"Merchant",
+    file:"Character/Merchant.GLB"
+  },
+
+  warrior:{
+    name:"Warrior",
+    file:"Character/Warrior.GLB"
+  }
+
+};
+
+
+/* =========================================================
+   BASIC THREE.JS SETUP
+   ========================================================= */
+
+const canvas = document.getElementById("viewer");
+
+const renderer = new THREE.WebGLRenderer({
+  canvas:canvas,
+  antialias:true,
+  alpha:false
+});
+
+renderer.setPixelRatio(
+  Math.min(window.devicePixelRatio,2)
+);
+
+renderer.setSize(
+  canvas.clientWidth,
+  canvas.clientHeight,
+  false
+);
+
+renderer.shadowMap.enabled = true;
+
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+
+const scene = new THREE.Scene();
+
+scene.background = new THREE.Color(0x070b15);
+
+
+const camera = new THREE.PerspectiveCamera(
+  45,
+  canvas.clientWidth / canvas.clientHeight,
+  0.01,
+  1000
+);
+
+camera.position.set(
+  3,
+  2,
+  5
+);
+
+
+const controls = new OrbitControls(
+  camera,
+  renderer.domElement
+);
+
+controls.enableDamping = true;
+controls.target.set(0,1,0);
+
+
+/* =========================================================
+   LIGHTS
+   ========================================================= */
+
+const hemiLight = new THREE.HemisphereLight(
+  0xffffff,
+  0x334466,
+  2
+);
+
+scene.add(hemiLight);
+
+
+const mainLight = new THREE.DirectionalLight(
+  0xffffff,
+  3
+);
+
+mainLight.position.set(
+  5,
+  8,
+  5
+);
+
+mainLight.castShadow = true;
+
+scene.add(mainLight);
+
+
+const fillLight = new THREE.DirectionalLight(
+  0x88aaff,
+  1
+);
+
+fillLight.position.set(
+  -5,
+  4,
+  -3
+);
+
+scene.add(fillLight);
+
+
+/* =========================================================
+   GROUND
+   ========================================================= */
+
+const ground = new THREE.Mesh(
+
+  new THREE.PlaneGeometry(
+    30,
+    30
+  ),
+
+  new THREE.MeshStandardMaterial({
+    color:0x111827,
+    roughness:1
+  })
+
+);
+
+ground.rotation.x = -Math.PI / 2;
+
+ground.receiveShadow = true;
+
+scene.add(ground);
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+const loader = new GLTFLoader();
+
+let selectedObject = null;
+
+let selectedKey = "king";
+
+let selectedMixer = null;
+
+let selectedActions = {};
+
+let selectedAction = null;
+
+let sceneCharacters = [];
+
+let characterId = 0;
+
+let clock = new THREE.Clock();
+
+
+/* =========================================================
+   DOM
+   ========================================================= */
+
+const loading =
+  document.getElementById("loading");
+
+const errorBox =
+  document.getElementById("errorBox");
+
+const selectedName =
+  document.getElementById("selectedName");
+
+const selectedFile =
+  document.getElementById("selectedFile");
+
+const modelStatus =
+  document.getElementById("modelStatus");
+
+const rigStatus =
+  document.getElementById("rigStatus");
+
+const bonesCount =
+  document.getElementById("bonesCount");
+
+const skinnedCount =
+  document.getElementById("skinnedCount");
+
+const meshCount =
+  document.getElementById("meshCount");
+
+const animationCount =
+  document.getElementById("animationCount");
+
+const animationSelect =
+  document.getElementById("animationSelect");
+
+const speedRange =
+  document.getElementById("speedRange");
+
+const speedValue =
+  document.getElementById("speedValue");
+
+const posX =
+  document.getElementById("posX");
+
+const posY =
+  document.getElementById("posY");
+
+const posZ =
+  document.getElementById("posZ");
+
+const rotY =
+  document.getElementById("rotY");
+
+const scaleValue =
+  document.getElementById("scaleValue");
+
+const backgroundSelect =
+  document.getElementById("backgroundSelect");
+
+const sceneList =
+  document.getElementById("sceneList");
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+function showError(message){
+
+  errorBox.style.display = "block";
+
+  errorBox.textContent =
+    "⚠️ " + message;
+
+}
+
+
+function clearError(){
+
+  errorBox.style.display = "none";
+
+  errorBox.textContent = "";
+
+}
+
+
+/* =========================================================
+   MODEL INFO
+   ========================================================= */
+
+function analyzeModel(root, animations){
+
+  let bones = 0;
+  let skinned = 0;
+  let meshes = 0;
+
+  root.traverse(obj => {
+
+    if(obj.isBone){
+      bones++;
+    }
+
+    if(obj.isMesh){
+
+      meshes++;
+
+      obj.castShadow = true;
+      obj.receiveShadow = true;
+
+    }
+
+    if(obj.isSkinnedMesh){
+
+      skinned++;
+
+    }
+
+  });
+
+
+  bonesCount.textContent = bones;
+
+  skinnedCount.textContent = skinned;
+
+  meshCount.textContent = meshes;
+
+  animationCount.textContent =
+    animations.length;
+
+
+  if(bones > 0 || skinned > 0){
+
+    rigStatus.textContent =
+      "Rig detected";
+
+    rigStatus.className =
+      "status ok";
+
+  }else{
+
+    rigStatus.textContent =
+      "No skeleton detected";
+
+    rigStatus.className =
+      "status bad";
+
+  }
+
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+function setupAnimations(root, animations){
+
+  if(selectedMixer){
+
+    selectedMixer.stopAllAction();
+
+  }
+
+  selectedMixer = null;
+
+  selectedActions = {};
+
+  selectedAction = null;
+
+
+  animationSelect.innerHTML =
+    '<option value="">No animation</option>';
+
+
+  if(!animations || animations.length === 0){
+
+    return;
+
+  }
+
+
+  selectedMixer =
+    new THREE.AnimationMixer(root);
+
+
+  animations.forEach((clip,index)=>{
+
+    const name =
+      clip.name ||
+      ("Animation " + (index + 1));
+
+    const action =
+      selectedMixer.clipAction(clip);
+
+    selectedActions[name] =
+      action;
+
+
+    const option =
+      document.createElement("option");
+
+    option.value = name;
+
+    option.textContent = name;
+
+    animationSelect.appendChild(option);
+
+  });
+
+
+  animationSelect.selectedIndex = 1;
+
+  const firstName =
+    animationSelect.value;
+
+  if(firstName){
+
+    selectedAction =
+      selectedActions[firstName];
+
+  }
+
+}
+
+
+/* =========================================================
+   FIT MODEL TO VIEW
+   ========================================================= */
+
+function fitCameraToObject(object){
+
+  const box =
+    new THREE.Box3().setFromObject(object);
+
+  if(box.isEmpty()){
+
+    camera.position.set(3,2,5);
+
+    controls.target.set(0,1,0);
+
+    controls.update();
+
+    return;
+
+  }
+
+
+  const size =
+    box.getSize(new THREE.Vector3());
+
+  const center =
+    box.getCenter(new THREE.Vector3());
+
+  const maxSize =
+    Math.max(
+      size.x,
+      size.y,
+      size.z
+    );
+
+
+  const distance =
+    maxSize * 2.5;
+
+
+  camera.position.set(
+    center.x + distance,
+    center.y + maxSize * 0.6,
+    center.z + distance
+  );
+
+  controls.target.copy(center);
+
+  controls.update();
+
+}
+
+
+/* =========================================================
+   REMOVE CURRENT SELECTED MODEL
+   ========================================================= */
+
+function removeSelectedObject(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  scene.remove(selectedObject);
+
+  selectedObject.traverse(obj=>{
+
+    if(obj.geometry){
+
+      obj.geometry.dispose();
+
+    }
+
+    if(obj.material){
+
+      if(Array.isArray(obj.material)){
+
+        obj.material.forEach(m=>{
+          if(m.map) m.map.dispose();
+          m.dispose();
+        });
+
+      }else{
+
+        if(obj.material.map){
+          obj.material.map.dispose();
+        }
+
+        obj.material.dispose();
+
+      }
+
+    }
+
+  });
+
+
+  selectedObject = null;
+
+  selectedMixer = null;
+
+  selectedActions = {};
+
+  selectedAction = null;
+
+}
+
+
+/* =========================================================
+   LOAD CHARACTER
+   ========================================================= */
+
+function loadCharacter(key, addToScene = false){
+
+  const data =
+    CHARACTER_LIBRARY[key];
+
+  if(!data){
+    return;
+  }
+
+
+  selectedKey = key;
+
+  selectedName.textContent =
+    data.name;
+
+  selectedFile.textContent =
+    data.file;
+
+
+  clearError();
+
+
+  loading.style.display =
+    "block";
+
+
+  modelStatus.textContent =
+    "Loading...";
+
+  modelStatus.className =
+    "status";
+
+
+  if(!addToScene){
+
+    removeSelectedObject();
+
+  }
+
+
+  loader.load(
+
+    data.file,
+
+    gltf => {
+
+      loading.style.display =
+        "none";
+
+
+      const model =
+        gltf.scene;
+
+
+      model.position.set(
+        0,
+        0,
+        0
+      );
+
+      model.rotation.y = 0;
+
+      model.scale.set(
+        1,
+        1,
+        1
+      );
+
+
+      scene.add(model);
+
+
+      selectedObject =
+        model;
+
+
+      modelStatus.textContent =
+        "Model loaded successfully";
+
+      modelStatus.className =
+        "status ok";
+
+
+      analyzeModel(
+        model,
+        gltf.animations
+      );
+
+
+      setupAnimations(
+        model,
+        gltf.animations
+      );
+
+
+      updateTransformUI();
+
+
+      fitCameraToObject(model);
+
+
+      if(addToScene){
+
+        sceneCharacters.push({
+
+          id:++characterId,
+
+          key:key,
+
+          name:data.name,
+
+          object:model
+
+        });
+
+        renderSceneList();
+
+      }
+
+    },
+
+    xhr => {
+
+      if(xhr.total){
+
+        const percent =
+          Math.round(
+            xhr.loaded /
+            xhr.total *
+            100
+          );
+
+        loading.textContent =
+          "⏳ Loading " +
+          percent +
+          "%";
+
+      }
+
+    },
+
+    error => {
+
+      loading.style.display =
+        "none";
+
+
+      modelStatus.textContent =
+        "Model not found";
+
+      modelStatus.className =
+        "status bad";
+
+
+      rigStatus.textContent =
+        "Cannot check rig";
+
+      rigStatus.className =
+        "status bad";
+
+
+      showError(
+
+        "GLB file नहीं मिली.\n\n" +
+
+        "Expected path:\n" +
+        data.file +
+        "\n\n" +
+
+        "GitHub में folder और filename का " +
+        "Capital/Small letter बिल्कुल यही होना चाहिए."
+
+      );
+
+    }
+
+  );
+
+}
+
+
+/* =========================================================
+   TRANSFORM UI
+   ========================================================= */
+
+function updateTransformUI(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  posX.value =
+    selectedObject.position.x.toFixed(2);
+
+  posY.value =
+    selectedObject.position.y.toFixed(2);
+
+  posZ.value =
+    selectedObject.position.z.toFixed(2);
+
+  rotY.value =
+    THREE.MathUtils.radToDeg(
+      selectedObject.rotation.y
+    ).toFixed(0);
+
+  scaleValue.value =
+    selectedObject.scale.x.toFixed(2);
+
+}
+
+
+function updateTransform(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  selectedObject.position.x =
+    Number(posX.value) || 0;
+
+  selectedObject.position.y =
+    Number(posY.value) || 0;
+
+  selectedObject.position.z =
+    Number(posZ.value) || 0;
+
+
+  selectedObject.rotation.y =
+    THREE.MathUtils.degToRad(
+      Number(rotY.value) || 0
+    );
+
+
+  const s =
+    Number(scaleValue.value) || 1;
+
+  selectedObject.scale.set(
+    s,
+    s,
+    s
+  );
+
+}
+
+
+/* =========================================================
+   RESET TRANSFORM
+   ========================================================= */
+
+function resetTransform(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  selectedObject.position.set(
+    0,
+    0,
+    0
+  );
+
+  selectedObject.rotation.set(
+    0,
+    0,
+    0
+  );
+
+  selectedObject.scale.set(
+    1,
+    1,
+    1
+  );
+
+
+  updateTransformUI();
+
+}
+
+
+/* =========================================================
+   CAMERA
+   ========================================================= */
+
+function frontCamera(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  const box =
+    new THREE.Box3()
+      .setFromObject(selectedObject);
+
+  const center =
+    box.getCenter(
+      new THREE.Vector3()
+    );
+
+  const size =
+    box.getSize(
+      new THREE.Vector3()
+    );
+
+
+  const distance =
+    Math.max(
+      size.x,
+      size.y,
+      size.z
+    ) * 2.5;
+
+
+  camera.position.set(
+    center.x,
+    center.y + size.y * .25,
+    center.z + distance
+  );
+
+
+  controls.target.copy(center);
+
+  controls.update();
+
+}
+
+
+function sideCamera(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  const box =
+    new THREE.Box3()
+      .setFromObject(selectedObject);
+
+  const center =
+    box.getCenter(
+      new THREE.Vector3()
+    );
+
+  const size =
+    box.getSize(
+      new THREE.Vector3()
+    );
+
+
+  const distance =
+    Math.max(
+      size.x,
+      size.y,
+      size.z
+    ) * 2.5;
+
+
+  camera.position.set(
+    center.x + distance,
+    center.y + size.y * .25,
+    center.z
+  );
+
+
+  controls.target.copy(center);
+
+  controls.update();
+
+}
+
+
+function topCamera(){
+
+  if(!selectedObject){
+    return;
+  }
+
+
+  const box =
+    new THREE.Box3()
+      .setFromObject(selectedObject);
+
+  const center =
+    box.getCenter(
+      new THREE.Vector3()
+    );
+
+  const size =
+    box.getSize(
+      new THREE.Vector3()
+    );
+
+
+  const distance =
+    Math.max(
+      size.x,
+      size.y,
+      size.z
+    ) * 3;
+
+
+  camera.position.set(
+    center.x,
+    center.y + distance,
+    center.z + .01
+  );
+
+
+  controls.target.copy(center);
+
+  controls.update();
+
+}
+
+
+function resetCamera(){
+
+  camera.position.set(
+    3,
+    2,
+    5
+  );
+
+  controls.target.set(
+    0,
+    1,
+    0
+  );
+
+  controls.update();
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+backgroundSelect.addEventListener(
+  "change",
+  () => {
+
+    const value =
+      backgroundSelect.value;
+
+
+    if(value === "dark"){
+
+      scene.background =
+        new THREE.Color(0x070b15);
+
+    }
+
+    else if(value === "blue"){
+
+      scene.background =
+        new THREE.Color(0x102d55);
+
+    }
+
+    else if(value === "forest"){
+
+      scene.background =
+        new THREE.Color(0x123526);
+
+    }
+
+    else if(value === "sunset"){
+
+      scene.background =
+        new THREE.Color(0x55351d);
+
+    }
+
+    else if(value === "white"){
+
+      scene.background =
+        new THREE.Color(0xe7e7e7);
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ANIMATION CONTROLS
+   ========================================================= */
+
+animationSelect.addEventListener(
+  "change",
+  () => {
+
+    if(!selectedMixer){
+      return;
+    }
+
+
+    Object.values(
+      selectedActions
+    ).forEach(action=>{
+
+      action.stop();
+
+    });
+
+
+    const name =
+      animationSelect.value;
+
+
+    if(!name){
+      selectedAction = null;
+      return;
+    }
+
+
+    selectedAction =
+      selectedActions[name];
+
+
+    if(selectedAction){
+
+      selectedAction.reset();
+
+      selectedAction.play();
+
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "playBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    if(selectedAction){
+
+      selectedAction.paused = false;
+
+      selectedAction.play();
+
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "pauseBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    if(selectedAction){
+
+      selectedAction.paused = true;
+
+    }
+
+  }
+);
+
+
+document.getElementById(
+  "stopBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    if(selectedAction){
+
+      selectedAction.stop();
+
+    }
+
+  }
+);
+
+
+function updateSpeed(){
+
+  const speed =
+    Math.max(
+      .1,
+      Math.min(
+        2,
+        Number(speedRange.value) || 1
+      )
+    );
+
+
+  speedRange.value =
+    speed;
+
+  speedValue.value =
+    speed;
+
+
+  if(selectedMixer){
+
+    selectedMixer.timeScale =
+      speed;
+
+  }
+
+}
+
+
+speedRange.addEventListener(
+  "input",
+  updateSpeed
+);
+
+
+speedValue.addEventListener(
+  "input",
+  updateSpeed
+);
+
+
+document.getElementById(
+  "speedBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    let speed =
+      Number(speedRange.value);
+
+    speed += .1;
+
+    if(speed > 2){
+      speed = .1;
+    }
+
+    speedRange.value =
+      speed;
+
+    updateSpeed();
+
+  }
+);
+
+
+/* =========================================================
+   TRANSFORM EVENTS
+   ========================================================= */
+
+[
+  posX,
+  posY,
+  posZ,
+  rotY,
+  scaleValue
+].forEach(input=>{
+
+  input.addEventListener(
+    "input",
+    updateTransform
+  );
+
+});
+
+
+document.getElementById(
+  "resetTransformBtn"
+).addEventListener(
+  "click",
+  resetTransform
+);
+
+
+/* =========================================================
+   CAMERA EVENTS
+   ========================================================= */
+
+document.getElementById(
+  "frontCamera"
+).addEventListener(
+  "click",
+  frontCamera
+);
+
+
+document.getElementById(
+  "sideCamera"
+).addEventListener(
+  "click",
+  sideCamera
+);
+
+
+document.getElementById(
+  "topCamera"
+).addEventListener(
+  "click",
+  topCamera
+);
+
+
+document.getElementById(
+  "resetCamera"
+).addEventListener(
+  "click",
+  resetCamera
+);
+
+
+/* =========================================================
+   CHARACTER BUTTONS
+   ========================================================= */
+
+document.querySelectorAll(
+  ".charBtn"
+).forEach(button=>{
+
+  button.addEventListener(
+    "click",
+    ()=>{
+
+      const key =
+        button.dataset.character;
+
+      loadCharacter(
+        key,
+        false
+      );
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   ADD CHARACTER
+   ========================================================= */
+
+document.getElementById(
+  "addCharacterBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    loadCharacter(
+      selectedKey,
+      true
+    );
+
+  }
+);
+
+
+/* =========================================================
+   RESET SCENE
+   ========================================================= */
+
+document.getElementById(
+  "resetSceneBtn"
+).addEventListener(
+  "click",
+  ()=>{
+
+    sceneCharacters.forEach(item=>{
+
+      scene.remove(
+        item.object
+      );
+
+    });
+
+
+    sceneCharacters = [];
+
+    renderSceneList();
+
+    loadCharacter(
+      "king",
+      false
+    );
+
+  }
+);
+
+
+/* =========================================================
+   SCENE LIST
+   ========================================================= */
+
+function renderSceneList(){
+
+  sceneList.innerHTML = "";
+
+
+  if(sceneCharacters.length === 0){
+
+    sceneList.innerHTML =
+      '<div style="color:#8292b4;font-size:12px;">No characters added</div>';
+
+    return;
+
+  }
+
+
+  sceneCharacters.forEach(item=>{
+
+    const row =
+      document.createElement("div");
+
+    row.className =
+      "sceneItem";
+
+
+    const name =
+      document.createElement("span");
+
+    name.textContent =
+      item.name;
+
+
+    const selectButton =
+      document.createElement("button");
+
+    selectButton.textContent =
+      "Select";
+
+
+    selectButton.addEventListener(
+      "click",
+      ()=>{
+
+        selectedObject =
+          item.object;
+
+        selectedKey =
+          item.key;
+
+        selectedName.textContent =
+          item.name;
+
+        selectedFile.textContent =
+          CHARACTER_LIBRARY[
+            item.key
+          ].file;
+
+
+        updateTransformUI();
+
+        fitCameraToObject(
+          selectedObject
+        );
+
+      }
+    );
+
+
+    const removeButton =
+      document.createElement("button");
+
+    removeButton.textContent =
+      "✕";
+
+    removeButton.className =
+      "danger";
+
+
+    removeButton.addEventListener(
+      "click",
+      ()=>{
+
+        scene.remove(
+          item.object
+        );
+
+
+        sceneCharacters =
+          sceneCharacters.filter(
+            x => x.id !== item.id
+          );
+
+
+        if(selectedObject === item.object){
+
+          selectedObject = null;
+
+        }
+
+
+        renderSceneList();
+
+      }
+    );
+
+
+    row.appendChild(name);
+
+    row.appendChild(
+      selectButton
+    );
+
+    row.appendChild(
+      removeButton
+    );
+
+
+    sceneList.appendChild(row);
+
+  });
+
+}
+
+
+/* =========================================================
+   RESIZE
+   ========================================================= */
+
+function resizeRenderer(){
+
+  const width =
+    canvas.clientWidth;
+
+  const height =
+    canvas.clientHeight;
+
+
+  if(
+    width <= 0 ||
+    height <= 0
+  ){
+    return;
+  }
+
+
+  camera.aspect =
+    width / height;
+
+  camera.updateProjectionMatrix();
+
+
+  renderer.setSize(
+    width,
+    height,
+    false
+  );
+
+}
+
+
+window.addEventListener(
+  "resize",
+  resizeRenderer
+);
+
+
+/* =========================================================
+   ANIMATION LOOP
+   ========================================================= */
+
+function animate(){
+
+  requestAnimationFrame(
+    animate
+  );
+
+
+  const delta =
+    clock.getDelta();
+
+
+  if(selectedMixer){
+
+    selectedMixer.update(
+      delta
+    );
+
+  }
+
+
+  controls.update();
+
+
+  renderer.render(
+    scene,
+    camera
+  );
+
+}
+
+
+resizeRenderer();
+
+animate();
+
+
+/* =========================================================
+   PUBLIC ENGINE
+   ========================================================= */
+
+window.PRO_CHARACTER_ENGINE = {
+
+  loadCharacter,
+
+  resetTransform,
+
+  frontCamera,
+
+  sideCamera,
+
+  topCamera,
+
+  resetCamera,
+
+  getSelectedCharacter(){
+
+    return selectedObject;
+
+  },
+
+  getCharacterLibrary(){
+
+    return CHARACTER_LIBRARY;
+
+  }
+
+};
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+loadCharacter(
+  "king",
+  false
+);
+
+</script>
+
+</body>
 </html>

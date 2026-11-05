@@ -4,230 +4,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gramin Grahak Sewa | Digital & Citizen Services</title>
-<meta name="description" content="Gramin Grahak Sewa - Digital services, passport photo and document printing.">
+<title>Gramin Grahak Sewa | Professional Photo Studio</title>
+<meta name="description" content="Gramin Grahak Sewa Digital Services, Photo Studio and Document Printing">
 <meta name="theme-color" content="#0757a6">
 
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f3f7fc;
-  color:#222;
+ margin:0;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:#eef3fa;color:#222;
 }
 header{
-  padding:6px 10px 12px;
-  background:linear-gradient(to right,#ff9933 0 33.33%,white 33.33% 66.66%,#138808 66.66%);
+ background:linear-gradient(110deg,#ff9933 0 33%,white 33% 66%,#138808 66%);
+ padding:7px;
 }
 .brand{
-  text-align:center;
-  background:white;
-  padding:16px 8px;
+ background:white;text-align:center;padding:18px 8px;
 }
 .brand h1{color:#0757a6;margin:0;font-size:27px}
-.brand p{margin:7px 0 0}
+.brand p{margin:7px 0}
 nav{
-  background:#0757a6;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:5px;
-  padding:10px;
+ background:#0757a6;display:flex;justify-content:center;
+ flex-wrap:wrap;gap:5px;padding:10px;
 }
 nav a{
-  color:white;
-  text-decoration:none;
-  padding:9px 13px;
-  border-radius:5px;
-  font-size:14px;
+ color:white;text-decoration:none;padding:9px 12px;
+ border-radius:7px;font-size:14px;
 }
 nav a:hover{background:#00376d}
 .hero{
-  background:linear-gradient(120deg,#0757a6,#0c83cf);
-  color:white;
-  padding:36px 15px;
-  text-align:center;
+ background:linear-gradient(120deg,#0757a6,#159cdd);
+ color:white;text-align:center;padding:35px 12px;
 }
-.hero h2{font-size:27px;margin:0 0 10px}
-.hero p{line-height:1.7}
-.container{width:min(1150px,94%);margin:25px auto}
+.hero h2{font-size:27px}
+.container{width:min(1150px,95%);margin:25px auto}
 .section-title{
-  color:#07366b;
-  text-align:center;
-  margin:30px 0 18px;
-  font-size:23px;
+ text-align:center;color:#07366b;font-size:24px;margin:30px 0 20px;
 }
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-  gap:14px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:14px;
 }
-.card{
-  background:white;
-  border-radius:12px;
-  padding:17px 12px;
-  text-align:center;
-  box-shadow:0 4px 18px rgba(0,0,0,.09);
-  border:1px solid #e6edf5;
+.card,.panel{
+ background:white;border-radius:13px;padding:17px;
+ box-shadow:0 4px 18px #00000012;margin-bottom:16px;
+ border:1px solid #e4eaf2;
 }
-.card .emoji{font-size:32px}
-.card h3{font-size:16px;color:#07366b;margin:9px 0}
+.card{text-align:center}
+.emoji{font-size:32px}
+.card h3{color:#0757a6;font-size:16px}
 .card p{font-size:13px;color:#666;line-height:1.5}
 .btn{
-  display:inline-block;
-  background:#0757a6;
-  color:white;
-  border:0;
-  border-radius:7px;
-  padding:10px 15px;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:14px;
-  margin:3px;
+ display:inline-block;border:0;border-radius:7px;
+ padding:11px 15px;background:#0757a6;color:white;
+ text-decoration:none;cursor:pointer;margin:4px;
+ font-size:14px;
 }
-.btn:hover{background:#00376d}
-.btn.green{background:#138808}
-.btn.orange{background:#e87500}
-.btn.gray{background:#555}
-.panel{
-  background:white;
-  border-radius:12px;
-  padding:18px;
-  box-shadow:0 4px 18px rgba(0,0,0,.09);
-  margin:18px 0;
+.btn:hover{filter:brightness(.88)}
+.green{background:#138808}
+.orange{background:#e87500}
+.red{background:#c62828}
+.gray{background:#555}
+.purple{background:#7139b5}
+.row{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:12px;
 }
 label{display:block;font-weight:bold;margin:12px 0 6px}
 input,select,textarea{
-  width:100%;
-  padding:11px;
-  border:1px solid #cbd5e1;
-  border-radius:7px;
-  font-size:15px;
-  background:white;
+ width:100%;padding:11px;border:1px solid #cbd5e1;
+ border-radius:7px;background:white;font-size:15px;
 }
-input[type=file]{padding:8px}
-.row{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
+input[type=color]{height:45px;padding:4px}
+input[type=range]{padding:0}
 .small-note{font-size:13px;color:#666;line-height:1.6}
 .preview-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:12px;
-  margin-top:15px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+ gap:12px;margin-top:15px;
 }
 .preview-item{
-  background:#f5f8fc;
-  border:1px solid #dce5ef;
-  border-radius:8px;
-  padding:8px;
-  text-align:center;
-  overflow:hidden;
+ background:#f4f7fc;padding:10px;border:1px solid #ddd;
+ border-radius:9px;text-align:center;overflow:hidden;
 }
-.preview-item img{
-  max-width:100%;
-  max-height:140px;
-  object-fit:contain;
+.preview-item img{max-width:100%;max-height:140px;object-fit:contain}
+.editor{
+ background:linear-gradient(135deg,#eaf3ff,#f8edff);
+ padding:16px;border-radius:12px;margin:15px 0;
 }
-.preview-item button{margin-top:7px}
+.canvas-wrap{
+ background:#dce5ef;padding:12px;border-radius:10px;
+ text-align:center;overflow:auto;
+}
+canvas{
+ max-width:100%;height:auto;background:white;
+ border:1px solid #ccc;border-radius:4px;
+}
+.tool-group{
+ background:white;padding:12px;border-radius:9px;
+ margin:10px 0;border:1px solid #e1e6ed;
+}
+.tool-group h4{margin:0 0 8px;color:#0757a6}
+#status{color:#138808;font-size:14px;line-height:1.6}
 .facility{
-  background:#e9f3ff;
-  border-left:5px solid #0757a6;
-  padding:16px;
-  border-radius:8px;
-  margin:12px 0;
+ background:#e6f1ff;padding:15px;border-radius:8px;
+ border-left:5px solid #0757a6;margin:12px 0;
 }
 .faq details{
-  background:white;
-  margin:9px 0;
-  padding:14px;
-  border-radius:8px;
-  box-shadow:0 4px 18px rgba(0,0,0,.07);
+ background:white;padding:14px;border-radius:8px;margin:9px 0;
 }
-.faq summary{cursor:pointer;font-weight:bold;color:#07366b}
+.faq summary{cursor:pointer;font-weight:bold;color:#0757a6}
 footer{
-  background:#082f57;
-  color:white;
-  text-align:center;
-  padding:25px 12px;
-  margin-top:35px;
+ background:#082f57;color:white;text-align:center;
+ padding:25px;margin-top:35px;
 }
 footer a{color:#ffdb9d}
-.social-icons{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:15px 0;
-}
-.social-icons a{
-  background:white;
-  color:#0757a6;
-  text-decoration:none;
-  padding:9px 13px;
-  border-radius:7px;
-}
-#status{font-size:14px;color:#138808;margin-top:10px}
+.social-icons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.social-icons a{background:white;color:#0757a6;padding:9px 13px;border-radius:7px;text-decoration:none}
+#editorSection{scroll-margin-top:10px}
 #printArea{display:none}
 
 @media(max-width:600px){
-  .brand h1{font-size:22px}
-  .hero h2{font-size:22px}
-  nav a{padding:8px;font-size:13px}
-  .container{width:94%}
+ .brand h1{font-size:21px}
+ .hero h2{font-size:22px}
+ nav a{font-size:12px;padding:8px}
+ .container{width:94%}
+ .btn{font-size:13px;padding:10px}
 }
 
-/* A4 PRINT SETTINGS */
 @page{size:A4;margin:8mm}
 @media print{
-  body{background:white!important}
-  body *{visibility:hidden!important}
-  #printArea,#printArea *{visibility:visible!important}
-  #printArea{
-    display:block!important;
-    position:absolute!important;
-    left:0!important;
-    top:0!important;
-    width:100%!important;
-    margin:0!important;
-    padding:0!important;
-  }
-  .print-sheet{
-    display:flex!important;
-    flex-wrap:wrap!important;
-    align-content:flex-start!important;
-    gap:4mm!important;
-    width:100%!important;
-  }
-  .print-item{
-    display:block!important;
-    break-inside:avoid!important;
-    page-break-inside:avoid!important;
-    text-align:center!important;
-    overflow:hidden!important;
-  }
-  .print-item img{
-    display:block!important;
-    width:100%!important;
-    height:100%!important;
-    object-fit:contain!important;
-  }
-  .print-label{
-    font-size:8pt!important;
-    margin-top:1mm!important;
-  }
-  .print-item.a4-item{
-    width:190mm!important;
-    height:277mm!important;
-    flex:0 0 190mm!important;
-  }
-  .print-item.a4-item img{
-    object-fit:contain!important;
-  }
+ body *{visibility:hidden!important}
+ #printArea,#printArea *{visibility:visible!important}
+ #printArea{
+  display:block!important;position:absolute!important;
+  left:0;top:0;width:100%;padding:0;margin:0;
+ }
+ .print-sheet{display:flex!important;flex-wrap:wrap;gap:4mm;align-content:flex-start}
+ .print-item{
+  display:block!important;break-inside:avoid;
+  page-break-inside:avoid;text-align:center;overflow:hidden;
+ }
+ .print-item img{
+  display:block;width:100%;height:100%;object-fit:contain;
+ }
+ .print-item.a4-item{width:190mm!important;height:277mm!important;flex:0 0 190mm}
+ .print-item.a4-item img{object-fit:contain}
+ .print-label{font-size:8pt;margin-top:1mm}
 }
 </style>
 </head>
@@ -235,465 +159,728 @@ footer a{color:#ffdb9d}
 <body>
 
 <header>
-  <div class="brand">
-    <h1>🇮🇳 Gramin Grahak Sewa</h1>
-    <p>आपकी डिजिटल सेवा, आपके गाँव में</p>
-    <p><b>Digital Services • Photo Studio • Document Printing</b></p>
-  </div>
+ <div class="brand">
+  <h1>🇮🇳 Gramin Grahak Sewa</h1>
+  <p>आपकी डिजिटल सेवा, आपके गाँव में</p>
+  <b>Digital Services • Photo Studio • Printing</b>
+ </div>
 </header>
 
 <nav>
-  <a href="#home">होम</a>
-  <a href="#services">सर्विस</a>
-  <a href="#studio">फोटो और कार्ड प्रिंट</a>
-  <a href="#facilities">ग्राहक सुविधा</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">संपर्क</a>
+ <a href="#home">होम</a>
+ <a href="#services">सर्विस</a>
+ <a href="#studio">कार्ड प्रिंट</a>
+ <a href="#editorSection">Photo Editor</a>
+ <a href="#passport">पासपोर्ट फोटो</a>
+ <a href="#facilities">सुविधाएँ</a>
+ <a href="#contact">संपर्क</a>
 </nav>
 
 <section class="hero" id="home">
-  <h2>Gramin Grahak Sewa में आपका स्वागत है</h2>
-  <p>डिजिटल सेवाएँ, फोटो प्रिंटिंग और डॉक्यूमेंट प्रिंटिंग</p>
-  <p>सभी सुविधाएँ एक ही स्थान पर</p>
-  <a href="#studio" class="btn orange">प्रिंटिंग स्टूडियो खोलें</a>
+ <h2>Gramin Grahak Sewa में आपका स्वागत है</h2>
+ <p>डिजिटल सेवाएँ, फोटो एडिटिंग और डॉक्यूमेंट प्रिंटिंग</p>
+ <a href="#editorSection" class="btn orange">Photo Editor खोलें</a>
 </section>
 
 <main class="container">
 
+<!-- DIGITAL SERVICES -->
+
 <section id="services">
-  <h2 class="section-title">हमारी डिजिटल सेवाएँ</h2>
-  <div class="grid">
+<h2 class="section-title">हमारी डिजिटल सेवाएँ</h2>
+<div class="grid">
 
-    <div class="card">
-      <div class="emoji">🪪</div>
-      <h3>आधार सेवा</h3>
-      <p>आधार से संबंधित अधिकृत सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://uidai.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🪪</div><h3>आधार सेवा</h3><p>आधार की आधिकारिक सेवाएँ</p><a class="btn" href="https://uidai.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">💳</div>
-      <h3>PAN Card</h3>
-      <p>PAN कार्ड की आधिकारिक सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">💳</div><h3>PAN Card</h3><p>PAN की सेवाएँ</p><a class="btn" href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🗳️</div>
-      <h3>Voter ID</h3>
-      <p>मतदाता सेवाएँ और जानकारी</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://voters.eci.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🗳️</div><h3>Voter ID</h3><p>मतदाता सेवाएँ</p><a class="btn" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🚗</div>
-      <h3>Driving Licence</h3>
-      <p>परिवहन विभाग की सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://parivahan.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🚗</div><h3>Driving Licence</h3><p>परिवहन सेवाएँ</p><a class="btn" href="https://parivahan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🏥</div>
-      <h3>Ayushman Card</h3>
-      <p>आयुष्मान भारत सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://beneficiary.nha.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🏥</div><h3>Ayushman Card</h3><p>आयुष्मान सेवाएँ</p><a class="btn" href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">👷</div>
-      <h3>e-Shram</h3>
-      <p>ई-श्रम पोर्टल</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://eshram.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">👷</div><h3>e-Shram</h3><p>ई-श्रम पोर्टल</p><a class="btn" href="https://eshram.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🌾</div>
-      <h3>PM Kisan</h3>
-      <p>किसान सम्मान निधि</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://pmkisan.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🌾</div><h3>PM Kisan</h3><p>किसान सेवाएँ</p><a class="btn" href="https://pmkisan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🏦</div>
-      <h3>EPFO</h3>
-      <p>कर्मचारी भविष्य निधि</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.epfindia.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🏦</div><h3>EPFO</h3><p>PF सेवाएँ</p><a class="btn" href="https://www.epfindia.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🩺</div>
-      <h3>ABHA Card</h3>
-      <p>आभा स्वास्थ्य खाते की सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://abha.abdm.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🩺</div><h3>ABHA Card</h3><p>स्वास्थ्य सेवाएँ</p><a class="btn" href="https://abha.abdm.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🛂</div>
-      <h3>Passport</h3>
-      <p>पासपोर्ट सेवा पोर्टल</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.passportindia.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🛂</div><h3>Passport</h3><p>पासपोर्ट सेवाएँ</p><a class="btn" href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🧾</div>
-      <h3>GST</h3>
-      <p>GST पोर्टल</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://www.gst.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🧾</div><h3>GST</h3><p>GST सेवाएँ</p><a class="btn" href="https://www.gst.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-    <div class="card">
-      <div class="emoji">🍚</div>
-      <h3>Ration Card</h3>
-      <p>राजस्थान राशन सेवाएँ</p>
-      <a class="btn" target="_blank" rel="noopener" href="https://food.rajasthan.gov.in/">खोलें</a>
-    </div>
+<div class="card"><div class="emoji">🍚</div><h3>Ration Card</h3><p>राजस्थान राशन सेवाएँ</p><a class="btn" href="https://food.rajasthan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
 
-  </div>
+</div>
 </section>
+
+<!-- CARD PRINTING -->
 
 <section id="studio">
-  <h2 class="section-title">📸 फोटो और डॉक्यूमेंट प्रिंटिंग स्टूडियो</h2>
+<h2 class="section-title">🪪 कार्ड और डॉक्यूमेंट प्रिंटिंग</h2>
 
-  <div class="panel">
-    <h3>🪪 कार्ड और दस्तावेज़ प्रिंटिंग</h3>
-    <p class="small-note">अपने पास मौजूद असली कार्ड या दस्तावेज़ की फोटो अपलोड करें। यह टूल केवल प्रिंट लेआउट तैयार करता है; दस्तावेज़ की जानकारी नहीं बनाता या बदलता।</p>
+<div class="panel">
+<p class="small-note">अपने वास्तविक दस्तावेज़ की फोटो अपलोड करके प्रिंट लेआउट बनाएँ। आधिकारिक कार्ड की जानकारी या पहचान विवरण बदलने के लिए यह टूल नहीं है।</p>
 
-    <div class="row">
-      <div>
-        <label for="docType">दस्तावेज़ का प्रकार</label>
-        <select id="docType">
-          <option>आधार कार्ड की कॉपी</option>
-          <option>PAN Card की कॉपी</option>
-          <option>Voter ID की कॉपी</option>
-          <option>Driving Licence की कॉपी</option>
-          <option>Ayushman Card की कॉपी</option>
-          <option>Ration Card की कॉपी</option>
-          <option>e-Shram Card की कॉपी</option>
-          <option>ABHA Card की कॉपी</option>
-          <option>अन्य दस्तावेज़</option>
-        </select>
-      </div>
-      <div>
-        <label for="docFile">दस्तावेज़ की फोटो चुनें</label>
-        <input id="docFile" type="file" accept="image/*">
-      </div>
-      <div>
-        <label for="docSide">फोटो का भाग</label>
-        <select id="docSide">
-          <option>Front / आगे</option>
-          <option>Back / पीछे</option>
-        </select>
-      </div>
-      <div>
-        <label for="copies">कितनी कॉपी?</label>
-        <input id="copies" type="number" min="1" max="20" value="1">
-      </div>
-      <div>
-        <label for="cardWidth">चौड़ाई (mm)</label>
-        <input id="cardWidth" type="number" min="10" max="200" value="86">
-      </div>
-      <div>
-        <label for="cardHeight">ऊँचाई (mm)</label>
-        <input id="cardHeight" type="number" min="10" max="200" value="54">
-      </div>
-    </div>
-
-    <button class="btn" type="button" id="addDoc">फोटो प्रिंट पेज में जोड़ें</button>
-  </div>
-
-  <div class="panel">
-    <h3>📷 पासपोर्ट साइज फोटो प्रिंट</h3>
-    <div class="row">
-      <div>
-        <label for="passportFile">अपनी फोटो चुनें</label>
-        <input id="passportFile" type="file" accept="image/*">
-      </div>
-      <div>
-        <label for="photoWidth">चौड़ाई (mm)</label>
-        <input id="photoWidth" type="number" value="35" min="10" max="100">
-      </div>
-      <div>
-        <label for="photoHeight">ऊँचाई (mm)</label>
-        <input id="photoHeight" type="number" value="45" min="10" max="100">
-      </div>
-      <div>
-        <label for="photoCopies">फोटो की संख्या</label>
-        <input id="photoCopies" type="number" value="8" min="1" max="40">
-      </div>
-    </div>
-    <button class="btn green" type="button" id="addPassport">पासपोर्ट फोटो जोड़ें</button>
-  </div>
-
-  <div class="panel">
-    <h3>📄 A4 फोटो / स्कैन प्रिंट</h3>
-    <label for="a4File">फोटो या स्कैन चुनें</label>
-    <input id="a4File" type="file" accept="image/*">
-    <label for="a4Copies">कितने पेज?</label>
-    <input id="a4Copies" type="number" min="1" max="10" value="1">
-    <button class="btn" type="button" id="addA4">A4 पेज में जोड़ें</button>
-  </div>
-
-  <div class="panel">
-    <h3>✏️ प्रिंट पेज एडिटर</h3>
-    <p class="small-note">नीचे अपनी जोड़ी गई फोटो देखें। ✏️ बटन से उसका नाम बदलें और हटाएँ बटन से उसे निकालें।</p>
-    <div id="printPreview" class="preview-grid"></div>
-    <p id="status" role="status">अभी कोई फोटो नहीं जोड़ी गई है।</p>
-    <button class="btn green" type="button" id="printButton">🖨️ प्रिंट / PDF सेव करें</button>
-    <button class="btn gray" type="button" id="resetAll">पूरा पेज खाली करें</button>
-  </div>
+<div class="row">
+<div>
+<label>दस्तावेज़ का प्रकार</label>
+<select id="docType">
+<option>आधार कार्ड की कॉपी</option>
+<option>PAN Card की कॉपी</option>
+<option>Voter ID की कॉपी</option>
+<option>Driving Licence की कॉपी</option>
+<option>Ayushman Card की कॉपी</option>
+<option>Ration Card की कॉपी</option>
+<option>e-Shram Card की कॉपी</option>
+<option>ABHA Card की कॉपी</option>
+<option>अन्य दस्तावेज़</option>
+</select>
+</div>
+<div>
+<label>दस्तावेज़ फोटो</label>
+<input type="file" id="docFile" accept="image/*">
+</div>
+<div>
+<label>फोटो का भाग</label>
+<select id="docSide"><option>Front / आगे</option><option>Back / पीछे</option></select>
+</div>
+<div>
+<label>कॉपी संख्या</label>
+<input id="copies" type="number" value="1" min="1" max="20">
+</div>
+<div>
+<label>चौड़ाई (mm)</label>
+<input id="cardWidth" type="number" value="86" min="10" max="200">
+</div>
+<div>
+<label>ऊँचाई (mm)</label>
+<input id="cardHeight" type="number" value="54" min="10" max="200">
+</div>
+</div>
+<button class="btn" id="addDoc">कार्ड प्रिंट में जोड़ें</button>
+</div>
 </section>
+
+<!-- ADVANCED EDITOR -->
+
+<section id="editorSection">
+<h2 class="section-title">🎨 Professional Photo Editor</h2>
+
+<div class="panel">
+<h3>1. फोटो चुनें</h3>
+<p class="small-note">फोटो एडिटर में सामान्य फोटो या वास्तविक दस्तावेज़ की कॉपी खोल सकते हैं। दस्तावेज़ के नाम, नंबर और आधिकारिक जानकारी को बदलने की सुविधा नहीं है।</p>
+<input type="file" id="editorFile" accept="image/*">
+
+<div class="editor">
+<h3>2. फोटो प्रीव्यू</h3>
+<div class="canvas-wrap">
+<canvas id="editorCanvas" width="600" height="450"></canvas>
+</div>
+<p class="small-note">एडिटिंग का परिणाम यहाँ दिखाई देगा।</p>
+</div>
+
+<div class="tool-group">
+<h4>🔄 Rotate और Flip</h4>
+<button class="btn" id="rotateLeft">↶ 90° Left</button>
+<button class="btn" id="rotateRight">↷ 90° Right</button>
+<button class="btn gray" id="flipH">↔ Flip Horizontal</button>
+<button class="btn gray" id="flipV">↕ Flip Vertical</button>
+</div>
+
+<div class="tool-group">
+<h4>🔍 Zoom और Crop</h4>
+<label>Zoom</label>
+<input type="range" id="zoom" min="50" max="200" value="100">
+<label>Horizontal Position</label>
+<input type="range" id="posX" min="-100" max="100" value="0">
+<label>Vertical Position</label>
+<input type="range" id="posY" min="-100" max="100" value="0">
+</div>
+
+<div class="tool-group">
+<h4>🌈 फोटो कलर और साफ करना</h4>
+<label>Brightness</label>
+<input type="range" id="brightness" min="0" max="200" value="100">
+<label>Contrast</label>
+<input type="range" id="contrast" min="0" max="200" value="100">
+<label>Saturation</label>
+<input type="range" id="saturation" min="0" max="200" value="100">
+<label>Grayscale</label>
+<input type="range" id="grayscale" min="0" max="100" value="0">
+<label>Sepia</label>
+<input type="range" id="sepia" min="0" max="100" value="0">
+</div>
+
+<div class="tool-group">
+<h4>⭕ Round Corners और Background</h4>
+<label>Corner Round</label>
+<input type="range" id="round" min="0" max="100" value="0">
+<label>Background Color</label>
+<input type="color" id="bgColor" value="#ffffff">
+<p class="small-note">यह बैकग्राउंड रंग पारदर्शी हिस्से या फोटो के बाहर के फ्रेम में लागू होता है। सामान्य JPEG फोटो का वास्तविक बैकग्राउंड बदलने के लिए नीचे Passport Background टूल देखें।</p>
+</div>
+
+<div class="tool-group">
+<h4>✍️ फोटो पर टेक्स्ट</h4>
+<label>टेक्स्ट लिखें</label>
+<input type="text" id="photoText" placeholder="अपना टेक्स्ट लिखें">
+<div class="row">
+<div>
+<label>टेक्स्ट रंग</label>
+<input type="color" id="textColor" value="#ff0000">
+</div>
+<div>
+<label>टेक्स्ट आकार</label>
+<input type="number" id="textSize" value="30" min="8" max="120">
+</div>
+<div>
+<label>टेक्स्ट की जगह</label>
+<select id="textPosition">
+<option value="bottom">नीचे</option>
+<option value="top">ऊपर</option>
+<option value="center">बीच में</option>
+</select>
+</div>
+</div>
+<button class="btn orange" id="applyText">टेक्स्ट लगाएँ</button>
+<button class="btn gray" id="removeText">टेक्स्ट हटाएँ</button>
+</div>
+
+<div class="tool-group">
+<h4>💾 एडिटिंग सेव करें</h4>
+<button class="btn green" id="downloadEditor">फोटो डाउनलोड करें</button>
+<button class="btn" id="editorToPrint">प्रिंट पेज में जोड़ें</button>
+<button class="btn gray" id="resetEditor">Reset</button>
+</div>
+<p id="editorStatus" class="small-note" role="status">पहले फोटो चुनें।</p>
+</div>
+</section>
+
+<!-- PASSPORT PHOTO -->
+
+<section id="passport">
+<h2 class="section-title">📸 Passport Photo Studio</h2>
+
+<div class="panel">
+<h3>पासपोर्ट साइज फोटो बनाएँ</h3>
+<div class="row">
+<div>
+<label>अपनी फोटो चुनें</label>
+<input type="file" id="passportFile" accept="image/*">
+</div>
+<div>
+<label>फोटो चौड़ाई (mm)</label>
+<input type="number" id="photoWidth" value="35" min="10" max="100">
+</div>
+<div>
+<label>फोटो ऊँचाई (mm)</label>
+<input type="number" id="photoHeight" value="45" min="10" max="100">
+</div>
+<div>
+<label>फोटो संख्या</label>
+<input type="number" id="photoCopies" value="8" min="1" max="40">
+</div>
+</div>
+
+<div class="editor">
+<h3>Passport Photo Background Editor</h3>
+<div class="canvas-wrap">
+<canvas id="passportCanvas" width="400" height="500"></canvas>
+</div>
+
+<label>बैकग्राउंड रंग</label>
+<input type="color" id="passportBg" value="#ffffff">
+
+<label>Background Removal Tolerance</label>
+<input type="range" id="tolerance" min="0" max="150" value="35">
+
+<p class="small-note">यह एक साधारण रंग-आधारित बैकग्राउंड हटाने वाला टूल है। यह फोटो के ऊपरी-बाएँ कोने के रंग से मिलते-जुलते पिक्सेल हटाता है। जटिल बैकग्राउंड या बालों के आसपास सटीक AI कटिंग के लिए AI सेवा/API आवश्यक है।</p>
+
+<button class="btn" id="removeBg">रंगीन बैकग्राउंड हटाएँ</button>
+<button class="btn orange" id="passportReset">मूल फोटो वापस करें</button>
+
+<h4>फोटो सुधारें</h4>
+<label>Brightness</label>
+<input type="range" id="pBrightness" min="0" max="200" value="100">
+<label>Contrast</label>
+<input type="range" id="pContrast" min="0" max="200" value="100">
+
+<h4>फोटो पर टेक्स्ट</h4>
+<input type="text" id="pText" placeholder="फोटो पर टेक्स्ट">
+<label>टेक्स्ट रंग</label>
+<input type="color" id="pTextColor" value="#ffffff">
+<button class="btn purple" id="pAddText">टेक्स्ट जोड़ें</button>
+
+</div>
+
+<button class="btn green" id="addPassport">पासपोर्ट फोटो प्रिंट में जोड़ें</button>
+<button class="btn" id="downloadPassport">फोटो डाउनलोड करें</button>
+</div>
+</section>
+
+<!-- A4 -->
+
+<section>
+<h2 class="section-title">📄 A4 Photo / Scan Printing</h2>
+<div class="panel">
+<label>फोटो या स्कैन चुनें</label>
+<input type="file" id="a4File" accept="image/*">
+<label>कितने पेज?</label>
+<input type="number" id="a4Copies" value="1" min="1" max="10">
+<button class="btn" id="addA4">A4 प्रिंट में जोड़ें</button>
+</div>
+</section>
+
+<!-- PRINT PREVIEW -->
+
+<section>
+<h2 class="section-title">🖨️ Print Page Editor</h2>
+<div class="panel">
+<div id="printPreview" class="preview-grid"></div>
+<p id="status" role="status">अभी कोई फोटो नहीं जोड़ी गई है।</p>
+<button class="btn green" id="printButton">🖨️ Print / PDF Save</button>
+<button class="btn gray" id="resetAll">सभी फोटो हटाएँ</button>
+</div>
+</section>
+
+<!-- FACILITIES -->
 
 <section id="facilities">
-  <h2 class="section-title">ग्राहक सुविधाएँ</h2>
-  <div class="facility">
-    <h3>📷 फोटो प्रिंटिंग</h3>
-    <p>पासपोर्ट फोटो और अन्य फोटो के प्रिंट लेआउट।</p>
-  </div>
-  <div class="facility">
-    <h3>🪪 डॉक्यूमेंट प्रिंटिंग</h3>
-    <p>मौजूदा दस्तावेज़ की फोटो की प्रिंट कॉपी।</p>
-  </div>
-  <div class="facility">
-    <h3>📄 A4 प्रिंट</h3>
-    <p>स्कैन या फोटो को A4 पेज पर प्रिंट करें।</p>
-  </div>
+<h2 class="section-title">ग्राहक सुविधाएँ</h2>
+<div class="facility"><h3>📷 Photo Editing</h3><p>रंग, Brightness, Rotate और फोटो टेक्स्ट।</p></div>
+<div class="facility"><h3>🪪 Card Printing</h3><p>मौजूदा दस्तावेज़ की प्रिंट कॉपी।</p></div>
+<div class="facility"><h3>📄 A4 Printing</h3><p>A4 पेज पर फोटो और स्कैन।</p></div>
+<div class="facility"><h3>📸 Passport Photo</h3><p>पासपोर्ट साइज फोटो और बैकग्राउंड रंग।</p></div>
 </section>
 
-<section id="faq" class="faq">
-  <h2 class="section-title">अक्सर पूछे जाने वाले सवाल</h2>
-  <details>
-    <summary>क्या इस वेबसाइट से कार्ड प्रिंट कर सकते हैं?</summary>
-    <p>हाँ, अपने पास मौजूद असली दस्तावेज़ की फोटो अपलोड करके प्रिंट लेआउट बना सकते हैं।</p>
-  </details>
-  <details>
-    <summary>पासपोर्ट फोटो कैसे प्रिंट करें?</summary>
-    <p>फोटो चुनें, आकार और कॉपी की संख्या डालें और पासपोर्ट फोटो जोड़ें।</p>
-  </details>
-  <details>
-    <summary>PDF कैसे सेव करें?</summary>
-    <p>प्रिंट बटन दबाने के बाद प्रिंटर विकल्प में Save as PDF चुनें।</p>
-  </details>
-  <details>
-    <summary>क्या फोटो सर्वर पर अपलोड होती है?</summary>
-    <p>यह पेज फोटो को आपके ब्राउज़र में ही प्रोसेस करता है। कोड किसी सर्वर पर फोटो नहीं भेजता। साझा डिवाइस पर निजी दस्तावेज़ इस्तेमाल करने के बाद पेज बंद कर दें।</p>
-  </details>
+<section class="faq">
+<h2 class="section-title">FAQ</h2>
+<details><summary>फोटो एडिट कैसे करें?</summary><p>फोटो चुनें और एडिटर के टूल इस्तेमाल करें।</p></details>
+<details><summary>बैकग्राउंड कैसे बदलें?</summary><p>Passport Background Editor में रंग चुनें और रंग-आधारित हटाने वाला टूल चलाएँ।</p></details>
+<details><summary>PDF कैसे बनाएँ?</summary><p>Print बटन दबाएँ और Save as PDF चुनें।</p></details>
+<details><summary>क्या फोटो सर्वर पर जाती है?</summary><p>इस कोड में फोटो ब्राउज़र में ही प्रोसेस होती है। किसी सर्वर पर अपलोड नहीं होती।</p></details>
 </section>
 
 <section id="contact">
-  <h2 class="section-title">संपर्क और जानकारी</h2>
-  <div class="panel" style="text-align:center">
-    <h3>Gramin Grahak Sewa</h3>
-    <p>डिजिटल सेवाएँ • फोटो • डॉक्यूमेंट प्रिंटिंग</p>
-    <p>संपर्क नंबर और पता यहाँ अपनी सही जानकारी से जोड़ें।</p>
-  </div>
+<h2 class="section-title">संपर्क</h2>
+<div class="panel" style="text-align:center">
+<h3>Gramin Grahak Sewa</h3>
+<p>डिजिटल सेवाएँ • फोटो • डॉक्यूमेंट प्रिंटिंग</p>
+<p>संपर्क नंबर और पता अपनी जानकारी से जोड़ें।</p>
+</div>
 </section>
 
 </main>
 
 <footer>
-  <h3>🇮🇳 Gramin Grahak Sewa</h3>
-  <p>आपकी डिजिटल सेवा, आपके गाँव में</p>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-  </div>
-  <p>© 2026 Gramin Grahak Sewa. All Rights Reserved.</p>
+<h3>🇮🇳 Gramin Grahak Sewa</h3>
+<p>आपकी डिजिटल सेवा, आपके गाँव में</p>
+<div class="social-icons">
+<a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+<a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
+</div>
+<p>© 2026 Gramin Grahak Sewa. All Rights Reserved.</p>
 </footer>
 
-<!-- Print-only area -->
 <div id="printArea">
-  <div class="print-sheet" id="printSheet"></div>
+<div class="print-sheet" id="printSheet"></div>
 </div>
 
 <script>
 "use strict";
 
-const items = [];
-let nextId = 1;
+/* COMMON */
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
+const items=[];
+let nextId=1;
 
-function showStatus(message){
-  $("status").textContent = message;
+function status(t){$("status").textContent=t}
+function number(v,min,max,def){
+ const n=Number(v);
+ return Number.isFinite(n)?Math.max(min,Math.min(max,n)):def;
 }
 
-function readImage(file){
-  return new Promise((resolve,reject)=>{
-    if(!file || !file.type.startsWith("image/")){
-      reject(new Error("कृपया सही फोटो फाइल चुनें।"));
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(new Error("फोटो पढ़ी नहीं जा सकी।"));
-    reader.readAsDataURL(file);
-  });
-}
-
-function safeNumber(value,min,max,fallback){
-  const n = Number(value);
-  if(!Number.isFinite(n)) return fallback;
-  return Math.max(min,Math.min(max,n));
-}
-
-async function addImages(file,copies,width,height,label,type){
-  try{
-    const src = await readImage(file);
-    const count = safeNumber(copies,1,40,1);
-    const w = safeNumber(width,10,200,86);
-    const h = safeNumber(height,10,277,54);
-
-    for(let i=0;i<count;i++){
-      items.push({
-        id:nextId++,
-        src,
-        label,
-        width:w,
-        height:h,
-        type
-      });
-    }
-    renderItems();
-    showStatus(count+" फोटो प्रिंट पेज में जोड़ दी गई हैं।");
-  }catch(error){
-    showStatus(error.message);
+function loadImage(file){
+ return new Promise((resolve,reject)=>{
+  if(!file||!file.type.startsWith("image/")){
+   reject(Error("कृपया सही फोटो चुनें।"));return;
   }
+  const url=URL.createObjectURL(file);
+  const img=new Image();
+  img.onload=()=>resolve(img);
+  img.onerror=()=>reject(Error("फोटो खुल नहीं सकी।"));
+  img.src=url;
+ });
 }
 
-$("addDoc").addEventListener("click",()=>{
-  const file = $("docFile").files[0];
-  if(!file){showStatus("पहले दस्तावेज़ की फोटो चुनें।");return;}
-  const label = $("docType").value+" - "+$("docSide").value;
-  addImages(
-    file,
-    $("copies").value,
-    $("cardWidth").value,
-    $("cardHeight").value,
-    label,
-    "card"
-  );
-});
+function canvasData(canvas){
+ return canvas.toDataURL("image/jpeg",.94);
+}
 
-$("addPassport").addEventListener("click",()=>{
-  const file = $("passportFile").files[0];
-  if(!file){showStatus("पहले अपनी फोटो चुनें।");return;}
-  addImages(
-    file,
-    $("photoCopies").value,
-    $("photoWidth").value,
-    $("photoHeight").value,
-    "Passport Photo",
-    "photo"
-  );
-});
-
-$("addA4").addEventListener("click",()=>{
-  const file = $("a4File").files[0];
-  if(!file){showStatus("पहले फोटो या स्कैन चुनें।");return;}
-  addImages(
-    file,
-    $("a4Copies").value,
-    190,
-    277,
-    "A4 Document",
-    "a4"
-  );
-});
+function addPrint(src,label,w,h,type="photo",count=1){
+ for(let i=0;i<count;i++){
+  items.push({
+   id:nextId++,src,label,
+   width:w,height:h,type
+  });
+ }
+ renderItems();
+ status(count+" फोटो प्रिंट में जोड़ दी गई हैं।");
+}
 
 function renderItems(){
-  const preview = $("printPreview");
-  const sheet = $("printSheet");
-  preview.replaceChildren();
-  sheet.replaceChildren();
+ const preview=$("printPreview");
+ const sheet=$("printSheet");
+ preview.replaceChildren();
+ sheet.replaceChildren();
 
-  items.forEach(item=>{
-    const card = document.createElement("div");
-    card.className = "preview-item";
+ items.forEach(item=>{
+  const card=document.createElement("div");
+  card.className="preview-item";
 
-    const img = document.createElement("img");
-    img.src = item.src;
-    img.alt = "Uploaded document preview";
+  const img=document.createElement("img");
+  img.src=item.src;
 
-    const title = document.createElement("p");
-    title.textContent = item.label;
+  const name=document.createElement("p");
+  name.textContent=item.label;
 
-    const edit = document.createElement("button");
-    edit.type = "button";
-    edit.className = "btn orange";
-    edit.textContent = "✏️ नाम बदलें";
-    edit.addEventListener("click",()=>{
-      const newName = prompt("इस फोटो का नाम लिखें:",item.label);
-      if(newName !== null && newName.trim()){
-        item.label = newName.trim();
-        renderItems();
-      }
-    });
+  const edit=document.createElement("button");
+  edit.className="btn orange";
+  edit.textContent="✏️ नाम बदलें";
+  edit.onclick=()=>{
+   const v=prompt("नाम लिखें:",item.label);
+   if(v&&v.trim()){
+    item.label=v.trim();renderItems();
+   }
+  };
 
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.className = "btn gray";
-    remove.textContent = "हटाएँ";
-    remove.addEventListener("click",()=>{
-      const index = items.findIndex(x=>x.id===item.id);
-      if(index !== -1) items.splice(index,1);
-      renderItems();
-      showStatus("फोटो हटा दी गई है।");
-    });
+  const del=document.createElement("button");
+  del.className="btn gray";
+  del.textContent="हटाएँ";
+  del.onclick=()=>{
+   const i=items.findIndex(x=>x.id===item.id);
+   if(i>=0)items.splice(i,1);
+   renderItems();
+  };
 
-    card.append(img,title,edit,remove);
-    preview.appendChild(card);
+  card.append(img,name,edit,del);
+  preview.append(card);
 
-    const printItem = document.createElement("div");
-    printItem.className = "print-item";
-    if(item.type==="a4") printItem.classList.add("a4-item");
-
-    if(item.type!=="a4"){
-      printItem.style.width = item.width+"mm";
-      printItem.style.height = item.height+"mm";
-    }
-
-    const printImg = document.createElement("img");
-    printImg.src = item.src;
-    printImg.alt = "Print image";
-    printItem.appendChild(printImg);
-
-    if(item.type!=="a4"){
-      const caption = document.createElement("div");
-      caption.className = "print-label";
-      caption.textContent = item.label;
-      printItem.appendChild(caption);
-    }
-
-    sheet.appendChild(printItem);
-  });
-
-  if(items.length===0){
-    showStatus("अभी कोई फोटो नहीं जोड़ी गई है।");
-  }else{
-    showStatus("कुल "+items.length+" आइटम प्रिंट के लिए तैयार हैं।");
+  const pi=document.createElement("div");
+  pi.className="print-item";
+  if(item.type==="a4")pi.classList.add("a4-item");
+  else{
+   pi.style.width=item.width+"mm";
+   pi.style.height=item.height+"mm";
   }
+
+  const pimg=document.createElement("img");
+  pimg.src=item.src;
+  pi.append(pimg);
+
+  if(item.type!=="a4"){
+   const cap=document.createElement("div");
+   cap.className="print-label";
+   cap.textContent=item.label;
+   pi.append(cap);
+  }
+  sheet.append(pi);
+ });
+
+ if(!items.length)status("अभी कोई फोटो नहीं जोड़ी गई है।");
+ else status("कुल "+items.length+" आइटम प्रिंट के लिए तैयार हैं।");
 }
 
-$("printButton").addEventListener("click",()=>{
-  if(items.length===0){
-    showStatus("प्रिंट करने से पहले फोटो जोड़ें।");
-    return;
+$("addDoc").onclick=async()=>{
+ try{
+  const img=await loadImage($("docFile").files[0]);
+  const c=document.createElement("canvas");
+  c.width=img.naturalWidth;c.height=img.naturalHeight;
+  c.getContext("2d").drawImage(img,0,0);
+  const count=number($("copies").value,1,20,1);
+  const w=number($("cardWidth").value,10,200,86);
+  const h=number($("cardHeight").value,10,200,54);
+  addPrint(canvasData(c),$("docType").value+" - "+$("docSide").value,w,h,"card",count);
+ }catch(e){status(e.message)}
+};
+
+$("addA4").onclick=async()=>{
+ try{
+  const img=await loadImage($("a4File").files[0]);
+  const c=document.createElement("canvas");
+  c.width=img.naturalWidth;c.height=img.naturalHeight;
+  c.getContext("2d").drawImage(img,0,0);
+  addPrint(canvasData(c),"A4 Document",190,277,"a4",
+   number($("a4Copies").value,1,10,1));
+ }catch(e){status(e.message)}
+};
+
+$("printButton").onclick=()=>{
+ if(!items.length){status("पहले फोटो जोड़ें।");return}
+ window.print();
+};
+$("resetAll").onclick=()=>{
+ if(confirm("क्या सभी फोटो हटानी हैं?")){
+  items.length=0;renderItems();
+ }
+};
+
+/* MAIN PHOTO EDITOR */
+
+const ec=$("editorCanvas");
+const ex=ec.getContext("2d");
+let editorImage=null;
+let angle=0,flipX=1,flipY=1,extraText="";
+let baseWidth=600,baseHeight=450;
+
+function drawEditor(){
+ if(!editorImage)return;
+ const img=editorImage;
+ const w=baseWidth,h=baseHeight;
+ ec.width=w;ec.height=h;
+
+ const bg=$("bgColor").value;
+ const radius=number($("round").value,0,100,0)*w/600;
+
+ ex.clearRect(0,0,w,h);
+ ex.fillStyle=bg;
+ ex.fillRect(0,0,w,h);
+
+ ex.save();
+ ex.beginPath();
+ ex.roundRect(0,0,w,h,radius);
+ ex.clip();
+
+ const rad=angle*Math.PI/180;
+ const zoom=number($("zoom").value,50,200,100)/100;
+ const bw=img.width,bh=img.height;
+ const rotated=angle%180!==0;
+ const boxW=rotated?h:w;
+ const boxH=rotated?w:h;
+ const scale=Math.max(boxW/bw,boxH/bh)*zoom;
+ const dw=bw*scale,dh=bh*scale;
+
+ ex.translate(w/2,h/2);
+ ex.rotate(rad);
+ ex.scale(flipX,flipY);
+ ex.translate(
+  number($("posX").value,-100,100,0)*2,
+  number($("posY").value,-100,100,0)*2
+ );
+ ex.filter=
+  `brightness(${$("brightness").value}%) `+
+  `contrast(${$("contrast").value}%) `+
+  `saturate(${$("saturation").value}%) `+
+  `grayscale(${$("grayscale").value}%) `+
+  `sepia(${$("sepia").value}%)`;
+
+ ex.drawImage(img,-dw/2,-dh/2,dw,dh);
+ ex.restore();
+
+ if(extraText){
+  ex.save();
+  ex.fillStyle=$("textColor").value;
+  ex.font="bold "+number($("textSize").value,8,120,30)+"px Arial";
+  ex.textAlign="center";
+  const p=$("textPosition").value;
+  const y=p==="top"?40:p==="center"?h/2:h-25;
+  ex.fillText(extraText,w/2,y,w-20);
+  ex.restore();
+ }
+}
+
+$("editorFile").onchange=async e=>{
+ try{
+  editorImage=await loadImage(e.target.files[0]);
+  angle=0;flipX=1;flipY=1;extraText="";
+  baseWidth=600;baseHeight=450;
+  drawEditor();
+  $("editorStatus").textContent="फोटो एडिटर में खुल गई है।";
+ }catch(err){$("editorStatus").textContent=err.message}
+};
+
+$("rotateLeft").onclick=()=>{angle=(angle+270)%360;drawEditor()};
+$("rotateRight").onclick=()=>{angle=(angle+90)%360;drawEditor()};
+$("flipH").onclick=()=>{flipX*=-1;drawEditor()};
+$("flipV").onclick=()=>{flipY*=-1;drawEditor()};
+
+[
+ "zoom","posX","posY","brightness","contrast",
+ "saturation","grayscale","sepia","round","bgColor"
+].forEach(id=>{
+ $(id).oninput=drawEditor;
+});
+
+$("applyText").onclick=()=>{
+ extraText=$("photoText").value.trim();
+ drawEditor();
+};
+$("removeText").onclick=()=>{
+ extraText="";$("photoText").value="";drawEditor();
+};
+
+$("resetEditor").onclick=()=>{
+ if(!editorImage)return;
+ angle=0;flipX=1;flipY=1;extraText="";
+ ["zoom","brightness","contrast","saturation"].forEach(id=>$(id).value=100);
+ ["posX","posY","grayscale","sepia","round"].forEach(id=>$(id).value=0);
+ $("bgColor").value="#ffffff";
+ $("photoText").value="";
+ drawEditor();
+};
+
+$("downloadEditor").onclick=()=>{
+ if(!editorImage)return alert("पहले फोटो चुनें।");
+ const a=document.createElement("a");
+ a.href=canvasData(ec);a.download="edited-photo.jpg";a.click();
+};
+
+$("editorToPrint").onclick=()=>{
+ if(!editorImage)return alert("पहले फोटो चुनें।");
+ addPrint(canvasData(ec),"Edited Photo",86,54,"photo",1);
+};
+
+/* PASSPORT PHOTO EDITOR */
+
+const pc=$("passportCanvas");
+const px=pc.getContext("2d");
+let passportImage=null;
+let passportBase=null;
+let pText="";
+
+function fitPassport(img){
+ pc.width=400;pc.height=500;
+ px.fillStyle=$("passportBg").value;
+ px.fillRect(0,0,400,500);
+
+ const scale=Math.max(400/img.width,500/img.height);
+ const w=img.width*scale,h=img.height*scale;
+ px.drawImage(img,(400-w)/2,(500-h)/2,w,h);
+}
+
+function passportDraw(){
+ if(!passportBase)return;
+ const img=passportBase;
+ const temp=document.createElement("canvas");
+ temp.width=400;temp.height=500;
+ const tx=temp.getContext("2d");
+ tx.filter=
+  `brightness(${$("pBrightness").value}%) `+
+  `contrast(${$("pContrast").value}%)`;
+ const scale=Math.max(400/img.width,500/img.height);
+ const w=img.width*scale,h=img.height*scale;
+ tx.drawImage(img,(400-w)/2,(500-h)/2,w,h);
+
+ px.clearRect(0,0,400,500);
+ px.fillStyle=$("passportBg").value;
+ px.fillRect(0,0,400,500);
+ px.drawImage(temp,0,0);
+
+ if(pText){
+  px.font="bold 24px Arial";
+  px.fillStyle=$("pTextColor").value;
+  px.textAlign="center";
+  px.fillText(pText,200,480,380);
+ }
+}
+
+$("passportFile").onchange=async e=>{
+ try{
+  passportImage=await loadImage(e.target.files[0]);
+  passportBase=passportImage;
+  pText="";
+  passportDraw();
+ }catch(err){alert(err.message)}
+};
+
+$("passportBg").oninput=passportDraw;
+$("pBrightness").oninput=passportDraw;
+$("pContrast").oninput=passportDraw;
+$("pTextColor").oninput=passportDraw;
+
+$("pAddText").onclick=()=>{
+ pText=$("pText").value.trim();
+ passportDraw();
+};
+
+$("passportReset").onclick=()=>{
+ if(!passportImage)return;
+ passportBase=passportImage;
+ pText="";
+ $("pText").value="";
+ $("pBrightness").value=100;
+ $("pContrast").value=100;
+ $("tolerance").value=35;
+ $("passportBg").value="#ffffff";
+ passportDraw();
+};
+
+/* SIMPLE COLOR-BASED BACKGROUND REMOVAL */
+
+$("removeBg").onclick=()=>{
+ if(!passportImage)return alert("पहले फोटो चुनें।");
+
+ const temp=document.createElement("canvas");
+ temp.width=400;temp.height=500;
+ const t=temp.getContext("2d");
+ const scale=Math.max(400/passportImage.width,500/passportImage.height);
+ const w=passportImage.width*scale;
+ const h=passportImage.height*scale;
+ t.drawImage(passportImage,(400-w)/2,(500-h)/2,w,h);
+
+ const imageData=t.getImageData(0,0,400,500);
+ const data=imageData.data;
+
+ const r0=data[0],g0=data[1],b0=data[2];
+ const tolerance=number($("tolerance").value,0,150,35);
+
+ for(let i=0;i<data.length;i+=4){
+  const dr=data[i]-r0;
+  const dg=data[i+1]-g0;
+  const db=data[i+2]-b0;
+  const distance=Math.sqrt(dr*dr+dg*dg+db*db);
+
+  if(distance<tolerance){
+   data[i+3]=0;
   }
-  window.print();
-});
+ }
+ t.putImageData(imageData,0,0);
 
-$("resetAll").addEventListener("click",()=>{
-  if(!confirm("क्या आप सभी फोटो हटाना चाहते हैं?")) return;
-  items.length=0;
-  renderItems();
-  showStatus("सभी फोटो हटा दी गई हैं।");
-});
+ passportBase=new Image();
+ passportBase.onload=passportDraw;
+ passportBase.src=temp.toDataURL("image/png");
+};
 
-window.addEventListener("beforeprint",()=>{
-  renderItems();
-});
+$("addPassport").onclick=()=>{
+ if(!passportBase)return alert("पहले पासपोर्ट फोटो चुनें।");
+ passportDraw();
+ addPrint(canvasData(pc),"Passport Photo",
+  number($("photoWidth").value,10,100,35),
+  number($("photoHeight").value,10,100,45),
+  "photo",
+  number($("photoCopies").value,1,40,8)
+ );
+};
+
+$("downloadPassport").onclick=()=>{
+ if(!passportBase)return alert("पहले फोटो चुनें।");
+ passportDraw();
+ const a=document.createElement("a");
+ a.href=pc.toDataURL("image/png");
+ a.download="passport-photo.png";
+ a.click();
+};
+
+/* BEFORE PRINT */
+
+window.addEventListener("beforeprint",renderItems);
+
 </script>
-
 </body>
 </html>

@@ -3,731 +3,552 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gramin Grahak Sewa | CSC Digital Centre</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gramin Grahak Sewa | Digital Card & Photo Studio</title>
+<meta name="description" content="Gramin Grahak Sewa - Digital Card, Photo and A4 Print Studio">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
+:root{
+ --navy:#102b50;--blue:#1769aa;--light:#f3f6fb;
+ --gold:#e6a72e;--green:#16845b;--text:#1e293b;
+ --border:#dce4ee;--white:#fff;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#f1f5f9;color:#172033;font-family:Arial,sans-serif}
-header{background:linear-gradient(120deg,#102b58,#1675c5);color:white;text-align:center;padding:24px 12px}
-header h1{margin:0 0 8px;font-size:27px}
-nav{background:#102b58;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:13px}
-nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
-.container{max-width:1450px;margin:auto;padding:14px}
-.heading{background:#163f73;color:white;padding:14px;border-radius:10px;margin:22px 0 14px}
-.panel{background:white;padding:15px;border-radius:13px;margin-bottom:18px;box-shadow:0 3px 12px #0001}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.edit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1fr);gap:18px}
-.tool{background:#f7f9fc;border:1px solid #dce4ee;border-radius:9px;padding:10px;min-width:0}
-.tool label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}
-input,select,button{font-size:14px}
-input[type=file]{width:100%;font-size:12px}
-input[type=range]{width:100%}
-input[type=color]{width:100%;height:35px}
-input[type=text],input[type=number],select{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:7px}
-button{background:#1768b5;color:white;border:0;border-radius:8px;padding:10px 12px;font-weight:bold;cursor:pointer}
-button:hover{opacity:.87}
-.green{background:#16834a}
-.gray{background:#475569}
-.orange{background:#d97706}
-.red{background:#c0392b}
-.button-row{display:flex;flex-wrap:wrap;gap:7px}
-.button-row button{flex:1}
-.full{grid-column:1/-1}
-.preview{background:#e8edf4;border:2px dashed #b5c1d1;border-radius:10px;padding:10px;display:flex;align-items:center;justify-content:center;min-height:220px}
-canvas{max-width:100%;height:auto;background:white;border:1px solid #ddd}
-.side-preview{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.side-box{text-align:center;min-width:0}
-.side-box h4{margin:8px}
-.small{font-size:12px;color:#64748b;line-height:1.5}
-.service-search{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:10px;margin-bottom:14px;font-size:15px}
-.service-category{margin:18px 0}
-.service-category h3{color:#164a80;border-bottom:2px solid #dbeafe;padding-bottom:8px}
-.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.service-card{display:block;background:#f8fafc;border:1px solid #dce4ee;border-radius:10px;padding:13px;text-decoration:none;color:#183b60}
-.service-card strong{display:block;margin-bottom:6px}
-.service-card span{font-size:12px;color:#64748b}
-.service-card:hover{background:#e7f2ff}
-.badge{display:inline-block;background:#e0edff;color:#174574;padding:4px 7px;border-radius:5px;font-size:11px;margin-bottom:6px}
-footer{background:#102b58;color:white;text-align:center;padding:22px;margin-top:30px}
-@media(max-width:850px){.edit-grid{grid-template-columns:1fr}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}.side-preview{grid-template-columns:1fr}.container{padding:8px}header h1{font-size:22px}}
+body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:var(--light);color:var(--text)}
+header{background:linear-gradient(120deg,#102b50,#1769aa);
+ color:white;padding:20px 5%;display:flex;align-items:center;
+ justify-content:space-between;gap:15px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{width:54px;height:54px;border-radius:14px;background:white;
+ color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:bold}
+.brand h1{font-size:22px;margin:0 0 5px}
+.brand p{margin:0;color:#dbeafe;font-size:13px}
+.header-tag{border:1px solid #ffffff66;padding:9px 14px;border-radius:20px;font-size:12px}
+nav{background:white;padding:12px 5%;display:flex;gap:18px;flex-wrap:wrap;
+ border-bottom:1px solid var(--border)}
+nav a{color:var(--navy);text-decoration:none;font-size:14px;font-weight:bold}
+.container{max-width:1250px;margin:24px auto;padding:0 16px}
+.hero{background:white;border:1px solid var(--border);border-radius:16px;
+ padding:22px;margin-bottom:20px}
+.hero h2{margin:0 0 8px;color:var(--navy)}
+.hero p{margin:0;color:#64748b;line-height:1.6}
+.section-title{font-size:19px;color:var(--navy);margin:24px 0 13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.card{background:white;border:1px solid var(--border);border-radius:14px;
+ padding:18px;box-shadow:0 3px 12px #102b500b}
+.card h3{margin:0 0 10px;color:var(--navy);font-size:17px}
+.card p{font-size:13px;color:#64748b;line-height:1.6}
+label{display:block;font-weight:bold;font-size:13px;margin:12px 0 6px}
+input,select,button{font:inherit}
+input[type=file],input[type=text],select{
+ width:100%;padding:11px;border:1px solid var(--border);
+ border-radius:9px;background:white;color:var(--text)}
+input[type=checkbox]{width:17px;height:17px;vertical-align:middle}
+.btn{border:0;border-radius:9px;padding:11px 16px;cursor:pointer;
+ font-weight:bold;font-size:13px;transition:.2s}
+.btn:hover{filter:brightness(.94);transform:translateY(-1px)}
+.primary{background:var(--blue);color:white}
+.success{background:var(--green);color:white}
+.dark{background:var(--navy);color:white}
+.gold{background:var(--gold);color:#172033}
+.light-btn{background:#eaf2fb;color:var(--navy);border:1px solid #d5e4f5}
+.danger{background:#fee2e2;color:#991b1b}
+.btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.small{font-size:12px;color:#64748b;line-height:1.6}
+.notice{background:#fff8e8;border:1px solid #f3d89d;color:#805b12;
+ padding:12px;border-radius:10px;font-size:12px;line-height:1.6;margin-top:12px}
+.file-list{margin-top:12px;display:grid;gap:8px}
+.file-item{display:flex;align-items:center;justify-content:space-between;
+ gap:10px;background:#f8fafc;border:1px solid var(--border);
+ border-radius:9px;padding:9px;font-size:12px}
+.file-item button{padding:6px 9px}
+.preview-area{background:#e8edf4;border-radius:12px;padding:14px;overflow:auto}
+.paper{width:100%;max-width:650px;aspect-ratio:210/297;background:white;
+ margin:0 auto;box-shadow:0 4px 18px #0002;position:relative;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:18px;padding:7%;overflow:hidden}
+.paper.landscape{aspect-ratio:297/210;max-width:850px}
+.print-item{width:100%;height:46%;display:flex;align-items:center;
+ justify-content:center;overflow:hidden;border:1px dashed #cbd5e1;
+ position:relative;background:#fff}
+.print-item img{max-width:100%;max-height:100%;object-fit:contain}
+.print-label{position:absolute;top:5px;left:7px;font-size:9px;
+ color:#94a3b8;background:#ffffffcc;padding:3px 5px}
+.empty{color:#94a3b8;text-align:center;font-size:13px;padding:25px}
+.status{margin-top:10px;font-size:12px;color:var(--green);min-height:18px}
+.portal{display:flex;justify-content:space-between;align-items:center;
+ padding:12px;background:#f8fafc;border:1px solid var(--border);
+ border-radius:9px;text-decoration:none;color:var(--navy);font-weight:bold;font-size:13px}
+.portal span{color:var(--blue)}
+footer{background:var(--navy);color:#dbeafe;text-align:center;
+ padding:24px 12px;margin-top:35px;font-size:12px;line-height:1.8}
+hr{border:0;border-top:1px solid var(--border);margin:16px 0}
+@media(max-width:600px){
+ header{padding:16px}.brand h1{font-size:18px}
+ .container{padding:0 11px;margin:14px auto}
+ .paper{padding:5%;gap:10px}
+ .btn{flex:1}
+}
+@media print{
+ body{background:white}
+ header,nav,.hero,.controls,.no-print,footer,.section-title{display:none!important}
+ .container{margin:0;padding:0;max-width:none}
+ #printOnly{display:block!important}
+ .preview-area{padding:0;background:white}
+ .paper{box-shadow:none;max-width:none;width:100%;height:100vh;
+  aspect-ratio:auto;border:0;padding:8mm;gap:8mm}
+ .paper.landscape{height:100vh}
+ .print-item{border:0}
+ .print-label{display:none}
+ @page{size:A4 portrait;margin:0}
+}
 </style>
 </head>
 <body>
 
 <header>
-<h1>🌐 ग्रामीण ग्राहक सेवा</h1>
-<p>CSC Services • Card Front & Back • Passport Photo • Printing Studio</p>
+ <div class="brand">
+  <div class="logo">GS</div>
+  <div>
+   <h1>ग्रामीण ग्राहक सेवा</h1>
+   <p>Digital Card • Photo • Print Studio</p>
+  </div>
+ </div>
+ <div class="header-tag">DIGITAL SERVICE CENTRE</div>
 </header>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#csc">CSC Services</a>
-<a href="#card">Card Front/Back</a>
-<a href="#passport">Passport Photo</a>
+ <a href="#home">होम</a>
+ <a href="#studio">Card Studio</a>
+ <a href="#files">File Upload</a>
+ <a href="#print">Print & PDF</a>
+ <a href="#services">Digital Services</a>
 </nav>
 
 <main class="container" id="home">
+ <section class="hero">
+  <h2>Digital Card & Photo Print Studio</h2>
+  <p>अपने दस्तावेज़ की आगे और पीछे की इमेज या PDF अपलोड करें।
+  दोनों साइड चुनें और A4 पेपर पर एक साथ PDF या JPG तैयार करें।</p>
+ </section>
 
-<!-- CSC SERVICES -->
-<h2 class="heading" id="csc">🏢 CSC की सभी प्रमुख सेवा श्रेणियाँ</h2>
-<div class="panel">
-<p class="small">अपनी सेवा खोजें। सेवा के आधिकारिक पोर्टल पर जाने के लिए कार्ड खोलें। कुछ सेवाओं के लिए CSC VLE ID और अधिकृत लॉगिन जरूरी है।</p>
-<input id="serviceSearch" class="service-search" type="search" placeholder="🔍 सेवा खोजें: आधार, पैन, बैंक, पेंशन..." oninput="filterServices()">
-<div id="serviceList"></div>
-<p id="noServices" class="small" style="display:none">कोई सेवा नहीं मिली। दूसरा शब्द खोजें।</p>
-</div>
+ <div class="grid controls" id="studio">
+  <section class="card">
+   <h3>01. फाइल अपलोड करें</h3>
+   <p>PDF, JPG, JPEG, PNG और WEBP फाइलें चुनें। PDF के पेज भी अलग-अलग चुन सकते हैं।</p>
+   <label for="fileInput">एक या अधिक फाइलें चुनें</label>
+   <input id="fileInput" type="file" multiple
+    accept=".pdf,.jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp,application/pdf">
+   <div class="btn-row">
+    <button class="btn light-btn" onclick="clearFiles()">सभी फाइल हटाएं</button>
+   </div>
+   <div id="fileList" class="file-list">
+    <div class="small">अभी कोई फाइल अपलोड नहीं है।</div>
+   </div>
+   <div id="uploadStatus" class="status"></div>
+   <div class="notice">अपलोड की गई फाइलें इसी ब्राउज़र में प्रोसेस होती हैं।
+   निजी दस्तावेज़ सार्वजनिक कंप्यूटर पर अपलोड करने के बाद फाइलें हटा दें।</div>
+  </section>
 
-<!-- CARD FRONT BACK -->
-<h2 class="heading" id="card">🪪 Card Front + Back Editor</h2>
-<div class="panel">
-<div class="side-preview">
- <div class="side-box">
-  <h4>कार्ड का आगे का भाग (Front)</h4>
-  <div class="preview"><canvas id="frontCanvas" width="856" height="540"></canvas></div>
-  <p class="small">Front Side Preview</p>
- </div>
- <div class="side-box">
-  <h4>कार्ड का पीछे का भाग (Back)</h4>
-  <div class="preview"><canvas id="backCanvas" width="856" height="540"></canvas></div>
-  <p class="small">Back Side Preview</p>
- </div>
-</div>
+  <section class="card">
+   <h3>02. Front और Back चुनें</h3>
+   <p>आगे और पीछे के लिए अलग-अलग फाइल या PDF पेज चुनें।</p>
+   <label for="frontSelect">Front Side – आगे का भाग</label>
+   <select id="frontSelect"><option value="">पहले फाइल अपलोड करें</option></select>
 
-<div class="button-row" style="margin-top:14px">
- <button onclick="selectSide('front')">Front Edit करें</button>
- <button onclick="selectSide('back')">Back Edit करें</button>
- <button class="green" onclick="printBothSides()">🖨 दोनों तरफ प्रिंट</button>
-</div>
-<p id="activeSide" class="small">अभी Front Side चुना हुआ है।</p>
-</div>
+   <label for="backSelect">Back Side – पीछे का भाग</label>
+   <select id="backSelect"><option value="">पहले फाइल अपलोड करें</option></select>
 
-<div class="panel">
-<h3>सभी Card Editing Tools</h3>
-<p class="small">पहले Front या Back चुनें। नीचे के टूल चुने हुए भाग पर लागू होंगे।</p>
+   <label>
+    <input type="checkbox" id="bothCheck" checked>
+    दोनों साइड एक साथ Select करें
+   </label>
 
-<div class="grid">
- <div class="tool">
-  <label>चुने हुए भाग में फोटो अपलोड करें</label>
-  <input type="file" accept="image/*" onchange="uploadCard(event)">
+   <label for="cardSize">कार्ड का प्रकार / आकार</label>
+   <select id="cardSize">
+    <option value="auto">Original Size / अनुपात सुरक्षित रखें</option>
+    <option value="id">सामान्य ID Card – 85.6 × 54 mm</option>
+    <option value="passport">Passport Photo – 35 × 45 mm</option>
+    <option value="a4">A4 पर बड़ा प्रिंट</option>
+   </select>
+
+   <label for="orientation">पेपर दिशा</label>
+   <select id="orientation">
+    <option value="portrait">A4 Portrait – खड़ा</option>
+    <option value="landscape">A4 Landscape – आड़ा</option>
+   </select>
+
+   <label>
+    <input type="checkbox" id="showLabels" checked>
+    Preview में Front / Back नाम दिखाएं
+   </label>
+   <div class="btn-row">
+    <button class="btn primary" onclick="updatePreview()">Preview देखें</button>
+    <button class="btn light-btn" onclick="swapSides()">Front ↔ Back बदलें</button>
+   </div>
+   <div id="selectionStatus" class="status"></div>
+  </section>
  </div>
- <div class="tool">
-  <label>कार्ड की चौड़ाई (mm)</label>
-  <input id="cardW" type="number" value="85.6" min="20" max="300" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>कार्ड की ऊंचाई (mm)</label>
-  <input id="cardH" type="number" value="54" min="20" max="300" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Background Color</label>
-  <input id="cardBg" type="color" value="#ffffff" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Zoom</label>
-  <input id="cardZoom" type="range" min=".3" max="4" step=".05" value="1" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Horizontal Position</label>
-  <input id="cardX" type="range" min="-400" max="400" value="0" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Vertical Position</label>
-  <input id="cardY" type="range" min="-400" max="400" value="0" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Rotation</label>
-  <div class="button-row">
-   <button onclick="rotateCard(-90)">↶ 90°</button>
-   <button onclick="rotateCard(90)">↷ 90°</button>
+
+ <section class="card controls" id="files" style="margin-top:16px">
+  <h3>03. एक क्लिक में दोनों साइड का लेआउट</h3>
+  <p>दोनों साइड एक ही A4 शीट पर ऊपर-नीचे दिखाई देंगी। खाली साइड होने पर केवल चुनी गई साइड दिखाई जाएगी।</p>
+  <div class="btn-row">
+   <button class="btn success" onclick="downloadPDF()">⬇ Download PDF</button>
+   <button class="btn primary" onclick="downloadJPG()">⬇ Download JPG</button>
+   <button class="btn dark" onclick="window.print()">🖨 Print / Save PDF</button>
   </div>
- </div>
- <div class="tool">
-  <label>Flip</label>
-  <div class="button-row">
-   <button class="gray" onclick="flipCard('x')">↔ Horizontal</button>
-   <button class="gray" onclick="flipCard('y')">↕ Vertical</button>
+  <div class="small" style="margin-top:10px">
+   PDF/JPG बनाने के लिए इंटरनेट कनेक्शन जरूरी हो सकता है, क्योंकि PDF लाइब्रेरी CDN से लोड होती है।
   </div>
- </div>
- <div class="tool">
-  <label>Round Corners</label>
-  <input id="cardRound" type="range" min="0" max="100" value="15" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Border Size</label>
-  <input id="cardBorder" type="range" min="0" max="20" value="2" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Border Color</label>
-  <input id="cardBorderColor" type="color" value="#1768b5" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Brightness</label>
-  <input id="cardBright" type="range" min="0" max="200" value="100" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Contrast</label>
-  <input id="cardContrast" type="range" min="0" max="200" value="100" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Saturation</label>
-  <input id="cardSat" type="range" min="0" max="200" value="100" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Grayscale</label>
-  <input id="cardGray" type="range" min="0" max="100" value="0" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Blur</label>
-  <input id="cardBlur" type="range" min="0" max="8" step=".5" value="0" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Sepia</label>
-  <input id="cardSepia" type="range" min="0" max="100" value="0" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Text लिखें</label>
-  <input id="cardText" type="text" placeholder="अपना टेक्स्ट" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Text Color</label>
-  <input id="cardTextColor" type="color" value="#000000" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Text Size</label>
-  <input id="cardTextSize" type="number" min="8" max="120" value="30" oninput="renderCards()">
- </div>
- <div class="tool">
-  <label>Text Position</label>
-  <select id="cardTextPosition" onchange="renderCards()">
-   <option value="bottom">Bottom</option>
-   <option value="top">Top</option>
-   <option value="center">Center</option>
-  </select>
- </div>
- <div class="tool">
-  <label>Font</label>
-  <select id="cardFont" onchange="renderCards()">
-   <option>Arial</option><option>Georgia</option>
-   <option>Verdana</option><option>serif</option>
-   <option>monospace</option>
-  </select>
- </div>
- <div class="tool">
-  <label>Shadow</label>
-  <input id="cardShadow" type="range" min="0" max="30" value="0" oninput="renderCards()">
- </div>
- <div class="tool full">
-  <div class="button-row">
-   <button class="green" onclick="downloadCard('front')">Front Download</button>
-   <button class="green" onclick="downloadCard('back')">Back Download</button>
-   <button class="orange" onclick="resetCardSide()">Reset चुना हुआ भाग</button>
-  </div>
- </div>
-</div>
-</div>
+ </section>
 
-<!-- PASSPORT PHOTO -->
-<h2 class="heading" id="passport">📸 Passport Photo Editor</h2>
-<div class="panel">
-<div class="edit-grid">
- <div>
-  <h3>Passport Photo Preview</h3>
-  <div class="preview"><canvas id="passportCanvas" width="413" height="531"></canvas></div>
-  <p class="small">35 × 45 mm फोटो अनुपात। प्रिंट का वास्तविक आकार प्रिंटर सेटिंग पर भी निर्भर करेगा।</p>
-  <div class="button-row">
-   <button class="green" onclick="downloadPassport()">Download PNG</button>
-   <button onclick="printPassport()">A4 पर फोटो प्रिंट</button>
-  </div>
- </div>
- <div>
-  <h3>Passport Photo के सभी टूल</h3>
-  <div class="grid">
-   <div class="tool full">
-    <label>फोटो अपलोड करें</label>
-    <input type="file" accept="image/*" onchange="uploadPassport(event)">
+ <h2 class="section-title" id="print">A4 Paper Preview</h2>
+ <section class="preview-area">
+  <div class="paper" id="paper">
+   <div class="print-item" id="frontBox">
+    <div class="empty">Front Side यहां दिखाई देगी</div>
    </div>
-   <div class="tool">
-    <label>Background Color</label>
-    <input id="pBg" type="color" value="#ffffff" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Background Preset</label>
-    <select id="pPreset" onchange="el('pBg').value=this.value;renderPassport()">
-     <option value="#ffffff">White</option>
-     <option value="#dceeff">Light Blue</option>
-     <option value="#b9d9ff">Blue</option>
-     <option value="#ffdddd">Light Red</option>
-     <option value="#e8f5e9">Light Green</option>
-     <option value="#eeeeee">Grey</option>
-    </select>
-   </div>
-   <div class="tool">
-    <label>Background Removal</label>
-    <button class="orange" onclick="passportRemove=!passportRemove;renderPassport()">Remove ON/OFF</button>
-   </div>
-   <div class="tool">
-    <label>Removal Tolerance</label>
-    <input id="pTolerance" type="range" min="5" max="120" value="35" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Zoom</label>
-    <input id="pZoom" type="range" min=".3" max="4" step=".05" value="1" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Horizontal Position</label>
-    <input id="pX" type="range" min="-250" max="250" value="0" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Vertical Position</label>
-    <input id="pY" type="range" min="-250" max="250" value="0" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Rotation</label>
-    <div class="button-row">
-     <button onclick="passportAngle-=90;renderPassport()">↶</button>
-     <button onclick="passportAngle+=90;renderPassport()">↷</button>
-    </div>
-   </div>
-   <div class="tool">
-    <label>Flip</label>
-    <div class="button-row">
-     <button class="gray" onclick="passportFlipX*=-1;renderPassport()">↔</button>
-     <button class="gray" onclick="passportFlipY*=-1;renderPassport()">↕</button>
-    </div>
-   </div>
-   <div class="tool">
-    <label>Brightness</label>
-    <input id="pBright" type="range" min="0" max="200" value="100" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Contrast</label>
-    <input id="pContrast" type="range" min="0" max="200" value="100" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Saturation</label>
-    <input id="pSat" type="range" min="0" max="200" value="100" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Grayscale</label>
-    <input id="pGray" type="range" min="0" max="100" value="0" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Blur</label>
-    <input id="pBlur" type="range" min="0" max="8" step=".5" value="0" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Round Corners</label>
-    <input id="pRound" type="range" min="0" max="50" value="0" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Border Width</label>
-    <input id="pBorder" type="range" min="0" max="12" value="1" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Border Color</label>
-    <input id="pBorderColor" type="color" value="#cccccc" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Text Overlay</label>
-    <input id="pText" type="text" placeholder="Text लिखें" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Text Color</label>
-    <input id="pTextColor" type="color" value="#000000" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>Text Size</label>
-    <input id="pTextSize" type="number" value="18" min="8" max="60" oninput="renderPassport()">
-   </div>
-   <div class="tool">
-    <label>A4 Photo Copies</label>
-    <input id="pCopies" type="number" min="1" max="60" value="24">
-   </div>
-   <div class="tool">
-    <label>Photo Gap (mm)</label>
-    <input id="pGap" type="number" min="0" max="30" value="3">
-   </div>
-   <div class="tool">
-    <label>Photo Width (mm)</label>
-    <input id="pWidth" type="number" min="10" max="100" value="35">
-   </div>
-   <div class="tool">
-    <label>Photo Height (mm)</label>
-    <input id="pHeight" type="number" min="10" max="120" value="45">
-   </div>
-   <div class="tool full">
-    <button class="orange" onclick="resetPassport()">Reset Passport Photo</button>
+   <div class="print-item" id="backBox">
+    <div class="empty">Back Side यहां दिखाई देगी</div>
    </div>
   </div>
+ </section>
+ <div id="exportStatus" class="status no-print"></div>
+
+ <h2 class="section-title" id="services">Digital Service Portals</h2>
+ <div class="grid">
+  <a class="portal" href="https://uidai.gov.in/" target="_blank" rel="noopener">UIDAI / Aadhaar <span>↗</span></a>
+  <a class="portal" href="https://www.incometax.gov.in/" target="_blank" rel="noopener">Income Tax / PAN <span>↗</span></a>
+  <a class="portal" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Voter Services <span>↗</span></a>
+  <a class="portal" href="https://parivahan.gov.in/" target="_blank" rel="noopener">Parivahan / DL <span>↗</span></a>
+  <a class="portal" href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener">Ayushman Bharat <span>↗</span></a>
+  <a class="portal" href="https://eshram.gov.in/" target="_blank" rel="noopener">e-Shram <span>↗</span></a>
+  <a class="portal" href="https://abha.abdm.gov.in/" target="_blank" rel="noopener">ABHA <span>↗</span></a>
+  <a class="portal" href="https://pmkisan.gov.in/" target="_blank" rel="noopener">PM Kisan <span>↗</span></a>
+  <a class="portal" href="https://www.epfindia.gov.in/" target="_blank" rel="noopener">EPFO <span>↗</span></a>
+  <a class="portal" href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">Passport Seva <span>↗</span></a>
+  <a class="portal" href="https://www.gst.gov.in/" target="_blank" rel="noopener">GST Portal <span>↗</span></a>
+  <a class="portal" href="https://food.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan Food <span>↗</span></a>
  </div>
-</div>
-</div>
-
-<div class="panel">
-<h3>महत्वपूर्ण सूचना</h3>
-<p class="small">CSC सेवाओं की उपलब्धता, शुल्क और पात्रता संबंधित विभाग तथा CSC VLE खाते पर निर्भर करती है। यह वेबसाइट सेवाओं के पोर्टल तक पहुँचने का माध्यम है, सरकारी CSC पोर्टल नहीं। आधार या अन्य पहचान-पत्र की आधिकारिक जानकारी में बदलाव करने के बजाय वैध प्रिंटिंग और फोटो लेआउट के लिए एडिटर का उपयोग करें। Background removal सामान्य रंग-पहचान तकनीक से होता है, AI स्तर की सटीक कटिंग नहीं करता।</p>
-</div>
-
 </main>
 
 <footer>
-<p>© 2026 Gramin Grahak Sewa</p>
-<p>CSC Digital Services • Card Studio • Passport Photo</p>
+ <strong>ग्रामीण ग्राहक सेवा</strong><br>
+ Digital Card • Photo • A4 Print Studio<br>
+ यह एक निजी डिजिटल सेवा केंद्र का टूल है, सरकारी वेबसाइट नहीं।
 </footer>
 
 <script>
-const el=id=>document.getElementById(id);
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+ "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-/* CSC SERVICE DIRECTORY */
-const services=[
- {category:"सरकारी पहचान एवं दस्तावेज",items:[
-  ["आधार सेवाएँ","https://uidai.gov.in/","आधार जानकारी और अधिकृत सेवाएँ"],
-  ["PAN Card","https://www.protean-tinpan.com/","PAN आवेदन और संबंधित जानकारी"],
-  ["Voter ID","https://voters.eci.gov.in/","मतदाता सेवाएँ"],
-  ["Passport","https://passportindia.gov.in/","पासपोर्ट आवेदन"],
-  ["e-Shram","https://eshram.gov.in/","असंगठित श्रमिक पंजीकरण"],
-  ["DigiLocker","https://www.digilocker.gov.in/","डिजिटल दस्तावेज"],
-  ["Driving Licence","https://parivahan.gov.in/","DL और वाहन सेवाएँ"],
-  ["UDID Card","https://www.swavlambancard.gov.in/","दिव्यांग पहचान पत्र"]
- ]},
- {category:"राजस्थान एवं राज्य सरकारी सेवाएँ",items:[
-  ["Rajasthan e-Mitra","https://emitra.rajasthan.gov.in/","राजस्थान की ऑनलाइन सेवाएँ"],
-  ["Rajasthan SSO","https://sso.rajasthan.gov.in/","राजस्थान SSO लॉगिन"],
-  ["Rajasthan Jan Aadhaar","https://janaadhaar.rajasthan.gov.in/","जन आधार सेवाएँ"],
-  ["Rajasthan Ration Card","https://food.rajasthan.gov.in/","राशन कार्ड एवं खाद्य सेवाएँ"],
-  ["Apna Khata Rajasthan","https://apnakhata.rajasthan.gov.in/","जमाबंदी एवं भूमि रिकॉर्ड"],
-  ["e-Panchayat","https://egramswaraj.gov.in/","पंचायत संबंधित जानकारी"]
- ]},
- {category:"केंद्र सरकार एवं कल्याणकारी योजनाएँ",items:[
-  ["Ayushman Bharat","https://beneficiary.nha.gov.in/","आयुष्मान भारत लाभार्थी पोर्टल"],
-  ["PM-KISAN","https://pmkisan.gov.in/","किसान सम्मान निधि"],
-  ["PM Fasal Bima","https://pmfby.gov.in/","फसल बीमा योजना"],
-  ["PM Ujjwala","https://www.pmuy.gov.in/","उज्ज्वला योजना"],
-  ["PM SVANidhi","https://pmsvanidhi.mohua.gov.in/","स्ट्रीट वेंडर योजना"],
-  ["National Scholarship","https://scholarships.gov.in/","छात्रवृत्ति पोर्टल"],
-  ["Jeevan Pramaan","https://jeevanpramaan.gov.in/","पेंशनर जीवन प्रमाण"],
-  ["e-Shram","https://eshram.gov.in/","श्रमिक कल्याण"]
- ]},
- {category:"बैंकिंग, बीमा एवं वित्तीय सेवाएँ",items:[
-  ["CSC Digital Seva Portal","https://digitalseva.csc.gov.in/","अधिकृत VLE लॉगिन"],
-  ["DigiPay / AEPS","https://digitalseva.csc.gov.in/","CSC VLE के लिए उपलब्धता लॉगिन पर निर्भर"],
-  ["NPCI","https://www.npci.org.in/","डिजिटल भुगतान जानकारी"],
-  ["RBI Sachet","https://sachet.rbi.org.in/","वित्तीय शिकायत एवं जानकारी"],
-  ["Atal Pension Yojana","https://www.npscra.nsdl.co.in/","पेंशन योजना"],
-  ["NPS","https://npstrust.org.in/","राष्ट्रीय पेंशन प्रणाली"],
-  ["Insurance Services","https://irdai.gov.in/","बीमा नियामक जानकारी"],
-  ["FASTag","https://fastag.ihmcl.com/","FASTag सेवाएँ"]
- ]},
- {category:"शिक्षा एवं रोजगार",items:[
-  ["NIELIT","https://www.nielit.gov.in/","कंप्यूटर एवं डिजिटल शिक्षा"],
-  ["NIOS","https://www.nios.ac.in/","ओपन स्कूलिंग"],
-  ["IGNOU","https://www.ignou.ac.in/","दूरस्थ शिक्षा"],
-  ["CSC Academy","https://www.cscacademy.org/","CSC शिक्षा और प्रशिक्षण"],
-  ["National Career Service","https://www.ncs.gov.in/","रोजगार सेवाएँ"],
-  ["UPSC","https://upsc.gov.in/","भर्ती एवं परीक्षाएँ"],
-  ["SSC","https://ssc.gov.in/","कर्मचारी चयन आयोग"],
-  ["Railway Recruitment","https://www.rrbapply.gov.in/","रेलवे भर्ती आवेदन"]
- ]},
- {category:"स्वास्थ्य सेवाएँ",items:[
-  ["ABHA Health ID","https://abha.abdm.gov.in/","ABHA स्वास्थ्य खाता"],
-  ["Ayushman Bharat","https://beneficiary.nha.gov.in/","आयुष्मान लाभार्थी पोर्टल"],
-  ["National Health Portal","https://www.nhp.gov.in/","स्वास्थ्य जानकारी"],
-  ["eSanjeevani","https://esanjeevani.mohfw.gov.in/","टेलीमेडिसिन जानकारी"],
-  ["ORS Hospital Services","https://ors.gov.in/","अस्पताल सेवाएँ"]
- ]},
- {category:"कृषि एवं किसान सेवाएँ",items:[
-  ["PM-KISAN","https://pmkisan.gov.in/","किसान सम्मान निधि"],
-  ["Soil Health Card","https://soilhealth.dac.gov.in/","मृदा स्वास्थ्य कार्ड"],
-  ["Fasal Bima","https://pmfby.gov.in/","फसल बीमा"],
-  ["Kisan Suvidha","https://mkisan.gov.in/","किसान जानकारी"],
-  ["e-NAM","https://enam.gov.in/","राष्ट्रीय कृषि बाजार"],
-  ["Agriculture Department Rajasthan","https://agriculture.rajasthan.gov.in/","राजस्थान कृषि विभाग"]
- ]},
- {category:"बिल भुगतान, डिजिटल एवं अन्य सेवाएँ",items:[
-  ["Bharat BillPay","https://www.npci.org.in/what-we-do/bharat-billpay/product-overview","बिल भुगतान प्रणाली"],
-  ["Electricity Bill Rajasthan","https://energy.rajasthan.gov.in/","बिजली विभाग"],
-  ["IRCTC Train Booking","https://www.irctc.co.in/","रेल टिकट"],
-  ["India Post","https://www.indiapost.gov.in/","डाक सेवाएँ"],
-  ["GST Portal","https://www.gst.gov.in/","GST सेवाएँ"],
-  ["Income Tax","https://www.incometax.gov.in/","आयकर सेवाएँ"],
-  ["FSSAI","https://foscos.fssai.gov.in/","खाद्य लाइसेंस"],
-  ["Udyam Registration","https://udyamregistration.gov.in/","MSME पंजीकरण"],
-  ["Tele-Law","https://tele-law.in/","कानूनी सहायता जानकारी"],
-  ["CPGRAMS","https://pgportal.gov.in/","सरकारी शिकायत"]
- ]}
-];
+const assets = [];
+let selectedFront = "";
+let selectedBack = "";
+let nextId = 1;
 
-function renderServices(filter=""){
- const list=el("serviceList");
- list.innerHTML="";
- let count=0;
- services.forEach(group=>{
-  const items=group.items.filter(item=>
-   (group.category+" "+item.join(" ")).toLowerCase().includes(filter.toLowerCase())
-  );
-  if(!items.length)return;
-  count+=items.length;
-  const section=document.createElement("section");
-  section.className="service-category";
-  const title=document.createElement("h3");
-  title.textContent=group.category;
-  const grid=document.createElement("div");
-  grid.className="service-grid";
-  items.forEach(item=>{
-   const a=document.createElement("a");
-   a.className="service-card";
-   a.href=item[1];
-   a.target="_blank";
-   a.rel="noopener noreferrer";
-   const badge=document.createElement("span");
-   badge.className="badge";
-   badge.textContent="सेवा पोर्टल";
-   const strong=document.createElement("strong");
-   strong.textContent=item[0];
-   const desc=document.createElement("span");
-   desc.textContent=item[2];
-   a.append(badge,strong,desc);
-   grid.appendChild(a);
+const $ = id => document.getElementById(id);
+
+$("fileInput").addEventListener("change", async e => {
+ const files = Array.from(e.target.files || []);
+ if (!files.length) return;
+
+ $("uploadStatus").textContent = "फाइलें प्रोसेस हो रही हैं...";
+ for (const file of files) {
+  try {
+   const type = file.type;
+   const name = file.name.toLowerCase();
+
+   if (type === "application/pdf" || name.endsWith(".pdf")) {
+    await addPDF(file);
+   } else if (
+    type.startsWith("image/") ||
+    /\.(jpg|jpeg|png|webp)$/i.test(name)
+   ) {
+    await addImage(file);
+   } else {
+    alert("यह फाइल फॉर्मेट सपोर्ट नहीं है: " + file.name);
+   }
+  } catch (err) {
+   console.error(err);
+   alert(file.name + " अपलोड नहीं हो सकी।");
+  }
+ }
+ e.target.value = "";
+ renderFileList();
+ fillSelectors();
+ $("uploadStatus").textContent = "फाइल प्रोसेस पूरी हुई।";
+ updatePreview();
+});
+
+async function addImage(file) {
+ const url = URL.createObjectURL(file);
+ const img = new Image();
+ img.src = url;
+ await new Promise((resolve,reject)=>{
+  img.onload = resolve;
+  img.onerror = reject;
+ });
+ const canvas = document.createElement("canvas");
+ canvas.width = img.naturalWidth;
+ canvas.height = img.naturalHeight;
+ canvas.getContext("2d").drawImage(img,0,0);
+ addAsset(file.name,canvas);
+}
+
+async function addPDF(file) {
+ const data = await file.arrayBuffer();
+ const pdf = await pdfjsLib.getDocument({data}).promise;
+
+ for (let pageNo=1; pageNo<=pdf.numPages; pageNo++) {
+  const page = await pdf.getPage(pageNo);
+  const viewport = page.getViewport({scale:2});
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.ceil(viewport.width);
+  canvas.height = Math.ceil(viewport.height);
+  const ctx = canvas.getContext("2d");
+  await page.render({canvasContext:ctx,viewport}).promise;
+  addAsset(file.name + " – Page " + pageNo,canvas);
+ }
+}
+
+function addAsset(name,canvas) {
+ const id = "asset_" + nextId++;
+ assets.push({id,name,canvas});
+}
+
+function renderFileList() {
+ const box = $("fileList");
+ box.innerHTML = "";
+ if (!assets.length) {
+  box.innerHTML = '<div class="small">अभी कोई फाइल अपलोड नहीं है।</div>';
+  return;
+ }
+ assets.forEach(asset=>{
+  const item = document.createElement("div");
+  item.className = "file-item";
+  const title = document.createElement("span");
+  title.textContent = asset.name;
+  const btn = document.createElement("button");
+  btn.className = "btn light-btn";
+  btn.textContent = "हटाएं";
+  btn.onclick = ()=>removeAsset(asset.id);
+  item.append(title,btn);
+  box.appendChild(item);
+ });
+}
+
+function fillSelectors() {
+ const front = $("frontSelect");
+ const back = $("backSelect");
+ [front,back].forEach(select=>{
+  const previous = select.value;
+  select.innerHTML = '<option value="">-- साइड चुनें --</option>';
+  assets.forEach(asset=>{
+   const option = document.createElement("option");
+   option.value = asset.id;
+   option.textContent = asset.name;
+   select.appendChild(option);
   });
-  section.append(title,grid);
-  list.appendChild(section);
+  if (assets.some(a=>a.id===previous)) select.value=previous;
  });
- el("noServices").style.display=count?"none":"block";
+ if (!front.value && assets[0]) front.value=assets[0].id;
+ if (!back.value && assets[1]) back.value=assets[1].id;
+ selectedFront=front.value;
+ selectedBack=back.value;
 }
-function filterServices(){renderServices(el("serviceSearch").value.trim())}
-renderServices();
 
-/* CARD FRONT AND BACK EDITOR */
-const cardSides={
- front:{canvas:el("frontCanvas"),img:null,angle:0,fx:1,fy:1},
- back:{canvas:el("backCanvas"),img:null,angle:0,fx:1,fy:1}
-};
-let activeSide="front";
-function selectSide(side){
- activeSide=side;
- el("activeSide").textContent="अभी "+(side==="front"?"Front":"Back")+" Side चुना हुआ है।";
+function removeAsset(id) {
+ const index = assets.findIndex(a=>a.id===id);
+ if (index<0) return;
+ assets.splice(index,1);
+ if (selectedFront===id) selectedFront="";
+ if (selectedBack===id) selectedBack="";
+ fillSelectors();
+ renderFileList();
+ updatePreview();
 }
-function uploadCard(event){
- const file=event.target.files[0];
- if(!file)return;
- if(!file.type.startsWith("image/"))return alert("कृपया फोटो चुनें।");
- const reader=new FileReader();
- reader.onload=e=>{
-  const img=new Image();
-  img.onload=()=>{
-   cardSides[activeSide].img=img;
-   cardSides[activeSide].angle=0;
-   cardSides[activeSide].fx=1;
-   cardSides[activeSide].fy=1;
-   renderCards();
-  };
-  img.src=e.target.result;
- };
- reader.readAsDataURL(file);
+
+function clearFiles() {
+ if (!confirm("क्या सभी अपलोड की गई फाइलें हटानी हैं?")) return;
+ assets.length=0;
+ selectedFront="";
+ selectedBack="";
+ fillSelectors();
+ renderFileList();
+ updatePreview();
+ $("uploadStatus").textContent="सभी फाइलें हटा दी गई हैं।";
 }
-function rotateCard(deg){
- cardSides[activeSide].angle+=deg;
- renderCards();
+
+$("frontSelect").addEventListener("change",()=>{
+ selectedFront=$("frontSelect").value;
+ updatePreview();
+});
+$("backSelect").addEventListener("change",()=>{
+ selectedBack=$("backSelect").value;
+ updatePreview();
+});
+$("bothCheck").addEventListener("change",updatePreview);
+$("orientation").addEventListener("change",updatePreview);
+$("showLabels").addEventListener("change",updatePreview);
+$("cardSize").addEventListener("change",updatePreview);
+
+function getAsset(id) {
+ return assets.find(a=>a.id===id);
 }
-function flipCard(axis){
- if(axis==="x")cardSides[activeSide].fx*=-1;
- else cardSides[activeSide].fy*=-1;
- renderCards();
+
+function setPreviewBox(boxId,asset,label) {
+ const box=$(boxId);
+ box.innerHTML="";
+ if (!asset) {
+  box.innerHTML='<div class="empty">यह साइड चयनित नहीं है</div>';
+  return;
+ }
+ const img=document.createElement("img");
+ img.src=asset.canvas.toDataURL("image/png");
+ img.alt=label;
+ box.appendChild(img);
+ if ($("showLabels").checked) {
+  const tag=document.createElement("div");
+  tag.className="print-label";
+  tag.textContent=label;
+  box.appendChild(tag);
+ }
 }
-function rounded(g,x,y,w,h,r){
- r=Math.min(r,w/2,h/2);
- g.beginPath();
- g.moveTo(x+r,y);g.lineTo(x+w-r,y);
- g.quadraticCurveTo(x+w,y,x+w,y+r);
- g.lineTo(x+w,y+h-r);
- g.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
- g.lineTo(x+r,y+h);
- g.quadraticCurveTo(x,y+h,x,y+h-r);
- g.lineTo(x,y+r);g.quadraticCurveTo(x,y,x+r,y);
- g.closePath();
+
+function updatePreview() {
+ selectedFront=$("frontSelect").value;
+ selectedBack=$("backSelect").value;
+ const front=getAsset(selectedFront);
+ const back=$("bothCheck").checked ? getAsset(selectedBack) : null;
+ const paper=$("paper");
+ paper.classList.toggle("landscape",$("orientation").value==="landscape");
+
+ setPreviewBox("frontBox",front,"FRONT SIDE");
+ setPreviewBox("backBox",back,"BACK SIDE");
+
+ const frontBox=$("frontBox");
+ const backBox=$("backBox");
+ if (!front && !back) {
+  frontBox.style.display="flex";
+  backBox.style.display="none";
+ } else if (front && !back) {
+  frontBox.style.height="100%";
+  backBox.style.display="none";
+ } else {
+  frontBox.style.display="flex";
+  backBox.style.display="flex";
+  frontBox.style.height="46%";
+  backBox.style.height="46%";
+ }
+ $("selectionStatus").textContent =
+  (front ? "Front चुना गया" : "Front नहीं चुना गया") +
+  (back ? " • Back चुना गया" : " • Back नहीं चुना गया");
 }
-function renderCards(){
- const w=Math.max(20,Math.min(300,+el("cardW").value||85.6));
- const h=Math.max(20,Math.min(300,+el("cardH").value||54));
- ["front","back"].forEach(side=>{
-  const state=cardSides[side],c=state.canvas;
-  c.width=Math.round(w*10);c.height=Math.round(h*10);
-  const g=c.getContext("2d"),W=c.width,H=c.height;
-  g.clearRect(0,0,W,H);
-  g.fillStyle=el("cardBg").value;g.fillRect(0,0,W,H);
-  if(state.img){
-   const img=state.img;
-   const zoom=+el("cardZoom").value;
-   const rotated=Math.abs(state.angle%180)===90;
-   const bw=rotated?H:W,bh=rotated?W:H;
-   const scale=Math.max(bw/img.width,bh/img.height)*zoom;
-   const dw=img.width*scale,dh=img.height*scale;
-   g.save();
-   rounded(g,0,0,W,H,+el("cardRound").value);
-   g.clip();
-   g.translate(W/2+ +el("cardX").value,H/2+ +el("cardY").value);
-   g.rotate(state.angle*Math.PI/180);
-   g.scale(state.fx,state.fy);
-   g.filter=`brightness(${el("cardBright").value}%) contrast(${el("cardContrast").value}%) saturate(${el("cardSat").value}%) grayscale(${el("cardGray").value}%) blur(${el("cardBlur").value}px) sepia(${el("cardSepia").value}%)`;
-   g.drawImage(img,-dw/2,-dh/2,dw,dh);
-   g.restore();
-  }else{
-   g.fillStyle="#7b8798";g.font="24px Arial";g.textAlign="center";
-   g.fillText(side==="front"?"FRONT SIDE PHOTO":"BACK SIDE PHOTO",W/2,H/2);
+
+function swapSides() {
+ const a=$("frontSelect").value;
+ $("frontSelect").value=$("backSelect").value;
+ $("backSelect").value=a;
+ updatePreview();
+}
+
+function makePaperCanvas() {
+ const landscape=$("orientation").value==="landscape";
+ const width=landscape?3508:2480;
+ const height=landscape?2480:3508;
+ const canvas=document.createElement("canvas");
+ canvas.width=width;
+ canvas.height=height;
+ const ctx=canvas.getContext("2d");
+ ctx.fillStyle="#ffffff";
+ ctx.fillRect(0,0,width,height);
+
+ const front=getAsset($("frontSelect").value);
+ const back=$("bothCheck").checked ? getAsset($("backSelect").value) : null;
+
+ const margin=width*0.065;
+ const gap=height*0.025;
+ const availableWidth=width-margin*2;
+ const sides=[front,back].filter(Boolean);
+
+ if (!sides.length) throw new Error("पहले Front या Back फाइल चुनें।");
+
+ let slots;
+ if (sides.length===1) {
+  slots=[{y:margin,h:height-margin*2}];
+ } else {
+  const h=(height-margin*2-gap)/2;
+  slots=[{y:margin,h},{y:margin+h+gap,h}];
+ }
+
+ sides.forEach((asset,index)=>{
+  const img=asset.canvas;
+  const slot=slots[index];
+  let maxW=availableWidth;
+  let maxH=slot.h;
+
+  const size=$("cardSize").value;
+  if (size==="id") {
+   maxW=Math.min(maxW,width*0.75);
+   maxH=Math.min(maxH,height*0.25);
+  } else if (size==="passport") {
+   maxW=Math.min(maxW,width*0.24);
+   maxH=Math.min(maxH,height*0.22);
   }
-  const shadow=+el("cardShadow").value;
-  if(shadow){
-   g.save();g.shadowColor="#0008";g.shadowBlur=shadow;
-   g.strokeStyle="#999";g.strokeRect(4,4,W-8,H-8);g.restore();
-  }
-  const border=+el("cardBorder").value;
-  if(border){
-   g.strokeStyle=el("cardBorderColor").value;g.lineWidth=border;
-   rounded(g,border/2,border/2,W-border,H-border,+el("cardRound").value);
-   g.stroke();
-  }
-  const text=el("cardText").value;
-  if(text){
-   g.fillStyle=el("cardTextColor").value;
-   g.textAlign="center";
-   g.font=`bold ${+el("cardTextSize").value}px ${el("cardFont").value}`;
-   const pos=el("cardTextPosition").value;
-   g.fillText(text,W/2,pos==="top"?40:pos==="center"?H/2:H-25);
-  }
+
+  const scale=Math.min(maxW/img.width,maxH/img.height);
+  const drawW=img.width*scale;
+  const drawH=img.height*scale;
+  const x=(width-drawW)/2;
+  const y=slot.y+(slot.h-drawH)/2;
+  ctx.drawImage(img,x,y,drawW,drawH);
  });
-}
-function downloadCard(side){
- const a=document.createElement("a");
- a.href=cardSides[side].canvas.toDataURL("image/png");
- a.download=side+"-card.png";a.click();
-}
-function printBothSides(){
- const f=cardSides.front.canvas.toDataURL();
- const b=cardSides.back.canvas.toDataURL();
- const win=window.open("","_blank");
- if(!win)return alert("Print के लिए Pop-up अनुमति दें।");
- win.document.write(`<html><head><title>Card Front Back Print</title>
- <style>@page{size:A4;margin:15mm}body{font-family:Arial;text-align:center}
- .page{height:260mm;display:flex;align-items:center;justify-content:center;page-break-after:always}
- img{width:85.6mm;height:54mm;object-fit:fill}</style></head><body>
- <div class="page"><div><h3>Front Side</h3><img src="${f}"></div></div>
- <div class="page"><div><h3>Back Side</h3><img src="${b}"></div></div>
- <script>window.onload=()=>window.print();<\/script></body></html>`);
- win.document.close();
-}
-function resetCardSide(){
- const s=cardSides[activeSide];
- s.img=null;s.angle=0;s.fx=1;s.fy=1;
- renderCards();
+ return canvas;
 }
 
-/* PASSPORT PHOTO EDITOR */
-let passportImg=null,passportAngle=0,passportFlipX=1,passportFlipY=1,passportRemove=false;
-function uploadPassport(event){
- const file=event.target.files[0];
- if(!file)return;
- if(!file.type.startsWith("image/"))return alert("कृपया फोटो चुनें।");
- const reader=new FileReader();
- reader.onload=e=>{
-  const img=new Image();
-  img.onload=()=>{passportImg=img;passportAngle=0;passportFlipX=1;passportFlipY=1;renderPassport()};
-  img.src=e.target.result;
- };
- reader.readAsDataURL(file);
-}
-function renderPassport(){
- const c=el("passportCanvas"),g=c.getContext("2d");
- c.width=413;c.height=531;
- g.fillStyle=el("pBg").value;g.fillRect(0,0,c.width,c.height);
- if(passportImg){
-  const img=passportImg,zoom=+el("pZoom").value;
-  const rotated=Math.abs(passportAngle%180)===90;
-  const bw=rotated?c.height:c.width,bh=rotated?c.width:c.height;
-  const scale=Math.max(bw/img.width,bh/img.height)*zoom;
-  const dw=img.width*scale,dh=img.height*scale;
-  g.save();
-  rounded(g,0,0,c.width,c.height,+el("pRound").value);
-  g.clip();
-  g.translate(c.width/2+ +el("pX").value,c.height/2+ +el("pY").value);
-  g.rotate(passportAngle*Math.PI/180);
-  g.scale(passportFlipX,passportFlipY);
-  g.filter=`brightness(${el("pBright").value}%) contrast(${el("pContrast").value}%) saturate(${el("pSat").value}%) grayscale(${el("pGray").value}%) blur(${el("pBlur").value}px)`;
-  g.drawImage(img,-dw/2,-dh/2,dw,dh);
-  g.restore();
-  if(passportRemove)removeBgPixels(c,+el("pTolerance").value);
- }else{
-  g.fillStyle="#7b8798";g.font="20px Arial";g.textAlign="center";
-  g.fillText("Passport Photo Upload करें",c.width/2,c.height/2);
- }
- const border=+el("pBorder").value;
- if(border){
-  g.strokeStyle=el("pBorderColor").value;g.lineWidth=border;
-  rounded(g,border/2,border/2,c.width-border,c.height-border,+el("pRound").value);
-  g.stroke();
- }
- const text=el("pText").value;
- if(text){
-  g.fillStyle=el("pTextColor").value;g.font=`bold ${+el("pTextSize").value}px Arial`;
-  g.textAlign="center";g.fillText(text,c.width/2,c.height-15);
- }
-}
-function removeBgPixels(canvas,tolerance){
- const g=canvas.getContext("2d");
- const w=canvas.width,h=canvas.height;
- const data=g.getImageData(0,0,w,h),d=data.data;
- const samples=[[0,0],[w-1,0],[0,h-1],[w-1,h-1]];
- let r=0,gg=0,b=0;
- samples.forEach(([x,y])=>{const i=(y*w+x)*4;r+=d[i];gg+=d[i+1];b+=d[i+2]});
- r/=4;gg/=4;b/=4;
- const threshold=tolerance*2.5;
- for(let i=0;i<d.length;i+=4){
-  const dist=Math.sqrt((d[i]-r)**2+(d[i+1]-gg)**2+(d[i+2]-b)**2);
-  if(dist<threshold)d[i+3]=0;
- }
- g.putImageData(data,0,0);
-}
-function downloadPassport(){
- const a=document.createElement("a");
- a.href=el("passportCanvas").toDataURL("image/png");
- a.download="passport-photo.png";a.click();
-}
-function printPassport(){
- const c=el("passportCanvas");
- const source=c.toDataURL();
- const copies=Math.max(1,Math.min(60,+el("pCopies").value||1));
- const gap=Math.max(0,+el("pGap").value||0);
- const w=Math.max(10,+el("pWidth").value||35);
- const h=Math.max(10,+el("pHeight").value||45);
- const win=window.open("","_blank");
- if(!win)return alert("Print के लिए Pop-up अनुमति दें।");
- let html=`<html><head><title>Passport A4</title><style>
- @page{size:A4;margin:8mm}body{margin:0}
- .sheet{display:grid;grid-template-columns:repeat(auto-fill,${w}mm);gap:${gap}mm;align-content:start}
- img{width:${w}mm;height:${h}mm;object-fit:fill}
- </style></head><body><div class="sheet">`;
- for(let i=0;i<copies;i++)html+=`<img src="${source}">`;
- html+=`</div><script>window.onload=()=>window.print();<\/script></body></html>`;
- win.document.write(html);win.document.close();
-}
-function resetPassport(){
- if(!confirm("Passport Photo सेटिंग Reset करें?"))return;
- passportAngle=0;passportFlipX=1;passportFlipY=1;passportRemove=false;
- const defaults={pZoom:1,pX:0,pY:0,pBright:100,pContrast:100,pSat:100,pGray:0,pBlur:0,pRound:0,pBorder:1,pText:""};
- Object.entries(defaults).forEach(([id,v])=>el(id).value=v);
- el("pBg").value="#ffffff";
- renderPassport();
-}
-function printSingleCanvas(canvas){
- const win=window.open("","_blank");
- if(!win)return alert("Print के लिए Pop-up अनुमति दें।");
- const src=canvas.toDataURL();
- win.document.write(`<html><body style="text-align:center"><img style="max-width:100%" src="${src}"><script>window.onload=()=>window.print();<\/script></body></html>`);
- win.document.close();
+function setExportStatus(message) {
+ $("exportStatus").textContent=message;
 }
 
-renderCards();
-renderPassport();
+async function downloadPDF() {
+ try {
+  if (!window.jspdf) throw new Error("PDF लाइब्रेरी लोड नहीं हुई। इंटरनेट जांचें।");
+  setExportStatus("PDF तैयार हो रही है...");
+  const canvas=makePaperCanvas();
+  const landscape=$("orientation").value==="landscape";
+  const {jsPDF}=window.jspdf;
+  const pdf=new jsPDF({
+   orientation:landscape?"landscape":"portrait",
+   unit:"mm",format:"a4"
+  });
+  const image=canvas.toDataURL("image/jpeg",0.95);
+  pdf.addImage(image,"JPEG",0,0,landscape?297:210,landscape?210:297);
+  pdf.save("Gramin-Grahak-Sewa-Front-Back.pdf");
+  setExportStatus("PDF डाउनलोड तैयार है।");
+ } catch(err) {
+  setExportStatus(err.message);
+  alert(err.message);
+ }
+}
+
+function downloadJPG() {
+ try {
+  setExportStatus("JPG तैयार हो रही है...");
+  const canvas=makePaperCanvas();
+  const link=document.createElement("a");
+  link.download="Gramin-Grahak-Sewa-Front-Back.jpg";
+  link.href=canvas.toDataURL("image/jpeg",0.95);
+  link.click();
+  setExportStatus("JPG डाउनलोड तैयार है।");
+ } catch(err) {
+  setExportStatus(err.message);
+  alert(err.message);
+ }
+}
 </script>
 </body>
 </html>

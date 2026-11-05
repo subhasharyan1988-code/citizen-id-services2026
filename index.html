@@ -4,883 +4,717 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gramin Grahak Sewa | Professional Photo Studio</title>
-<meta name="description" content="Gramin Grahak Sewa Digital Services, Photo Studio and Document Printing">
-<meta name="theme-color" content="#0757a6">
+<title>Gramin Grahak Sewa - Photo & Card Studio</title>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- margin:0;
- font-family:Arial,"Noto Sans Devanagari",sans-serif;
- background:#eef3fa;color:#222;
-}
-header{
- background:linear-gradient(110deg,#ff9933 0 33%,white 33% 66%,#138808 66%);
- padding:7px;
-}
-.brand{
- background:white;text-align:center;padding:18px 8px;
-}
-.brand h1{color:#0757a6;margin:0;font-size:27px}
-.brand p{margin:7px 0}
-nav{
- background:#0757a6;display:flex;justify-content:center;
- flex-wrap:wrap;gap:5px;padding:10px;
-}
-nav a{
- color:white;text-decoration:none;padding:9px 12px;
- border-radius:7px;font-size:14px;
-}
-nav a:hover{background:#00376d}
-.hero{
- background:linear-gradient(120deg,#0757a6,#159cdd);
- color:white;text-align:center;padding:35px 12px;
-}
-.hero h2{font-size:27px}
-.container{width:min(1150px,95%);margin:25px auto}
-.section-title{
- text-align:center;color:#07366b;font-size:24px;margin:30px 0 20px;
-}
-.grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
- gap:14px;
-}
-.card,.panel{
- background:white;border-radius:13px;padding:17px;
- box-shadow:0 4px 18px #00000012;margin-bottom:16px;
- border:1px solid #e4eaf2;
-}
-.card{text-align:center}
-.emoji{font-size:32px}
-.card h3{color:#0757a6;font-size:16px}
-.card p{font-size:13px;color:#666;line-height:1.5}
-.btn{
- display:inline-block;border:0;border-radius:7px;
- padding:11px 15px;background:#0757a6;color:white;
- text-decoration:none;cursor:pointer;margin:4px;
- font-size:14px;
-}
-.btn:hover{filter:brightness(.88)}
-.green{background:#138808}
-.orange{background:#e87500}
-.red{background:#c62828}
-.gray{background:#555}
-.purple{background:#7139b5}
-.row{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
- gap:12px;
-}
-label{display:block;font-weight:bold;margin:12px 0 6px}
-input,select,textarea{
- width:100%;padding:11px;border:1px solid #cbd5e1;
- border-radius:7px;background:white;font-size:15px;
-}
-input[type=color]{height:45px;padding:4px}
-input[type=range]{padding:0}
-.small-note{font-size:13px;color:#666;line-height:1.6}
-.preview-grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
- gap:12px;margin-top:15px;
-}
-.preview-item{
- background:#f4f7fc;padding:10px;border:1px solid #ddd;
- border-radius:9px;text-align:center;overflow:hidden;
-}
-.preview-item img{max-width:100%;max-height:140px;object-fit:contain}
-.editor{
- background:linear-gradient(135deg,#eaf3ff,#f8edff);
- padding:16px;border-radius:12px;margin:15px 0;
-}
-.canvas-wrap{
- background:#dce5ef;padding:12px;border-radius:10px;
- text-align:center;overflow:auto;
-}
-canvas{
- max-width:100%;height:auto;background:white;
- border:1px solid #ccc;border-radius:4px;
-}
-.tool-group{
- background:white;padding:12px;border-radius:9px;
- margin:10px 0;border:1px solid #e1e6ed;
-}
-.tool-group h4{margin:0 0 8px;color:#0757a6}
-#status{color:#138808;font-size:14px;line-height:1.6}
-.facility{
- background:#e6f1ff;padding:15px;border-radius:8px;
- border-left:5px solid #0757a6;margin:12px 0;
-}
-.faq details{
- background:white;padding:14px;border-radius:8px;margin:9px 0;
-}
-.faq summary{cursor:pointer;font-weight:bold;color:#0757a6}
-footer{
- background:#082f57;color:white;text-align:center;
- padding:25px;margin-top:35px;
-}
-footer a{color:#ffdb9d}
-.social-icons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.social-icons a{background:white;color:#0757a6;padding:9px 13px;border-radius:7px;text-decoration:none}
-#editorSection{scroll-margin-top:10px}
-#printArea{display:none}
-
-@media(max-width:600px){
- .brand h1{font-size:21px}
- .hero h2{font-size:22px}
- nav a{font-size:12px;padding:8px}
- .container{width:94%}
- .btn{font-size:13px;padding:10px}
-}
-
-@page{size:A4;margin:8mm}
-@media print{
- body *{visibility:hidden!important}
- #printArea,#printArea *{visibility:visible!important}
- #printArea{
-  display:block!important;position:absolute!important;
-  left:0;top:0;width:100%;padding:0;margin:0;
- }
- .print-sheet{display:flex!important;flex-wrap:wrap;gap:4mm;align-content:flex-start}
- .print-item{
-  display:block!important;break-inside:avoid;
-  page-break-inside:avoid;text-align:center;overflow:hidden;
- }
- .print-item img{
-  display:block;width:100%;height:100%;object-fit:contain;
- }
- .print-item.a4-item{width:190mm!important;height:277mm!important;flex:0 0 190mm}
- .print-item.a4-item img{object-fit:contain}
- .print-label{font-size:8pt;margin-top:1mm}
-}
+body{margin:0;background:#eef2f7;color:#172033;font-family:Arial,sans-serif}
+header{background:linear-gradient(120deg,#102b58,#1675c5);color:white;text-align:center;padding:24px 12px}
+header h1{margin:0 0 8px;font-size:27px}
+header p{margin:0;font-size:14px}
+nav{background:#102b58;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;padding:13px}
+nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
+.container{max-width:1450px;margin:auto;padding:14px}
+.heading{background:#163f73;color:white;padding:14px;border-radius:10px;margin:22px 0 14px;font-size:20px}
+.editor{background:white;padding:15px;border-radius:14px;margin-bottom:22px;box-shadow:0 3px 12px #0001}
+.editor-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,1fr);gap:18px}
+.preview{background:#e8edf4;border:2px dashed #b5c1d1;border-radius:12px;min-height:330px;padding:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+canvas{max-width:100%;max-height:520px;background:white;border:1px solid #ddd}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.tool{background:#f6f8fb;border:1px solid #e0e6ee;border-radius:9px;padding:10px;min-width:0}
+.tool label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
+input,select,button{font-size:14px}
+input[type=file]{width:100%;font-size:12px}
+input[type=range]{width:100%}
+input[type=color]{width:100%;height:36px}
+input[type=text],input[type=number],select{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:7px;background:white}
+button{border:0;border-radius:8px;padding:10px 12px;background:#1768b5;color:white;font-weight:bold;cursor:pointer}
+button:hover{opacity:.88}
+.green{background:#16834a}
+.orange{background:#d97706}
+.red{background:#c0392b}
+.gray{background:#475569}
+.button-row{display:flex;flex-wrap:wrap;gap:7px}
+.button-row button{flex:1}
+.full{grid-column:1/-1}
+.note{font-size:12px;color:#64748b;line-height:1.5}
+.portal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.portal{background:white;border:1px solid #dce4ee;border-radius:10px;padding:15px 8px;text-align:center;text-decoration:none;color:#174574;font-weight:bold}
+.portal:hover{background:#e5f1ff}
+footer{background:#102b58;color:white;text-align:center;padding:20px;margin-top:30px}
+@media(max-width:850px){.editor-grid{grid-template-columns:1fr}}
+@media(max-width:430px){.tools{grid-template-columns:1fr}.container{padding:9px}header h1{font-size:21px}}
 </style>
 </head>
 
 <body>
 
 <header>
- <div class="brand">
-  <h1>🇮🇳 Gramin Grahak Sewa</h1>
-  <p>आपकी डिजिटल सेवा, आपके गाँव में</p>
-  <b>Digital Services • Photo Studio • Printing</b>
- </div>
+<h1>🌐 ग्रामीण ग्राहक सेवा</h1>
+<p>Card Printing • Passport Photo Studio • Photo Editing</p>
 </header>
 
 <nav>
- <a href="#home">होम</a>
- <a href="#services">सर्विस</a>
- <a href="#studio">कार्ड प्रिंट</a>
- <a href="#editorSection">Photo Editor</a>
- <a href="#passport">पासपोर्ट फोटो</a>
- <a href="#facilities">सुविधाएँ</a>
- <a href="#contact">संपर्क</a>
+<a href="#home">Home</a>
+<a href="#portals">Digital Services</a>
+<a href="#card">Card Editor</a>
+<a href="#passport">Passport Photo</a>
 </nav>
 
-<section class="hero" id="home">
- <h2>Gramin Grahak Sewa में आपका स्वागत है</h2>
- <p>डिजिटल सेवाएँ, फोटो एडिटिंग और डॉक्यूमेंट प्रिंटिंग</p>
- <a href="#editorSection" class="btn orange">Photo Editor खोलें</a>
-</section>
+<div class="container" id="home">
 
-<main class="container">
-
-<!-- DIGITAL SERVICES -->
-
-<section id="services">
-<h2 class="section-title">हमारी डिजिटल सेवाएँ</h2>
-<div class="grid">
-
-<div class="card"><div class="emoji">🪪</div><h3>आधार सेवा</h3><p>आधार की आधिकारिक सेवाएँ</p><a class="btn" href="https://uidai.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">💳</div><h3>PAN Card</h3><p>PAN की सेवाएँ</p><a class="btn" href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🗳️</div><h3>Voter ID</h3><p>मतदाता सेवाएँ</p><a class="btn" href="https://voters.eci.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🚗</div><h3>Driving Licence</h3><p>परिवहन सेवाएँ</p><a class="btn" href="https://parivahan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🏥</div><h3>Ayushman Card</h3><p>आयुष्मान सेवाएँ</p><a class="btn" href="https://beneficiary.nha.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">👷</div><h3>e-Shram</h3><p>ई-श्रम पोर्टल</p><a class="btn" href="https://eshram.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🌾</div><h3>PM Kisan</h3><p>किसान सेवाएँ</p><a class="btn" href="https://pmkisan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🏦</div><h3>EPFO</h3><p>PF सेवाएँ</p><a class="btn" href="https://www.epfindia.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🩺</div><h3>ABHA Card</h3><p>स्वास्थ्य सेवाएँ</p><a class="btn" href="https://abha.abdm.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🛂</div><h3>Passport</h3><p>पासपोर्ट सेवाएँ</p><a class="btn" href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🧾</div><h3>GST</h3><p>GST सेवाएँ</p><a class="btn" href="https://www.gst.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
-<div class="card"><div class="emoji">🍚</div><h3>Ration Card</h3><p>राजस्थान राशन सेवाएँ</p><a class="btn" href="https://food.rajasthan.gov.in/" target="_blank" rel="noopener">खोलें</a></div>
-
+<h2 class="heading" id="portals">🌐 Digital Service Portals</h2>
+<div class="portal-grid">
+<a class="portal" href="https://uidai.gov.in/" target="_blank">आधार सेवा</a>
+<a class="portal" href="https://www.incometax.gov.in/" target="_blank">PAN सेवा</a>
+<a class="portal" href="https://voters.eci.gov.in/" target="_blank">Voter ID</a>
+<a class="portal" href="https://parivahan.gov.in/" target="_blank">Driving Licence</a>
+<a class="portal" href="https://beneficiary.nha.gov.in/" target="_blank">Ayushman Card</a>
+<a class="portal" href="https://eshram.gov.in/" target="_blank">e-Shram Card</a>
+<a class="portal" href="https://abha.abdm.gov.in/" target="_blank">ABHA Card</a>
+<a class="portal" href="https://pmkisan.gov.in/" target="_blank">PM Kisan</a>
+<a class="portal" href="https://www.epfindia.gov.in/" target="_blank">EPFO</a>
+<a class="portal" href="https://passportindia.gov.in/" target="_blank">Passport</a>
+<a class="portal" href="https://www.gst.gov.in/" target="_blank">GST</a>
+<a class="portal" href="https://food.rajasthan.gov.in/" target="_blank">Rajasthan Ration</a>
 </div>
-</section>
 
-<!-- CARD PRINTING -->
-
-<section id="studio">
-<h2 class="section-title">🪪 कार्ड और डॉक्यूमेंट प्रिंटिंग</h2>
-
-<div class="panel">
-<p class="small-note">अपने वास्तविक दस्तावेज़ की फोटो अपलोड करके प्रिंट लेआउट बनाएँ। आधिकारिक कार्ड की जानकारी या पहचान विवरण बदलने के लिए यह टूल नहीं है।</p>
-
-<div class="row">
-<div>
-<label>दस्तावेज़ का प्रकार</label>
-<select id="docType">
-<option>आधार कार्ड की कॉपी</option>
-<option>PAN Card की कॉपी</option>
-<option>Voter ID की कॉपी</option>
-<option>Driving Licence की कॉपी</option>
-<option>Ayushman Card की कॉपी</option>
-<option>Ration Card की कॉपी</option>
-<option>e-Shram Card की कॉपी</option>
-<option>ABHA Card की कॉपी</option>
-<option>अन्य दस्तावेज़</option>
-</select>
-</div>
-<div>
-<label>दस्तावेज़ फोटो</label>
-<input type="file" id="docFile" accept="image/*">
-</div>
-<div>
-<label>फोटो का भाग</label>
-<select id="docSide"><option>Front / आगे</option><option>Back / पीछे</option></select>
-</div>
-<div>
-<label>कॉपी संख्या</label>
-<input id="copies" type="number" value="1" min="1" max="20">
-</div>
-<div>
-<label>चौड़ाई (mm)</label>
-<input id="cardWidth" type="number" value="86" min="10" max="200">
-</div>
-<div>
-<label>ऊँचाई (mm)</label>
-<input id="cardHeight" type="number" value="54" min="10" max="200">
-</div>
-</div>
-<button class="btn" id="addDoc">कार्ड प्रिंट में जोड़ें</button>
-</div>
-</section>
-
-<!-- ADVANCED EDITOR -->
-
-<section id="editorSection">
-<h2 class="section-title">🎨 Professional Photo Editor</h2>
-
-<div class="panel">
-<h3>1. फोटो चुनें</h3>
-<p class="small-note">फोटो एडिटर में सामान्य फोटो या वास्तविक दस्तावेज़ की कॉपी खोल सकते हैं। दस्तावेज़ के नाम, नंबर और आधिकारिक जानकारी को बदलने की सुविधा नहीं है।</p>
-<input type="file" id="editorFile" accept="image/*">
+<h2 class="heading" id="card">🪪 All-in-One Card Editor</h2>
 
 <div class="editor">
-<h3>2. फोटो प्रीव्यू</h3>
-<div class="canvas-wrap">
-<canvas id="editorCanvas" width="600" height="450"></canvas>
+<div class="editor-grid">
+
+<div>
+<h3>Card Preview</h3>
+<div class="preview">
+<canvas id="cardCanvas" width="856" height="540"></canvas>
 </div>
-<p class="small-note">एडिटिंग का परिणाम यहाँ दिखाई देगा।</p>
+<p class="note">फोटो अपलोड करके नीचे दिए गए टूल से अपना प्रिंट लेआउट तैयार करें।</p>
+<div class="button-row">
+<button class="green" onclick="downloadCanvas('cardCanvas','card.png')">⬇ Download PNG</button>
+<button onclick="printCanvas('cardCanvas')">🖨 Print Card</button>
+</div>
 </div>
 
-<div class="tool-group">
-<h4>🔄 Rotate और Flip</h4>
-<button class="btn" id="rotateLeft">↶ 90° Left</button>
-<button class="btn" id="rotateRight">↷ 90° Right</button>
-<button class="btn gray" id="flipH">↔ Flip Horizontal</button>
-<button class="btn gray" id="flipV">↕ Flip Vertical</button>
+<div>
+<h3>सभी Card Editing Tools</h3>
+<div class="tools">
+
+<div class="tool full">
+<label>📁 फोटो अपलोड करें</label>
+<input type="file" accept="image/*" onchange="loadImage(event,'card')">
 </div>
 
-<div class="tool-group">
-<h4>🔍 Zoom और Crop</h4>
+<div class="tool">
+<label>कार्ड चौड़ाई (mm)</label>
+<input id="cardW" type="number" value="85.6" min="20" max="300" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>कार्ड ऊंचाई (mm)</label>
+<input id="cardH" type="number" value="54" min="20" max="300" oninput="renderCard()">
+</div>
+
+<div class="tool">
+<label>Rotation</label>
+<div class="button-row">
+<button onclick="rotate('card',-90)">↶ 90°</button>
+<button onclick="rotate('card',90)">↷ 90°</button>
+</div>
+</div>
+
+<div class="tool">
+<label>Flip</label>
+<div class="button-row">
+<button class="gray" onclick="flip('card','x')">↔ Horizontal</button>
+<button class="gray" onclick="flip('card','y')">↕ Vertical</button>
+</div>
+</div>
+
+<div class="tool">
 <label>Zoom</label>
-<input type="range" id="zoom" min="50" max="200" value="100">
+<input id="cardZoom" type="range" min=".5" max="3" step=".05" value="1" oninput="renderCard()">
+</div>
+<div class="tool">
 <label>Horizontal Position</label>
-<input type="range" id="posX" min="-100" max="100" value="0">
+<input id="cardX" type="range" min="-300" max="300" value="0" oninput="renderCard()">
+</div>
+<div class="tool">
 <label>Vertical Position</label>
-<input type="range" id="posY" min="-100" max="100" value="0">
+<input id="cardY" type="range" min="-300" max="300" value="0" oninput="renderCard()">
 </div>
 
-<div class="tool-group">
-<h4>🌈 फोटो कलर और साफ करना</h4>
-<label>Brightness</label>
-<input type="range" id="brightness" min="0" max="200" value="100">
-<label>Contrast</label>
-<input type="range" id="contrast" min="0" max="200" value="100">
-<label>Saturation</label>
-<input type="range" id="saturation" min="0" max="200" value="100">
-<label>Grayscale</label>
-<input type="range" id="grayscale" min="0" max="100" value="0">
-<label>Sepia</label>
-<input type="range" id="sepia" min="0" max="100" value="0">
+<div class="tool">
+<label>Round Corners</label>
+<input id="cardRound" type="range" min="0" max="100" value="18" oninput="renderCard()">
 </div>
-
-<div class="tool-group">
-<h4>⭕ Round Corners और Background</h4>
-<label>Corner Round</label>
-<input type="range" id="round" min="0" max="100" value="0">
+<div class="tool">
+<label>Border Size</label>
+<input id="cardBorder" type="range" min="0" max="20" value="2" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Border Color</label>
+<input id="cardBorderColor" type="color" value="#1768b5" oninput="renderCard()">
+</div>
+<div class="tool">
 <label>Background Color</label>
-<input type="color" id="bgColor" value="#ffffff">
-<p class="small-note">यह बैकग्राउंड रंग पारदर्शी हिस्से या फोटो के बाहर के फ्रेम में लागू होता है। सामान्य JPEG फोटो का वास्तविक बैकग्राउंड बदलने के लिए नीचे Passport Background टूल देखें।</p>
+<input id="cardBg" type="color" value="#ffffff" oninput="renderCard()">
 </div>
 
-<div class="tool-group">
-<h4>✍️ फोटो पर टेक्स्ट</h4>
-<label>टेक्स्ट लिखें</label>
-<input type="text" id="photoText" placeholder="अपना टेक्स्ट लिखें">
-<div class="row">
-<div>
-<label>टेक्स्ट रंग</label>
-<input type="color" id="textColor" value="#ff0000">
+<div class="tool">
+<label>Brightness</label>
+<input id="cardBright" type="range" min="0" max="200" value="100" oninput="renderCard()">
 </div>
-<div>
-<label>टेक्स्ट आकार</label>
-<input type="number" id="textSize" value="30" min="8" max="120">
+<div class="tool">
+<label>Contrast</label>
+<input id="cardContrast" type="range" min="0" max="200" value="100" oninput="renderCard()">
 </div>
-<div>
-<label>टेक्स्ट की जगह</label>
-<select id="textPosition">
-<option value="bottom">नीचे</option>
-<option value="top">ऊपर</option>
-<option value="center">बीच में</option>
+<div class="tool">
+<label>Saturation</label>
+<input id="cardSat" type="range" min="0" max="200" value="100" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Grayscale</label>
+<input id="cardGray" type="range" min="0" max="100" value="0" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Blur</label>
+<input id="cardBlur" type="range" min="0" max="8" step=".5" value="0" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Sepia</label>
+<input id="cardSepia" type="range" min="0" max="100" value="0" oninput="renderCard()">
+</div>
+
+<div class="tool">
+<label>Text लिखें</label>
+<input id="cardText" type="text" placeholder="अपना टेक्स्ट" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Text Color</label>
+<input id="cardTextColor" type="color" value="#000000" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Text Size</label>
+<input id="cardTextSize" type="number" value="32" min="8" max="120" oninput="renderCard()">
+</div>
+<div class="tool">
+<label>Font Style</label>
+<select id="cardFont" onchange="renderCard()">
+<option value="Arial">Arial</option>
+<option value="Georgia">Georgia</option>
+<option value="Verdana">Verdana</option>
+<option value="serif">Serif</option>
+<option value="sans-serif">Sans Serif</option>
+<option value="monospace">Monospace</option>
 </select>
 </div>
+<div class="tool">
+<label>Text Position</label>
+<select id="cardTextPosition" onchange="renderCard()">
+<option value="bottom">Bottom</option>
+<option value="top">Top</option>
+<option value="center">Center</option>
+</select>
 </div>
-<button class="btn orange" id="applyText">टेक्स्ट लगाएँ</button>
-<button class="btn gray" id="removeText">टेक्स्ट हटाएँ</button>
+<div class="tool">
+<label>Shadow</label>
+<input id="cardShadow" type="range" min="0" max="30" value="0" oninput="renderCard()">
 </div>
 
-<div class="tool-group">
-<h4>💾 एडिटिंग सेव करें</h4>
-<button class="btn green" id="downloadEditor">फोटो डाउनलोड करें</button>
-<button class="btn" id="editorToPrint">प्रिंट पेज में जोड़ें</button>
-<button class="btn gray" id="resetEditor">Reset</button>
+<div class="tool full">
+<div class="button-row">
+<button class="gray" onclick="historyMove('card',-1)">↶ Undo</button>
+<button class="gray" onclick="historyMove('card',1)">↷ Redo</button>
+<button class="orange" onclick="resetEditor('card')">Reset</button>
 </div>
-<p id="editorStatus" class="small-note" role="status">पहले फोटो चुनें।</p>
 </div>
-</section>
 
-<!-- PASSPORT PHOTO -->
+</div>
+</div>
+</div>
+</div>
 
-<section id="passport">
-<h2 class="section-title">📸 Passport Photo Studio</h2>
-
-<div class="panel">
-<h3>पासपोर्ट साइज फोटो बनाएँ</h3>
-<div class="row">
-<div>
-<label>अपनी फोटो चुनें</label>
-<input type="file" id="passportFile" accept="image/*">
-</div>
-<div>
-<label>फोटो चौड़ाई (mm)</label>
-<input type="number" id="photoWidth" value="35" min="10" max="100">
-</div>
-<div>
-<label>फोटो ऊँचाई (mm)</label>
-<input type="number" id="photoHeight" value="45" min="10" max="100">
-</div>
-<div>
-<label>फोटो संख्या</label>
-<input type="number" id="photoCopies" value="8" min="1" max="40">
-</div>
-</div>
+<h2 class="heading" id="passport">📸 Passport Photo All-in-One Editor</h2>
 
 <div class="editor">
-<h3>Passport Photo Background Editor</h3>
-<div class="canvas-wrap">
-<canvas id="passportCanvas" width="400" height="500"></canvas>
+<div class="editor-grid">
+
+<div>
+<h3>Passport Photo Preview</h3>
+<div class="preview">
+<canvas id="passportCanvas" width="413" height="531"></canvas>
+</div>
+<p class="note">मानक अनुपात 35×45 mm। प्रिंट के लिए A4 शीट पर फोटो की कई प्रतियां लगाई जा सकती हैं।</p>
+<div class="button-row">
+<button class="green" onclick="downloadCanvas('passportCanvas','passport-photo.png')">⬇ Download</button>
+<button onclick="printPassport()">🖨 Print A4 Sheet</button>
+</div>
 </div>
 
-<label>बैकग्राउंड रंग</label>
-<input type="color" id="passportBg" value="#ffffff">
+<div>
+<h3>सभी Passport Photo Editing Tools</h3>
+<div class="tools">
 
-<label>Background Removal Tolerance</label>
-<input type="range" id="tolerance" min="0" max="150" value="35">
+<div class="tool full">
+<label>📁 फोटो अपलोड करें</label>
+<input type="file" accept="image/*" onchange="loadImage(event,'passport')">
+</div>
 
-<p class="small-note">यह एक साधारण रंग-आधारित बैकग्राउंड हटाने वाला टूल है। यह फोटो के ऊपरी-बाएँ कोने के रंग से मिलते-जुलते पिक्सेल हटाता है। जटिल बैकग्राउंड या बालों के आसपास सटीक AI कटिंग के लिए AI सेवा/API आवश्यक है।</p>
+<div class="tool">
+<label>Background Color</label>
+<input id="passBg" type="color" value="#ffffff" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Ready Background</label>
+<select id="passPreset" onchange="setPassBg()">
+<option value="#ffffff">White</option>
+<option value="#dceeff">Light Blue</option>
+<option value="#b9d9ff">Blue</option>
+<option value="#ffdddd">Light Red</option>
+<option value="#e8f5e9">Light Green</option>
+<option value="#eeeeee">Light Grey</option>
+</select>
+</div>
 
-<button class="btn" id="removeBg">रंगीन बैकग्राउंड हटाएँ</button>
-<button class="btn orange" id="passportReset">मूल फोटो वापस करें</button>
+<div class="tool">
+<label>Background Remove Tolerance</label>
+<input id="passTolerance" type="range" min="0" max="120" value="35" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Background Removal</label>
+<button class="orange" onclick="toggleRemoval()">Background Remove ON/OFF</button>
+</div>
 
-<h4>फोटो सुधारें</h4>
+<div class="tool">
+<label>Zoom</label>
+<input id="passZoom" type="range" min=".5" max="3" step=".05" value="1" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Horizontal Position</label>
+<input id="passX" type="range" min="-250" max="250" value="0" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Vertical Position</label>
+<input id="passY" type="range" min="-250" max="250" value="0" oninput="renderPassport()">
+</div>
+
+<div class="tool">
+<label>Rotation</label>
+<div class="button-row">
+<button onclick="rotate('passport',-90)">↶ 90°</button>
+<button onclick="rotate('passport',90)">↷ 90°</button>
+</div>
+</div>
+<div class="tool">
+<label>Flip</label>
+<div class="button-row">
+<button class="gray" onclick="flip('passport','x')">↔ Horizontal</button>
+<button class="gray" onclick="flip('passport','y')">↕ Vertical</button>
+</div>
+</div>
+
+<div class="tool">
 <label>Brightness</label>
-<input type="range" id="pBrightness" min="0" max="200" value="100">
+<input id="passBright" type="range" min="0" max="200" value="100" oninput="renderPassport()">
+</div>
+<div class="tool">
 <label>Contrast</label>
-<input type="range" id="pContrast" min="0" max="200" value="100">
-
-<h4>फोटो पर टेक्स्ट</h4>
-<input type="text" id="pText" placeholder="फोटो पर टेक्स्ट">
-<label>टेक्स्ट रंग</label>
-<input type="color" id="pTextColor" value="#ffffff">
-<button class="btn purple" id="pAddText">टेक्स्ट जोड़ें</button>
-
+<input id="passContrast" type="range" min="0" max="200" value="100" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Saturation</label>
+<input id="passSat" type="range" min="0" max="200" value="100" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Grayscale</label>
+<input id="passGray" type="range" min="0" max="100" value="0" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Blur</label>
+<input id="passBlur" type="range" min="0" max="8" step=".5" value="0" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Sepia</label>
+<input id="passSepia" type="range" min="0" max="100" value="0" oninput="renderPassport()">
 </div>
 
-<button class="btn green" id="addPassport">पासपोर्ट फोटो प्रिंट में जोड़ें</button>
-<button class="btn" id="downloadPassport">फोटो डाउनलोड करें</button>
+<div class="tool">
+<label>Photo Border</label>
+<input id="passBorder" type="range" min="0" max="12" value="1" oninput="renderPassport()">
 </div>
-</section>
-
-<!-- A4 -->
-
-<section>
-<h2 class="section-title">📄 A4 Photo / Scan Printing</h2>
-<div class="panel">
-<label>फोटो या स्कैन चुनें</label>
-<input type="file" id="a4File" accept="image/*">
-<label>कितने पेज?</label>
-<input type="number" id="a4Copies" value="1" min="1" max="10">
-<button class="btn" id="addA4">A4 प्रिंट में जोड़ें</button>
+<div class="tool">
+<label>Border Color</label>
+<input id="passBorderColor" type="color" value="#cccccc" oninput="renderPassport()">
 </div>
-</section>
-
-<!-- PRINT PREVIEW -->
-
-<section>
-<h2 class="section-title">🖨️ Print Page Editor</h2>
-<div class="panel">
-<div id="printPreview" class="preview-grid"></div>
-<p id="status" role="status">अभी कोई फोटो नहीं जोड़ी गई है।</p>
-<button class="btn green" id="printButton">🖨️ Print / PDF Save</button>
-<button class="btn gray" id="resetAll">सभी फोटो हटाएँ</button>
+<div class="tool">
+<label>Round Corners</label>
+<input id="passRound" type="range" min="0" max="50" value="0" oninput="renderPassport()">
 </div>
-</section>
-
-<!-- FACILITIES -->
-
-<section id="facilities">
-<h2 class="section-title">ग्राहक सुविधाएँ</h2>
-<div class="facility"><h3>📷 Photo Editing</h3><p>रंग, Brightness, Rotate और फोटो टेक्स्ट।</p></div>
-<div class="facility"><h3>🪪 Card Printing</h3><p>मौजूदा दस्तावेज़ की प्रिंट कॉपी।</p></div>
-<div class="facility"><h3>📄 A4 Printing</h3><p>A4 पेज पर फोटो और स्कैन।</p></div>
-<div class="facility"><h3>📸 Passport Photo</h3><p>पासपोर्ट साइज फोटो और बैकग्राउंड रंग।</p></div>
-</section>
-
-<section class="faq">
-<h2 class="section-title">FAQ</h2>
-<details><summary>फोटो एडिट कैसे करें?</summary><p>फोटो चुनें और एडिटर के टूल इस्तेमाल करें।</p></details>
-<details><summary>बैकग्राउंड कैसे बदलें?</summary><p>Passport Background Editor में रंग चुनें और रंग-आधारित हटाने वाला टूल चलाएँ।</p></details>
-<details><summary>PDF कैसे बनाएँ?</summary><p>Print बटन दबाएँ और Save as PDF चुनें।</p></details>
-<details><summary>क्या फोटो सर्वर पर जाती है?</summary><p>इस कोड में फोटो ब्राउज़र में ही प्रोसेस होती है। किसी सर्वर पर अपलोड नहीं होती।</p></details>
-</section>
-
-<section id="contact">
-<h2 class="section-title">संपर्क</h2>
-<div class="panel" style="text-align:center">
-<h3>Gramin Grahak Sewa</h3>
-<p>डिजिटल सेवाएँ • फोटो • डॉक्यूमेंट प्रिंटिंग</p>
-<p>संपर्क नंबर और पता अपनी जानकारी से जोड़ें।</p>
+<div class="tool">
+<label>Text</label>
+<input id="passText" type="text" placeholder="टेक्स्ट" oninput="renderPassport()">
 </div>
-</section>
+<div class="tool">
+<label>Text Color</label>
+<input id="passTextColor" type="color" value="#000000" oninput="renderPassport()">
+</div>
+<div class="tool">
+<label>Text Size</label>
+<input id="passTextSize" type="number" min="8" max="60" value="18" oninput="renderPassport()">
+</div>
 
-</main>
+<div class="tool full">
+<div class="button-row">
+<button class="gray" onclick="historyMove('passport',-1)">↶ Undo</button>
+<button class="gray" onclick="historyMove('passport',1)">↷ Redo</button>
+<button class="orange" onclick="resetEditor('passport')">Reset</button>
+</div>
+</div>
+
+<div class="tool">
+<label>A4 पर फोटो की संख्या</label>
+<input id="passCopies" type="number" min="1" max="60" value="24">
+</div>
+<div class="tool">
+<label>फोटो के बीच Gap (mm)</label>
+<input id="passGap" type="number" min="0" max="30" value="3">
+</div>
+<div class="tool">
+<label>फोटो चौड़ाई (mm)</label>
+<input id="passPrintW" type="number" min="10" max="100" value="35">
+</div>
+<div class="tool">
+<label>फोटो ऊंचाई (mm)</label>
+<input id="passPrintH" type="number" min="10" max="120" value="45">
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<h2 class="heading">ℹ️ जरूरी जानकारी</h2>
+<p class="note">
+यह टूल फोटो और प्रिंट लेआउट एडिटिंग के लिए है। Background Remove सुविधा रंग की समानता के आधार पर काम करती है; यह AI आधारित सटीक कटआउट नहीं है। वास्तविक AI फोटो सुधार और AI बैकग्राउंड हटाने के लिए अलग API की आवश्यकता होगी। सरकारी दस्तावेजों में दी गई आधिकारिक जानकारी को बदलने के बजाय केवल वैध प्रिंटिंग और लेआउट का उपयोग करें।
+</p>
+
+</div>
 
 <footer>
-<h3>🇮🇳 Gramin Grahak Sewa</h3>
-<p>आपकी डिजिटल सेवा, आपके गाँव में</p>
-<div class="social-icons">
-<a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
-<a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-<a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
-</div>
-<p>© 2026 Gramin Grahak Sewa. All Rights Reserved.</p>
+© 2026 Gramin Grahak Sewa | Photo & Card Studio
 </footer>
 
-<div id="printArea">
-<div class="print-sheet" id="printSheet"></div>
-</div>
-
 <script>
-"use strict";
+const editors={
+ card:{
+  canvas:document.getElementById("cardCanvas"),
+  img:null,angle:0,flipX:1,flipY:1,remove:false,history:[],index:-1
+ },
+ passport:{
+  canvas:document.getElementById("passportCanvas"),
+  img:null,angle:0,flipX:1,flipY:1,remove:false,history:[],index:-1
+ }
+};
 
-/* COMMON */
+function el(id){return document.getElementById(id)}
+function ctx(type){return editors[type].canvas.getContext("2d")}
 
-const $=id=>document.getElementById(id);
-const items=[];
-let nextId=1;
-
-function status(t){$("status").textContent=t}
-function number(v,min,max,def){
- const n=Number(v);
- return Number.isFinite(n)?Math.max(min,Math.min(max,n)):def;
-}
-
-function loadImage(file){
- return new Promise((resolve,reject)=>{
-  if(!file||!file.type.startsWith("image/")){
-   reject(Error("कृपया सही फोटो चुनें।"));return;
-  }
-  const url=URL.createObjectURL(file);
+function loadImage(event,type){
+ const file=event.target.files[0];
+ if(!file)return;
+ if(!file.type.startsWith("image/")){
+  alert("कृपया सही फोटो चुनें।");return;
+ }
+ const reader=new FileReader();
+ reader.onload=e=>{
   const img=new Image();
-  img.onload=()=>resolve(img);
-  img.onerror=()=>reject(Error("फोटो खुल नहीं सकी।"));
-  img.src=url;
+  img.onload=()=>{
+   editors[type].img=img;
+   editors[type].angle=0;
+   editors[type].flipX=1;
+   editors[type].flipY=1;
+   editors[type].remove=false;
+   saveHistory(type);
+   render(type);
+  };
+  img.src=e.target.result;
+ };
+ reader.readAsDataURL(file);
+}
+
+function rotate(type,deg){
+ editors[type].angle=(editors[type].angle+deg)%360;
+ render(type);
+ saveHistory(type);
+}
+
+function flip(type,axis){
+ if(axis==="x")editors[type].flipX*=-1;
+ else editors[type].flipY*=-1;
+ render(type);saveHistory(type);
+}
+
+function getValue(id,def){
+ const n=parseFloat(el(id).value);
+ return Number.isFinite(n)?n:def;
+}
+
+function render(type){
+ if(type==="card")renderCard();
+ else renderPassport();
+}
+
+function drawEditor(type,settings){
+ const obj=editors[type],c=obj.canvas,g=ctx(type),img=obj.img;
+ const w=c.width,h=c.height;
+ const bg=el(settings.bg).value;
+ g.clearRect(0,0,w,h);
+ g.fillStyle=bg;
+ g.fillRect(0,0,w,h);
+
+ if(img){
+  const zoom=getValue(settings.zoom,1);
+  const angle=obj.angle*Math.PI/180;
+  const rotated=Math.abs(obj.angle%180)===90;
+  const baseW=rotated?h:w,baseH=rotated?w:h;
+  const scale=Math.max(baseW/img.width,baseH/img.height)*zoom;
+  const dw=img.width*scale,dh=img.height*scale;
+  const x=(w-dw)/2+getValue(settings.x,0);
+  const y=(h-dh)/2+getValue(settings.y,0);
+
+  g.save();
+  g.beginPath();
+  const radius=getValue(settings.round,0);
+  roundedRect(g,0,0,w,h,Math.min(radius,Math.min(w,h)/2));
+  g.clip();
+
+  g.translate(w/2,y+dh/2);
+  g.rotate(angle);
+  g.scale(obj.flipX,obj.flipY);
+
+  g.filter=
+   "brightness("+getValue(settings.bright,100)+"%) "+
+   "contrast("+getValue(settings.contrast,100)+"%) "+
+   "saturate("+getValue(settings.sat,100)+"%) "+
+   "grayscale("+getValue(settings.gray,0)+"%) "+
+   "sepia("+getValue(settings.sepia,0)+"%) "+
+   "blur("+getValue(settings.blur,0)+"px)";
+
+  g.drawImage(img,-dw/2,-dh/2,dw,dh);
+  g.restore();
+
+  if(obj.remove && type==="passport"){
+   removeSimilarBackground(c,getValue("passTolerance",35));
+  }
+ }
+
+ const border=getValue(settings.border,0);
+ if(border>0){
+  g.save();
+  g.strokeStyle=el(settings.borderColor).value;
+  g.lineWidth=border;
+  roundedRect(g,border/2,border/2,w-border,h-border,getValue(settings.round,0));
+  g.stroke();
+  g.restore();
+ }
+
+ const text=el(settings.text).value;
+ if(text){
+  g.save();
+  g.fillStyle=el(settings.textColor).value;
+  g.font="bold "+getValue(settings.textSize,25)+"px Arial";
+  g.textAlign="center";
+  let pos="bottom";
+  if(settings.position)pos=el(settings.position).value;
+  const y=pos==="top"?40:pos==="center"?h/2:h-25;
+  g.fillText(text,w/2,y);
+  g.restore();
+ }
+}
+
+function roundedRect(g,x,y,w,h,r){
+ g.beginPath();
+ g.moveTo(x+r,y);
+ g.lineTo(x+w-r,y);
+ g.quadraticCurveTo(x+w,y,x+w,y+r);
+ g.lineTo(x+w,y+h-r);
+ g.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+ g.lineTo(x+r,y+h);
+ g.quadraticCurveTo(x,y+h,x,y+h-r);
+ g.lineTo(x,y+r);
+ g.quadraticCurveTo(x,y,x+r,y);
+ g.closePath();
+}
+
+function renderCard(){
+ const w=Math.max(20,getValue("cardW",85.6));
+ const h=Math.max(20,getValue("cardH",54));
+ const c=editors.card.canvas;
+ c.width=Math.round(w*10);
+ c.height=Math.round(h*10);
+ drawEditor("card",{
+  bg:"cardBg",zoom:"cardZoom",x:"cardX",y:"cardY",
+  round:"cardRound",border:"cardBorder",borderColor:"cardBorderColor",
+  bright:"cardBright",contrast:"cardContrast",sat:"cardSat",
+  gray:"cardGray",blur:"cardBlur",sepia:"cardSepia",
+  text:"cardText",textColor:"cardTextColor",textSize:"cardTextSize",
+  position:"cardTextPosition"
  });
 }
 
-function canvasData(canvas){
- return canvas.toDataURL("image/jpeg",.94);
-}
-
-function addPrint(src,label,w,h,type="photo",count=1){
- for(let i=0;i<count;i++){
-  items.push({
-   id:nextId++,src,label,
-   width:w,height:h,type
-  });
- }
- renderItems();
- status(count+" फोटो प्रिंट में जोड़ दी गई हैं।");
-}
-
-function renderItems(){
- const preview=$("printPreview");
- const sheet=$("printSheet");
- preview.replaceChildren();
- sheet.replaceChildren();
-
- items.forEach(item=>{
-  const card=document.createElement("div");
-  card.className="preview-item";
-
-  const img=document.createElement("img");
-  img.src=item.src;
-
-  const name=document.createElement("p");
-  name.textContent=item.label;
-
-  const edit=document.createElement("button");
-  edit.className="btn orange";
-  edit.textContent="✏️ नाम बदलें";
-  edit.onclick=()=>{
-   const v=prompt("नाम लिखें:",item.label);
-   if(v&&v.trim()){
-    item.label=v.trim();renderItems();
-   }
-  };
-
-  const del=document.createElement("button");
-  del.className="btn gray";
-  del.textContent="हटाएँ";
-  del.onclick=()=>{
-   const i=items.findIndex(x=>x.id===item.id);
-   if(i>=0)items.splice(i,1);
-   renderItems();
-  };
-
-  card.append(img,name,edit,del);
-  preview.append(card);
-
-  const pi=document.createElement("div");
-  pi.className="print-item";
-  if(item.type==="a4")pi.classList.add("a4-item");
-  else{
-   pi.style.width=item.width+"mm";
-   pi.style.height=item.height+"mm";
-  }
-
-  const pimg=document.createElement("img");
-  pimg.src=item.src;
-  pi.append(pimg);
-
-  if(item.type!=="a4"){
-   const cap=document.createElement("div");
-   cap.className="print-label";
-   cap.textContent=item.label;
-   pi.append(cap);
-  }
-  sheet.append(pi);
+function renderPassport(){
+ const c=editors.passport.canvas;
+ c.width=413;c.height=531;
+ drawEditor("passport",{
+  bg:"passBg",zoom:"passZoom",x:"passX",y:"passY",
+  round:"passRound",border:"passBorder",borderColor:"passBorderColor",
+  bright:"passBright",contrast:"passContrast",sat:"passSat",
+  gray:"passGray",blur:"passBlur",sepia:"passSepia",
+  text:"passText",textColor:"passTextColor",textSize:"passTextSize"
  });
-
- if(!items.length)status("अभी कोई फोटो नहीं जोड़ी गई है।");
- else status("कुल "+items.length+" आइटम प्रिंट के लिए तैयार हैं।");
 }
 
-$("addDoc").onclick=async()=>{
- try{
-  const img=await loadImage($("docFile").files[0]);
-  const c=document.createElement("canvas");
-  c.width=img.naturalWidth;c.height=img.naturalHeight;
-  c.getContext("2d").drawImage(img,0,0);
-  const count=number($("copies").value,1,20,1);
-  const w=number($("cardWidth").value,10,200,86);
-  const h=number($("cardHeight").value,10,200,54);
-  addPrint(canvasData(c),$("docType").value+" - "+$("docSide").value,w,h,"card",count);
- }catch(e){status(e.message)}
-};
-
-$("addA4").onclick=async()=>{
- try{
-  const img=await loadImage($("a4File").files[0]);
-  const c=document.createElement("canvas");
-  c.width=img.naturalWidth;c.height=img.naturalHeight;
-  c.getContext("2d").drawImage(img,0,0);
-  addPrint(canvasData(c),"A4 Document",190,277,"a4",
-   number($("a4Copies").value,1,10,1));
- }catch(e){status(e.message)}
-};
-
-$("printButton").onclick=()=>{
- if(!items.length){status("पहले फोटो जोड़ें।");return}
- window.print();
-};
-$("resetAll").onclick=()=>{
- if(confirm("क्या सभी फोटो हटानी हैं?")){
-  items.length=0;renderItems();
- }
-};
-
-/* MAIN PHOTO EDITOR */
-
-const ec=$("editorCanvas");
-const ex=ec.getContext("2d");
-let editorImage=null;
-let angle=0,flipX=1,flipY=1,extraText="";
-let baseWidth=600,baseHeight=450;
-
-function drawEditor(){
- if(!editorImage)return;
- const img=editorImage;
- const w=baseWidth,h=baseHeight;
- ec.width=w;ec.height=h;
-
- const bg=$("bgColor").value;
- const radius=number($("round").value,0,100,0)*w/600;
-
- ex.clearRect(0,0,w,h);
- ex.fillStyle=bg;
- ex.fillRect(0,0,w,h);
-
- ex.save();
- ex.beginPath();
- ex.roundRect(0,0,w,h,radius);
- ex.clip();
-
- const rad=angle*Math.PI/180;
- const zoom=number($("zoom").value,50,200,100)/100;
- const bw=img.width,bh=img.height;
- const rotated=angle%180!==0;
- const boxW=rotated?h:w;
- const boxH=rotated?w:h;
- const scale=Math.max(boxW/bw,boxH/bh)*zoom;
- const dw=bw*scale,dh=bh*scale;
-
- ex.translate(w/2,h/2);
- ex.rotate(rad);
- ex.scale(flipX,flipY);
- ex.translate(
-  number($("posX").value,-100,100,0)*2,
-  number($("posY").value,-100,100,0)*2
- );
- ex.filter=
-  `brightness(${$("brightness").value}%) `+
-  `contrast(${$("contrast").value}%) `+
-  `saturate(${$("saturation").value}%) `+
-  `grayscale(${$("grayscale").value}%) `+
-  `sepia(${$("sepia").value}%)`;
-
- ex.drawImage(img,-dw/2,-dh/2,dw,dh);
- ex.restore();
-
- if(extraText){
-  ex.save();
-  ex.fillStyle=$("textColor").value;
-  ex.font="bold "+number($("textSize").value,8,120,30)+"px Arial";
-  ex.textAlign="center";
-  const p=$("textPosition").value;
-  const y=p==="top"?40:p==="center"?h/2:h-25;
-  ex.fillText(extraText,w/2,y,w-20);
-  ex.restore();
- }
+function setPassBg(){
+ el("passBg").value=el("passPreset").value;
+ renderPassport();
 }
 
-$("editorFile").onchange=async e=>{
- try{
-  editorImage=await loadImage(e.target.files[0]);
-  angle=0;flipX=1;flipY=1;extraText="";
-  baseWidth=600;baseHeight=450;
-  drawEditor();
-  $("editorStatus").textContent="फोटो एडिटर में खुल गई है।";
- }catch(err){$("editorStatus").textContent=err.message}
-};
+function toggleRemoval(){
+ editors.passport.remove=!editors.passport.remove;
+ renderPassport();
+ alert(editors.passport.remove?
+ "Background color removal चालू है।":"Background removal बंद है।");
+}
 
-$("rotateLeft").onclick=()=>{angle=(angle+270)%360;drawEditor()};
-$("rotateRight").onclick=()=>{angle=(angle+90)%360;drawEditor()};
-$("flipH").onclick=()=>{flipX*=-1;drawEditor()};
-$("flipV").onclick=()=>{flipY*=-1;drawEditor()};
+function removeSimilarBackground(canvas,tolerance){
+ const g=canvas.getContext("2d");
+ const w=canvas.width,h=canvas.height;
+ const data=g.getImageData(0,0,w,h);
+ const d=data.data;
+ const samples=[
+  [0,0],[w-1,0],[0,h-1],[w-1,h-1]
+ ];
+ let r=0,gg=0,b=0;
+ samples.forEach(([x,y])=>{
+  const i=(y*w+x)*4;
+  r+=d[i];gg+=d[i+1];b+=d[i+2];
+ });
+ r/=4;gg/=4;b/=4;
+ const threshold=tolerance*2.5;
+ for(let i=0;i<d.length;i+=4){
+  const dist=Math.sqrt(
+   (d[i]-r)**2+(d[i+1]-gg)**2+(d[i+2]-b)**2
+  );
+  if(dist<threshold)d[i+3]=0;
+ }
+ g.putImageData(data,0,0);
+}
 
-[
- "zoom","posX","posY","brightness","contrast",
- "saturation","grayscale","sepia","round","bgColor"
-].forEach(id=>{
- $(id).oninput=drawEditor;
-});
-
-$("applyText").onclick=()=>{
- extraText=$("photoText").value.trim();
- drawEditor();
-};
-$("removeText").onclick=()=>{
- extraText="";$("photoText").value="";drawEditor();
-};
-
-$("resetEditor").onclick=()=>{
- if(!editorImage)return;
- angle=0;flipX=1;flipY=1;extraText="";
- ["zoom","brightness","contrast","saturation"].forEach(id=>$(id).value=100);
- ["posX","posY","grayscale","sepia","round"].forEach(id=>$(id).value=0);
- $("bgColor").value="#ffffff";
- $("photoText").value="";
- drawEditor();
-};
-
-$("downloadEditor").onclick=()=>{
- if(!editorImage)return alert("पहले फोटो चुनें।");
+function downloadCanvas(id,name){
+ const c=el(id);
  const a=document.createElement("a");
- a.href=canvasData(ec);a.download="edited-photo.jpg";a.click();
-};
-
-$("editorToPrint").onclick=()=>{
- if(!editorImage)return alert("पहले फोटो चुनें।");
- addPrint(canvasData(ec),"Edited Photo",86,54,"photo",1);
-};
-
-/* PASSPORT PHOTO EDITOR */
-
-const pc=$("passportCanvas");
-const px=pc.getContext("2d");
-let passportImage=null;
-let passportBase=null;
-let pText="";
-
-function fitPassport(img){
- pc.width=400;pc.height=500;
- px.fillStyle=$("passportBg").value;
- px.fillRect(0,0,400,500);
-
- const scale=Math.max(400/img.width,500/img.height);
- const w=img.width*scale,h=img.height*scale;
- px.drawImage(img,(400-w)/2,(500-h)/2,w,h);
-}
-
-function passportDraw(){
- if(!passportBase)return;
- const img=passportBase;
- const temp=document.createElement("canvas");
- temp.width=400;temp.height=500;
- const tx=temp.getContext("2d");
- tx.filter=
-  `brightness(${$("pBrightness").value}%) `+
-  `contrast(${$("pContrast").value}%)`;
- const scale=Math.max(400/img.width,500/img.height);
- const w=img.width*scale,h=img.height*scale;
- tx.drawImage(img,(400-w)/2,(500-h)/2,w,h);
-
- px.clearRect(0,0,400,500);
- px.fillStyle=$("passportBg").value;
- px.fillRect(0,0,400,500);
- px.drawImage(temp,0,0);
-
- if(pText){
-  px.font="bold 24px Arial";
-  px.fillStyle=$("pTextColor").value;
-  px.textAlign="center";
-  px.fillText(pText,200,480,380);
- }
-}
-
-$("passportFile").onchange=async e=>{
- try{
-  passportImage=await loadImage(e.target.files[0]);
-  passportBase=passportImage;
-  pText="";
-  passportDraw();
- }catch(err){alert(err.message)}
-};
-
-$("passportBg").oninput=passportDraw;
-$("pBrightness").oninput=passportDraw;
-$("pContrast").oninput=passportDraw;
-$("pTextColor").oninput=passportDraw;
-
-$("pAddText").onclick=()=>{
- pText=$("pText").value.trim();
- passportDraw();
-};
-
-$("passportReset").onclick=()=>{
- if(!passportImage)return;
- passportBase=passportImage;
- pText="";
- $("pText").value="";
- $("pBrightness").value=100;
- $("pContrast").value=100;
- $("tolerance").value=35;
- $("passportBg").value="#ffffff";
- passportDraw();
-};
-
-/* SIMPLE COLOR-BASED BACKGROUND REMOVAL */
-
-$("removeBg").onclick=()=>{
- if(!passportImage)return alert("पहले फोटो चुनें।");
-
- const temp=document.createElement("canvas");
- temp.width=400;temp.height=500;
- const t=temp.getContext("2d");
- const scale=Math.max(400/passportImage.width,500/passportImage.height);
- const w=passportImage.width*scale;
- const h=passportImage.height*scale;
- t.drawImage(passportImage,(400-w)/2,(500-h)/2,w,h);
-
- const imageData=t.getImageData(0,0,400,500);
- const data=imageData.data;
-
- const r0=data[0],g0=data[1],b0=data[2];
- const tolerance=number($("tolerance").value,0,150,35);
-
- for(let i=0;i<data.length;i+=4){
-  const dr=data[i]-r0;
-  const dg=data[i+1]-g0;
-  const db=data[i+2]-b0;
-  const distance=Math.sqrt(dr*dr+dg*dg+db*db);
-
-  if(distance<tolerance){
-   data[i+3]=0;
-  }
- }
- t.putImageData(imageData,0,0);
-
- passportBase=new Image();
- passportBase.onload=passportDraw;
- passportBase.src=temp.toDataURL("image/png");
-};
-
-$("addPassport").onclick=()=>{
- if(!passportBase)return alert("पहले पासपोर्ट फोटो चुनें।");
- passportDraw();
- addPrint(canvasData(pc),"Passport Photo",
-  number($("photoWidth").value,10,100,35),
-  number($("photoHeight").value,10,100,45),
-  "photo",
-  number($("photoCopies").value,1,40,8)
- );
-};
-
-$("downloadPassport").onclick=()=>{
- if(!passportBase)return alert("पहले फोटो चुनें।");
- passportDraw();
- const a=document.createElement("a");
- a.href=pc.toDataURL("image/png");
- a.download="passport-photo.png";
+ a.download=name;
+ a.href=c.toDataURL("image/png");
  a.click();
-};
+}
 
-/* BEFORE PRINT */
+function printCanvas(id){
+ const c=el(id);
+ const win=window.open("","_blank");
+ if(!win){alert("Print खोलने के लिए Pop-up अनुमति दें।");return;}
+ win.document.write(
+  '<html><head><title>Print</title><style>'+
+  'body{text-align:center;margin:20px}img{max-width:100%;max-height:95vh}'+
+  '</style></head><body><img src="'+c.toDataURL()+'">'+
+  '<script>window.onload=function(){window.print()}<\/script></body></html>'
+ );
+ win.document.close();
+}
 
-window.addEventListener("beforeprint",renderItems);
+function printPassport(){
+ const copies=Math.max(1,Math.min(60,getValue("passCopies",24)));
+ const gap=Math.max(0,getValue("passGap",3));
+ const pw=Math.max(10,getValue("passPrintW",35));
+ const ph=Math.max(10,getValue("passPrintH",45));
+ const source=editors.passport.canvas.toDataURL("image/png");
+ const win=window.open("","_blank");
+ if(!win){alert("Print खोलने के लिए Pop-up अनुमति दें।");return;}
+ let html='<html><head><title>Passport Photo A4</title><style>'+
+ '@page{size:A4;margin:8mm}body{margin:0;font-family:Arial}'+
+ '.sheet{display:grid;grid-template-columns:repeat(auto-fill,'+pw+'mm);'+
+ 'gap:'+gap+'mm;align-content:start;justify-content:start}'+
+ 'img{width:'+pw+'mm;height:'+ph+'mm;object-fit:fill;border:0.2mm solid #ddd}'+
+ '</style></head><body><div class="sheet">';
+ for(let i=0;i<copies;i++)html+='<img src="'+source+'">';
+ html+='</div><script>window.onload=function(){window.print()}<\/script></body></html>';
+ win.document.write(html);
+ win.document.close();
+}
 
+function snapshot(type){
+ const obj=editors[type];
+ const c=obj.canvas;
+ return {
+  image:obj.img?obj.img.src:null,
+  angle:obj.angle,flipX:obj.flipX,flipY:obj.flipY,
+  remove:obj.remove,
+  canvas:c.toDataURL()
+ };
+}
+
+function saveHistory(type){
+ const obj=editors[type];
+ const snap=snapshot(type);
+ if(obj.index<obj.history.length-1)obj.history=obj.history.slice(0,obj.index+1);
+ obj.history.push(snap);
+ if(obj.history.length>20)obj.history.shift();
+ obj.index=obj.history.length-1;
+}
+
+function historyMove(type,direction){
+ const obj=editors[type];
+ const next=obj.index+direction;
+ if(next<0||next>=obj.history.length){
+  alert("और बदलाव उपलब्ध नहीं हैं।");return;
+ }
+ obj.index=next;
+ const snap=obj.history[next];
+ obj.angle=snap.angle;
+ obj.flipX=snap.flipX;
+ obj.flipY=snap.flipY;
+ obj.remove=snap.remove;
+ if(snap.image){
+  const img=new Image();
+  img.onload=()=>{obj.img=img;render(type)};
+  img.src=snap.image;
+ }else{
+  obj.img=null;render(type);
+ }
+}
+
+function resetEditor(type){
+ if(!confirm("सभी एडिटिंग सेटिंग Reset करें?"))return;
+ const obj=editors[type];
+ obj.angle=0;obj.flipX=1;obj.flipY=1;obj.remove=false;
+ const prefix=type==="card"?"card":"pass";
+ const defaults=type==="card"?
+ {
+  cardZoom:1,cardX:0,cardY:0,cardRound:18,cardBorder:2,
+  cardBright:100,cardContrast:100,cardSat:100,cardGray:0,
+  cardBlur:0,cardSepia:0,cardShadow:0,cardText:"",cardTextSize:32
+ }:
+ {
+  passZoom:1,passX:0,passY:0,passRound:0,passBorder:1,
+  passBright:100,passContrast:100,passSat:100,passGray:0,
+  passBlur:0,passSepia:0,passText:"",passTextSize:18
+ };
+ Object.entries(defaults).forEach(([id,value])=>{if(el(id))el(id).value=value});
+ render(type);saveHistory(type);
+}
+
+renderCard();
+renderPassport();
 </script>
+
 </body>
 </html>

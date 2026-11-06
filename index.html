@@ -1,231 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gramin Grahak Sewa | Advanced Photo Studio</title>
-
 <style>
-:root{
- --blue:#1459a6;
- --green:#07865c;
- --orange:#f28b18;
- --bg:#f2f5fa;
-}
+:root{--blue:#1459a6;--green:#07865c;--orange:#f28b18}
 *{box-sizing:border-box}
-body{
- margin:0;
- background:var(--bg);
- font-family:Arial,sans-serif;
- color:#172033;
-}
-header{
- background:linear-gradient(120deg,#104b91,#087b68);
- color:white;
- text-align:center;
- padding:22px 12px;
-}
-header h1{margin:0;font-size:30px}
-header p{margin:8px 0 0}
-nav{
- display:flex;
- justify-content:center;
- flex-wrap:wrap;
- gap:8px;
- background:white;
- padding:12px;
- position:sticky;
- top:0;
- z-index:5;
-}
-nav a{
- background:#eaf2fc;
- color:#1459a6;
- padding:10px 13px;
- border-radius:9px;
- text-decoration:none;
- font-weight:bold;
-}
-main{max-width:1250px;margin:18px auto;padding:0 12px}
-.panel{
- background:white;
- border-radius:15px;
- padding:17px;
- margin:16px 0;
- box-shadow:0 4px 15px #0001;
-}
-h2{color:#1459a6;margin-top:0}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:15px;
-}
-.field{
- margin:9px 0;
- display:flex;
- flex-direction:column;
- gap:5px;
-}
+body{margin:0;background:#f2f5fa;color:#172033;font-family:Arial,sans-serif}
+header{background:linear-gradient(120deg,#104b91,#087b68);color:white;text-align:center;padding:22px 10px}
+header h1{margin:0;font-size:28px}
+nav{position:sticky;top:0;z-index:5;background:white;padding:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 8px #0002}
+nav a{background:#eaf2fc;color:var(--blue);padding:10px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px}
+main{max-width:1300px;margin:auto;padding:12px}
+.panel{background:white;padding:17px;border-radius:14px;margin:16px 0;box-shadow:0 3px 14px #0001}
+h2{color:var(--blue);margin-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.field{display:flex;flex-direction:column;gap:5px;margin:9px 0}
 label{font-size:13px;font-weight:bold}
-input,select{
- width:100%;
- padding:10px;
- border:1px solid #cbd5e1;
- border-radius:8px;
- font:inherit;
-}
+input,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;background:white}
 input[type=range]{padding:0}
-input[type=color]{height:42px;padding:4px}
-button{
- border:0;
- background:var(--blue);
- color:white;
- padding:10px 13px;
- border-radius:8px;
- font-weight:bold;
- margin:3px;
- cursor:pointer;
-}
-button:active{transform:scale(.97)}
-.green{background:var(--green)}
-.orange{background:var(--orange)}
-.gray{background:#475569}
-.red{background:#c0392b}
-.actions{
- display:flex;
- flex-wrap:wrap;
- gap:4px;
- margin:10px 0;
-}
-.preview{
- background:#e8edf4;
- border:1px dashed #9aaec5;
- border-radius:10px;
- padding:10px;
- overflow:auto;
- display:flex;
- justify-content:center;
- align-items:flex-start;
- min-width:0;
-}
-canvas{
- max-width:100%;
- height:auto;
- background:white;
- box-shadow:0 2px 10px #0002;
-}
-.box{
- background:#f7faff;
- border:1px solid #dbe3ef;
- border-radius:10px;
- padding:12px;
- margin:10px 0;
-}
-.range{
- display:grid;
- grid-template-columns:1fr 45px;
- gap:8px;
- align-items:center;
-}
-.range output{
- text-align:right;
- font-size:12px;
- font-weight:bold;
- color:#1459a6;
-}
-.thumbs{
- display:flex;
- flex-wrap:wrap;
- gap:8px;
- margin-top:10px;
-}
-.thumb{
- border:2px solid transparent;
- background:#eef3f8;
- padding:5px;
- border-radius:8px;
- cursor:pointer;
- width:90px;
- text-align:center;
-}
-.thumb.active{border-color:#1459a6;background:#e1efff}
-.thumb img{
- width:100%;
- height:85px;
- object-fit:cover;
- display:block;
- border-radius:5px;
-}
-.thumb button{
- width:100%;
- margin:5px 0 0;
- padding:6px;
-}
-.thumb small{
- display:block;
- padding:4px 0;
-}
-.hint,small{
- color:#64748b;
- font-size:12px;
- line-height:1.5;
-}
-.status{
- background:#e7f7ef;
- border:1px solid #b5e5ca;
- color:#08764d;
- padding:10px;
- border-radius:8px;
- margin:8px 0;
- font-size:13px;
-}
-footer{
- text-align:center;
- padding:20px;
- color:#64748b;
-}
-@media(max-width:600px){
- nav{position:static}
- .panel{padding:12px}
- .grid{grid-template-columns:1fr}
- header h1{font-size:24px}
-}
+input[type=color]{height:40px;padding:3px}
+button{border:0;background:var(--blue);color:white;padding:10px 13px;border-radius:7px;margin:3px;cursor:pointer;font-weight:bold}
+.green{background:var(--green)}.orange{background:var(--orange)}.gray{background:#475569}.red{background:#c0392b}
+.actions{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
+.preview{background:#e8edf4;border:1px dashed #9aaec5;border-radius:9px;padding:10px;overflow:auto;display:flex;justify-content:center;align-items:flex-start;min-height:150px}
+canvas{max-width:100%;height:auto;background:white;box-shadow:0 2px 8px #0002}
+.box{background:#f7faff;border:1px solid #dbe3ef;border-radius:9px;padding:12px;margin:10px 0}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.thumb{width:85px;padding:5px;border:2px solid transparent;border-radius:7px;background:#eef3f8;cursor:pointer}
+.thumb.active{border-color:var(--blue)}
+.thumb img{width:100%;height:70px;object-fit:cover}
+.thumb small{display:block;text-align:center}
+.hint{font-size:12px;color:#64748b;line-height:1.5}
+.status{padding:9px;background:#e7f7ef;border-radius:7px;color:#08764d}
+footer{text-align:center;padding:20px;color:#64748b}
+@media(max-width:600px){nav{position:static}.panel{padding:12px}}
 </style>
 </head>
-
 <body>
 
 <header>
 <h1>🌾 Gramin Grahak Sewa</h1>
-<p>Photo Studio • ID Card Print & Editing • Joint Photo Maker</p>
+<p>Advanced Photo Studio • ID Card Print • Joint Photo • Document Scanner</p>
 </header>
 
 <nav>
-<a href="#photo">📸 Photo Studio</a>
-<a href="#idcard">🪪 ID Card Studio</a>
-<a href="#joint">👥 Joint Photo Maker</a>
+<a href="#photo">Photo Studio</a>
+<a href="#idcard">ID Card Studio</a>
+<a href="#joint">Joint Photo</a>
+<a href="#scanner">Document Scanner</a>
+<a href="#editor">Photo Editor</a>
 </nav>
 
 <main>
 
 <!-- PHOTO STUDIO -->
-
 <section class="panel" id="photo">
-<h2>📸 Photo Studio</h2>
-
+<h2>📸 Passport & Photo Print Studio</h2>
 <div class="grid">
 <div>
+<div class="field"><label>फोटो अपलोड करें</label><input type="file" id="pFile" accept="image/*"></div>
 
-<div class="field">
-<label>फोटो अपलोड करें</label>
-<input type="file" id="pFile" accept="image/*">
-</div>
-
-<div class="field">
-<label>Photo Size Preset</label>
+<div class="field"><label>Photo Size</label>
 <select id="pPreset">
-<option value="35,45,mm">Passport Photo 35 × 45 mm</option>
+<option value="35,45,mm">Passport 35 × 45 mm</option>
 <option value="25,35,mm">25 × 35 mm</option>
 <option value="25,25,mm">25 × 25 mm</option>
 <option value="2,2,inch">2 × 2 inch</option>
@@ -234,266 +73,112 @@ footer{
 <option value="5,7,inch">5 × 7 inch</option>
 <option value="8,10,inch">8 × 10 inch</option>
 <option value="custom">Custom Size</option>
-</select>
+</select></div>
+
+<div class="grid">
+<div class="field"><label>Width</label><input id="pW" type="number" value="35"></div>
+<div class="field"><label>Height</label><input id="pH" type="number" value="45"></div>
 </div>
 
 <div class="grid">
-<div class="field">
-<label>Width</label>
-<input id="pW" type="number" value="35" min="1">
-</div>
-<div class="field">
-<label>Height</label>
-<input id="pH" type="number" value="45" min="1">
-</div>
+<div class="field"><label>Unit</label><select id="pUnit"><option>mm</option><option>cm</option><option>inch</option><option>px</option></select></div>
+<div class="field"><label>DPI</label><select id="pDpi"><option>150</option><option selected>300</option></select></div>
 </div>
 
-<div class="field">
-<label>Unit</label>
-<select id="pUnit">
-<option>mm</option>
-<option>cm</option>
-<option>inch</option>
-<option>px</option>
-</select>
-</div>
+<div class="field"><label>एक शीट पर फोटो की संख्या</label><input id="pCount" type="number" value="8" min="1" max="100"></div>
+<div class="field"><label>Background Color</label><input id="pBg" type="color" value="#ffffff"></div>
 
-<div class="field">
-<label>DPI</label>
-<select id="pDpi">
-<option>150</option>
-<option selected>300</option>
-<option>600</option>
-</select>
-</div>
-
-<div class="field">
-<label>एक शीट पर फोटो की संख्या</label>
-<input id="pCount" type="number" min="1" max="100" value="8">
-</div>
-
-<div class="field">
-<label>Background Color</label>
-<input type="color" id="pBg" value="#ffffff">
-</div>
-
-<div class="box">
 <h3>Photo Editing Tools</h3>
-
-<div class="field">
-<label>Zoom</label>
-<div class="range">
-<input id="pZoom" type="range" min="25" max="300" value="100">
-<output id="pZoomV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Horizontal Position</label>
-<div class="range">
-<input id="pX" type="range" min="-100" max="100" value="0">
-<output id="pXV">0</output>
-</div>
-</div>
-
-<div class="field">
-<label>Vertical Position</label>
-<div class="range">
-<input id="pY" type="range" min="-100" max="100" value="0">
-<output id="pYV">0</output>
-</div>
-</div>
-
-<div class="field">
-<label>Rotate</label>
-<div class="range">
-<input id="pRotate" type="range" min="-180" max="180" value="0">
-<output id="pRotateV">0°</output>
-</div>
-</div>
-
-<div class="field">
-<label>Brightness</label>
-<div class="range">
-<input id="pBright" type="range" min="0" max="200" value="100">
-<output id="pBrightV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Contrast</label>
-<div class="range">
-<input id="pContrast" type="range" min="0" max="200" value="100">
-<output id="pContrastV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Saturation</label>
-<div class="range">
-<input id="pSat" type="range" min="0" max="200" value="100">
-<output id="pSatV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Filter</label>
+<div class="field"><label>Zoom</label><input id="pZoom" type="range" min="25" max="300" value="100"></div>
+<div class="field"><label>Horizontal Position</label><input id="pX" type="range" min="-100" max="100" value="0"></div>
+<div class="field"><label>Vertical Position</label><input id="pY" type="range" min="-100" max="100" value="0"></div>
+<div class="field"><label>Rotate</label><input id="pRotate" type="range" min="-180" max="180" value="0"></div>
+<div class="field"><label>Brightness</label><input id="pBright" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Contrast</label><input id="pContrast" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Saturation</label><input id="pSat" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Filter</label>
 <select id="pFilter">
 <option value="none">Normal</option>
 <option value="grayscale(1)">Black & White</option>
 <option value="sepia(1)">Sepia</option>
 <option value="contrast(1.2) saturate(.8)">Vintage</option>
-</select>
-</div>
+</select></div>
 
 <div class="actions">
 <button class="gray" id="pFlipH">Flip H</button>
 <button class="gray" id="pFlipV">Flip V</button>
 <button class="gray" id="pReset">Reset</button>
 </div>
-</div>
-
 <div class="actions">
 <button onclick="makePhotoSheet()">A4 Sheet बनाएं</button>
-<button class="green" onclick="saveCanvas('photoCanvas','photo-studio.png')">PNG Download</button>
+<button class="green" onclick="saveCanvas('photoCanvas','passport-photos.png')">PNG Download</button>
 <button class="orange" onclick="printCanvas('photoCanvas')">Print</button>
 </div>
-
 </div>
-
-<div class="preview">
-<canvas id="photoCanvas" width="1240" height="1754"></canvas>
+<div>
+<h3>Photo Preview</h3>
+<div class="preview"><canvas id="photoCanvas" width="1240" height="1754"></canvas></div>
 </div>
 </div>
 </section>
 
-
 <!-- ID CARD STUDIO -->
-
 <section class="panel" id="idcard">
-<h2>🪪 All ID Card Print & Editing Studio</h2>
-
+<h2>🪪 ID Card Front + Back Print Studio</h2>
 <div class="grid">
 <div>
-
-<div class="field">
-<label>Front Side की फोटो</label>
-<input type="file" id="frontFile" accept="image/*">
-</div>
-
-<div class="field">
-<label>Back Side की फोटो</label>
-<input type="file" id="backFile" accept="image/*">
-</div>
-
-<div class="field">
-<label>कार्ड का प्रकार</label>
+<div class="field"><label>Front Side</label><input type="file" id="frontFile" accept="image/*"></div>
+<div class="field"><label>Back Side</label><input type="file" id="backFile" accept="image/*"></div>
+<div class="field"><label>Card Side</label>
 <select id="cardSide">
 <option value="front">Only Front</option>
 <option value="back">Only Back</option>
 <option value="both">Front + Back</option>
-</select>
-</div>
-
-<div class="field">
-<label>Card Size Preset</label>
+</select></div>
+<div class="field"><label>Card Size</label>
 <select id="cardPreset">
-<option value="85.6,54,mm">Standard ID Card 85.6 × 54 mm</option>
-<option value="3.375,2.125,inch">CR80 3.375 × 2.125 inch</option>
+<option value="85.6,54,mm">Standard ID 85.6 × 54 mm</option>
+<option value="3.375,2.125,inch">CR80 Card</option>
 <option value="2.5,3.5,inch">2.5 × 3.5 inch</option>
-<option value="custom">Custom Size</option>
-</select>
-</div>
-
+<option value="custom">Custom</option>
+</select></div>
 <div class="grid">
-<div class="field">
-<label>Width</label>
-<input type="number" id="cardW" value="85.6">
+<div class="field"><label>Width</label><input id="cardW" type="number" value="85.6"></div>
+<div class="field"><label>Height</label><input id="cardH" type="number" value="54"></div>
 </div>
-<div class="field">
-<label>Height</label>
-<input type="number" id="cardH" value="54">
+<div class="grid">
+<div class="field"><label>Unit</label><select id="cardUnit"><option>mm</option><option>cm</option><option>inch</option><option>px</option></select></div>
+<div class="field"><label>DPI</label><select id="cardDpi"><option>150</option><option selected>300</option></select></div>
 </div>
-</div>
-
-<div class="field">
-<label>Unit</label>
-<select id="cardUnit">
-<option>mm</option>
-<option>cm</option>
-<option>inch</option>
-<option>px</option>
-</select>
-</div>
-
-<div class="field">
-<label>DPI</label>
-<select id="cardDpi">
-<option>150</option>
-<option selected>300</option>
-<option>600</option>
-</select>
-</div>
-
-<div class="field">
-<label>एक शीट पर कार्ड की Copies</label>
-<input id="cardCopies" type="number" min="1" max="20" value="1">
-</div>
-
-<div class="field">
-<label>Background Color</label>
-<input type="color" id="cardBg" value="#ffffff">
-</div>
-
+<div class="field"><label>Copies</label><input id="cardCopies" type="number" value="1" min="1" max="20"></div>
+<div class="field"><label>Background</label><input id="cardBg" type="color" value="#ffffff"></div>
 <div class="actions">
 <button onclick="drawCard()">Preview</button>
-<button class="green" onclick="saveCanvas('cardCanvas','id-card-print.png')">PNG Download</button>
+<button class="green" onclick="saveCanvas('cardCanvas','id-card-sheet.png')">PNG Download</button>
 <button class="orange" onclick="printCanvas('cardCanvas')">Print</button>
 </div>
-
-<p class="hint">
-Front और Back की अलग-अलग सामान्य फोटो अपलोड करें।
-यह सामान्य फोटो और प्रिंट लेआउट टूल है।
-</p>
 </div>
-
-<div class="preview">
-<canvas id="cardCanvas" width="1200" height="800"></canvas>
+<div>
+<h3>ID Card Preview</h3>
+<div class="preview"><canvas id="cardCanvas" width="1240" height="1754"></canvas></div>
 </div>
 </div>
 </section>
 
-
-<!-- JOINT PHOTO MAKER -->
-
+<!-- JOINT PHOTO -->
 <section class="panel" id="joint">
 <h2>👥 Joint Photo Maker Studio</h2>
-
 <div class="grid">
 <div>
-
-<div class="box">
-<h3>📸 फोटो जोड़ें</h3>
-
-<div class="field">
-<label>एक साथ कई फोटो चुनें (अधिकतम 10)</label>
-<input type="file" id="jFiles" accept="image/*" multiple>
-</div>
-
+<div class="field"><label>एक साथ कई फोटो अपलोड करें</label><input type="file" id="jFiles" accept="image/*" multiple></div>
 <div class="actions">
-<button type="button" class="green" id="jAddBtn">➕ Add More Photos</button>
-<button type="button" class="red" id="jClearBtn">सभी फोटो हटाएं</button>
+<button class="green" onclick="document.getElementById('jFiles').click()">Add More Photos</button>
+<button class="red" id="jClear">सभी फोटो हटाएं</button>
 </div>
+<div class="status" id="jCount">0 Photos</div>
+<div class="thumbs" id="jThumbs"></div>
 
-<div class="status">
-अपलोड की गई फोटो: <strong id="jPhotoCount">0 Photos</strong>
-</div>
-
-<div id="jThumbs" class="thumbs"></div>
-</div>
-
-<div class="field">
-<label>Paper Size</label>
+<div class="field"><label>Paper Size</label>
 <select id="jPreset">
 <option value="210,297,mm">A4</option>
 <option value="148,210,mm">A5</option>
@@ -501,1180 +186,415 @@ Front और Back की अलग-अलग सामान्य फोटो 
 <option value="5,7,inch">5 × 7 inch</option>
 <option value="8,10,inch">8 × 10 inch</option>
 <option value="custom">Custom</option>
-</select>
-</div>
+</select></div>
 
 <div class="grid">
-<div class="field">
-<label>Paper Width</label>
-<input type="number" id="jW" value="210" min="1">
+<div class="field"><label>Paper Width</label><input id="jW" type="number" value="210"></div>
+<div class="field"><label>Paper Height</label><input id="jH" type="number" value="297"></div>
 </div>
-<div class="field">
-<label>Paper Height</label>
-<input type="number" id="jH" value="297" min="1">
+<div class="grid">
+<div class="field"><label>Unit</label><select id="jUnit"><option>mm</option><option>cm</option><option>inch</option></select></div>
+<div class="field"><label>DPI</label><select id="jDpi"><option>150</option><option selected>300</option></select></div>
 </div>
-</div>
-
-<div class="field">
-<label>Unit</label>
-<select id="jUnit">
-<option>mm</option>
-<option>cm</option>
-<option>inch</option>
-<option>px</option>
-</select>
+<div class="field"><label>Layout</label>
+<select id="jLayout"><option value="auto">Auto Grid</option><option value="horizontal">Horizontal</option><option value="vertical">Vertical</option><option value="two">Two Columns</option></select></div>
+<div class="field"><label>Background</label><input id="jBg" type="color" value="#ffffff"></div>
+<div class="field"><label>Photo Gap</label><input id="jGap" type="range" min="0" max="80" value="12"></div>
+<div class="field"><label>Border Color</label><input id="jBorder" type="color" value="#ffffff"></div>
+<div class="field"><label>Border Width</label><input id="jBorderW" type="range" min="0" max="30" value="3"></div>
+<div class="field"><label>Corner Radius</label><input id="jRadius" type="range" min="0" max="100" value="10"></div>
+<div class="field"><label>नीचे टेक्स्ट</label><input id="jText" placeholder="अपना टेक्स्ट लिखें"></div>
 </div>
 
-<div class="field">
-<label>DPI</label>
-<select id="jDpi">
-<option>150</option>
-<option selected>300</option>
-<option>600</option>
-</select>
-</div>
-
-<div class="field">
-<label>Layout</label>
-<select id="jLayout">
-<option value="auto">Auto Grid</option>
-<option value="horizontal">Horizontal</option>
-<option value="vertical">Vertical</option>
-<option value="two">Two Columns</option>
-</select>
-</div>
-
-<div class="field">
-<label>Background</label>
-<input type="color" id="jBg" value="#ffffff">
-</div>
-
-<div class="field">
-<label>Photo Gap</label>
-<div class="range">
-<input id="jGap" type="range" min="0" max="80" value="12">
-<output id="jGapV">12</output>
-</div>
-</div>
-
-<div class="field">
-<label>Border Color</label>
-<input type="color" id="jBorder" value="#ffffff">
-</div>
-
-<div class="field">
-<label>Border Width</label>
-<div class="range">
-<input id="jBorderW" type="range" min="0" max="30" value="3">
-<output id="jBorderWV">3</output>
-</div>
-</div>
-
-<div class="field">
-<label>Corner Radius</label>
-<div class="range">
-<input id="jRadius" type="range" min="0" max="100" value="10">
-<output id="jRadiusV">10</output>
-</div>
-</div>
-
-<div class="field">
-<label>नीचे टेक्स्ट (वैकल्पिक)</label>
-<input id="jText" placeholder="Text">
-</div>
-
-<div class="actions">
-<button onclick="drawJoint()">Preview</button>
-<button class="green" onclick="saveCanvas('jointCanvas','joint-photo.png')">PNG Download</button>
-<button class="green" onclick="saveJPG()">JPG Download</button>
-<button class="orange" onclick="printCanvas('jointCanvas')">Print</button>
-</div>
-
-</div>
-
-
-<!-- JOINT EDITING TOOLS -->
-
-<div>
 <div class="box">
-<h3>🎨 Selected Photo Editing</h3>
-<p class="hint">पहले Thumbnail पर क्लिक करके फोटो चुनें। फिर नीचे दिए गए टूल से एडिट करें।</p>
-
-<div class="field">
-<label>Zoom</label>
-<div class="range">
-<input id="eZoom" type="range" min="25" max="300" value="100">
-<output id="eZoomV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Width</label>
-<div class="range">
-<input id="eWidth" type="range" min="25" max="300" value="100">
-<output id="eWidthV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Height</label>
-<div class="range">
-<input id="eHeight" type="range" min="25" max="300" value="100">
-<output id="eHeightV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Position X</label>
-<div class="range">
-<input id="eX" type="range" min="-100" max="100" value="0">
-<output id="eXV">0</output>
-</div>
-</div>
-
-<div class="field">
-<label>Position Y</label>
-<div class="range">
-<input id="eY" type="range" min="-100" max="100" value="0">
-<output id="eYV">0</output>
-</div>
-</div>
-
-<div class="field">
-<label>Rotate</label>
-<div class="range">
-<input id="eRotate" type="range" min="-180" max="180" value="0">
-<output id="eRotateV">0°</output>
-</div>
-</div>
-
-<div class="field">
-<label>Brightness</label>
-<div class="range">
-<input id="eBright" type="range" min="0" max="200" value="100">
-<output id="eBrightV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Contrast</label>
-<div class="range">
-<input id="eContrast" type="range" min="0" max="200" value="100">
-<output id="eContrastV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Saturation</label>
-<div class="range">
-<input id="eSat" type="range" min="0" max="200" value="100">
-<output id="eSatV">100%</output>
-</div>
-</div>
-
-<div class="field">
-<label>Blur</label>
-<div class="range">
-<input id="eBlur" type="range" min="0" max="10" value="0">
-<output id="eBlurV">0</output>
-</div>
-</div>
-
-<div class="field">
-<label>Filter</label>
-<select id="eFilter">
-<option value="normal">Normal</option>
-<option value="gray">Black & White</option>
-<option value="sepia">Sepia</option>
-<option value="vintage">Vintage</option>
-</select>
-</div>
-
+<h3>Selected Photo Editing</h3>
+<p class="hint">पहले ऊपर Thumbnail से फोटो चुनें, फिर उसकी साइज और पोजीशन बदलें।</p>
+<div class="field"><label>Zoom</label><input id="eZoom" type="range" min="25" max="300" value="100"></div>
+<div class="field"><label>Width</label><input id="eWidth" type="range" min="25" max="300" value="100"></div>
+<div class="field"><label>Height</label><input id="eHeight" type="range" min="25" max="300" value="100"></div>
+<div class="field"><label>Position X</label><input id="eX" type="range" min="-100" max="100" value="0"></div>
+<div class="field"><label>Position Y</label><input id="eY" type="range" min="-100" max="100" value="0"></div>
+<div class="field"><label>Rotate</label><input id="eRotate" type="range" min="-180" max="180" value="0"></div>
+<div class="field"><label>Brightness</label><input id="eBright" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Contrast</label><input id="eContrast" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Saturation</label><input id="eSat" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Blur</label><input id="eBlur" type="range" min="0" max="10" value="0"></div>
+<div class="field"><label>Filter</label><select id="eFilter"><option value="normal">Normal</option><option value="gray">Black & White</option><option value="sepia">Sepia</option><option value="vintage">Vintage</option></select></div>
 <div class="actions">
 <button class="gray" id="eFlipH">Flip H</button>
 <button class="gray" id="eFlipV">Flip V</button>
-<button class="gray" id="eUndo">Undo</button>
-<button class="gray" id="eRedo">Redo</button>
 <button class="gray" id="eReset">Reset</button>
-<button class="red" id="eRemove">Remove</button>
-</div>
-
-<button class="green" id="eApplyAll">सभी फोटो पर सेटिंग लगाएं</button>
+<button class="red" id="eRemove">Remove Photo</button>
+<button class="green" id="eApplyAll">Apply to All Photos</button>
 </div>
 </div>
+<div class="actions">
+<button onclick="drawJoint()">Preview</button>
+<button class="green" onclick="saveCanvas('jointCanvas','joint-photo.png')">PNG Download</button>
+<button class="green" onclick="downloadJPG()">JPG Download</button>
+<button class="orange" onclick="printCanvas('jointCanvas')">Print</button>
 </div>
-
-<div class="preview">
-<canvas id="jointCanvas" width="1240" height="1754"></canvas>
-</div>
-
+<div class="preview"><canvas id="jointCanvas" width="1240" height="1754"></canvas></div>
 </section>
 
+<!-- DOCUMENT SCANNER -->
+<section class="panel" id="scanner">
+<h2>📄 WhatsApp Document Scanner</h2>
+<p class="hint">WhatsApp से आया टेढ़ा डॉक्यूमेंट अपलोड करें। Crop, Rotate, Brightness और Contrast से साफ करके A4 पर प्रिंट करें।</p>
+<div class="grid">
+<div>
+<div class="field"><label>Document Upload</label><input type="file" id="sFile" accept="image/*"></div>
+<div class="actions"><button class="gray" id="sLeft">↶ 90° Left</button><button class="gray" id="sRight">↷ 90° Right</button></div>
+<div class="field"><label>Fine Rotate</label><input type="range" id="sRotate" min="-45" max="45" value="0"></div>
+<h3>Crop Margins (%)</h3>
+<div class="grid">
+<div class="field"><label>Left</label><input id="sLeftCrop" type="number" min="0" max="45" value="3"></div>
+<div class="field"><label>Top</label><input id="sTopCrop" type="number" min="0" max="45" value="3"></div>
+<div class="field"><label>Right</label><input id="sRightCrop" type="number" min="0" max="45" value="3"></div>
+<div class="field"><label>Bottom</label><input id="sBottomCrop" type="number" min="0" max="45" value="3"></div>
+</div>
+<div class="field"><label>Brightness</label><input type="range" id="sBright" min="50" max="180" value="110"></div>
+<div class="field"><label>Contrast</label><input type="range" id="sContrast" min="50" max="200" value="125"></div>
+<div class="field"><label>Scanner Filter</label>
+<select id="sFilter">
+<option value="none">Original Color</option>
+<option value="grayscale(1) contrast(1.2)">Grayscale</option>
+<option value="grayscale(1) contrast(1.7)">Black & White Text</option>
+<option value="sepia(1)">Sepia</option>
+</select></div>
+<div class="actions">
+<button onclick="drawScanner()">Process Document</button>
+<button class="green" onclick="saveCanvas('scannerCanvas','scanned-document.png')">Download PNG</button>
+<button class="orange" onclick="printCanvas('scannerCanvas')">Print</button>
+</div>
+<p class="hint">ध्यान दें: यह crop और rotation tool है। अलग-अलग चार कोनों से perspective correction और automatic edge detection इसमें शामिल नहीं हैं।</p>
+</div>
+<div>
+<h3>Document Preview</h3>
+<div class="preview"><canvas id="scannerCanvas" width="1240" height="1754"></canvas></div>
+</div>
+</div>
+</section>
+
+<!-- GENERAL EDITOR -->
+<section class="panel" id="editor">
+<h2>🎨 General Photo Editor</h2>
+<div class="grid">
+<div>
+<div class="field"><label>Photo Upload</label><input id="gFile" type="file" accept="image/*"></div>
+<div class="grid">
+<div class="field"><label>Width (px)</label><input id="gW" type="number" value="1200"></div>
+<div class="field"><label>Height (px)</label><input id="gH" type="number" value="1200"></div>
+</div>
+<div class="field"><label>Brightness</label><input id="gBright" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Contrast</label><input id="gContrast" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Saturation</label><input id="gSat" type="range" min="0" max="200" value="100"></div>
+<div class="field"><label>Blur</label><input id="gBlur" type="range" min="0" max="10" value="0"></div>
+<div class="field"><label>Rotate</label><select id="gRotate"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+<div class="field"><label>Filter</label><select id="gFilter"><option value="none">Normal</option><option value="grayscale(1)">Black & White</option><option value="sepia(1)">Sepia</option><option value="contrast(1.2) saturate(.8)">Vintage</option></select></div>
+<div class="field"><label>Background Color</label><input type="color" id="gBg" value="#ffffff"></div>
+<div class="field"><label>Add Text</label><input id="gText" placeholder="अपना टेक्स्ट लिखें"></div>
+<div class="field"><label>Text Color</label><input type="color" id="gTextColor" value="#ff0000"></div>
+<div class="field"><label>Text Size</label><input type="number" id="gTextSize" value="48" min="8" max="300"></div>
+<div class="actions">
+<button onclick="drawGeneral()">Apply Editing</button>
+<button class="green" onclick="saveCanvas('generalCanvas','edited-photo.png')">Download PNG</button>
+<button class="orange" onclick="printCanvas('generalCanvas')">Print</button>
+</div>
+</div>
+<div class="preview"><canvas id="generalCanvas" width="1200" height="1200"></canvas></div>
+</div>
+</section>
 </main>
 
-<footer>
-© 2026 Gramin Grahak Sewa • Photo & Print Studio
-</footer>
-
+<footer>© 2026 Gramin Grahak Sewa • Photo & ID Print Studio</footer>
 
 <script>
-
-/* COMMON FUNCTIONS */
-
 const $=id=>document.getElementById(id);
 
-function loadImage(file,callback,errorCallback){
- const reader=new FileReader();
-
- reader.onload=()=>{
-  const img=new Image();
-  img.onload=()=>callback(img);
-  img.onerror=()=>errorCallback&&errorCallback();
-  img.src=reader.result;
- };
-
- reader.onerror=()=>errorCallback&&errorCallback();
- reader.readAsDataURL(file);
-}
-
-function saveCanvas(id,name,type='image/png'){
- const canvas=$(id);
- try{
-  const a=document.createElement('a');
-  a.download=name;
-  a.href=canvas.toDataURL(type,.95);
-  a.click();
- }catch(e){
-  alert('फोटो डाउनलोड नहीं हो पाई।');
- }
-}
-
-function printCanvas(id){
- const canvas=$(id);
- const w=window.open('','_blank');
-
- if(!w){
-  alert('Pop-up allow करें।');
-  return;
- }
-
- const url=canvas.toDataURL('image/png');
-
- w.document.write(`
- <!DOCTYPE html>
- <html>
- <head>
- <title>Print Photo</title>
- <style>
- @page{margin:0}
- body{margin:0;text-align:center}
- img{display:block;width:100%;height:auto}
- @media print{img{width:100%;height:auto}}
- </style>
- </head>
- <body>
- <img src="${url}">
- <script>
- window.onload=function(){
-  setTimeout(function(){window.print()},300);
- };
- <\/script>
- </body>
- </html>
- `);
-
- w.document.close();
-}
-
-function mmPx(v,unit,dpi){
- if(unit==='mm')return v*dpi/25.4;
- if(unit==='cm')return v*dpi/2.54;
- if(unit==='inch')return v*dpi;
+function mmPx(v,u,d){
+ if(u==='mm')return v*d/25.4;
+ if(u==='cm')return v*d/2.54;
+ if(u==='inch')return v*d;
  return v;
 }
-
-function preset(id,wid,hei,unit){
- const value=$(id).value;
- if(value==='custom')return;
-
- const a=value.split(',');
- $(wid).value=a[0];
- $(hei).value=a[1];
- $(unit).value=a[2];
+function loadImage(file,cb){
+ const reader=new FileReader();
+ reader.onload=()=>{
+  const im=new Image();
+  im.onload=()=>cb(im);
+  im.onerror=()=>alert('फोटो खुल नहीं सकी। दूसरी फोटो चुनें।');
+  im.src=reader.result;
+ };
+ reader.readAsDataURL(file);
 }
-
-$('pPreset').onchange=()=>preset('pPreset','pW','pH','pUnit');
-$('cardPreset').onchange=()=>preset('cardPreset','cardW','cardH','cardUnit');
-$('jPreset').onchange=()=>{
- preset('jPreset','jW','jH','jUnit');
- drawJoint();
-};
-
+function saveCanvas(id,name){
+ const c=$(id);
+ try{
+  const a=document.createElement('a');
+  a.download=name;a.href=c.toDataURL('image/png');a.click();
+ }catch(e){alert('फाइल डाउनलोड नहीं हो सकी।')}
+}
+function printCanvas(id){
+ const c=$(id),w=window.open('','_blank');
+ if(!w){alert('Print के लिए Popup Allow करें।');return}
+ const url=c.toDataURL();
+ w.document.write('<html><head><title>Print</title><style>@page{size:A4;margin:5mm}body{margin:0;text-align:center}img{width:100%;height:auto}</style></head><body><img src="'+url+'"><script>window.onload=()=>setTimeout(()=>window.print(),500)<\/script></body></html>');
+ w.document.close();
+}
+function drawCover(ctx,img,x,y,w,h){
+ const s=Math.max(w/img.width,h/img.height);
+ ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+ ctx.drawImage(img,x+(w-img.width*s)/2,y+(h-img.height*s)/2,img.width*s,img.height*s);
+ ctx.restore();
+}
+function setPreset(selectId,wId,hId,uId){
+ const v=$(selectId).value;if(v==='custom')return;
+ const a=v.split(',');
+ $(wId).value=a[0];$(hId).value=a[1];$(uId).value=a[2];
+}
 
 /* PHOTO STUDIO */
-
-let pImage=null;
-let pFlipX=1;
-let pFlipY=1;
-
+let pImage=null,pFlipX=1,pFlipY=1;
 $('pFile').onchange=e=>{
- const file=e.target.files[0];
- if(file){
-  loadImage(file,img=>{
-   pImage=img;
-   makePhotoSheet();
-  },()=>alert('फोटो लोड नहीं हुई।'));
- }
+ if(e.target.files[0])loadImage(e.target.files[0],im=>{pImage=im;makePhotoSheet()});
 };
-
-[
-'pW','pH','pUnit','pDpi','pCount','pBg',
-'pZoom','pX','pY','pRotate','pBright',
-'pContrast','pSat','pFilter'
-].forEach(id=>{
- $(id).addEventListener('input',makePhotoSheet);
-});
+$('pPreset').onchange=()=>{setPreset('pPreset','pW','pH','pUnit');makePhotoSheet()};
+['pW','pH','pUnit','pDpi','pCount','pBg','pZoom','pX','pY','pRotate','pBright','pContrast','pSat','pFilter'].forEach(id=>$(id).addEventListener('input',makePhotoSheet));
 
 function makePhotoSheet(){
-
- const c=$('photoCanvas');
- const x=c.getContext('2d');
-
+ const c=$('photoCanvas'),x=c.getContext('2d');
+ c.width=1240;c.height=1754;
+ x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
  const dpi=+$('pDpi').value||300;
-
  const w=Math.max(1,mmPx(+$('pW').value||35,$('pUnit').value,dpi));
  const h=Math.max(1,mmPx(+$('pH').value||45,$('pUnit').value,dpi));
-
  const count=Math.max(1,Math.min(100,+$('pCount').value||8));
-
- c.width=1240;
- c.height=1754;
-
- x.fillStyle='#fff';
- x.fillRect(0,0,c.width,c.height);
-
- const gap=25;
- const margin=35;
+ const gap=20,margin=25;
  const cols=Math.max(1,Math.floor((c.width-2*margin)/(w+gap)));
-
  for(let i=0;i<count;i++){
-
   const px=margin+(i%cols)*(w+gap);
   const py=margin+Math.floor(i/cols)*(h+gap);
-
-  if(py+h>c.height)break;
-
-  x.fillStyle=$('pBg').value;
-  x.fillRect(px,py,w,h);
-
+  if(py+h>c.height||px+w>c.width)break;
+  x.fillStyle=$('pBg').value;x.fillRect(px,py,w,h);
   if(pImage){
-
-   x.save();
-   x.beginPath();
-   x.rect(px,py,w,h);
-   x.clip();
-
-   x.translate(
-    px+w/2+(+$('pX').value)*w/100,
-    py+h/2+(+$('pY').value)*h/100
-   );
-
+   x.save();x.beginPath();x.rect(px,py,w,h);x.clip();
+   x.translate(px+w/2+(+$('pX').value)*w/100,py+h/2+(+$('pY').value)*h/100);
    x.rotate(+$('pRotate').value*Math.PI/180);
-
    const z=+$('pZoom').value/100;
-   const scale=Math.max(w/pImage.width,h/pImage.height)*z;
-
+   const s=Math.max(w/pImage.width,h/pImage.height)*z;
    x.scale(pFlipX,pFlipY);
-
-   x.filter=
-   `brightness(${$('pBright').value}%)
-    contrast(${$('pContrast').value}%)
-    saturate(${$('pSat').value}%)
-    ${$('pFilter').value==='none'?'':$('pFilter').value}`;
-
-   x.drawImage(
-    pImage,
-    -pImage.width*scale/2,
-    -pImage.height*scale/2,
-    pImage.width*scale,
-    pImage.height*scale
-   );
-
+   x.filter=`brightness(${$('pBright').value}%) contrast(${$('pContrast').value}%) saturate(${$('pSat').value}%) ${$('pFilter').value==='none'?'':$('pFilter').value}`;
+   x.drawImage(pImage,-pImage.width*s/2,-pImage.height*s/2,pImage.width*s,pImage.height*s);
    x.restore();
   }
-
-  x.strokeStyle='#888';
-  x.strokeRect(px,py,w,h);
+  x.strokeStyle='#888';x.strokeRect(px,py,w,h);
  }
-
- ['pZoom','pX','pY','pRotate','pBright','pContrast','pSat'].forEach(id=>{
-  $(id+'V').textContent=$(id).value+
-  (id==='pRotate'?'°':id==='pX'||id==='pY'?'':'%');
- });
 }
-
-$('pFlipH').onclick=()=>{
- pFlipX*=-1;
- makePhotoSheet();
-};
-
-$('pFlipV').onclick=()=>{
- pFlipY*=-1;
- makePhotoSheet();
-};
-
+$('pFlipH').onclick=()=>{pFlipX*=-1;makePhotoSheet()};
+$('pFlipV').onclick=()=>{pFlipY*=-1;makePhotoSheet()};
 $('pReset').onclick=()=>{
  pFlipX=pFlipY=1;
-
- [
- ['pZoom',100],
- ['pX',0],
- ['pY',0],
- ['pRotate',0],
- ['pBright',100],
- ['pContrast',100],
- ['pSat',100],
- ['pFilter','none']
- ].forEach(([id,v])=>$(id).value=v);
-
+ [['pZoom',100],['pX',0],['pY',0],['pRotate',0],['pBright',100],['pContrast',100],['pSat',100],['pFilter','none']].forEach(([id,v])=>$(id).value=v);
  makePhotoSheet();
 };
 
-makePhotoSheet();
-
-
-/* ID CARD FRONT + BACK */
-
-let frontImg=null;
-let backImg=null;
-
-$('frontFile').onchange=e=>{
- if(e.target.files[0]){
-  loadImage(e.target.files[0],img=>{
-   frontImg=img;
-   drawCard();
-  },()=>alert('Front फोटो लोड नहीं हुई।'));
- }
-};
-
-$('backFile').onchange=e=>{
- if(e.target.files[0]){
-  loadImage(e.target.files[0],img=>{
-   backImg=img;
-   drawCard();
-  },()=>alert('Back फोटो लोड नहीं हुई।'));
- }
-};
-
-[
-'cardSide','cardBg','cardW','cardH',
-'cardUnit','cardDpi','cardCopies'
-].forEach(id=>{
- $(id).addEventListener('input',drawCard);
-});
+/* ID CARD STUDIO */
+let frontImg=null,backImg=null;
+$('frontFile').onchange=e=>{if(e.target.files[0])loadImage(e.target.files[0],im=>{frontImg=im;drawCard()})};
+$('backFile').onchange=e=>{if(e.target.files[0])loadImage(e.target.files[0],im=>{backImg=im;drawCard()})};
+$('cardPreset').onchange=()=>{setPreset('cardPreset','cardW','cardH','cardUnit');drawCard()};
+['cardSide','cardBg','cardW','cardH','cardUnit','cardDpi','cardCopies'].forEach(id=>$(id).addEventListener('input',drawCard));
 
 function drawCard(){
-
- const c=$('cardCanvas');
- const x=c.getContext('2d');
+ const c=$('cardCanvas'),x=c.getContext('2d');
+ c.width=1240;c.height=1754;x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
  const dpi=+$('cardDpi').value||300;
-
- const w=Math.max(100,mmPx(+$('cardW').value||85.6,$('cardUnit').value,dpi));
- const h=Math.max(100,mmPx(+$('cardH').value||54,$('cardUnit').value,dpi));
-
- const mode=$('cardSide').value;
- const both=mode==='both';
-
- const gap=35;
- const copies=Math.max(1,Math.min(20,+$('cardCopies').value||1));
-
- const cardWidth=w*(both?2:1)+(both?gap:0);
- const totalWidth=cardWidth*copies+30*(copies+1);
-
- c.width=Math.min(6000,Math.max(300,totalWidth));
- c.height=Math.min(6000,Math.max(300,h+60));
-
- x.fillStyle='#fff';
- x.fillRect(0,0,c.width,c.height);
-
- function drawSide(img,px,label){
-
-  x.fillStyle=$('cardBg').value;
-  x.fillRect(px,30,w,h);
-
-  if(img){
-
-   const s=Math.min(w/img.width,h/img.height);
-   const dw=img.width*s;
-   const dh=img.height*s;
-
-   x.drawImage(img,px+(w-dw)/2,30+(h-dh)/2,dw,dh);
-
-  }else{
-
-   x.fillStyle='#1459a6';
-   x.font='bold 28px Arial';
-   x.textAlign='center';
-   x.fillText(label,px+w/2,30+h/2);
-  }
-
-  x.strokeStyle='#333';
-  x.lineWidth=2;
-  x.strokeRect(px,30,w,h);
- }
-
+ const w=Math.min(1100,Math.max(100,mmPx(+$('cardW').value||85.6,$('cardUnit').value,dpi)));
+ const h=Math.min(750,Math.max(100,mmPx(+$('cardH').value||54,$('cardUnit').value,dpi)));
+ const side=$('cardSide').value;
+ const items=side==='both'?[frontImg,backImg]:[side==='front'?frontImg:backImg];
+ const copies=Math.min(20,Math.max(1,+$('cardCopies').value||1));
+ const gap=25,margin=25,groupW=side==='both'?w*2+gap:w;
+ const cols=Math.max(1,Math.floor((c.width-2*margin)/(groupW+gap)));
  for(let i=0;i<copies;i++){
-
-  const px=15+i*(cardWidth+30);
-
-  if(mode==='front'||both){
-   drawSide(frontImg,px,'FRONT SIDE');
-  }
-
-  if(mode==='back'){
-   drawSide(backImg,px,'BACK SIDE');
-  }
-
-  if(both){
-   drawSide(backImg,px+w+gap,'BACK SIDE');
-  }
+  const px=margin+(i%cols)*(groupW+gap);
+  const py=margin+Math.floor(i/cols)*(h+gap);
+  if(py+h>c.height)break;
+  items.forEach((img,j)=>{
+   const xx=px+j*(w+gap);
+   x.fillStyle=$('cardBg').value;x.fillRect(xx,py,w,h);
+   if(img)drawCover(x,img,xx,py,w,h);
+   x.strokeStyle='#555';x.strokeRect(xx,py,w,h);
+  });
  }
 }
-
-drawCard();
-
 
 /* JOINT PHOTO MAKER */
-
-let jPhotos=[];
-let jSelected=0;
-
-const fresh=()=>({
- zoom:1,
- width:1,
- height:1,
- x:0,
- y:0,
- rotate:0,
- bright:100,
- contrast:100,
- sat:100,
- blur:0,
- filter:'normal',
- flipH:1,
- flipV:1,
- undo:[],
- redo:[]
-});
-
-function snapshot(p){
- const s={...p};
- delete s.undo;
- delete s.redo;
- return s;
+let photos=[],selected=0;
+function defaultEdit(){return {zoom:100,width:100,height:100,x:0,y:0,rotate:0,bright:100,contrast:100,sat:100,blur:0,filter:'normal',flipX:1,flipY:1}}
+function loadEdit(e){
+ $('eZoom').value=e.zoom;$('eWidth').value=e.width;$('eHeight').value=e.height;
+ $('eX').value=e.x;$('eY').value=e.y;$('eRotate').value=e.rotate;
+ $('eBright').value=e.bright;$('eContrast').value=e.contrast;$('eSat').value=e.sat;
+ $('eBlur').value=e.blur;$('eFilter').value=e.filter;
 }
-
-function saveHistory(p){
- p.undo.push(snapshot(p));
-
- if(p.undo.length>30){
-  p.undo.shift();
- }
-
- p.redo=[];
-}
-
-
-/* ADD PHOTOS - MAIN FIX */
-
-function addJointPhotos(files){
-
- const selected=[...files].filter(f=>f.type.startsWith('image/'));
-
- if(!selected.length){
-  alert('कृपया फोटो चुनें।');
-  return;
- }
-
- const remaining=10-jPhotos.length;
-
- if(remaining<=0){
-  alert('अधिकतम 10 फोटो ही जोड़ सकते हैं।');
-  return;
- }
-
- const list=selected.slice(0,remaining);
-
- if(selected.length>remaining){
-  alert('अधिकतम 10 फोटो की सीमा है। बाकी फोटो नहीं जोड़ी गईं।');
- }
-
- let pending=list.length;
- let added=0;
-
- list.forEach(file=>{
-
-  loadImage(file,img=>{
-
-   jPhotos.push({
-    img,
-    ...fresh()
-   });
-
-   added++;
-   pending--;
-
-   if(pending===0){
-
-    if(added>0){
-     jSelected=jPhotos.length-1;
-    }
-
-    renderThumbs();
-    syncEdit();
-    drawJoint();
-   }
-
-  },()=>{
-
-   pending--;
-
-   if(pending===0){
-    renderThumbs();
-    syncEdit();
-    drawJoint();
-    alert('कुछ फोटो लोड नहीं हो सकीं।');
-   }
-
-  });
-
- });
-}
-
-
-/* SELECT MULTIPLE PHOTOS */
-
-$('jFiles').onchange=e=>{
-
- const files=[...e.target.files];
-
- addJointPhotos(files);
-
- // Same file can be selected again
- e.target.value='';
-};
-
-
-/* ADD MORE PHOTOS BUTTON */
-
-$('jAddBtn').onclick=()=>{
- $('jFiles').click();
-};
-
-
-/* CLEAR ALL PHOTOS */
-
-$('jClearBtn').onclick=()=>{
-
- if(!jPhotos.length)return;
-
- if(!confirm('क्या सभी फोटो हटानी हैं?'))return;
-
- jPhotos=[];
- jSelected=0;
-
- renderThumbs();
- syncEdit();
- drawJoint();
-};
-
-
-/* THUMBNAILS */
-
-function renderThumbs(){
-
- const box=$('jThumbs');
- box.innerHTML='';
-
- $('jPhotoCount').textContent=jPhotos.length+' Photos';
-
- jPhotos.forEach((p,i)=>{
-
+function updateThumbs(){
+ const box=$('jThumbs');box.innerHTML='';
+ photos.forEach((p,i)=>{
   const d=document.createElement('div');
-
-  d.className='thumb'+(i===jSelected?' active':'');
-
-  const im=document.createElement('img');
-  im.src=p.img.src;
-  im.alt='Photo '+(i+1);
-
-  const name=document.createElement('small');
-  name.textContent='Photo '+(i+1);
-
-  const remove=document.createElement('button');
-  remove.className='red';
-  remove.type='button';
-  remove.textContent='Remove';
-
-  remove.onclick=e=>{
-
-   e.stopPropagation();
-
-   jPhotos.splice(i,1);
-
-   if(jSelected>=jPhotos.length){
-    jSelected=Math.max(0,jPhotos.length-1);
-   }
-
-   renderThumbs();
-   syncEdit();
-   drawJoint();
-  };
-
-  d.append(im,name,remove);
-
-  d.onclick=()=>{
-
-   jSelected=i;
-
-   renderThumbs();
-   syncEdit();
-   drawJoint();
-  };
-
+  d.className='thumb'+(i===selected?' active':'');
+  const im=document.createElement('img');im.src=p.img.src;
+  const sm=document.createElement('small');sm.textContent='Photo '+(i+1);
+  d.append(im,sm);
+  d.onclick=()=>{selected=i;loadEdit(p.edit);updateThumbs();drawJoint()};
   box.append(d);
  });
+ $('jCount').textContent=photos.length+' Photos';
 }
-
-
-/* EDITING SETTINGS */
-
-const editMap={
- eZoom:['zoom',v=>v/100],
- eWidth:['width',v=>v/100],
- eHeight:['height',v=>v/100],
- eX:['x',Number],
- eY:['y',Number],
- eRotate:['rotate',Number],
- eBright:['bright',Number],
- eContrast:['contrast',Number],
- eSat:['sat',Number],
- eBlur:['blur',Number],
- eFilter:['filter',v=>v]
-};
-
-const suffix={
- eZoom:'%',
- eWidth:'%',
- eHeight:'%',
- eRotate:'°',
- eBright:'%',
- eContrast:'%',
- eSat:'%'
-};
-
-
-/* SYNC EDITING PANEL */
-
-function syncEdit(){
-
- const p=jPhotos[jSelected];
-
- const ids=Object.keys(editMap);
-
- if(!p){
-
-  const defaults={
-   eZoom:100,
-   eWidth:100,
-   eHeight:100,
-   eX:0,
-   eY:0,
-   eRotate:0,
-   eBright:100,
-   eContrast:100,
-   eSat:100,
-   eBlur:0,
-   eFilter:'normal'
-  };
-
-  Object.entries(defaults).forEach(([id,v])=>{
-   $(id).value=v;
-   $(id+'V').textContent=v+(suffix[id]||'');
+function addJointFiles(list){
+ Array.from(list).forEach(file=>{
+  if(photos.length>=10)return;
+  if(!file.type.startsWith('image/'))return;
+  loadImage(file,im=>{
+   photos.push({img:im,edit:defaultEdit()});
+   selected=photos.length-1;loadEdit(photos[selected].edit);
+   updateThumbs();drawJoint();
   });
-
-  return;
- }
-
- const vals={
-  eZoom:p.zoom*100,
-  eWidth:p.width*100,
-  eHeight:p.height*100,
-  eX:p.x,
-  eY:p.y,
-  eRotate:p.rotate,
-  eBright:p.bright,
-  eContrast:p.contrast,
-  eSat:p.sat,
-  eBlur:p.blur,
-  eFilter:p.filter
- };
-
- Object.entries(vals).forEach(([id,v])=>{
-
-  $(id).value=v;
-
-  $(id+'V').textContent=v+(suffix[id]||'');
  });
 }
+$('jFiles').onchange=e=>{addJointFiles(e.target.files);e.target.value=''};
+$('jClear').onclick=()=>{photos=[];selected=0;updateThumbs();drawJoint()};
+$('jPreset').onchange=()=>{setPreset('jPreset','jW','jH','jUnit');drawJoint()};
 
-
-/* APPLY SLIDER CHANGES */
-
-Object.entries(editMap).forEach(([id,[key,convert]])=>{
-
- $(id).oninput=()=>{
-
-  const p=jPhotos[jSelected];
-
-  if(!p)return;
-
-  saveHistory(p);
-
-  p[key]=convert($(id).value);
-
-  $(id+'V').textContent=$(id).value+(suffix[id]||'');
-
-  drawJoint();
- };
-});
-
-
-/* GENERAL SETTINGS */
-
-[
-'jW','jH','jUnit','jDpi','jLayout',
-'jBg','jGap','jBorder','jBorderW',
-'jRadius','jText'
-].forEach(id=>{
-
- $(id).addEventListener('input',drawJoint);
-});
-
-['jGap','jBorderW','jRadius'].forEach(id=>{
-
- $(id).addEventListener('input',()=>{
-  $(id+'V').textContent=$(id).value;
-  drawJoint();
- });
-});
-
-
-/* FLIP */
-
-function flipJoint(key){
-
- const p=jPhotos[jSelected];
-
- if(!p)return;
-
- saveHistory(p);
-
- p[key]*=-1;
-
+const editIds=['eZoom','eWidth','eHeight','eX','eY','eRotate','eBright','eContrast','eSat','eBlur','eFilter'];
+editIds.forEach(id=>$(id).addEventListener('input',()=>{
+ if(!photos[selected])return;
+ const e=photos[selected].edit;
+ e.zoom=+$('eZoom').value;e.width=+$('eWidth').value;e.height=+$('eHeight').value;
+ e.x=+$('eX').value;e.y=+$('eY').value;e.rotate=+$('eRotate').value;
+ e.bright=+$('eBright').value;e.contrast=+$('eContrast').value;
+ e.sat=+$('eSat').value;e.blur=+$('eBlur').value;e.filter=$('eFilter').value;
  drawJoint();
+}));
+$('eFlipH').onclick=()=>{if(photos[selected]){photos[selected].edit.flipX*=-1;drawJoint()}};
+$('eFlipV').onclick=()=>{if(photos[selected]){photos[selected].edit.flipY*=-1;drawJoint()}};
+$('eReset').onclick=()=>{if(photos[selected]){photos[selected].edit=defaultEdit();loadEdit(photos[selected].edit);drawJoint()}};
+$('eRemove').onclick=()=>{photos.splice(selected,1);selected=Math.max(0,selected-1);if(photos[selected])loadEdit(photos[selected].edit);updateThumbs();drawJoint()};
+$('eApplyAll').onclick=()=>{if(!photos[selected])return;const e={...photos[selected].edit};photos.forEach(p=>p.edit={...e});drawJoint()};
+['jW','jH','jUnit','jDpi','jLayout','jBg','jGap','jBorder','jBorderW','jRadius','jText'].forEach(id=>$(id).addEventListener('input',drawJoint));
+
+function roundRect(ctx,x,y,w,h,r){
+ r=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+r,y);
+ ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
+ ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
 }
-
-$('eFlipH').onclick=()=>flipJoint('flipH');
-$('eFlipV').onclick=()=>flipJoint('flipV');
-
-
-/* UNDO */
-
-$('eUndo').onclick=()=>{
-
- const p=jPhotos[jSelected];
-
- if(!p||!p.undo.length)return;
-
- p.redo.push(snapshot(p));
-
- const old=p.undo.pop();
-
- Object.assign(p,old);
-
- syncEdit();
- drawJoint();
-};
-
-
-/* REDO */
-
-$('eRedo').onclick=()=>{
-
- const p=jPhotos[jSelected];
-
- if(!p||!p.redo.length)return;
-
- p.undo.push(snapshot(p));
-
- const old=p.redo.pop();
-
- Object.assign(p,old);
-
- syncEdit();
- drawJoint();
-};
-
-
-/* RESET */
-
-$('eReset').onclick=()=>{
-
- const p=jPhotos[jSelected];
-
- if(!p)return;
-
- saveHistory(p);
-
- const img=p.img;
-
- Object.assign(p,fresh(),{img});
-
- syncEdit();
- drawJoint();
-};
-
-
-/* REMOVE SELECTED PHOTO */
-
-$('eRemove').onclick=()=>{
-
- if(!jPhotos.length)return;
-
- jPhotos.splice(jSelected,1);
-
- jSelected=Math.max(0,Math.min(jSelected,jPhotos.length-1));
-
- renderThumbs();
- syncEdit();
- drawJoint();
-};
-
-
-/* APPLY SETTINGS TO ALL PHOTOS */
-
-$('eApplyAll').onclick=()=>{
-
- const p=jPhotos[jSelected];
-
- if(!p)return;
-
- jPhotos.forEach((q,i)=>{
-
-  if(i!==jSelected){
-
-   saveHistory(q);
-
-   [
-    'zoom','width','height','x','y',
-    'rotate','bright','contrast','sat',
-    'blur','filter','flipH','flipV'
-   ].forEach(k=>q[k]=p[k]);
-  }
-
- });
-
- drawJoint();
-
- alert('सभी फोटो पर सेटिंग लागू हो गई।');
-};
-
-
-/* ROUNDED CORNERS */
-
-function roundBox(ctx,x,y,w,h,r){
-
- r=Math.max(0,Math.min(r,w/2,h/2));
-
- ctx.beginPath();
- ctx.moveTo(x+r,y);
-
- ctx.arcTo(x+w,y,x+w,y+h,r);
- ctx.arcTo(x+w,y+h,x,y+h,r);
- ctx.arcTo(x,y+h,x,y,r);
- ctx.arcTo(x,y,x+w,y,r);
-
- ctx.closePath();
-}
-
-
-/* JOINT PHOTO DRAWING */
-
 function drawJoint(){
-
- const c=$('jointCanvas');
- const x=c.getContext('2d');
-
+ const c=$('jointCanvas'),x=c.getContext('2d');
  const dpi=+$('jDpi').value||300;
-
- const w=Math.max(400,Math.min(6000,
-  mmPx(+$('jW').value||210,$('jUnit').value,dpi)
- ));
-
- const h=Math.max(400,Math.min(6000,
-  mmPx(+$('jH').value||297,$('jUnit').value,dpi)
- ));
-
- c.width=w;
- c.height=h;
-
- x.fillStyle=$('jBg').value;
- x.fillRect(0,0,w,h);
-
- if(!jPhotos.length){
-
-  x.fillStyle='#64748b';
-  x.font='28px Arial';
-  x.textAlign='center';
-
-  x.fillText(
-   'यहां Joint Photo दिखाई देगी',
-   w/2,
-   h/2
-  );
-
-  return;
- }
-
- const n=jPhotos.length;
- const layout=$('jLayout').value;
-
- let cols,rows;
-
- if(layout==='horizontal'){
-  cols=n;
-  rows=1;
- }
- else if(layout==='vertical'){
-  cols=1;
-  rows=n;
- }
- else if(layout==='two'){
-  cols=2;
-  rows=Math.ceil(n/2);
- }
- else{
-  cols=Math.ceil(Math.sqrt(n));
-  rows=Math.ceil(n/cols);
- }
-
- const gap=+$('jGap').value;
- const margin=25;
- const txt=$('jText').value?50:0;
-
- const cw=(w-2*margin-gap*(cols-1))/cols;
- const ch=(h-2*margin-gap*(rows-1)-txt)/rows;
-
- jPhotos.forEach((p,i)=>{
-
-  const a=margin+(i%cols)*(cw+gap);
-  const b=margin+Math.floor(i/cols)*(ch+gap);
-
-  const bw=+$('jBorderW').value;
-  const r=+$('jRadius').value;
-
-  x.save();
-
-  roundBox(x,a,b,cw,ch,r);
-  x.clip();
-
-  x.fillStyle=$('jBorder').value;
-  x.fillRect(a,b,cw,ch);
-
-  const iw=Math.max(1,cw-2*bw);
-  const ih=Math.max(1,ch-2*bw);
-
-  roundBox(
-   x,
-   a+bw,
-   b+bw,
-   iw,
-   ih,
-   Math.max(0,r-bw)
-  );
-
-  x.clip();
-
-  x.translate(
-   a+cw/2+p.x*cw/100,
-   b+ch/2+p.y*ch/100
-  );
-
-  x.rotate(p.rotate*Math.PI/180);
-
-  x.scale(
-   p.flipH*p.zoom*p.width,
-   p.flipV*p.zoom*p.height
-  );
-
-  let f=
-   `brightness(${p.bright}%)
-    contrast(${p.contrast}%)
-    saturate(${p.sat}%)
-    blur(${p.blur}px)`;
-
-  if(p.filter==='gray')f+=' grayscale(1)';
-  if(p.filter==='sepia')f+=' sepia(1)';
-  if(p.filter==='vintage')f+=' sepia(.5) contrast(1.1)';
-
-  x.filter=f;
-
-  const s=Math.max(iw/p.img.width,ih/p.img.height);
-
-  const dw=p.img.width*s;
-  const dh=p.img.height*s;
-
-  x.drawImage(
-   p.img,
-   -dw/2,
-   -dh/2,
-   dw,
-   dh
-  );
-
-  x.restore();
+ c.width=Math.min(3000,Math.max(300,mmPx(+$('jW').value||210,$('jUnit').value,dpi)));
+ c.height=Math.min(4000,Math.max(300,mmPx(+$('jH').value||297,$('jUnit').value,dpi)));
+ x.fillStyle=$('jBg').value;x.fillRect(0,0,c.width,c.height);
+ if(!photos.length)return;
+ const gap=+$('jGap').value,margin=25,layout=$('jLayout').value,n=photos.length;
+ let cols=layout==='horizontal'?n:layout==='vertical'?1:layout==='two'?2:Math.ceil(Math.sqrt(n*c.width/c.height));
+ cols=Math.max(1,Math.min(n,cols));
+ const rows=Math.ceil(n/cols);
+ const cw=(c.width-2*margin-gap*(cols-1))/cols;
+ const ch=(c.height-2*margin-gap*(rows-1))/rows;
+ photos.forEach((p,i)=>{
+  const row=Math.floor(i/cols),col=i%cols;
+  const px=margin+col*(cw+gap),py=margin+row*(ch+gap),e=p.edit;
+  x.save();roundRect(x,px,py,cw,ch,+$('jRadius').value);x.clip();
+  x.fillStyle=$('jBorder').value;x.fillRect(px,py,cw,ch);
+  const pad=+$('jBorderW').value;
+  const w=(cw-2*pad)*e.width/100*e.zoom/100;
+  const h=(ch-2*pad)*e.height/100*e.zoom/100;
+  x.translate(px+cw/2+e.x*cw/100,py+ch/2+e.y*ch/100);
+  x.rotate(e.rotate*Math.PI/180);x.scale(e.flipX,e.flipY);
+  let filter=`brightness(${e.bright}%) contrast(${e.contrast}%) saturate(${e.sat}%) blur(${e.blur}px)`;
+  if(e.filter==='gray')filter+=' grayscale(1)';
+  if(e.filter==='sepia')filter+=' sepia(1)';
+  if(e.filter==='vintage')filter+=' sepia(.4) contrast(1.2)';
+  x.filter=filter;drawCover(x,p.img,-w/2,-h/2,w,h);x.restore();
  });
+ const txt=$('jText').value;
+ if(txt){x.fillStyle='#111';x.font=`bold ${Math.max(18,c.width/35)}px Arial`;x.textAlign='center';x.fillText(txt,c.width/2,c.height-12)}
+}
+function downloadJPG(){
+ const a=document.createElement('a');
+ a.href=$('jointCanvas').toDataURL('image/jpeg',.92);
+ a.download='joint-photo.jpg';a.click();
+}
 
- if($('jText').value){
+/* DOCUMENT SCANNER */
+let scanImg=null,scanQuarter=0;
+$('sFile').onchange=e=>{
+ if(e.target.files[0])loadImage(e.target.files[0],im=>{scanImg=im;scanQuarter=0;$('sRotate').value=0;drawScanner()});
+};
+$('sLeft').onclick=()=>{scanQuarter=(scanQuarter+3)%4;drawScanner()};
+$('sRight').onclick=()=>{scanQuarter=(scanQuarter+1)%4;drawScanner()};
+['sRotate','sLeftCrop','sTopCrop','sRightCrop','sBottomCrop','sBright','sContrast','sFilter'].forEach(id=>$(id).addEventListener('input',drawScanner));
 
-  x.fillStyle='#172033';
-  x.font='bold 30px Arial';
-  x.textAlign='center';
+function drawScanner(){
+ const c=$('scannerCanvas'),x=c.getContext('2d');
+ c.width=1240;c.height=1754;x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
+ if(!scanImg)return;
+ const angle=scanQuarter*Math.PI/2+(+$('sRotate').value)*Math.PI/180;
+ const sw=scanImg.width,sh=scanImg.height;
+ const rotatedCanvas=document.createElement('canvas');
+ const rw=Math.abs(Math.cos(angle))*sw+Math.abs(Math.sin(angle))*sh;
+ const rh=Math.abs(Math.sin(angle))*sw+Math.abs(Math.cos(angle))*sh;
+ rotatedCanvas.width=Math.ceil(rw);rotatedCanvas.height=Math.ceil(rh);
+ const rc=rotatedCanvas.getContext('2d');
+ rc.translate(rotatedCanvas.width/2,rotatedCanvas.height/2);
+ rc.rotate(angle);
+ rc.filter=`brightness(${$('sBright').value}%) contrast(${$('sContrast').value}%) ${$('sFilter').value==='none'?'':$('sFilter').value}`;
+ rc.drawImage(scanImg,-sw/2,-sh/2);
+ const l=Math.min(45,Math.max(0,+$('sLeftCrop').value||0))/100;
+ const t=Math.min(45,Math.max(0,+$('sTopCrop').value||0))/100;
+ const r=Math.min(45,Math.max(0,+$('sRightCrop').value||0))/100;
+ const b=Math.min(45,Math.max(0,+$('sBottomCrop').value||0))/100;
+ const sx=rotatedCanvas.width*l,sy=rotatedCanvas.height*t;
+ const cw=rotatedCanvas.width*(1-l-r),ch=rotatedCanvas.height*(1-t-b);
+ if(cw<=0||ch<=0)return;
+ const fit=Math.min(1160/cw,1670/ch);
+ const dw=cw*fit,dh=ch*fit;
+ x.drawImage(rotatedCanvas,sx,sy,cw,ch,(c.width-dw)/2,(c.height-dh)/2,dw,dh);
+}
 
-  x.fillText(
-   $('jText').value,
-   w/2,
-   h-15
-  );
+/* GENERAL PHOTO EDITOR */
+let generalImg=null;
+$('gFile').onchange=e=>{
+ if(e.target.files[0])loadImage(e.target.files[0],im=>{
+  generalImg=im;$('gW').value=im.width;$('gH').value=im.height;drawGeneral();
+ });
+};
+['gW','gH','gBright','gContrast','gSat','gBlur','gRotate','gFilter','gBg','gText','gTextColor','gTextSize'].forEach(id=>$(id).addEventListener('input',drawGeneral));
+function drawGeneral(){
+ const c=$('generalCanvas'),x=c.getContext('2d');
+ let w=Math.max(1,Math.min(3000,+$('gW').value||1200));
+ let h=Math.max(1,Math.min(3000,+$('gH').value||1200));
+ const rot=+$('gRotate').value;
+ c.width=(rot===90||rot===270)?h:w;
+ c.height=(rot===90||rot===270)?w:h;
+ x.fillStyle=$('gBg').value;x.fillRect(0,0,c.width,c.height);
+ if(generalImg){
+  x.save();x.translate(c.width/2,c.height/2);x.rotate(rot*Math.PI/180);
+  x.filter=`brightness(${$('gBright').value}%) contrast(${$('gContrast').value}%) saturate(${$('gSat').value}%) blur(${$('gBlur').value}px) ${$('gFilter').value}`;
+  const dw=(rot===90||rot===270)?h:w,dh=(rot===90||rot===270)?w:h;
+  x.drawImage(generalImg,-dw/2,-dh/2,dw,dh);x.restore();
  }
+ const text=$('gText').value;
+ if(text){x.fillStyle=$('gTextColor').value;x.font=`bold ${$('gTextSize').value}px Arial`;x.textAlign='center';x.fillText(text,c.width/2,c.height-35)}
 }
 
-
-/* DOWNLOAD JPG */
-
-function saveJPG(){
- saveCanvas('jointCanvas','joint-photo.jpg','image/jpeg');
-}
-
-
-/* INITIALIZE */
-
-renderThumbs();
-syncEdit();
+/* INITIAL PREVIEWS */
+makePhotoSheet();
+drawCard();
 drawJoint();
-
+drawScanner();
+drawGeneral();
 </script>
-
 </body>
 </html>

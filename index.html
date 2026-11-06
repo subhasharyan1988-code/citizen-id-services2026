@@ -4,45 +4,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gramin Grahak Sewa | Photo, Card & Print Studio</title>
+<title>Gramin Grahak Sewa | Pro Photo Studio</title>
 <style>
-:root{--primary:#1459a6;--secondary:#0b8f62;--accent:#ff8a00;--bg:#f3f6fb;--ink:#172033;--muted:#64748b;--line:#dbe3ef;--card:#fff}
+:root{--primary:#1459a6;--secondary:#0b8f62;--accent:#ff8a00;--bg:#f3f6fb;--ink:#172033;--muted:#64748b;--line:#dbe3ef}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:var(--bg);color:var(--ink)}
-header{background:linear-gradient(115deg,#104b91,#087b68);color:#fff;padding:20px 14px;text-align:center}
-header h1{margin:0;font-size:clamp(23px,4vw,34px)}
-header p{margin:8px 0 0;color:#e7f4ff}
-nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;background:#fff;padding:12px;position:sticky;top:0;z-index:10;box-shadow:0 2px 9px #14243b18}
-nav a{color:#174c86;text-decoration:none;font-weight:bold;padding:9px 12px;border-radius:9px;background:#edf4fc;font-size:14px}
-main{max-width:1200px;margin:20px auto;padding:0 14px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 5px 18px #1d355710}
-h2{margin:0 0 14px;color:#124d8b;font-size:22px}
-h3{margin:12px 0 8px;font-size:17px}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(115deg,#104b91,#087b68);color:white;padding:20px;text-align:center}
+header h1{margin:0;font-size:30px}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;background:white;padding:12px}
+nav a{color:#174c86;text-decoration:none;font-weight:bold;padding:9px;background:#edf4fc;border-radius:9px}
+main{max-width:1250px;margin:20px auto;padding:0 14px}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0;box-shadow:0 5px 18px #1d355710}
+h2{color:#124d8b}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
 .field{display:flex;flex-direction:column;gap:6px;margin:8px 0}
-.field label{font-size:13px;font-weight:bold;color:#334155}
-input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:9px;background:#fff;font:inherit;min-width:0}
-input[type=range]{padding:0;accent-color:var(--primary)}
-input[type=color]{height:42px;padding:4px}
-button{border:0;border-radius:9px;padding:10px 14px;background:var(--primary);color:#fff;font-weight:bold;cursor:pointer;margin:4px 3px 4px 0}
-button:hover{filter:brightness(.94)}
-button.green{background:var(--secondary)}
-button.orange{background:var(--accent)}
-button.gray{background:#475569}
-button.red{background:#c0392b}
-.actions{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}
-.hint{font-size:13px;color:var(--muted);line-height:1.5}
+label{font-size:13px;font-weight:bold}
+input,select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}
+input[type=range]{padding:0;accent-color:#1459a6}
+button{border:0;border-radius:9px;padding:10px 14px;background:#1459a6;color:white;font-weight:bold;cursor:pointer;margin:4px}
+.green{background:#0b8f62}.orange{background:#ff8a00}.gray{background:#475569}.red{background:#c0392b}
+.actions{display:flex;flex-wrap:wrap;gap:5px}
+.hint{font-size:13px;color:#64748b;line-height:1.5}
 .canvas-wrap{background:#e9eef5;border:1px dashed #9aaec5;border-radius:12px;padding:10px;display:flex;justify-content:center;overflow:auto}
-canvas{background:#fff;max-width:100%;height:auto;box-shadow:0 2px 12px #0002}
+canvas{background:white;max-width:100%;height:auto}
 .photo-list{display:flex;gap:8px;flex-wrap:wrap}
 .photo-item{border:2px solid transparent;padding:5px;border-radius:9px;background:#f1f5f9;cursor:pointer}
-.photo-item.active{border-color:var(--primary)}
+.photo-item.active{border-color:#1459a6}
 .photo-item img{width:65px;height:75px;object-fit:cover;display:block}
-.portal{padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.portal h3{margin-top:0;color:#12558d}
+.portal{padding:14px;border:1px solid var(--line);border-radius:12px;background:white}
+.portal h3{color:#12558d}
 .portal a{display:inline-block;margin:4px;color:#1459a6}
+.edit-box{border:1px solid #dbe3ef;background:#f8fbff;border-radius:12px;padding:12px;margin:10px 0}
+.range-row{display:grid;grid-template-columns:1fr 48px;gap:8px;align-items:center}
+.range-row output{text-align:right;font-size:12px;color:#1459a6;font-weight:bold}
 footer{text-align:center;padding:22px;color:#64748b}
-@media(max-width:600px){.panel{padding:13px}nav{position:static}button{padding:10px}}
+@media(max-width:600px){.panel{padding:13px}nav{position:static}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -68,20 +64,20 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div class="field"><label>फोटो चुनें</label><input type="file" id="cardPhoto" accept="image/*"></div>
 <div class="field"><label>कार्ड का प्रकार</label>
 <select id="cardType">
-<option value="id">ID Card (Front)</option>
-<option value="back">ID Card (Back)</option>
-<option value="both">Front + Back</option>
+<option>ID Card (Front)</option>
+<option>ID Card (Back)</option>
+<option>Front + Back</option>
 </select></div>
 <div class="field"><label>नाम</label><input id="cardName" placeholder="पूरा नाम"></div>
-<div class="field"><label>ID / कार्ड नंबर</label><input id="cardNumber" placeholder="ID नंबर"></div>
-<div class="field"><label>अतिरिक्त जानकारी</label><input id="cardInfo" placeholder="पता / अन्य जानकारी"></div>
+<div class="field"><label>ID नंबर</label><input id="cardNumber" placeholder="ID नंबर"></div>
+<div class="field"><label>अतिरिक्त जानकारी</label><input id="cardInfo" placeholder="पता"></div>
 <div class="field"><label>कार्ड रंग</label><input type="color" id="cardColor" value="#eaf3ff"></div>
 <div class="actions">
 <button onclick="drawCard()">Preview बनाएं</button>
 <button class="green" onclick="downloadCanvas('cardCanvas','card-design.png')">PNG डाउनलोड</button>
 <button class="orange" onclick="printCanvas('cardCanvas')">प्रिंट</button>
 </div>
-<p class="hint">यह सामान्य डिजाइन/प्रिंट टूल है। किसी सरकारी पहचान पत्र की नकली कॉपी या भ्रामक दस्तावेज़ न बनाएं।</p>
+<p class="hint">यह सामान्य डिजाइन टूल है, सरकारी पहचान पत्र की नकली कॉपी बनाने के लिए नहीं।</p>
 </div>
 <div class="canvas-wrap"><canvas id="cardCanvas" width="900" height="560"></canvas></div>
 </div>
@@ -92,26 +88,28 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div class="grid">
 <div>
 <div class="field"><label>फोटो चुनें</label><input type="file" id="passPhoto" accept="image/*"></div>
-<div class="field"><label>फोटो बैकग्राउंड</label><input type="color" id="passBg" value="#ffffff"></div>
-<div class="field"><label>फोटो की संख्या</label><input type="number" id="passCount" min="1" max="40" value="8"></div>
-<div class="field"><label>फोटो चौड़ाई (mm)</label><input type="number" id="passW" min="20" max="60" value="35"></div>
-<div class="field"><label>फोटो ऊंचाई (mm)</label><input type="number" id="passH" min="25" max="70" value="45"></div>
+<div class="field"><label>बैकग्राउंड</label><input type="color" id="passBg" value="#ffffff"></div>
+<div class="field"><label>फोटो संख्या</label><input type="number" id="passCount" min="1" max="40" value="8"></div>
+<div class="field"><label>चौड़ाई (mm)</label><input type="number" id="passW" value="35"></div>
+<div class="field"><label>ऊंचाई (mm)</label><input type="number" id="passH" value="45"></div>
 <div class="actions">
 <button onclick="makePassport()">A4 शीट बनाएं</button>
 <button class="green" onclick="downloadCanvas('passCanvas','passport-a4.png')">PNG डाउनलोड</button>
 <button class="orange" onclick="printCanvas('passCanvas')">A4 प्रिंट</button>
 </div>
-<p class="hint">पासपोर्ट आवेदन के लिए फोटो की वास्तविक आवश्यकताएं संबंधित आधिकारिक निर्देशों से मिलाएं।</p>
 </div>
 <div class="canvas-wrap"><canvas id="passCanvas" width="1240" height="1754"></canvas></div>
 </div>
 </section>
 
 <section class="panel" id="joint">
-<h2>👥 Joint Photo Maker – Multiple Photos</h2>
+<h2>👥 Joint Photo Maker – Pro Editing Studio</h2>
+<p class="hint">2 से 10 फोटो चुनें। फोटो चुनकर अलग-अलग एडिट करें। Preview अपने-आप अपडेट होगा।</p>
+
 <div class="grid">
 <div>
-<div class="field"><label>एक साथ कई फोटो चुनें (2–10)</label><input type="file" id="jointFiles" accept="image/*" multiple></div>
+<div class="field"><label>कई फोटो चुनें (2–10)</label><input type="file" id="jointFiles" accept="image/*" multiple></div>
+
 <div class="field"><label>लेआउट</label>
 <select id="jointLayout">
 <option value="auto">Auto Grid</option>
@@ -119,17 +117,20 @@ footer{text-align:center;padding:22px;color:#64748b}
 <option value="vertical">एक के नीचे एक</option>
 <option value="two">दो कॉलम</option>
 </select></div>
+
 <div class="field"><label>कैनवास बैकग्राउंड</label><input type="color" id="jointBg" value="#ffffff"></div>
-<div class="field"><label>फोटो के बीच दूरी (px)</label><input type="range" id="jointGap" min="0" max="50" value="14"><output id="jointGapVal">14</output></div>
-<div class="field"><label>फोटो बॉर्डर रंग</label><input type="color" id="jointBorder" value="#ffffff"></div>
-<div class="field"><label>बॉर्डर मोटाई</label><input type="range" id="jointBorderSize" min="0" max="20" value="3"></div>
-<div class="field"><label>फोटो कोने गोल</label><input type="range" id="jointRadius" min="0" max="60" value="12"></div>
+<div class="field"><label>फोटो के बीच दूरी</label><div class="range-row"><input type="range" id="jointGap" min="0" max="80" value="14"><output id="jointGapVal">14</output></div></div>
+<div class="field"><label>बॉर्डर रंग</label><input type="color" id="jointBorder" value="#ffffff"></div>
+<div class="field"><label>बॉर्डर मोटाई</label><div class="range-row"><input type="range" id="jointBorderSize" min="0" max="30" value="3"><output id="jointBorderSizeVal">3</output></div></div>
+<div class="field"><label>कोने गोल</label><div class="range-row"><input type="range" id="jointRadius" min="0" max="100" value="12"><output id="jointRadiusVal">12</output></div></div>
 <div class="field"><label>कैनवास चौड़ाई</label><input type="number" id="jointCanvasW" min="400" max="3000" value="1200"></div>
 <div class="field"><label>कैनवास ऊंचाई</label><input type="number" id="jointCanvasH" min="400" max="3000" value="900"></div>
-<div class="field"><label>नीचे टेक्स्ट (वैकल्पिक)</label><input id="jointText" placeholder="अपना टेक्स्ट लिखें"></div>
+<div class="field"><label>नीचे टेक्स्ट</label><input id="jointText" placeholder="अपना टेक्स्ट"></div>
+
 <div class="actions">
 <button onclick="jointDraw()">Preview अपडेट</button>
 <button class="green" onclick="downloadCanvas('jointCanvas','joint-photo.png')">PNG डाउनलोड</button>
+<button class="green" onclick="downloadJPG()">JPG डाउनलोड</button>
 <button class="orange" onclick="printCanvas('jointCanvas')">प्रिंट</button>
 </div>
 </div>
@@ -137,33 +138,42 @@ footer{text-align:center;padding:22px;color:#64748b}
 <div>
 <h3>चुनी हुई फोटो</h3>
 <div id="jointPhotoList" class="photo-list"></div>
-<h3>Selected Photo Editing</h3>
 
-<div class="field"><label>फोटो Zoom / आकार</label><input type="range" id="jointZoom" min="30" max="250" value="100"><output id="jointZoomVal">100%</output></div>
+<div class="edit-box">
+<h3>🎯 Photo Editing Tools</h3>
 
-<div class="field"><label>फोटो की चौड़ाई कम / ज्यादा</label><input type="range" id="jointWidth" min="30" max="250" value="100"><output id="jointWidthVal">100%</output></div>
-
-<div class="field"><label>फोटो की ऊंचाई कम / ज्यादा</label><input type="range" id="jointHeight" min="30" max="250" value="100"><output id="jointHeightVal">100%</output></div>
-
-<div class="field"><label>Rotate</label><input type="range" id="jointRotate" min="-180" max="180" value="0"></div>
-<div class="field"><label>Brightness</label><input type="range" id="jointBright" min="20" max="200" value="100"></div>
-<div class="field"><label>Contrast</label><input type="range" id="jointContrast" min="20" max="200" value="100"></div>
-<div class="field"><label>Saturation</label><input type="range" id="jointSaturation" min="0" max="200" value="100"></div>
-<div class="field"><label>Blur</label><input type="range" id="jointBlur" min="0" max="10" value="0"></div>
+<div class="field"><label>Zoom / आकार</label><div class="range-row"><input type="range" id="jointZoom" min="25" max="300" value="100"><output id="jointZoomVal">100%</output></div></div>
+<div class="field"><label>चौड़ाई कम / ज्यादा</label><div class="range-row"><input type="range" id="jointWidth" min="25" max="300" value="100"><output id="jointWidthVal">100%</output></div></div>
+<div class="field"><label>ऊंचाई कम / ज्यादा</label><div class="range-row"><input type="range" id="jointHeight" min="25" max="300" value="100"><output id="jointHeightVal">100%</output></div></div>
+<div class="field"><label>बाएं / दाएं Position</label><div class="range-row"><input type="range" id="jointPosX" min="-100" max="100" value="0"><output id="jointPosXVal">0</output></div></div>
+<div class="field"><label>ऊपर / नीचे Position</label><div class="range-row"><input type="range" id="jointPosY" min="-100" max="100" value="0"><output id="jointPosYVal">0</output></div></div>
+<div class="field"><label>Rotate</label><div class="range-row"><input type="range" id="jointRotate" min="-180" max="180" value="0"><output id="jointRotateVal">0°</output></div></div>
+<div class="field"><label>Brightness</label><div class="range-row"><input type="range" id="jointBright" min="0" max="250" value="100"><output id="jointBrightVal">100%</output></div></div>
+<div class="field"><label>Contrast</label><div class="range-row"><input type="range" id="jointContrast" min="0" max="250" value="100"><output id="jointContrastVal">100%</output></div></div>
+<div class="field"><label>Saturation</label><div class="range-row"><input type="range" id="jointSaturation" min="0" max="250" value="100"><output id="jointSaturationVal">100%</output></div></div>
+<div class="field"><label>Blur</label><div class="range-row"><input type="range" id="jointBlur" min="0" max="12" value="0"><output id="jointBlurVal">0</output></div></div>
 <div class="field"><label>Filter</label>
 <select id="jointFilter">
 <option value="normal">Normal</option>
 <option value="grayscale">Black & White</option>
 <option value="sepia">Sepia</option>
+<option value="vintage">Vintage</option>
+<option value="warm">Warm</option>
+<option value="cool">Cool</option>
 </select></div>
 
 <div class="actions">
 <button class="gray" id="jointFlipH">↔ Flip H</button>
 <button class="gray" id="jointFlipV">↕ Flip V</button>
+</div>
+<div class="actions">
+<button class="gray" id="jointUndo">↶ Undo</button>
+<button class="gray" id="jointRedo">↷ Redo</button>
 <button class="gray" id="jointFit">Reset Selected</button>
 <button class="red" id="jointRemove">Remove Selected</button>
 </div>
-<p class="hint">फोटो की चौड़ाई और ऊंचाई अलग-अलग बदली जा सकती है। फोटो चुनने के बाद स्लाइडर चलाएं।</p>
+<button class="green" id="jointApplyAll">सभी फोटो पर सेटिंग लगाएं</button>
+</div>
 </div>
 </div>
 <div class="canvas-wrap"><canvas id="jointCanvas" width="1200" height="900"></canvas></div>
@@ -171,7 +181,7 @@ footer{text-align:center;padding:22px;color:#64748b}
 
 <section class="panel" id="portals">
 <h2>🌐 Portal Services Directory</h2>
-<p class="hint">नीचे दिए गए पोर्टल के आधिकारिक पेज नए टैब में खुलेंगे। लॉगिन/आवेदन से पहले वेबसाइट का URL और नियम जांचें।</p>
+<p class="hint">नीचे दिए गए पोर्टल के आधिकारिक पेज नए टैब में खुलेंगे।</p>
 <div class="grid">
 <div class="portal"><h3>Aadhaar Services</h3><a target="_blank" rel="noopener" href="https://uidai.gov.in/">UIDAI Official</a></div>
 <div class="portal"><h3>PAN Card</h3><a target="_blank" rel="noopener" href="https://www.incometax.gov.in/">Income Tax Portal</a> <a target="_blank" rel="noopener" href="https://www.protean-tinpan.com/">Protean</a></div>
@@ -188,7 +198,6 @@ footer{text-align:center;padding:22px;color:#64748b}
 </div>
 </section>
 </main>
-
 <footer>© 2026 Gramin Grahak Sewa • Photo & Print Studio</footer>
 
 <script>
@@ -196,310 +205,202 @@ const $=id=>document.getElementById(id);
 let cardImg=null,passImg=null,jointPhotos=[],jointSelected=0;
 
 function loadImage(file,cb){
-const r=new FileReader();
-r.onload=()=>{
-const im=new Image();
-im.onload=()=>cb(im);
-im.src=r.result;
-};
-r.readAsDataURL(file);
+ const reader=new FileReader();
+ reader.onload=()=>{const img=new Image();img.onload=()=>cb(img);img.onerror=()=>alert('फोटो नहीं खुल सकी।');img.src=reader.result};
+ reader.readAsDataURL(file);
 }
-
-function downloadCanvas(id,name){
-const c=$(id);
-const a=document.createElement('a');
-a.download=name;
-a.href=c.toDataURL('image/png');
-a.click();
+function downloadCanvas(id,name,type='image/png',quality=.95){
+ const c=$(id),a=document.createElement('a');a.download=name;a.href=c.toDataURL(type,quality);a.click();
 }
-
+function downloadJPG(){downloadCanvas('jointCanvas','joint-photo.jpg','image/jpeg',.95)}
 function printCanvas(id){
-const c=$(id),w=window.open('','_blank');
-if(!w){alert('Pop-up allow करें');return}
-w.document.write('<html><head><title>Print</title><style>body{margin:0;text-align:center}img{width:100%;height:auto}@page{size:A4;margin:0}</style></head><body><img src="'+c.toDataURL('image/png')+'"><script>window.onload=()=>{window.print()}<\/script></body></html>');
-w.document.close();
+ const c=$(id),w=window.open('','_blank');
+ if(!w){alert('Pop-up allow करें');return}
+ w.document.write('<html><head><title>Print</title><style>body{margin:0;text-align:center}img{width:100%;height:auto;display:block}@page{size:A4;margin:0}</style></head><body><img src="'+c.toDataURL('image/png')+'"><script>window.onload=()=>{window.print()}<\/script></body></html>');
+ w.document.close();
 }
 
 function drawCard(){
-const c=$('cardCanvas'),x=c.getContext('2d');
-x.fillStyle=$('cardColor').value;
-x.fillRect(0,0,c.width,c.height);
-x.strokeStyle='#174c86';
-x.lineWidth=10;
-x.strokeRect(12,12,c.width-24,c.height-24);
-x.fillStyle='#124d8b';
-x.fillRect(15,15,c.width-30,95);
-x.fillStyle='#fff';
-x.font='bold 42px Arial';
-x.fillText('CARD DESIGN',40,76);
-if(cardImg){
-x.save();
-x.beginPath();
-x.rect(45,145,220,280);
-x.clip();
-x.drawImage(cardImg,45,145,220,280);
-x.restore();
+ const c=$('cardCanvas'),x=c.getContext('2d');
+ x.fillStyle=$('cardColor').value;x.fillRect(0,0,c.width,c.height);
+ x.strokeStyle='#174c86';x.lineWidth=10;x.strokeRect(12,12,c.width-24,c.height-24);
+ x.fillStyle='#124d8b';x.fillRect(15,15,c.width-30,95);
+ x.fillStyle='#fff';x.font='bold 42px Arial';x.fillText('CARD DESIGN',40,76);
+ if(cardImg){x.save();x.beginPath();x.rect(45,145,220,280);x.clip();x.drawImage(cardImg,45,145,220,280);x.restore()}
+ x.fillStyle='#172033';x.font='bold 38px Arial';x.fillText($('cardName').value||'Name',305,205);
+ x.font='28px Arial';x.fillText('ID: '+($('cardNumber').value||'000000'),305,270);
+ x.fillText($('cardInfo').value||'Additional information',305,330);
+ x.font='22px Arial';x.fillStyle='#475569';x.fillText('Sample design – not an official identity document',45,500);
 }
-x.fillStyle='#172033';
-x.font='bold 38px Arial';
-x.fillText($('cardName').value||'Name',305,205);
-x.font='28px Arial';
-x.fillText('ID: '+($('cardNumber').value||'000000'),305,270);
-x.fillText($('cardInfo').value||'Additional information',305,330);
-x.font='22px Arial';
-x.fillStyle='#475569';
-x.fillText('Sample design – not an official identity document',45,500);
-}
-$('cardPhoto').addEventListener('change',e=>{
-if(e.target.files[0])loadImage(e.target.files[0],im=>{cardImg=im;drawCard()});
-});
+$('cardPhoto').addEventListener('change',e=>{if(e.target.files[0])loadImage(e.target.files[0],im=>{cardImg=im;drawCard()})});
+['cardName','cardNumber','cardInfo','cardColor','cardType'].forEach(id=>$(id).addEventListener('input',drawCard));
 drawCard();
 
-$('passPhoto').addEventListener('change',e=>{
-if(e.target.files[0])loadImage(e.target.files[0],im=>{passImg=im;makePassport()});
-});
-
+$('passPhoto').addEventListener('change',e=>{if(e.target.files[0])loadImage(e.target.files[0],im=>{passImg=im;makePassport()})});
 function makePassport(){
-const c=$('passCanvas'),x=c.getContext('2d');
-x.fillStyle='#fff';
-x.fillRect(0,0,c.width,c.height);
-const count=Math.max(1,Math.min(40,+$('passCount').value||8));
-const w=(+$('passW').value||35)*4.7;
-const h=(+$('passH').value||45)*4.7;
-const gap=24;
-const cols=Math.max(1,Math.floor((c.width-80)/(w+gap)));
-x.fillStyle=$('passBg').value;
-for(let i=0;i<count;i++){
-const col=i%cols,row=Math.floor(i/cols);
-const px=40+col*(w+gap),py=45+row*(h+gap);
-x.fillRect(px,py,w,h);
-if(passImg){
-const scale=Math.max(w/passImg.width,h/passImg.height);
-const sw=w/scale,sh=h/scale;
-const sx=(passImg.width-sw)/2,sy=(passImg.height-sh)/2;
-x.save();
-x.beginPath();
-x.rect(px,py,w,h);
-x.clip();
-x.drawImage(passImg,sx,sy,sw,sh,px,py,w,h);
-x.restore();
+ const c=$('passCanvas'),x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);
+ const count=Math.max(1,Math.min(40,+$('passCount').value||8));
+ const w=(+$('passW').value||35)*4.7,h=(+$('passH').value||45)*4.7,gap=24;
+ const cols=Math.max(1,Math.floor((c.width-80)/(w+gap)));
+ for(let i=0;i<count;i++){
+  const col=i%cols,row=Math.floor(i/cols),px=40+col*(w+gap),py=45+row*(h+gap);
+  x.fillStyle=$('passBg').value;x.fillRect(px,py,w,h);
+  if(passImg){
+   const scale=Math.max(w/passImg.width,h/passImg.height),sw=w/scale,sh=h/scale;
+   const sx=(passImg.width-sw)/2,sy=(passImg.height-sh)/2;
+   x.save();x.beginPath();x.rect(px,py,w,h);x.clip();x.drawImage(passImg,sx,sy,sw,sh,px,py,w,h);x.restore();
+  }
+  x.strokeStyle='#777';x.lineWidth=2;x.strokeRect(px,py,w,h);
+ }
 }
-x.strokeStyle='#777';
-x.lineWidth=2;
-x.strokeRect(px,py,w,h);
-}
-}
+$('passBg').addEventListener('input',makePassport);
+['passCount','passW','passH'].forEach(id=>$(id).addEventListener('input',makePassport));
 makePassport();
 
+const defaultEdit=()=>({zoom:1,widthScale:1,heightScale:1,posX:0,posY:0,rotate:0,bright:100,contrast:100,saturation:100,blur:0,filter:'normal',flipH:1,flipV:1});
+function cloneEdit(p){return {...p.edit}}
+function saveHistory(p){
+ p.history.push(cloneEdit(p));if(p.history.length>40)p.history.shift();p.future=[];
+}
+function updateHistoryButtons(){
+ const p=jointPhotos[jointSelected];
+ $('jointUndo').disabled=!p||!p.history.length;
+ $('jointRedo').disabled=!p||!p.future.length;
+}
 $('jointFiles').addEventListener('change',e=>{
-jointPhotos=[];
-const files=[...e.target.files].slice(0,10);
-let done=0;
-if(!files.length)return;
-files.forEach(file=>loadImage(file,img=>{
-jointPhotos.push({
-img,name:file.name,zoom:1,widthScale:1,heightScale:1,
-rotate:0,bright:100,contrast:100,saturation:100,blur:0,
-filter:'normal',flipH:1,flipV:1,offsetX:0,offsetY:0
+ const files=[...e.target.files].slice(0,10);jointPhotos=[];jointSelected=0;
+ if(!files.length){jointRenderList();jointDraw();return}
+ let remaining=files.length;const loaded=new Array(files.length);
+ files.forEach((file,index)=>loadImage(file,img=>{
+  loaded[index]={img,name:file.name,edit:defaultEdit(),history:[],future:[]};
+  remaining--;
+  if(!remaining){jointPhotos=loaded;jointSelected=0;jointRenderList();jointSyncControls();jointDraw()}
+ }));
 });
-done++;
-if(done===files.length){
-jointSelected=0;
-jointRenderList();
-jointSyncControls();
-jointDraw();
-}
-}));
-});
-
 function jointRenderList(){
-const box=$('jointPhotoList');
-box.innerHTML='';
-jointPhotos.forEach((p,i)=>{
-const d=document.createElement('div');
-d.className='photo-item'+(i===jointSelected?' active':'');
-const im=document.createElement('img');
-im.src=p.img.src;
-const t=document.createElement('small');
-t.textContent='Photo '+(i+1);
-d.append(im,t);
-d.onclick=()=>{
-jointSelected=i;
-jointRenderList();
-jointSyncControls();
-};
-box.append(d);
-});
+ const box=$('jointPhotoList');box.innerHTML='';
+ jointPhotos.forEach((p,i)=>{
+  const d=document.createElement('div');d.className='photo-item'+(i===jointSelected?' active':'');
+  const im=document.createElement('img');im.src=p.img.src;
+  const t=document.createElement('small');t.textContent='Photo '+(i+1);
+  d.append(im,t);
+  d.onclick=()=>{jointSelected=i;jointRenderList();jointSyncControls()};
+  box.append(d);
+ });
+ updateHistoryButtons();
 }
-
+const controlMap={
+ jointZoom:['zoom',v=>v/100],jointWidth:['widthScale',v=>v/100],
+ jointHeight:['heightScale',v=>v/100],jointPosX:['posX',v=>+v],
+ jointPosY:['posY',v=>+v],jointRotate:['rotate',v=>+v],
+ jointBright:['bright',v=>+v],jointContrast:['contrast',v=>+v],
+ jointSaturation:['saturation',v=>+v],jointBlur:['blur',v=>+v],
+ jointFilter:['filter',v=>v]
+};
+const suffix={jointZoom:'%',jointWidth:'%',jointHeight:'%',jointPosX:'',jointPosY:'',jointRotate:'°',jointBright:'%',jointContrast:'%',jointSaturation:'%',jointBlur:''};
+function updateOutputs(){
+ Object.keys(controlMap).forEach(id=>$(id+'Val').textContent=$(id).value+(suffix[id]||''));
+ ['jointGap','jointBorderSize','jointRadius'].forEach(id=>$(id+'Val').textContent=$(id).value);
+}
 function jointSyncControls(){
-const p=jointPhotos[jointSelected];
-if(!p)return;
-const values={
-jointZoom:p.zoom*100,
-jointWidth:p.widthScale*100,
-jointHeight:p.heightScale*100,
-jointRotate:p.rotate,
-jointBright:p.bright,
-jointContrast:p.contrast,
-jointSaturation:p.saturation,
-jointBlur:p.blur,
-jointFilter:p.filter
-};
-Object.keys(values).forEach(id=>$(id).value=values[id]);
-jointUpdateOutputs();
+ const p=jointPhotos[jointSelected];if(!p){updateHistoryButtons();return}
+ const e=p.edit;
+ const values={jointZoom:e.zoom*100,jointWidth:e.widthScale*100,jointHeight:e.heightScale*100,jointPosX:e.posX,jointPosY:e.posY,jointRotate:e.rotate,jointBright:e.bright,jointContrast:e.contrast,jointSaturation:e.saturation,jointBlur:e.blur,jointFilter:e.filter};
+ Object.entries(values).forEach(([id,v])=>$(id).value=v);
+ updateOutputs();updateHistoryButtons();
 }
-
-function jointUpdateOutputs(){
-['jointZoom','jointWidth','jointHeight','jointGap'].forEach(id=>{
-const out=$(id+'Val');
-if(out)out.textContent=$(id).value+(id==='jointGap'?'':'%');
+Object.entries(controlMap).forEach(([id,[key,convert]])=>{
+ $(id).addEventListener('input',()=>{
+  const p=jointPhotos[jointSelected];if(!p)return;
+  saveHistory(p);p.edit[key]=convert($(id).value);
+  updateOutputs();jointDraw();updateHistoryButtons();
+ });
 });
-}
-
-const jointEditMap=[
-['jointZoom','zoom',v=>v/100],
-['jointWidth','widthScale',v=>v/100],
-['jointHeight','heightScale',v=>v/100],
-['jointRotate','rotate',v=>v],
-['jointBright','bright',v=>v],
-['jointContrast','contrast',v=>v],
-['jointSaturation','saturation',v=>v],
-['jointBlur','blur',v=>v],
-['jointFilter','filter',v=>v]
-];
-
-jointEditMap.forEach(([id,key,convert])=>{
-$(id).addEventListener('input',()=>{
-const p=jointPhotos[jointSelected];
-if(!p)return;
-p[key]=convert($(id).value);
-jointUpdateOutputs();
-jointDraw();
-});
-});
-
 ['jointGap','jointBorderSize','jointRadius','jointCanvasW','jointCanvasH','jointLayout','jointBg','jointBorder','jointText'].forEach(id=>{
-$(id).addEventListener('input',()=>{
-jointUpdateOutputs();
-jointDraw();
+ $(id).addEventListener('input',()=>{updateOutputs();jointDraw()});
 });
-});
-
-$('jointFlipH').onclick=()=>{
-const p=jointPhotos[jointSelected];
-if(p){p.flipH*=-1;jointDraw()}
+function toggleFlip(key){
+ const p=jointPhotos[jointSelected];if(!p)return;
+ saveHistory(p);p.edit[key]*=-1;jointDraw();updateHistoryButtons();
+}
+$('jointFlipH').onclick=()=>toggleFlip('flipH');
+$('jointFlipV').onclick=()=>toggleFlip('flipV');
+$('jointUndo').onclick=()=>{
+ const p=jointPhotos[jointSelected];if(!p||!p.history.length)return;
+ p.future.push(cloneEdit(p));p.edit=p.history.pop();jointSyncControls();jointDraw();
 };
-
-$('jointFlipV').onclick=()=>{
-const p=jointPhotos[jointSelected];
-if(p){p.flipV*=-1;jointDraw()}
+$('jointRedo').onclick=()=>{
+ const p=jointPhotos[jointSelected];if(!p||!p.future.length)return;
+ p.history.push(cloneEdit(p));p.edit=p.future.pop();jointSyncControls();jointDraw();
 };
-
 $('jointFit').onclick=()=>{
-const p=jointPhotos[jointSelected];
-if(p){
-Object.assign(p,{
-zoom:1,widthScale:1,heightScale:1,
-offsetX:0,offsetY:0,rotate:0,
-bright:100,contrast:100,saturation:100,
-blur:0,filter:'normal',flipH:1,flipV:1
-});
-jointSyncControls();
-jointDraw();
-}
+ const p=jointPhotos[jointSelected];if(!p)return;
+ saveHistory(p);p.edit=defaultEdit();jointSyncControls();jointDraw();
 };
-
 $('jointRemove').onclick=()=>{
-if(jointPhotos.length){
-jointPhotos.splice(jointSelected,1);
-jointSelected=Math.max(0,Math.min(jointSelected,jointPhotos.length-1));
-jointRenderList();
-jointSyncControls();
-jointDraw();
-}
+ if(!jointPhotos.length)return;
+ jointPhotos.splice(jointSelected,1);
+ jointSelected=Math.max(0,Math.min(jointSelected,jointPhotos.length-1));
+ jointRenderList();jointSyncControls();jointDraw();
 };
-
+$('jointApplyAll').onclick=()=>{
+ const p=jointPhotos[jointSelected];if(!p)return;
+ jointPhotos.forEach((item,i)=>{
+  if(i!==jointSelected){saveHistory(item);item.edit={...p.edit}}
+ });
+ jointRenderList();jointDraw();
+ alert('चुनी हुई फोटो की सेटिंग सभी फोटो पर लागू कर दी गई।');
+};
 function roundedRect(ctx,x,y,w,h,r){
-r=Math.min(r,w/2,h/2);
-ctx.beginPath();
-ctx.moveTo(x+r,y);
-ctx.arcTo(x+w,y,x+w,y+h,r);
-ctx.arcTo(x+w,y+h,x,y+h,r);
-ctx.arcTo(x,y+h,x,y,r);
-ctx.arcTo(x,y,x+w,y,r);
-ctx.closePath();
+ r=Math.max(0,Math.min(r,w/2,h/2));ctx.beginPath();
+ ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
+ ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);
+ ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
 }
-
 function jointDraw(){
-const c=$('jointCanvas'),x=c.getContext('2d');
-c.width=Math.max(400,Math.min(3000,+$('jointCanvasW').value||1200));
-c.height=Math.max(400,Math.min(3000,+$('jointCanvasH').value||900));
-x.fillStyle=$('jointBg').value;
-x.fillRect(0,0,c.width,c.height);
-
-if(!jointPhotos.length){
-x.fillStyle='#64748b';
-x.font='32px Arial';
-x.textAlign='center';
-x.fillText('यहां आपकी Joint Photo दिखाई देगी',c.width/2,c.height/2);
-return;
+ const c=$('jointCanvas'),x=c.getContext('2d');
+ c.width=Math.max(400,Math.min(3000,+$('jointCanvasW').value||1200));
+ c.height=Math.max(400,Math.min(3000,+$('jointCanvasH').value||900));
+ x.fillStyle=$('jointBg').value;x.fillRect(0,0,c.width,c.height);
+ if(!jointPhotos.length){
+  x.fillStyle='#64748b';x.font='32px Arial';x.textAlign='center';
+  x.fillText('यहां आपकी Joint Photo दिखाई देगी',c.width/2,c.height/2);return;
+ }
+ const n=jointPhotos.length,layout=$('jointLayout').value;
+ let cols,rows;
+ if(layout==='horizontal'){cols=n;rows=1}
+ else if(layout==='vertical'){cols=1;rows=n}
+ else if(layout==='two'){cols=2;rows=Math.ceil(n/2)}
+ else{cols=Math.ceil(Math.sqrt(n));rows=Math.ceil(n/cols)}
+ const gap=+$('jointGap').value,margin=35,textSpace=$('jointText').value?65:0;
+ const cellW=(c.width-2*margin-gap*(cols-1))/cols;
+ const cellH=(c.height-2*margin-gap*(rows-1)-textSpace)/rows;
+ jointPhotos.forEach((p,i)=>{
+  const col=i%cols,row=Math.floor(i/cols);
+  const cx=margin+col*(cellW+gap),cy=margin+row*(cellH+gap);
+  const bw=+$('jointBorderSize').value,rad=+$('jointRadius').value,e=p.edit;
+  x.save();roundedRect(x,cx,cy,cellW,cellH,rad);x.clip();
+  x.fillStyle=$('jointBorder').value;x.fillRect(cx,cy,cellW,cellH);
+  const ix=cx+bw,iy=cy+bw,iw=Math.max(1,cellW-2*bw),ih=Math.max(1,cellH-2*bw);
+  roundedRect(x,ix,iy,iw,ih,Math.max(0,rad-bw));x.clip();
+  x.translate(cx+cellW/2+e.posX*cellW/100,cy+cellH/2+e.posY*cellH/100);
+  x.rotate(e.rotate*Math.PI/180);
+  x.scale(e.flipH*e.zoom*e.widthScale,e.flipV*e.zoom*e.heightScale);
+  let filter=`brightness(${e.bright}%) contrast(${e.contrast}%) saturate(${e.saturation}%) blur(${e.blur}px)`;
+  if(e.filter==='grayscale')filter+=' grayscale(1)';
+  if(e.filter==='sepia')filter+=' sepia(1)';
+  if(e.filter==='vintage')filter+=' sepia(.55) contrast(1.12) saturate(.8)';
+  if(e.filter==='warm')filter+=' sepia(.25) saturate(1.25)';
+  if(e.filter==='cool')filter+=' hue-rotate(12deg) saturate(.9)';
+  x.filter=filter;
+  const scale=Math.max(iw/p.img.width,ih/p.img.height);
+  const dw=p.img.width*scale,dh=p.img.height*scale;
+  x.drawImage(p.img,-dw/2,-dh/2,dw,dh);x.restore();
+ });
+ const txt=$('jointText').value;
+ if(txt){x.fillStyle='#172033';x.font='bold 34px Arial';x.textAlign='center';x.fillText(txt,c.width/2,c.height-20)}
 }
-
-const n=jointPhotos.length,layout=$('jointLayout').value;
-let cols,rows;
-if(layout==='horizontal'){cols=n;rows=1}
-else if(layout==='vertical'){cols=1;rows=n}
-else if(layout==='two'){cols=2;rows=Math.ceil(n/2)}
-else{cols=Math.ceil(Math.sqrt(n));rows=Math.ceil(n/cols)}
-
-const gap=+$('jointGap').value,margin=35;
-const cellW=(c.width-2*margin-gap*(cols-1))/cols;
-const cellH=(c.height-2*margin-gap*(rows-1)-($('jointText').value?65:0))/rows;
-
-jointPhotos.forEach((p,i)=>{
-const col=i%cols,row=Math.floor(i/cols);
-const cx=margin+col*(cellW+gap),cy=margin+row*(cellH+gap);
-const bw=+$('jointBorderSize').value,rad=+$('jointRadius').value;
-
-x.save();
-roundedRect(x,cx,cy,cellW,cellH,rad);
-x.clip();
-x.fillStyle=$('jointBorder').value;
-x.fillRect(cx,cy,cellW,cellH);
-
-const innerX=cx+bw,innerY=cy+bw;
-const innerW=cellW-2*bw,innerH=cellH-2*bw;
-roundedRect(x,innerX,innerY,innerW,innerH,Math.max(0,rad-bw));
-x.clip();
-
-x.translate(cx+cellW/2,cy+cellH/2);
-x.rotate(p.rotate*Math.PI/180);
-x.scale(
-p.flipH*p.zoom*p.widthScale,
-p.flipV*p.zoom*p.heightScale
-);
-
-x.filter=`brightness(${p.bright}%) contrast(${p.contrast}%) saturate(${p.saturation}%) blur(${p.blur}px)`+
-(p.filter==='grayscale'?' grayscale(1)':p.filter==='sepia'?' sepia(1)':'');
-
-const scale=Math.max(innerW/p.img.width,innerH/p.img.height);
-const dw=p.img.width*scale,dh=p.img.height*scale;
-x.drawImage(p.img,-dw/2,-dh/2,dw,dh);
-x.restore();
-});
-
-const text=$('jointText').value;
-if(text){
-x.fillStyle='#172033';
-x.font='bold 34px Arial';
-x.textAlign='center';
-x.fillText(text,c.width/2,c.height-20);
-}
-}
-
-jointUpdateOutputs();
-jointDraw();
+updateOutputs();jointDraw();
 </script>
 </body>
 </html>

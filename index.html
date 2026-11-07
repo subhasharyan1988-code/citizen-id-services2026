@@ -3,1296 +3,543 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hybrid AI ID Card Professional Studio</title>
-
 <style>
-:root{
-  --blue:#1559a6;
-  --dark:#102b49;
-  --green:#07865c;
-  --orange:#f47721;
-  --bg:#edf2f7;
-  --white:#fff;
-  --border:#d7e0ea;
-  --text:#172b43;
-}
+:root{--blue:#1559a6;--navy:#102b49;--green:#07865c;--orange:#f47721;--bg:#edf2f7;--line:#d5dfeb}
 *{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:#172b43}
+header{background:linear-gradient(110deg,#102b49,#1767b5);color:white;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+header h2{font-size:19px;margin:0 0 4px}
+header small{font-size:11px}
+main{max-width:1500px;margin:auto;padding:10px}
+button{border:0;border-radius:5px;padding:8px 11px;background:var(--blue);color:white;font-weight:bold;font-size:12px;cursor:pointer;margin:2px}
+button:hover{filter:brightness(.9)}
+.green{background:var(--green)}.orange{background:var(--orange)}.red{background:#c0392b}.gray{background:#586b80}.light{background:#e6eef7;color:#17436c}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:10px;align-items:start}
+.panel{background:white;border:1px solid var(--line);border-radius:7px;padding:10px;margin-bottom:9px}
+.previewSide{position:sticky;top:8px}
+.preview{height:185px;background:#e9eef5;border:1px dashed #9aacc0;border-radius:5px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview canvas{max-width:100%;max-height:175px;background:white;box-shadow:0 1px 5px #8795a5}
+.previewTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;font-size:13px;font-weight:bold}
+.status{font-size:11px;background:#eef7ff;padding:8px;border-radius:5px;margin-top:7px;color:#17558c}
+.tabs{display:flex;gap:5px;margin-bottom:8px}
+.tabs button{flex:1}
+.field{display:flex;flex-direction:column;gap:4px;margin:5px 0;min-width:0}
+.field label{font-size:11px;font-weight:bold;color:#41566d}
+input,select{width:100%;min-width:0;border:1px solid #c8d4e1;border-radius:4px;padding:7px;background:white;color:#172b43;font-size:12px}
+input[type=range]{padding:0}
+input[type=color]{height:34px;padding:2px}
+input[type=checkbox]{width:auto}
+.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.accordion{border:1px solid var(--line);border-radius:6px;margin:6px 0;overflow:hidden;background:white}
+.accHead{width:100%;text-align:left;background:#f4f7fb;color:#173c62;border-radius:0;padding:11px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.accHead.active{background:#e3effb;color:#104e91}
+.accBody{display:none;padding:10px;border-top:1px solid var(--line)}
+.accBody.open{display:block}
+.accBody h4{font-size:12px;margin:9px 0 5px;color:#1559a6}
+.toolnote{font-size:10px;color:#64758a;line-height:1.5}
+hr{border:0;border-top:1px solid #e3e9f0;margin:9px 0}
+canvas{touch-action:none}
+#printArea{display:none}
+@media(max-width:760px){
+ .layout{grid-template-columns:1fr}
+ .previewSide{position:static;order:-1}
+ .preview{height:150px}
+ .preview canvas{max-height:140px}
+ header h2{font-size:16px}
 }
-header{
-  background:linear-gradient(110deg,#123d70,#1767b5);
-  color:white;
-  padding:12px 15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:8px;
-}
-header h1{font-size:19px;margin:0}
-header small{font-size:11px;opacity:.9}
-.top-actions{display:flex;gap:6px;flex-wrap:wrap}
-button,select,input{font:inherit}
-button{
-  border:0;
-  border-radius:5px;
-  padding:8px 11px;
-  background:var(--blue);
-  color:white;
-  cursor:pointer;
-  font-size:12px;
-  font-weight:600;
-}
-button:hover{filter:brightness(.92)}
-button.secondary{background:#52677e}
-button.green{background:var(--green)}
-button.orange{background:var(--orange)}
-button.red{background:#d33c3c}
-button.light{background:#e7eef7;color:#183b62}
-button:disabled{opacity:.5;cursor:not-allowed}
-main{max-width:1500px;margin:auto;padding:9px}
-.panel{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:7px;
-  padding:9px;
-  margin-bottom:9px;
-}
-.tabs{
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
-  margin-bottom:9px;
-}
-.tabs button{padding:8px 13px}
-.tabs button.active{background:var(--orange)}
-.layout{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 270px;
-  gap:9px;
-  align-items:start;
-}
-.tools{min-width:0;grid-column:1;grid-row:1}
-.preview-side{
-  grid-column:2;
-  grid-row:1;
-  width:100%;
-  min-width:0;
-  position:sticky;
-  top:7px;
-}
-.preview{
-  height:190px;
-  max-height:190px;
-  background:#e8edf4;
-  border:1px dashed #9eafc3;
-  border-radius:5px;
-  padding:5px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-.preview canvas{
-  max-width:100%;
-  max-height:175px;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  background:white;
-  box-shadow:0 1px 5px #8996a7;
-}
-.preview-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:5px;
-  margin-bottom:6px;
-}
-.preview-title strong{font-size:13px}
-.preview-title span{font-size:10px;color:#68798c}
-h3{
-  font-size:13px;
-  margin:0 0 8px;
-  color:#164c83;
-}
-.group{
-  border:1px solid #dce4ed;
-  border-radius:6px;
-  padding:8px;
-  margin-bottom:8px;
-  background:#fff;
-}
-.group-title{
-  font-size:12px;
-  font-weight:bold;
-  color:#174f86;
-  border-bottom:1px solid #e3eaf2;
-  padding-bottom:5px;
-  margin-bottom:7px;
-}
-.grid2{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:7px;
-}
-.grid3{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:6px;
-}
-.field{min-width:0}
-label{
-  display:block;
-  font-size:10px;
-  color:#53657a;
-  margin-bottom:3px;
-}
-input[type="text"],input[type="number"],input[type="color"],select{
-  width:100%;
-  min-width:0;
-  height:31px;
-  border:1px solid #cbd6e2;
-  border-radius:4px;
-  padding:4px 6px;
-  background:white;
-  color:#172b43;
-  font-size:12px;
-}
-input[type="range"]{width:100%;margin:5px 0}
-input[type="file"]{
-  width:100%;
-  font-size:10px;
-  overflow:hidden;
-}
-input[type="checkbox"]{vertical-align:middle}
-.row-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:5px;
-  margin-top:6px;
-}
-.row-buttons button{flex:1;min-width:65px}
-.small-note{
-  color:#718095;
-  font-size:10px;
-  line-height:1.5;
-  margin-top:5px;
-}
-.status{
-  padding:7px;
-  background:#eef7ff;
-  color:#17558c;
-  border-radius:5px;
-  font-size:11px;
-  margin-top:7px;
-  overflow-wrap:anywhere;
-}
-.canvas-wrap{
-  display:none;
-}
-.sheet-preview{
-  width:100%;
-  background:#f3f5f8;
-  overflow:auto;
-  text-align:center;
-  padding:5px;
-}
-.sheet-preview canvas{
-  max-width:100%;
-  height:auto;
-  background:white;
-  box-shadow:0 1px 5px #999;
-}
-footer{
-  text-align:center;
-  color:#718095;
-  font-size:10px;
-  padding:10px;
-}
-@media(max-width:700px){
-  main{padding:5px}
-  header h1{font-size:16px}
-  .layout{grid-template-columns:minmax(0,1fr)}
-  .preview-side{
-    position:static;
-    grid-column:1;
-    grid-row:1;
-    width:100%;
-  }
-  .tools{grid-column:1;grid-row:2}
-  .preview{height:160px;max-height:160px}
-  .preview canvas{max-height:145px}
-  .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media print{
+ body{background:white}
+ header,main{display:none!important}
+ #printArea{display:block!important}
+ #printArea canvas{display:block;max-width:100%;margin:0 auto 10px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
-  <div>
-    <h1>Hybrid AI ID Card Professional Studio</h1>
-    <small>ID Card Editing • Front & Back • PVC • A4 Printing</small>
-  </div>
-  <div class="top-actions">
-    <button class="light" onclick="undo()">↶ Undo</button>
-    <button class="light" onclick="redo()">↷ Redo</button>
-    <button class="green" onclick="downloadCard()">Download</button>
-    <button class="orange" onclick="window.print()">Print</button>
-  </div>
+ <div>
+  <h2>🪪 Hybrid AI ID Card Professional Studio</h2>
+  <small>Photo Studio • ID Card Editing • Front & Back • A4 Printing</small>
+ </div>
+ <div>
+  <button class="green" onclick="downloadImage()">⬇ Download</button>
+  <button class="orange" onclick="printSheet()">🖨 Print</button>
+ </div>
 </header>
 
 <main>
-
-<div class="tabs">
-  <button class="active" id="tabFront" onclick="selectSide('front')">Front Side</button>
-  <button id="tabBack" onclick="selectSide('back')">Back Side</button>
-  <button class="secondary" onclick="showSheet()">A4 Print Sheet</button>
-  <button class="secondary" onclick="showEditor()">Editor</button>
-</div>
-
 <div class="layout">
-
-<!-- EDITING OPTIONS -->
-<div class="tools" id="tools">
-
-  <div class="group">
-    <div class="group-title">1. ID Card Photo Upload</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Front Photo / Document</label>
-        <input type="file" accept="image/*" onchange="uploadImage(event,'front')">
-      </div>
-      <div class="field">
-        <label>Back Photo / Document</label>
-        <input type="file" accept="image/*" onchange="uploadImage(event,'back')">
-      </div>
-    </div>
-    <div class="row-buttons">
-      <button class="light" onclick="selectSide('front')">Edit Front</button>
-      <button class="light" onclick="selectSide('back')">Edit Back</button>
-      <button class="secondary" onclick="clearSide()">Clear Current</button>
-    </div>
-    <div class="small-note">JPG, PNG, WEBP और मोबाइल से प्राप्त फोटो अपलोड कर सकते हैं।</div>
+<section>
+ <div class="panel">
+  <div class="tabs">
+   <button id="frontTab" onclick="switchSide('front')">FRONT SIDE</button>
+   <button id="backTab" class="gray" onclick="switchSide('back')">BACK SIDE</button>
   </div>
+  <div class="row">
+   <button onclick="document.getElementById('upload').click()">📁 फोटो अपलोड</button>
+   <button class="gray" onclick="document.getElementById('multiUpload').click()">Multiple Upload</button>
+   <button class="red" onclick="clearCurrent()">Clear Photo</button>
+   <input type="file" id="upload" accept="image/*" hidden onchange="loadPhoto(event)">
+   <input type="file" id="multiUpload" accept="image/*" multiple hidden onchange="loadMultiple(event)">
+  </div>
+  <div class="toolnote">अपनी फोटो या कार्ड की इमेज अपलोड करें। Front और Back अलग-अलग एडिट कर सकते हैं।</div>
+ </div>
 
-  <div class="group">
-    <div class="group-title">2. ID Card Size Settings</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Card Size Preset</label>
-        <select id="preset" onchange="applyPreset()">
-          <option value="85.6,54">Standard PVC ID Card</option>
-          <option value="86,54">86 × 54 mm</option>
-          <option value="90,55">90 × 55 mm</option>
-          <option value="100,70">100 × 70 mm</option>
-          <option value="105,148">A6 Size</option>
-          <option value="148,210">A5 Size</option>
-          <option value="210,297">A4 Size</option>
-          <option value="custom">Custom Size</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Measurement Unit</label>
-        <select id="unit" onchange="updateDimensions()">
-          <option value="mm">Millimeter (mm)</option>
-          <option value="cm">Centimeter (cm)</option>
-          <option value="inch">Inch</option>
-          <option value="px">Pixel (px)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Width</label>
-        <input type="number" id="cardW" value="85.6" min="1" max="1000" step="0.1" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Height</label>
-        <input type="number" id="cardH" value="54" min="1" max="1000" step="0.1" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Print DPI</label>
-        <select id="dpi" onchange="render()">
-          <option value="150">150 DPI</option>
-          <option value="300" selected>300 DPI</option>
-          <option value="600">600 DPI</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Card Orientation</label>
-        <select id="orientation" onchange="changeOrientation()">
-          <option value="landscape">Landscape</option>
-          <option value="portrait">Portrait</option>
-        </select>
-      </div>
-    </div>
-    <div class="row-buttons">
-      <button onclick="swapSize()">↔ Swap Width/Height</button>
-      <button class="secondary" onclick="resetSize()">Reset Size</button>
-    </div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">3. Photo Crop / Position / Zoom</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Zoom</label>
-        <input type="range" id="zoom" min="10" max="300" value="100" oninput="updateValue('zoomVal',this.value+'%');render()">
-        <div class="small-note" id="zoomVal">100%</div>
-      </div>
-      <div class="field">
-        <label>Rotation</label>
-        <input type="range" id="rotation" min="-180" max="180" value="0" oninput="updateValue('rotationVal',this.value+'°');render()">
-        <div class="small-note" id="rotationVal">0°</div>
-      </div>
-      <div class="field">
-        <label>Horizontal Position</label>
-        <input type="range" id="posX" min="-100" max="100" value="0" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Vertical Position</label>
-        <input type="range" id="posY" min="-100" max="100" value="0" oninput="render()">
-      </div>
-    </div>
-    <div class="row-buttons">
-      <button onclick="rotate(-90)">↶ 90°</button>
-      <button onclick="rotate(90)">↷ 90°</button>
-      <button onclick="flip('h')">Flip H</button>
-      <button onclick="flip('v')">Flip V</button>
-      <button class="secondary" onclick="resetTransform()">Reset</button>
-    </div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">4. Photo Editing Tools</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Brightness</label>
-        <input type="range" id="brightness" min="0" max="200" value="100" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Contrast</label>
-        <input type="range" id="contrast" min="0" max="200" value="100" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Saturation</label>
-        <input type="range" id="saturation" min="0" max="200" value="100" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Blur</label>
-        <input type="range" id="blur" min="0" max="10" value="0" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Grayscale</label>
-        <input type="range" id="gray" min="0" max="100" value="0" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Sepia</label>
-        <input type="range" id="sepia" min="0" max="100" value="0" oninput="render()">
-      </div>
-    </div>
-    <div class="row-buttons">
-      <button class="light" onclick="filterPreset('normal')">Normal</button>
-      <button class="light" onclick="filterPreset('vivid')">Vivid</button>
-      <button class="light" onclick="filterPreset('soft')">Soft</button>
-      <button class="light" onclick="filterPreset('bw')">B&W</button>
-    </div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">5. Background / Border</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Background Color</label>
-        <input type="color" id="bgColor" value="#ffffff" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Border Color</label>
-        <input type="color" id="borderColor" value="#222222" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Border Width</label>
-        <input type="number" id="borderWidth" value="0" min="0" max="30" oninput="render()">
-      </div>
-      <div class="field">
-        <label>Corner Radius</label>
-        <input type="number" id="radius" value="0" min="0" max="40" oninput="render()">
-      </div>
-    </div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">6. Text / Name / ID Number</div>
-    <div class="field">
-      <label>Text लिखें</label>
-      <input type="text" id="textValue" placeholder="नाम / ID Number / अन्य टेक्स्ट">
-    </div>
-    <div class="grid2">
-      <div class="field">
-        <label>Text Color</label>
-        <input type="color" id="textColor" value="#111111">
-      </div>
-      <div class="field">
-        <label>Text Size</label>
-        <input type="number" id="textSize" value="18" min="5" max="200">
-      </div>
-      <div class="field">
-        <label>Text X Position (%)</label>
-        <input type="number" id="textX" value="50" min="0" max="100">
-      </div>
-      <div class="field">
-        <label>Text Y Position (%)</label>
-        <input type="number" id="textY" value="90" min="0" max="100">
-      </div>
-    </div>
-    <div class="row-buttons">
-      <button onclick="addText()">Add Text</button>
-      <button class="secondary" onclick="clearText()">Clear Text</button>
-    </div>
-    <div class="small-note">यहाँ जोड़ा गया टेक्स्ट कार्ड के Preview और Download में दिखाई देगा।</div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">7. Document Straighten / Scanner</div>
-    <div class="field">
-      <label>टेढ़ा डॉक्यूमेंट अपलोड करें</label>
-      <input type="file" id="scanFile" accept="image/*" onchange="uploadScan(event)">
-    </div>
-    <div class="row-buttons">
-      <button class="green" onclick="autoStraighten()">Auto Straighten</button>
-      <button onclick="useScan()">Use as Front</button>
-      <button class="secondary" onclick="useScanBack()">Use as Back</button>
-    </div>
-    <div class="small-note" id="scanStatus">Auto perspective correction के लिए OpenCV.js लोड होने में कुछ समय लग सकता है।</div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">8. Hybrid AI Tools</div>
-    <div class="grid2">
-      <button onclick="basicEnhance()">Photo Enhance</button>
-      <button onclick="removeWhite()">White Background</button>
-      <button onclick="autoFit()">Auto Fit</button>
-      <button onclick="resetTransform()">Reset Photo</button>
-    </div>
-    <div class="field" style="margin-top:8px">
-      <label>Advanced AI Server Endpoint (वैकल्पिक)</label>
-      <input type="text" id="aiEndpoint" placeholder="https://your-server.com/api/process">
-    </div>
-    <div class="field" style="margin-top:6px">
-      <label>AI Action</label>
-      <select id="aiAction">
-        <option value="background_remove">Background Remove</option>
-        <option value="enhance">AI Photo Enhance</option>
-        <option value="upscale">HD Upscale</option>
-        <option value="restore">Photo Restore</option>
-        <option value="document_cleanup">Document Cleanup</option>
-      </select>
-    </div>
-    <button class="orange" style="width:100%;margin-top:7px" onclick="runOnlineAI()">Run Online AI</button>
-    <div class="small-note">Advanced AI के लिए आपका अपना सुरक्षित backend/API server जरूरी है। केवल Endpoint भरने से AI सेवा अपने आप उपलब्ध नहीं होती।</div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">9. A4 / PVC Printing Settings</div>
-    <div class="grid2">
-      <div class="field">
-        <label>Paper Size</label>
-        <select id="paper">
-          <option value="210,297">A4</option>
-          <option value="148,210">A5</option>
-          <option value="297,420">A3</option>
-          <option value="101.6,152.4">4 × 6 Inch</option>
-          <option value="127,177.8">5 × 7 Inch</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Copies</label>
-        <input type="number" id="copies" min="1" max="100" value="8">
-      </div>
-      <div class="field">
-        <label>Gap (mm)</label>
-        <input type="number" id="gap" value="3" min="0" max="30" step="0.5">
-      </div>
-      <div class="field">
-        <label>Margin (mm)</label>
-        <input type="number" id="margin" value="5" min="0" max="40" step="0.5">
-      </div>
-    </div>
-    <div style="margin-top:7px">
-      <label><input type="checkbox" id="printBoth" checked> Front + Back दोनों प्रिंट करें</label>
-      <label><input type="checkbox" id="cutLines" checked> Cutting Lines दिखाएँ</label>
-    </div>
-    <div class="row-buttons">
-      <button class="green" onclick="generateSheet()">Generate A4 Sheet</button>
-      <button class="orange" onclick="printSheet()">Print Sheet</button>
-    </div>
-  </div>
-
-  <div class="group">
-    <div class="group-title">10. Save / Export</div>
-    <div class="row-buttons">
-      <button class="green" onclick="downloadCard()">Download PNG</button>
-      <button onclick="downloadJPG()">Download JPG</button>
-      <button class="secondary" onclick="printCard()">Print Card</button>
-    </div>
-    <div class="row-buttons">
-      <button class="light" onclick="saveProject()">Save Project</button>
-      <button class="light" onclick="loadProject()">Load Project</button>
-    </div>
-    <input type="file" id="projectFile" accept=".json" style="display:none" onchange="loadProjectFile(event)">
-  </div>
-
-</div><!-- tools END -->
-
-<!-- SMALL SIDE PREVIEW -->
-<section class="panel preview-side" id="editor">
-  <div class="preview-title">
-    <strong>Live Preview</strong>
-    <span id="previewLabel">FRONT</span>
-  </div>
-  <div class="preview">
-    <canvas id="cardCanvas" width="1011" height="638"></canvas>
-  </div>
-  <div class="status" id="status">Ready. पहले Front या Back फोटो अपलोड करें।</div>
-  <div class="row-buttons">
-    <button class="light" onclick="showEditor()">Editor</button>
-    <button class="secondary" onclick="downloadCard()">Save</button>
-  </div>
-  <div class="small-note">Preview छोटा रखा गया है। डाउनलोड और प्रिंट में चुनी हुई DPI के अनुसार आउटपुट बनेगा।</div>
+ <div class="panel">
+  <b style="font-size:13px">🧰 सभी Editing Tools</b>
+  <div id="accordion"></div>
+ </div>
 </section>
 
-</div><!-- layout END -->
-
-<!-- PRINT SHEET VIEW -->
-<section class="panel" id="sheetPanel" style="display:none">
-  <div class="preview-title">
-    <strong>A4 Print Sheet Preview</strong>
-    <button class="secondary" onclick="showEditor()">Back to Editor</button>
+<aside class="previewSide">
+ <div class="panel">
+  <div class="previewTitle"><span>LIVE PREVIEW</span><small id="sideLabel">FRONT</small></div>
+  <div class="preview"><canvas id="canvas" width="638" height="1012"></canvas></div>
+  <div class="status" id="status">फोटो अपलोड करके एडिटिंग शुरू करें।</div>
+ </div>
+ <div class="panel">
+  <b style="font-size:12px">Quick Actions</b>
+  <div class="grid2">
+   <button onclick="undo()">↶ Undo</button>
+   <button onclick="redo()">↷ Redo</button>
+   <button onclick="resetImage()">Reset</button>
+   <button onclick="downloadImage()">Download</button>
+   <button class="green" onclick="copyToOther()">Copy to Other</button>
+   <button class="orange" onclick="swapSides()">Swap Sides</button>
   </div>
-  <div class="sheet-preview">
-    <canvas id="sheetCanvas"></canvas>
-  </div>
-  <div class="row-buttons">
-    <button class="green" onclick="downloadSheet()">Download Sheet</button>
-    <button class="orange" onclick="printSheet()">Print Sheet</button>
-  </div>
-</section>
-
-<footer>Hybrid AI ID Card Professional Studio • Local Browser Editing Software</footer>
-
+ </div>
+</aside>
+</div>
+<div id="printArea"></div>
 </main>
 
 <script>
 const $=id=>document.getElementById(id);
-
-const state={
-  side:'front',
-  front:null,
-  back:null,
-  scan:null,
-  text:[],
-  flipH:false,
-  flipV:false,
-  sheet:null
+const canvas=$('canvas'),ctx=canvas.getContext('2d');
+let side='front';
+let states={
+ front:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#ffffff',objects:[],crop:null},
+ back:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#ffffff',objects:[],crop:null}
 };
-
-const canvas=$('cardCanvas');
-const ctx=canvas.getContext('2d');
-
-let history=[];
-let historyIndex=-1;
-let cvReady=false;
-
-function message(t){
-  $('status').textContent=t;
-}
-
-function updateValue(id,value){
-  $(id).textContent=value;
-}
-
-function selectSide(side){
-  state.side=side;
-  $('tabFront').classList.toggle('active',side==='front');
-  $('tabBack').classList.toggle('active',side==='back');
-  $('previewLabel').textContent=side.toUpperCase();
-  render();
-}
-
-function currentImage(){
-  return state[state.side];
-}
-
-function uploadImage(event,side){
-  const file=event.target.files[0];
-  if(!file)return;
-  if(!file.type.startsWith('image/')){
-    alert('कृपया JPG या PNG फोटो चुनें।');
-    return;
-  }
-  const reader=new FileReader();
-  reader.onload=()=>{
-    const img=new Image();
-    img.onload=()=>{
-      state[side]=img;
-      selectSide(side);
-      saveHistory();
-      message(side.toUpperCase()+' फोटो सफलतापूर्वक अपलोड हुई।');
-    };
-    img.src=reader.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-function clearSide(){
-  if(!confirm('क्या वर्तमान साइड की फोटो हटानी है?'))return;
-  state[state.side]=null;
-  render();
-  message('फोटो हटा दी गई।');
-}
-
-function getDimensions(){
-  let w=parseFloat($('cardW').value)||85.6;
-  let h=parseFloat($('cardH').value)||54;
-  const unit=$('unit').value;
-  if(unit==='cm'){w*=10;h*=10}
-  if(unit==='inch'){w*=25.4;h*=25.4}
-  if(unit==='px'){
-    const dpi=+$('dpi').value;
-    w=w/dpi*25.4;
-    h=h/dpi*25.4;
-  }
-  return {w:Math.max(1,w),h:Math.max(1,h)};
-}
-
-function pixels(){
-  const d=getDimensions();
-  const dpi=+$('dpi').value;
-  return {
-    w:Math.max(1,Math.round(d.w/25.4*dpi)),
-    h:Math.max(1,Math.round(d.h/25.4*dpi))
-  };
-}
-
-function applyPreset(){
-  const v=$('preset').value;
-  if(v==='custom')return;
-  const [w,h]=v.split(',').map(Number);
-  $('unit').value='mm';
-  $('cardW').value=w;
-  $('cardH').value=h;
-  render();
-}
-
-function updateDimensions(){
-  render();
-}
-
-function swapSize(){
-  const a=$('cardW').value;
-  $('cardW').value=$('cardH').value;
-  $('cardH').value=a;
-  render();
-}
-
-function resetSize(){
-  $('unit').value='mm';
-  $('cardW').value=85.6;
-  $('cardH').value=54;
-  $('preset').value='85.6,54';
-  render();
-}
-
-function changeOrientation(){
-  if($('orientation').value==='portrait'){
-    const a=$('cardW').value;
-    $('cardW').value=$('cardH').value;
-    $('cardH').value=a;
-  }else{
-    const a=$('cardW').value;
-    $('cardW').value=$('cardH').value;
-    $('cardH').value=a;
-  }
-  render();
-}
-
-function rotate(deg){
-  $('rotation').value=+$('rotation').value+deg;
-  if(+$('rotation').value>180)$('rotation').value=-180;
-  if(+$('rotation').value< -180)$('rotation').value=180;
-  updateValue('rotationVal',$('rotation').value+'°');
-  render();
-}
-
-function flip(type){
-  if(type==='h')state.flipH=!state.flipH;
-  else state.flipV=!state.flipV;
-  render();
-}
-
-function resetTransform(){
-  $('zoom').value=100;
-  $('rotation').value=0;
-  $('posX').value=0;
-  $('posY').value=0;
-  $('brightness').value=100;
-  $('contrast').value=100;
-  $('saturation').value=100;
-  $('blur').value=0;
-  $('gray').value=0;
-  $('sepia').value=0;
-  state.flipH=false;
-  state.flipV=false;
-  updateValue('zoomVal','100%');
-  updateValue('rotationVal','0°');
-  render();
-}
-
-function filterPreset(name){
-  $('brightness').value=100;
-  $('contrast').value=100;
-  $('saturation').value=100;
-  $('gray').value=0;
-  $('sepia').value=0;
-  if(name==='vivid'){
-    $('contrast').value=120;
-    $('saturation').value=140;
-  }
-  if(name==='soft'){
-    $('brightness').value=108;
-    $('contrast').value=90;
-    $('saturation').value=90;
-  }
-  if(name==='bw'){
-    $('gray').value=100;
-  }
-  render();
-}
-
-function render(){
-  const p=pixels();
-  canvas.width=p.w;
-  canvas.height=p.h;
-
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle=$('bgColor').value;
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  const img=currentImage();
-
-  if(img){
-    const zoom=+$('zoom').value/100;
-    const angle=+$('rotation').value*Math.PI/180;
-    const scale=Math.max(canvas.width/img.width,canvas.height/img.height)*zoom;
-    const w=img.width*scale;
-    const h=img.height*scale;
-
-    ctx.save();
-    ctx.translate(
-      canvas.width/2+(+$('posX').value/100)*canvas.width*.5,
-      canvas.height/2+(+$('posY').value/100)*canvas.height*.5
-    );
-    ctx.rotate(angle);
-    ctx.scale(state.flipH?-1:1,state.flipV?-1:1);
-
-    ctx.filter=
-      'brightness('+$('brightness').value+'%) '+
-      'contrast('+$('contrast').value+'%) '+
-      'saturate('+$('saturation').value+'%) '+
-      'grayscale('+$('gray').value+'%) '+
-      'sepia('+$('sepia').value+'%) '+
-      'blur('+$('blur').value+'px)';
-
-    ctx.drawImage(img,-w/2,-h/2,w,h);
-    ctx.restore();
-    ctx.filter='none';
-  }
-
-  const bw=+$('borderWidth').value;
-  if(bw>0){
-    ctx.strokeStyle=$('borderColor').value;
-    ctx.lineWidth=bw*canvas.width/500;
-    ctx.strokeRect(ctx.lineWidth/2,ctx.lineWidth/2,canvas.width-ctx.lineWidth,canvas.height-ctx.lineWidth);
-  }
-
-  const radius=+$('radius').value;
-  if(radius>0){
-    // Rounded border visual
-    ctx.save();
-    ctx.strokeStyle=$('borderColor').value;
-    ctx.lineWidth=Math.max(1,bw);
-    ctx.beginPath();
-    ctx.roundRect(0,0,canvas.width,canvas.height,radius*canvas.width/500);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  state.text.forEach(t=>{
-    ctx.save();
-    ctx.fillStyle=t.color;
-    ctx.font='bold '+t.size+'px Arial';
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
-    ctx.fillText(t.text,canvas.width*t.x/100,canvas.height*t.y/100);
-    ctx.restore();
-  });
-}
-
-function addText(){
-  const text=$('textValue').value.trim();
-  if(!text){alert('पहले टेक्स्ट लिखें।');return}
-  state.text.push({
-    text,
-    color:$('textColor').value,
-    size:+$('textSize').value,
-    x:+$('textX').value,
-    y:+$('textY').value
-  });
-  render();
-  saveHistory();
-  message('टेक्स्ट जोड़ दिया गया।');
-}
-
-function clearText(){
-  state.text=[];
-  render();
-}
-
-function autoFit(){
-  $('zoom').value=100;
-  $('posX').value=0;
-  $('posY').value=0;
-  render();
-}
-
-function basicEnhance(){
-  $('brightness').value=108;
-  $('contrast').value=115;
-  $('saturation').value=112;
-  $('blur').value=0;
-  render();
-  message('Basic photo enhancement लागू किया गया।');
-}
-
-function removeWhite(){
-  alert('सिर्फ इस बटन से वास्तविक AI background removal नहीं होगा। इसके लिए Advanced AI Server Endpoint आवश्यक है।');
-}
-
-function downloadCard(){
-  const a=document.createElement('a');
-  a.download='ID-Card-'+state.side+'.png';
-  a.href=canvas.toDataURL('image/png');
-  a.click();
-}
-
-function downloadJPG(){
-  const a=document.createElement('a');
-  a.download='ID-Card-'+state.side+'.jpg';
-  a.href=canvas.toDataURL('image/jpeg',.95);
-  a.click();
-}
-
-function printCard(){
-  const data=canvas.toDataURL('image/png');
-  const win=window.open('','_blank');
-  if(!win){alert('Print window blocked. Popup allow करें।');return}
-  win.document.write('<html><head><title>Print ID Card</title><style>@page{margin:0}body{margin:0;display:flex;justify-content:center;align-items:center;height:100vh}img{width:'+getDimensions().w+'mm;height:'+getDimensions().h+'mm;object-fit:fill}</style></head><body><img src="'+data+'" onload="window.print()"></body></html>');
-  win.document.close();
-}
-
-function showSheet(){
-  $('editor').style.display='none';
-  $('sheetPanel').style.display='block';
-  generateSheet();
-}
-
-function showEditor(){
-  $('sheetPanel').style.display='none';
-  $('editor').style.display='block';
-}
-
-function generateSheet(){
-  const paper=$('paper').value.split(',').map(Number);
-  const dpi=+$('dpi').value;
-  const pw=Math.round(paper[0]/25.4*dpi);
-  const ph=Math.round(paper[1]/25.4*dpi);
-  const sheet=$('sheetCanvas');
-  sheet.width=pw;
-  sheet.height=ph;
-
-  const sctx=sheet.getContext('2d');
-  sctx.fillStyle='#ffffff';
-  sctx.fillRect(0,0,pw,ph);
-
-  const d=getDimensions();
-  const cw=Math.round(d.w/25.4*dpi);
-  const ch=Math.round(d.h/25.4*dpi);
-  const gap=+$('gap').value/25.4*dpi;
-  const margin=+$('margin').value/25.4*dpi;
-  const copies=Math.max(1,Math.min(100,+$('copies').value||1));
-  const both=$('printBoth').checked;
-  const cut=$('cutLines').checked;
-
-  const cols=Math.max(1,Math.floor((pw-2*margin+gap)/(cw+gap)));
-  const rows=Math.max(1,Math.floor((ph-2*margin+gap)/(ch+gap)));
-  const perPage=cols*rows;
-  const count=Math.min(copies,perPage);
-
-  const cardData=canvas.toDataURL();
-  const img=new Image();
-  img.onload=()=>{
-    let n=0;
-    for(let r=0;r<rows&&n<count;r++){
-      for(let c=0;c<cols&&n<count;c++){
-        const x=margin+c*(cw+gap);
-        const y=margin+r*(ch+gap);
-        sctx.drawImage(img,x,y,cw,ch);
-        if(cut){
-          sctx.save();
-          sctx.strokeStyle='#999999';
-          sctx.lineWidth=1;
-          sctx.setLineDash([5,4]);
-          sctx.strokeRect(x,y,cw,ch);
-          sctx.restore();
-        }
-        n++;
-      }
-    }
-    message('Print sheet तैयार है: '+count+' कार्ड प्रति पेज।'+(both?' Front/Back विकल्प चालू है।':''));
-  };
-  img.src=cardData;
-  state.sheet=sheet;
-}
-
-function downloadSheet(){
-  if(!state.sheet){generateSheet();setTimeout(downloadSheet,500);return}
-  const a=document.createElement('a');
-  a.download='ID-Card-A4-Sheet.png';
-  a.href=$('sheetCanvas').toDataURL('image/png');
-  a.click();
-}
-
-function printSheet(){
-  if(!$('sheetCanvas').width){generateSheet();setTimeout(printSheet,500);return}
-  const data=$('sheetCanvas').toDataURL('image/png');
-  const win=window.open('','_blank');
-  if(!win){alert('Popup allow करें।');return}
-  win.document.write('<html><head><title>ID Card Sheet</title><style>@page{size:'+ $('paper').value.replace(',','mm ')+'mm;margin:0}body{margin:0}img{width:100%;height:100%;object-fit:fill}</style></head><body><img src="'+data+'" onload="window.print()"></body></html>');
-  win.document.close();
-}
-
+let history=[],future=[],drawing=false,startPoint=null,tool='brush',brushColor='#ff0000',brushSize=5;
+let card={width:85.6,height:54,unit:'mm',dpi:300};
+const s=()=>states[side];
+const other=()=>states[side==='front'?'back':'front'];
+function msg(t){$('status').textContent=t}
 function saveHistory(){
-  const snapshot={
-    side:state.side,
-    front:state.front?state.front.src:null,
-    back:state.back?state.back.src:null,
-    text:JSON.parse(JSON.stringify(state.text)),
-    settings:{
-      zoom:$('zoom').value,
-      rotation:$('rotation').value,
-      posX:$('posX').value,
-      posY:$('posY').value,
-      brightness:$('brightness').value,
-      contrast:$('contrast').value,
-      saturation:$('saturation').value
-    }
-  };
-  history=history.slice(0,historyIndex+1);
-  history.push(snapshot);
-  if(history.length>20)history.shift();
-  historyIndex=history.length-1;
+ history.push(JSON.stringify(states));
+ if(history.length>25)history.shift();
+ future=[];
 }
-
 function undo(){
-  if(historyIndex<=0){message('Undo के लिए पिछला बदलाव उपलब्ध नहीं है।');return}
-  historyIndex--;
-  restoreHistory(history[historyIndex]);
+ if(!history.length)return;
+ future.push(JSON.stringify(states));
+ states=JSON.parse(history.pop());
+ render();
 }
-
 function redo(){
-  if(historyIndex>=history.length-1){message('Redo के लिए अगला बदलाव उपलब्ध नहीं है।');return}
-  historyIndex++;
-  restoreHistory(history[historyIndex]);
+ if(!future.length)return;
+ history.push(JSON.stringify(states));
+ states=JSON.parse(future.pop());
+ render();
 }
-
-function restoreHistory(s){
-  state.text=JSON.parse(JSON.stringify(s.text||[]));
-  state.side=s.side||'front';
-  if(s.settings){
-    Object.entries(s.settings).forEach(([k,v])=>{
-      const el=$(k);
-      if(el)el.value=v;
-    });
-  }
-  render();
+function switchSide(v){
+ side=v;
+ $('frontTab').className=v==='front'?'':'gray';
+ $('backTab').className=v==='back'?'':'gray';
+ $('sideLabel').textContent=v.toUpperCase();
+ render();
 }
-
-function saveProject(){
-  const project={
-    app:'Hybrid AI ID Card Studio',
-    side:state.side,
-    front:state.front?state.front.src:null,
-    back:state.back?state.back.src:null,
-    text:state.text
-  };
-  const blob=new Blob([JSON.stringify(project)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='ID-Card-Project.json';
-  a.click();
-  URL.revokeObjectURL(a.href);
+function loadPhoto(e){
+ const file=e.target.files[0];if(!file)return;
+ const img=new Image();
+ img.onload=()=>{
+ saveHistory();s().img=img;s().rotation=0;s().zoom=1;s().x=0;s().y=0;
+ s().objects=[];render();msg('फोटो सफलतापूर्वक अपलोड हुई।');
+ };
+ img.src=URL.createObjectURL(file);e.target.value='';
 }
-
-function loadProject(){
-  $('projectFile').click();
-}
-
-function loadProjectFile(event){
-  const file=event.target.files[0];
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=()=>{
-    try{
-      const p=JSON.parse(reader.result);
-      state.text=p.text||[];
-      state.side=p.side||'front';
-      const load=(src,side)=>{
-        if(!src)return;
-        const img=new Image();
-        img.onload=()=>{state[side]=img;render()};
-        img.src=src;
-      };
-      load(p.front,'front');
-      load(p.back,'back');
-      selectSide(state.side);
-      message('Project लोड हो गया।');
-    }catch(e){alert('Project file सही नहीं है।')}
-  };
-  reader.readAsText(file);
-}
-
-/* DOCUMENT SCANNER */
-
-function uploadScan(event){
-  const file=event.target.files[0];
-  if(!file)return;
+function loadMultiple(e){
+ const files=[...e.target.files];if(!files.length)return;
+ let i=0;
+ function next(){
+  if(i>=files.length){msg(files.length+' फोटो लोड हो गईं।');return}
   const img=new Image();
-  img.onload=()=>{
-    state.scan=img;
-    const c=document.createElement('canvas');
-    c.width=img.width;
-    c.height=img.height;
-    c.getContext('2d').drawImage(img,0,0);
-    state.scanCanvas=c;
-    $('scanStatus').textContent='Document अपलोड हो गया। Auto Straighten दबाएँ।';
-  };
-  img.src=URL.createObjectURL(file);
+  img.onload=()=>{if(i===0){saveHistory();s().img=img;render()}i++;next()};
+  img.src=URL.createObjectURL(files[i]);
+ }
+ next();e.target.value='';
 }
-
-function loadOpenCV(){
-  return new Promise((resolve,reject)=>{
-    if(window.cv&&cv.Mat){resolve();return}
-    if(window.cvScriptLoading){
-      const check=setInterval(()=>{
-        if(window.cv&&cv.Mat){clearInterval(check);resolve()}
-      },300);
-      setTimeout(()=>{clearInterval(check);reject(new Error('OpenCV load timeout'))},20000);
-      return;
-    }
-    window.cvScriptLoading=true;
-    const script=document.createElement('script');
-    script.src='https://docs.opencv.org/4.x/opencv.js';
-    script.onload=()=>{
-      if(window.cv&&cv.Mat){
-        resolve();
-      }else{
-        cv['onRuntimeInitialized']=()=>resolve();
-      }
-    };
-    script.onerror=()=>reject(new Error('OpenCV load failed'));
-    document.head.appendChild(script);
-  });
+function clearCurrent(){saveHistory();s().img=null;s().objects=[];render();msg('वर्तमान फोटो हटाई गई।')}
+function resetImage(){
+ if(!s().img)return;
+ saveHistory();
+ Object.assign(s(),{rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,crop:null,objects:[]});
+ render();msg('एडिटिंग रीसेट हो गई।');
 }
-
-async function autoStraighten(){
-  if(!state.scanCanvas){
-    alert('पहले डॉक्यूमेंट फोटो अपलोड करें।');
-    return;
+function copyToOther(){
+ saveHistory();
+ const source=s(),target=other();
+ target.img=source.img;target.rotation=source.rotation;target.zoom=source.zoom;
+ target.x=source.x;target.y=source.y;target.brightness=source.brightness;
+ target.contrast=source.contrast;target.saturation=source.saturation;
+ target.gray=source.gray;target.sepia=source.sepia;target.hue=source.hue;
+ target.flipX=source.flipX;target.flipY=source.flipY;target.bg=source.bg;
+ target.objects=JSON.parse(JSON.stringify(source.objects));
+ render();msg('फोटो और एडिटिंग दूसरे साइड पर कॉपी हुई।');
+}
+function swapSides(){
+ saveHistory();let a=states.front;states.front=states.back;states.back=a;render();msg('Front और Back बदल दिए गए।');
+}
+function render(){
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle=s().bg||'#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
+ if(s().img){
+  ctx.save();
+  ctx.filter=`brightness(${s().brightness}%) contrast(${s().contrast}%) saturate(${s().saturation}%) grayscale(${s().gray}%) sepia(${s().sepia}%) hue-rotate(${s().hue}deg)`;
+  ctx.translate(canvas.width/2+s().x,canvas.height/2+s().y);
+  ctx.rotate(s().rotation*Math.PI/180);
+  ctx.scale(s().zoom*(s().flipX?-1:1),s().zoom*(s().flipY?-1:1));
+  const im=s().img;
+  let scale=Math.min(canvas.width/im.width,canvas.height/im.height);
+  let w=im.width*scale,h=im.height*scale;
+  ctx.drawImage(im,-w/2,-h/2,w,h);
+  ctx.restore();
+ }
+ s().objects.forEach(o=>drawObject(ctx,o));
+}
+function drawObject(c,o){
+ c.save();c.strokeStyle=o.color||'#ff0000';c.fillStyle=o.color||'#ff0000';
+ c.lineWidth=o.size||3;c.lineCap='round';
+ if(o.type==='text'){
+  c.font=`${o.italic?'italic ':''}${o.bold?'bold ':''}${o.fontSize||35}px ${o.font||'Arial'}`;
+  c.fillText(o.text||'',o.x,o.y);
+ }else if(o.type==='line'){
+  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);c.stroke();
+ }else if(o.type==='rect'){
+  c.strokeRect(o.x,o.y,o.x2-o.x,o.y2-o.y);
+ }else if(o.type==='circle'){
+  c.beginPath();c.ellipse((o.x+o.x2)/2,(o.y+o.y2)/2,Math.abs(o.x2-o.x)/2,Math.abs(o.y2-o.y)/2,0,0,Math.PI*2);c.stroke();
+ }else if(o.type==='brush'){
+  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);c.stroke();
+ }else if(o.type==='arrow'){
+  let a=Math.atan2(o.y2-o.y,o.x2-o.x);
+  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);
+  c.lineTo(o.x2-15*Math.cos(a-.5),o.y2-15*Math.sin(a-.5));
+  c.moveTo(o.x2,o.y2);c.lineTo(o.x2-15*Math.cos(a+.5),o.y2-15*Math.sin(a+.5));c.stroke();
+ }
+ c.restore();
+}
+function setVal(key,val){
+ saveHistory();s()[key]=val;render();
+}
+function setRange(key,val){s()[key]=Number(val);render()}
+function addObject(o){saveHistory();s().objects.push(o);render()}
+function addText(){
+ let t=prompt('अपना टेक्स्ट लिखें:');if(!t)return;
+ addObject({type:'text',text:t,x:40,y:100,fontSize:35,color:$('textColor').value,font:$('font').value,bold:$('bold').checked,italic:$('italic').checked});
+}
+function removeObjects(){saveHistory();s().objects=[];render()}
+function downloadImage(type='png'){
+ const a=document.createElement('a');a.download=side+'-id-card.'+type;
+ a.href=canvas.toDataURL(type==='jpg'?'image/jpeg':'image/png',.95);a.click();
+ msg('इमेज डाउनलोड शुरू हो गई।');
+}
+function updateSize(){
+ const unit=$('unit').value;
+ card.width=Number($('cardW').value)||85.6;
+ card.height=Number($('cardH').value)||54;
+ card.unit=unit;card.dpi=Number($('dpi').value)||300;
+ let factor=unit==='mm'?card.dpi/25.4:unit==='cm'?card.dpi/2.54:unit==='inch'?card.dpi:1;
+ canvas.width=Math.max(50,Math.round(card.width*factor));
+ canvas.height=Math.max(50,Math.round(card.height*factor));
+ render();msg('Canvas का आकार अपडेट हो गया।');
+}
+function rotate(deg){saveHistory();s().rotation=(s().rotation+deg)%360;render()}
+function flip(axis){saveHistory();if(axis==='x')s().flipX=!s().flipX;else s().flipY=!s().flipY;render()}
+function setBackground(color){saveHistory();s().bg=color;render()}
+function printSheet(){
+ const area=$('printArea');area.innerHTML='';
+ const paper=$('paper')?.value||'A4';
+ const copies=Number($('copies')?.value||4);
+ const gap=Number($('gap')?.value||5);
+ const both=$('printBoth')?.checked;
+ function makeSheet(st){
+  const p=document.createElement('canvas');
+  p.width=2480;p.height=3508;
+  const c=p.getContext('2d');c.fillStyle='white';c.fillRect(0,0,p.width,p.height);
+  const cw=Number($('printW')?.value||638),ch=Number($('printH')?.value||1012);
+  const cols=2,rows=Math.ceil(copies/cols);
+  const w=(p.width-(cols+1)*gap*10)/cols;
+  const h=w*ch/cw;
+  for(let i=0;i<copies;i++){
+   let x=gap*10+(i%cols)*(w+gap*10);
+   let y=gap*10+Math.floor(i/cols)*(h+gap*10);
+   if(y+h>p.height)break;
+   c.drawImage(st,x,y,w,h);
+   c.strokeStyle='#888';c.strokeRect(x,y,w,h);
   }
-  $('scanStatus').textContent='OpenCV लोड हो रहा है...';
+  return p;
+ }
+ const old=side;
+ if(both){
+  switchSide('front');let a=makeSheet(canvas);
+  switchSide('back');let b=makeSheet(canvas);
+  area.append(a,b);
+ }else{
+  let p=makeSheet(canvas);area.append(p);
+ }
+ switchSide(old);
+ window.print();
+}
+function saveProject(){
+ const data={card,states};
+ const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='id-card-project.json';a.click();
+}
+function loadProject(e){
+ const f=e.target.files[0];if(!f)return;
+ const r=new FileReader();
+ r.onload=()=>{
   try{
-    await loadOpenCV();
-    const src=cv.imread(state.scanCanvas);
-    const gray=new cv.Mat();
-    const blur=new cv.Mat();
-    const edges=new cv.Mat();
-    const contours=new cv.MatVector();
-    const hierarchy=new cv.Mat();
-
-    cv.cvtColor(src,gray,cv.COLOR_RGBA2GRAY);
-    cv.GaussianBlur(gray,blur,new cv.Size(5,5),0);
-    cv.Canny(blur,edges,50,150);
-    cv.findContours(edges,contours,hierarchy,cv.RETR_LIST,cv.CHAIN_APPROX_SIMPLE);
-
-    let best=null;
-    let bestArea=0;
-
-    for(let i=0;i<contours.size();i++){
-      const cnt=contours.get(i);
-      const peri=cv.arcLength(cnt,true);
-      const approx=new cv.Mat();
-      cv.approxPolyDP(cnt,approx,.02*peri,true);
-      const area=cv.contourArea(approx);
-      if(approx.rows===4&&area>bestArea){
-        bestArea=area;
-        if(best)best.delete();
-        best=approx;
-      }else{
-        approx.delete();
-      }
-      cnt.delete();
-    }
-
-    if(!best){
-      throw new Error('चार कोने नहीं मिले।');
-    }
-
-    const points=[];
-    for(let i=0;i<4;i++){
-      points.push({
-        x:best.intPtr(i,0)[0],
-        y:best.intPtr(i,0)[1]
-      });
-    }
-
-    const ordered=orderPoints(points);
-    const widthA=Math.hypot(ordered[2].x-ordered[3].x,ordered[2].y-ordered[3].y);
-    const widthB=Math.hypot(ordered[1].x-ordered[0].x,ordered[1].y-ordered[0].y);
-    const heightA=Math.hypot(ordered[1].x-ordered[2].x,ordered[1].y-ordered[2].y);
-    const heightB=Math.hypot(ordered[0].x-ordered[3].x,ordered[0].y-ordered[3].y);
-
-    const width=Math.max(1,Math.round(Math.max(widthA,widthB)));
-    const height=Math.max(1,Math.round(Math.max(heightA,heightB)));
-
-    const srcPts=cv.matFromArray(4,1,cv.CV_32FC2,[
-      ordered[0].x,ordered[0].y,
-      ordered[1].x,ordered[1].y,
-      ordered[2].x,ordered[2].y,
-      ordered[3].x,ordered[3].y
-    ]);
-    const dstPts=cv.matFromArray(4,1,cv.CV_32FC2,[
-      0,0,width-1,0,width-1,height-1,0,height-1
-    ]);
-
-    const M=cv.getPerspectiveTransform(srcPts,dstPts);
-    const dst=new cv.Mat();
-    cv.warpPerspective(src,dst,M,new cv.Size(width,height));
-    const output=document.createElement('canvas');
-    cv.imshow(output,dst);
-
-    const result=new Image();
-    result.onload=()=>{
-      state.scan=result;
-      state.scanCanvas=output;
-      $('scanStatus').textContent='Document straighten और perspective correction पूरा हुआ।';
-      message('Document सीधा कर दिया गया।');
-    };
-    result.src=output.toDataURL('image/png');
-
-    src.delete();gray.delete();blur.delete();edges.delete();
-    contours.delete();hierarchy.delete();best.delete();
-    srcPts.delete();dstPts.delete();M.delete();dst.delete();
-
-  }catch(e){
-    $('scanStatus').textContent='Auto detection सफल नहीं हुआ: '+e.message+' आप फोटो को मैन्युअल Rotate/Crop कर सकते हैं।';
-  }
+   const d=JSON.parse(r.result);card=d.card||card;states=d.states||states;
+   render();msg('प्रोजेक्ट लोड हो गया।');
+  }catch{msg('गलत प्रोजेक्ट फाइल।')}
+ };r.readAsText(f);
 }
-
-function orderPoints(p){
-  const sum=p.map(a=>a.x+a.y);
-  const diff=p.map(a=>a.x-a.y);
-  return [
-    p[sum.indexOf(Math.min(...sum))],
-    p[diff.indexOf(Math.max(...diff))],
-    p[sum.indexOf(Math.max(...sum))],
-    p[diff.indexOf(Math.min(...diff))]
-  ];
+function addAccordion(title,content){
+ const box=document.createElement('div');box.className='accordion';
+ const head=document.createElement('button');head.className='accHead';
+ head.innerHTML=`<span>${title}</span><span>＋</span>`;
+ const body=document.createElement('div');body.className='accBody';body.innerHTML=content;
+ head.onclick=()=>{
+  const was=body.classList.contains('open');
+  document.querySelectorAll('.accBody').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('.accHead').forEach(x=>{x.classList.remove('active');x.lastElementChild.textContent='＋'});
+  if(!was){body.classList.add('open');head.classList.add('active');head.lastElementChild.textContent='－'}
+ };
+ box.append(head,body);$('accordion').append(box);
 }
+const field=(label,html)=>`<div class="field"><label>${label}</label>${html}</div>`;
+const btn=(label,fn,cls='')=>`<button class="${cls}" onclick="${fn}">${label}</button>`;
+const range=(label,key,min,max,val)=>field(label,`<input type="range" min="${min}" max="${max}" value="${val}" oninput="setRange('${key}',this.value)">`);
+addAccordion('1. 📁 File Management',`
+ ${btn('Upload Photo',"$('upload').click()")}
+ ${btn('Multiple Upload',"$('multiUpload').click()",'gray')}
+ ${btn('Remove Photo','clearCurrent()','red')}
+ ${btn('Download PNG',"downloadImage('png')",'green')}
+ ${btn('Download JPG',"downloadImage('jpg')",'green')}
+ <hr>
+ ${btn('Save Project','saveProject()')}
+ <input type="file" accept=".json" onchange="loadProject(event)">
+ <p class="toolnote">अपनी फोटो और कार्ड इमेज अपलोड करें। प्रोजेक्ट JSON में सेव कर सकते हैं।</p>
+`);
+addAccordion('2. ✂️ Crop Tools',`
+ ${field('Crop Mode',`<select id="cropMode"><option value="free">Free Crop (फिट मोड)</option><option>1:1 Square</option><option>3:4 Portrait</option><option>4:3 Landscape</option><option>Passport 3.5:4.5</option></select>`)}
+ ${btn('Fit Image','resetImage()')}
+ ${btn('Square Canvas',"setCanvasRatio(1)")}
+ ${btn('Portrait Canvas',"setCanvasRatio(0.7778)")}
+ <p class="toolnote">यहाँ Fit और Canvas ratio controls हैं। सटीक फोटो Crop के लिए Crop/Resize controls का उपयोग करें।</p>
+`);
+addAccordion('3. 📐 Resize & Dimensions',`
+ <div class="grid2">
+ ${field('Width',`<input id="cardW" type="number" value="85.6" step=".1">`)}
+ ${field('Height',`<input id="cardH" type="number" value="54" step=".1">`)}
+ </div>
+ <div class="grid2">
+ ${field('Unit',`<select id="unit"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="inch">Inch</option><option value="px">Pixel (px)</option></select>`)}
+ ${field('DPI',`<select id="dpi"><option>150</option><option selected>300</option><option>600</option></select>`)}
+ </div>
+ ${btn('Apply Size','updateSize()','green')}
+ ${btn('Swap Width / Height',"[$('cardW').value,$('cardH').value]=[$('cardH').value,$('cardW').value];updateSize()")}
+ ${range('Zoom','zoom',25,250,100)}
+ <div class="row">
+ ${btn('Zoom +',"setRange('zoom',Math.min(3,s().zoom+.1))")}
+ ${btn('Zoom −',"setRange('zoom',Math.max(.2,s().zoom-.1))")}
+ </div>
+`);
+addAccordion('4. 🔄 Photo Transform',`
+ ${btn('Rotate Left','rotate(-90)')}
+ ${btn('Rotate Right','rotate(90)')}
+ ${btn('Flip Horizontal',"flip('x')")}
+ ${btn('Flip Vertical',"flip('y')")}
+ ${range('Zoom','zoom',20,300,100)}
+ ${field('Move X',`<input type="range" min="-300" max="300" value="0" oninput="setRange('x',this.value)">`)}
+ ${field('Move Y',`<input type="range" min="-500" max="500" value="0" oninput="setRange('y',this.value)">`)}
+`);
+addAccordion('5. ☀️ Brightness & Color',`
+ ${range('Brightness','brightness',0,200,100)}
+ ${range('Contrast','contrast',0,200,100)}
+ ${range('Saturation','saturation',0,200,100)}
+ ${range('Grayscale','gray',0,100,0)}
+ ${range('Sepia','sepia',0,100,0)}
+ ${range('Hue Rotate','hue',0,360,0)}
+ ${btn('Reset Color','resetImage()','gray')}
+`);
+addAccordion('6. 🎨 Filters & Effects',`
+ ${btn('Normal', "setFilters(100,100,100,0,0,0)")}
+ ${btn('Black & White',"setFilters(100,100,0,100,0,0)")}
+ ${btn('Sepia',"setFilters(100,100,100,0,100,0)")}
+ ${btn('Vivid',"setFilters(110,115,160,0,0,0)")}
+ ${btn('Soft',"setFilters(110,90,90,0,0,0)")}
+ ${range('Blur Preview','blur',0,10,0)}
+ <p class="toolnote">फिल्टर Canvas पर लागू होते हैं।</p>
+`);
+addAccordion('7. 🟩 Background Editing',`
+ ${field('Background Color',`<input type="color" value="#ffffff" onchange="setBackground(this.value)">`)}
+ ${btn('White Background',"setBackground('#ffffff')")}
+ ${btn('Blue Background',"setBackground('#168bd2')")}
+ ${btn('Red Background',"setBackground('#d92525')")}
+ ${btn('Green Background',"setBackground('#159447')")}
+ ${btn('Transparent Look',"setBackground('#eeeeee')")}
+ <p class="toolnote">Background color बदलने की सुविधा है। AI Background Removal उपलब्ध नहीं है; यह संस्करण ऑफलाइन Canvas आधारित है।</p>
+`);
+addAccordion('8. 🖌️ Brush & Drawing',`
+ ${field('Tool',`<select id="drawTool" onchange="tool=this.value"><option value="brush">Brush</option><option value="line">Line</option><option value="rect">Rectangle</option><option value="circle">Circle</option><option value="arrow">Arrow</option></select>`)}
+ ${field('Brush Color',`<input type="color" id="brushColor" value="#ff0000" onchange="brushColor=this.value">`)}
+ ${field('Brush Size',`<input type="range" min="1" max="40" value="5" oninput="brushSize=+this.value">`)}
+ ${btn('Clear Drawing','removeObjects()','red')}
+ <p class="toolnote">Canvas पर माउस या टच से ड्रॉ करें।</p>
+`);
+addAccordion('9. 🔃 Front & Back Editing',`
+ ${btn('Edit Front',"switchSide('front')")}
+ ${btn('Edit Back',"switchSide('back')")}
+ ${btn('Copy Current to Other','copyToOther()','green')}
+ ${btn('Swap Front / Back','swapSides()','orange')}
+ ${btn('Download Front',"switchSide('front');downloadImage()")}
+ ${btn('Download Back',"switchSide('back');downloadImage()")}
+`);
+addAccordion('10. 🔤 Text Editing',`
+ ${field('Text Color',`<input type="color" id="textColor" value="#111111">`)}
+ ${field('Font',`<select id="font"><option>Arial</option><option>Verdana</option><option>Georgia</option><option>Tahoma</option><option>Courier New</option></select>`)}
+ <div class="row">
+ ${field('Bold',`<input type="checkbox" id="bold">`)}
+ ${field('Italic',`<input type="checkbox" id="italic">`)}
+ </div>
+ ${btn('＋ Add Text','addText()','green')}
+ ${btn('Clear All Text / Objects','removeObjects()','red')}
+`);
+addAccordion('11. 🔷 Shapes & Design',`
+ ${field('Border Color',`<input type="color" id="shapeColor" value="#1559a6">`)}
+ ${field('Border Size',`<input type="number" id="shapeSize" value="4" min="1" max="30">`)}
+ ${btn('Add Rectangle',"addShape('rect')")}
+ ${btn('Add Circle',"addShape('circle')")}
+ ${btn('Add Line',"addShape('line')")}
+ ${btn('Add Arrow',"addShape('arrow')")}
+ ${btn('Add Watermark Text','addText()')}
+`);
+addAccordion('12. 📄 Document Scanner Tools',`
+ ${btn('Rotate Document Left','rotate(-90)')}
+ ${btn('Rotate Document Right','rotate(90)')}
+ ${range('Document Brightness','brightness',0,200,100)}
+ ${range('Document Contrast','contrast',0,200,100)}
+ ${btn('Fit Document','resetImage()')}
+ <p class="toolnote">WhatsApp से मिली टेढ़ी फोटो को मैन्युअली rotate, crop/resize और color controls से सुधारें। Automatic perspective correction इस offline version में शामिल नहीं है।</p>
+`);
+addAccordion('13. 🧩 Layers & Objects',`
+ ${btn('Add Text Layer','addText()')}
+ ${btn('Add Shape Layer',"addShape('rect')")}
+ ${btn('Clear All Layers','removeObjects()','red')}
+ <p class="toolnote">इस संस्करण में टेक्स्ट और शेप अलग-अलग overlay objects के रूप में रखे जाते हैं।</p>
+`);
+addAccordion('14. 🪪 ID Card Type & Size',`
+ ${field('Card Type',`<select id="cardType" onchange="presetCard(this.value)">
+ <option value="85.6,54">Standard PVC / CR80</option>
+ <option value="86,54">PVC Alternate</option>
+ <option value="90,55">Custom ID Card</option>
+ <option value="105,148">A6</option>
+ <option value="148,210">A5</option>
+ <option value="210,297">A4</option>
+ <option value="custom">Custom Size</option>
+ </select>`)}
+ ${btn('Apply Card Size','updateSize()','green')}
+ <p class="toolnote">सरकारी कार्डों के वास्तविक आकार अलग-अलग हो सकते हैं। Custom विकल्प से अपने कार्ड का माप डालें। केवल अधिकृत, वैध दस्तावेज़ों की एडिटिंग करें।</p>
+`);
+addAccordion('15. 🖨 A4 / PVC Printing',`
+ ${field('Paper Size',`<select id="paper"><option>A4</option><option>A5</option><option>A3</option></select>`)}
+ <div class="grid2">
+ ${field('Copies',`<input id="copies" type="number" min="1" max="20" value="4">`)}
+ ${field('Gap (mm)',`<input id="gap" type="number" value="5" min="0">`)}
+ </div>
+ <div class="grid2">
+ ${field('Print Width (px)',`<input id="printW" type="number" value="638">`)}
+ ${field('Print Height (px)',`<input id="printH" type="number" value="1012">`)}
+ </div>
+ ${field('Front + Back दोनों शीट',`<input type="checkbox" id="printBoth">`)}
+ ${btn('🖨 Print A4 Sheet','printSheet()','green')}
+ <p class="toolnote">प्रिंट ब्राउज़र के Print Dialog से होगा। PDF चाहिए तो Destination में Save as PDF चुनें।</p>
+`);
+addAccordion('16. 💾 Save & Export',`
+ ${btn('Download PNG',"downloadImage('png')",'green')}
+ ${btn('Download JPG',"downloadImage('jpg')",'green')}
+ ${btn('Save Project JSON','saveProject()')}
+ ${field('Load Project JSON',`<input type="file" accept=".json" onchange="loadProject(event)">`)}
+ ${btn('Print / Save as PDF','printSheet()','orange')}
+`);
+addAccordion('17. ⚙️ Professional Tools',`
+ ${btn('Undo','undo()')}
+ ${btn('Redo','redo()')}
+ ${btn('Reset Current Photo','resetImage()','gray')}
+ ${btn('Reset All Editing','resetAll()','red')}
+ ${field('Canvas Background',`<input type="color" value="#ffffff" onchange="setBackground(this.value)">`)}
+ <p class="toolnote">Undo/Redo, zoom, move, rotation, color, text, shapes और project save उपलब्ध हैं।</p>
+`);
 
-function useScan(){
-  if(!state.scan){alert('पहले डॉक्यूमेंट अपलोड करें।');return}
-  state.front=state.scan;
-  selectSide('front');
-  message('Straightened document Front में लगाया गया।');
+function setFilters(b,c,sat,g,se,h){
+ saveHistory();Object.assign(s(),{brightness:b,contrast:c,saturation:sat,gray:g,sepia:se,hue:h});render();
 }
-
-function useScanBack(){
-  if(!state.scan){alert('पहले डॉक्यूमेंट अपलोड करें।');return}
-  state.back=state.scan;
-  selectSide('back');
-  message('Straightened document Back में लगाया गया।');
+function setCanvasRatio(r){
+ const w=638;canvas.width=w;canvas.height=Math.round(w/r);render();
 }
-
-/* ONLINE AI BACKEND */
-
-async function runOnlineAI(){
-  const endpoint=$('aiEndpoint').value.trim();
-  if(!endpoint){
-    alert('पहले अपने AI backend का Endpoint डालें।');
-    return;
-  }
-  const img=currentImage();
-  if(!img){
-    alert('पहले फोटो अपलोड करें।');
-    return;
-  }
-  message('AI Server से संपर्क किया जा रहा है...');
-  try{
-    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
-    const form=new FormData();
-    form.append('image',blob,'card.png');
-    form.append('action',$('aiAction').value);
-
-    const response=await fetch(endpoint,{
-      method:'POST',
-      body:form
-    });
-    if(!response.ok)throw new Error('Server Error '+response.status);
-
-    const content=response.headers.get('content-type')||'';
-    if(content.includes('image')){
-      const result=await response.blob();
-      const url=URL.createObjectURL(result);
-      const newImg=new Image();
-      newImg.onload=()=>{
-        state[state.side]=newImg;
-        render();
-        message('AI Processing पूरा हुआ।');
-        URL.revokeObjectURL(url);
-      };
-      newImg.src=url;
-    }else{
-      const data=await response.json();
-      message(data.message||'Server ने response दिया।');
-    }
-  }catch(e){
-    message('AI Server उपलब्ध नहीं है: '+e.message);
-  }
+function presetCard(v){
+ if(v==='custom')return;
+ let a=v.split(',');$('cardW').value=a[0];$('cardH').value=a[1];$('unit').value='mm';updateSize();
 }
-
-/* INITIAL SETUP */
-
-function init(){
-  render();
-  saveHistory();
+function addShape(type){
+ const color=$('shapeColor')?.value||brushColor;
+ const size=Number($('shapeSize')?.value||4);
+ addObject({type,x:70,y:100,x2:350,y2:350,color,size});
 }
-init();
+function resetAll(){
+ if(!confirm('क्या Front और Back दोनों का सारा डेटा रीसेट करना है?'))return;
+ saveHistory();
+ states={
+ front:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#fff',objects:[]},
+ back:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#fff',objects:[]}
+ };
+ switchSide('front');msg('पूरा स्टूडियो रीसेट हो गया।');
+}
+canvas.addEventListener('pointerdown',e=>{
+ if(!['brush','line','rect','circle','arrow'].includes(tool))return;
+ saveHistory();canvas.setPointerCapture(e.pointerId);
+ const r=canvas.getBoundingClientRect();
+ const x=(e.clientX-r.left)*canvas.width/r.width;
+ const y=(e.clientY-r.top)*canvas.height/r.height;
+ startPoint={x,y};
+ drawing=true;
+});
+canvas.addEventListener('pointerup',e=>{
+ if(!drawing||!startPoint)return;
+ const r=canvas.getBoundingClientRect();
+ const x=(e.clientX-r.left)*canvas.width/r.width;
+ const y=(e.clientY-r.top)*canvas.height/r.height;
+ s().objects.push({type:tool,x:startPoint.x,y:startPoint.y,x2:x,y2:y,color:brushColor,size:brushSize});
+ drawing=false;startPoint=null;render();
+});
+canvas.addEventListener('pointermove',e=>{
+ if(!drawing||!startPoint||tool!=='brush')return;
+ const r=canvas.getBoundingClientRect();
+ const x=(e.clientX-r.left)*canvas.width/r.width;
+ const y=(e.clientY-r.top)*canvas.height/r.height;
+ s().objects.push({type:'brush',x:startPoint.x,y:startPoint.y,x2:x,y2:y,color:brushColor,size:brushSize});
+ startPoint={x,y};render();
+});
+render();
 </script>
-
 </body>
 </html>

@@ -1,863 +1,398 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gramin Grahak Sewa | Digital Service Centre</title>
-<meta name="description" content="Gramin Grahak Sewa - CSC, eMitra, Panchayat, Farmer, Banking, Photo Studio and Online Services">
+<title>Advanced Photo & ID Card Studio</title>
 
 <style>
-:root{
-  --blue:#123e78;
-  --blue2:#1769aa;
-  --green:#07865c;
-  --orange:#ef861d;
-  --purple:#7546a8;
-  --red:#d94343;
-  --bg:#f3f6fb;
-  --dark:#182638;
-  --white:#ffffff;
-}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:var(--bg);
-  color:var(--dark);
-}
+body{margin:0;background:#eaf0fa;font-family:Arial,sans-serif;color:#172554}
 button,input,select{font:inherit}
-a{text-decoration:none;color:inherit}
-.topbar{
-  background:#092b50;color:white;
-  padding:8px 4%;
-  display:flex;justify-content:space-between;
-  flex-wrap:wrap;gap:8px;font-size:13px;
-}
+button{cursor:pointer}
+.app{max-width:1250px;margin:auto;padding:12px}
 .header{
-  background:white;
-  padding:14px 4%;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:15px;
-  box-shadow:0 3px 15px #0001;
-  position:sticky;top:0;z-index:100;
+ background:linear-gradient(120deg,#123b91,#087f8c,#12a66a);
+ color:white;text-align:center;padding:22px 12px;border-radius:16px;
 }
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:58px;height:58px;border-radius:15px;
-  background:linear-gradient(135deg,#0875bd,#09a66b);
-  color:white;display:grid;place-items:center;
-  font-size:24px;font-weight:bold;
+.header h1{font-size:25px;margin:0 0 8px}
+.header p{margin:0;font-size:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+.tabs button{
+ border:0;border-radius:9px;padding:12px 15px;
+ background:#244da5;color:white;font-weight:bold
 }
-.brand h1{font-size:23px;color:var(--blue);margin:0}
-.brand p{font-size:12px;margin:4px 0 0;color:#64748b}
-.nav{display:flex;gap:8px;flex-wrap:wrap}
-.nav a{
-  padding:9px 12px;border-radius:8px;
-  font-size:13px;font-weight:bold;
+.tabs button.active{background:#e87512}
+.panel{
+ display:none;background:white;padding:16px;border-radius:13px;
+ margin:12px 0;box-shadow:0 3px 12px #00000012
 }
-.nav a:hover{background:#eaf3ff;color:var(--blue2)}
-.hero{
-  margin:18px auto;max-width:1400px;
-  width:94%;border-radius:18px;overflow:hidden;
-  padding:28px;
-  background:linear-gradient(115deg,#092f5b,#0879ae 65%,#07966b);
-  color:white;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
+.panel.active{display:block}
+.panel h2{font-size:20px;color:#1455a0;margin:0 0 14px}
+.panel h3{font-size:16px;margin:8px 0;color:#1455a0}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:11px;margin:12px 0
 }
-.hero h2{font-size:clamp(25px,4vw,38px);margin:0 0 10px}
-.hero p{line-height:1.7;margin:0 0 15px}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+.field input,.field select{
+ width:100%;padding:10px;border:1px solid #cbd5e1;
+ border-radius:8px;background:white;min-width:0
+}
+.field input[type=range]{padding:0;accent-color:#1769bb}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .btn{
-  display:inline-block;border:0;cursor:pointer;
-  padding:11px 17px;border-radius:9px;
-  font-weight:bold;background:var(--orange);color:white;
+ border:0;padding:11px 15px;border-radius:8px;
+ color:white;background:#1754b4;font-weight:bold
 }
-.btn-light{background:white;color:var(--blue)}
-.hero-photo{
-  width:125px;height:125px;border-radius:50%;
-  object-fit:cover;border:4px solid white;
-  background:#ffffff33;
-}
-.notice{
-  max-width:1400px;width:94%;margin:14px auto;
-  background:#fff4dc;border-left:5px solid var(--orange);
-  border-radius:8px;padding:12px 15px;
-  color:#75430a;font-size:14px;
-}
-.container{max-width:1400px;width:94%;margin:auto}
-.section{margin:25px 0}
-.section-heading{
-  display:flex;align-items:center;
-  justify-content:space-between;gap:10px;
-  margin-bottom:14px;flex-wrap:wrap;
-}
-.section-heading h2{font-size:22px;margin:0;color:var(--blue)}
-.section-heading p{font-size:13px;color:#64748b;margin:4px 0 0}
-.quick-grid,.service-grid,.tool-grid{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:13px;
-}
-.quick-card,.service-card,.tool-card{
-  background:white;border-radius:13px;
-  padding:15px;text-align:center;
-  box-shadow:0 3px 12px #172b4d12;
-  border:1px solid #e7edf5;
-  cursor:pointer;transition:.2s;
-  min-width:0;
-}
-.quick-card:hover,.service-card:hover,.tool-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 7px 18px #172b4d20;
-}
-.service-card{display:flex;align-items:center;gap:11px;text-align:left}
-.service-icon,.quick-icon,.tool-icon{
-  width:45px;height:45px;min-width:45px;
-  border-radius:12px;display:grid;place-items:center;
-  font-size:24px;background:#e8f2ff;
-}
-.service-card strong{display:block;font-size:14px}
-.service-card small{display:block;color:#64748b;margin-top:4px;font-size:11px}
-.quick-card strong{display:block;margin-top:8px;font-size:13px}
-.blue-card{border-top:4px solid #2684d8}
-.green-card{border-top:4px solid #12a477}
-.orange-card{border-top:4px solid #f09a2d}
-.purple-card{border-top:4px solid #9561c9}
-.red-card{border-top:4px solid #e15a5a}
-.search-box{
-  display:flex;gap:9px;max-width:650px;
-  margin:15px 0;flex-wrap:wrap;
-}
-.search-box input{
-  flex:1;min-width:200px;padding:13px;
-  border:1px solid #cbd5e1;border-radius:9px;
-  background:white;
-}
-.search-box button{
-  border:0;border-radius:9px;padding:12px 18px;
-  color:white;background:var(--blue2);font-weight:bold;
-}
-.category-label{
-  display:inline-block;background:#e7f1ff;
-  color:#15548a;padding:6px 10px;
-  border-radius:20px;font-size:12px;font-weight:bold;
-  margin-bottom:10px;
-}
-.tool-panel{
-  display:none;background:white;padding:18px;
-  border-radius:14px;border:1px solid #dce5ef;
-  box-shadow:0 4px 16px #0001;margin:15px 0;
-}
-.tool-panel.active{display:block}
-.tool-panel h3{margin-top:0;color:var(--blue)}
-.control-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-.control-row label{font-size:13px;font-weight:bold}
-.control-row input,.control-row select{
-  display:block;margin-top:5px;padding:9px;
-  border:1px solid #cbd5e1;border-radius:7px;
-  max-width:100%;
-}
+.btn.green{background:#07865c}
+.btn.orange{background:#e87512}
+.btn.red{background:#c83232}
+.btn.dark{background:#334155}
+.btn.purple{background:#673ab7}
 .preview{
-  max-width:100%;max-height:350px;
-  object-fit:contain;background:#eef2f7;
-  border:1px dashed #9aabc0;border-radius:8px;
+ background:#e9edf5;border:2px dashed #9aabc5;
+ border-radius:12px;padding:12px;margin-top:12px;text-align:center;
+ overflow:auto
 }
-.canvas-wrap{overflow:auto;background:#eef2f7;padding:10px;border-radius:9px}
-canvas{max-width:100%;height:auto}
-.action-btn{
-  border:0;background:var(--green);color:white;
-  border-radius:8px;padding:10px 14px;
-  cursor:pointer;font-weight:bold;margin:4px 3px;
+.preview canvas{max-width:100%;height:auto;background:white;display:block;margin:8px auto}
+.preview-title{font-weight:bold;color:#1455a0}
+.preview-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.preview-card{background:#edf2fa;border-radius:10px;padding:9px;min-width:0}
+.preview-card canvas{width:100%;height:auto;background:white}
+.status{
+ padding:10px;background:#eff6ff;border-radius:8px;
+ margin-top:10px;font-size:13px;color:#17477d
 }
-.action-btn.secondary{background:var(--blue2)}
-.action-btn.danger{background:var(--red)}
-footer{
-  background:#092b50;color:white;
-  padding:25px 4%;margin-top:35px;text-align:center;
+.note{font-size:12px;color:#64748b;line-height:1.6}
+.counts{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.counts button{
+ padding:10px 4px;border:1px solid #b8c8e2;
+ border-radius:8px;background:#f5f8ff
 }
-footer p{margin:7px;font-size:13px}
-.empty-result{display:none;padding:15px;color:#a33}
-@media(max-width:900px){
- .quick-grid,.service-grid,.tool-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
- .nav{display:none}
-}
+.counts button.selected{background:#1459a6;color:white}
+hr{border:0;border-top:1px solid #e2e8f0;margin:16px 0}
 @media(max-width:600px){
- .header{padding:10px 3%}
- .brand h1{font-size:18px}
- .brand p{font-size:10px}
- .logo{width:45px;height:45px;font-size:19px}
- .hero{padding:20px;flex-direction:column;align-items:flex-start}
- .hero-photo{width:85px;height:85px}
- .quick-grid,.service-grid,.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .service-card{padding:10px;gap:8px}
- .service-icon{width:37px;height:37px;min-width:37px;font-size:20px}
- .service-card strong{font-size:12px}
- .section-heading h2{font-size:19px}
+ .app{padding:7px}
+ .panel{padding:10px}
+ .header h1{font-size:20px}
+ .tabs button{padding:10px;font-size:12px}
+ .preview-row{gap:5px}
+ .btn{padding:10px;font-size:12px}
 }
 </style>
 </head>
 
 <body>
-<div class="topbar">
-  <span>🇮🇳 आपका अपना डिजिटल सेवा केंद्र</span>
-  <span>CSC | e-Mitra | Online Services | Photo Studio</span>
-</div>
+<div class="app">
 
 <header class="header">
-  <div class="brand">
-    <div class="logo">GGS</div>
-    <div>
-      <h1>Gramin Grahak Sewa</h1>
-      <p>ग्रामीण ग्राहक सेवा केंद्र</p>
-    </div>
-  </div>
-  <nav class="nav">
-    <a href="#home">होम</a>
-    <a href="#services">ऑनलाइन सेवाएँ</a>
-    <a href="#studio">फोटो स्टूडियो</a>
-    <a href="#contact">संपर्क</a>
-  </nav>
+ <h1>📸 ADVANCED PHOTO & ID CARD STUDIO</h1>
+ <p>ID Card • Single Photo • Joint Photo • A4 Print • PDF</p>
 </header>
 
-<section class="hero" id="home">
-  <div>
-    <h2>आपका अपना डिजिटल सेवा केंद्र</h2>
-    <p>सरकारी पोर्टल, पंचायत, किसान, जमीन, बैंकिंग, दस्तावेज और फोटो प्रिंटिंग सेवाएँ एक ही स्थान पर।</p>
-    <div class="hero-actions">
-      <a class="btn" href="#services">सभी सेवाएँ देखें</a>
-      <a class="btn btn-light" href="#studio">फोटो स्टूडियो खोलें</a>
-    </div>
+<nav class="tabs">
+ <button class="active" data-tab="idPanel">🪪 ID CARD</button>
+ <button data-tab="singlePanel">📸 SINGLE PHOTO</button>
+ <button data-tab="jointPanel">👥 JOINT PHOTO</button>
+ <button data-tab="sheetPanel">📄 A4 PHOTO SHEET</button>
+</nav>
+
+<!-- ID CARD STUDIO -->
+<section class="panel active" id="idPanel">
+ <h2>🪪 ID Card Editing Studio</h2>
+
+ <div class="grid">
+  <div class="field">
+   <label>ID Card Type</label>
+   <select id="idType">
+    <option>Custom ID Card</option>
+    <option>Aadhaar Card</option>
+    <option>PAN Card</option>
+    <option>Voter ID</option>
+    <option>Ayushman Card</option>
+    <option>ABHA Card</option>
+    <option>e-Shram Card</option>
+    <option>Jan Aadhaar Card</option>
+    <option>Bhamashah Card</option>
+    <option>Driving Licence</option>
+    <option>Ration Card</option>
+    <option>Labour Card</option>
+    <option>Kisan Card</option>
+    <option>Student ID Card</option>
+    <option>School ID Card</option>
+    <option>College ID Card</option>
+    <option>Employee ID Card</option>
+    <option>Other ID Card</option>
+   </select>
   </div>
-  <img class="hero-photo" src="subhash.jpg" alt="सुभाष फौजी"
-       onerror="this.style.display='none'">
+  <div class="field">
+   <label>Card Width (mm)</label>
+   <input id="idW" type="number" value="86" min="20" max="200">
+  </div>
+  <div class="field">
+   <label>Card Height (mm)</label>
+   <input id="idH" type="number" value="54" min="20" max="200">
+  </div>
+  <div class="field">
+   <label>Front / Back Gap (mm)</label>
+   <input id="idGap" type="number" value="5" min="0" max="30">
+  </div>
+ </div>
+
+ <div class="preview-row">
+  <div class="preview-card">
+   <b>FRONT SIDE</b>
+   <input type="file" id="idFrontFile" accept="image/*">
+   <canvas id="idFrontCanvas" width="430" height="270"></canvas>
+  </div>
+  <div class="preview-card">
+   <b>BACK SIDE</b>
+   <input type="file" id="idBackFile" accept="image/*">
+   <canvas id="idBackCanvas" width="430" height="270"></canvas>
+  </div>
+ </div>
+
+ <h3>🛠️ Editing Tools (दोनों साइड पर लागू)</h3>
+ <div class="grid">
+  <div class="field">
+   <label>Zoom / Crop</label>
+   <input id="idZoom" type="range" min="50" max="250" value="100">
+  </div>
+  <div class="field">
+   <label>Brightness</label>
+   <input id="idBrightness" type="range" min="0" max="200" value="100">
+  </div>
+  <div class="field">
+   <label>Contrast</label>
+   <input id="idContrast" type="range" min="0" max="200" value="100">
+  </div>
+  <div class="field">
+   <label>Background Color</label>
+   <input id="idBg" type="color" value="#ffffff">
+  </div>
+  <div class="field">
+   <label>Horizontal Position</label>
+   <input id="idX" type="range" min="-100" max="100" value="0">
+  </div>
+  <div class="field">
+   <label>Vertical Position</label>
+   <input id="idY" type="range" min="-100" max="100" value="0">
+  </div>
+ </div>
+
+ <div class="actions">
+  <button class="btn" onclick="idRotate(-90)">↶ Rotate Left</button>
+  <button class="btn" onclick="idRotate(90)">Rotate Right ↷</button>
+  <button class="btn" onclick="idFlip()">↔ Flip</button>
+  <button class="btn orange" onclick="idReset()">Reset Editing</button>
+  <button class="btn green" onclick="makeID()">Final Preview</button>
+  <button class="btn green" onclick="downloadCanvas('idFinal','png','ID-Card')">PNG Save</button>
+  <button class="btn orange" onclick="downloadCanvas('idFinal','jpeg','ID-Card')">JPEG Save</button>
+  <button class="btn" onclick="printCanvas('idFinal','ID Card')">Print</button>
+ </div>
+
+ <div class="preview">
+  <div class="preview-title">FRONT + BACK FINAL PREVIEW</div>
+  <canvas id="idFinal" width="900" height="650"></canvas>
+ </div>
+ <div class="status" id="idStatus">Front और Back की फोटो अपलोड करें।</div>
 </section>
 
-<div class="notice">
-  📢 सूचना: सभी सरकारी सेवाएँ संबंधित आधिकारिक पोर्टल पर खुलेंगी। आवेदन और भुगतान से पहले पोर्टल का URL अवश्य जाँचें।
+<!-- SINGLE PHOTO -->
+<section class="panel" id="singlePanel">
+ <h2>📸 Single Photo Editing Studio</h2>
+
+ <div class="field">
+  <label>अपनी फोटो चुनें</label>
+  <input type="file" id="singleFile" accept="image/*">
+ </div>
+
+ <div class="grid">
+  <div class="field"><label>Width (mm)</label>
+   <input id="singleW" type="number" value="35" min="5" max="150"></div>
+  <div class="field"><label>Height (mm)</label>
+   <input id="singleH" type="number" value="45" min="5" max="200"></div>
+  <div class="field"><label>Brightness</label>
+   <input id="singleBrightness" type="range" min="0" max="200" value="100"></div>
+  <div class="field"><label>Contrast</label>
+   <input id="singleContrast" type="range" min="0" max="200" value="100"></div>
+  <div class="field"><label>Zoom / Crop</label>
+   <input id="singleZoom" type="range" min="50" max="250" value="100"></div>
+  <div class="field"><label>Background</label>
+   <input id="singleBg" type="color" value="#ffffff"></div>
+  <div class="field"><label>Horizontal Position</label>
+   <input id="singleX" type="range" min="-100" max="100" value="0"></div>
+  <div class="field"><label>Vertical Position</label>
+   <input id="singleY" type="range" min="-100" max="100" value="0"></div>
+ </div>
+
+ <div class="actions">
+  <button class="btn" onclick="singleRotate(-90)">↶ Rotate</button>
+  <button class="btn" onclick="singleRotate(90)">Rotate ↷</button>
+  <button class="btn" onclick="singleFlip()">↔ Flip</button>
+  <button class="btn orange" onclick="singleReset()">Reset</button>
+  <button class="btn green" onclick="drawSingle()">Preview</button>
+  <button class="btn green" onclick="downloadCanvas('singleCanvas','png','Single-Photo')">PNG Save</button>
+  <button class="btn orange" onclick="downloadCanvas('singleCanvas','jpeg','Single-Photo')">JPEG Save</button>
+  <button class="btn" onclick="printCanvas('singleCanvas','Single Photo')">Print</button>
+ </div>
+
+ <div class="preview">
+  <b>Single Photo Preview</b>
+  <canvas id="singleCanvas" width="350" height="450"></canvas>
+ </div>
+ <div class="status" id="singleStatus">फोटो अपलोड करें।</div>
+</section>
+
+<!-- JOINT PHOTO -->
+<section class="panel" id="jointPanel">
+ <h2>👥 Joint Photo Maker Studio</h2>
+
+ <div class="grid">
+  <div class="field">
+   <label>पहली फोटो</label>
+   <input type="file" id="jointFile1" accept="image/*">
+  </div>
+  <div class="field">
+   <label>दूसरी फोटो</label>
+   <input type="file" id="jointFile2" accept="image/*">
+  </div>
+  <div class="field">
+   <label>Layout</label>
+   <select id="jointLayout">
+    <option value="side">Side by Side</option>
+    <option value="vertical">ऊपर-नीचे</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Photo Gap (mm)</label>
+   <input id="jointGap" type="number" value="3" min="0" max="30">
+  </div>
+  <div class="field">
+   <label>Background</label>
+   <input id="jointBg" type="color" value="#ffffff">
+  </div>
+ </div>
+
+ <div class="actions">
+  <button class="btn" onclick="makeJoint()">Joint Preview</button>
+  <button class="btn green" onclick="downloadCanvas('jointCanvas','png','Joint-Photo')">PNG Save</button>
+  <button class="btn orange" onclick="downloadCanvas('jointCanvas','jpeg','Joint-Photo')">JPEG Save</button>
+  <button class="btn" onclick="printCanvas('jointCanvas','Joint Photo')">Print</button>
+  <button class="btn red" onclick="clearJoint()">Clear All</button>
+ </div>
+
+ <div class="preview">
+  <b>Joint Photo Preview</b>
+  <canvas id="jointCanvas" width="900" height="500"></canvas>
+ </div>
+ <div class="status" id="jointStatus">दो फोटो अपलोड करें।</div>
+</section>
+
+<!-- A4 SHEET -->
+<section class="panel" id="sheetPanel">
+ <h2>📄 A4 Photo Sheet & ID Print Studio</h2>
+
+ <div class="grid">
+  <div class="field">
+   <label>Photo Source</label>
+   <select id="sheetSource">
+    <option value="single">Single Photo</option>
+    <option value="joint">Joint Photo</option>
+    <option value="front">ID Front</option>
+    <option value="back">ID Back</option>
+    <option value="both">ID Front + Back</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Paper Size</label>
+   <select id="sheetPaper">
+    <option value="A4">A4</option>
+    <option value="A5">A5</option>
+    <option value="A3">A3</option>
+    <option value="custom">Custom</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Orientation</label>
+   <select id="sheetOrientation">
+    <option value="portrait">Portrait</option>
+    <option value="landscape">Landscape</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Custom Width (mm)</label>
+   <input id="customW" type="number" value="210">
+  </div>
+  <div class="field">
+   <label>Custom Height (mm)</label>
+   <input id="customH" type="number" value="297">
+  </div>
+ </div>
+
+ <div class="field">
+  <label>एक पेज पर फोटो की संख्या</label>
+  <div class="counts" id="photoCounts">
+   <button data-count="2">2</button>
+   <button data-count="4">4</button>
+   <button data-count="6">6</button>
+   <button data-count="8" class="selected">8</button>
+   <button data-count="10">10</button>
+   <button data-count="12">12</button>
+   <button data-count="15">15</button>
+   <button data-count="16">16</button>
+   <button data-count="20">20</button>
+   <button data-count="25">25</button>
+   <button data-count="30">30</button>
+   <button data-count="35">35</button>
+   <button data-count="40">40</button>
+   <button data-count="45">45</button>
+   <button data-count="50">50</button>
+  </div>
+ </div>
+
+ <div class="grid">
+  <div class="field"><label>Photo Width (mm)</label>
+   <input id="sheetW" type="number" value="35" min="5" max="200"></div>
+  <div class="field"><label>Photo Height (mm)</label>
+   <input id="sheetH" type="number" value="45" min="5" max="280"></div>
+  <div class="field"><label>Gap (mm)</label>
+   <input id="sheetGap" type="number" value="3" min="0" max="30"></div>
+  <div class="field"><label>Margin (mm)</label>
+   <input id="sheetMargin" type="number" value="10" min="0" max="40"></div>
+  <div class="field"><label>Columns</label>
+   <input id="sheetCols" type="number" value="2" min="1" max="10"></div>
+  <div class="field"><label>Print Quality (DPI)</label>
+   <select id="sheetDpi">
+    <option value="150">150 DPI</option>
+    <option value="200">200 DPI</option>
+    <option value="300" selected>300 DPI</option>
+   </select>
+  </div>
+ </div>
+
+ <div class="actions">
+  <button class="btn" onclick="makePhotoSheet()">🔄 A4 Preview</button>
+  <button class="btn green" onclick="downloadCanvas('sheetCanvas','png','A4-Photo-Sheet')">PNG Save</button>
+  <button class="btn orange" onclick="downloadCanvas('sheetCanvas','jpeg','A4-Photo-Sheet')">JPEG Save</button>
+  <button class="btn purple" onclick="saveSheetPDF()">📥 Save PDF</button>
+  <button class="btn" onclick="printSheet()">🖨️ Print</button>
+  <button class="btn red" onclick="clearSheet()">Clear All</button>
+ </div>
+
+ <div class="preview">
+  <b>A4 PAPER FINAL PREVIEW</b>
+  <canvas id="sheetCanvas" width="1240" height="1754"></canvas>
+ </div>
+ <div class="status" id="sheetStatus">फोटो चुनें और A4 Preview दबाएं।</div>
+</section>
+
+<footer class="note" style="text-align:center;padding:15px">
+ Advanced Photo & ID Card Studio
+</footer>
+
 </div>
-
-<main class="container">
-<section class="section">
-  <div class="section-heading">
-    <div>
-      <h2>⚡ मुख्य सेवाएँ</h2>
-      <p>एक क्लिक में जरूरी सेवाएँ</p>
-    </div>
-  </div>
-  <div class="quick-grid">
-    <a class="quick-card blue-card" href="#identity"><div class="quick-icon">🪪</div><strong>ID Card सेवाएँ</strong></a>
-    <a class="quick-card green-card" href="#panchayat"><div class="quick-icon">🏛️</div><strong>पंचायत सेवाएँ</strong></a>
-    <a class="quick-card orange-card" href="#farmer"><div class="quick-icon">🌾</div><strong>किसान सेवाएँ</strong></a>
-    <a class="quick-card purple-card" href="#land"><div class="quick-icon">🗺️</div><strong>जमीन सेवाएँ</strong></a>
-  </div>
-</section>
-
-<section class="section" id="services">
-  <div class="section-heading">
-    <div>
-      <h2>🌐 सभी ऑनलाइन सेवाएँ</h2>
-      <p>सेवा खोजें और संबंधित पोर्टल खोलें</p>
-    </div>
-  </div>
-  <div class="search-box">
-    <input id="serviceSearch" type="search" placeholder="सेवा का नाम खोजें... जैसे आधार, जमाबंदी, किसान">
-    <button type="button" onclick="searchServices()">खोजें</button>
-    <button type="button" class="action-btn secondary" onclick="resetSearch()">रीसेट</button>
-  </div>
-  <p id="noResults" class="empty-result">कोई सेवा नहीं मिली। दूसरा नाम खोजें।</p>
-</section><!-- CSC और E-MITRA -->
-<section class="section service-section" id="csc">
-  <div class="section-heading"><div><h2>🏢 CSC / ई-मित्र सेवाएँ</h2><p>डिजिटल और नागरिक सेवाएँ</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://digitalseva.csc.gov.in/" target="_blank"><span class="service-icon">🏢</span><span><strong>CSC Digital Seva</strong><small>Common Service Centre</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://emitra.rajasthan.gov.in/" target="_blank"><span class="service-icon">🖥️</span><span><strong>Rajasthan e-Mitra</strong><small>राजस्थान ई-मित्र</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://sso.rajasthan.gov.in/" target="_blank"><span class="service-icon">🔐</span><span><strong>Rajasthan SSO</strong><small>एसएसओ लॉगिन</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://www.digilocker.gov.in/" target="_blank"><span class="service-icon">📁</span><span><strong>DigiLocker</strong><small>डिजिटल दस्तावेज</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.india.gov.in/" target="_blank"><span class="service-icon">🇮🇳</span><span><strong>National Portal</strong><small>भारत सरकार पोर्टल</small></span></a>
-  </div>
-</section>
-
-<!-- IDENTITY -->
-<section class="section service-section" id="identity">
-  <div class="section-heading"><div><h2>🪪 पहचान पत्र और नागरिक सेवाएँ</h2><p>ID Card और प्रमाणपत्र</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://uidai.gov.in/" target="_blank"><span class="service-icon">🪪</span><span><strong>Aadhaar Card / आधार</strong><small>UIDAI आधिकारिक पोर्टल</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.onlineservices.nsdl.com/paam/" target="_blank"><span class="service-icon">💳</span><span><strong>PAN Card / पैन कार्ड</strong><small>पैन आवेदन सेवाएँ</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://voters.eci.gov.in/" target="_blank"><span class="service-icon">🗳️</span><span><strong>Voter ID / वोटर कार्ड</strong><small>निर्वाचन आयोग</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://parivahan.gov.in/" target="_blank"><span class="service-icon">🚘</span><span><strong>Driving Licence</strong><small>ड्राइविंग लाइसेंस</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://parivahan.gov.in/" target="_blank"><span class="service-icon">🚗</span><span><strong>Vehicle RC</strong><small>वाहन रजिस्ट्रेशन</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://eshram.gov.in/" target="_blank"><span class="service-icon">👷</span><span><strong>e-Shram Card</strong><small>ई-श्रम कार्ड</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://abha.abdm.gov.in/" target="_blank"><span class="service-icon">🏥</span><span><strong>ABHA Health ID</strong><small>आभा हेल्थ आईडी</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://beneficiary.nha.gov.in/" target="_blank"><span class="service-icon">🩺</span><span><strong>Ayushman Card</strong><small>आयुष्मान भारत</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.passportindia.gov.in/" target="_blank"><span class="service-icon">🛂</span><span><strong>Passport Seva</strong><small>पासपोर्ट सेवा</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.janaadhaar.rajasthan.gov.in/" target="_blank"><span class="service-icon">👨‍👩‍👧</span><span><strong>Jan Aadhaar</strong><small>जन आधार राजस्थान</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.indiapost.gov.in/" target="_blank"><span class="service-icon">📮</span><span><strong>Post Office</strong><small>डाकघर सेवाएँ</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://rtionline.gov.in/" target="_blank"><span class="service-icon">📄</span><span><strong>RTI Online</strong><small>सूचना का अधिकार</small></span></a>
-  </div>
-</section>
-
-<!-- PANCHAYAT -->
-<section class="section service-section" id="panchayat">
-  <div class="section-heading"><div><h2>🏛️ पंचायत और ग्रामीण विकास सेवाएँ</h2><p>ग्राम पंचायत, योजनाएँ और जन सूचना</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://jansoochna.rajasthan.gov.in/" target="_blank"><span class="service-icon">📢</span><span><strong>Jan Soochna Portal</strong><small>जन सूचना पोर्टल राजस्थान</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://meripanchayat.gov.in/" target="_blank"><span class="service-icon">🏘️</span><span><strong>Meri Panchayat</strong><small>मेरी पंचायत</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://egramswaraj.gov.in/" target="_blank"><span class="service-icon">🏛️</span><span><strong>eGramSwaraj</strong><small>ई-ग्राम स्वराज</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://nrega.nic.in/" target="_blank"><span class="service-icon">🧑‍🌾</span><span><strong>MGNREGA / नरेगा</strong><small>मनरेगा जॉब कार्ड</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://pmayg.nic.in/" target="_blank"><span class="service-icon">🏠</span><span><strong>PM Awas Gramin</strong><small>प्रधानमंत्री ग्रामीण आवास</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://swachhbharatmission.gov.in/" target="_blank"><span class="service-icon">🧹</span><span><strong>Swachh Bharat</strong><small>स्वच्छ भारत मिशन</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://panchayat.gov.in/" target="_blank"><span class="service-icon">📜</span><span><strong>Ministry of Panchayati Raj</strong><small>पंचायती राज मंत्रालय</small></span></a>
-  </div>
-</section>
-
-<!-- LAND -->
-<section class="section service-section" id="land">
-  <div class="section-heading"><div><h2>🗺️ जमीन, जमाबंदी और राजस्व सेवाएँ</h2><p>खसरा, नक्शा, नकल और भूमि रिकॉर्ड</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://apnakhata.rajasthan.gov.in/" target="_blank"><span class="service-icon">📜</span><span><strong>Apna Khata</strong><small>अपना खाता / जमाबंदी</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://bhunaksha.rajasthan.gov.in/" target="_blank"><span class="service-icon">🗺️</span><span><strong>Bhu Naksha</strong><small>भू नक्शा राजस्थान</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://landrecords.rajasthan.gov.in/" target="_blank"><span class="service-icon">🌍</span><span><strong>Land Records</strong><small>भूमि रिकॉर्ड</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://epanjiyan.rajasthan.gov.in/" target="_blank"><span class="service-icon">✍️</span><span><strong>e-Panjiyan</strong><small>रजिस्ट्री और पंजीयन</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://rajasthan.gov.in/" target="_blank"><span class="service-icon">🏢</span><span><strong>Revenue Department</strong><small>राजस्व विभाग</small></span></a>
-  </div>
-</section>
-
-<!-- FARMER -->
-<section class="section service-section" id="farmer">
-  <div class="section-heading"><div><h2>🌾 किसान और कृषि सेवाएँ</h2><p>किसान योजनाएँ, फसल और कृषि जानकारी</p></div></div>
-  <div class="service-grid">
-    <a class="service-card green-card" data-service-card href="https://pmkisan.gov.in/" target="_blank"><span class="service-icon">🌾</span><span><strong>PM Kisan</strong><small>पीएम किसान सम्मान निधि</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://pmfby.gov.in/" target="_blank"><span class="service-icon">🌱</span><span><strong>Fasal Bima</strong><small>प्रधानमंत्री फसल बीमा</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://soilhealth.dac.gov.in/" target="_blank"><span class="service-icon">🧪</span><span><strong>Soil Health Card</strong><small>मृदा स्वास्थ्य कार्ड</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://rajkisan.rajasthan.gov.in/" target="_blank"><span class="service-icon">🚜</span><span><strong>Raj Kisan</strong><small>राज किसान साथी</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://enam.gov.in/" target="_blank"><span class="service-icon">🛒</span><span><strong>e-NAM</strong><small>राष्ट्रीय कृषि बाजार</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://agmarknet.gov.in/" target="_blank"><span class="service-icon">📊</span><span><strong>Agmarknet</strong><small>मंडी भाव</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://mkisan.gov.in/" target="_blank"><span class="service-icon">📱</span><span><strong>mKisan</strong><small>किसान मोबाइल सेवाएँ</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://www.nabard.org/" target="_blank"><span class="service-icon">🏦</span><span><strong>NABARD</strong><small>कृषि एवं ग्रामीण विकास</small></span></a>
-  </div>
-</section>
-
-<!-- BANKING -->
-<section class="section service-section" id="banking">
-  <div class="section-heading"><div><h2>🏦 बैंकिंग और वित्तीय सेवाएँ</h2><p>बैंक, पेंशन, PF और सरकारी भुगतान</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://www.rbi.org.in/" target="_blank"><span class="service-icon">🏦</span><span><strong>RBI</strong><small>भारतीय रिजर्व बैंक</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.npci.org.in/" target="_blank"><span class="service-icon">💳</span><span><strong>NPCI</strong><small>डिजिटल भुगतान नेटवर्क</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.jansamarth.in/" target="_blank"><span class="service-icon">💰</span><span><strong>JanSamarth</strong><small>सरकारी ऋण योजनाएँ</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://pfms.nic.in/" target="_blank"><span class="service-icon">📊</span><span><strong>PFMS</strong><small>सरकारी भुगतान प्रणाली</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.epfindia.gov.in/" target="_blank"><span class="service-icon">👨‍💼</span><span><strong>EPFO</strong><small>पीएफ सेवाएँ</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.npscra.nsdl.co.in/" target="_blank"><span class="service-icon">👴</span><span><strong>NPS</strong><small>राष्ट्रीय पेंशन प्रणाली</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://jansuraksha.gov.in/" target="_blank"><span class="service-icon">🛡️</span><span><strong>Jan Suraksha</strong><small>बीमा और सुरक्षा योजनाएँ</small></span></a>
-  </div>
-</section>
-
-<!-- BILL PAYMENT & TRAVEL -->
-<section class="section service-section" id="payments">
-  <div class="section-heading"><div><h2>💡 बिल भुगतान और यात्रा सेवाएँ</h2><p>बिजली, पानी, रिचार्ज और टिकट</p></div></div>
-  <div class="service-grid">
-    <a class="service-card orange-card" data-service-card href="https://www.bharatbillpay.com/" target="_blank"><span class="service-icon">💡</span><span><strong>Bharat BillPay</strong><small>बिल भुगतान प्लेटफॉर्म</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.ippbonline.com/" target="_blank"><span class="service-icon">📮</span><span><strong>India Post Payments Bank</strong><small>IPPB बैंकिंग</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://fastag.ihmcl.com/" target="_blank"><span class="service-icon">🚘</span><span><strong>FASTag</strong><small>फास्टैग सेवाएँ</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://www.irctc.co.in/" target="_blank"><span class="service-icon">🚆</span><span><strong>IRCTC Railway</strong><small>रेल टिकट</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.redbus.in/" target="_blank"><span class="service-icon">🚌</span><span><strong>Bus Booking</strong><small>बस टिकट</small></span></a>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section class="section service-section" id="education">
-  <div class="section-heading"><div><h2>🎓 शिक्षा और विद्यार्थी सेवाएँ</h2><p>स्कूल, परीक्षा, छात्रवृत्ति और मार्कशीट</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://rajshaladarpan.nic.in/" target="_blank"><span class="service-icon">🏫</span><span><strong>Shala Darpan</strong><small>शाला दर्पण राजस्थान</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.cbse.gov.in/" target="_blank"><span class="service-icon">📚</span><span><strong>CBSE</strong><small>सीबीएसई बोर्ड</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://rajeduboard.rajasthan.gov.in/" target="_blank"><span class="service-icon">📖</span><span><strong>RBSE</strong><small>राजस्थान बोर्ड</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://scholarships.gov.in/" target="_blank"><span class="service-icon">🎓</span><span><strong>Scholarship</strong><small>राष्ट्रीय छात्रवृत्ति</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.nta.ac.in/" target="_blank"><span class="service-icon">📝</span><span><strong>NTA</strong><small>राष्ट्रीय परीक्षा एजेंसी</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.abc.gov.in/" target="_blank"><span class="service-icon">🆔</span><span><strong>APAAR / ABC ID</strong><small>विद्यार्थी आईडी</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.nios.ac.in/" target="_blank"><span class="service-icon">📕</span><span><strong>NIOS</strong><small>ओपन स्कूलिंग</small></span></a>
-  </div>
-</section>
-
-<!-- JOBS -->
-<section class="section service-section" id="jobs">
-  <div class="section-heading"><div><h2>💼 नौकरी और भर्ती सेवाएँ</h2><p>सरकारी नौकरी, भर्ती और रोजगार</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://rpsc.rajasthan.gov.in/" target="_blank"><span class="service-icon">🏛️</span><span><strong>RPSC</strong><small>राजस्थान लोक सेवा आयोग</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://rssb.rajasthan.gov.in/" target="_blank"><span class="service-icon">📋</span><span><strong>RSSB</strong><small>राजस्थान कर्मचारी चयन बोर्ड</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://upsc.gov.in/" target="_blank"><span class="service-icon">🇮🇳</span><span><strong>UPSC</strong><small>संघ लोक सेवा आयोग</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://ssc.gov.in/" target="_blank"><span class="service-icon">📝</span><span><strong>SSC</strong><small>कर्मचारी चयन आयोग</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://www.rrbcdg.gov.in/" target="_blank"><span class="service-icon">🚆</span><span><strong>Railway Jobs</strong><small>रेलवे भर्ती</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://www.joinindianarmy.nic.in/" target="_blank"><span class="service-icon">🎖️</span><span><strong>Indian Army</strong><small>भारतीय सेना भर्ती</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.ncs.gov.in/" target="_blank"><span class="service-icon">💼</span><span><strong>National Career Service</strong><small>रोजगार सेवाएँ</small></span></a>
-  </div>
-</section>
-
-<!-- OTHER -->
-<section class="section service-section" id="other">
-  <div class="section-heading"><div><h2>📑 अन्य सरकारी सेवाएँ</h2><p>राशन, जन्म-मृत्यु, पेंशन और श्रम सेवाएँ</p></div></div>
-  <div class="service-grid">
-    <a class="service-card blue-card" data-service-card href="https://nfsa.gov.in/" target="_blank"><span class="service-icon">🍚</span><span><strong>NFSA / Ration</strong><small>राष्ट्रीय खाद्य सुरक्षा</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://food.rajasthan.gov.in/" target="_blank"><span class="service-icon">🛒</span><span><strong>Rajasthan Food</strong><small>खाद्य एवं नागरिक आपूर्ति</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://crsorgi.gov.in/" target="_blank"><span class="service-icon">👶</span><span><strong>Birth / Death Certificate</strong><small>जन्म-मृत्यु प्रमाणपत्र</small></span></a>
-    <a class="service-card purple-card" data-service-card href="https://sje.rajasthan.gov.in/" target="_blank"><span class="service-icon">🤝</span><span><strong>Social Justice</strong><small>सामाजिक न्याय विभाग</small></span></a>
-    <a class="service-card blue-card" data-service-card href="https://ssp.rajasthan.gov.in/" target="_blank"><span class="service-icon">👴</span><span><strong>Social Security Pension</strong><small>सामाजिक सुरक्षा पेंशन</small></span></a>
-    <a class="service-card green-card" data-service-card href="https://labour.rajasthan.gov.in/" target="_blank"><span class="service-icon">👷</span><span><strong>Labour Department</strong><small>श्रम विभाग राजस्थान</small></span></a>
-    <a class="service-card orange-card" data-service-card href="https://www.mygov.in/" target="_blank"><span class="service-icon">🇮🇳</span><span><strong>MyGov</strong><small>भारत सरकार नागरिक भागीदारी</small></span></a>
-  </div>
-</section>
-
-<!-- ADVANCED PHOTO STUDIO -->
-<section class="section" id="studio">
-  <div class="section-heading">
-    <div><h2>📸 Advanced Photo & ID Card Studio</h2><p>फोटो, ID कार्ड, पासपोर्ट फोटो और प्रिंटिंग टूल</p></div>
-  </div>
-  <div class="tool-grid">
-    <button class="tool-card blue-card" onclick="showTool('idTool')"><span class="tool-icon">🪪</span><strong>ID Card Front + Back</strong></button>
-    <button class="tool-card green-card" onclick="showTool('passportTool')"><span class="tool-icon">📷</span><strong>Passport Photo Maker</strong></button>
-    <button class="tool-card orange-card" onclick="showTool('jointTool')"><span class="tool-icon">👥</span><strong>Joint Photo Maker</strong></button>
-    <button class="tool-card purple-card" onclick="showTool('editorTool')"><span class="tool-icon">🎨</span><strong>Image Editor</strong></button>
-    <button class="tool-card blue-card" onclick="showTool('backgroundTool')"><span class="tool-icon">🖼️</span><strong>Background Studio</strong></button>
-    <button class="tool-card green-card" onclick="showTool('a4Tool')"><span class="tool-icon">📄</span><strong>A4 Photo Sheet</strong></button>
-    <button class="tool-card orange-card" onclick="showTool('pdfTool')"><span class="tool-icon">📕</span><strong>PDF Viewer / Print</strong></button>
-    <button class="tool-card purple-card" onclick="showTool('documentTool')"><span class="tool-icon">🛠️</span><strong>Document Rotate / Fix</strong></button>
-  </div>
-
-  <div class="tool-panel" id="idTool">
-    <h3>🪪 ID Card Front + Back Studio</h3>
-    <div class="control-row">
-      <label>Front फोटो<input type="file" id="idFront" accept="image/*"></label>
-      <label>Back फोटो<input type="file" id="idBack" accept="image/*"></label>
-    </div>
-    <div class="control-row">
-      <label>कार्ड चौड़ाई (mm)<input id="idWidth" type="number" value="86" min="20" max="200"></label>
-      <label>कार्ड ऊँचाई (mm)<input id="idHeight" type="number" value="54" min="20" max="200"></label>
-      <label>बीच का अंतर (mm)<input id="idGap" type="number" value="5" min="0" max="50"></label>
-    </div>
-    <div class="canvas-wrap"><canvas id="idCanvas" width="1000" height="700"></canvas></div>
-    <button class="action-btn" onclick="makeID()">Preview बनाएं</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('idCanvas','ID-Front-Back.png')">डाउनलोड</button>
-    <button class="action-btn" onclick="printCanvas('idCanvas')">प्रिंट करें</button>
-  </div>
-
-  <div class="tool-panel" id="passportTool">
-    <h3>📷 Passport Photo Maker</h3>
-    <div class="control-row">
-      <label>फोटो चुनें<input type="file" id="passportFile" accept="image/*"></label>
-      <label>फोटो साइज
-        <select id="passportSize">
-          <option value="35x45">35 × 45 mm</option>
-          <option value="25x35">25 × 35 mm</option>
-          <option value="passport">Indian Passport 35 × 45 mm</option>
-        </select>
-      </label>
-      <label>बैकग्राउंड
-        <select id="passportBg">
-          <option value="#ffffff">सफेद</option>
-          <option value="#dceeff">हल्का नीला</option>
-          <option value="#eeeeee">हल्का ग्रे</option>
-          <option value="#ff0000">लाल</option>
-        </select>
-      </label>
-    </div>
-    <div class="canvas-wrap"><canvas id="passportCanvas" width="800" height="1100"></canvas></div>
-    <button class="action-btn" onclick="makePassport()">फोटो बनाएं</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('passportCanvas','Passport-Photos.png')">डाउनलोड</button>
-    <button class="action-btn" onclick="printCanvas('passportCanvas')">प्रिंट करें</button>
-  </div>
-
-  <div class="tool-panel" id="jointTool">
-    <h3>👥 Joint Photo Maker</h3>
-    <div class="control-row">
-      <label>पहली फोटो<input type="file" id="joint1" accept="image/*"></label>
-      <label>दूसरी फोटो<input type="file" id="joint2" accept="image/*"></label>
-    </div>
-    <div class="canvas-wrap"><canvas id="jointCanvas" width="1000" height="700"></canvas></div>
-    <button class="action-btn" onclick="makeJoint()">दोनों फोटो जोड़ें</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('jointCanvas','Joint-Photo.png')">डाउनलोड</button>
-    <button class="action-btn" onclick="printCanvas('jointCanvas')">प्रिंट करें</button>
-  </div>
-
-  <div class="tool-panel" id="editorTool">
-    <h3>🎨 Basic Image Editor</h3>
-    <div class="control-row">
-      <label>फोटो चुनें<input type="file" id="editFile" accept="image/*"></label>
-      <label>Brightness<input type="range" id="brightness" min="0" max="200" value="100"></label>
-      <label>Contrast<input type="range" id="contrast" min="0" max="200" value="100"></label>
-      <label>Saturation<input type="range" id="saturation" min="0" max="200" value="100"></label>
-      <label>Rotate
-        <select id="rotate">
-          <option value="0">0°</option><option value="90">90°</option>
-          <option value="180">180°</option><option value="270">270°</option>
-        </select>
-      </label>
-    </div>
-    <div class="canvas-wrap"><canvas id="editCanvas" width="1000" height="700"></canvas></div>
-    <button class="action-btn" onclick="applyEdit()">Edit लागू करें</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('editCanvas','Edited-Photo.png')">डाउनलोड</button>
-    <button class="action-btn" onclick="printCanvas('editCanvas')">प्रिंट करें</button>
-  </div>
-
-  <div class="tool-panel" id="backgroundTool">
-    <h3>🖼️ Background Colour Studio</h3>
-    <p>यह टूल फोटो के पीछे रंगीन कैनवास बनाता है। यह अपने आप व्यक्ति को फोटो से अलग नहीं करता।</p>
-    <div class="control-row">
-      <label>फोटो चुनें<input type="file" id="bgFile" accept="image/*"></label>
-      <label>Background Colour<input type="color" id="bgColor" value="#ffffff"></label>
-    </div>
-    <div class="canvas-wrap"><canvas id="bgCanvas" width="1000" height="700"></canvas></div>
-    <button class="action-btn" onclick="makeBackground()">बैकग्राउंड लगाएँ</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('bgCanvas','Background-Photo.png')">डाउनलोड</button>
-  </div>
-
-  <div class="tool-panel" id="a4Tool">
-    <h3>📄 A4 Photo Sheet Maker</h3>
-    <div class="control-row">
-      <label>फोटो चुनें<input type="file" id="sheetFile" accept="image/*"></label>
-      <label>कितनी फोटो
-        <select id="sheetCount">
-          <option value="4">4 फोटो</option><option value="6">6 फोटो</option>
-          <option value="8" selected>8 फोटो</option><option value="12">12 फोटो</option>
-          <option value="16">16 फोटो</option>
-        </select>
-      </label>
-      <label>फोटो साइज
-        <select id="sheetSize">
-          <option value="35x45">35 × 45 mm</option>
-          <option value="25x35">25 × 35 mm</option>
-        </select>
-      </label>
-    </div>
-    <div class="canvas-wrap"><canvas id="sheetCanvas" width="1240" height="1754"></canvas></div>
-    <button class="action-btn" onclick="makeSheet()">A4 शीट बनाएँ</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('sheetCanvas','A4-Photo-Sheet.png')">डाउनलोड</button>
-    <button class="action-btn" onclick="printCanvas('sheetCanvas')">प्रिंट करें</button>
-  </div>
-
-  <div class="tool-panel" id="pdfTool">
-    <h3>📕 PDF Viewer / Print</h3>
-    <div class="control-row"><label>PDF चुनें<input type="file" id="pdfFile" accept="application/pdf"></label></div>
-    <p id="pdfMessage">PDF चुनने के बाद उसे नए टैब में खोल सकते हैं।</p>
-    <button class="action-btn" onclick="openPDF()">PDF खोलें</button>
-  </div>
-
-  <div class="tool-panel" id="documentTool">
-    <h3>🛠️ Document Image Rotate</h3>
-    <div class="control-row">
-      <label>दस्तावेज चुनें<input type="file" id="docFile" accept="image/*"></label>
-      <label>घुमाएँ
-        <select id="docRotation"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select>
-      </label>
-    </div>
-    <div class="canvas-wrap"><canvas id="docCanvas" width="1000" height="700"></canvas></div>
-    <button class="action-btn" onclick="rotateDocument()">Rotate करें</button>
-    <button class="action-btn secondary" onclick="downloadCanvas('docCanvas','Document-Fixed.png')">डाउनलोड</button>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <div class="section-heading"><div><h2>📞 संपर्क जानकारी</h2><p>Gramin Grahak Sewa</p></div></div>
-  <div class="service-grid">
-    <div class="service-card blue-card"><span class="service-icon">👨‍💼</span><span><strong>संचालक: सुभाष फौजी</strong><small>Gramin Grahak Sewa</small></span></div>
-    <div class="service-card green-card"><span class="service-icon">📱</span><span><strong>मोबाइल / WhatsApp</strong><small>अपना सही नंबर यहाँ जोड़ें</small></span></div>
-    <div class="service-card orange-card"><span class="service-icon">📍</span><span><strong>पता</strong><small>अपना सेवा केंद्र का पता यहाँ जोड़ें</small></span></div>
-  </div>
-</section>
-
-<footer>
-  <h2>Gramin Grahak Sewa</h2>
-  <p>आपका अपना डिजिटल सेवा केंद्र</p>
-  <p>© 2026 Gramin Grahak Sewa. All Rights Reserved.</p>
-  <p>सभी सरकारी सेवाएँ संबंधित आधिकारिक वेबसाइट के माध्यम से उपलब्ध होती हैं।</p>
-</footer><script>
-/* SERVICE SEARCH */
-function searchServices(){
-  const q=document.getElementById("serviceSearch").value.trim().toLowerCase();
-  const cards=document.querySelectorAll("[data-service-card]");
-  let found=0;
-  cards.forEach(card=>{
-    const match=card.innerText.toLowerCase().includes(q);
-    card.style.display=match?"flex":"none";
-    if(match)found++;
-  });
-  document.getElementById("noResults").style.display=found?"none":"block";
-}
-function resetSearch(){
-  document.getElementById("serviceSearch").value="";
-  document.querySelectorAll("[data-service-card]").forEach(c=>c.style.display="flex");
-  document.getElementById("noResults").style.display="none";
-}
-document.getElementById("serviceSearch").addEventListener("input",searchServices);
-
-/* TOOL OPEN / CLOSE */
-function showTool(id){
-  document.querySelectorAll(".tool-panel").forEach(p=>p.classList.remove("active"));
-  const panel=document.getElementById(id);
-  if(panel){
-    panel.classList.add("active");
-    panel.scrollIntoView({behavior:"smooth",block:"start"});
-  }
-}
-
-/* IMAGE LOADING */
-const loadedImages={};
-function loadImage(inputId){
-  return new Promise((resolve,reject)=>{
-    const input=document.getElementById(inputId);
-    if(!input || !input.files || !input.files[0]){
-      reject(new Error("पहले फोटो चुनें"));
-      return;
-    }
-    const reader=new FileReader();
-    reader.onload=e=>{
-      const img=new Image();
-      img.onload=()=>resolve(img);
-      img.onerror=()=>reject(new Error("फोटो नहीं खुल सकी"));
-      img.src=e.target.result;
-    };
-    reader.onerror=()=>reject(new Error("फाइल पढ़ने में समस्या"));
-    reader.readAsDataURL(input.files[0]);
-  });
-}
-function containImage(ctx,img,x,y,w,h){
-  const scale=Math.min(w/img.width,h/img.height);
-  const dw=img.width*scale,dh=img.height*scale;
-  ctx.drawImage(img,x+(w-dw)/2,y+(h-dh)/2,dw,dh);
-}
-function cropImage(ctx,img,x,y,w,h){
-  const scale=Math.max(w/img.width,h/img.height);
-  const sw=w/scale,sh=h/scale;
-  const sx=(img.width-sw)/2,sy=(img.height-sh)/2;
-  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
-}
-function showError(err){
-  alert(err.message || "कुछ समस्या हुई। कृपया दोबारा कोशिश करें।");
-}
-
-/* DOWNLOAD AND PRINT */
-function downloadCanvas(id,filename){
-  const canvas=document.getElementById(id);
-  if(!canvas){alert("Canvas नहीं मिला");return;}
-  const link=document.createElement("a");
-  link.download=filename;
-  link.href=canvas.toDataURL("image/png");
-  link.click();
-}
-function printCanvas(id){
-  const canvas=document.getElementById(id);
-  if(!canvas){alert("Preview उपलब्ध नहीं है");return;}
-  const data=canvas.toDataURL("image/png");
-  const win=window.open("","_blank");
-  if(!win){alert("ब्राउज़र ने प्रिंट विंडो रोकी है। Pop-ups की अनुमति दें।");return;}
-  win.document.write(`
-    <!DOCTYPE html><html><head><title>Print</title>
-    <style>
-      @page{size:A4;margin:8mm}
-      body{margin:0;text-align:center}
-      img{max-width:100%;max-height:280mm;object-fit:contain}
-    </style></head>
-    <body><img src="${data}" onload="window.print()"></body></html>
-  `);
-  win.document.close();
-}
-
-/* ID CARD FRONT + BACK */
-async function makeID(){
-  try{
-    const front=await loadImage("idFront");
-    const back=await loadImage("idBack");
-    const w=Math.max(200,Number(document.getElementById("idWidth").value)||86)*10;
-    const h=Math.max(200,Number(document.getElementById("idHeight").value)||54)*10;
-    const gap=Math.max(0,Number(document.getElementById("idGap").value)||0)*10;
-    const canvas=document.getElementById("idCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=w+80;
-    canvas.height=h*2+gap+100;
-    ctx.fillStyle="#ffffff";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#222";
-    ctx.font="bold 24px Arial";
-    ctx.fillText("FRONT",20,30);
-    ctx.fillText("BACK",20,h+gap+60);
-    ctx.strokeStyle="#333";
-    ctx.lineWidth=3;
-    ctx.strokeRect(30,45,w,h);
-    ctx.strokeRect(30,h+gap+75,w,h);
-    cropImage(ctx,front,30,45,w,h);
-    cropImage(ctx,back,30,h+gap+75,w,h);
-  }catch(e){showError(e);}
-}
-
-/* PASSPORT PHOTO SHEET */
-async function makePassport(){
-  try{
-    const img=await loadImage("passportFile");
-    const canvas=document.getElementById("passportCanvas");
-    const ctx=canvas.getContext("2d");
-    const bg=document.getElementById("passportBg").value;
-    const size=document.getElementById("passportSize").value;
-    const ratio=size==="25x35"?25/35:35/45;
-    const photoH=430,photoW=photoH*ratio;
-    const gapX=35,gapY=30;
-    const cols=2,rows=4;
-    canvas.width=800;canvas.height=1100;
-    ctx.fillStyle="#fff";ctx.fillRect(0,0,800,1100);
-    for(let r=0;r<rows;r++){
-      for(let c=0;c<cols;c++){
-        const x= (800-(cols*photoW+(cols-1)*gapX))/2+c*(photoW+gapX);
-        const y=45+r*(photoH+gapY);
-        ctx.fillStyle=bg;ctx.fillRect(x,y,photoW,photoH);
-        cropImage(ctx,img,x,y,photoW,photoH);
-        ctx.strokeStyle="#777";ctx.lineWidth=2;
-        ctx.strokeRect(x,y,photoW,photoH);
-      }
-    }
-  }catch(e){showError(e);}
-}
-
-/* JOINT PHOTO */
-async function makeJoint(){
-  try{
-    const a=await loadImage("joint1");
-    const b=await loadImage("joint2");
-    const canvas=document.getElementById("jointCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=1000;canvas.height=700;
-    ctx.fillStyle="#fff";ctx.fillRect(0,0,1000,700);
-    cropImage(ctx,a,20,20,470,660);
-    cropImage(ctx,b,510,20,470,660);
-    ctx.strokeStyle="#fff";ctx.lineWidth=5;
-    ctx.strokeRect(20,20,470,660);
-    ctx.strokeRect(510,20,470,660);
-  }catch(e){showError(e);}
-}
-
-/* IMAGE EDITOR */
-let originalEditImage=null;
-document.getElementById("editFile").addEventListener("change",async()=>{
-  try{
-    originalEditImage=await loadImage("editFile");
-    applyEdit();
-  }catch(e){showError(e);}
-});
-function applyEdit(){
-  if(!originalEditImage){alert("पहले फोटो चुनें");return;}
-  const canvas=document.getElementById("editCanvas");
-  const ctx=canvas.getContext("2d");
-  const rotation=Number(document.getElementById("rotate").value);
-  const brightness=document.getElementById("brightness").value;
-  const contrast=document.getElementById("contrast").value;
-  const saturation=document.getElementById("saturation").value;
-  const swap=rotation===90||rotation===270;
-  canvas.width=swap?700:1000;
-  canvas.height=swap?1000:700;
-  ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.save();
-  ctx.translate(canvas.width/2,canvas.height/2);
-  ctx.rotate(rotation*Math.PI/180);
-  ctx.filter=`brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%)`;
-  containImage(ctx,originalEditImage,-(swap?500:500),-(swap?350:350),1000,700);
-  ctx.restore();
-}
-
-/* BACKGROUND COLOUR */
-async function makeBackground(){
-  try{
-    const img=await loadImage("bgFile");
-    const canvas=document.getElementById("bgCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=1000;canvas.height=700;
-    ctx.fillStyle=document.getElementById("bgColor").value;
-    ctx.fillRect(0,0,1000,700);
-    containImage(ctx,img,0,0,1000,700);
-  }catch(e){showError(e);}
-}
-
-/* A4 PHOTO SHEET */
-async function makeSheet(){
-  try{
-    const img=await loadImage("sheetFile");
-    const canvas=document.getElementById("sheetCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=1240;canvas.height=1754;
-    ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
-    const count=Number(document.getElementById("sheetCount").value);
-    const size=document.getElementById("sheetSize").value;
-    const ratio=size==="25x35"?25/35:35/45;
-    const cols=count<=4?2:count<=8?2:3;
-    const rows=Math.ceil(count/cols);
-    const margin=70,gap=35;
-    const cellW=Math.min(250,(canvas.width-2*margin-(cols-1)*gap)/cols);
-    const cellH=cellW/ratio;
-    const totalH=rows*cellH+(rows-1)*gap;
-    if(totalH>canvas.height-2*margin){
-      alert("इस आकार में इतनी फोटो A4 पर फिट नहीं होंगी। फोटो की संख्या कम करें।");
-      return;
-    }
-    const startY=(canvas.height-totalH)/2;
-    for(let i=0;i<count;i++){
-      const row=Math.floor(i/cols),col=i%cols;
-      const rowCount=Math.min(cols,count-row*cols);
-      const rowWidth=rowCount*cellW+(rowCount-1)*gap;
-      const startX=(canvas.width-rowWidth)/2;
-      const x=startX+col*(cellW+gap);
-      const y=startY+row*(cellH+gap);
-      cropImage(ctx,img,x,y,cellW,cellH);
-      ctx.strokeStyle="#777";ctx.lineWidth=2;
-      ctx.strokeRect(x,y,cellW,cellH);
-    }
-  }catch(e){showError(e);}
-}
-
-/* PDF OPEN */
-let currentPDFUrl=null;
-function openPDF(){
-  const file=document.getElementById("pdfFile").files[0];
-  if(!file){alert("पहले PDF फाइल चुनें");return;}
-  if(file.type!=="application/pdf"){alert("कृपया PDF फाइल चुनें");return;}
-  if(currentPDFUrl)URL.revokeObjectURL(currentPDFUrl);
-  currentPDFUrl=URL.createObjectURL(file);
-  window.open(currentPDFUrl,"_blank");
-}
-
-/* DOCUMENT ROTATE */
-let documentImage=null;
-document.getElementById("docFile").addEventListener("change",async()=>{
-  try{
-    documentImage=await loadImage("docFile");
-    const canvas=document.getElementById("docCanvas");
-    const ctx=canvas.getContext("2d");
-    canvas.width=1000;canvas.height=700;
-    ctx.fillStyle="#fff";ctx.fillRect(0,0,1000,700);
-    containImage(ctx,documentImage,0,0,1000,700);
-  }catch(e){showError(e);}
-});
-function rotateDocument(){
-  if(!documentImage){alert("पहले दस्तावेज चुनें");return;}
-  const angle=Number(document.getElementById("docRotation").value);
-  const canvas=document.getElementById("docCanvas");
-  const ctx=canvas.getContext("2d");
-  const swap=angle===90||angle===270;
-  canvas.width=swap?700:1000;
-  canvas.height=swap?1000:700;
-  ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.save();
-  ctx.translate(canvas.width/2,canvas.height/2);
-  ctx.rotate(angle*Math.PI/180);
-  containImage(ctx,documentImage,-500,-350,1000,700);
-  ctx.restore();
-}
-
-/* INITIAL CANVAS BACKGROUNDS */
-["idCanvas","passportCanvas","jointCanvas","editCanvas","bgCanvas","sheetCanvas","docCanvas"].forEach(id=>{
-  const c=document.getElementById(id);
-  if(c){
-    const ctx=c.getContext("2d");
-    ctx.fillStyle="#f1f5f9";
-    ctx.fillRect(0,0,c.width,c.height);
-    ctx.fillStyle="#64748b";
-    ctx.font="20px Arial";
-    ctx.fillText("यहाँ Preview दिखाई देगा",20,40);
-  }
-});
-</script>
 </body>
 </html>

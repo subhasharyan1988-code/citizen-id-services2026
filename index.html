@@ -236,6 +236,113 @@ async function mergePDF(){const files=[...$('mergeFiles').files];if(!files.lengt
 async function splitPDF(){const f=$('splitFile').files[0],raw=$('splitPages').value;if(!f||!raw.trim())return alert('PDF और पेज नंबर चुनें।');if(!window.PDFLib)return alert('PDF library लोड नहीं हुई।');try{const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),nums=raw.split(',').map(x=>parseInt(x.trim(),10)-1);if(nums.some(n=>!Number.isInteger(n)||n<0||n>=src.getPageCount()))return alert('पेज नंबर PDF में मौजूद नहीं है।');const out=await PDFLib.PDFDocument.create();(await out.copyPages(src,nums)).forEach(p=>out.addPage(p));downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Selected_Pages.pdf')}catch(e){alert('PDF Split में समस्या: '+e.message)}}
 function printPDF(){const f=$('printFile').files[0];if(!f)return alert('PDF चुनें।');const u=URL.createObjectURL(f),w=window.open(u,'_blank');if(!w)alert('Pop-up अनुमति दें।')}
 loadState();$('billDate').value=today();$('entryDate').value=today();$('reportFrom').value=today().slice(0,8)+'01';$('reportTo').value=today();$('billQty').addEventListener('input',calcBill);$('billRate').addEventListener('input',calcBill);$('shopName').value=state.settings.shopName||'';$('shopMobile').value=state.settings.shopMobile||'';$('shopAddress').value=state.settings.shopAddress||'';refreshAll();if(localStorage.getItem(PASSKEY))$('lockScreen').classList.remove('hidden');drawPhoto();drawID();drawJoint();drawDoc();
-</script>
+// FIXED ID CARD FUNCTION
+function drawID(){
+
+    const c = setupCanvas('idCanvas');
+    const ctx = c.getContext('2d');
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    const w = mm(Number($('idW').value), $('idUnit').value) * 3.78;
+    const h = mm(Number($('idH').value), $('idUnit').value) * 3.78;
+
+    if(w <= 0 || h <= 0){
+        alert('कार्ड का सही माप भरें।');
+        return;
+    }
+
+    const layout = $('idLayout').value;
+
+    const gap = 30;
+    const margin = 40;
+
+    let cards = [];
+
+    if(layout === 'side'){
+
+        if(2*w + gap > c.width - 2*margin){
+            return alert('कार्ड की चौड़ाई कम करें।');
+        }
+
+        const startX = (c.width - (2*w + gap))/2;
+        const startY = (c.height - h)/2;
+
+        cards = [
+            {x:startX,y:startY,img:images.front,s:'front'},
+            {x:startX+w+gap,y:startY,img:images.back,s:'back'}
+        ];
+
+    }else if(layout === 'stack'){
+
+        if(2*h + gap > c.height - 2*margin){
+            return alert('कार्ड की ऊँचाई कम करें।');
+        }
+
+        const startX = (c.width-w)/2;
+        const startY = (c.height-(2*h+gap))/2;
+
+        cards = [
+            {x:startX,y:startY,img:images.front,s:'front'},
+            {x:startX,y:startY+h+gap,img:images.back,s:'back'}
+        ];
+
+    }else{
+
+        const s = layout;
+
+        if(w > c.width-2*margin || h > c.height-2*margin){
+            return alert('कार्ड A4 पेपर से बड़ा है।');
+        }
+
+        cards = [{
+            x:(c.width-w)/2,
+            y:(c.height-h)/2,
+            img:images[s],
+            s:s
+        }];
+    }
+
+    cards.forEach(card=>{
+
+        if(card.img){
+
+            crop(
+                ctx,
+                card.img,
+                card.x,
+                card.y,
+                w,
+                h,
+                sideOpt(card.s)
+            );
+
+        }else{
+
+            ctx.fillStyle='#f2f4f7';
+            ctx.fillRect(card.x,card.y,w,h);
+
+            ctx.fillStyle='#555';
+            ctx.font='bold 18px Arial';
+            ctx.textAlign='center';
+
+            ctx.fillText(
+                card.s.toUpperCase()+' SIDE IMAGE',
+                card.x+w/2,
+                card.y+h/2
+            );
+        }
+
+        if($('idBorder').checked){
+
+            ctx.strokeStyle=$('idBorderColor').value;
+            ctx.lineWidth=Number($('idBorderWidth').value);
+
+            ctx.strokeRect(card.x,card.y,w,h);
+        }
+
+    });
+}</script>
 </body>
 </html>

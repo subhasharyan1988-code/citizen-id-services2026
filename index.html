@@ -232,7 +232,67 @@ function setupCanvas(id,paper='a4',orientation='portrait'){const c=$(id);let w=7
 function crop(ctx,img,x,y,w,h,o={}){if(!img)return;ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.translate(x+w/2,y+h/2);ctx.rotate((Number(o.rotate)||0)*Math.PI/180);const scale=Math.max(w/img.width,h/img.height)*(Number(o.zoom||100)/100),dw=img.width*scale,dh=img.height*scale,ox=(Number(o.x)||0)/100*Math.max(0,dw-w),oy=(Number(o.y)||0)/100*Math.max(0,dh-h);ctx.filter=`brightness(${o.bright||100}%) contrast(${o.contrast||100}%)`;ctx.drawImage(img,-dw/2-ox,-dh/2-oy,dw,dh);ctx.restore();ctx.filter='none'}
 function drawPhoto(){const c=setupCanvas('photoCanvas',$('photoPaper').value),ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const im=images.photo;if(!im)return;const u=$('photoUnit').value,w=mm(+$('photoW').value,u)*3.78,h=mm(+$('photoH').value,u)*3.78,g=mm(+$('photoGap').value,u)*3.78,n=+$('photoCount').value;if(w<=0||h<=0)return;const cols=Math.max(1,Math.floor((c.width-30)/(w+g))),rows=Math.ceil(n/cols),tw=cols*w+(cols-1)*g,th=rows*h+(rows-1)*g;if(th>c.height-25){alert('इतनी फोटो इस पेपर पर फिट नहीं होंगी। संख्या या आकार कम करें।');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2,o={zoom:$('photoZoom').value,x:$('photoX').value,y:$('photoY').value,bright:$('photoBright').value,contrast:$('photoContrast').value};for(let i=0;i<n;i++){const x=sx+(i%cols)*(w+g),y=sy+Math.floor(i/cols)*(h+g);crop(ctx,im,x,y,w,h,o);if($('photoBorder').checked){ctx.strokeStyle=$('photoBorderColor').value;ctx.lineWidth=+$('photoBorderWidth').value;ctx.strokeRect(x,y,w,h)}}}
 function sideOpt(s){return{zoom:$(`${s}Zoom`).value,x:$(`${s}X`).value,y:$(`${s}Y`).value,bright:$(`${s}Bright`).value,contrast:$(`${s}Contrast`).value,rotate:$(`${s}Rotate`).value}}
-function drawID(){const c=setupCanvas('idCanvas'),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);const w=mm(+$('idW').value,$('idUnit').value)*3.78,h=mm(+$('idH').value,$('idUnit').value)*3.78;if(w<=0||h<=0)return;const layout=$('idLayout').value,g=45,m=50;let p=[];if(layout==='side'){if(2*w+g>c.width-2*m)return alert('कार्ड चौड़ाई A4 में फिट नहीं हो रही।');p=[{x:(c.width-2*w-g)/2,y:(c.height-h)/2,img:images.front,s:'front'},{x:(c.width-2*w-g)/2+w+g,y:(c.height-h)/2,img:images.back,s:'back'}]}else if(layout==='stack'){if(2*h+g>c.height-2*m)return alert('कार्ड ऊँचाई A4 में फिट नहीं हो रही।');p=[{x:(c.width-w)/2,y:(c.height-2*h-g)/2,img:images.front,s:'front'},{x:(c.width-w)/2,y:(c.height-2*h-g)/2+h+g,img:images.back,s:'back'}]}else{const s=layout;p=[{x:(c.width-w)/2,y:(c.height-h)/2,img:images[s],s}]}p.forEach(a=>{if(a.img)crop(ctx,a.img,a.x,a.y,w,h,sideOpt(a.s));else{ctx.fillStyle='#f2f4f7';ctx.fillRect(a.x,a.y,w,h);ctx.fillStyle='#555';ctx.font='bold 18px Arial';ctx.textAlign='center';ctx.fillText(a.s.toUpperCase()+' SIDE IMAGE',a.x+w/2,a.y+h/2)}if($('idBorder').checked){ctx.strokeStyle=$('idBorderColor').value;ctx.lineWidth=+$('idBorderWidth').value;ctx.strokeRect(a.x,a.y,w,h)}})}
+function drawID(){
+ const c=setupCanvas('idCanvas');
+ const ctx=c.getContext('2d');
+
+ ctx.fillStyle='white';
+ ctx.fillRect(0,0,c.width,c.height);
+
+ const w=mm(+$('idW').value,$('idUnit').value)*3.78;
+ const h=mm(+$('idH').value,$('idUnit').value)*3.78;
+
+ if(w<=0||h<=0)return;
+
+ const layout=$('idLayout').value;
+ const g=35,m=40;
+ let p=[];
+
+ if(layout==='side'){
+   if(2*w+g>c.width-2*m)
+     return alert('कार्ड की चौड़ाई A4 में फिट नहीं हो रही। कार्ड की चौड़ाई कम करें।');
+
+   p=[
+     {x:(c.width-2*w-g)/2,y:(c.height-h)/2,img:images.front,s:'front'},
+     {x:(c.width-2*w-g)/2+w+g,y:(c.height-h)/2,img:images.back,s:'back'}
+   ];
+
+ }else if(layout==='stack'){
+
+   if(2*h+g>c.height-2*m)
+     return alert('कार्ड की ऊँचाई A4 में फिट नहीं हो रही। कार्ड की ऊँचाई कम करें।');
+
+   p=[
+     {x:(c.width-w)/2,y:(c.height-2*h-g)/2,img:images.front,s:'front'},
+     {x:(c.width-w)/2,y:(c.height-2*h-g)/2+h+g,img:images.back,s:'back'}
+   ];
+
+ }else{
+   const s=layout;
+   p=[
+     {x:(c.width-w)/2,y:(c.height-h)/2,img:images[s],s}
+   ];
+ }
+
+ p.forEach(a=>{
+   if(a.img){
+     crop(ctx,a.img,a.x,a.y,w,h,sideOpt(a.s));
+   }else{
+     ctx.fillStyle='#f2f4f7';
+     ctx.fillRect(a.x,a.y,w,h);
+     ctx.fillStyle='#555';
+     ctx.font='bold 18px Arial';
+     ctx.textAlign='center';
+     ctx.fillText(a.s.toUpperCase()+' SIDE IMAGE',a.x+w/2,a.y+h/2);
+   }
+
+   if($('idBorder').checked){
+     ctx.strokeStyle=$('idBorderColor').value;
+     ctx.lineWidth=+$('idBorderWidth').value;
+     ctx.strokeRect(a.x,a.y,w,h);
+   }
+ });
+}
 let jointSettings=[];
 function loadJoint(input){
   jointImages=[];jointSettings=[];

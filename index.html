@@ -5,541 +5,886 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hybrid AI ID Card Professional Studio</title>
+
 <style>
-:root{--blue:#1559a6;--navy:#102b49;--green:#07865c;--orange:#f47721;--bg:#edf2f7;--line:#d5dfeb}
+:root{
+ --blue:#1559a6;
+ --navy:#102b49;
+ --green:#07865c;
+ --orange:#f47721;
+ --bg:#edf2f7;
+ --line:#d5dfeb;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:#172b43}
-header{background:linear-gradient(110deg,#102b49,#1767b5);color:white;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-header h2{font-size:19px;margin:0 0 4px}
+body{
+ margin:0;background:var(--bg);
+ font-family:Arial,sans-serif;color:#172b43;
+}
+header{
+ background:linear-gradient(110deg,#102b49,#1767b5);
+ color:white;padding:14px;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px;flex-wrap:wrap;
+}
+header h2{margin:0;font-size:19px}
 header small{font-size:11px}
 main{max-width:1500px;margin:auto;padding:10px}
-button{border:0;border-radius:5px;padding:8px 11px;background:var(--blue);color:white;font-weight:bold;font-size:12px;cursor:pointer;margin:2px}
-button:hover{filter:brightness(.9)}
-.green{background:var(--green)}.orange{background:var(--orange)}.red{background:#c0392b}.gray{background:#586b80}.light{background:#e6eef7;color:#17436c}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:10px;align-items:start}
-.panel{background:white;border:1px solid var(--line);border-radius:7px;padding:10px;margin-bottom:9px}
-.previewSide{position:sticky;top:8px}
-.preview{height:185px;background:#e9eef5;border:1px dashed #9aacc0;border-radius:5px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.preview canvas{max-width:100%;max-height:175px;background:white;box-shadow:0 1px 5px #8795a5}
-.previewTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;font-size:13px;font-weight:bold}
-.status{font-size:11px;background:#eef7ff;padding:8px;border-radius:5px;margin-top:7px;color:#17558c}
-.tabs{display:flex;gap:5px;margin-bottom:8px}
-.tabs button{flex:1}
-.field{display:flex;flex-direction:column;gap:4px;margin:5px 0;min-width:0}
-.field label{font-size:11px;font-weight:bold;color:#41566d}
-input,select{width:100%;min-width:0;border:1px solid #c8d4e1;border-radius:4px;padding:7px;background:white;color:#172b43;font-size:12px}
-input[type=range]{padding:0}
-input[type=color]{height:34px;padding:2px}
-input[type=checkbox]{width:auto}
-.row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
-.row>*{flex:1}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
-.accordion{border:1px solid var(--line);border-radius:6px;margin:6px 0;overflow:hidden;background:white}
-.accHead{width:100%;text-align:left;background:#f4f7fb;color:#173c62;border-radius:0;padding:11px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
-.accHead.active{background:#e3effb;color:#104e91}
-.accBody{display:none;padding:10px;border-top:1px solid var(--line)}
-.accBody.open{display:block}
-.accBody h4{font-size:12px;margin:9px 0 5px;color:#1559a6}
-.toolnote{font-size:10px;color:#64758a;line-height:1.5}
-hr{border:0;border-top:1px solid #e3e9f0;margin:9px 0}
-canvas{touch-action:none}
-#printArea{display:none}
-@media(max-width:760px){
- .layout{grid-template-columns:1fr}
- .previewSide{position:static;order:-1}
- .preview{height:150px}
- .preview canvas{max-height:140px}
- header h2{font-size:16px}
+.panel{
+ background:white;border:1px solid var(--line);
+ border-radius:8px;padding:12px;margin-bottom:10px;
 }
+button{
+ border:0;border-radius:5px;padding:9px 12px;
+ background:var(--blue);color:white;
+ font-weight:bold;font-size:12px;
+ cursor:pointer;margin:2px;
+}
+button:hover{filter:brightness(.9)}
+.green{background:var(--green)}
+.orange{background:var(--orange)}
+.red{background:#c0392b}
+.gray{background:#586b80}
+.light{background:#e6eef7;color:#17436c}
+.layout{
+ display:grid;grid-template-columns:minmax(0,1fr) 360px;
+ gap:10px;align-items:start;
+}
+.field{
+ display:flex;flex-direction:column;
+ gap:5px;margin:7px 0;min-width:0;
+}
+.field label{font-size:11px;font-weight:bold;color:#41566d}
+input,select{
+ width:100%;padding:8px;border:1px solid #c8d4e1;
+ border-radius:5px;background:white;font-size:12px;
+ min-width:0;
+}
+input[type=color]{height:35px;padding:2px}
+input[type=range]{padding:0}
+.row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.row>*{flex:1}
+.grid2{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px;
+}
+.grid3{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:7px;
+}
+.title{
+ font-size:14px;font-weight:bold;margin-bottom:9px;
+ color:#174c81;
+}
+.note{font-size:10px;color:#687b90;line-height:1.5}
+.sideButtons{display:flex;gap:6px}
+.sideButtons button{flex:1}
+.previewBox{
+ background:#e8eef5;border:1px dashed #9aacc0;
+ border-radius:7px;padding:10px;min-width:0;
+}
+.previewCards{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:10px;align-items:start;
+}
+.cardPreview{min-width:0;text-align:center}
+.cardPreview b{display:block;font-size:12px;margin-bottom:8px}
+.cardPreview canvas{
+ width:100%;height:auto;aspect-ratio:1.586;
+ background:white;border:1px solid #8496aa;
+ box-shadow:0 2px 7px #9aa8b8;
+}
+.previewActive{
+ outline:3px solid #2784dc;
+ outline-offset:2px;
+ border-radius:3px;
+}
+.status{
+ background:#eef7ff;color:#17558c;
+ padding:9px;border-radius:5px;
+ font-size:11px;margin-top:9px;
+}
+.accordion{
+ border:1px solid var(--line);
+ border-radius:6px;margin:7px 0;overflow:hidden;
+}
+.accHead{
+ width:100%;text-align:left;
+ background:#f1f6fb;color:#17436c;
+ padding:12px;border-radius:0;
+ display:flex;justify-content:space-between;
+ align-items:center;font-size:13px;
+}
+.accBody{display:none;padding:10px}
+.accBody.open{display:block}
+.accHead.active{background:#e0efff}
+.toolGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}
+.toolGrid button{width:100%;margin:0}
+@media(max-width:850px){
+ .layout{grid-template-columns:1fr}
+ .previewSide{order:-1}
+}
+@media(max-width:450px){
+ .previewCards{gap:6px}
+ .previewBox{padding:6px}
+ header h2{font-size:15px}
+}
+#printArea{display:none}
 @media print{
+ @page{size:A4;margin:8mm}
  body{background:white}
  header,main{display:none!important}
  #printArea{display:block!important}
- #printArea canvas{display:block;max-width:100%;margin:0 auto 10px}
+ #printArea canvas{
+  display:block;width:100%;height:auto;
+  margin:0 auto 8mm;page-break-after:always;
+ }
 }
 </style>
 </head>
+
 <body>
+
 <header>
  <div>
   <h2>🪪 Hybrid AI ID Card Professional Studio</h2>
-  <small>Photo Studio • ID Card Editing • Front & Back • A4 Printing</small>
+  <small>Front + Back • Photo Editing • ID Card • A4 Print</small>
  </div>
  <div>
-  <button class="green" onclick="downloadImage()">⬇ Download</button>
-  <button class="orange" onclick="printSheet()">🖨 Print</button>
+  <button class="green" onclick="downloadCurrent()">⬇ Download</button>
+  <button class="orange" onclick="printCards()">🖨 Print</button>
  </div>
 </header>
 
 <main>
+
 <div class="layout">
+
 <section>
- <div class="panel">
-  <div class="tabs">
-   <button id="frontTab" onclick="switchSide('front')">FRONT SIDE</button>
-   <button id="backTab" class="gray" onclick="switchSide('back')">BACK SIDE</button>
-  </div>
-  <div class="row">
-   <button onclick="document.getElementById('upload').click()">📁 फोटो अपलोड</button>
-   <button class="gray" onclick="document.getElementById('multiUpload').click()">Multiple Upload</button>
-   <button class="red" onclick="clearCurrent()">Clear Photo</button>
-   <input type="file" id="upload" accept="image/*" hidden onchange="loadPhoto(event)">
-   <input type="file" id="multiUpload" accept="image/*" multiple hidden onchange="loadMultiple(event)">
-  </div>
-  <div class="toolnote">अपनी फोटो या कार्ड की इमेज अपलोड करें। Front और Back अलग-अलग एडिट कर सकते हैं।</div>
+
+<!-- CARD SELECT -->
+<div class="panel">
+ <div class="title">🪪 Select ID Card</div>
+
+ <div class="field">
+  <label>ID Card Type चुनें</label>
+  <select id="cardType" onchange="selectCardType()">
+   <option value="custom">Custom ID Card</option>
+   <option value="aadhaar">Aadhaar Card Size</option>
+   <option value="pan">PAN Card Size</option>
+   <option value="voter">Voter ID Size</option>
+   <option value="ayushman">Ayushman Card Size</option>
+   <option value="abha">ABHA Card Size</option>
+   <option value="eshram">E-Shram Card Size</option>
+   <option value="student">Student ID Card</option>
+   <option value="school">School ID Card</option>
+   <option value="office">Office ID Card</option>
+   <option value="pvc">PVC Card</option>
+   <option value="passport">Passport Photo</option>
+  </select>
  </div>
 
- <div class="panel">
-  <b style="font-size:13px">🧰 सभी Editing Tools</b>
-  <div id="accordion"></div>
+ <div class="grid2">
+  <div class="field">
+   <label>Width</label>
+   <input id="cardW" type="number" value="85.6" step=".1">
+  </div>
+  <div class="field">
+   <label>Height</label>
+   <input id="cardH" type="number" value="54" step=".1">
+  </div>
  </div>
+
+ <div class="grid2">
+  <div class="field">
+   <label>Unit</label>
+   <select id="unit">
+    <option value="mm">Millimeter (mm)</option>
+    <option value="cm">Centimeter (cm)</option>
+    <option value="inch">Inch</option>
+    <option value="px">Pixel (px)</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>DPI</label>
+   <select id="dpi">
+    <option>150</option>
+    <option selected>300</option>
+    <option>600</option>
+   </select>
+  </div>
+ </div>
+
+ <button class="green" onclick="applySize()">Apply Card Size</button>
+ <button class="gray" onclick="swapDimensions()">↔ Swap Size</button>
+ <p class="note">Card Type चुनने पर सामान्य आकार अपने आप सेट होगा। आप अपनी जरूरत के अनुसार आकार बदल सकते हैं।</p>
+</div>
+
+<!-- UPLOAD -->
+<div class="panel">
+ <div class="title">📁 Photo Upload</div>
+ <div class="row">
+  <button onclick="openUpload()">Upload Photo / Card</button>
+  <button class="gray" onclick="openMultiple()">Multiple Upload</button>
+  <button class="red" onclick="clearPhoto()">Remove Photo</button>
+ </div>
+ <input type="file" id="upload" accept="image/*" hidden onchange="loadPhoto(event)">
+ <input type="file" id="multiUpload" accept="image/*" multiple hidden onchange="loadMultiple(event)">
+ <p class="note">Front और Back के लिए अलग-अलग फोटो अपलोड कर सकते हैं।</p>
+</div>
+
+<!-- SIDE SELECT -->
+<div class="panel">
+ <div class="title">↔ Front & Back Editing</div>
+ <div class="sideButtons">
+  <button id="frontBtn" onclick="switchSide('front')">FRONT SIDE</button>
+  <button id="backBtn" class="gray" onclick="switchSide('back')">BACK SIDE</button>
+ </div>
+ <div class="row">
+  <button class="green" onclick="copyOther()">Copy to Other</button>
+  <button class="orange" onclick="swapSides()">Swap Front / Back</button>
+ </div>
+</div>
+
+<!-- EDITING TOOLS -->
+<div class="panel">
+ <div class="title">🧰 Basic Editing Tools</div>
+ <div id="accordion"></div>
+</div>
+
 </section>
 
+<!-- PREVIEW -->
 <aside class="previewSide">
- <div class="panel">
-  <div class="previewTitle"><span>LIVE PREVIEW</span><small id="sideLabel">FRONT</small></div>
-  <div class="preview"><canvas id="canvas" width="638" height="1012"></canvas></div>
-  <div class="status" id="status">फोटो अपलोड करके एडिटिंग शुरू करें।</div>
- </div>
- <div class="panel">
-  <b style="font-size:12px">Quick Actions</b>
-  <div class="grid2">
-   <button onclick="undo()">↶ Undo</button>
-   <button onclick="redo()">↷ Redo</button>
-   <button onclick="resetImage()">Reset</button>
-   <button onclick="downloadImage()">Download</button>
-   <button class="green" onclick="copyToOther()">Copy to Other</button>
-   <button class="orange" onclick="swapSides()">Swap Sides</button>
+
+<div class="panel">
+ <div class="title">👁 LIVE PREVIEW — FRONT + BACK</div>
+
+ <div class="previewBox">
+  <div class="previewCards">
+   <div class="cardPreview" id="frontPreview">
+    <b>FRONT SIDE</b>
+    <canvas id="frontCanvas" width="1012" height="638"></canvas>
+   </div>
+   <div class="cardPreview" id="backPreview">
+    <b>BACK SIDE</b>
+    <canvas id="backCanvas" width="1012" height="638"></canvas>
+   </div>
   </div>
  </div>
+
+ <div class="status" id="status">
+  Front और Back में फोटो अपलोड करके एडिटिंग शुरू करें।
+ </div>
+
+ <div class="note" style="margin-top:7px">
+  दोनों कार्ड एक साथ Preview में दिखाई देंगे। जिस Side को एडिट करना है उसे चुनें।
+ </div>
+</div>
+
+<div class="panel">
+ <div class="title">⚡ Quick Actions</div>
+ <div class="grid2">
+  <button onclick="undo()">↶ Undo</button>
+  <button onclick="redo()">↷ Redo</button>
+  <button onclick="resetCurrent()">Reset</button>
+  <button onclick="downloadCurrent()">Download</button>
+  <button class="green" onclick="printCards()">A4 Print</button>
+  <button class="orange" onclick="printCards(true)">Front + Back Print</button>
+ </div>
+</div>
+
 </aside>
 </div>
+
 <div id="printArea"></div>
 </main>
 
 <script>
 const $=id=>document.getElementById(id);
-const canvas=$('canvas'),ctx=canvas.getContext('2d');
-let side='front';
-let states={
- front:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#ffffff',objects:[],crop:null},
- back:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#ffffff',objects:[],crop:null}
+
+const sides={
+ front:{img:null,bg:'#ffffff',fit:'contain',zoom:1,
+ x:0,y:0,rotation:0,brightness:100,contrast:100,
+ saturation:100,gray:0,flipX:false,flipY:false,
+ objects:[]},
+ back:{img:null,bg:'#ffffff',fit:'contain',zoom:1,
+ x:0,y:0,rotation:0,brightness:100,contrast:100,
+ saturation:100,gray:0,flipX:false,flipY:false,
+ objects:[]}
 };
-let history=[],future=[],drawing=false,startPoint=null,tool='brush',brushColor='#ff0000',brushSize=5;
-let card={width:85.6,height:54,unit:'mm',dpi:300};
-const s=()=>states[side];
-const other=()=>states[side==='front'?'back':'front'];
-function msg(t){$('status').textContent=t}
+
+let side='front';
+let history=[],future=[];
+let cardWidth=85.6,cardHeight=54;
+let dpi=300;
+let brushColor='#ff0000',brushSize=5;
+let drawing=false,start=null;
+let tool='brush';
+
+const frontCanvas=$('frontCanvas');
+const backCanvas=$('backCanvas');
+
+const contexts={
+ front:frontCanvas.getContext('2d'),
+ back:backCanvas.getContext('2d')
+};
+
+const canvas=()=>side==='front'?frontCanvas:backCanvas;
+const ctx=()=>contexts[side];
+const s=()=>sides[side];
+
+function msg(t){
+ $('status').textContent=t;
+}
+
 function saveHistory(){
- history.push(JSON.stringify(states));
- if(history.length>25)history.shift();
+ history.push(JSON.stringify(sides));
+ if(history.length>30)history.shift();
  future=[];
 }
+
 function undo(){
  if(!history.length)return;
- future.push(JSON.stringify(states));
- states=JSON.parse(history.pop());
- render();
+ future.push(JSON.stringify(sides));
+ restore(history.pop());
 }
+
 function redo(){
  if(!future.length)return;
- history.push(JSON.stringify(states));
- states=JSON.parse(future.pop());
- render();
+ history.push(JSON.stringify(sides));
+ restore(future.pop());
 }
+
+function restore(data){
+ const d=JSON.parse(data);
+ ['front','back'].forEach(k=>{
+  const old=d[k];
+  sides[k]=old;
+  if(old.img){
+   const im=new Image();
+   im.onload=()=>{
+    sides[k].img=im;
+    renderAll();
+   };
+   im.src=old.img;
+  }
+ });
+ renderAll();
+}
+
 function switchSide(v){
  side=v;
- $('frontTab').className=v==='front'?'':'gray';
- $('backTab').className=v==='back'?'':'gray';
- $('sideLabel').textContent=v.toUpperCase();
- render();
+ $('frontBtn').className=v==='front'?'green':'gray';
+ $('backBtn').className=v==='back'?'green':'gray';
+ $('frontPreview').classList.toggle('previewActive',v==='front');
+ $('backPreview').classList.toggle('previewActive',v==='back');
+ renderAll();
+ msg(v.toUpperCase()+' SIDE Editing Selected');
 }
+
+function openUpload(){
+ $('upload').click();
+}
+function openMultiple(){
+ $('multiUpload').click();
+}
+
 function loadPhoto(e){
- const file=e.target.files[0];if(!file)return;
- const img=new Image();
- img.onload=()=>{
- saveHistory();s().img=img;s().rotation=0;s().zoom=1;s().x=0;s().y=0;
- s().objects=[];render();msg('फोटो सफलतापूर्वक अपलोड हुई।');
+ const file=e.target.files[0];
+ if(!file)return;
+ const im=new Image();
+ im.onload=()=>{
+  saveHistory();
+  s().img=im;
+  s().zoom=1;
+  s().x=0;s().y=0;
+  renderAll();
+  msg('Photo Successfully Uploaded');
  };
- img.src=URL.createObjectURL(file);e.target.value='';
+ im.src=URL.createObjectURL(file);
+ e.target.value='';
 }
+
 function loadMultiple(e){
- const files=[...e.target.files];if(!files.length)return;
- let i=0;
- function next(){
-  if(i>=files.length){msg(files.length+' फोटो लोड हो गईं।');return}
-  const img=new Image();
-  img.onload=()=>{if(i===0){saveHistory();s().img=img;render()}i++;next()};
-  img.src=URL.createObjectURL(files[i]);
- }
- next();e.target.value='';
+ const files=[...e.target.files];
+ if(!files.length)return;
+ let index=0;
+ const loadNext=()=>{
+  if(index>=files.length){
+   msg('Multiple Photos Uploaded');
+   return;
+  }
+  const im=new Image();
+  im.onload=()=>{
+   if(index===0){
+    saveHistory();
+    s().img=im;
+   }
+   index++;
+   loadNext();
+  };
+  im.src=URL.createObjectURL(files[index]);
+ };
+ loadNext();
+ e.target.value='';
 }
-function clearCurrent(){saveHistory();s().img=null;s().objects=[];render();msg('वर्तमान फोटो हटाई गई।')}
-function resetImage(){
+
+function clearPhoto(){
+ saveHistory();
+ s().img=null;
+ s().objects=[];
+ renderAll();
+ msg('Photo Removed');
+}
+
+function selectCardType(){
+ const type=$('cardType').value;
+ const presets={
+  custom:[85.6,54],
+  aadhaar:[85.6,54],
+  pan:[85.6,54],
+  voter:[85.6,54],
+  ayushman:[85.6,54],
+  abha:[85.6,54],
+  eshram:[85.6,54],
+  student:[86,54],
+  school:[86,54],
+  office:[86,54],
+  pvc:[85.6,54],
+  passport:[35,45]
+ };
+ const p=presets[type];
+ $('cardW').value=p[0];
+ $('cardH').value=p[1];
+ $('unit').value='mm';
+ applySize();
+}
+
+function applySize(){
+ cardWidth=Number($('cardW').value)||85.6;
+ cardHeight=Number($('cardH').value)||54;
+ dpi=Number($('dpi').value)||300;
+ const unit=$('unit').value;
+ let factor=unit==='mm'?dpi/25.4:
+ unit==='cm'?dpi/2.54:
+ unit==='inch'?dpi:1;
+ const w=Math.max(50,Math.round(cardWidth*factor));
+ const h=Math.max(50,Math.round(cardHeight*factor));
+ [frontCanvas,backCanvas].forEach(c=>{
+  c.width=w;c.height=h;
+ });
+ renderAll();
+ msg('Card Size Updated');
+}
+
+function swapDimensions(){
+ const a=$('cardW').value;
+ $('cardW').value=$('cardH').value;
+ $('cardH').value=a;
+ applySize();
+}
+
+function renderOne(key){
+ const c=key==='front'?frontCanvas:backCanvas;
+ const g=contexts[key];
+ const st=sides[key];
+ g.clearRect(0,0,c.width,c.height);
+ g.fillStyle=st.bg;
+ g.fillRect(0,0,c.width,c.height);
+
+ if(st.img){
+  g.save();
+  g.filter=`brightness(${st.brightness}%) contrast(${st.contrast}%) saturate(${st.saturation}%) grayscale(${st.gray}%)`;
+  g.translate(c.width/2+st.x,c.height/2+st.y);
+  g.rotate(st.rotation*Math.PI/180);
+  g.scale(st.zoom*(st.flipX?-1:1),st.zoom*(st.flipY?-1:1));
+
+  let im=st.img;
+  let scale=st.fit==='cover'?
+   Math.max(c.width/im.width,c.height/im.height):
+   Math.min(c.width/im.width,c.height/im.height);
+
+  let w=im.width*scale;
+  let h=im.height*scale;
+  g.drawImage(im,-w/2,-h/2,w,h);
+  g.restore();
+ }
+
+ st.objects.forEach(o=>drawObject(g,o));
+}
+
+function renderAll(){
+ renderOne('front');
+ renderOne('back');
+}
+
+function drawObject(g,o){
+ g.save();
+ g.strokeStyle=o.color;
+ g.fillStyle=o.color;
+ g.lineWidth=o.size||3;
+
+ if(o.type==='text'){
+  g.font=(o.bold?'bold ':'')+(o.fontSize||35)+'px Arial';
+  g.fillText(o.text,o.x,o.y);
+ }
+ if(o.type==='rect'){
+  g.strokeRect(o.x,o.y,o.w,o.h);
+ }
+ if(o.type==='circle'){
+  g.beginPath();
+  g.arc(o.x,o.y,o.r,0,Math.PI*2);
+  g.stroke();
+ }
+ if(o.type==='line'){
+  g.beginPath();
+  g.moveTo(o.x,o.y);
+  g.lineTo(o.x2,o.y2);
+  g.stroke();
+ }
+ g.restore();
+}
+
+function setValue(key,value){
+ saveHistory();
+ s()[key]=value;
+ renderAll();
+}
+
+function setRange(key,value){
+ s()[key]=Number(value);
+ renderAll();
+}
+
+function rotate(deg){
+ saveHistory();
+ s().rotation=(s().rotation+deg)%360;
+ renderAll();
+}
+
+function flip(axis){
+ saveHistory();
+ if(axis==='x')s().flipX=!s().flipX;
+ else s().flipY=!s().flipY;
+ renderAll();
+}
+
+function setBG(color){
+ saveHistory();
+ s().bg=color;
+ renderAll();
+}
+
+function setFit(v){
+ saveHistory();
+ s().fit=v;
+ renderAll();
+}
+
+function resetCurrent(){
  if(!s().img)return;
  saveHistory();
- Object.assign(s(),{rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,crop:null,objects:[]});
- render();msg('एडिटिंग रीसेट हो गई।');
+ Object.assign(s(),{
+  bg:'#ffffff',fit:'contain',zoom:1,x:0,y:0,
+  rotation:0,brightness:100,contrast:100,
+  saturation:100,gray:0,flipX:false,flipY:false,
+  objects:[]
+ });
+ renderAll();
+ msg('Editing Reset');
 }
-function copyToOther(){
+
+function copyOther(){
  saveHistory();
- const source=s(),target=other();
- target.img=source.img;target.rotation=source.rotation;target.zoom=source.zoom;
- target.x=source.x;target.y=source.y;target.brightness=source.brightness;
- target.contrast=source.contrast;target.saturation=source.saturation;
- target.gray=source.gray;target.sepia=source.sepia;target.hue=source.hue;
- target.flipX=source.flipX;target.flipY=source.flipY;target.bg=source.bg;
- target.objects=JSON.parse(JSON.stringify(source.objects));
- render();msg('फोटो और एडिटिंग दूसरे साइड पर कॉपी हुई।');
+ const source=s();
+ const target=sides[side==='front'?'back':'front'];
+ const img=source.img;
+ Object.assign(target,{
+  img:img,bg:source.bg,fit:source.fit,
+  zoom:source.zoom,x:source.x,y:source.y,
+  rotation:source.rotation,
+  brightness:source.brightness,
+  contrast:source.contrast,
+  saturation:source.saturation,
+  gray:source.gray,flipX:source.flipX,
+  flipY:source.flipY,
+  objects:JSON.parse(JSON.stringify(source.objects))
+ });
+ renderAll();
+ msg('Copied to Other Side');
 }
+
 function swapSides(){
- saveHistory();let a=states.front;states.front=states.back;states.back=a;render();msg('Front और Back बदल दिए गए।');
+ saveHistory();
+ const temp=sides.front;
+ sides.front=sides.back;
+ sides.back=temp;
+ renderAll();
+ msg('Front / Back Swapped');
 }
-function render(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle=s().bg||'#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
- if(s().img){
-  ctx.save();
-  ctx.filter=`brightness(${s().brightness}%) contrast(${s().contrast}%) saturate(${s().saturation}%) grayscale(${s().gray}%) sepia(${s().sepia}%) hue-rotate(${s().hue}deg)`;
-  ctx.translate(canvas.width/2+s().x,canvas.height/2+s().y);
-  ctx.rotate(s().rotation*Math.PI/180);
-  ctx.scale(s().zoom*(s().flipX?-1:1),s().zoom*(s().flipY?-1:1));
-  const im=s().img;
-  let scale=Math.min(canvas.width/im.width,canvas.height/im.height);
-  let w=im.width*scale,h=im.height*scale;
-  ctx.drawImage(im,-w/2,-h/2,w,h);
-  ctx.restore();
- }
- s().objects.forEach(o=>drawObject(ctx,o));
-}
-function drawObject(c,o){
- c.save();c.strokeStyle=o.color||'#ff0000';c.fillStyle=o.color||'#ff0000';
- c.lineWidth=o.size||3;c.lineCap='round';
- if(o.type==='text'){
-  c.font=`${o.italic?'italic ':''}${o.bold?'bold ':''}${o.fontSize||35}px ${o.font||'Arial'}`;
-  c.fillText(o.text||'',o.x,o.y);
- }else if(o.type==='line'){
-  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);c.stroke();
- }else if(o.type==='rect'){
-  c.strokeRect(o.x,o.y,o.x2-o.x,o.y2-o.y);
- }else if(o.type==='circle'){
-  c.beginPath();c.ellipse((o.x+o.x2)/2,(o.y+o.y2)/2,Math.abs(o.x2-o.x)/2,Math.abs(o.y2-o.y)/2,0,0,Math.PI*2);c.stroke();
- }else if(o.type==='brush'){
-  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);c.stroke();
- }else if(o.type==='arrow'){
-  let a=Math.atan2(o.y2-o.y,o.x2-o.x);
-  c.beginPath();c.moveTo(o.x,o.y);c.lineTo(o.x2,o.y2);
-  c.lineTo(o.x2-15*Math.cos(a-.5),o.y2-15*Math.sin(a-.5));
-  c.moveTo(o.x2,o.y2);c.lineTo(o.x2-15*Math.cos(a+.5),o.y2-15*Math.sin(a+.5));c.stroke();
- }
- c.restore();
-}
-function setVal(key,val){
- saveHistory();s()[key]=val;render();
-}
-function setRange(key,val){s()[key]=Number(val);render()}
-function addObject(o){saveHistory();s().objects.push(o);render()}
+
 function addText(){
- let t=prompt('अपना टेक्स्ट लिखें:');if(!t)return;
- addObject({type:'text',text:t,x:40,y:100,fontSize:35,color:$('textColor').value,font:$('font').value,bold:$('bold').checked,italic:$('italic').checked});
+ const text=prompt('Text लिखें');
+ if(!text)return;
+ saveHistory();
+ s().objects.push({
+  type:'text',text:text,
+  x:canvas().width/2,
+  y:canvas().height/2,
+  color:$('textColor').value,
+  fontSize:Number($('fontSize').value)||35,
+  bold:$('bold').checked
+ });
+ renderAll();
 }
-function removeObjects(){saveHistory();s().objects=[];render()}
-function downloadImage(type='png'){
- const a=document.createElement('a');a.download=side+'-id-card.'+type;
- a.href=canvas.toDataURL(type==='jpg'?'image/jpeg':'image/png',.95);a.click();
- msg('इमेज डाउनलोड शुरू हो गई।');
+
+function addShape(type){
+ saveHistory();
+ const c=canvas();
+ s().objects.push({
+  type:type,
+  x:c.width*.2,y:c.height*.2,
+  x2:c.width*.8,y2:c.height*.8,
+  w:c.width*.5,h:c.height*.5,
+  r:Math.min(c.width,c.height)*.2,
+  color:$('shapeColor').value,
+  size:Number($('shapeSize').value)||3
+ });
+ renderAll();
 }
-function updateSize(){
- const unit=$('unit').value;
- card.width=Number($('cardW').value)||85.6;
- card.height=Number($('cardH').value)||54;
- card.unit=unit;card.dpi=Number($('dpi').value)||300;
- let factor=unit==='mm'?card.dpi/25.4:unit==='cm'?card.dpi/2.54:unit==='inch'?card.dpi:1;
- canvas.width=Math.max(50,Math.round(card.width*factor));
- canvas.height=Math.max(50,Math.round(card.height*factor));
- render();msg('Canvas का आकार अपडेट हो गया।');
+
+function removeObjects(){
+ saveHistory();
+ s().objects=[];
+ renderAll();
 }
-function rotate(deg){saveHistory();s().rotation=(s().rotation+deg)%360;render()}
-function flip(axis){saveHistory();if(axis==='x')s().flipX=!s().flipX;else s().flipY=!s().flipY;render()}
-function setBackground(color){saveHistory();s().bg=color;render()}
-function printSheet(){
- const area=$('printArea');area.innerHTML='';
- const paper=$('paper')?.value||'A4';
- const copies=Number($('copies')?.value||4);
- const gap=Number($('gap')?.value||5);
- const both=$('printBoth')?.checked;
- function makeSheet(st){
-  const p=document.createElement('canvas');
-  p.width=2480;p.height=3508;
-  const c=p.getContext('2d');c.fillStyle='white';c.fillRect(0,0,p.width,p.height);
-  const cw=Number($('printW')?.value||638),ch=Number($('printH')?.value||1012);
-  const cols=2,rows=Math.ceil(copies/cols);
-  const w=(p.width-(cols+1)*gap*10)/cols;
-  const h=w*ch/cw;
+
+function downloadCurrent(){
+ const a=document.createElement('a');
+ a.download=side+'-id-card.png';
+ a.href=canvas().toDataURL('image/png');
+ a.click();
+ msg('Image Download Started');
+}
+
+function printCards(both=true){
+ const area=$('printArea');
+ area.innerHTML='';
+ const copies=Math.max(1,Math.min(20,Number($('copies').value)||4));
+ const gap=Math.max(0,Number($('gap').value)||5);
+ const sidesToPrint=both?['front','back']:[side];
+
+ sidesToPrint.forEach(key=>{
+  const source=key==='front'?frontCanvas:backCanvas;
+  const page=document.createElement('canvas');
+  page.width=2480;
+  page.height=3508;
+  const g=page.getContext('2d');
+  g.fillStyle='#ffffff';
+  g.fillRect(0,0,page.width,page.height);
+
+  const cols=2;
+  const rows=Math.ceil(copies/cols);
+  const margin=100;
+  const gapPx=gap*300/25.4;
+  const w=(page.width-margin*2-gapPx)/2;
+  const h=w*source.height/source.width;
+
   for(let i=0;i<copies;i++){
-   let x=gap*10+(i%cols)*(w+gap*10);
-   let y=gap*10+Math.floor(i/cols)*(h+gap*10);
-   if(y+h>p.height)break;
-   c.drawImage(st,x,y,w,h);
-   c.strokeStyle='#888';c.strokeRect(x,y,w,h);
+   const x=margin+(i%2)*(w+gapPx);
+   const y=margin+Math.floor(i/2)*(h+gapPx);
+   if(y+h>page.height-margin)break;
+   g.drawImage(source,x,y,w,h);
+   g.strokeStyle='#888';
+   g.lineWidth=2;
+   g.strokeRect(x,y,w,h);
   }
-  return p;
- }
- const old=side;
- if(both){
-  switchSide('front');let a=makeSheet(canvas);
-  switchSide('back');let b=makeSheet(canvas);
-  area.append(a,b);
- }else{
-  let p=makeSheet(canvas);area.append(p);
- }
- switchSide(old);
+  area.appendChild(page);
+ });
  window.print();
 }
-function saveProject(){
- const data={card,states};
- const blob=new Blob([JSON.stringify(data)],{type:'application/json'});
- const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='id-card-project.json';a.click();
+
+// DRAWING
+function pointerPos(e){
+ const r=canvas().getBoundingClientRect();
+ return {
+  x:(e.clientX-r.left)*canvas().width/r.width,
+  y:(e.clientY-r.top)*canvas().height/r.height
+ };
 }
-function loadProject(e){
- const f=e.target.files[0];if(!f)return;
- const r=new FileReader();
- r.onload=()=>{
-  try{
-   const d=JSON.parse(r.result);card=d.card||card;states=d.states||states;
-   render();msg('प्रोजेक्ट लोड हो गया।');
-  }catch{msg('गलत प्रोजेक्ट फाइल।')}
- };r.readAsText(f);
+
+[frontCanvas,backCanvas].forEach(c=>{
+ c.addEventListener('pointerdown',e=>{
+  const active=c===frontCanvas?'front':'back';
+  if(active!==side)return;
+  drawing=true;
+  start=pointerPos(e);
+  c.setPointerCapture(e.pointerId);
+ });
+ c.addEventListener('pointerup',e=>{
+  if(!drawing)return;
+  drawing=false;
+  const end=pointerPos(e);
+  if(tool==='brush'||tool==='line'){
+   saveHistory();
+   s().objects.push({
+    type:'line',x:start.x,y:start.y,
+    x2:end.x,y2:end.y,
+    color:brushColor,size:brushSize
+   });
+  }
+  renderAll();
+ });
+});
+
+function field(label,html){
+ return `<div class="field"><label>${label}</label>${html}</div>`;
 }
-function addAccordion(title,content){
- const box=document.createElement('div');box.className='accordion';
- const head=document.createElement('button');head.className='accHead';
+function btn(label,fn,cls=''){
+ return `<button class="${cls}" onclick="${fn}">${label}</button>`;
+}
+function range(label,key,min,max,val){
+ return field(label,
+ `<input type="range" min="${min}" max="${max}" value="${val}"
+ oninput="setRange('${key}',this.value)">`);
+}
+function accordion(title,content){
+ const box=document.createElement('div');
+ box.className='accordion';
+ const head=document.createElement('button');
+ head.className='accHead';
  head.innerHTML=`<span>${title}</span><span>＋</span>`;
- const body=document.createElement('div');body.className='accBody';body.innerHTML=content;
+ const body=document.createElement('div');
+ body.className='accBody';
+ body.innerHTML=content;
  head.onclick=()=>{
   const was=body.classList.contains('open');
   document.querySelectorAll('.accBody').forEach(x=>x.classList.remove('open'));
-  document.querySelectorAll('.accHead').forEach(x=>{x.classList.remove('active');x.lastElementChild.textContent='＋'});
-  if(!was){body.classList.add('open');head.classList.add('active');head.lastElementChild.textContent='－'}
+  document.querySelectorAll('.accHead').forEach(x=>{
+   x.classList.remove('active');
+   x.lastElementChild.textContent='＋';
+  });
+  if(!was){
+   body.classList.add('open');
+   head.classList.add('active');
+   head.lastElementChild.textContent='－';
+  }
  };
- box.append(head,body);$('accordion').append(box);
+ box.append(head,body);
+ $('accordion').append(box);
 }
-const field=(label,html)=>`<div class="field"><label>${label}</label>${html}</div>`;
-const btn=(label,fn,cls='')=>`<button class="${cls}" onclick="${fn}">${label}</button>`;
-const range=(label,key,min,max,val)=>field(label,`<input type="range" min="${min}" max="${max}" value="${val}" oninput="setRange('${key}',this.value)">`);
-addAccordion('1. 📁 File Management',`
- ${btn('Upload Photo',"$('upload').click()")}
- ${btn('Multiple Upload',"$('multiUpload').click()",'gray')}
- ${btn('Remove Photo','clearCurrent()','red')}
- ${btn('Download PNG',"downloadImage('png')",'green')}
- ${btn('Download JPG',"downloadImage('jpg')",'green')}
- <hr>
- ${btn('Save Project','saveProject()')}
- <input type="file" accept=".json" onchange="loadProject(event)">
- <p class="toolnote">अपनी फोटो और कार्ड इमेज अपलोड करें। प्रोजेक्ट JSON में सेव कर सकते हैं।</p>
+
+// 1 FILE
+accordion('1. 📁 File Management',`
+ ${btn('Upload Photo',"openUpload()")}
+ ${btn('Multiple Upload',"openMultiple()",'gray')}
+ ${btn('Download PNG','downloadCurrent()','green')}
+ ${btn('Remove Photo','clearPhoto()','red')}
 `);
-addAccordion('2. ✂️ Crop Tools',`
- ${field('Crop Mode',`<select id="cropMode"><option value="free">Free Crop (फिट मोड)</option><option>1:1 Square</option><option>3:4 Portrait</option><option>4:3 Landscape</option><option>Passport 3.5:4.5</option></select>`)}
- ${btn('Fit Image','resetImage()')}
- ${btn('Square Canvas',"setCanvasRatio(1)")}
- ${btn('Portrait Canvas',"setCanvasRatio(0.7778)")}
- <p class="toolnote">यहाँ Fit और Canvas ratio controls हैं। सटीक फोटो Crop के लिए Crop/Resize controls का उपयोग करें।</p>
+
+// 2 CROP & FIT
+accordion('2. ✂️ Crop & Fit Tools',`
+ ${field('Photo Fit',`
+ <select onchange="setFit(this.value)">
+ <option value="contain">Fit - पूरी फोटो</option>
+ <option value="cover">Fill - पूरा कार्ड</option>
+ </select>`)}
+ ${btn('Fit Photo',"setFit('contain')")}
+ ${btn('Fill Photo',"setFit('cover')")}
+ ${btn('Reset Photo','resetCurrent()','gray')}
+ <p class="note">Fit और Fill फोटो को कार्ड के आकार में सेट करते हैं।</p>
 `);
-addAccordion('3. 📐 Resize & Dimensions',`
- <div class="grid2">
- ${field('Width',`<input id="cardW" type="number" value="85.6" step=".1">`)}
- ${field('Height',`<input id="cardH" type="number" value="54" step=".1">`)}
- </div>
- <div class="grid2">
- ${field('Unit',`<select id="unit"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="inch">Inch</option><option value="px">Pixel (px)</option></select>`)}
- ${field('DPI',`<select id="dpi"><option>150</option><option selected>300</option><option>600</option></select>`)}
- </div>
- ${btn('Apply Size','updateSize()','green')}
- ${btn('Swap Width / Height',"[$('cardW').value,$('cardH').value]=[$('cardH').value,$('cardW').value];updateSize()")}
- ${range('Zoom','zoom',25,250,100)}
- <div class="row">
+
+// 3 SIZE
+accordion('3. 📐 Resize & Dimensions',`
+ ${field('Zoom',`<input type="range" min="20" max="300" value="100"
+ oninput="setRange('zoom',this.value/100)">`)}
  ${btn('Zoom +',"setRange('zoom',Math.min(3,s().zoom+.1))")}
  ${btn('Zoom −',"setRange('zoom',Math.max(.2,s().zoom-.1))")}
- </div>
+ ${btn('Apply Size','applySize()','green')}
 `);
-addAccordion('4. 🔄 Photo Transform',`
+
+// 4 TRANSFORM
+accordion('4. 🔄 Rotate & Flip',`
  ${btn('Rotate Left','rotate(-90)')}
  ${btn('Rotate Right','rotate(90)')}
  ${btn('Flip Horizontal',"flip('x')")}
  ${btn('Flip Vertical',"flip('y')")}
- ${range('Zoom','zoom',20,300,100)}
- ${field('Move X',`<input type="range" min="-300" max="300" value="0" oninput="setRange('x',this.value)">`)}
- ${field('Move Y',`<input type="range" min="-500" max="500" value="0" oninput="setRange('y',this.value)">`)}
+ ${range('Move X','x',-300,300,0)}
+ ${range('Move Y','y',-300,300,0)}
 `);
-addAccordion('5. ☀️ Brightness & Color',`
+
+// 5 COLOR
+accordion('5. ☀️ Brightness & Color',`
  ${range('Brightness','brightness',0,200,100)}
  ${range('Contrast','contrast',0,200,100)}
  ${range('Saturation','saturation',0,200,100)}
- ${range('Grayscale','gray',0,100,0)}
- ${range('Sepia','sepia',0,100,0)}
- ${range('Hue Rotate','hue',0,360,0)}
- ${btn('Reset Color','resetImage()','gray')}
+ ${range('Black & White','gray',0,100,0)}
+ ${btn('Reset Editing','resetCurrent()','gray')}
 `);
-addAccordion('6. 🎨 Filters & Effects',`
- ${btn('Normal', "setFilters(100,100,100,0,0,0)")}
- ${btn('Black & White',"setFilters(100,100,0,100,0,0)")}
- ${btn('Sepia',"setFilters(100,100,100,0,100,0)")}
- ${btn('Vivid',"setFilters(110,115,160,0,0,0)")}
- ${btn('Soft',"setFilters(110,90,90,0,0,0)")}
- ${range('Blur Preview','blur',0,10,0)}
- <p class="toolnote">फिल्टर Canvas पर लागू होते हैं।</p>
+
+// 6 BACKGROUND
+accordion('6. 🎨 Background Editing',`
+ ${field('Custom Background',`<input type="color" onchange="setBG(this.value)" value="#ffffff">`)}
+ ${btn('White Background',"setBG('#ffffff')")}
+ ${btn('Blue Background',"setBG('#168bd2')")}
+ ${btn('Red Background',"setBG('#d92525')")}
+ ${btn('Green Background',"setBG('#159447')")}
+ ${btn('Gray Background',"setBG('#eeeeee')")}
 `);
-addAccordion('7. 🟩 Background Editing',`
- ${field('Background Color',`<input type="color" value="#ffffff" onchange="setBackground(this.value)">`)}
- ${btn('White Background',"setBackground('#ffffff')")}
- ${btn('Blue Background',"setBackground('#168bd2')")}
- ${btn('Red Background',"setBackground('#d92525')")}
- ${btn('Green Background',"setBackground('#159447')")}
- ${btn('Transparent Look',"setBackground('#eeeeee')")}
- <p class="toolnote">Background color बदलने की सुविधा है। AI Background Removal उपलब्ध नहीं है; यह संस्करण ऑफलाइन Canvas आधारित है।</p>
-`);
-addAccordion('8. 🖌️ Brush & Drawing',`
- ${field('Tool',`<select id="drawTool" onchange="tool=this.value"><option value="brush">Brush</option><option value="line">Line</option><option value="rect">Rectangle</option><option value="circle">Circle</option><option value="arrow">Arrow</option></select>`)}
- ${field('Brush Color',`<input type="color" id="brushColor" value="#ff0000" onchange="brushColor=this.value">`)}
- ${field('Brush Size',`<input type="range" min="1" max="40" value="5" oninput="brushSize=+this.value">`)}
- ${btn('Clear Drawing','removeObjects()','red')}
- <p class="toolnote">Canvas पर माउस या टच से ड्रॉ करें।</p>
-`);
-addAccordion('9. 🔃 Front & Back Editing',`
- ${btn('Edit Front',"switchSide('front')")}
- ${btn('Edit Back',"switchSide('back')")}
- ${btn('Copy Current to Other','copyToOther()','green')}
- ${btn('Swap Front / Back','swapSides()','orange')}
- ${btn('Download Front',"switchSide('front');downloadImage()")}
- ${btn('Download Back',"switchSide('back');downloadImage()")}
-`);
-addAccordion('10. 🔤 Text Editing',`
+
+// 7 TEXT
+accordion('7. 🔤 Text Editing',`
  ${field('Text Color',`<input type="color" id="textColor" value="#111111">`)}
- ${field('Font',`<select id="font"><option>Arial</option><option>Verdana</option><option>Georgia</option><option>Tahoma</option><option>Courier New</option></select>`)}
- <div class="row">
+ ${field('Font Size',`<input type="number" id="fontSize" value="35">`)}
  ${field('Bold',`<input type="checkbox" id="bold">`)}
- ${field('Italic',`<input type="checkbox" id="italic">`)}
- </div>
- ${btn('＋ Add Text','addText()','green')}
- ${btn('Clear All Text / Objects','removeObjects()','red')}
+ ${btn('+ Add Text','addText()','green')}
+ ${btn('Clear Text / Objects','removeObjects()','red')}
 `);
-addAccordion('11. 🔷 Shapes & Design',`
- ${field('Border Color',`<input type="color" id="shapeColor" value="#1559a6">`)}
- ${field('Border Size',`<input type="number" id="shapeSize" value="4" min="1" max="30">`)}
+
+// 8 SHAPES
+accordion('8. 🔷 Shapes & Border',`
+ ${field('Color',`<input type="color" id="shapeColor" value="#1559a6">`)}
+ ${field('Line Size',`<input type="number" id="shapeSize" value="4">`)}
  ${btn('Add Rectangle',"addShape('rect')")}
  ${btn('Add Circle',"addShape('circle')")}
  ${btn('Add Line',"addShape('line')")}
- ${btn('Add Arrow',"addShape('arrow')")}
- ${btn('Add Watermark Text','addText()')}
-`);
-addAccordion('12. 📄 Document Scanner Tools',`
- ${btn('Rotate Document Left','rotate(-90)')}
- ${btn('Rotate Document Right','rotate(90)')}
- ${range('Document Brightness','brightness',0,200,100)}
- ${range('Document Contrast','contrast',0,200,100)}
- ${btn('Fit Document','resetImage()')}
- <p class="toolnote">WhatsApp से मिली टेढ़ी फोटो को मैन्युअली rotate, crop/resize और color controls से सुधारें। Automatic perspective correction इस offline version में शामिल नहीं है।</p>
-`);
-addAccordion('13. 🧩 Layers & Objects',`
- ${btn('Add Text Layer','addText()')}
- ${btn('Add Shape Layer',"addShape('rect')")}
- ${btn('Clear All Layers','removeObjects()','red')}
- <p class="toolnote">इस संस्करण में टेक्स्ट और शेप अलग-अलग overlay objects के रूप में रखे जाते हैं।</p>
-`);
-addAccordion('14. 🪪 ID Card Type & Size',`
- ${field('Card Type',`<select id="cardType" onchange="presetCard(this.value)">
- <option value="85.6,54">Standard PVC / CR80</option>
- <option value="86,54">PVC Alternate</option>
- <option value="90,55">Custom ID Card</option>
- <option value="105,148">A6</option>
- <option value="148,210">A5</option>
- <option value="210,297">A4</option>
- <option value="custom">Custom Size</option>
- </select>`)}
- ${btn('Apply Card Size','updateSize()','green')}
- <p class="toolnote">सरकारी कार्डों के वास्तविक आकार अलग-अलग हो सकते हैं। Custom विकल्प से अपने कार्ड का माप डालें। केवल अधिकृत, वैध दस्तावेज़ों की एडिटिंग करें।</p>
-`);
-addAccordion('15. 🖨 A4 / PVC Printing',`
- ${field('Paper Size',`<select id="paper"><option>A4</option><option>A5</option><option>A3</option></select>`)}
- <div class="grid2">
- ${field('Copies',`<input id="copies" type="number" min="1" max="20" value="4">`)}
- ${field('Gap (mm)',`<input id="gap" type="number" value="5" min="0">`)}
- </div>
- <div class="grid2">
- ${field('Print Width (px)',`<input id="printW" type="number" value="638">`)}
- ${field('Print Height (px)',`<input id="printH" type="number" value="1012">`)}
- </div>
- ${field('Front + Back दोनों शीट',`<input type="checkbox" id="printBoth">`)}
- ${btn('🖨 Print A4 Sheet','printSheet()','green')}
- <p class="toolnote">प्रिंट ब्राउज़र के Print Dialog से होगा। PDF चाहिए तो Destination में Save as PDF चुनें।</p>
-`);
-addAccordion('16. 💾 Save & Export',`
- ${btn('Download PNG',"downloadImage('png')",'green')}
- ${btn('Download JPG',"downloadImage('jpg')",'green')}
- ${btn('Save Project JSON','saveProject()')}
- ${field('Load Project JSON',`<input type="file" accept=".json" onchange="loadProject(event)">`)}
- ${btn('Print / Save as PDF','printSheet()','orange')}
-`);
-addAccordion('17. ⚙️ Professional Tools',`
- ${btn('Undo','undo()')}
- ${btn('Redo','redo()')}
- ${btn('Reset Current Photo','resetImage()','gray')}
- ${btn('Reset All Editing','resetAll()','red')}
- ${field('Canvas Background',`<input type="color" value="#ffffff" onchange="setBackground(this.value)">`)}
- <p class="toolnote">Undo/Redo, zoom, move, rotation, color, text, shapes और project save उपलब्ध हैं।</p>
 `);
 
-function setFilters(b,c,sat,g,se,h){
- saveHistory();Object.assign(s(),{brightness:b,contrast:c,saturation:sat,gray:g,sepia:se,hue:h});render();
-}
-function setCanvasRatio(r){
- const w=638;canvas.width=w;canvas.height=Math.round(w/r);render();
-}
-function presetCard(v){
- if(v==='custom')return;
- let a=v.split(',');$('cardW').value=a[0];$('cardH').value=a[1];$('unit').value='mm';updateSize();
-}
-function addShape(type){
- const color=$('shapeColor')?.value||brushColor;
- const size=Number($('shapeSize')?.value||4);
- addObject({type,x:70,y:100,x2:350,y2:350,color,size});
-}
-function resetAll(){
- if(!confirm('क्या Front और Back दोनों का सारा डेटा रीसेट करना है?'))return;
- saveHistory();
- states={
- front:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#fff',objects:[]},
- back:{img:null,rotation:0,zoom:1,x:0,y:0,brightness:100,contrast:100,saturation:100,gray:0,sepia:0,hue:0,flipX:false,flipY:false,bg:'#fff',objects:[]}
- };
- switchSide('front');msg('पूरा स्टूडियो रीसेट हो गया।');
-}
-canvas.addEventListener('pointerdown',e=>{
- if(!['brush','line','rect','circle','arrow'].includes(tool))return;
- saveHistory();canvas.setPointerCapture(e.pointerId);
- const r=canvas.getBoundingClientRect();
- const x=(e.clientX-r.left)*canvas.width/r.width;
- const y=(e.clientY-r.top)*canvas.height/r.height;
- startPoint={x,y};
- drawing=true;
-});
-canvas.addEventListener('pointerup',e=>{
- if(!drawing||!startPoint)return;
- const r=canvas.getBoundingClientRect();
- const x=(e.clientX-r.left)*canvas.width/r.width;
- const y=(e.clientY-r.top)*canvas.height/r.height;
- s().objects.push({type:tool,x:startPoint.x,y:startPoint.y,x2:x,y2:y,color:brushColor,size:brushSize});
- drawing=false;startPoint=null;render();
-});
-canvas.addEventListener('pointermove',e=>{
- if(!drawing||!startPoint||tool!=='brush')return;
- const r=canvas.getBoundingClientRect();
- const x=(e.clientX-r.left)*canvas.width/r.width;
- const y=(e.clientY-r.top)*canvas.height/r.height;
- s().objects.push({type:'brush',x:startPoint.x,y:startPoint.y,x2:x,y2:y,color:brushColor,size:brushSize});
- startPoint={x,y};render();
-});
-render();
+// 9 BRUSH
+accordion('9. 🖌️ Brush & Drawing',`
+ ${field('Brush Color',`<input type="color" value="#ff0000" onchange="brushColor=this.value">`)}
+ ${field('Brush Size',`<input type="range" min="1" max="40" value="5" oninput="brushSize=+this.value">`)}
+ <p class="note">Canvas पर लाइन और ब्रश से निशान लगाने की सुविधा।</p>
+`);
+
+// 10 FRONT BACK
+accordion('10. ↔ Front & Back Tools',`
+ ${btn('Edit Front',"switchSide('front')")}
+ ${btn('Edit Back',"switchSide('back')")}
+ ${btn('Copy to Other','copyOther()','green')}
+ ${btn('Swap Sides','swapSides()','orange')}
+`);
+
+// 11 PRINT
+accordion('11. 🖨️ A4 Printing',`
+ ${field('Number of Copies',`<input id="copies" type="number" value="4" min="1" max="20">`)}
+ ${field('Gap (mm)',`<input id="gap" type="number" value="5" min="0">`)}
+ ${btn('Print Current Side','printCards(false)')}
+ ${btn('Print Front + Back','printCards(true)','green')}
+ <p class="note">दोनों साइड अलग-अलग A4 पेज पर प्रिंट होंगे। वास्तविक Duplex Printing के लिए प्रिंटर की सेटिंग इस्तेमाल करें।</p>
+`);
+
+// 12 HISTORY
+accordion('12. ↶ Undo & Redo',`
+ ${btn('Undo','undo()')}
+ ${btn('Redo','redo()')}
+ ${btn('Reset Current Side','resetCurrent()','red')}
+`);
+
+applySize();
+switchSide('front');
 </script>
+
 </body>
 </html>

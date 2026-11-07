@@ -4,189 +4,325 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0756a5">
-<title>Gramin Grahak Sewa PRO 3.0</title>
+<title>Gramin Grahak Sewa PRO 4.0</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <style>
-:root{--blue:#0756a5;--dark:#063b72;--light:#eef5ff;--green:#138b45;--orange:#ff9933}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f1f4f8;color:#202833}
-header{background:linear-gradient(110deg,#ff9933,#fff 48%,#138808);padding:14px;text-align:center}
-.logo{width:58px;height:58px;border-radius:50%;border:3px solid white;display:inline-flex;align-items:center;justify-content:center;background:#fff;font-size:30px}
+:root{--blue:#0756a5;--dark:#063b72;--light:#eef5ff;--green:#138b45;--red:#c62828;--orange:#ff9933;--ink:#202833;--muted:#64748b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f1f4f8;color:var(--ink)}
+header{background:linear-gradient(110deg,#ff9933,#fff 48%,#138808);padding:15px;text-align:center}
+.logo{width:55px;height:55px;border-radius:50%;border:3px solid white;display:inline-flex;align-items:center;justify-content:center;background:#fff;font-size:28px}
 header h1{margin:6px 0;color:#073b70;font-size:25px}header p{margin:4px;color:#173d62;font-weight:bold}
 nav{background:var(--blue);display:flex;gap:5px;overflow-x:auto;padding:9px;position:sticky;top:0;z-index:10}
 nav button{background:#fff;color:var(--blue);border:0;border-radius:6px;padding:10px 13px;font-weight:bold;white-space:nowrap;cursor:pointer}
 nav button.active{background:#ffcf33;color:#111}
-.container{max-width:1250px;margin:auto;padding:15px}.page{display:none}.page.active{display:block}
-.hero{background:linear-gradient(120deg,#0756a5,#1686ca);color:white;border-radius:12px;padding:25px;text-align:center}
+.container{max-width:1280px;margin:auto;padding:14px}.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(120deg,#0756a5,#1686ca);color:white;border-radius:12px;padding:24px;text-align:center}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
-.card{background:white;padding:16px;border-radius:10px;box-shadow:0 2px 9px #00000012;margin-bottom:14px}
-.card h3{margin:0 0 12px;color:var(--dark)}.toolbtn,.primary{background:var(--blue);color:white;border:0;padding:10px 14px;border-radius:6px;cursor:pointer;margin:4px 2px;font-weight:bold}
-.toolbtn:hover,.primary:hover{background:#003d78}.green{background:var(--green)}.red{background:#c62828}.gray{background:#555}
-input,select,textarea{padding:10px;border:1px solid #c7d0dc;border-radius:6px;max-width:100%;width:100%;margin:5px 0;background:white}
+.card{background:white;padding:15px;border-radius:10px;box-shadow:0 2px 9px #00000012;margin-bottom:14px}
+.card h2,.card h3{margin:0 0 12px;color:var(--dark)}.card h2{font-size:21px}
+.toolbtn,.primary{background:var(--blue);color:white;border:0;padding:10px 14px;border-radius:6px;cursor:pointer;margin:4px 2px;font-weight:bold}
+.toolbtn:hover,.primary:hover{filter:brightness(.9)}.green{background:var(--green)}.red{background:var(--red)}.gray{background:#555}.orange{background:#b85b00}
+input,select,textarea{padding:10px;border:1px solid #c7d0dc;border-radius:6px;max-width:100%;width:100%;margin:5px 0;background:white;color:#202833}
 input[type=range]{padding:0}label{font-size:13px;font-weight:bold;display:block;margin-top:7px}
-.preview{background:#e8edf4;border:1px dashed #9eabbc;border-radius:8px;padding:10px;min-height:150px;text-align:center;overflow:auto}
+.preview{background:#e8edf4;border:1px dashed #9eabbc;border-radius:8px;padding:10px;min-height:130px;text-align:center;overflow:auto}
 canvas{max-width:100%;height:auto;background:white}canvas.sheet{width:100%;max-width:650px;border:1px solid #bbb}
-.small{font-size:12px;color:#666}.service a{display:block;color:#0756a5;text-decoration:none;padding:9px;border-bottom:1px solid #eee}.service a:hover{background:#eef5ff}
+.small{font-size:12px;color:#666;line-height:1.5}.service a{display:block;color:#0756a5;text-decoration:none;padding:9px;border-bottom:1px solid #eee}.service a:hover{background:#eef5ff}
 .status{padding:10px;background:#e9f6ee;border-radius:6px;margin:8px 0;color:#176333}
-.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}hr{border:0;border-top:1px solid #ddd;margin:15px 0}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
 .badge{display:inline-block;background:#e7f0ff;color:#0756a5;border-radius:20px;padding:4px 9px;font-size:12px;font-weight:bold}
 footer{text-align:center;background:#073b70;color:white;padding:18px;margin-top:20px}
 .help{font-size:12px;color:#555;line-height:1.5}.checkline{display:flex;align-items:center;gap:8px}.checkline input{width:auto}
-@media(max-width:600px){header h1{font-size:20px}.container{padding:9px}.card{padding:12px}}
-@media print{body{background:white}.no-print,header,nav,footer,.controls{display:none!important}.container{padding:0;max-width:none}.page{display:none!important}.page.printing{display:block!important}.card{box-shadow:none;border:0;padding:0}.preview{border:0;padding:0;background:white}canvas{max-width:none!important;width:auto!important;max-height:95vh!important}}
+.stat{background:#fff;border-left:4px solid var(--blue);padding:14px;border-radius:8px;box-shadow:0 2px 8px #0000000c}.stat strong{display:block;font-size:24px;color:var(--dark);margin-top:5px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:white}th,td{padding:9px;border-bottom:1px solid #e5eaf0;text-align:left;vertical-align:top}th{background:#eef5ff;color:#063b72}
+.tablewrap{overflow:auto;border:1px solid #e5eaf0;border-radius:8px;margin-top:10px}
+.actions{white-space:nowrap}.empty{text-align:center;color:#718096;padding:18px}
+.hidden{display:none!important}
+#lockScreen{position:fixed;inset:0;background:#073b70;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}
+#lockScreen .card{width:min(420px,100%);text-align:center}
+@media(max-width:600px){header h1{font-size:20px}.container{padding:9px}.card{padding:12px}table{font-size:12px}th,td{padding:7px}}
+@media print{body{background:white}.no-print,header,nav,footer,.controls,.hide-print{display:none!important}.container{padding:0;max-width:none}.page{display:none!important}.page.printing{display:block!important}.card{box-shadow:none;border:0;padding:0}.preview{border:0;padding:0;background:white}canvas{max-width:none!important;width:auto!important;max-height:95vh!important}}
 </style>
 </head>
 <body>
-<header><div class="logo">馃嚠馃嚦</div><h1>Gramin Grahak Sewa</h1><p>啶椸啶班ぞ啶啶� 啶∴た啶溹た啶熰げ 啶椸啶班ぞ啶灌 啶膏啶掂ぞ 啶曕啶傕う啷嵿ぐ</p><p>Photo 鈥� ID Card 鈥� Document 鈥� PDF 鈥� Online Services</p><span class="badge">PRO 3.0</span></header>
+<div id="lockScreen" class="hidden">
+ <div class="card">
+  <div class="logo">🌾</div><h2>Gramin Grahak Sewa</h2>
+  <p id="lockMessage">अपना पासवर्ड डालें</p>
+  <input id="unlockPassword" type="password" placeholder="पासवर्ड">
+  <button class="toolbtn green" onclick="unlockApp()">अनलॉक करें</button>
+  <p class="small">पासवर्ड भूलने पर ब्राउज़र का साइट डेटा हटाने से लोकल रिकॉर्ड मिट सकते हैं।</p>
+ </div>
+</div>
+<header>
+ <div class="logo">🌾</div><h1>Gramin Grahak Sewa</h1>
+ <p>आपकी डिजिटल सेवा, आपके गाँव के पास</p>
+ <p>Photo • ID Card • Document • PDF • Customer • Billing • Reports</p>
+ <span class="badge">PRO 4.0</span>
+</header>
 <nav id="navbar">
-<button class="active" onclick="showPage('home',this)">啶灌啶�</button>
-<button onclick="showPage('photo',this)">Photo Studio</button>
-<button onclick="showPage('id',this)">ID Card Editor</button>
-<button onclick="showPage('joint',this)">Joint Photo</button>
-<button onclick="showPage('whatsapp',this)">Document Studio</button>
-<button onclick="showPage('pdf',this)">PDF Studio</button>
-<button onclick="showPage('bills',this)">Bill & Recharge</button>
-<button onclick="showPage('gas',this)">Gas Booking</button>
-<button onclick="showPage('gov',this)">啶膏ぐ啶曕ぞ啶班 啶膏啶掂ぞ啶忇</button>
-<button onclick="showPage('forms',this)">Forms & Results</button>
-<button onclick="showPage('booking',this)">Booking</button>
+ <button class="active" onclick="showPage('home',this)">होम</button>
+ <button onclick="showPage('customers',this)">ग्राहक</button>
+ <button onclick="showPage('billing',this)">बिल / रसीद</button>
+ <button onclick="showPage('accounts',this)">आय-खर्च</button>
+ <button onclick="showPage('stock',this)">स्टॉक</button>
+ <button onclick="showPage('records',this)">दस्तावेज़ रिकॉर्ड</button>
+ <button onclick="showPage('photo',this)">Photo Studio</button>
+ <button onclick="showPage('id',this)">ID Card</button>
+ <button onclick="showPage('joint',this)">Joint Photo</button>
+ <button onclick="showPage('document',this)">Document Studio</button>
+ <button onclick="showPage('pdf',this)">PDF Studio</button>
+ <button onclick="showPage('services',this)">ऑनलाइन सेवाएँ</button>
+ <button onclick="showPage('reports',this)">रिपोर्ट</button>
+ <button onclick="showPage('settings',this)">सेटिंग / बैकअप</button>
 </nav>
 <div class="container">
 <section id="home" class="page active">
-<div class="hero"><h2>啶嗋お啶曕 啶∴た啶溹た啶熰げ 啶膏啶掂ぞ, 啶嗋お啶曕 啶椸ぞ啶佮さ 啶啶�</h2><p>啶啶熰 啶忇ぁ啶苦啶苦啶�, 啶∴啶曕啶啶啶傕, ID 啶曕ぞ啶班啶�, PDF 啶斷ぐ 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇 啶忇 啶灌 啶溹啶灌イ</p></div><br>
-<div class="grid">
-<div class="card"><h3>馃摳 Photo Studio</h3><p>啶ぞ啶膏お啷嬥ぐ啷嵿 啶啶熰, Crop, Border, A4 啶多啶� 啶斷ぐ Print啷�</p><button class="toolbtn" onclick="showPage('photo')">啶栢啶侧啶�</button></div>
-<div class="card"><h3>馃 ID Card Editor</h3><p>Front/Back, A4 啶侧啶嗋啶�, Crop 啶斷ぐ Export啷�</p><button class="toolbtn" onclick="showPage('id')">啶栢啶侧啶�</button></div>
-<div class="card"><h3>馃懃 Joint Photo</h3><p>啶曕 啶啶熰 啶忇 啶多啶� 啶ぐ 啶侧啶距啶佮イ</p><button class="toolbtn" onclick="showPage('joint')">啶栢啶侧啶�</button></div>
-<div class="card"><h3>馃搫 Document Studio</h3><p>啶囙ぎ啷囙 啶曕 啶啶ぐ 啶膏ぞ啶囙 啶曕 啶呧え啷佮じ啶距ぐ PDF 啶え啶距啶佮イ</p><button class="toolbtn" onclick="showPage('whatsapp')">啶栢啶侧啶�</button></div>
-<div class="card"><h3>馃摎 PDF Studio</h3><p>啶囙ぎ啷囙 啶膏 PDF, PDF Merge 啶斷ぐ Split啷�</p><button class="toolbtn" onclick="showPage('pdf')">啶栢啶侧啶�</button></div>
-<div class="card"><h3>馃彌锔� 啶膏ぐ啶曕ぞ啶班 啶膏啶掂ぞ啶忇</h3><p>啶膏ぐ啶曕ぞ啶班 啶啶溹え啶距啶� 啶斷ぐ 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇啷�</p><button class="toolbtn" onclick="showPage('gov')">啶栢啶侧啶�</button></div>
-</div>
-<div class="card"><h3>啶す啶む啶掂お啷傕ぐ啷嵿ぃ 啶溹ぞ啶ㄠ啶距ぐ啷€</h3><p class="help">啶す 啶啶班啶熰げ 啶啶熰/啶︵じ啷嵿い啶距さ啷囙啶� 啶む啶ぞ啶� 啶曕ぐ啶ㄠ 啶斷ぐ 啶嗋ぇ啶苦啶距ぐ啶苦 啶掂啶じ啶距啶熰啶� 啶む 啶す啷佮啶氞え啷� 啶曕ぞ 啶熰啶� 啶灌啷� 啶膏ぐ啶曕ぞ啶班 ID 啶曕 啶溹ぞ啶ㄠ啶距ぐ啷€ 啶う啶侧え啷�, 啶ㄠ啶侧 啶︵じ啷嵿い啶距さ啷囙啶� 啶え啶距え啷� 啶ぞ 啶曕た啶膏 啶曕 啶す啶氞ぞ啶� 啶曕ぞ 啶︵啶班啶く啷嬥 啶曕ぐ啶ㄠ 啶曕 啶侧た啶� 啶囙じ啶曕ぞ 啶夃お啶啶� 啶� 啶曕ぐ啷囙啷� 啶啶熰 啶膏啶ムぞ啶ㄠ啶� 啶啶班ぞ啶夃啶监ぐ 啶啶� 啶啶班啶膏啶� 啶灌啶む 啶灌啶�; 啶呧お啶侧啶� 啶膏ぐ啷嵿さ啶� 啶ぐ 啶ㄠす啷€啶� 啶曕 啶溹ぞ啶む啶傕イ</p></div>
+ <div class="hero"><h2>Gramin Grahak Sewa PRO 4.0</h2><p>ग्राहक प्रबंधन, बिलिंग, हिसाब-किताब, फोटो और दस्तावेज़ सेवाएँ — एक ही जगह।</p></div>
+ <div class="grid" style="margin-top:14px">
+  <div class="stat">आज के ग्राहक<strong id="todayCustomers">0</strong></div>
+  <div class="stat">आज की बिक्री<strong id="todaySales">₹0</strong></div>
+  <div class="stat">आज के खर्च<strong id="todayExpenses">₹0</strong></div>
+  <div class="stat">कुल बकाया<strong id="totalDue">₹0</strong></div>
+ </div>
+ <div class="grid" style="margin-top:14px">
+  <div class="card"><h3>👥 ग्राहक प्रबंधन</h3><p>ग्राहक जोड़ें, खोजें और पुराने रिकॉर्ड देखें।</p><button class="toolbtn" onclick="showPage('customers')">खोलें</button></div>
+  <div class="card"><h3>🧾 बिल और रसीद</h3><p>सेवा का बिल बनाएँ, प्रिंट करें और भुगतान दर्ज करें।</p><button class="toolbtn" onclick="showPage('billing')">खोलें</button></div>
+  <div class="card"><h3>📊 हिसाब-किताब</h3><p>दैनिक आय, खर्च और शुद्ध रकम देखें।</p><button class="toolbtn" onclick="showPage('accounts')">खोलें</button></div>
+  <div class="card"><h3>📸 Photo Studio</h3><p>पासपोर्ट फोटो शीट, क्रॉप, बॉर्डर और एक्सपोर्ट।</p><button class="toolbtn" onclick="showPage('photo')">खोलें</button></div>
+  <div class="card"><h3>🪪 ID Card Editor</h3><p>फ्रंट-बैक कार्ड को A4 शीट पर सेट करें।</p><button class="toolbtn" onclick="showPage('id')">खोलें</button></div>
+  <div class="card"><h3>💾 बैकअप</h3><p>अपने रिकॉर्ड का JSON बैकअप डाउनलोड करें।</p><button class="toolbtn" onclick="showPage('settings')">खोलें</button></div>
+ </div>
+ <div class="card"><h3>हाल के बिल</h3><div id="recentBills" class="tablewrap"></div></div>
+</section>
+
+<section id="customers" class="page">
+ <div class="card"><h2>👥 Customer Management</h2>
+  <input type="hidden" id="customerId">
+  <div class="row">
+   <div><label>ग्राहक का नाम *</label><input id="customerName" placeholder="पूरा नाम"></div>
+   <div><label>मोबाइल नंबर</label><input id="customerMobile" inputmode="numeric" maxlength="10" placeholder="10 अंकों का नंबर"></div>
+   <div><label>गाँव / पता</label><input id="customerAddress" placeholder="गाँव, पता"></div>
+   <div><label>ग्राहक नोट</label><input id="customerNote" placeholder="वैकल्पिक नोट"></div>
+  </div>
+  <button class="toolbtn green" onclick="saveCustomer()">ग्राहक सेव करें</button><button class="toolbtn gray" onclick="clearCustomerForm()">नया / साफ करें</button>
+  <hr><label>ग्राहक खोजें</label><input id="customerSearch" placeholder="नाम या मोबाइल से खोजें" oninput="renderCustomers()">
+  <div id="customerTable" class="tablewrap"></div>
+ </div>
+</section>
+
+<section id="billing" class="page">
+ <div class="card"><h2>🧾 Billing & Receipt</h2>
+  <div class="row">
+   <div><label>ग्राहक</label><select id="billCustomer"></select></div>
+   <div><label>सेवा / काम का नाम *</label><input id="billService" placeholder="जैसे फोटो प्रिंट, फॉर्म फीस"></div>
+   <div><label>मात्रा</label><input id="billQty" type="number" min="1" value="1"></div>
+   <div><label>रेट (₹)</label><input id="billRate" type="number" min="0" step="0.01" value="0"></div>
+   <div><label>कुल रकम (₹)</label><input id="billTotal" readonly value="0"></div>
+   <div><label>जमा (₹)</label><input id="billPaid" type="number" min="0" step="0.01" value="0"></div>
+   <div><label>भुगतान का तरीका</label><select id="billMethod"><option>Cash</option><option>UPI</option><option>Bank</option><option>अन्य</option></select></div>
+   <div><label>तारीख</label><input id="billDate" type="date"></div>
+  </div>
+  <button class="toolbtn green" onclick="saveBill()">बिल बनाएँ</button><button class="toolbtn gray" onclick="printLatestReceipt()">आखिरी रसीद प्रिंट</button>
+  <p class="small">बिल सेव होने पर शेष रकम ग्राहक के बकाये में दिखाई जाएगी। रसीद प्रिंट करने से पहले विवरण जाँच लें।</p>
+  <hr><label>बिल खोजें</label><input id="billSearch" placeholder="रसीद नंबर / ग्राहक / सेवा" oninput="renderBills()">
+  <div id="billTable" class="tablewrap"></div>
+ </div>
+</section>
+
+<section id="accounts" class="page">
+ <div class="card"><h2>💰 Daily Income & Expense</h2>
+  <div class="row">
+   <div><label>प्रकार</label><select id="entryType"><option value="income">आय</option><option value="expense">खर्च</option></select></div>
+   <div><label>विवरण *</label><input id="entryTitle" placeholder="जैसे फोटो पेपर खरीदा"></div>
+   <div><label>रकम (₹) *</label><input id="entryAmount" type="number" min="0.01" step="0.01"></div>
+   <div><label>तारीख</label><input id="entryDate" type="date"></div>
+  </div>
+  <button class="toolbtn green" onclick="saveEntry()">एंट्री सेव करें</button>
+  <div class="grid" style="margin-top:12px">
+   <div class="stat">कुल आय<strong id="allIncome">₹0</strong></div><div class="stat">कुल खर्च<strong id="allExpense">₹0</strong></div><div class="stat">शुद्ध रकम<strong id="netIncome">₹0</strong></div>
+  </div>
+  <div id="entryTable" class="tablewrap"></div>
+ </div>
+</section>
+
+<section id="stock" class="page">
+ <div class="card"><h2>📦 Stock Management</h2>
+  <div class="row">
+   <div><label>सामान का नाम *</label><input id="stockName" placeholder="फोटो पेपर / लैमिनेशन शीट"></div>
+   <div><label>मात्रा</label><input id="stockQty" type="number" min="0" step="1" value="0"></div>
+   <div><label>इकाई</label><input id="stockUnit" placeholder="पीस / पैकेट / रीम"></div>
+   <div><label>कम स्टॉक अलर्ट</label><input id="stockMin" type="number" min="0" value="5"></div>
+   <div><label>प्रति इकाई लागत (₹)</label><input id="stockCost" type="number" min="0" step="0.01" value="0"></div>
+  </div>
+  <button class="toolbtn green" onclick="saveStock()">स्टॉक सेव करें</button>
+  <div id="stockTable" class="tablewrap"></div>
+ </div>
+</section>
+
+<section id="records" class="page">
+ <div class="card"><h2>📁 Customer Document Records</h2>
+  <p class="help">यहाँ केवल दस्तावेज़ का नाम/प्रकार और संदर्भ दर्ज करें। आधार, बैंक पासवर्ड, OTP या पूरी पहचान संख्या सेव न करें। यह रिकॉर्ड इसी ब्राउज़र में रहेगा।</p>
+  <div class="row">
+   <div><label>ग्राहक</label><select id="recordCustomer"></select></div>
+   <div><label>दस्तावेज़ का प्रकार</label><select id="recordType"><option>आधार (केवल संदर्भ)</option><option>जन आधार</option><option>वोटर ID</option><option>राशन कार्ड</option><option>मार्कशीट</option><option>अन्य</option></select></div>
+   <div><label>संदर्भ / आखिरी 4 अंक (वैकल्पिक)</label><input id="recordRef" maxlength="30" placeholder="संवेदनशील जानकारी नहीं"></div>
+   <div><label>नोट</label><input id="recordNote" placeholder="जैसे कॉपी मिली"></div>
+  </div>
+  <button class="toolbtn green" onclick="saveRecord()">रिकॉर्ड सेव करें</button><div id="recordTable" class="tablewrap"></div>
+ </div>
 </section>
 
 <section id="photo" class="page">
-<div class="card">
-<h2>馃摳 Passport Photo Studio PRO</h2>
-<div class="controls">
-<label>啶啶熰 啶氞啶ㄠ啶�</label><input type="file" id="photoFile" accept="image/*" onchange="loadOne(this,'photo')">
-<div class="row">
-<div><label>啶啶熰 啶曕 啶膏啶栢啶ぞ</label><select id="photoCount" onchange="drawPhotoSheet()"><option>2</option><option>4</option><option selected>8</option><option>12</option><option>16</option><option>20</option><option>24</option><option>32</option><option>50</option></select></div>
-<div><label>啶ぞ啶� 啶曕 啶囙啶距</label><select id="photoUnit" onchange="drawPhotoSheet()"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="in">Inch</option></select></div>
-<div><label>啶啶熰 啶氞啶∴ぜ啶距</label><input id="photoW" type="number" value="35" min="5" step="0.1" oninput="drawPhotoSheet()"></div>
-<div><label>啶啶熰 啶娻啶氞ぞ啶�</label><input id="photoH" type="number" value="45" min="5" step="0.1" oninput="drawPhotoSheet()"></div>
-<div><label>Gap (啶夃じ啷€ 啶囙啶距 啶啶�)</label><input id="photoGap" type="number" value="3" min="0" step="0.1" oninput="drawPhotoSheet()"></div>
-<div><label>啶啶ぐ</label><select id="photoPaper" onchange="drawPhotoSheet()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div>
-</div>
-<div class="row">
-<div><label>Crop 啶呧え啷佮お啶距い</label><select id="photoRatio" onchange="drawPhotoSheet()"><option value="free">Free / Original Crop</option><option value="1">1:1</option><option value="0.75">3:4</option><option value="0.8">4:5</option><option value="0.6667">2:3</option><option value="0.7778">7:9</option></select></div>
-<div><label>Crop Zoom</label><input id="photoZoom" type="range" min="100" max="250" value="100" oninput="drawPhotoSheet()"></div>
-<div><label>Crop X Position</label><input id="photoX" type="range" min="-50" max="50" value="0" oninput="drawPhotoSheet()"></div>
-<div><label>Crop Y Position</label><input id="photoY" type="range" min="-50" max="50" value="0" oninput="drawPhotoSheet()"></div>
-<div><label>Brightness</label><input id="photoBright" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
-<div><label>Contrast</label><input id="photoContrast" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
-</div>
-<div class="row">
-<div class="checkline"><input type="checkbox" id="photoBorder" checked onchange="drawPhotoSheet()"><label for="photoBorder">啶啶熰 啶啶班啶∴ぐ 啶︵た啶栢ぞ啶忇</label></div>
-<div><label>Border Color</label><input type="color" id="photoBorderColor" value="#222222" oninput="drawPhotoSheet()"></div>
-<div><label>Border 啶啶熰ぞ啶� (px)</label><input type="number" id="photoBorderWidth" value="1" min="0" max="20" oninput="drawPhotoSheet()"></div>
-</div>
-<button class="toolbtn" onclick="drawPhotoSheet()">Preview 啶呧お啶∴啶�</button><button class="toolbtn green" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','pdf')">PDF 啶膏啶�</button>
-<button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','png')">PNG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','webp')">WebP 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('photoCanvas','photo')">Print Out</button><button class="toolbtn gray" onclick="resetPhoto()">Reset</button>
-</div>
-<div class="preview"><canvas id="photoCanvas" class="sheet" width="794" height="1123"></canvas></div>
-<p class="small">啶∴た啶啶侧啶� 啶ぞ啶膏お啷嬥ぐ啷嵿 啶啶熰 35 脳 45 mm 啶灌啷� 啶掂ぞ啶膏啶むさ啶苦 啶啶班た啶傕 啶嗋啶距ぐ 啶曕 啶侧た啶� Print 啶膏啶掂ぞ啶� 啶啶� Scale = 100% / Actual Size 啶氞啶ㄠ啶傕イ</p>
-</div>
+ <div class="card"><h2>📸 Passport Photo Studio</h2>
+  <div class="controls">
+   <label>फोटो चुनें</label><input type="file" id="photoFile" accept="image/*" onchange="loadImage(this,'photo')">
+   <div class="row">
+    <div><label>फोटो की संख्या</label><select id="photoCount" onchange="drawPhoto()"><option>2</option><option>4</option><option selected>8</option><option>12</option><option>16</option><option>20</option><option>24</option><option>32</option><option>50</option></select></div>
+    <div><label>माप की इकाई</label><select id="photoUnit" onchange="drawPhoto()"><option value="mm">mm</option><option value="cm">cm</option><option value="in">Inch</option></select></div>
+    <div><label>चौड़ाई</label><input id="photoW" type="number" value="35" min="5" step=".1" oninput="drawPhoto()"></div>
+    <div><label>ऊँचाई</label><input id="photoH" type="number" value="45" min="5" step=".1" oninput="drawPhoto()"></div>
+    <div><label>Gap</label><input id="photoGap" type="number" value="3" min="0" step=".1" oninput="drawPhoto()"></div>
+    <div><label>पेपर</label><select id="photoPaper" onchange="drawPhoto()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div>
+   </div>
+   <div class="row">
+    <div><label>Crop अनुपात</label><select id="photoRatio" onchange="drawPhoto()"><option value="free">Free</option><option value="1">1:1</option><option value=".75">3:4</option><option value=".8">4:5</option><option value=".6667">2:3</option></select></div>
+    <div><label>Zoom</label><input id="photoZoom" type="range" min="100" max="250" value="100" oninput="drawPhoto()"></div>
+    <div><label>Crop X</label><input id="photoX" type="range" min="-50" max="50" value="0" oninput="drawPhoto()"></div>
+    <div><label>Crop Y</label><input id="photoY" type="range" min="-50" max="50" value="0" oninput="drawPhoto()"></div>
+    <div><label>Brightness</label><input id="photoBright" type="range" min="50" max="180" value="100" oninput="drawPhoto()"></div>
+    <div><label>Contrast</label><input id="photoContrast" type="range" min="50" max="180" value="100" oninput="drawPhoto()"></div>
+   </div>
+   <div class="row">
+    <div class="checkline"><input type="checkbox" id="photoBorder" checked onchange="drawPhoto()"><label for="photoBorder">बॉर्डर दिखाएँ</label></div>
+    <div><label>Border Color</label><input type="color" id="photoBorderColor" value="#222222" oninput="drawPhoto()"></div>
+    <div><label>Border मोटाई (px)</label><input type="number" id="photoBorderWidth" value="1" min="0" max="20" oninput="drawPhoto()"></div>
+   </div>
+   <button class="toolbtn" onclick="drawPhoto()">Preview</button><button class="toolbtn green" onclick="exportCanvas('photoCanvas','Passport_Photos','png')">PNG सेव</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photos','jpeg')">JPEG सेव</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photos','pdf')">PDF सेव</button><button class="toolbtn gray" onclick="printCanvas('photoCanvas')">Print</button>
+  </div>
+  <div class="preview"><canvas id="photoCanvas" class="sheet" width="794" height="1123"></canvas></div>
+ </div>
 </section>
 
 <section id="id" class="page">
-<div class="card">
-<h2>馃 ID Card Editor PRO</h2>
-<div class="status">Front 啶斷ぐ Back 啶曕 啶呧げ啶�-啶呧げ啶� 啶囙ぎ啷囙 啶氞啶ㄠ啶傕イ A4 啶啶班啶掂啶 啶啶� 啶︵啶ㄠ啶� 啶膏ぞ啶囙ぁ 啶膏ぞ啶� 啶︵た啶栢ぞ啶� 啶︵啶傕啷€啷�</div>
-<div class="controls">
-<div class="row">
-<div><label>Front Side 啶啶熰</label><input type="file" id="idFrontFile" accept="image/*" onchange="loadOne(this,'idFront')"></div>
-<div><label>Back Side 啶啶熰</label><input type="file" id="idBackFile" accept="image/*" onchange="loadOne(this,'idBack')"></div>
-<div><label>啶ぞ啶� 啶曕 啶囙啶距</label><select id="idUnit" onchange="drawID()"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="in">Inch</option></select></div>
-<div><label>啶曕ぞ啶班啶� 啶氞啶∴ぜ啶距</label><input id="idW" type="number" value="86" min="20" step="0.1" oninput="drawID()"></div>
-<div><label>啶曕ぞ啶班啶� 啶娻啶氞ぞ啶�</label><input id="idH" type="number" value="54" min="20" step="0.1" oninput="drawID()"></div>
-<div><label>A4 Layout</label><select id="idLayout" onchange="drawID()"><option value="side">Front 啶斷ぐ Back 啶膏ぞ啶�-啶膏ぞ啶�</option><option value="stack">Front 啶娻お啶�, Back 啶ㄠ啶氞</option><option value="front">啶曕啶掂げ Front</option><option value="back">啶曕啶掂げ Back</option></select></div>
-</div>
-<h3>Front Crop / 啶忇ぁ啶苦</h3>
-<div class="row">
-<div><label>Crop Zoom</label><input id="frontZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>Crop X</label><input id="frontX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Crop Y</label><input id="frontY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="frontBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="frontContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="frontRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
-</div>
-<h3>Back Crop / 啶忇ぁ啶苦</h3>
-<div class="row">
-<div><label>Crop Zoom</label><input id="backZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>Crop X</label><input id="backX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Crop Y</label><input id="backY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="backBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="backContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="backRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
-</div>
-<div class="row">
-<div class="checkline"><input type="checkbox" id="idBorder" checked onchange="drawID()"><label for="idBorder">啶曕ぞ啶班啶� 啶啶班啶∴ぐ</label></div><div><label>Border Color</label><input type="color" id="idBorderColor" value="#222222" oninput="drawID()"></div><div><label>Border 啶啶熰ぞ啶� (px)</label><input type="number" id="idBorderWidth" value="2" min="0" max="20" oninput="drawID()"></div>
-</div>
-<button class="toolbtn" onclick="drawID()">A4 Preview 啶呧お啶∴啶�</button><button class="toolbtn green" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','png')">PNG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','webp')">WebP 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('idCanvas','id')">Print Out</button><button class="toolbtn gray" onclick="resetID()">Reset</button>
-</div>
-<div class="preview"><canvas id="idCanvas" class="sheet" width="794" height="1123"></canvas></div>
-<p class="small">啶す 啶熰啶� 啶嗋お啶曕 啶︵た啶� 啶灌啶� 啶曕ぞ啶班啶� 啶曕 啶囙ぎ啷囙 啶曕 A4 啶ぐ 啶掂啶さ啶膏啶ムた啶� 啶曕ぐ啶むぞ 啶灌啷� 啶嗋ぇ啶苦啶距ぐ啶苦 啶す啶氞ぞ啶�-啶い啷嵿ぐ 啶曕 啶溹ぞ啶ㄠ啶距ぐ啷€ 啶う啶侧え啷� 啶ぞ 啶溹ぞ啶侧じ啶距啷€ 啶曕 啶侧た啶� 啶夃お啶啶� 啶� 啶曕ぐ啷囙啷�</p>
-</div>
+ <div class="card"><h2>🪪 ID Card Editor — Front / Back</h2>
+  <div class="controls">
+   <div class="row">
+    <div><label>Front Image</label><input type="file" accept="image/*" onchange="loadImage(this,'front')"></div>
+    <div><label>Back Image</label><input type="file" accept="image/*" onchange="loadImage(this,'back')"></div>
+    <div><label>माप की इकाई</label><select id="idUnit" onchange="drawID()"><option value="mm">mm</option><option value="cm">cm</option><option value="in">Inch</option></select></div>
+    <div><label>Card Width</label><input id="idW" type="number" value="86" oninput="drawID()"></div>
+    <div><label>Card Height</label><input id="idH" type="number" value="54" oninput="drawID()"></div>
+    <div><label>A4 Layout</label><select id="idLayout" onchange="drawID()"><option value="side">साथ-साथ</option><option value="stack">ऊपर-नीचे</option><option value="front">केवल Front</option><option value="back">केवल Back</option></select></div>
+   </div>
+   <h3>Front Crop</h3><div class="row">
+    <div><label>Zoom</label><input id="frontZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>X</label><input id="frontX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Y</label><input id="frontY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="frontBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="frontContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="frontRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
+   </div>
+   <h3>Back Crop</h3><div class="row">
+    <div><label>Zoom</label><input id="backZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>X</label><input id="backX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Y</label><input id="backY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="backBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="backContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="backRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
+   </div>
+   <div class="row"><div class="checkline"><input type="checkbox" id="idBorder" checked onchange="drawID()"><label for="idBorder">बॉर्डर</label></div><div><label>Border Color</label><input type="color" id="idBorderColor" value="#222222" oninput="drawID()"></div><div><label>Border मोटाई</label><input id="idBorderWidth" type="number" value="2" min="0" max="20" oninput="drawID()"></div></div>
+   <button class="toolbtn" onclick="drawID()">Preview</button><button class="toolbtn green" onclick="exportCanvas('idCanvas','ID_Card_A4','png')">PNG सेव</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_A4','jpeg')">JPEG सेव</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_A4','pdf')">PDF सेव</button><button class="toolbtn gray" onclick="printCanvas('idCanvas')">Print</button>
+  </div>
+  <div class="preview"><canvas id="idCanvas" class="sheet" width="794" height="1123"></canvas></div>
+ </div>
 </section>
 
-<section id="joint" class="page"><div class="card"><h2>馃懃 Joint Photo Maker</h2><label>啶忇 啶ぞ 啶呧ぇ啶苦 啶啶熰 啶氞啶ㄠ啶�</label><input type="file" id="jointFiles" accept="image/*" multiple onchange="loadJoint(this)"><div class="row"><div><label>啶曕啶侧ぎ</label><select id="jointCols" onchange="drawJoint()"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div><div><label>啶啶熰 啶氞啶∴ぜ啶距 (mm)</label><input type="number" id="jointW" value="65" oninput="drawJoint()"></div><div><label>啶啶熰 啶娻啶氞ぞ啶� (mm)</label><input type="number" id="jointH" value="80" oninput="drawJoint()"></div><div><label>Gap (mm)</label><input type="number" id="jointGap" value="4" oninput="drawJoint()"></div></div><button class="toolbtn" onclick="drawJoint()">Preview</button><button class="toolbtn green" onclick="exportCanvas('jointCanvas','Joint_Photos','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('jointCanvas','Joint_Photos','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('jointCanvas','Joint_Photos','png')">PNG 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('jointCanvas','joint')">Print</button><div class="preview"><canvas id="jointCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
+<section id="joint" class="page"><div class="card"><h2>👨‍👩‍👧 Joint Photo Maker</h2><label>एक से अधिक फोटो चुनें</label><input type="file" id="jointFiles" accept="image/*" multiple onchange="loadJoint(this)"><div class="row"><div><label>एक लाइन में फोटो</label><select id="jointCols" onchange="drawJoint()"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div><div><label>चौड़ाई (mm)</label><input id="jointW" type="number" value="65" oninput="drawJoint()"></div><div><label>ऊँचाई (mm)</label><input id="jointH" type="number" value="80" oninput="drawJoint()"></div><div><label>Gap (mm)</label><input id="jointGap" type="number" value="4" oninput="drawJoint()"></div></div><button class="toolbtn" onclick="drawJoint()">Preview</button><button class="toolbtn green" onclick="exportCanvas('jointCanvas','Joint_Photos','png')">PNG सेव</button><button class="toolbtn" onclick="exportCanvas('jointCanvas','Joint_Photos','pdf')">PDF सेव</button><button class="toolbtn gray" onclick="printCanvas('jointCanvas')">Print</button><div class="preview"><canvas id="jointCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
 
-<section id="whatsapp" class="page"><div class="card"><h2>馃搫 Document Studio</h2><label>啶啶熰/啶∴啶曕啶啶啶傕 啶囙ぎ啷囙 啶氞啶ㄠ啶�</label><input type="file" id="docFile" accept="image/*" onchange="loadOne(this,'doc')"><div class="row"><div><label>Paper Size</label><select id="docPaper" onchange="drawDoc()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div><div><label>Orientation</label><select id="docOrientation" onchange="drawDoc()"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div><label>Zoom</label><input type="range" id="docZoom" min="50" max="200" value="100" oninput="drawDoc()"></div><div><label>Rotation</label><input type="range" id="docRotate" min="-180" max="180" value="0" oninput="drawDoc()"></div><div><label>Brightness</label><input type="range" id="docBright" min="50" max="180" value="100" oninput="drawDoc()"></div><div><label>Contrast</label><input type="range" id="docContrast" min="50" max="180" value="100" oninput="drawDoc()"></div></div><button class="toolbtn" onclick="drawDoc()">Preview</button><button class="toolbtn green" onclick="exportCanvas('docCanvas','Document','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('docCanvas','Document','jpeg')">JPEG</button><button class="toolbtn" onclick="exportCanvas('docCanvas','Document','png')">PNG</button><button class="toolbtn gray" onclick="printCanvas('docCanvas','whatsapp')">Print</button><div class="preview"><canvas id="docCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
+<section id="document" class="page"><div class="card"><h2>📄 Document Studio</h2><label>फोटो / दस्तावेज़ चुनें</label><input type="file" accept="image/*" onchange="loadImage(this,'doc')"><div class="row"><div><label>Paper</label><select id="docPaper" onchange="drawDoc()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div><div><label>Orientation</label><select id="docOrientation" onchange="drawDoc()"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div><label>Zoom</label><input id="docZoom" type="range" min="50" max="200" value="100" oninput="drawDoc()"></div><div><label>Rotation</label><input id="docRotate" type="range" min="-180" max="180" value="0" oninput="drawDoc()"></div><div><label>Brightness</label><input id="docBright" type="range" min="50" max="180" value="100" oninput="drawDoc()"></div><div><label>Contrast</label><input id="docContrast" type="range" min="50" max="180" value="100" oninput="drawDoc()"></div></div><button class="toolbtn" onclick="drawDoc()">Preview</button><button class="toolbtn green" onclick="exportCanvas('docCanvas','Document','png')">PNG</button><button class="toolbtn" onclick="exportCanvas('docCanvas','Document','pdf')">PDF</button><button class="toolbtn gray" onclick="printCanvas('docCanvas')">Print</button><div class="preview"><canvas id="docCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
 
-<section id="pdf" class="page"><div class="card"><h2>馃摎 PDF Professional Studio</h2><div class="status">啶囙ぎ啷囙 啶膏 PDF, 啶曕 PDF 啶溹啶∴ぜ啶ㄠぞ 啶斷ぐ 啶氞啶ㄠ 啶灌啶� 啶啶� 啶呧げ啶� 啶曕ぐ啶ㄠぞ啷�</div><h3>1. Image to PDF</h3><input type="file" id="pdfImages" accept="image/*" multiple><button class="toolbtn green" onclick="imagesToPDF()">啶膏き啷€ 啶囙ぎ啷囙 PDF 啶啶� 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>2. PDF Merge</h3><input type="file" id="mergeFiles" accept="application/pdf" multiple><button class="toolbtn" onclick="mergePDF()">PDF 啶溹啶∴ぜ啶曕ぐ 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>3. PDF Split</h3><input type="file" id="splitFile" accept="application/pdf"><label>啶啶� 啶ㄠ啶ぐ (啶夃う啶距す啶班ぃ: 1,3,5)</label><input id="splitPages" placeholder="1,2,3"><button class="toolbtn" onclick="splitPDF()">啶氞啶ㄠ 啶灌啶� 啶啶� 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>4. PDF Print</h3><input type="file" id="printFile" accept="application/pdf"><button class="toolbtn" onclick="printPDF()">PDF 啶栢啶侧啶� / Print 啶曕ぐ啷囙</button><p class="small">PDF 啶膏啶掂た啶оぞ啶撪 啶曕 啶侧た啶� 啶囙啶熰ぐ啶ㄠ啶� 啶斷ぐ PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ CDN 啶曕ぞ 啶侧啶� 啶灌啶ㄠぞ 啶嗋さ啶多啶 啶灌啷�</p></div></section>
+<section id="pdf" class="page"><div class="card"><h2>📑 PDF Studio</h2><h3>1. Image to PDF</h3><input type="file" id="pdfImages" accept="image/*" multiple><button class="toolbtn green" onclick="imagesToPDF()">Images से PDF बनाएँ</button><hr><h3>2. PDF Merge</h3><input type="file" id="mergeFiles" accept="application/pdf" multiple><button class="toolbtn" onclick="mergePDF()">PDF जोड़ें</button><hr><h3>3. PDF Split</h3><input type="file" id="splitFile" accept="application/pdf"><label>पेज नंबर (जैसे 1,3,5)</label><input id="splitPages" placeholder="1,2,3"><button class="toolbtn" onclick="splitPDF()">चुने हुए पेज सेव करें</button><hr><h3>4. PDF Print</h3><input type="file" id="printFile" accept="application/pdf"><button class="toolbtn" onclick="printPDF()">PDF खोलें / Print</button><p class="small">PDF Merge/Split के लिए इंटरनेट और PDF library लोड होना जरूरी है।</p></div></section>
 
-<section id="bills" class="page"><div class="card"><h2>馃挕 Bill Payment & Recharge</h2><p>啶ㄠ啶氞 啶嗋ぇ啶苦啶距ぐ啶苦 啶啶班啶熰げ 啶栢啶侧啶� 啶た啶� 啶ぞ 啶班た啶氞ぞ啶班啶� 啶啶班ぞ 啶曕ぐ啷囙啷�</p><div class="grid service">
-<div class="card"><h3>啶た啶溹げ啷€ 啶た啶�</h3><a href="https://energy.rajasthan.gov.in/" target="_blank" rel="noopener">啶班ぞ啶溹じ啷嵿ぅ啶距え 啶た啶溹げ啷€ 啶掂た啶ぞ啶�</a><a href="https://www.rajdiscoms.com/" target="_blank" rel="noopener">Rajasthan DISCOM</a></div>
-<div class="card"><h3>啶啶ぞ啶囙げ 啶班た啶氞ぞ啶班啶�</h3><a href="https://www.jio.com/" target="_blank" rel="noopener">Jio</a><a href="https://www.airtel.in/" target="_blank" rel="noopener">Airtel</a><a href="https://www.myvi.in/" target="_blank" rel="noopener">Vi</a><a href="https://www.bsnl.co.in/" target="_blank" rel="noopener">BSNL</a></div>
-<div class="card"><h3>DTH / TV</h3><a href="https://www.tataplay.com/" target="_blank" rel="noopener">Tata Play</a><a href="https://www.dishtv.in/" target="_blank" rel="noopener">Dish TV</a><a href="https://www.airtel.in/dth" target="_blank" rel="noopener">Airtel Digital TV</a></div>
-<div class="card"><h3>FASTag</h3><a href="https://fastag.ihmcl.com/" target="_blank" rel="noopener">IHMCL FASTag</a><a href="https://www.npci.org.in/" target="_blank" rel="noopener">NPCI</a></div>
-<div class="card"><h3>啶呧え啷嵿く 啶た啶�</h3><a href="https://www.bharatbillpay.com/" target="_blank" rel="noopener">Bharat BillPay</a><a href="https://www.npci.org.in/what-we-do/bharat-billpay/product-overview" target="_blank" rel="noopener">BBPS 啶溹ぞ啶ㄠ啶距ぐ啷€</a></div>
-<div class="card"><h3>啶啶傕 / 啶侧啶� 啶溹ぞ啶ㄠ啶距ぐ啷€</h3><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">RBI</a><a href="https://www.bankofbaroda.in/" target="_blank" rel="noopener">Bank of Baroda</a><a href="https://sbi.co.in/" target="_blank" rel="noopener">SBI</a></div>
-</div></div></section>
-<section id="gas" class="page"><div class="card"><h2>馃敟 LPG Gas Booking</h2><div class="grid service"><div class="card"><h3>Indane Gas</h3><a href="https://cx.indianoil.in/" target="_blank" rel="noopener">Indane Online Booking</a></div><div class="card"><h3>Bharat Gas</h3><a href="https://my.ebharatgas.com/" target="_blank" rel="noopener">Bharat Gas Booking</a></div><div class="card"><h3>HP Gas</h3><a href="https://myhpgas.in/" target="_blank" rel="noopener">HP Gas Booking</a></div></div></div></section>
-<section id="gov" class="page"><div class="card"><h2>馃彌锔� 啶膏ぐ啶曕ぞ啶班 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇</h2><div class="grid service">
-<div class="card"><h3>啶す啶氞ぞ啶� 啶忇さ啶� 啶︵じ啷嵿い啶距さ啷囙</h3><a href="https://uidai.gov.in/" target="_blank" rel="noopener">Aadhaar Services</a><a href="https://janapp.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Aadhaar</a><a href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Voter Services</a><a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">Passport</a></div>
-<div class="card"><h3>啶班ぞ啶溹じ啷嵿ぅ啶距え 啶膏啶掂ぞ啶忇</h3><a href="https://sso.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan SSO</a><a href="https://emitra.rajasthan.gov.in/" target="_blank" rel="noopener">e-Mitra</a><a href="https://apnakhata.rajasthan.gov.in/" target="_blank" rel="noopener">Apna Khata</a><a href="https://jansoochna.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Soochna</a></div>
-<div class="card"><h3>啶曕た啶膏ぞ啶� 啶忇さ啶� 啶多啶班ぎ啶苦</h3><a href="https://pmkisan.gov.in/" target="_blank" rel="noopener">PM Kisan</a><a href="https://eshram.gov.in/" target="_blank" rel="noopener">e-Shram</a><a href="https://maandhan.in/" target="_blank" rel="noopener">Maandhan</a><a href="https://pmfby.gov.in/" target="_blank" rel="noopener">Fasal Bima</a></div>
-<div class="card"><h3>啶啶溹え啶距啶�</h3><a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener">My Scheme</a><a href="https://nfsa.gov.in/" target="_blank" rel="noopener">Ration / NFSA</a><a href="https://nsap.nic.in/" target="_blank" rel="noopener">Social Assistance</a><a href="https://www.india.gov.in/" target="_blank" rel="noopener">National Portal</a></div>
-</div></div></section>
-<section id="forms" class="page"><div class="card"><h2>馃摑 Forms, Results & Education</h2><div class="grid service">
-<div class="card"><h3>啶ぐ啷嵿い啷€ 啶斷ぐ 啶ぐ啷€啶曕啶粪ぞ</h3><a href="https://rssb.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan Staff Selection Board</a><a href="https://rpsc.rajasthan.gov.in/" target="_blank" rel="noopener">RPSC</a><a href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC</a><a href="https://upsc.gov.in/" target="_blank" rel="noopener">UPSC</a></div>
-<div class="card"><h3>啶班た啶溹げ啷嵿 啶斷ぐ 啶多た啶曕啶粪ぞ</h3><a href="https://rajeduboard.rajasthan.gov.in/" target="_blank" rel="noopener">RBSE Result</a><a href="https://www.cbse.gov.in/" target="_blank" rel="noopener">CBSE</a><a href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarship</a><a href="https://hte.rajasthan.gov.in/" target="_blank" rel="noopener">Higher Education Rajasthan</a></div>
-<div class="card"><h3>啶呧え啷嵿く 啶啶班啶�</h3><a href="https://www.ncs.gov.in/" target="_blank" rel="noopener">National Career Service</a><a href="https://www.indiapost.gov.in/" target="_blank" rel="noopener">India Post</a><a href="https://www.incometax.gov.in/" target="_blank" rel="noopener">Income Tax</a><a href="https://www.gst.gov.in/" target="_blank" rel="noopener">GST Portal</a></div>
-</div></div></section>
-<section id="booking" class="page"><div class="card"><h2>馃帿 Online Booking Services</h2><div class="grid service"><div class="card"><h3>啶班啶侧さ啷�</h3><a href="https://www.irctc.co.in/" target="_blank" rel="noopener">IRCTC Train Booking</a></div><div class="card"><h3>啶じ</h3><a href="https://rsrtconline.rajasthan.gov.in/" target="_blank" rel="noopener">RSRTC Bus Booking</a></div><div class="card"><h3>啶灌さ啶距 啶ぞ啶む啶班ぞ</h3><a href="https://www.airindia.com/" target="_blank" rel="noopener">Air India</a></div><div class="card"><h3>啶ぐ啷嵿く啶熰え</h3><a href="https://www.rajasthantourism.gov.in/" target="_blank" rel="noopener">Rajasthan Tourism</a></div></div></div></section>
+<section id="services" class="page"><div class="card"><h2>🌐 Online Services</h2><div class="grid service">
+ <div class="card"><h3>राजस्थान सेवाएँ</h3><a href="https://sso.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan SSO</a><a href="https://emitra.rajasthan.gov.in/" target="_blank" rel="noopener">e-Mitra</a><a href="https://janapp.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Aadhaar</a><a href="https://apnakhata.rajasthan.gov.in/" target="_blank" rel="noopener">Apna Khata</a><a href="https://jansoochna.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Soochna</a></div>
+ <div class="card"><h3>पहचान सेवाएँ</h3><a href="https://uidai.gov.in/" target="_blank" rel="noopener">UIDAI Aadhaar</a><a href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Voter Services</a><a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">Passport</a><a href="https://eshram.gov.in/" target="_blank" rel="noopener">e-Shram</a></div>
+ <div class="card"><h3>किसान / योजनाएँ</h3><a href="https://pmkisan.gov.in/" target="_blank" rel="noopener">PM Kisan</a><a href="https://pmfby.gov.in/" target="_blank" rel="noopener">Fasal Bima</a><a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener">My Scheme</a><a href="https://nfsa.gov.in/" target="_blank" rel="noopener">Ration / NFSA</a></div>
+ <div class="card"><h3>बिल / रिचार्ज</h3><a href="https://www.bharatbillpay.com/" target="_blank" rel="noopener">Bharat BillPay</a><a href="https://www.jio.com/" target="_blank" rel="noopener">Jio</a><a href="https://www.airtel.in/" target="_blank" rel="noopener">Airtel</a><a href="https://www.myvi.in/" target="_blank" rel="noopener">Vi</a><a href="https://www.bsnl.co.in/" target="_blank" rel="noopener">BSNL</a></div>
+ <div class="card"><h3>गैस बुकिंग</h3><a href="https://cx.indianoil.in/" target="_blank" rel="noopener">Indane</a><a href="https://my.ebharatgas.com/" target="_blank" rel="noopener">Bharat Gas</a><a href="https://myhpgas.in/" target="_blank" rel="noopener">HP Gas</a></div>
+ <div class="card"><h3>फॉर्म / रिजल्ट</h3><a href="https://rssb.rajasthan.gov.in/" target="_blank" rel="noopener">RSSB</a><a href="https://rpsc.rajasthan.gov.in/" target="_blank" rel="noopener">RPSC</a><a href="https://rajeduboard.rajasthan.gov.in/" target="_blank" rel="noopener">RBSE</a><a href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC</a><a href="https://upsc.gov.in/" target="_blank" rel="noopener">UPSC</a></div>
+ <div class="card"><h3>बुकिंग</h3><a href="https://www.irctc.co.in/" target="_blank" rel="noopener">IRCTC Train</a><a href="https://rsrtconline.rajasthan.gov.in/" target="_blank" rel="noopener">RSRTC Bus</a><a href="https://www.india.gov.in/" target="_blank" rel="noopener">National Portal</a></div>
+ </div></div></section>
+
+<section id="reports" class="page"><div class="card"><h2>📈 Reports & Dashboard</h2><div class="row"><div><label>शुरुआत</label><input id="reportFrom" type="date" onchange="renderReports()"></div><div><label>अंतिम तारीख</label><input id="reportTo" type="date" onchange="renderReports()"></div></div><div class="grid"><div class="stat">बिल बिक्री<strong id="reportSales">₹0</strong></div><div class="stat">प्राप्त भुगतान<strong id="reportPaid">₹0</strong></div><div class="stat">बकाया<strong id="reportDue">₹0</strong></div><div class="stat">अन्य खर्च<strong id="reportExpense">₹0</strong></div><div class="stat">अनुमानित शुद्ध<strong id="reportNet">₹0</strong></div></div><button class="toolbtn" onclick="exportCSV()">CSV रिपोर्ट डाउनलोड</button><button class="toolbtn gray" onclick="window.print()">रिपोर्ट प्रिंट</button></div></section>
+
+<section id="settings" class="page"><div class="card"><h2>⚙️ Settings & Backup</h2>
+ <div class="row"><div><label>दुकान / सेंटर का नाम</label><input id="shopName" placeholder="Gramin Grahak Sewa"></div><div><label>मोबाइल नंबर</label><input id="shopMobile" placeholder="आपका सेंटर नंबर"></div><div><label>पता</label><input id="shopAddress" placeholder="गाँव / पता"></div></div><button class="toolbtn green" onclick="saveSettings()">सेटिंग सेव करें</button>
+ <hr><h3>पासवर्ड लॉक</h3><p class="small">पहली बार पासवर्ड सेट करें। यह साधारण ब्राउज़र लॉक है, पूर्ण सुरक्षा प्रणाली नहीं।</p><div class="row"><div><label>नया पासवर्ड</label><input id="newPassword" type="password" placeholder="कम से कम 4 अक्षर"></div><div><label>पासवर्ड दोबारा</label><input id="confirmPassword" type="password"></div></div><button class="toolbtn" onclick="setPassword()">पासवर्ड सेट / बदलें</button><button class="toolbtn gray" onclick="lockApp()">अभी लॉक करें</button>
+ <hr><h3>डेटा बैकअप / Restore</h3><button class="toolbtn green" onclick="backupData()">पूरा बैकअप डाउनलोड (JSON)</button><label>पुराना बैकअप Restore करें</label><input type="file" id="restoreFile" accept="application/json"><button class="toolbtn orange" onclick="restoreData()">बैकअप Restore करें</button><button class="toolbtn red" onclick="clearAllData()">सारा लोकल डेटा मिटाएँ</button>
+ <p class="small">सभी रिकॉर्ड इस डिवाइस के ब्राउज़र में सेव होते हैं। ब्राउज़र डेटा साफ करने, फोन बदलने या ऐप हटाने पर रिकॉर्ड मिट सकते हैं। नियमित बैकअप रखें।</p>
+</div></section>
 </div>
-<footer><h3>Gramin Grahak Sewa PRO 3.0</h3><p>啶∴た啶溹た啶熰げ 啶膏啶掂ぞ 鈥� 啶椸啶班ぞ啶啶� 啶掂た啶曕ぞ啶� 鈥� 啶溹え啶むぞ 啶曕 啶膏啶掂た啶оぞ</p><p class="small" style="color:white">啶す 啶膏啶掂ぞ 啶啶班啶熰げ 啶灌啷� 啶掂ぞ啶膏啶むさ啶苦 啶啶椸い啶距え 啶斷ぐ 啶啶曕た啶傕 啶膏啶啶оた啶� 啶嗋ぇ啶苦啶距ぐ啶苦 啶掂啶じ啶距啶� 啶ぐ 啶灌 啶啶班 啶灌啶椸啷�</p></footer>
+<footer><h3>Gramin Grahak Sewa PRO 4.0</h3><p>ग्रामीण डिजिटल सेवा • ग्राहक प्रबंधन • बिलिंग • फोटो • दस्तावेज़</p><p class="small" style="color:white">यह ऑफलाइन-फर्स्ट लोकल टूल है। सरकारी सेवाओं का आवेदन/भुगतान संबंधित आधिकारिक पोर्टल पर ही पूरा करें।</p></footer>
+
 <script>
-const images={};let jointImages=[];
+const DBKEY='ggs_pro40_data',PASSKEY='ggs_pro40_pass';
+const state={customers:[],bills:[],entries:[],stock:[],records:[],settings:{},password:''};
+const images={};let jointImages=[],lastReceiptId=null;
 const $=id=>document.getElementById(id);
+const today=()=>new Date().toISOString().slice(0,10);
+const money=n=>'₹'+(Number(n)||0).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function loadState(){try{const d=JSON.parse(localStorage.getItem(DBKEY)||'{}');Object.keys(state).forEach(k=>{if(d[k]!==undefined)state[k]=d[k]})}catch(e){console.warn(e)}}
+function persist(){localStorage.setItem(DBKEY,JSON.stringify(state));refreshAll()}
 function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active','printing'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
-function loadOne(input,key){const f=input.files&&input.files[0];if(!f)return;if(!f.type.startsWith('image/')){alert('啶曕啶く啶� 啶囙ぎ啷囙 啶ぞ啶囙げ 啶氞啶ㄠ啶傕イ');return}const url=URL.createObjectURL(f),img=new Image();img.onload=()=>{images[key]=img;URL.revokeObjectURL(url);({photo:drawPhotoSheet,idFront:drawID,idBack:drawID,doc:drawDoc})[key]?.()};img.onerror=()=>alert('啶囙ぎ啷囙 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');img.src=url}
-function mmValue(v,u){return u==='cm'?v*10:u==='in'?v*25.4:v}
-function paperCanvas(canvasId,paper='a4',orientation='portrait'){const c=$(canvasId);let w=794,h=1123;if(paper==='a5'){w=559;h=794}else if(paper==='letter'){w=816;h=1056}if(orientation==='landscape')[w,h]=[h,w];c.width=w;c.height=h;return c}
-function drawCropped(ctx,img,x,y,w,h,opt={}){if(!img)return;ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.translate(x+w/2,y+h/2);ctx.rotate((opt.rotate||0)*Math.PI/180);const iw=img.width,ih=img.height;let scale=Math.max(w/iw,h/ih)*(Number(opt.zoom||100)/100);let dw=iw*scale,dh=ih*scale;let ox=(Number(opt.x||0)/100)*Math.max(0,dw-w),oy=(Number(opt.y||0)/100)*Math.max(0,dh-h);ctx.filter=`brightness(${opt.bright||100}%) contrast(${opt.contrast||100}%)`;ctx.drawImage(img,-dw/2-ox,-dh/2-oy,dw,dh);ctx.restore();ctx.filter='none'}
-function photoOptions(){return{zoom:$('photoZoom').value,x:$('photoX').value,y:$('photoY').value,bright:$('photoBright').value,contrast:$('photoContrast').value}}
-function drawPhotoSheet(){const c=paperCanvas('photoCanvas',$('photoPaper').value);const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const img=images.photo;if(!img)return;const unit=$('photoUnit').value,w=mmValue(+$('photoW').value,unit)*3.78,h=mmValue(+$('photoH').value,unit)*3.78,gap=mmValue(+$('photoGap').value,unit)*3.78;if(!(w>0&&h>0)){alert('啶啶熰 啶曕 啶膏す啷€ 啶膏ぞ啶囙 啶ぐ啷囙啷�');return}const count=+$('photoCount').value,cols=Math.max(1,Math.floor((c.width-30)/(w+gap))),rows=Math.ceil(count/cols),tw=cols*w+(cols-1)*gap,th=rows*h+(rows-1)*gap;if(th>c.height-30){alert('啶囙い啶ㄠ 啶啶熰 啶囙じ 啶啶ぐ 啶ぐ 啶た啶� 啶ㄠす啷€啶� 啶灌啶傕啷€啷� 啶啶熰 啶膏啶栢啶ぞ 啶ぞ 啶膏ぞ啶囙 啶曕ぎ 啶曕ぐ啷囙啷�');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2;const ratio=$('photoRatio').value;for(let i=0;i<count;i++){let x=sx+(i%cols)*(w+gap),y=sy+Math.floor(i/cols)*(h+gap);let opt=photoOptions();if(ratio!=='free'){const target=+ratio,actual=w/h;if(actual>target){const nw=h*target;drawCropped(ctx,img,x+(w-nw)/2,y,nw,h,opt)}else{const nh=w/target;drawCropped(ctx,img,x,y+(h-nh)/2,w,nh,opt)}}else drawCropped(ctx,img,x,y,w,h,opt);if($('photoBorder').checked){ctx.strokeStyle=$('photoBorderColor').value;ctx.lineWidth=+$('photoBorderWidth').value;ctx.strokeRect(x,y,w,h)}}}
-function idOpt(side){return{zoom:$(`${side}Zoom`).value,x:$(`${side}X`).value,y:$(`${side}Y`).value,bright:$(`${side}Bright`).value,contrast:$(`${side}Contrast`).value,rotate:$(`${side}Rotate`).value}}
-function drawID(){const c=paperCanvas('idCanvas','a4');const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const front=images.idFront,back=images.idBack,unit=$('idUnit').value,w=mmValue(+$('idW').value,unit)*3.78,h=mmValue(+$('idH').value,unit)*3.78;if(!(w>0&&h>0))return;const layout=$('idLayout').value,margin=55,gap=45;let positions=[];if(layout==='side'){const total=2*w+gap;if(total>c.width-2*margin){alert('啶曕ぞ啶班啶� 啶氞啶∴ぜ啶距 A4 啶ぐ 啶膏ぞ啶�-啶膏ぞ啶� 啶た啶� 啶ㄠす啷€啶� 啶灌啶椸啷�');return}positions=[{x:(c.width-total)/2,y:(c.height-h)/2,img:front,side:'front'},{x:(c.width-total)/2+w+gap,y:(c.height-h)/2,img:back,side:'back'}]}else if(layout==='stack'){if(2*h+gap>c.height-2*margin){alert('啶曕ぞ啶班啶� 啶娻啶氞ぞ啶� A4 啶ぐ 啶娻お啶�-啶ㄠ啶氞 啶た啶� 啶ㄠす啷€啶� 啶灌啶椸啷�');return}positions=[{x:(c.width-w)/2,y:(c.height-(2*h+gap))/2,img:front,side:'front'},{x:(c.width-w)/2,y:(c.height-(2*h+gap))/2+h+gap,img:back,side:'back'}]}else{let side=layout;positions=[{x:(c.width-w)/2,y:(c.height-h)/2,img:side==='front'?front:back,side}]}
-positions.forEach(p=>{if(p.img)drawCropped(ctx,p.img,p.x,p.y,w,h,idOpt(p.side));else{ctx.fillStyle='#f3f5f8';ctx.fillRect(p.x,p.y,w,h);ctx.fillStyle='#555';ctx.font='bold 20px Arial';ctx.textAlign='center';ctx.fillText(p.side==='front'?'FRONT SIDE IMAGE':'BACK SIDE IMAGE',p.x+w/2,p.y+h/2)}if($('idBorder').checked){ctx.strokeStyle=$('idBorderColor').value;ctx.lineWidth=+$('idBorderWidth').value;ctx.strokeRect(p.x,p.y,w,h)}})}
-function loadJoint(input){jointImages=[];Array.from(input.files||[]).forEach(file=>{if(!file.type.startsWith('image/'))return;const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{jointImages.push(img);URL.revokeObjectURL(url);drawJoint()};img.src=url})}
-function drawJoint(){const c=paperCanvas('jointCanvas');const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);if(!jointImages.length)return;const cols=+$('jointCols').value,w=+$('jointW').value*3.78,h=+$('jointH').value*3.78,g=+$('jointGap').value*3.78,rows=Math.ceil(jointImages.length/cols),tw=cols*w+(cols-1)*g,th=rows*h+(rows-1)*g;if(tw>c.width-20||th>c.height-20){alert('啶啶熰 啶囙じ A4 啶多啶� 啶啶� 啶た啶� 啶ㄠす啷€啶� 啶灌 啶班す啷€ 啶灌啶傕イ');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2;jointImages.forEach((img,i)=>drawCropped(ctx,img,sx+(i%cols)*(w+g),sy+Math.floor(i/cols)*(h+g),w,h))}
-function drawDoc(){const c=paperCanvas('docCanvas',$('docPaper').value,$('docOrientation').value),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);const img=images.doc;if(!img)return;const margin=35;drawCropped(ctx,img,margin,margin,c.width-2*margin,c.height-2*margin,{zoom:$('docZoom').value,rotate:$('docRotate').value,bright:$('docBright').value,contrast:$('docContrast').value})}
-function canvasBlob(canvas,type){return new Promise(resolve=>canvas.toBlob(resolve,type,.95))}
-async function exportCanvas(id,name,format){const c=$(id);if(format==='pdf'){if(!window.jspdf?.jsPDF){alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ 啶囙啶熰ぐ啶ㄠ啶� 啶曕え啷囙啷嵿ざ啶� 啶溹ぞ啶佮啷囙啷�');return}const {jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:c.width>c.height?'landscape':'portrait',unit:'mm',format:[c.width/3.78,c.height/3.78]});pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,c.width/3.78,c.height/3.78);pdf.save(name+'.pdf');return}const mime=format==='jpeg'?'image/jpeg':format==='png'?'image/png':'image/webp';const blob=await canvasBlob(c,mime);if(!blob){alert('啶囙じ 啶啶班啶啶� 啶啶� 啶膏啶� 啶ㄠす啷€啶� 啶灌 啶ぞ啶ぞ啷�');return}downloadBlob(blob,name+'.'+(format==='jpeg'?'jpg':format))}
-function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
-function printCanvas(id,page){const c=$(id);const win=window.open('','_blank');if(!win){alert('Print 啶掂た啶傕ぁ啷� 啶栢啶侧え啷� 啶膏 啶班啶曕 啶椸啷� 啶曕啶く啶� Pop-up 啶呧え啷佮ぎ啶むた 啶︵啶傕イ');return}const data=c.toDataURL('image/png');win.document.write(`<!doctype html><html><head><title>Print</title><style>@page{size:A4;margin:0}html,body{margin:0;padding:0}img{display:block;width:100%;height:100%;object-fit:contain}</style></head><body><img src="${data}"><script>window.onload=()=>{window.focus();window.print()}<\/script></body></html>`);win.document.close()}
-function resetPhoto(){['photoZoom','photoBright','photoContrast'].forEach(id=>$(id).value=100);['photoX','photoY'].forEach(id=>$(id).value=0);$('photoRatio').value='free';$('photoBorder').checked=true;drawPhotoSheet()}
-function resetID(){['frontZoom','frontBright','frontContrast','backZoom','backBright','backContrast'].forEach(id=>$(id).value=100);['frontX','frontY','frontRotate','backX','backY','backRotate'].forEach(id=>$(id).value=0);$('idUnit').value='mm';$('idW').value=86;$('idH').value=54;$('idLayout').value='side';drawID()}
-async function imagesToPDF(){const files=Array.from($('pdfImages').files||[]);if(!files.length){alert('啶す啶侧 啶囙ぎ啷囙 啶氞啶ㄠ啶傕イ');return}if(!window.jspdf?.jsPDF){alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶夃お啶侧が啷嵿ぇ 啶ㄠす啷€啶� 啶灌啷�');return}const {jsPDF}=window.jspdf;let pdf;for(let i=0;i<files.length;i++){const data=await fileData(files[i]);const im=await imageFrom(data);const orient=im.width>im.height?'landscape':'portrait';if(!pdf)pdf=new jsPDF({orientation:orient,unit:'mm',format:'a4'});else pdf.addPage('a4',orient);const pw=orient==='landscape'?297:210,ph=orient==='landscape'?210:297,scale=Math.min(pw/im.width,ph/im.height),w=im.width*scale,h=im.height*scale;pdf.addImage(data,'JPEG',(pw-w)/2,(ph-h)/2,w,h)}pdf.save('Images_to_PDF.pdf')}
-function fileData(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
-function imageFrom(src){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src})}
-async function mergePDF(){const files=Array.from($('mergeFiles').files||[]);if(!files.length)return alert('PDF 啶ぞ啶囙げ啷囙 啶氞啶ㄠ啶傕イ');if(!window.PDFLib)return alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');try{const out=await PDFLib.PDFDocument.create();for(const f of files){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());const pages=await out.copyPages(src,src.getPageIndices());pages.forEach(p=>out.addPage(p))}downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Merged.pdf')}catch(e){alert('PDF 啶溹啶∴ぜ啶ㄠ 啶啶� 啶膏ぎ啶膏啶ぞ: '+e.message)}}
-async function splitPDF(){const f=$('splitFile').files[0],raw=$('splitPages').value;if(!f)return alert('PDF 啶氞啶ㄠ啶傕イ');if(!raw.trim())return alert('啶啶� 啶ㄠ啶ぐ 啶侧た啶栢啶傕イ');if(!window.PDFLib)return alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');try{const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),nums=raw.split(',').map(x=>parseInt(x.trim(),10)-1);if(nums.some(n=>!Number.isInteger(n)||n<0||n>=src.getPageCount()))return alert('啶啶� 啶ㄠ啶ぐ PDF 啶啶� 啶夃お啶侧が啷嵿ぇ 啶ㄠす啷€啶� 啶灌啷�');const out=await PDFLib.PDFDocument.create(),pages=await out.copyPages(src,nums);pages.forEach(p=>out.addPage(p));downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Selected_Pages.pdf')}catch(e){alert('PDF 啶呧げ啶� 啶曕ぐ啶ㄠ 啶啶� 啶膏ぎ啶膏啶ぞ: '+e.message)}}
-async function printPDF(){const f=$('printFile').files[0];if(!f)return alert('PDF 啶氞啶ㄠ啶傕イ');const url=URL.createObjectURL(f),w=window.open(url,'_blank');if(!w)alert('Pop-up 啶呧え啷佮ぎ啶むた 啶︵啶傕イ')}
-drawPhotoSheet();drawID();drawJoint();drawDoc();
+function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function customerName(id){return state.customers.find(c=>c.id===id)?.name||'Walk-in ग्राहक'}
+function saveCustomer(){const name=$('customerName').value.trim();if(!name)return alert('ग्राहक का नाम भरें।');const id=$('customerId').value;const obj={id:id||uid(),name,mobile:$('customerMobile').value.trim(),address:$('customerAddress').value.trim(),note:$('customerNote').value.trim(),created:id?(state.customers.find(c=>c.id===id)?.created||today()):today()};if(id)state.customers=state.customers.map(c=>c.id===id?obj:c);else state.customers.unshift(obj);clearCustomerForm();persist()}
+function clearCustomerForm(){['customerId','customerName','customerMobile','customerAddress','customerNote'].forEach(x=>$(x).value='')}
+function editCustomer(id){const c=state.customers.find(x=>x.id===id);if(!c)return;$('customerId').value=c.id;$('customerName').value=c.name;$('customerMobile').value=c.mobile;$('customerAddress').value=c.address;$('customerNote').value=c.note;showPage('customers')}
+function deleteItem(key,id){if(!confirm('क्या आप यह रिकॉर्ड हटाना चाहते हैं?'))return;state[key]=state[key].filter(x=>x.id!==id);persist()}
+function renderCustomers(){const q=($('customerSearch')?.value||'').toLowerCase();const arr=state.customers.filter(c=>(c.name+' '+c.mobile+' '+c.address).toLowerCase().includes(q));$('customerTable').innerHTML=arr.length?`<table><thead><tr><th>नाम</th><th>मोबाइल</th><th>पता</th><th>कार्य</th></tr></thead><tbody>${arr.map(c=>`<tr><td>${safe(c.name)}</td><td>${safe(c.mobile)}</td><td>${safe(c.address)}</td><td class="actions"><button class="toolbtn" onclick="editCustomer('${c.id}')">Edit</button><button class="toolbtn red" onclick="deleteItem('customers','${c.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">अभी कोई ग्राहक नहीं है।';}
+function fillCustomerSelects(){['billCustomer','recordCustomer'].forEach(id=>{const el=$(id),v=el.value;el.innerHTML='<option value="">Walk-in / चयन करें</option>'+state.customers.map(c=>`<option value="${c.id}">${safe(c.name)} ${c.mobile?'('+safe(c.mobile)+')':''}</option>`).join('');el.value=v})}
+function calcBill(){const t=Math.max(0,Number($('billQty').value)||0)*Math.max(0,Number($('billRate').value)||0);$('billTotal').value=t.toFixed(2)}
+function saveBill(){const service=$('billService').value.trim(),total=Number($('billTotal').value)||0,paid=Number($('billPaid').value)||0;if(!service)return alert('सेवा का नाम भरें।');if(total<=0)return alert('बिल की रकम सही भरें।');if(paid<0||paid>total)return alert('जमा रकम कुल बिल से अधिक नहीं हो सकती।');const b={id:uid(),receipt:'GGS-'+Date.now().toString().slice(-7),customerId:$('billCustomer').value,service,qty:Number($('billQty').value)||1,rate:Number($('billRate').value)||0,total,paid,due:total-paid,method:$('billMethod').value,date:$('billDate').value||today(),created:new Date().toISOString()};state.bills.unshift(b);lastReceiptId=b.id;if(b.paid>0)state.entries.unshift({id:uid(),type:'income',title:'बिल भुगतान '+b.receipt+' — '+service,amount:b.paid,date:b.date,linkedBill:b.id});$('billService').value='';$('billQty').value=1;$('billRate').value=0;$('billPaid').value=0;calcBill();persist();printReceipt(b.id)}
+function renderBills(){const q=($('billSearch')?.value||'').toLowerCase();const arr=state.bills.filter(b=>(b.receipt+' '+customerName(b.customerId)+' '+b.service).toLowerCase().includes(q));$('billTable').innerHTML=arr.length?`<table><thead><tr><th>रसीद</th><th>तारीख</th><th>ग्राहक / सेवा</th><th>कुल</th><th>जमा</th><th>बकाया</th><th>कार्य</th></tr></thead><tbody>${arr.map(b=>`<tr><td>${safe(b.receipt)}</td><td>${safe(b.date)}</td><td>${safe(customerName(b.customerId))}<br>${safe(b.service)}</td><td>${money(b.total)}</td><td>${money(b.paid)}</td><td>${money(b.due)}</td><td><button class="toolbtn" onclick="printReceipt('${b.id}')">Print</button><button class="toolbtn red" onclick="deleteBill('${b.id}')">Delete</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">कोई बिल नहीं मिला।';}
+function deleteBill(id){if(!confirm('बिल और उससे जुड़ी भुगतान एंट्री हटाएँ?'))return;state.bills=state.bills.filter(b=>b.id!==id);state.entries=state.entries.filter(e=>e.linkedBill!==id);persist()}
+function receiptHTML(b){const shop=state.settings;return `<div style="font-family:Arial,sans-serif;max-width:700px;margin:auto;color:#172033"><h2 style="text-align:center;margin-bottom:4px">${safe(shop.shopName||'Gramin Grahak Sewa')}</h2><p style="text-align:center;margin:3px">${safe(shop.shopAddress||'')} ${shop.shopMobile?' | '+safe(shop.shopMobile):''}</p><hr><h3 style="text-align:center">भुगतान रसीद</h3><p><b>रसीद नंबर:</b> ${safe(b.receipt)} <span style="float:right"><b>तारीख:</b> ${safe(b.date)}</span></p><p><b>ग्राहक:</b> ${safe(customerName(b.customerId))}</p><table style="width:100%;border-collapse:collapse" border="1" cellpadding="8"><tr><th>सेवा</th><th>मात्रा</th><th>रेट</th><th>कुल</th></tr><tr><td>${safe(b.service)}</td><td>${b.qty}</td><td>${money(b.rate)}</td><td>${money(b.total)}</td></tr></table><p><b>कुल:</b> ${money(b.total)}<br><b>जमा:</b> ${money(b.paid)}<br><b>बकाया:</b> ${money(b.due)}<br><b>भुगतान तरीका:</b> ${safe(b.method)}</p><p style="text-align:right;margin-top:55px">हस्ताक्षर __________________</p><p style="text-align:center;font-size:12px">धन्यवाद! पुनः पधारें।</p></div>`}
+function printReceipt(id){const b=state.bills.find(x=>x.id===id);if(!b)return;const w=window.open('','_blank');if(!w)return alert('पॉप-अप की अनुमति दें।');w.document.write('<html><head><title>Receipt</title><meta charset="utf-8"><style>body{padding:20px}th,td{border:1px solid #333}</style></head><body>'+receiptHTML(b)+'<script>window.onload=()=>window.print()<\/script></body></html>');w.document.close()}
+function printLatestReceipt(){if(!lastReceiptId&&!state.bills.length)return alert('अभी कोई बिल नहीं है।');printReceipt(lastReceiptId||state.bills[0].id)}
+function saveEntry(){const title=$('entryTitle').value.trim(),amount=Number($('entryAmount').value);if(!title||amount<=0)return alert('विवरण और सही रकम भरें।');state.entries.unshift({id:uid(),type:$('entryType').value,title,amount,date:$('entryDate').value||today()});$('entryTitle').value='';$('entryAmount').value='';persist()}
+function renderEntries(){const inc=state.entries.filter(e=>e.type==='income').reduce((s,e)=>s+e.amount,0),exp=state.entries.filter(e=>e.type==='expense').reduce((s,e)=>s+e.amount,0);$('allIncome').textContent=money(inc);$('allExpense').textContent=money(exp);$('netIncome').textContent=money(inc-exp);$('entryTable').innerHTML=state.entries.length?`<table><tr><th>तारीख</th><th>प्रकार</th><th>विवरण</th><th>रकम</th><th>कार्य</th></tr>${state.entries.map(e=>`<tr><td>${safe(e.date)}</td><td>${e.type==='income'?'आय':'खर्च'}</td><td>${safe(e.title)}</td><td>${money(e.amount)}</td><td><button class="toolbtn red" onclick="deleteItem('entries','${e.id}')">Delete</button></td></tr>`).join('')}</table>`:'<div class="empty">कोई एंट्री नहीं।'}
+function saveStock(){const name=$('stockName').value.trim();if(!name)return alert('सामान का नाम भरें।');const old=state.stock.find(s=>s.name.toLowerCase()===name.toLowerCase());const obj={id:old?.id||uid(),name,qty:Number($('stockQty').value)||0,unit:$('stockUnit').value.trim(),min:Number($('stockMin').value)||0,cost:Number($('stockCost').value)||0};if(old)state.stock=state.stock.map(s=>s.id===old.id?obj:s);else state.stock.unshift(obj);$('stockName').value='';persist()}
+function renderStock(){$('stockTable').innerHTML=state.stock.length?`<table><tr><th>सामान</th><th>मात्रा</th><th>कम स्टॉक सीमा</th><th>लागत</th><th>स्थिति</th><th>कार्य</th></tr>${state.stock.map(s=>`<tr><td>${safe(s.name)}</td><td>${s.qty} ${safe(s.unit)}</td><td>${s.min}</td><td>${money(s.cost)}</td><td>${s.qty<=s.min?'<b style="color:#c62828">कम स्टॉक</b>':'ठीक'}</td><td><button class="toolbtn red" onclick="deleteItem('stock','${s.id}')">Delete</button></td></tr>`).join('')}</table>`:'<div class="empty">स्टॉक रिकॉर्ड खाली है।'}
+function saveRecord(){const customerId=$('recordCustomer').value,type=$('recordType').value;if(!customerId)return alert('ग्राहक चुनें।');state.records.unshift({id:uid(),customerId,type,ref:$('recordRef').value.trim(),note:$('recordNote').value.trim(),date:today()});$('recordRef').value='';$('recordNote').value='';persist()}
+function renderRecords(){$('recordTable').innerHTML=state.records.length?`<table><tr><th>तारीख</th><th>ग्राहक</th><th>दस्तावेज़</th><th>संदर्भ</th><th>नोट</th><th>कार्य</th></tr>${state.records.map(r=>`<tr><td>${safe(r.date)}</td><td>${safe(customerName(r.customerId))}</td><td>${safe(r.type)}</td><td>${safe(r.ref)}</td><td>${safe(r.note)}</td><td><button class="toolbtn red" onclick="deleteItem('records','${r.id}')">Delete</button></td></tr>`).join('')}</table>`:'<div class="empty">कोई दस्तावेज़ रिकॉर्ड नहीं।'}
+function refreshDashboard(){const t=today(),billsToday=state.bills.filter(b=>b.date===t),expenses=state.entries.filter(e=>e.type==='expense'&&e.date===t).reduce((s,e)=>s+e.amount,0);$('todayCustomers').textContent=state.customers.filter(c=>c.created===t).length;$('todaySales').textContent=money(billsToday.reduce((s,b)=>s+b.total,0));$('todayExpenses').textContent=money(expenses);$('totalDue').textContent=money(state.bills.reduce((s,b)=>s+b.due,0));$('recentBills').innerHTML=state.bills.length?`<table><tr><th>रसीद</th><th>ग्राहक</th><th>कुल</th><th>बकाया</th></tr>${state.bills.slice(0,5).map(b=>`<tr><td>${safe(b.receipt)}</td><td>${safe(customerName(b.customerId))}</td><td>${money(b.total)}</td><td>${money(b.due)}</td></tr>`).join('')}</table>`:'<div class="empty">अभी बिल नहीं बने।'}
+function renderReports(){const from=$('reportFrom').value||'0000-01-01',to=$('reportTo').value||'9999-12-31',b=state.bills.filter(x=>x.date>=from&&x.date<=to),e=state.entries.filter(x=>x.type==='expense'&&x.date>=from&&x.date<=to);const sales=b.reduce((s,x)=>s+x.total,0),paid=b.reduce((s,x)=>s+x.paid,0),due=b.reduce((s,x)=>s+x.due,0),expense=e.reduce((s,x)=>s+x.amount,0);$('reportSales').textContent=money(sales);$('reportPaid').textContent=money(paid);$('reportDue').textContent=money(due);$('reportExpense').textContent=money(expense);$('reportNet').textContent=money(paid-expense)}
+function refreshAll(){renderCustomers();fillCustomerSelects();renderBills();renderEntries();renderStock();renderRecords();refreshDashboard();renderReports()}
+function saveSettings(){state.settings={shopName:$('shopName').value.trim(),shopMobile:$('shopMobile').value.trim(),shopAddress:$('shopAddress').value.trim()};persist();alert('सेटिंग सेव हो गई।')}
+function backupData(){const blob=new Blob([JSON.stringify({...state,backupAt:new Date().toISOString()},null,2)],{type:'application/json'});downloadBlob(blob,'Gramin_Grahak_Sewa_Backup_'+today()+'.json')}
+function restoreData(){const f=$('restoreFile').files[0];if(!f)return alert('पहले बैकअप JSON फाइल चुनें।');if(!confirm('Restore करने पर वर्तमान डेटा बदल जाएगा। जारी रखें?'))return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);['customers','bills','entries','stock','records','settings'].forEach(k=>{if(d[k]!==undefined)state[k]=d[k]});persist();alert('बैकअप Restore हो गया।')}catch(e){alert('यह बैकअप फाइल सही नहीं है।')}};r.readAsText(f)}
+function clearAllData(){if(!confirm('सभी ग्राहक, बिल, खर्च, स्टॉक और रिकॉर्ड हमेशा के लिए मिट जाएँगे। पहले बैकअप लें। क्या जारी रखें?'))return;localStorage.removeItem(DBKEY);state.customers=[];state.bills=[];state.entries=[];state.stock=[];state.records=[];state.settings={};persist()}
+function exportCSV(){const rows=[['तारीख','रसीद','ग्राहक','सेवा','कुल','जमा','बकाया'],...state.bills.map(b=>[b.date,b.receipt,customerName(b.customerId),b.service,b.total,b.paid,b.due])];const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');downloadBlob(new Blob([csv],{type:'text/csv;charset=utf-8'}),'GGS_Bill_Report.csv')}
+function setPassword(){const a=$('newPassword').value,b=$('confirmPassword').value;if(a.length<4)return alert('पासवर्ड कम से कम 4 अक्षर का रखें।');if(a!==b)return alert('दोनों पासवर्ड एक जैसे नहीं हैं।');localStorage.setItem(PASSKEY,a);$('newPassword').value='';$('confirmPassword').value='';alert('पासवर्ड सेव हो गया।')}
+function lockApp(){if(!localStorage.getItem(PASSKEY))return alert('पहले सेटिंग में पासवर्ड सेट करें।');$('lockScreen').classList.remove('hidden');$('unlockPassword').value='';$('unlockPassword').focus()}
+function unlockApp(){if($('unlockPassword').value===localStorage.getItem(PASSKEY))$('lockScreen').classList.add('hidden');else alert('पासवर्ड गलत है।')}
+function loadImage(input,key){const f=input.files?.[0];if(!f)return;if(!f.type.startsWith('image/'))return alert('कृपया इमेज फाइल चुनें।');const url=URL.createObjectURL(f),img=new Image();img.onload=()=>{images[key]=img;URL.revokeObjectURL(url);({photo:drawPhoto,front:drawID,back:drawID,doc:drawDoc})[key]?.()};img.onerror=()=>alert('इमेज लोड नहीं हुई।');img.src=url}
+function mm(v,u){return u==='cm'?v*10:u==='in'?v*25.4:v}
+function setupCanvas(id,paper='a4',orientation='portrait'){const c=$(id);let w=794,h=1123;if(paper==='a5'){w=559;h=794}else if(paper==='letter'){w=816;h=1056}if(orientation==='landscape')[w,h]=[h,w];c.width=w;c.height=h;return c}
+function crop(ctx,img,x,y,w,h,o={}){if(!img)return;ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.translate(x+w/2,y+h/2);ctx.rotate((Number(o.rotate)||0)*Math.PI/180);const scale=Math.max(w/img.width,h/img.height)*(Number(o.zoom||100)/100),dw=img.width*scale,dh=img.height*scale,ox=(Number(o.x)||0)/100*Math.max(0,dw-w),oy=(Number(o.y)||0)/100*Math.max(0,dh-h);ctx.filter=`brightness(${o.bright||100}%) contrast(${o.contrast||100}%)`;ctx.drawImage(img,-dw/2-ox,-dh/2-oy,dw,dh);ctx.restore();ctx.filter='none'}
+function drawPhoto(){const c=setupCanvas('photoCanvas',$('photoPaper').value),ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const im=images.photo;if(!im)return;const u=$('photoUnit').value,w=mm(+$('photoW').value,u)*3.78,h=mm(+$('photoH').value,u)*3.78,g=mm(+$('photoGap').value,u)*3.78,n=+$('photoCount').value;if(w<=0||h<=0)return;const cols=Math.max(1,Math.floor((c.width-30)/(w+g))),rows=Math.ceil(n/cols),tw=cols*w+(cols-1)*g,th=rows*h+(rows-1)*g;if(th>c.height-25){alert('इतनी फोटो इस पेपर पर फिट नहीं होंगी। संख्या या आकार कम करें।');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2,ratio=$('photoRatio').value,o={zoom:$('photoZoom').value,x:$('photoX').value,y:$('photoY').value,bright:$('photoBright').value,contrast:$('photoContrast').value};for(let i=0;i<n;i++){const x=sx+(i%cols)*(w+g),y=sy+Math.floor(i/cols)*(h+g);if(ratio==='free')crop(ctx,im,x,y,w,h,o);else{const r=Number(ratio),ar=w/h;if(ar>r){const nw=h*r;crop(ctx,im,x+(w-nw)/2,y,nw,h,o)}else{const nh=w/r;crop(ctx,im,x,y+(h-nh)/2,w,nh,o)}}if($('photoBorder').checked){ctx.strokeStyle=$('photoBorderColor').value;ctx.lineWidth=+$('photoBorderWidth').value;ctx.strokeRect(x,y,w,h)}}}
+function sideOpt(s){return{zoom:$(`${s}Zoom`).value,x:$(`${s}X`).value,y:$(`${s}Y`).value,bright:$(`${s}Bright`).value,contrast:$(`${s}Contrast`).value,rotate:$(`${s}Rotate`).value}}
+function drawID(){const c=setupCanvas('idCanvas'),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);const w=mm(+$('idW').value,$('idUnit').value)*3.78,h=mm(+$('idH').value,$('idUnit').value)*3.78;if(w<=0||h<=0)return;const layout=$('idLayout').value,gap=45,margin=50;let p=[];if(layout==='side'){if(2*w+gap>c.width-2*margin)return alert('कार्ड चौड़ाई A4 में फिट नहीं हो रही।');p=[{x:(c.width-2*w-gap)/2,y:(c.height-h)/2,img:images.front,s:'front'},{x:(c.width-2*w-gap)/2+w+gap,y:(c.height-h)/2,img:images.back,s:'back'}]}else if(layout==='stack'){if(2*h+gap>c.height-2*margin)return alert('कार्ड ऊँचाई A4 में फिट नहीं हो रही।');p=[{x:(c.width-w)/2,y:(c.height-2*h-gap)/2,img:images.front,s:'front'},{x:(c.width-w)/2,y:(c.height-2*h-gap)/2+h+gap,img:images.back,s:'back'}]}else{const s=layout;p=[{x:(c.width-w)/2,y:(c.height-h)/2,img:images[s],s}]}p.forEach(a=>{if(a.img)crop(ctx,a.img,a.x,a.y,w,h,sideOpt(a.s));else{ctx.fillStyle='#f2f4f7';ctx.fillRect(a.x,a.y,w,h);ctx.fillStyle='#555';ctx.font='bold 18px Arial';ctx.textAlign='center';ctx.fillText(a.s.toUpperCase()+' SIDE IMAGE',a.x+w/2,a.y+h/2)}if($('idBorder').checked){ctx.strokeStyle=$('idBorderColor').value;ctx.lineWidth=+$('idBorderWidth').value;ctx.strokeRect(a.x,a.y,w,h)}})}
+function loadJoint(input){jointImages=[];Array.from(input.files||[]).forEach(f=>{if(!f.type.startsWith('image/'))return;const url=URL.createObjectURL(f),im=new Image();im.onload=()=>{jointImages.push(im);URL.revokeObjectURL(url);drawJoint()};im.src=url})}
+function drawJoint(){const c=setupCanvas('jointCanvas'),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);if(!jointImages.length)return;const cols=+$('jointCols').value,w=+$('jointW').value*3.78,h=+$('jointH').value*3.78,g=+$('jointGap').value*3.78,rows=Math.ceil(jointImages.length/cols),tw=cols*w+(cols-1)*g,th=rows*h+(rows-1)*g;if(tw>c.width-20||th>c.height-20)return alert('फोटो A4 में फिट नहीं हो रही।');const sx=(c.width-tw)/2,sy=(c.height-th)/2;jointImages.forEach((im,i)=>crop(ctx,im,sx+(i%cols)*(w+g),sy+Math.floor(i/cols)*(h+g),w,h))}
+function drawDoc(){const c=setupCanvas('docCanvas',$('docPaper').value,$('docOrientation').value),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);if(images.doc)crop(ctx,images.doc,35,35,c.width-70,c.height-70,{zoom:$('docZoom').value,rotate:$('docRotate').value,bright:$('docBright').value,contrast:$('docContrast').value})}
+function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500)}
+async function exportCanvas(id,name,format){const c=$(id);if(format==='pdf'){const {jsPDF}=window.jspdf||{};if(!jsPDF)return alert('PDF library लोड नहीं हुई। इंटरनेट कनेक्शन जाँचें।');const pdf=new jsPDF({orientation:c.width>c.height?'landscape':'portrait',unit:'mm',format:[c.width/3.78,c.height/3.78]});pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,c.width/3.78,c.height/3.78);pdf.save(name+'.pdf');return}const mime=format==='jpeg'?'image/jpeg':'image/png';c.toBlob(b=>{if(b)downloadBlob(b,name+(format==='jpeg'?'.jpg':'.png'));else alert('फाइल तैयार नहीं हो सकी।')},mime,.95)}
+function printCanvas(id){const c=$(id),w=window.open('','_blank');if(!w)return alert('ब्राउज़र में Pop-up अनुमति दें।');const data=c.toDataURL('image/png');w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Print</title><style>@page{size:A4;margin:0}html,body{margin:0;padding:0}img{display:block;width:100%;height:100%;object-fit:contain}</style></head><body><img src="'+data+'"><script>window.onload=()=>{window.focus();window.print()}<\/script></body></html>');w.document.close()}
+function fileData(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)})}
+async function imagesToPDF(){const files=[...$('pdfImages').files];if(!files.length)return alert('इमेज चुनें।');const {jsPDF}=window.jspdf||{};if(!jsPDF)return alert('PDF library लोड नहीं हुई।');let pdf;for(let i=0;i<files.length;i++){const data=await fileData(files[i]),im=new Image();await new Promise((res,rej)=>{im.onload=res;im.onerror=rej;im.src=data});const ori=im.width>im.height?'landscape':'portrait';if(!pdf)pdf=new jsPDF({orientation:ori,unit:'mm',format:'a4'});else pdf.addPage('a4',ori);const pw=ori==='landscape'?297:210,ph=ori==='landscape'?210:297,s=Math.min(pw/im.width,ph/im.height),w=im.width*s,h=im.height*s;pdf.addImage(data,'JPEG',(pw-w)/2,(ph-h)/2,w,h)}pdf.save('Images_to_PDF.pdf')}
+async function mergePDF(){const files=[...$('mergeFiles').files];if(!files.length)return alert('PDF फाइलें चुनें।');if(!window.PDFLib)return alert('PDF library लोड नहीं हुई। इंटरनेट जाँचें।');try{const out=await PDFLib.PDFDocument.create();for(const f of files){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());(await out.copyPages(src,src.getPageIndices())).forEach(p=>out.addPage(p))}downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Merged.pdf')}catch(e){alert('PDF जोड़ने में समस्या: '+e.message)}}
+async function splitPDF(){const f=$('splitFile').files[0],raw=$('splitPages').value;if(!f||!raw.trim())return alert('PDF और पेज नंबर चुनें।');if(!window.PDFLib)return alert('PDF library लोड नहीं हुई।');try{const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),nums=raw.split(',').map(x=>parseInt(x.trim(),10)-1);if(nums.some(n=>!Number.isInteger(n)||n<0||n>=src.getPageCount()))return alert('पेज नंबर PDF में मौजूद नहीं है।');const out=await PDFLib.PDFDocument.create();(await out.copyPages(src,nums)).forEach(p=>out.addPage(p));downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Selected_Pages.pdf')}catch(e){alert('PDF Split में समस्या: '+e.message)}}
+function printPDF(){const f=$('printFile').files[0];if(!f)return alert('PDF चुनें।');const u=URL.createObjectURL(f),w=window.open(u,'_blank');if(!w)alert('Pop-up अनुमति दें।')}
+loadState();
+$('billDate').value=today();$('entryDate').value=today();$('reportFrom').value=today().slice(0,8)+'01';$('reportTo').value=today();
+$('billQty').addEventListener('input',calcBill);$('billRate').addEventListener('input',calcBill);
+$('shopName').value=state.settings.shopName||'';$('shopMobile').value=state.settings.shopMobile||'';$('shopAddress').value=state.settings.shopAddress||'';
+refreshAll();
+if(localStorage.getItem(PASSKEY))$('lockScreen').classList.remove('hidden');
+drawPhoto();drawID();drawJoint();drawDoc();
 </script>
-</body></html>
+</body>
+</html>

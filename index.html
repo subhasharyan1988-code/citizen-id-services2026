@@ -4,594 +4,535 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gramin Grahak Sewa Ultimate PRO</title>
+<title>Gramin Grahak Sewa Ultimate PRO 2.0</title>
 <style>
-:root{--blue:#124b83;--blue2:#0879c5;--green:#12834b;--red:#d33;--bg:#edf2f8;--card:#fff;--text:#172b45;--line:#d8e1eb}
-body.dark{--bg:#111827;--card:#1f2937;--text:#f3f4f6;--line:#374151}
+:root{--blue:#123d78;--blue2:#1769aa;--bg:#eef2f8;--white:#fff;--green:#138a52;--red:#d93636;--text:#202b3c}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{background:linear-gradient(110deg,#087b45,#0873b9);color:white;padding:17px;text-align:center}
-header h1{margin:0;font-size:25px}
-nav{background:#102d48;padding:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:5px;position:sticky;top:0;z-index:20}
-nav button{background:transparent;color:white}
-nav button.active,nav button:hover{background:#ffffff30}
-main{max-width:1500px;margin:auto;padding:12px}
+body{margin:0;background:var(--bg);font-family:Arial,"Noto Sans Devanagari",sans-serif;color:var(--text)}
+header{background:linear-gradient(120deg,#102b50,#1769aa);color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header h1{margin:0;font-size:22px}
+header small{opacity:.85}
+.topinfo{font-size:12px}
+.layout{display:flex;min-height:calc(100vh - 75px)}
+nav{width:220px;background:#102b50;padding:12px;flex-shrink:0}
+nav button{width:100%;padding:13px 12px;margin:3px 0;border:0;border-radius:8px;background:transparent;color:white;text-align:left;font-size:14px;cursor:pointer}
+nav button:hover,nav button.active{background:#2476bb}
+main{padding:18px;width:calc(100% - 220px);min-width:0}
 .page{display:none}.page.active{display:block}
-.card,.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
-h2,h3{color:var(--blue2);margin-top:0}
-body.dark h2,body.dark h3{color:#7cc5ff}
-.grid{display:grid;grid-template-columns:260px minmax(0,1fr) 240px;gap:12px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.stat strong{display:block;font-size:23px;color:var(--blue2);margin-top:8px}
-.stat span{font-size:13px;opacity:.7}
-label{display:block;font-size:13px;font-weight:bold;margin:8px 0 4px}
-input,select,textarea{width:100%;padding:9px;border:1px solid #aebdcd;border-radius:6px;background:var(--card);color:var(--text);font:inherit}
-button{border:0;border-radius:6px;padding:9px 11px;background:var(--blue2);color:white;cursor:pointer;margin:2px}
-button.green{background:var(--green)}button.red{background:var(--red)}button.gray{background:#64748b}
-.tools{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
-.canvasbox{background:#dce4ed;padding:10px;border-radius:8px;overflow:auto;text-align:center}
-canvas{background:white;max-width:100%;height:auto;touch-action:none}
-.small{font-size:12px;opacity:.7}
-table{width:100%;border-collapse:collapse;min-width:550px}
-th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}
-th{background:#e6f1fb;color:#174d79}
+h2{margin:0 0 15px;color:var(--blue);font-size:22px}
+h3{margin:12px 0;color:var(--blue)}
+.card{background:white;padding:16px;border-radius:12px;box-shadow:0 2px 9px #142b4810;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.stat{padding:18px;border-radius:12px;background:white;box-shadow:0 2px 8px #0001}
+.stat b{display:block;font-size:25px;color:var(--blue);margin-top:8px}
+label{display:block;font-size:13px;font-weight:bold;margin:9px 0 5px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #ccd5e2;border-radius:7px;font-size:14px;background:white}
+textarea{min-height:70px}
+button{cursor:pointer}
+.btn{border:0;border-radius:7px;background:var(--blue2);color:white;padding:10px 14px;margin:4px 3px 4px 0;font-size:13px}
+.btn:hover{filter:brightness(.92)}
+.btn.green{background:var(--green)}.btn.red{background:var(--red)}.btn.gray{background:#64748b}.btn.orange{background:#d97706}
+.toolbar{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.editor-layout{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:14px}
+.canvas-wrap{background:#dce4ee;border-radius:10px;padding:15px;overflow:auto;text-align:center;min-height:350px}
+canvas{background:white;max-width:100%;height:auto;box-shadow:0 2px 10px #0002;touch-action:none}
+.canvas-small{width:100%;max-width:720px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;background:white;font-size:13px}
+th,td{padding:10px;border-bottom:1px solid #e5eaf1;text-align:left}
+th{background:#edf3fa;color:#183c68}
 .tablewrap{overflow:auto}
-.servicegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.service{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:12px}
-.service a{display:block;background:#e6f1fb;color:#07558b;padding:9px;margin-top:7px;border-radius:5px;text-decoration:none}
-.service a:hover{background:#cde6fa}
-.layeritem{display:flex;gap:5px;margin:5px 0}
-.layeritem button{flex:1;text-align:left}
-#receipt{background:white;color:#111;padding:25px;max-width:700px;margin:auto}
-footer{text-align:center;background:#102d48;color:white;padding:15px;margin-top:20px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}nav{position:relative}header h1{font-size:20px}}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#172b45;color:white;padding:12px 18px;border-radius:8px;display:none;z-index:99}
+.hint{font-size:12px;color:#64748b;line-height:1.5}
+footer{text-align:center;color:#64748b;padding:20px;font-size:12px}
+@media(max-width:800px){.layout{display:block}nav{width:100%;display:grid;grid-template-columns:repeat(2,1fr)}nav button{font-size:12px;padding:10px}main{width:100%;padding:10px}.editor-layout{grid-template-columns:1fr}header h1{font-size:18px}}
 @media print{
- @page{size:A4;margin:0}
- body.printing *{visibility:hidden!important}
- body.printing #printArea,body.printing #printArea *{visibility:visible!important}
- body.printing #printArea{position:absolute;left:0;top:0;width:210mm;min-height:297mm;padding:8mm;display:flex!important;flex-wrap:wrap;align-content:flex-start;gap:3mm;background:white}
- body.printreceipt *{visibility:hidden!important}
- body.printreceipt #receipt,body.printreceipt #receipt *{visibility:visible!important}
- body.printreceipt #receipt{position:absolute;top:10mm;left:10mm;width:190mm}
+ body{background:white}
+ body *{visibility:hidden!important}
+ #printArea,#printArea *{visibility:visible!important}
+ #printArea{position:absolute;left:0;top:0;width:100%;padding:0;margin:0}
+ .print-sheet{width:100%;display:flex;flex-wrap:wrap;align-content:flex-start;gap:var(--print-gap,4mm)}
+ .print-item{break-inside:avoid;overflow:hidden}
+ .print-item canvas{display:block;width:100%;height:100%;box-shadow:none}
+ @page{size:A4;margin:8mm}
 }
 </style>
 </head>
 <body>
 <header>
-<h1>🇮🇳 GRAMIN GRAHAK SEWA</h1>
-<p>Complete Professional Digital Service Centre</p>
-<small>ID Editor • Photo Studio • Government Services • Customer Management</small>
+ <div><h1>🇮🇳 Gramin Grahak Sewa</h1><small>Ultimate PRO • Version 2.0</small></div>
+ <div class="topinfo">Digital Service Centre<br>Offline Browser Application</div>
 </header>
-<nav>
-<button class="active" onclick="showPage('home',this)">🏠 Dashboard</button>
-<button onclick="showPage('id',this)">🪪 ID Editor</button>
-<button onclick="showPage('photo',this)">📸 Photo Studio</button>
-<button onclick="showPage('customers',this)">👥 Customers</button>
-<button onclick="showPage('billing',this)">🧾 Billing</button>
-<button onclick="showPage('expenses',this)">💰 Expenses</button>
-<button onclick="showPage('reports',this)">📊 Reports</button>
-<button onclick="showPage('services',this)">🌐 Services</button>
-<button onclick="showPage('settings',this)">⚙️ Settings</button>
-<button onclick="toggleTheme()">🌙 Theme</button>
+<div class="layout">
+<nav id="nav">
+ <button class="active" data-page="home">🏠 Dashboard</button>
+ <button data-page="id">🪪 Advanced ID Editor</button>
+ <button data-page="photo">📸 Photo Studio</button>
+ <button data-page="customers">👥 ग्राहक रिकॉर्ड</button>
+ <button data-page="billing">🧾 बिल / रसीद</button>
+ <button data-page="expenses">💰 खर्च रिकॉर्ड</button>
+ <button data-page="reports">📊 रिपोर्ट</button>
+ <button data-page="services">🏛️ सर्विस डायरेक्टरी</button>
+ <button data-page="backup">💾 Backup / Restore</button>
+ <button data-page="settings">⚙️ सेटिंग</button>
 </nav>
 <main>
 
 <section id="home" class="page active">
-<div class="card"><h2>Professional Dashboard</h2><p id="today"></p></div>
-<div class="stats">
-<div class="stat"><span>कुल ग्राहक</span><strong id="totalCustomers">0</strong></div>
-<div class="stat"><span>कुल बिल</span><strong id="totalSales">₹0</strong></div>
-<div class="stat"><span>प्राप्त राशि</span><strong id="totalPaid">₹0</strong></div>
-<div class="stat"><span>बकाया</span><strong id="totalDue">₹0</strong></div>
-<div class="stat"><span>खर्च</span><strong id="totalExpense">₹0</strong></div>
-<div class="stat"><span>अनुमानित लाभ</span><strong id="totalProfit">₹0</strong></div>
-</div>
-<div class="card"><h3>Quick Tools</h3>
-<button onclick="showPage('id')">ID Card बनाएं</button>
-<button onclick="showPage('photo')">Photo Edit करें</button>
-<button onclick="showPage('customers')">ग्राहक जोड़ें</button>
-<button onclick="showPage('billing')">नया बिल बनाएं</button>
-<button onclick="backup()">Backup Download</button>
-</div>
-<div class="card"><h3>Backup Restore</h3>
-<button class="green" onclick="backup()">Download Backup JSON</button>
-<label>पुराना Backup चुनें</label><input type="file" id="restoreFile" accept=".json">
-<button onclick="restoreBackup()">Restore Backup</button>
-<p class="small">डेटा आपके ब्राउज़र में सेव होता है। नियमित बैकअप रखें।</p>
-</div>
+ <h2>Dashboard</h2>
+ <div class="grid">
+  <div class="stat">कुल ग्राहक<b id="statCustomers">0</b></div>
+  <div class="stat">कुल बिल<b id="statBills">0</b></div>
+  <div class="stat">कुल कमाई<b id="statIncome">₹0</b></div>
+  <div class="stat">कुल खर्च<b id="statExpense">₹0</b></div>
+ </div>
+ <div class="card" style="margin-top:15px">
+  <h3>स्वागत है!</h3>
+  <p>Gramin Grahak Sewa Version 2.0 में आपका स्वागत है।</p>
+  <div class="toolbar">
+   <button class="btn" onclick="showPage('id')">ID Editor खोलें</button>
+   <button class="btn green" onclick="showPage('photo')">Photo Studio खोलें</button>
+   <button class="btn orange" onclick="showPage('billing')">नया बिल बनाएं</button>
+  </div>
+ </div>
+ <div class="card"><h3>मुख्य सुविधाएँ</h3><p class="hint">ID कार्ड डिजाइन, फोटो एडिटिंग, A4 प्रिंट, ग्राहक रिकॉर्ड, बिलिंग, खर्च का हिसाब और डेटा बैकअप। डेटा इसी ब्राउज़र में सेव होता है।</p></div>
 </section>
 
 <section id="id" class="page">
-<h2>🪪 Advanced ID Card Editor</h2>
-<div class="grid">
-<div class="card">
-<h3>Card Settings</h3>
-<label>Card Preset</label>
-<select id="preset" onchange="setPreset()">
-<option value="85.6,53.98">Standard ID Card</option>
-<option value="90,55">90 × 55 mm</option>
-<option value="88,58">88 × 58 mm</option>
-<option value="100,65">100 × 65 mm</option>
-<option value="105,70">105 × 70 mm</option>
-<option value="120,80">120 × 80 mm</option>
-<option value="custom">Custom</option>
-</select>
-<label>Width mm</label><input id="cardWidth" type="number" value="85.6">
-<label>Height mm</label><input id="cardHeight" type="number" value="53.98">
-<label>Side</label><select id="cardSide" onchange="switchSide()"><option value="front">Front</option><option value="back">Back</option></select>
-<hr>
-<h3>Image Tools</h3>
-<label>Upload Image</label><input type="file" id="idUpload" accept="image/*">
-<button onclick="addIDImage()">Add Image</button>
-<hr>
-<h3>Text Tools</h3>
-<label>Text</label><textarea id="textValue" rows="2" placeholder="यहाँ टेक्स्ट लिखें"></textarea>
-<label>Font Size</label><input id="fontSize" type="number" value="24">
-<label>Font</label><select id="fontFamily"><option>Arial</option><option>Verdana</option><option>Georgia</option><option>Tahoma</option><option>Times New Roman</option></select>
-<label>Text Colour</label><input id="fontColor" type="color" value="#172b45">
-<div class="tools"><button onclick="addIDText()">Add Text</button><button onclick="textStyle('bold')">Bold</button><button onclick="textStyle('italic')">Italic</button></div>
-<hr>
-<h3>Shapes</h3>
-<label>Shape Colour</label><input id="shapeColor" type="color" value="#0879c5">
-<button onclick="addShape('rect')">Rectangle</button>
-<button onclick="addShape('circle')">Circle</button>
-<button onclick="addShape('line')">Line</button>
-<button onclick="addShape('round')">Rounded Box</button>
-<hr>
-<h3>QR Code</h3>
-<label>QR Text / URL</label><input id="qrValue" placeholder="QR में लिखें">
-<button onclick="addQR()">Create QR</button>
-<p class="small">QR बनाने के लिए इंटरनेट कनेक्शन आवश्यक है।</p>
-</div>
-
-<div class="card">
-<h3>Live ID Design</h3>
-<div class="tools">
-<button onclick="undoID()">↶ Undo</button><button onclick="redoID()">↷ Redo</button>
-<button onclick="duplicateID()">Duplicate</button><button class="red" onclick="deleteID()">Delete</button>
-<button onclick="moveLayer(-1)">Backward</button><button onclick="moveLayer(1)">Forward</button>
-</div>
-<div class="canvasbox"><canvas id="idCanvas" width="648" height="408"></canvas></div>
-<p class="small">किसी ऑब्जेक्ट को चुनकर खींचें। उसके निचले दाएँ कोने से आकार बदलें।</p>
-<div class="tools">
-<button class="green" onclick="downloadID()">Download PNG</button>
-<button onclick="clearID()">Clear Design</button>
-<button onclick="printID()">Print Card</button>
-</div>
-<h3>Object Properties</h3>
-<label>X Position</label><input id="objX" type="number" onchange="applyPosition()">
-<label>Y Position</label><input id="objY" type="number" onchange="applyPosition()">
-<label>Width</label><input id="objWidth" type="number" onchange="applySize()">
-<label>Height</label><input id="objHeight" type="number" onchange="applySize()">
-<label>Rotation</label><input id="objRotation" type="number" value="0" onchange="applyRotation()">
-</div>
-
-<div class="card">
-<h3>Layers</h3><div id="layers"></div>
-<hr><h3>Front / Back</h3>
-<button onclick="setSide('front')">Front Side</button>
-<button onclick="setSide('back')">Back Side</button>
-<button onclick="copySide()">Copy Front to Back</button>
-<p class="small">Front और Back अलग-अलग सेव होते हैं।</p>
-</div>
-</div>
-<div class="card">
-<h3>A4 Multiple Card Printing</h3>
-<label>Copies</label><input type="number" id="idCopies" value="8" min="1" max="100">
-<label>Gap mm</label><input type="number" id="idGap" value="4">
-<label>Print Side</label><select id="printSide"><option value="front">Front</option><option value="back">Back</option></select>
-<button class="green" onclick="makeIDSheet()">Prepare A4 Sheet</button>
-<button onclick="printSheet()">Print A4</button>
-<div id="printArea" style="display:none"></div>
-</div>
+ <h2>🪪 Advanced ID Editor</h2>
+ <div class="editor-layout">
+  <div class="card">
+   <h3>डिजाइन टूल</h3>
+   <label>कार्ड का साइज</label>
+   <select id="idSize">
+    <option value="85.6,53.98">Standard ID 85.6 × 53.98 mm</option>
+    <option value="90,55">90 × 55 mm</option>
+    <option value="100,65">100 × 65 mm</option>
+    <option value="105,70">105 × 70 mm</option>
+    <option value="120,80">120 × 80 mm</option>
+   </select>
+   <label>साइड चुनें</label>
+   <select id="idSide"><option value="front">Front Side</option><option value="back">Back Side</option></select>
+   <label>बैकग्राउंड रंग</label><input type="color" id="idBg" value="#ffffff">
+   <label>फोटो अपलोड</label><input type="file" id="idImage" accept="image/*">
+   <label>टेक्स्ट लिखें</label><input id="idText" placeholder="नाम / पता / विवरण">
+   <div class="two">
+    <div><label>फॉन्ट साइज</label><input type="number" id="idFont" value="22" min="8" max="100"></div>
+    <div><label>टेक्स्ट रंग</label><input type="color" id="idColor" value="#111111"></div>
+   </div>
+   <div class="toolbar">
+    <button class="btn" onclick="addIDText()">टेक्स्ट जोड़ें</button>
+    <button class="btn" onclick="addIDPhoto()">फोटो जोड़ें</button>
+    <button class="btn gray" onclick="clearID()">साफ करें</button>
+   </div>
+   <label>चुने हुए ऑब्जेक्ट का X</label><input type="number" id="idX" value="30">
+   <label>चुने हुए ऑब्जेक्ट का Y</label><input type="number" id="idY" value="40">
+   <label>ऑब्जेक्ट की चौड़ाई</label><input type="number" id="idW" value="120">
+   <label>ऑब्जेक्ट की ऊँचाई</label><input type="number" id="idH" value="60">
+   <div class="toolbar">
+    <button class="btn" onclick="applyIDPosition()">स्थिति लागू करें</button>
+    <button class="btn red" onclick="deleteIDObject()">चयन हटाएँ</button>
+    <button class="btn gray" onclick="undoID()">Undo</button>
+   </div>
+   <label>कितनी कॉपी A4 पर?</label><input type="number" id="idCopies" value="8" min="1" max="40">
+   <div class="toolbar">
+    <button class="btn green" onclick="printID()">A4 प्रिंट</button>
+    <button class="btn" onclick="downloadID()">PNG डाउनलोड</button>
+    <button class="btn gray" onclick="saveIDDesign()">डिजाइन सेव</button>
+    <button class="btn gray" onclick="loadIDDesign()">डिजाइन खोलें</button>
+   </div>
+   <p class="hint">कैनवास पर ऑब्जेक्ट को माउस या उंगली से खींचें। टेक्स्ट या फोटो चुनकर उसकी स्थिति और आकार बदलें।</p>
+  </div>
+  <div class="card">
+   <h3>लाइव ID प्रीव्यू</h3>
+   <div class="canvas-wrap"><canvas id="idCanvas" width="650" height="410" class="canvas-small"></canvas></div>
+   <p class="hint">डिजाइन का अनुपात चुने गए कार्ड साइज के अनुसार रखा गया है।</p>
+  </div>
+ </div>
 </section>
 
 <section id="photo" class="page">
-<h2>📸 Advanced Photo Studio</h2>
-<div class="grid">
-<div class="card">
-<h3>Upload Photo</h3>
-<input type="file" id="photoUpload" accept="image/*">
-<button onclick="loadPhoto()">Open Photo</button>
-<label>Photo Preset</label>
-<select id="photoPreset" onchange="photoPreset()">
-<option value="413,531">Passport 35×45 mm (300 DPI)</option>
-<option value="354,472">Passport Small</option>
-<option value="600,600">Square Photo</option>
-<option value="600,900">Portrait 2:3</option>
-<option value="900,600">Landscape 3:2</option>
-<option value="custom">Custom Canvas</option>
-</select>
-<label>Custom Width px</label><input id="photoW" type="number" value="413">
-<label>Custom Height px</label><input id="photoH" type="number" value="531">
-<button onclick="applyPhotoSize()">Apply Canvas Size</button>
-<hr>
-<h3>Image Adjustments</h3>
-<label>Brightness <span id="brightnessVal">100</span></label><input type="range" id="brightness" min="0" max="200" value="100" oninput="filterPhoto()">
-<label>Contrast <span id="contrastVal">100</span></label><input type="range" id="contrast" min="0" max="200" value="100" oninput="filterPhoto()">
-<label>Saturation <span id="saturationVal">100</span></label><input type="range" id="saturation" min="0" max="200" value="100" oninput="filterPhoto()">
-<label>Grayscale</label><input type="range" id="gray" min="0" max="100" value="0" oninput="filterPhoto()">
-<label>Blur</label><input type="range" id="blur" min="0" max="10" value="0" oninput="filterPhoto()">
-<label>Background Colour</label><input type="color" id="photoBG" value="#ffffff" onchange="drawPhoto()">
-<button onclick="resetFilters()">Reset Filters</button>
-</div>
-<div class="card">
-<h3>Photo Editing Canvas</h3>
-<div class="canvasbox"><canvas id="photoCanvas" width="413" height="531"></canvas></div>
-<div class="tools">
-<button onclick="rotatePhoto(-90)">Rotate Left</button>
-<button onclick="rotatePhoto(90)">Rotate Right</button>
-<button onclick="flipPhoto()">Flip Horizontal</button>
-<button onclick="cropPhoto()">Crop Centre</button>
-</div>
-<div class="tools">
-<button class="green" onclick="downloadPhoto('image/jpeg')">Download JPG</button>
-<button onclick="downloadPhoto('image/png')">Download PNG</button>
-<button onclick="printPhotoSheet()">Print A4</button>
-</div>
-<p class="small">Crop Centre एक सरल केन्द्रित Crop है। अधिक सटीक Crop के लिए फोटो को पहले से सही अनुपात में चुनें।</p>
-</div>
-<div class="card">
-<h3>A4 Photo Sheet</h3>
-<label>Number of Photos</label><input type="number" id="photoCopies" value="8" min="1" max="100">
-<label>Gap mm</label><input type="number" id="photoGap" value="5">
-<button class="green" onclick="makePhotoSheet()">Create A4 Sheet</button>
-<div class="small">फोटो का आकार चुने हुए Canvas के अनुसार रहेगा।</div>
-</div>
-</div>
+ <h2>📸 Advanced Photo Studio</h2>
+ <div class="editor-layout">
+  <div class="card">
+   <h3>फोटो टूल</h3>
+   <label>फोटो अपलोड करें</label><input type="file" id="photoFile" accept="image/*">
+   <label>फोटो प्रीसेट</label>
+   <select id="photoPreset">
+    <option value="35,45">Passport 35 × 45 mm</option>
+    <option value="25,35">Visa 25 × 35 mm</option>
+    <option value="40,50">40 × 50 mm</option>
+    <option value="50,50">Square 50 × 50 mm</option>
+    <option value="102,152">4 × 6 inch</option>
+   </select>
+   <label>ब्राइटनेस</label><input type="range" id="brightness" min="0" max="200" value="100">
+   <label>कंट्रास्ट</label><input type="range" id="contrast" min="0" max="200" value="100">
+   <label>संतृप्ति / कलर</label><input type="range" id="saturation" min="0" max="200" value="100">
+   <label>बैकग्राउंड रंग (फोटो के पीछे)</label><input type="color" id="photoBg" value="#ffffff">
+   <div class="toolbar">
+    <button class="btn" onclick="rotatePhoto()">90° घुमाएँ</button>
+    <button class="btn gray" onclick="resetPhoto()">Reset</button>
+    <button class="btn" onclick="downloadPhoto()">PNG डाउनलोड</button>
+   </div>
+   <label>A4 शीट पर फोटो की संख्या</label><input type="number" id="photoCopies" value="8" min="1" max="60">
+   <div class="toolbar">
+    <button class="btn green" onclick="printPhoto()">A4 फोटो प्रिंट</button>
+   </div>
+   <p class="hint">बैकग्राउंड रंग फोटो के पीछे लगाया जाता है। यह अपने आप व्यक्ति का पुराना बैकग्राउंड नहीं हटाता।</p>
+  </div>
+  <div class="card">
+   <h3>फोटो प्रीव्यू</h3>
+   <div class="canvas-wrap"><canvas id="photoCanvas" width="500" height="650" class="canvas-small"></canvas></div>
+  </div>
+ </div>
 </section>
 
 <section id="customers" class="page">
-<h2>👥 Customer Management</h2>
-<div class="card">
-<h3>Add Customer</h3>
-<label>Name</label><input id="custName">
-<label>Mobile</label><input id="custMobile" maxlength="10">
-<label>Address</label><input id="custAddress">
-<button class="green" onclick="addCustomer()">Save Customer</button>
-</div>
-<div class="card"><h3>Customer List</h3>
-<input id="customerSearch" placeholder="नाम या मोबाइल खोजें" oninput="renderCustomers()">
-<div class="tablewrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Address</th><th>Action</th></tr></thead><tbody id="customerRows"></tbody></table></div>
-</div>
+ <h2>👥 ग्राहक रिकॉर्ड</h2>
+ <div class="card">
+  <div class="grid">
+   <div><label>ग्राहक का नाम</label><input id="custName" placeholder="नाम"></div>
+   <div><label>मोबाइल नंबर</label><input id="custPhone" placeholder="मोबाइल नंबर"></div>
+   <div><label>पता</label><input id="custAddress" placeholder="गांव / पता"></div>
+  </div>
+  <button class="btn green" onclick="addCustomer()">ग्राहक सेव करें</button>
+ </div>
+ <div class="card"><label>ग्राहक खोजें</label><input id="custSearch" oninput="renderCustomers()" placeholder="नाम या मोबाइल खोजें">
+ <div class="tablewrap"><table><thead><tr><th>नाम</th><th>मोबाइल</th><th>पता</th><th>एक्शन</th></tr></thead><tbody id="customerRows"></tbody></table></div></div>
 </section>
 
 <section id="billing" class="page">
-<h2>🧾 Billing & Receipt</h2>
-<div class="card">
-<label>Customer</label><select id="billCustomer"></select>
-<label>Service / Item</label><input id="billItem" placeholder="उदाहरण: PAN Card Form">
-<label>Amount ₹</label><input id="billAmount" type="number" min="0">
-<label>Paid ₹</label><input id="billPaid" type="number" min="0">
-<button class="green" onclick="addBill()">Create Bill</button>
-</div>
-<div class="card">
-<h3>Bill Records</h3><div class="tablewrap"><table><thead><tr><th>Bill</th><th>Customer</th><th>Service</th><th>Total</th><th>Paid</th><th>Due</th><th>Receipt</th></tr></thead><tbody id="billRows"></tbody></table></div>
-</div>
-<div id="receipt"><h2>GRAMIN GRAHAK SEWA</h2><h3>Payment Receipt</h3><div id="receiptContent">बिल देखने के लिए Receipt बटन दबाएँ।</div></div>
-<button onclick="printReceipt()">Print Receipt</button>
+ <h2>🧾 बिल / रसीद</h2>
+ <div class="card">
+  <div class="grid">
+   <div><label>ग्राहक</label><select id="billCustomer"></select></div>
+   <div><label>सेवा का नाम</label><input id="billService" placeholder="जैसे फोटो कॉपी"></div>
+   <div><label>राशि ₹</label><input type="number" id="billAmount" min="0" value="0"></div>
+   <div><label>भुगतान स्थिति</label><select id="billStatus"><option>Paid</option><option>Pending</option></select></div>
+  </div>
+  <label>नोट</label><input id="billNote" placeholder="अतिरिक्त जानकारी">
+  <button class="btn green" onclick="addBill()">बिल सेव करें</button>
+ </div>
+ <div class="card"><h3>बिल रिकॉर्ड</h3><div class="tablewrap"><table><thead><tr><th>बिल नंबर</th><th>ग्राहक</th><th>सेवा</th><th>राशि</th><th>स्थिति</th><th>एक्शन</th></tr></thead><tbody id="billRows"></tbody></table></div></div>
 </section>
 
 <section id="expenses" class="page">
-<h2>💰 Expense Management</h2>
-<div class="card">
-<label>Expense Name</label><input id="expenseName">
-<label>Amount ₹</label><input id="expenseAmount" type="number">
-<label>Date</label><input id="expenseDate" type="date">
-<button class="green" onclick="addExpense()">Save Expense</button>
-</div>
-<div class="card"><h3>Expense Records</h3><div class="tablewrap"><table><thead><tr><th>Name</th><th>Amount</th><th>Date</th><th>Delete</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
+ <h2>💰 खर्च रिकॉर्ड</h2>
+ <div class="card">
+  <div class="grid">
+   <div><label>खर्च का नाम</label><input id="expenseName" placeholder="जैसे स्टेशनरी"></div>
+   <div><label>राशि ₹</label><input id="expenseAmount" type="number" min="0"></div>
+   <div><label>तारीख</label><input id="expenseDate" type="date"></div>
+  </div>
+  <button class="btn green" onclick="addExpense()">खर्च सेव करें</button>
+ </div>
+ <div class="card"><div class="tablewrap"><table><thead><tr><th>खर्च</th><th>राशि</th><th>तारीख</th><th>एक्शन</th></tr></thead><tbody id="expenseRows"></tbody></table></div></div>
 </section>
 
 <section id="reports" class="page">
-<h2>📊 Business Reports</h2>
-<div class="card"><div id="reportSummary"></div>
-<button onclick="exportCSV()">Download CSV Report</button>
-</div>
+ <h2>📊 रिपोर्ट</h2>
+ <div class="grid">
+  <div class="stat">कुल बिल राशि<b id="reportIncome">₹0</b></div>
+  <div class="stat">प्राप्त भुगतान<b id="reportPaid">₹0</b></div>
+  <div class="stat">बाकी भुगतान<b id="reportPending">₹0</b></div>
+  <div class="stat">कुल खर्च<b id="reportExpense">₹0</b></div>
+ </div>
+ <div class="card"><h3>कुल शुद्ध राशि</h3><h2 id="netAmount">₹0</h2><button class="btn" onclick="window.print()">रिपोर्ट प्रिंट</button></div>
 </section>
 
 <section id="services" class="page">
-<h2>🌐 Digital Services Directory</h2>
-<input id="serviceSearch" placeholder="सेवा खोजें..." oninput="renderServices()">
-<div id="serviceGrid" class="servicegrid"></div>
-<p class="small">ये आधिकारिक पोर्टल के लिंक हैं। आवेदन/भुगतान केवल संबंधित सरकारी वेबसाइट पर करें। इस HTML से सरकारी आवेदन स्वतः जमा नहीं होते।</p>
+ <h2>🏛️ सर्विस डायरेक्टरी</h2>
+ <div class="card">
+  <p>नीचे दी गई सरकारी वेबसाइटों पर जाने के लिए बटन दबाएँ। वेबसाइट की उपलब्धता और नियम संबंधित विभाग के अनुसार होंगे।</p>
+  <div class="grid">
+   <button class="btn" onclick="openSite('https://sso.rajasthan.gov.in/')">Rajasthan SSO</button>
+   <button class="btn" onclick="openSite('https://emitra.rajasthan.gov.in/')">e-Mitra Rajasthan</button>
+   <button class="btn" onclick="openSite('https://uidai.gov.in/')">Aadhaar UIDAI</button>
+   <button class="btn" onclick="openSite('https://www.onlineservices.nsdl.com/')">PAN Services</button>
+   <button class="btn" onclick="openSite('https://www.passportindia.gov.in/')">Passport Seva</button>
+   <button class="btn" onclick="openSite('https://pmkisan.gov.in/')">PM Kisan</button>
+   <button class="btn" onclick="openSite('https://www.nvsp.in/')">Voter Services</button>
+   <button class="btn" onclick="openSite('https://parivahan.gov.in/')">Parivahan</button>
+  </div>
+ </div>
+</section>
+
+<section id="backup" class="page">
+ <h2>💾 Backup / Restore</h2>
+ <div class="card">
+  <h3>डेटा बैकअप</h3><p class="hint">ग्राहक, बिल और खर्च का डेटा JSON फाइल में डाउनलोड करें।</p>
+  <button class="btn green" onclick="backupData()">Backup डाउनलोड करें</button>
+  <h3>डेटा Restore</h3><label>Backup JSON फाइल चुनें</label><input type="file" id="restoreFile" accept=".json,application/json">
+  <button class="btn orange" onclick="restoreData()">Restore करें</button>
+  <h3>सारा डेटा हटाएँ</h3><button class="btn red" onclick="clearAllData()">सभी रिकॉर्ड हटाएँ</button>
+ </div>
 </section>
 
 <section id="settings" class="page">
-<h2>⚙️ Centre Settings</h2>
-<div class="card">
-<label>Centre Name</label><input id="centreName" value="Gramin Grahak Sewa">
-<label>Owner Name</label><input id="ownerName" placeholder="संचालक का नाम">
-<label>Mobile</label><input id="centreMobile" placeholder="मोबाइल नंबर">
-<label>Address</label><textarea id="centreAddress"></textarea>
-<button class="green" onclick="saveSettings()">Save Settings</button>
-</div>
-<div class="card"><h3>Data Management</h3>
-<button class="green" onclick="backup()">Download Backup</button>
-<input type="file" id="restoreFile2" accept=".json">
-<button onclick="restoreBackup('restoreFile2')">Restore Data</button>
-<button class="red" onclick="clearAll()">Delete All Data</button>
-</div>
+ <h2>⚙️ सेटिंग</h2>
+ <div class="card">
+  <label>दुकान / सेंटर का नाम</label><input id="shopName" value="Gramin Grahak Sewa">
+  <label>संपर्क मोबाइल</label><input id="shopPhone" placeholder="मोबाइल नंबर">
+  <label>पता</label><input id="shopAddress" placeholder="दुकान का पता">
+  <button class="btn green" onclick="saveSettings()">सेटिंग सेव करें</button>
+  <p class="hint">ये विवरण बिल प्रिंट में दिखाई देंगे।</p>
+ </div>
 </section>
+
 </main>
-<footer>🇮🇳 Gramin Grahak Sewa | Digital Citizen Service Centre</footer>
+</div>
+<div id="printArea" style="display:none"></div>
+<div id="toast"></div>
+<footer>Gramin Grahak Sewa Ultimate PRO • Version 2.0</footer>
 
 <script>
+"use strict";
 const $=id=>document.getElementById(id);
-const money=n=>'₹'+Number(n||0).toFixed(2);
-let db=JSON.parse(localStorage.getItem('ggsDB')||'{"customers":[],"bills":[],"expenses":[],"settings":{}}');
-function save(){localStorage.setItem('ggsDB',JSON.stringify(db));refresh()}
-function showPage(id,btn){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
- $(id).classList.add('active');
- document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
- if(btn)btn.classList.add('active');
- refresh();
+const getData=(key,def=[])=>{try{return JSON.parse(localStorage.getItem(key))??def}catch(e){return def}};
+const setData=(key,val)=>localStorage.setItem(key,JSON.stringify(val));
+let customers=getData("ggs_customers"),bills=getData("ggs_bills"),expenses=getData("ggs_expenses");
+let settings=getData("ggs_settings",{name:"Gramin Grahak Sewa",phone:"",address:""});
+let idObjects=[],idSelected=-1,idUndo=[],idImageObj=null;
+let photoImage=null,photoRotation=0;
+const idCanvas=$("idCanvas"),idCtx=idCanvas.getContext("2d");
+const photoCanvas=$("photoCanvas"),photoCtx=photoCanvas.getContext("2d");
+
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ $(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+ if(id==="home"||id==="reports")updateDashboard();
 }
-function toggleTheme(){document.body.classList.toggle('dark')}
-function refresh(){
- $('totalCustomers').textContent=db.customers.length;
- let sales=db.bills.reduce((s,x)=>s+x.amount,0),paid=db.bills.reduce((s,x)=>s+x.paid,0),expense=db.expenses.reduce((s,x)=>s+x.amount,0);
- $('totalSales').textContent=money(sales);$('totalPaid').textContent=money(paid);
- $('totalDue').textContent=money(sales-paid);$('totalExpense').textContent=money(expense);
- $('totalProfit').textContent=money(paid-expense);
- renderCustomers();renderBills();renderExpenses();renderReports();renderServices();updateCustomerSelect();
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function money(n){return "₹"+Number(n||0).toLocaleString("en-IN")}
+function saveAll(){setData("ggs_customers",customers);setData("ggs_bills",bills);setData("ggs_expenses",expenses)}
+function updateDashboard(){
+ $("statCustomers").textContent=customers.length;
+ $("statBills").textContent=bills.length;
+ const income=bills.reduce((s,b)=>s+Number(b.amount||0),0);
+ const paid=bills.filter(b=>b.status==="Paid").reduce((s,b)=>s+Number(b.amount||0),0);
+ const pending=income-paid;
+ const exp=expenses.reduce((s,e)=>s+Number(e.amount||0),0);
+ $("statIncome").textContent=money(paid);
+ $("statExpense").textContent=money(exp);
+ $("reportIncome").textContent=money(income);
+ $("reportPaid").textContent=money(paid);
+ $("reportPending").textContent=money(pending);
+ $("reportExpense").textContent=money(exp);
+ $("netAmount").textContent=money(paid-exp);
 }
-$('today').textContent=new Date().toLocaleString('hi-IN');
 function addCustomer(){
- let name=$('custName').value.trim(),mobile=$('custMobile').value.trim();
- if(!name){alert('ग्राहक का नाम लिखें');return}
- db.customers.push({id:Date.now(),name,mobile,address:$('custAddress').value});
- $('custName').value=$('custMobile').value=$('custAddress').value='';save();
+ const name=$("custName").value.trim(),phone=$("custPhone").value.trim();
+ if(!name){toast("ग्राहक का नाम लिखें");return}
+ customers.push({id:Date.now(),name,phone,address:$("custAddress").value.trim()});
+ saveAll();$("custName").value=$("custPhone").value=$("custAddress").value="";
+ renderCustomers();updateDashboard();toast("ग्राहक सेव हो गया");
 }
 function renderCustomers(){
- let q=($('customerSearch')?.value||'').toLowerCase();
- $('customerRows').innerHTML=db.customers.filter(c=>(c.name+c.mobile).toLowerCase().includes(q)).map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.mobile)}</td><td>${esc(c.address)}</td><td><button class="red" onclick="delCustomer(${c.id})">Delete</button></td></tr>`).join('');
+ const q=($("custSearch").value||"").toLowerCase();
+ $("customerRows").innerHTML=customers.filter(c=>(c.name+c.phone+c.address).toLowerCase().includes(q)).map(c=>
+ `<tr><td>${esc(c.name)}</td><td>${esc(c.phone)}</td><td>${esc(c.address)}</td><td><button class="btn red" onclick="deleteCustomer(${c.id})">हटाएँ</button></td></tr>`).join("");
+ $("billCustomer").innerHTML='<option value="">ग्राहक चुनें</option>'+customers.map(c=>`<option value="${c.id}">${esc(c.name)} (${esc(c.phone)})</option>`).join("");
 }
-function delCustomer(id){if(confirm('ग्राहक हटाएँ?')){db.customers=db.customers.filter(x=>x.id!==id);save()}}
-function updateCustomerSelect(){
- $('billCustomer').innerHTML='<option value="">Walk-in Customer</option>'+db.customers.map(c=>`<option value="${c.id}">${esc(c.name)} (${esc(c.mobile)})</option>`).join('');
-}
+function deleteCustomer(id){if(!confirm("इस ग्राहक को हटाएँ?"))return;customers=customers.filter(c=>c.id!==id);saveAll();renderCustomers();updateDashboard()}
 function addBill(){
- let amount=Number($('billAmount').value),paid=Number($('billPaid').value);
- if(!amount||amount<0||paid<0||paid>amount){alert('राशि सही भरें। Paid राशि कुल राशि से अधिक नहीं हो सकती।');return}
- let c=db.customers.find(x=>x.id==$('billCustomer').value);
- db.bills.push({id:Date.now(),name:c?.name||'Walk-in Customer',item:$('billItem').value,amount,paid,date:new Date().toLocaleDateString('en-IN')});
- $('billItem').value=$('billAmount').value=$('billPaid').value='';save();
+ const service=$("billService").value.trim(),amount=Number($("billAmount").value);
+ if(!service||amount<0||!Number.isFinite(amount)){toast("सेवा और सही राशि भरें");return}
+ const c=customers.find(x=>String(x.id)===$("billCustomer").value);
+ bills.push({id:Date.now(),number:"GGS-"+Date.now().toString().slice(-6),customer:c?.name||"Walk-in Customer",service,amount,status:$("billStatus").value,note:$("billNote").value,date:new Date().toLocaleDateString("en-IN")});
+ saveAll();renderBills();updateDashboard();$("billService").value=$("billAmount").value=$("billNote").value="";toast("बिल सेव हो गया");
 }
 function renderBills(){
- $('billRows').innerHTML=db.bills.map(b=>`<tr><td>${b.id.toString().slice(-6)}</td><td>${esc(b.name)}</td><td>${esc(b.item)}</td><td>${money(b.amount)}</td><td>${money(b.paid)}</td><td>${money(b.amount-b.paid)}</td><td><button onclick="receipt(${b.id})">Receipt</button></td></tr>`).join('');
+ $("billRows").innerHTML=bills.slice().reverse().map(b=>`<tr><td>${esc(b.number)}</td><td>${esc(b.customer)}</td><td>${esc(b.service)}</td><td>${money(b.amount)}</td><td>${esc(b.status)}</td><td><button class="btn" onclick="printBill(${b.id})">रसीद</button><button class="btn red" onclick="deleteBill(${b.id})">हटाएँ</button></td></tr>`).join("");
 }
-function receipt(id){
- let b=db.bills.find(x=>x.id===id);if(!b)return;
- $('receiptContent').innerHTML=`<p><b>Bill No:</b> ${b.id.toString().slice(-6)}</p><p><b>Date:</b> ${b.date}</p><p><b>Customer:</b> ${esc(b.name)}</p><p><b>Service:</b> ${esc(b.item)}</p><p><b>Total:</b> ${money(b.amount)}</p><p><b>Paid:</b> ${money(b.paid)}</p><p><b>Due:</b> ${money(b.amount-b.paid)}</p><hr><p>धन्यवाद! पुनः पधारें।</p>`;
+function deleteBill(id){if(!confirm("बिल हटाएँ?"))return;bills=bills.filter(b=>b.id!==id);saveAll();renderBills();updateDashboard()}
+function printBill(id){
+ const b=bills.find(x=>x.id===id);if(!b)return;
+ $("printArea").innerHTML=`<div style="padding:20px;font-family:Arial;color:#111"><h2>${esc(settings.name)}</h2><p>${esc(settings.address)} | ${esc(settings.phone)}</p><hr><h3>भुगतान रसीद</h3><p>बिल नंबर: ${esc(b.number)}</p><p>तारीख: ${esc(b.date)}</p><p>ग्राहक: ${esc(b.customer)}</p><p>सेवा: ${esc(b.service)}</p><h2>राशि: ${money(b.amount)}</h2><p>स्थिति: ${esc(b.status)}</p><p>${esc(b.note||"")}</p><hr><p>धन्यवाद!</p></div>`;
+ printAreaNow();
 }
-function printReceipt(){document.body.classList.add('printreceipt');window.print();document.body.classList.remove('printreceipt')}
 function addExpense(){
- let name=$('expenseName').value,amount=Number($('expenseAmount').value);
- if(!name||amount<=0){alert('नाम और सही राशि भरें');return}
- db.expenses.push({id:Date.now(),name,amount,date:$('expenseDate').value||new Date().toISOString().slice(0,10)});
- $('expenseName').value=$('expenseAmount').value='';save();
+ const name=$("expenseName").value.trim(),amount=Number($("expenseAmount").value);
+ if(!name||!Number.isFinite(amount)||amount<=0){toast("खर्च और सही राशि भरें");return}
+ expenses.push({id:Date.now(),name,amount,date:$("expenseDate").value||new Date().toISOString().slice(0,10)});
+ saveAll();renderExpenses();updateDashboard();$("expenseName").value=$("expenseAmount").value="";toast("खर्च सेव हो गया");
 }
 function renderExpenses(){
- $('expenseRows').innerHTML=db.expenses.map(e=>`<tr><td>${esc(e.name)}</td><td>${money(e.amount)}</td><td>${e.date}</td><td><button class="red" onclick="delExpense(${e.id})">Delete</button></td></tr>`).join('');
+ $("expenseRows").innerHTML=expenses.slice().reverse().map(e=>`<tr><td>${esc(e.name)}</td><td>${money(e.amount)}</td><td>${esc(e.date)}</td><td><button class="btn red" onclick="deleteExpense(${e.id})">हटाएँ</button></td></tr>`).join("");
 }
-function delExpense(id){db.expenses=db.expenses.filter(x=>x.id!==id);save()}
-function renderReports(){
- let sales=db.bills.reduce((s,x)=>s+x.amount,0),paid=db.bills.reduce((s,x)=>s+x.paid,0),exp=db.expenses.reduce((s,x)=>s+x.amount,0);
- $('reportSummary').innerHTML=`<h3>Business Summary</h3><p>कुल ग्राहक: ${db.customers.length}</p><p>कुल बिल: ${money(sales)}</p><p>प्राप्त राशि: ${money(paid)}</p><p>बकाया राशि: ${money(sales-paid)}</p><p>कुल खर्च: ${money(exp)}</p><p>प्राप्त राशि - खर्च: ${money(paid-exp)}</p>`;
+function deleteExpense(id){if(!confirm("खर्च रिकॉर्ड हटाएँ?"))return;expenses=expenses.filter(e=>e.id!==id);saveAll();renderExpenses();updateDashboard()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function openSite(url){window.open(url,"_blank","noopener")}
+function saveSettings(){settings={name:$("shopName").value.trim()||"Gramin Grahak Sewa",phone:$("shopPhone").value.trim(),address:$("shopAddress").value.trim()};setData("ggs_settings",settings);toast("सेटिंग सेव हो गई")}
+function backupData(){
+ const data={version:2,customers,bills,expenses,settings};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ downloadBlob(blob,"gramin-grahak-sewa-backup.json");
 }
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function backup(){
- let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');
- a.href=URL.createObjectURL(blob);a.download='Gramin-Grahak-Sewa-Backup.json';a.click();URL.revokeObjectURL(a.href);
+function restoreData(){
+ const f=$("restoreFile").files[0];if(!f){toast("पहले Backup फाइल चुनें");return}
+ const r=new FileReader();r.onload=()=>{
+ try{const d=JSON.parse(r.result);if(!Array.isArray(d.customers)||!Array.isArray(d.bills)||!Array.isArray(d.expenses))throw Error();
+ if(!confirm("मौजूदा रिकॉर्ड की जगह Backup डेटा लोड होगा। जारी रखें?"))return;
+ customers=d.customers;bills=d.bills;expenses=d.expenses;settings=d.settings||settings;saveAll();setData("ggs_settings",settings);renderAll();toast("डेटा Restore हो गया")
+ }catch(e){toast("यह सही Backup फाइल नहीं है")}
+ };r.readAsText(f);
 }
-function restoreBackup(id='restoreFile'){
- let f=$(id).files[0];if(!f){alert('पहले Backup JSON चुनें');return}
- let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!Array.isArray(x.customers)||!Array.isArray(x.bills)||!Array.isArray(x.expenses))throw Error();db=x;save();alert('Backup Restore हो गया')}catch(e){alert('गलत Backup फाइल')}};r.readAsText(f);
+function clearAllData(){if(!confirm("सभी ग्राहक, बिल और खर्च हमेशा के लिए हट जाएँगे। क्या जारी रखें?"))return;customers=[];bills=[];expenses=[];saveAll();renderAll();toast("रिकॉर्ड हटा दिए गए")}
+function renderAll(){renderCustomers();renderBills();renderExpenses();updateDashboard()}
+function saveIDUndo(){idUndo.push(JSON.stringify(idObjects));if(idUndo.length>30)idUndo.shift()}
+function undoID(){if(!idUndo.length){toast("Undo उपलब्ध नहीं");return}idObjects=JSON.parse(idUndo.pop());idSelected=-1;drawID()}
+function cardRatio(){
+ const [w,h]=$("idSize").value.split(",").map(Number);
+ return {w,h,ratio:w/h};
 }
-function clearAll(){if(confirm('सभी ग्राहक, बिल और खर्च हटाने हैं?')){db={customers:[],bills:[],expenses:[],settings:{}};save()}}
-function saveSettings(){
- db.settings={name:$('centreName').value,owner:$('ownerName').value,mobile:$('centreMobile').value,address:$('centreAddress').value};
- save();alert('Settings Saved');
-}
-function exportCSV(){
- let rows=[['Bill','Customer','Service','Amount','Paid','Due'],...db.bills.map(b=>[b.id,b.name,b.item,b.amount,b.paid,b.amount-b.paid])];
- let csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');
- let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));a.download='GGS-Report.csv';a.click();
-}
-
-/* ID EDITOR */
-const idCanvas=$('idCanvas'),ctx=idCanvas.getContext('2d');
-let cards={front:[],back:[]},side='front',selected=-1,undoStack=[],redoStack=[],drag=null;
-function objects(){return cards[side]}
-function snapshot(){undoStack.push(JSON.stringify(cards));if(undoStack.length>30)undoStack.shift();redoStack=[]}
-function switchSide(){side=$('cardSide').value;selected=-1;drawID()}
-function setSide(s){side=s;$('cardSide').value=s;selected=-1;drawID()}
-function changeSide(){side=side==='front'?'back':'front';$('cardSide').value=side;drawID()}
-function setPreset(){
- let v=$('preset').value;if(v==='custom')return;
- let a=v.split(',');$('cardWidth').value=a[0];$('cardHeight').value=a[1];drawID();
+function resizeIDCanvas(){
+ const r=cardRatio();idCanvas.width=650;idCanvas.height=Math.round(650/r.ratio);drawID();
 }
 function drawID(){
- let w=Number($('cardWidth').value)||85.6,h=Number($('cardHeight').value)||53.98;
- idCanvas.width=Math.max(250,Math.round(w*7.56));idCanvas.height=Math.max(150,Math.round(h*7.56));
- ctx.fillStyle='white';ctx.fillRect(0,0,idCanvas.width,idCanvas.height);
- ctx.strokeStyle='#c5cbd2';ctx.lineWidth=2;ctx.strokeRect(1,1,idCanvas.width-2,idCanvas.height-2);
- objects().forEach((o,i)=>drawObject(o,i));
- renderLayers();
-}
-function drawObject(o,i){
- ctx.save();ctx.translate(o.x+o.w/2,o.y+o.h/2);ctx.rotate((o.rotation||0)*Math.PI/180);
- let x=-o.w/2,y=-o.h/2;
- if(o.type==='text'){
- ctx.fillStyle=o.color;ctx.font=`${o.bold?'bold ':''}${o.italic?'italic ':''}${o.size}px ${o.font||'Arial'}`;
- ctx.textAlign=o.align||'left';ctx.textBaseline='middle';
- o.text.split('\n').forEach((t,j)=>ctx.fillText(t,x+(o.align==='center'?o.w/2:o.align==='right'?o.w:0),y+o.size/2+j*o.size*1.2));
- }else if(o.type==='image'){
- if(o.img){ctx.drawImage(o.img,x,y,o.w,o.h)}
- }else if(o.type==='shape'){
- ctx.strokeStyle=o.color;ctx.fillStyle=o.color;ctx.lineWidth=o.border||3;
- if(o.shape==='circle'){ctx.beginPath();ctx.ellipse(0,0,o.w/2,o.h/2,0,0,Math.PI*2);ctx.stroke()}
- else if(o.shape==='line'){ctx.beginPath();ctx.moveTo(-o.w/2,0);ctx.lineTo(o.w/2,0);ctx.stroke()}
- else if(o.shape==='round'){ctx.beginPath();ctx.roundRect(x,y,o.w,o.h,10);ctx.stroke()}
- else ctx.strokeRect(x,y,o.w,o.h);
- }
- ctx.restore();
- if(i===selected){ctx.save();ctx.strokeStyle='#f00';ctx.setLineDash([5,4]);ctx.strokeRect(o.x,o.y,o.w,o.h);ctx.setLineDash([]);ctx.fillStyle='#f00';ctx.fillRect(o.x+o.w-8,o.y+o.h-8,12,12);ctx.restore()}
+ const r=cardRatio();idCtx.clearRect(0,0,idCanvas.width,idCanvas.height);
+ idCtx.fillStyle=$("idBg").value;idCtx.fillRect(0,0,idCanvas.width,idCanvas.height);
+ idObjects.forEach((o,i)=>{
+  if(o.type==="text"){
+   idCtx.fillStyle=o.color;idCtx.font=`${o.font}px Arial`;idCtx.textBaseline="top";
+   idCtx.fillText(o.text,o.x,o.y);
+  }else if(o.type==="image"&&o.img){
+   idCtx.drawImage(o.img,o.x,o.y,o.w,o.h);
+  }
+  if(i===idSelected){idCtx.save();idCtx.strokeStyle="#087cff";idCtx.lineWidth=2;idCtx.setLineDash([7,4]);idCtx.strokeRect(o.x,o.y,o.w||120,o.h||40);idCtx.restore()}
+ });
 }
 function addIDText(){
- let t=$('textValue').value;if(!t.trim()){alert('पहले टेक्स्ट लिखें');return}
- snapshot();let o={type:'text',text:t,x:35,y:45,w:240,h:70,size:Number($('fontSize').value)||24,font:$('fontFamily').value,color:$('fontColor').value,align:'left',rotation:0,bold:false,italic:false};
- objects().push(o);selected=objects().length-1;drawID();
+ const text=$("idText").value.trim();if(!text){toast("पहले टेक्स्ट लिखें");return}
+ saveIDUndo();const font=Number($("idFont").value)||22;
+ idObjects.push({type:"text",text,x:30,y:40,w:Math.max(100,text.length*font*.65),h:font+8,font,color:$("idColor").value});
+ idSelected=idObjects.length-1;drawID();$("idText").value="";
 }
-function addShape(shape){
- snapshot();objects().push({type:'shape',shape,x:50,y:50,w:150,h:80,color:$('shapeColor').value,border:3,rotation:0});selected=objects().length-1;drawID();
+function addIDPhoto(){
+ if(!idImageObj){toast("पहले फोटो अपलोड करें");return}
+ saveIDUndo();idObjects.push({type:"image",img:idImageObj,x:30,y:40,w:130,h:150});
+ idSelected=idObjects.length-1;drawID();
 }
-function addIDImage(){
- let f=$('idUpload').files[0];if(!f){alert('पहले Image चुनें');return}
- let reader=new FileReader();reader.onload=()=>{let im=new Image();im.onload=()=>{snapshot();objects().push({type:'image',img:im,src:reader.result,x:40,y:40,w:150,h:150,rotation:0});selected=objects().length-1;drawID()};im.src=reader.result};reader.readAsDataURL(f);
+$("idImage").addEventListener("change",e=>{
+ const f=e.target.files[0];if(!f)return;
+ const img=new Image();img.onload=()=>{idImageObj=img;toast("फोटो लोड हो गई")};img.src=URL.createObjectURL(f);
+});
+function clearID(){if(!confirm("डिजाइन साफ करें?"))return;saveIDUndo();idObjects=[];idSelected=-1;drawID()}
+function applyIDPosition(){
+ if(idSelected<0){toast("पहले ऑब्जेक्ट चुनें");return}
+ saveIDUndo();const o=idObjects[idSelected];
+ o.x=Number($("idX").value)||0;o.y=Number($("idY").value)||0;
+ if(o.type==="image"){o.w=Math.max(5,Number($("idW").value)||100);o.h=Math.max(5,Number($("idH").value)||100)}
+ drawID();
 }
-function addQR(){
- let val=$('qrValue').value.trim();if(!val){alert('QR Text लिखें');return}
- let url='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='+encodeURIComponent(val);
- let im=new Image();im.crossOrigin='anonymous';im.onload=()=>{snapshot();objects().push({type:'image',img:im,src:url,x:400,y:40,w:110,h:110,rotation:0});selected=objects().length-1;drawID()};im.onerror=()=>alert('QR बनाने के लिए इंटरनेट जरूरी है');im.src=url;
+function deleteIDObject(){if(idSelected<0)return;saveIDUndo();idObjects.splice(idSelected,1);idSelected=-1;drawID()}
+function updateIDFields(){
+ if(idSelected<0)return;const o=idObjects[idSelected];
+ $("idX").value=Math.round(o.x);$("idY").value=Math.round(o.y);
+ $("idW").value=Math.round(o.w||120);$("idH").value=Math.round(o.h||40);
 }
-function selectAt(x,y){
- for(let i=objects().length-1;i>=0;i--){let o=objects()[i];if(x>=o.x&&x<=o.x+o.w&&y>=o.y&&y<=o.y+o.h)return i}return -1;
+let dragID=null;
+function canvasPoint(e){
+ const rect=idCanvas.getBoundingClientRect();
+ return {x:(e.clientX-rect.left)*idCanvas.width/rect.width,y:(e.clientY-rect.top)*idCanvas.height/rect.height};
 }
-idCanvas.addEventListener('pointerdown',e=>{
- let r=idCanvas.getBoundingClientRect(),x=(e.clientX-r.left)*idCanvas.width/r.width,y=(e.clientY-r.top)*idCanvas.height/r.height;
- selected=selectAt(x,y);
- if(selected>=0){snapshot();let o=objects()[selected];drag={x,y,ox:o.x,oy:o.y,resize:x>o.x+o.w-16&&y>o.y+o.h-16};idCanvas.setPointerCapture(e.pointerId)}
+idCanvas.addEventListener("pointerdown",e=>{
+ const p=canvasPoint(e);let found=-1;
+ for(let i=idObjects.length-1;i>=0;i--){const o=idObjects[i],w=o.w||120,h=o.h||40;if(p.x>=o.x&&p.x<=o.x+w&&p.y>=o.y&&p.y<=o.y+h){found=i;break}}
+ idSelected=found;
+ if(found>=0){const o=idObjects[found];dragID={dx:p.x-o.x,dy:p.y-o.y};idCanvas.setPointerCapture(e.pointerId);updateIDFields()}
  drawID();
 });
-idCanvas.addEventListener('pointermove',e=>{
- if(!drag||selected<0)return;
- let r=idCanvas.getBoundingClientRect(),x=(e.clientX-r.left)*idCanvas.width/r.width,y=(e.clientY-r.top)*idCanvas.height/r.height,o=objects()[selected];
- if(drag.resize){o.w=Math.max(15,drag.ox+o.w+(x-drag.x));o.h=Math.max(15,drag.oy+o.h+(y-drag.y));drag.x=x;drag.y=y;drag.ox=o.x;drag.oy=o.y}
- else{o.x=drag.ox+(x-drag.x);o.y=drag.oy+(y-drag.y)}
- drawID();
+idCanvas.addEventListener("pointermove",e=>{
+ if(!dragID||idSelected<0)return;const p=canvasPoint(e),o=idObjects[idSelected];
+ o.x=Math.max(0,p.x-dragID.dx);o.y=Math.max(0,p.y-dragID.dy);drawID();updateIDFields();
 });
-idCanvas.addEventListener('pointerup',()=>{drag=null;syncProperties()});
-function syncProperties(){let o=objects()[selected];if(!o)return;$('objX').value=Math.round(o.x);$('objY').value=Math.round(o.y);$('objWidth').value=Math.round(o.w);$('objHeight').value=Math.round(o.h);$('objRotation').value=o.rotation||0}
-function applyPosition(){let o=objects()[selected];if(!o)return;snapshot();o.x=Number($('objX').value);o.y=Number($('objY').value);drawID()}
-function applySize(){let o=objects()[selected];if(!o)return;snapshot();o.w=Math.max(5,Number($('objWidth').value));o.h=Math.max(5,Number($('objHeight').value));drawID()}
-function applyRotation(){let o=objects()[selected];if(!o)return;snapshot();o.rotation=Number($('objRotation').value);drawID()}
-function textStyle(s){let o=objects()[selected];if(!o||o.type!=='text'){alert('पहले Text चुनें');return}snapshot();o[s]=!o[s];drawID()}
-function deleteID(){if(selected<0)return;snapshot();objects().splice(selected,1);selected=-1;drawID()}
-function duplicateID(){let o=objects()[selected];if(!o)return;snapshot();let n={...o,x:o.x+15,y:o.y+15};objects().push(n);selected=objects().length-1;drawID()}
-function clearID(){if(!confirm('इस Side का पूरा Design हटाएँ?'))return;snapshot();cards[side]=[];selected=-1;drawID()}
-function undoID(){if(!undoStack.length)return;redoStack.push(JSON.stringify(cards));cards=JSON.parse(undoStack.pop());drawID()}
-function redoID(){if(!redoStack.length)return;undoStack.push(JSON.stringify(cards));cards=JSON.parse(redoStack.pop());drawID()}
-function moveLayer(n){if(selected<0)return;snapshot();let j=selected+n;if(j<0||j>=objects().length)return;let a=objects();[a[selected],a[j]]=[a[j],a[selected]];selected=j;drawID()}
-function renderLayers(){$('layers').innerHTML=objects().map((o,i)=>`<div class="layeritem"><button onclick="selected=${i};drawID()"> ${i+1}. ${o.type==='text'?esc(o.text):o.type==='image'?'Image':o.shape||'Shape'}</button><button onclick="selected=${i};deleteID()">×</button></div>`).join('')}
-function copySide(){snapshot();cards.back=cards.front.map(o=>({...o}));setSide('back')}
-function downloadID(){let a=document.createElement('a');a.download='ID-Card-'+side+'.png';a.href=idCanvas.toDataURL('image/png');a.click()}
-function printID(){let p=$('printArea');p.innerHTML='';let c=idCanvas.cloneNode();c.width=idCanvas.width;c.height=idCanvas.height;c.getContext('2d').drawImage(idCanvas,0,0);c.style.width='85.6mm';c.style.height='53.98mm';p.appendChild(c);p.style.display='block';document.body.classList.add('printing');window.print();document.body.classList.remove('printing');p.style.display='none'}
-function makeIDSheet(){
- let p=$('printArea');p.innerHTML='';let n=Math.min(100,Math.max(1,Number($('idCopies').value)||1)),gap=Number($('idGap').value)||0;
- let s=$('printSide').value,arr=cards[s],old=side;side=s;drawID();let src=idCanvas.toDataURL();side=old;drawID();
- let w=Number($('cardWidth').value),h=Number($('cardHeight').value);
- for(let i=0;i<n;i++){let im=document.createElement('img');im.src=src;im.style.width=w+'mm';im.style.height=h+'mm';im.style.objectFit='fill';im.style.margin=(gap/2)+'mm';p.appendChild(im)}
- p.style.display='flex';
+idCanvas.addEventListener("pointerup",()=>{if(dragID)saveIDUndo();dragID=null});
+$("idBg").addEventListener("input",drawID);
+$("idSize").addEventListener("change",resizeIDCanvas);
+function canvasBlob(canvas){return new Promise(resolve=>canvas.toBlob(resolve,"image/png"))}
+function downloadBlob(blob,name){
+ const a=document.createElement("a"),url=URL.createObjectURL(blob);a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
-function printSheet(){if(!$('printArea').children.length)makeIDSheet();document.body.classList.add('printing');window.print();document.body.classList.remove('printing')}
+function downloadID(){idCanvas.toBlob(b=>{if(b)downloadBlob(b,"ID-Card.png")},"image/png")}
+function saveIDDesign(){
+ const data={bg:$("idBg").value,size:$("idSize").value,objects:idObjects.map(o=>({type:o.type,text:o.text,x:o.x,y:o.y,w:o.w,h:o.h,font:o.font,color:o.color}))};
+ setData("ggs_id_design",data);toast("टेक्स्ट डिजाइन सेव हुआ। फोटो अलग से दोबारा अपलोड करनी होगी।");
+}
+function loadIDDesign(){
+ const d=getData("ggs_id_design",null);if(!d||!d.objects){toast("सेव डिजाइन नहीं मिला");return}
+ $("idBg").value=d.bg;$("idSize").value=d.size;
+ idObjects=d.objects.map(o=>({...o,img:null}));idSelected=-1;resizeIDCanvas();toast("डिजाइन लोड हुआ। फोटो ऑब्जेक्ट फिर जोड़ें।");
+}
+function printID(){
+ const count=Math.min(40,Math.max(1,Number($("idCopies").value)||1));
+ const r=cardRatio(),w=r.w,h=r.h;
+ const sheet=document.createElement("div");sheet.className="print-sheet";
+ sheet.style.setProperty("--print-gap","4mm");
+ for(let i=0;i<count;i++){
+  const item=document.createElement("div");item.className="print-item";
+  item.style.width=w+"mm";item.style.height=h+"mm";
+  const c=document.createElement("canvas");c.width=idCanvas.width;c.height=idCanvas.height;c.getContext("2d").drawImage(idCanvas,0,0);
+  item.appendChild(c);sheet.appendChild(item);
+ }
+ $("printArea").innerHTML="";$("printArea").appendChild(sheet);printAreaNow();
+}
+function printAreaNow(){const old=$("printArea").style.display;$("printArea").style.display="block";window.print();$("printArea").style.display=old||"none"}
 
 /* PHOTO STUDIO */
-const pc=$('photoCanvas'),px=pc.getContext('2d');let photo=null,photoRotation=0,photoFlip=false;
-function loadPhoto(){
- let f=$('photoUpload').files[0];if(!f){alert('फोटो चुनें');return}
- let r=new FileReader();r.onload=()=>{let im=new Image();im.onload=()=>{photo=im;photoRotation=0;photoFlip=false;drawPhoto()};im.src=r.result};r.readAsDataURL(f);
-}
-function photoPreset(){let v=$('photoPreset').value;if(v==='custom')return;let a=v.split(',');$('photoW').value=a[0];$('photoH').value=a[1];applyPhotoSize()}
-function applyPhotoSize(){pc.width=Math.max(100,Math.min(3000,Number($('photoW').value)||413));pc.height=Math.max(100,Math.min(3000,Number($('photoH').value)||531));drawPhoto()}
+$("photoFile").addEventListener("change",e=>{
+ const f=e.target.files[0];if(!f)return;
+ const img=new Image();img.onload=()=>{photoImage=img;photoRotation=0;drawPhoto();toast("फोटो लोड हो गई")};img.src=URL.createObjectURL(f);
+});
+["brightness","contrast","saturation","photoBg"].forEach(id=>$(id).addEventListener("input",drawPhoto));
 function drawPhoto(){
- px.save();px.filter='none';px.fillStyle=$('photoBG').value;px.fillRect(0,0,pc.width,pc.height);
- if(photo){
- let bw=pc.width,bh=pc.height;
- px.translate(bw/2,bh/2);px.rotate(photoRotation*Math.PI/180);if(photoFlip)px.scale(-1,1);
- let iw=photo.width,ih=photo.height;
- let scale=Math.min(bw/iw,bh/ih);let w=iw*scale,h=ih*scale;
- px.filter=`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%) saturate(${$('saturation').value}%) grayscale(${$('gray').value}%) blur(${$('blur').value}px)`;
- px.drawImage(photo,-w/2,-h/2,w,h);
+ const w=photoCanvas.width,h=photoCanvas.height;
+ photoCtx.clearRect(0,0,w,h);photoCtx.fillStyle=$("photoBg").value;photoCtx.fillRect(0,0,w,h);
+ if(!photoImage)return;
+ photoCtx.save();
+ photoCtx.filter=`brightness(${$("brightness").value}%) contrast(${$("contrast").value}%) saturate(${$("saturation").value}%)`;
+ photoCtx.translate(w/2,h/2);photoCtx.rotate(photoRotation*Math.PI/180);
+ const rotated=photoRotation%180!==0;
+ const boxW=rotated?h:h,boxH=rotated?w:w;
+ const scale=Math.max(boxW/photoImage.width,boxH/photoImage.height);
+ const dw=photoImage.width*scale,dh=photoImage.height*scale;
+ photoCtx.drawImage(photoImage,-dw/2,-dh/2,dw,dh);
+ photoCtx.restore();
+}
+function rotatePhoto(){if(!photoImage)return;photoRotation=(photoRotation+90)%360;drawPhoto()}
+function resetPhoto(){
+ $("brightness").value=100;$("contrast").value=100;$("saturation").value=100;$("photoBg").value="#ffffff";photoRotation=0;drawPhoto();
+}
+function downloadPhoto(){if(!photoImage){toast("पहले फोटो अपलोड करें");return}photoCanvas.toBlob(b=>{if(b)downloadBlob(b,"Edited-Photo.png")},"image/png")}
+function printPhoto(){
+ if(!photoImage){toast("पहले फोटो अपलोड करें");return}
+ const count=Math.min(60,Math.max(1,Number($("photoCopies").value)||1));
+ const [w,h]=$("photoPreset").value.split(",").map(Number);
+ const sheet=document.createElement("div");sheet.className="print-sheet";
+ for(let i=0;i<count;i++){
+  const item=document.createElement("div");item.className="print-item";
+  item.style.width=w+"mm";item.style.height=h+"mm";
+  const c=document.createElement("canvas");c.width=photoCanvas.width;c.height=photoCanvas.height;c.getContext("2d").drawImage(photoCanvas,0,0);
+  item.appendChild(c);sheet.appendChild(item);
  }
- px.restore();
- ['brightness','contrast','saturation'].forEach(k=>$(k+'Val').textContent=$(k).value);
-}
-function filterPhoto(){drawPhoto()}
-function resetFilters(){['brightness','contrast','saturation'].forEach(k=>$(k).value=100);$('gray').value=0;$('blur').value=0;drawPhoto()}
-function rotatePhoto(n){photoRotation=(photoRotation+n+360)%360;drawPhoto()}
-function flipPhoto(){photoFlip=!photoFlip;drawPhoto()}
-function cropPhoto(){
- if(!photo){alert('पहले फोटो खोलें');return}
- let w=photo.width,h=photo.height,ratio=pc.width/pc.height;
- if(w/h>ratio){let nw=h*ratio;let x=(w-nw)/2;let c=document.createElement('canvas');c.width=nw;c.height=h;c.getContext('2d').drawImage(photo,x,0,nw,h,0,0,nw,h);let im=new Image();im.onload=()=>{photo=im;drawPhoto()};im.src=c.toDataURL()}
- else{let nh=w/ratio,y=(h-nh)/2,c=document.createElement('canvas');c.width=w;c.height=nh;c.getContext('2d').drawImage(photo,0,y,w,nh,0,0,w,nh);let im=new Image();im.onload=()=>{photo=im;drawPhoto()};im.src=c.toDataURL()}
-}
-function downloadPhoto(type){let a=document.createElement('a');a.download=type==='image/png'?'Photo.png':'Photo.jpg';a.href=pc.toDataURL(type,.95);a.click()}
-function makePhotoSheet(){
- if(!photo){alert('पहले फोटो खोलें');return}
- let p=$('printArea');p.innerHTML='';let n=Math.min(100,Math.max(1,Number($('photoCopies').value)||1)),gap=Number($('photoGap').value)||0;
- let url=pc.toDataURL('image/png');
- for(let i=0;i<n;i++){let im=document.createElement('img');im.src=url;im.style.width=(pc.width/300*25.4)+'mm';im.style.height=(pc.height/300*25.4)+'mm';im.style.margin=(gap/2)+'mm';p.appendChild(im)}
- p.style.display='flex';
-}
-function printPhotoSheet(){makePhotoSheet();document.body.classList.add('printing');window.print();document.body.classList.remove('printing');$('printArea').style.display='none'}
-
-/* SERVICES DIRECTORY */
-const services=[
-['आधार कार्ड','UIDAI','https://uidai.gov.in/'],
-['PAN Card','Income Tax PAN','https://www.incometax.gov.in/'],
-['NSDL PAN','PAN Services','https://www.onlineservices.nsdl.com/'],
-['जन आधार','Rajasthan Jan Aadhaar','https://janaadhaar.rajasthan.gov.in/'],
-['राजस्थान SSO','SSO Rajasthan','https://sso.rajasthan.gov.in/'],
-['ई-मित्र','Rajasthan e-Mitra','https://emitra.rajasthan.gov.in/'],
-['राजस्थान संपर्क','Public Grievance','https://sampark.rajasthan.gov.in/'],
-['किसान सम्मान निधि','PM Kisan','https://pmkisan.gov.in/'],
-['किसान पोर्टल','Agriculture','https://agri.rajasthan.gov.in/'],
-['PM Fasal Bima','Crop Insurance','https://pmfby.gov.in/'],
-['आयुष्मान भारत','PM-JAY','https://beneficiary.nha.gov.in/'],
-['राशन कार्ड','NFSA','https://nfsa.gov.in/'],
-['पेंशन योजना','NSAP','https://nsap.nic.in/'],
-['श्रमिक कार्ड','e-Shram','https://eshram.gov.in/'],
-['मनरेगा','MGNREGA','https://nrega.nic.in/'],
-['बैंकिंग जानकारी','RBI','https://www.rbi.org.in/'],
-['डिजीलॉकर','DigiLocker','https://www.digilocker.gov.in/'],
-['वोटर कार्ड','Voter Services','https://voters.eci.gov.in/'],
-['पासपोर्ट','Passport Seva','https://www.passportindia.gov.in/'],
-['ड्राइविंग लाइसेंस','Parivahan','https://parivahan.gov.in/'],
-['वाहन जानकारी','VAHAN','https://vahan.parivahan.gov.in/'],
-['भूमि रिकॉर्ड राजस्थान','Apna Khata','https://apnakhata.rajasthan.gov.in/'],
-['भू नक्शा','Bhu Naksha','https://bhunaksha.rajasthan.gov.in/'],
-['बिजली बिल','Bijli / JVVNL','https://www.energy.rajasthan.gov.in/'],
-['स्कॉलरशिप','National Scholarship','https://scholarships.gov.in/'],
-['रोजगार','National Career Service','https://www.ncs.gov.in/'],
-['सरकारी नौकरी','RPSC','https://rpsc.rajasthan.gov.in/'],
-['राजस्थान भर्ती','RSSB','https://rssb.rajasthan.gov.in/'],
-['जन्म-मृत्यु प्रमाणपत्र','Civil Registration','https://crsorgi.gov.in/'],
-['उद्योग पंजीकरण','Udyam','https://udyamregistration.gov.in/'],
-['GST Portal','GST','https://www.gst.gov.in/'],
-['EPFO','Provident Fund','https://www.epfindia.gov.in/'],
-['रेलवे टिकट','IRCTC','https://www.irctc.co.in/'],
-['उपभोक्ता शिकायत','Consumer Helpline','https://consumerhelpline.gov.in/'],
-['RTI Online','RTI Portal','https://rtionline.gov.in/'],
-['सरकारी योजनाएँ','MyScheme','https://www.myscheme.gov.in/']
-];
-function renderServices(){
- let q=($('serviceSearch')?.value||'').toLowerCase();
- $('serviceGrid').innerHTML=services.filter(s=>s.join(' ').toLowerCase().includes(q)).map(s=>`<div class="service"><b>${esc(s[0])}</b><p class="small">${esc(s[1])}</p><a href="${s[2]}" target="_blank" rel="noopener">Official Website खोलें ↗</a></div>`).join('');
+ $("printArea").innerHTML="";$("printArea").appendChild(sheet);printAreaNow();
 }
 
-/* INIT */
-function init(){
- drawID();applyPhotoSize();refresh();
- if(db.settings.name)$('centreName').value=db.settings.name;
- if(db.settings.owner)$('ownerName').value=db.settings.owner;
- if(db.settings.mobile)$('centreMobile').value=db.settings.mobile;
- if(db.settings.address)$('centreAddress').value=db.settings.address;
-}
-init();
+/* DESIGN SIDE AND PHOTO PRESET */
+$("idSide").addEventListener("change",()=>toast($("idSide").value==="front"?"Front Side चुनी गई":"Back Side चुनी गई"));
+$("photoPreset").addEventListener("change",()=>{
+ const [w,h]=$("photoPreset").value.split(",").map(Number);
+ const ratio=w/h;photoCanvas.width=500;photoCanvas.height=Math.round(500/ratio);drawPhoto();
+});
+window.addEventListener("afterprint",()=>{$("printArea").innerHTML="";$("printArea").style.display="none"});
+
+/* INITIALIZE */
+$("expenseDate").value=new Date().toISOString().slice(0,10);
+$("shopName").value=settings.name||"Gramin Grahak Sewa";
+$("shopPhone").value=settings.phone||"";
+$("shopAddress").value=settings.address||"";
+resizeIDCanvas();drawPhoto();renderAll();
 </script>
 </body>
 </html>

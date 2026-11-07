@@ -3,544 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gramin Grahak Sewa - Professional PRO 2.0</title>
-
+<meta name="theme-color" content="#0756a5">
+<title>Gramin Grahak Sewa PRO 3.0</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-
 <style>
-*{box-sizing:border-box}
-:root{--blue:#0756a5;--dark:#063b72;--light:#eef5ff;--green:#138b45}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f4f8;color:#222}
+:root{--blue:#0756a5;--dark:#063b72;--light:#eef5ff;--green:#138b45;--orange:#ff9933}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f1f4f8;color:#202833}
 header{background:linear-gradient(110deg,#ff9933,#fff 48%,#138808);padding:14px;text-align:center}
-.logo{width:65px;height:65px;border-radius:50%;border:3px solid white;display:inline-flex;align-items:center;justify-content:center;background:#fff;font-size:34px}
-header h1{margin:6px 0;color:#073b70;font-size:25px}
-header p{margin:4px;color:#173d62;font-weight:bold}
+.logo{width:58px;height:58px;border-radius:50%;border:3px solid white;display:inline-flex;align-items:center;justify-content:center;background:#fff;font-size:30px}
+header h1{margin:6px 0;color:#073b70;font-size:25px}header p{margin:4px;color:#173d62;font-weight:bold}
 nav{background:var(--blue);display:flex;gap:5px;overflow-x:auto;padding:9px;position:sticky;top:0;z-index:10}
 nav button{background:#fff;color:var(--blue);border:0;border-radius:6px;padding:10px 13px;font-weight:bold;white-space:nowrap;cursor:pointer}
 nav button.active{background:#ffcf33;color:#111}
-.container{max-width:1250px;margin:auto;padding:15px}
-.page{display:none}
-.page.active{display:block}
+.container{max-width:1250px;margin:auto;padding:15px}.page{display:none}.page.active{display:block}
 .hero{background:linear-gradient(120deg,#0756a5,#1686ca);color:white;border-radius:12px;padding:25px;text-align:center}
-.hero h2{margin-top:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
 .card{background:white;padding:16px;border-radius:10px;box-shadow:0 2px 9px #00000012;margin-bottom:14px}
-.card h3{margin:0 0 12px;color:var(--dark)}
-.toolbtn,.primary{background:var(--blue);color:white;border:0;padding:10px 14px;border-radius:6px;cursor:pointer;margin:4px 2px;font-weight:bold}
-.toolbtn:hover,.primary:hover{background:#003d78}
-.green{background:var(--green)}
-.red{background:#c62828}
-.gray{background:#555}
-input,select,textarea{padding:10px;border:1px solid #c7d0dc;border-radius:6px;max-width:100%;width:100%;margin:5px 0}
-input[type=range]{padding:0}
-label{font-size:13px;font-weight:bold;display:block;margin-top:7px}
+.card h3{margin:0 0 12px;color:var(--dark)}.toolbtn,.primary{background:var(--blue);color:white;border:0;padding:10px 14px;border-radius:6px;cursor:pointer;margin:4px 2px;font-weight:bold}
+.toolbtn:hover,.primary:hover{background:#003d78}.green{background:var(--green)}.red{background:#c62828}.gray{background:#555}
+input,select,textarea{padding:10px;border:1px solid #c7d0dc;border-radius:6px;max-width:100%;width:100%;margin:5px 0;background:white}
+input[type=range]{padding:0}label{font-size:13px;font-weight:bold;display:block;margin-top:7px}
 .preview{background:#e8edf4;border:1px dashed #9eabbc;border-radius:8px;padding:10px;min-height:150px;text-align:center;overflow:auto}
-canvas{max-width:100%;height:auto;background:white}
-canvas.sheet{width:100%;max-width:650px;border:1px solid #bbb}
-.small{font-size:12px;color:#666}
-.service a{display:block;color:#0756a5;text-decoration:none;padding:9px;border-bottom:1px solid #eee}
-.service a:hover{background:#eef5ff}
+canvas{max-width:100%;height:auto;background:white}canvas.sheet{width:100%;max-width:650px;border:1px solid #bbb}
+.small{font-size:12px;color:#666}.service a{display:block;color:#0756a5;text-decoration:none;padding:9px;border-bottom:1px solid #eee}.service a:hover{background:#eef5ff}
 .status{padding:10px;background:#e9f6ee;border-radius:6px;margin:8px 0;color:#176333}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}hr{border:0;border-top:1px solid #ddd;margin:15px 0}
+.badge{display:inline-block;background:#e7f0ff;color:#0756a5;border-radius:20px;padding:4px 9px;font-size:12px;font-weight:bold}
 footer{text-align:center;background:#073b70;color:white;padding:18px;margin-top:20px}
-.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px}
-hr{border:0;border-top:1px solid #ddd;margin:15px 0}
+.help{font-size:12px;color:#555;line-height:1.5}.checkline{display:flex;align-items:center;gap:8px}.checkline input{width:auto}
 @media(max-width:600px){header h1{font-size:20px}.container{padding:9px}.card{padding:12px}}
+@media print{body{background:white}.no-print,header,nav,footer,.controls{display:none!important}.container{padding:0;max-width:none}.page{display:none!important}.page.printing{display:block!important}.card{box-shadow:none;border:0;padding:0}.preview{border:0;padding:0;background:white}canvas{max-width:none!important;width:auto!important;max-height:95vh!important}}
 </style>
 </head>
-
 <body>
-
-<header>
- <div class="logo">🇮🇳</div>
- <h1>Gramin Grahak Sewa</h1>
- <p>ग्रामीण डिजिटल ग्राहक सेवा केंद्र</p>
- <p>Document • Photo • ID Card • PDF • Online Services</p>
-</header>
-
+<header><div class="logo">馃嚠馃嚦</div><h1>Gramin Grahak Sewa</h1><p>啶椸啶班ぞ啶啶� 啶∴た啶溹た啶熰げ 啶椸啶班ぞ啶灌 啶膏啶掂ぞ 啶曕啶傕う啷嵿ぐ</p><p>Photo 鈥� ID Card 鈥� Document 鈥� PDF 鈥� Online Services</p><span class="badge">PRO 3.0</span></header>
 <nav id="navbar">
- <button class="active" onclick="showPage('home',this)">होम</button>
- <button onclick="showPage('photo',this)">Photo Studio</button>
- <button onclick="showPage('id',this)">ID Card Editor</button>
- <button onclick="showPage('joint',this)">Joint Photo</button>
- <button onclick="showPage('whatsapp',this)">WhatsApp Studio</button>
- <button onclick="showPage('pdf',this)">PDF Studio</button>
- <button onclick="showPage('bills',this)">Bill & Recharge</button>
- <button onclick="showPage('gas',this)">Gas Booking</button>
- <button onclick="showPage('gov',this)">सरकारी सेवाएँ</button>
- <button onclick="showPage('forms',this)">Forms & Results</button>
- <button onclick="showPage('booking',this)">Booking</button>
+<button class="active" onclick="showPage('home',this)">啶灌啶�</button>
+<button onclick="showPage('photo',this)">Photo Studio</button>
+<button onclick="showPage('id',this)">ID Card Editor</button>
+<button onclick="showPage('joint',this)">Joint Photo</button>
+<button onclick="showPage('whatsapp',this)">Document Studio</button>
+<button onclick="showPage('pdf',this)">PDF Studio</button>
+<button onclick="showPage('bills',this)">Bill & Recharge</button>
+<button onclick="showPage('gas',this)">Gas Booking</button>
+<button onclick="showPage('gov',this)">啶膏ぐ啶曕ぞ啶班 啶膏啶掂ぞ啶忇</button>
+<button onclick="showPage('forms',this)">Forms & Results</button>
+<button onclick="showPage('booking',this)">Booking</button>
 </nav>
-
 <div class="container">
-
-<!-- HOME -->
 <section id="home" class="page active">
- <div class="hero">
-  <h2>आपकी डिजिटल सेवा, आपके गाँव में</h2>
-  <p>फोटो एडिटिंग, डॉक्यूमेंट, ID कार्ड, PDF और ऑनलाइन सेवाएँ एक ही जगह।</p>
- </div>
- <br>
- <div class="grid">
-  <div class="card"><h3>📸 Photo Studio</h3><p>पासपोर्ट फोटो और A4 फोटो शीट बनाएँ।</p><button class="toolbtn" onclick="showPage('photo')">खोलें</button></div>
-  <div class="card"><h3>🪪 ID Card Editor</h3><p>ID कार्ड फोटो एडिट और PDF बनाएँ।</p><button class="toolbtn" onclick="showPage('id')">खोलें</button></div>
-  <div class="card"><h3>📄 Document Studio</h3><p>डॉक्यूमेंट को PDF में बदलें।</p><button class="toolbtn" onclick="showPage('whatsapp')">खोलें</button></div>
-  <div class="card"><h3>📚 PDF Studio</h3><p>PDF बनाएँ, जोड़ें और पेज अलग करें।</p><button class="toolbtn" onclick="showPage('pdf')">खोलें</button></div>
-  <div class="card"><h3>💡 Bill & Recharge</h3><p>बिल और रिचार्ज के आधिकारिक पोर्टल।</p><button class="toolbtn" onclick="showPage('bills')">खोलें</button></div>
-  <div class="card"><h3>🏛️ सरकारी सेवाएँ</h3><p>सरकारी योजनाएँ और ऑनलाइन सेवाएँ।</p><button class="toolbtn" onclick="showPage('gov')">खोलें</button></div>
- </div>
-</section>
-
-<!-- PHOTO STUDIO -->
-<section id="photo" class="page">
- <div class="card">
-  <h2>📸 Passport Photo Maker PRO</h2>
-  <label>फोटो चुनें</label>
-  <input type="file" id="photoFile" accept="image/*" onchange="loadImage(this,'photoCanvas')">
-  <div class="row">
-   <div><label>फोटो की संख्या</label>
-    <select id="photoCount" onchange="drawPhotoSheet()">
-     <option>2</option><option>4</option><option>6</option><option>8</option>
-     <option>12</option><option>16</option><option>20</option><option>32</option><option>50</option>
-    </select>
-   </div>
-   <div><label>फोटो चौड़ाई (mm)</label><input id="photoW" type="number" value="35" min="10" max="100" oninput="drawPhotoSheet()"></div>
-   <div><label>फोटो ऊँचाई (mm)</label><input id="photoH" type="number" value="45" min="10" max="100" oninput="drawPhotoSheet()"></div>
-   <div><label>Gap (mm)</label><input id="photoGap" type="number" value="3" oninput="drawPhotoSheet()"></div>
-  </div>
-  <div class="row">
-   <div><label>Brightness</label><input id="photoBright" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
-   <div><label>Contrast</label><input id="photoContrast" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
-  </div>
-  <button class="toolbtn" onclick="drawPhotoSheet()">A4 Preview अपडेट करें</button>
-  <button class="toolbtn green" onclick="saveCanvasPDF('photoCanvas','Passport_Photo_Sheet')">PDF सेव करें</button>
-  <div class="preview"><canvas id="photoCanvas" class="sheet" width="794" height="1123"></canvas></div>
-  <p class="small">A4 शीट पर चुनी गई संख्या में फोटो अपने आप व्यवस्थित होंगी।</p>
- </div>
-</section>
-
-<!-- ID EDITOR -->
-<section id="id" class="page">
- <div class="card">
-  <h2>🪪 Advanced ID Card Editor</h2>
-  <label>ID कार्ड की फोटो चुनें</label>
-  <input type="file" id="idFile" accept="image/*" onchange="loadImage(this,'idCanvas')">
-  <div class="row">
-   <div><label>चौड़ाई (mm)</label><input type="number" id="idW" value="86" oninput="drawID()"></div>
-   <div><label>ऊँचाई (mm)</label><input type="number" id="idH" value="54" oninput="drawID()"></div>
-   <div><label>Zoom</label><input type="range" id="idZoom" min="50" max="200" value="100" oninput="drawID()"></div>
-   <div><label>Rotation</label><input type="range" id="idRotate" min="-180" max="180" value="0" oninput="drawID()"></div>
-  </div>
-  <div class="row">
-   <div><label>Brightness</label><input type="range" id="idBright" min="50" max="180" value="100" oninput="drawID()"></div>
-   <div><label>Contrast</label><input type="range" id="idContrast" min="50" max="180" value="100" oninput="drawID()"></div>
-  </div>
-  <label>कार्ड का पक्ष</label>
-  <select id="idSide" onchange="drawID()"><option value="front">Front Side</option><option value="back">Back Side</option></select>
-  <button class="toolbtn" onclick="drawID()">Preview अपडेट</button>
-  <button class="toolbtn green" onclick="saveCanvasPDF('idCanvas','ID_Card')">PDF सेव करें</button>
-  <button class="toolbtn gray" onclick="resetID()">Reset</button>
-  <div class="preview"><canvas id="idCanvas" width="1012" height="638"></canvas></div>
-  <p class="small">यह टूल आपके द्वारा चुनी गई इमेज को एडिट करता है। आधिकारिक ID में गलत जानकारी बदलने या जालसाजी के लिए इसका उपयोग न करें।</p>
- </div>
-</section>
-
-<!-- JOINT PHOTO -->
-<section id="joint" class="page">
- <div class="card">
-  <h2>👥 Joint Photo Maker</h2>
-  <label>एक या अधिक फोटो चुनें</label>
-  <input type="file" id="jointFiles" accept="image/*" multiple onchange="loadJoint(this)">
-  <div class="row">
-   <div><label>कॉलम</label><select id="jointCols" onchange="drawJoint()"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
-   <div><label>फोटो चौड़ाई (mm)</label><input type="number" id="jointW" value="65" oninput="drawJoint()"></div>
-   <div><label>फोटो ऊँचाई (mm)</label><input type="number" id="jointH" value="80" oninput="drawJoint()"></div>
-   <div><label>Gap (mm)</label><input type="number" id="jointGap" value="4" oninput="drawJoint()"></div>
-  </div>
-  <button class="toolbtn" onclick="drawJoint()">Preview</button>
-  <button class="toolbtn green" onclick="saveCanvasPDF('jointCanvas','Joint_Photos')">PDF सेव करें</button>
-  <div class="preview"><canvas id="jointCanvas" class="sheet" width="794" height="1123"></canvas></div>
- </div>
-</section>
-
-<!-- WHATSAPP DOCUMENT STUDIO -->
-<section id="whatsapp" class="page">
- <div class="card">
-  <h2>📄 WhatsApp Document Studio</h2>
-  <label>फोटो या डॉक्यूमेंट इमेज चुनें</label>
-  <input type="file" id="docFile" accept="image/*" onchange="loadImage(this,'docCanvas')">
-  <div class="row">
-   <div><label>Zoom</label><input type="range" id="docZoom" min="50" max="200" value="100" oninput="drawDoc()"></div>
-   <div><label>Brightness</label><input type="range" id="docBright" min="50" max="180" value="100" oninput="drawDoc()"></div>
-   <div><label>Contrast</label><input type="range" id="docContrast" min="50" max="180" value="100" oninput="drawDoc()"></div>
-   <div><label>Rotation</label><input type="range" id="docRotate" min="-180" max="180" value="0" oninput="drawDoc()"></div>
-  </div>
-  <div class="row">
-   <div><label>Paper Size</label><select id="docPaper"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div>
-   <div><label>Orientation</label><select id="docOrientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
-  </div>
-  <button class="toolbtn" onclick="drawDoc()">Preview</button>
-  <button class="toolbtn green" onclick="saveCanvasPDF('docCanvas','Document')">PDF सेव करें</button>
-  <div class="preview"><canvas id="docCanvas" class="sheet" width="794" height="1123"></canvas></div>
- </div>
-</section>
-
-<!-- PDF STUDIO -->
-<section id="pdf" class="page">
- <div class="card">
-  <h2>📚 PDF Professional Studio</h2>
-  <div class="status">इमेज से PDF, कई PDF जोड़ना और PDF पेज अलग करना उपलब्ध है।</div>
-  <h3>1. Image to PDF</h3>
-  <input type="file" id="pdfImages" accept="image/*" multiple>
-  <button class="toolbtn green" onclick="imagesToPDF()">सभी इमेज PDF में सेव करें</button>
-  <hr>
-  <h3>2. PDF Merge – कई PDF जोड़ें</h3>
-  <input type="file" id="mergeFiles" accept="application/pdf" multiple>
-  <button class="toolbtn" onclick="mergePDF()">PDF जोड़कर सेव करें</button>
-  <hr>
-  <h3>3. PDF Split – पेज अलग करें</h3>
-  <input type="file" id="splitFile" accept="application/pdf">
-  <label>पेज नंबर (उदाहरण: 1,3,5)</label>
-  <input id="splitPages" placeholder="1,2,3">
-  <button class="toolbtn" onclick="splitPDF()">चुने हुए पेज सेव करें</button>
-  <hr>
-  <h3>4. PDF Print</h3>
-  <input type="file" id="printFile" accept="application/pdf">
-  <button class="toolbtn" onclick="printPDF()">PDF खोलें / Print करें</button>
-  <p class="small">PDF Merge और Split के लिए इंटरनेट कनेक्शन आवश्यक है क्योंकि PDF लाइब्रेरी CDN से लोड होती है।</p>
- </div>
-</section>
-
-<!-- BILLS -->
-<section id="bills" class="page">
- <div class="card">
-  <h2>💡 Bill Payment & Recharge</h2>
-  <p>नीचे संबंधित आधिकारिक पोर्टल खोलकर बिल या रिचार्ज की प्रक्रिया पूरी करें।</p>
-  <div class="grid service">
-   <div class="card"><h3>बिजली बिल</h3>
-    <a href="https://energy.rajasthan.gov.in/" target="_blank">राजस्थान बिजली विभाग</a>
-    <a href="https://www.rajdiscoms.com/" target="_blank">Rajasthan DISCOM</a>
-   </div>
-   <div class="card"><h3>मोबाइल रिचार्ज</h3>
-    <a href="https://www.jio.com/" target="_blank">Jio Recharge</a>
-    <a href="https://www.airtel.in/" target="_blank">Airtel Recharge</a>
-    <a href="https://www.myvi.in/" target="_blank">Vi Recharge</a>
-    <a href="https://www.bsnl.co.in/" target="_blank">BSNL</a>
-   </div>
-   <div class="card"><h3>DTH / TV Recharge</h3>
-    <a href="https://www.tataplay.com/" target="_blank">Tata Play</a>
-    <a href="https://www.dishtv.in/" target="_blank">Dish TV</a>
-    <a href="https://www.airtel.in/dth" target="_blank">Airtel Digital TV</a>
-   </div>
-   <div class="card"><h3>FASTag</h3>
-    <a href="https://fastag.ihmcl.com/" target="_blank">IHMCL FASTag</a>
-    <a href="https://www.npci.org.in/" target="_blank">NPCI</a>
-   </div>
-   <div class="card"><h3>अन्य बिल</h3>
-    <a href="https://www.bharatbillpay.com/" target="_blank">Bharat BillPay जानकारी</a>
-    <a href="https://www.npci.org.in/what-we-do/bharat-billpay/product-overview" target="_blank">BBPS जानकारी</a>
-   </div>
-   <div class="card"><h3>लोन / किस्त</h3>
-    <a href="https://www.rbi.org.in/" target="_blank">RBI आधिकारिक वेबसाइट</a>
-    <a href="https://www.bankofbaroda.in/" target="_blank">Bank of Baroda</a>
-    <a href="https://sbi.co.in/" target="_blank">SBI</a>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- GAS -->
-<section id="gas" class="page">
- <div class="card">
-  <h2>🔥 LPG Gas Booking</h2>
-  <div class="grid service">
-   <div class="card"><h3>Indane Gas</h3><a href="https://cx.indianoil.in/" target="_blank">Indane Online Booking</a></div>
-   <div class="card"><h3>Bharat Gas</h3><a href="https://my.ebharatgas.com/" target="_blank">Bharat Gas Booking</a></div>
-   <div class="card"><h3>HP Gas</h3><a href="https://myhpgas.in/" target="_blank">HP Gas Booking</a></div>
-  </div>
- </div>
-</section>
-
-<!-- GOV -->
-<section id="gov" class="page">
- <div class="card">
-  <h2>🏛️ सरकारी ऑनलाइन सेवाएँ</h2>
-  <div class="grid service">
-   <div class="card"><h3>पहचान एवं दस्तावेज</h3>
-    <a href="https://uidai.gov.in/" target="_blank">Aadhaar Services</a>
-    <a href="https://janapp.rajasthan.gov.in/" target="_blank">Jan Aadhaar</a>
-    <a href="https://voters.eci.gov.in/" target="_blank">Voter Services</a>
-    <a href="https://www.passportindia.gov.in/" target="_blank">Passport</a>
-   </div>
-   <div class="card"><h3>राजस्थान सेवाएँ</h3>
-    <a href="https://sso.rajasthan.gov.in/" target="_blank">Rajasthan SSO</a>
-    <a href="https://emitra.rajasthan.gov.in/" target="_blank">e-Mitra</a>
-    <a href="https://apnakhata.rajasthan.gov.in/" target="_blank">Apna Khata</a>
-    <a href="https://jansoochna.rajasthan.gov.in/" target="_blank">Jan Soochna</a>
-   </div>
-   <div class="card"><h3>किसान एवं श्रमिक</h3>
-    <a href="https://pmkisan.gov.in/" target="_blank">PM Kisan</a>
-    <a href="https://eshram.gov.in/" target="_blank">e-Shram</a>
-    <a href="https://maandhan.in/" target="_blank">Maandhan</a>
-    <a href="https://pmfby.gov.in/" target="_blank">Fasal Bima</a>
-   </div>
-   <div class="card"><h3>योजनाएँ</h3>
-    <a href="https://www.myscheme.gov.in/" target="_blank">My Scheme</a>
-    <a href="https://nfsa.gov.in/" target="_blank">Ration / NFSA</a>
-    <a href="https://nsap.nic.in/" target="_blank">Social Assistance</a>
-    <a href="https://www.india.gov.in/" target="_blank">National Portal</a>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- FORMS -->
-<section id="forms" class="page">
- <div class="card">
-  <h2>📝 Forms, Results & Education</h2>
-  <div class="grid service">
-   <div class="card"><h3>भर्ती और परीक्षा</h3>
-    <a href="https://rssb.rajasthan.gov.in/" target="_blank">Rajasthan Staff Selection Board</a>
-    <a href="https://rpsc.rajasthan.gov.in/" target="_blank">RPSC</a>
-    <a href="https://ssc.gov.in/" target="_blank">SSC</a>
-    <a href="https://upsc.gov.in/" target="_blank">UPSC</a>
-   </div>
-   <div class="card"><h3>रिजल्ट और शिक्षा</h3>
-    <a href="https://rajeduboard.rajasthan.gov.in/" target="_blank">RBSE Result</a>
-    <a href="https://www.cbse.gov.in/" target="_blank">CBSE</a>
-    <a href="https://scholarships.gov.in/" target="_blank">Scholarship</a>
-    <a href="https://hte.rajasthan.gov.in/" target="_blank">Higher Education Rajasthan</a>
-   </div>
-   <div class="card"><h3>अन्य फॉर्म</h3>
-    <a href="https://www.ncs.gov.in/" target="_blank">National Career Service</a>
-    <a href="https://www.indiapost.gov.in/" target="_blank">India Post</a>
-    <a href="https://www.incometax.gov.in/" target="_blank">Income Tax</a>
-    <a href="https://www.gst.gov.in/" target="_blank">GST Portal</a>
-   </div>
-  </div>
- </div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="page">
- <div class="card">
-  <h2>🎫 Online Booking Services</h2>
-  <div class="grid service">
-   <div class="card"><h3>रेलवे</h3><a href="https://www.irctc.co.in/" target="_blank">IRCTC Train Booking</a></div>
-   <div class="card"><h3>बस</h3><a href="https://rsrtconline.rajasthan.gov.in/" target="_blank">RSRTC Bus Booking</a></div>
-   <div class="card"><h3>हवाई यात्रा</h3><a href="https://www.airindia.com/" target="_blank">Air India</a></div>
-   <div class="card"><h3>पर्यटन</h3><a href="https://www.rajasthantourism.gov.in/" target="_blank">Rajasthan Tourism</a></div>
-  </div>
- </div>
-</section>
-
+<div class="hero"><h2>啶嗋お啶曕 啶∴た啶溹た啶熰げ 啶膏啶掂ぞ, 啶嗋お啶曕 啶椸ぞ啶佮さ 啶啶�</h2><p>啶啶熰 啶忇ぁ啶苦啶苦啶�, 啶∴啶曕啶啶啶傕, ID 啶曕ぞ啶班啶�, PDF 啶斷ぐ 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇 啶忇 啶灌 啶溹啶灌イ</p></div><br>
+<div class="grid">
+<div class="card"><h3>馃摳 Photo Studio</h3><p>啶ぞ啶膏お啷嬥ぐ啷嵿 啶啶熰, Crop, Border, A4 啶多啶� 啶斷ぐ Print啷�</p><button class="toolbtn" onclick="showPage('photo')">啶栢啶侧啶�</button></div>
+<div class="card"><h3>馃 ID Card Editor</h3><p>Front/Back, A4 啶侧啶嗋啶�, Crop 啶斷ぐ Export啷�</p><button class="toolbtn" onclick="showPage('id')">啶栢啶侧啶�</button></div>
+<div class="card"><h3>馃懃 Joint Photo</h3><p>啶曕 啶啶熰 啶忇 啶多啶� 啶ぐ 啶侧啶距啶佮イ</p><button class="toolbtn" onclick="showPage('joint')">啶栢啶侧啶�</button></div>
+<div class="card"><h3>馃搫 Document Studio</h3><p>啶囙ぎ啷囙 啶曕 啶啶ぐ 啶膏ぞ啶囙 啶曕 啶呧え啷佮じ啶距ぐ PDF 啶え啶距啶佮イ</p><button class="toolbtn" onclick="showPage('whatsapp')">啶栢啶侧啶�</button></div>
+<div class="card"><h3>馃摎 PDF Studio</h3><p>啶囙ぎ啷囙 啶膏 PDF, PDF Merge 啶斷ぐ Split啷�</p><button class="toolbtn" onclick="showPage('pdf')">啶栢啶侧啶�</button></div>
+<div class="card"><h3>馃彌锔� 啶膏ぐ啶曕ぞ啶班 啶膏啶掂ぞ啶忇</h3><p>啶膏ぐ啶曕ぞ啶班 啶啶溹え啶距啶� 啶斷ぐ 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇啷�</p><button class="toolbtn" onclick="showPage('gov')">啶栢啶侧啶�</button></div>
 </div>
+<div class="card"><h3>啶す啶む啶掂お啷傕ぐ啷嵿ぃ 啶溹ぞ啶ㄠ啶距ぐ啷€</h3><p class="help">啶す 啶啶班啶熰げ 啶啶熰/啶︵じ啷嵿い啶距さ啷囙啶� 啶む啶ぞ啶� 啶曕ぐ啶ㄠ 啶斷ぐ 啶嗋ぇ啶苦啶距ぐ啶苦 啶掂啶じ啶距啶熰啶� 啶む 啶す啷佮啶氞え啷� 啶曕ぞ 啶熰啶� 啶灌啷� 啶膏ぐ啶曕ぞ啶班 ID 啶曕 啶溹ぞ啶ㄠ啶距ぐ啷€ 啶う啶侧え啷�, 啶ㄠ啶侧 啶︵じ啷嵿い啶距さ啷囙啶� 啶え啶距え啷� 啶ぞ 啶曕た啶膏 啶曕 啶す啶氞ぞ啶� 啶曕ぞ 啶︵啶班啶く啷嬥 啶曕ぐ啶ㄠ 啶曕 啶侧た啶� 啶囙じ啶曕ぞ 啶夃お啶啶� 啶� 啶曕ぐ啷囙啷� 啶啶熰 啶膏啶ムぞ啶ㄠ啶� 啶啶班ぞ啶夃啶监ぐ 啶啶� 啶啶班啶膏啶� 啶灌啶む 啶灌啶�; 啶呧お啶侧啶� 啶膏ぐ啷嵿さ啶� 啶ぐ 啶ㄠす啷€啶� 啶曕 啶溹ぞ啶む啶傕イ</p></div>
+</section>
 
-<footer>
- <h3>Gramin Grahak Sewa</h3>
- <p>डिजिटल सेवा • ग्रामीण विकास • जनता की सुविधा</p>
- <p class="small" style="color:white">यह एक सेवा पोर्टल है। वास्तविक भुगतान और बुकिंग संबंधित आधिकारिक वेबसाइट पर ही पूरी होगी।</p>
-</footer>
+<section id="photo" class="page">
+<div class="card">
+<h2>馃摳 Passport Photo Studio PRO</h2>
+<div class="controls">
+<label>啶啶熰 啶氞啶ㄠ啶�</label><input type="file" id="photoFile" accept="image/*" onchange="loadOne(this,'photo')">
+<div class="row">
+<div><label>啶啶熰 啶曕 啶膏啶栢啶ぞ</label><select id="photoCount" onchange="drawPhotoSheet()"><option>2</option><option>4</option><option selected>8</option><option>12</option><option>16</option><option>20</option><option>24</option><option>32</option><option>50</option></select></div>
+<div><label>啶ぞ啶� 啶曕 啶囙啶距</label><select id="photoUnit" onchange="drawPhotoSheet()"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="in">Inch</option></select></div>
+<div><label>啶啶熰 啶氞啶∴ぜ啶距</label><input id="photoW" type="number" value="35" min="5" step="0.1" oninput="drawPhotoSheet()"></div>
+<div><label>啶啶熰 啶娻啶氞ぞ啶�</label><input id="photoH" type="number" value="45" min="5" step="0.1" oninput="drawPhotoSheet()"></div>
+<div><label>Gap (啶夃じ啷€ 啶囙啶距 啶啶�)</label><input id="photoGap" type="number" value="3" min="0" step="0.1" oninput="drawPhotoSheet()"></div>
+<div><label>啶啶ぐ</label><select id="photoPaper" onchange="drawPhotoSheet()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div>
+</div>
+<div class="row">
+<div><label>Crop 啶呧え啷佮お啶距い</label><select id="photoRatio" onchange="drawPhotoSheet()"><option value="free">Free / Original Crop</option><option value="1">1:1</option><option value="0.75">3:4</option><option value="0.8">4:5</option><option value="0.6667">2:3</option><option value="0.7778">7:9</option></select></div>
+<div><label>Crop Zoom</label><input id="photoZoom" type="range" min="100" max="250" value="100" oninput="drawPhotoSheet()"></div>
+<div><label>Crop X Position</label><input id="photoX" type="range" min="-50" max="50" value="0" oninput="drawPhotoSheet()"></div>
+<div><label>Crop Y Position</label><input id="photoY" type="range" min="-50" max="50" value="0" oninput="drawPhotoSheet()"></div>
+<div><label>Brightness</label><input id="photoBright" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
+<div><label>Contrast</label><input id="photoContrast" type="range" min="50" max="180" value="100" oninput="drawPhotoSheet()"></div>
+</div>
+<div class="row">
+<div class="checkline"><input type="checkbox" id="photoBorder" checked onchange="drawPhotoSheet()"><label for="photoBorder">啶啶熰 啶啶班啶∴ぐ 啶︵た啶栢ぞ啶忇</label></div>
+<div><label>Border Color</label><input type="color" id="photoBorderColor" value="#222222" oninput="drawPhotoSheet()"></div>
+<div><label>Border 啶啶熰ぞ啶� (px)</label><input type="number" id="photoBorderWidth" value="1" min="0" max="20" oninput="drawPhotoSheet()"></div>
+</div>
+<button class="toolbtn" onclick="drawPhotoSheet()">Preview 啶呧お啶∴啶�</button><button class="toolbtn green" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','pdf')">PDF 啶膏啶�</button>
+<button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','png')">PNG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('photoCanvas','Passport_Photo_Sheet','webp')">WebP 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('photoCanvas','photo')">Print Out</button><button class="toolbtn gray" onclick="resetPhoto()">Reset</button>
+</div>
+<div class="preview"><canvas id="photoCanvas" class="sheet" width="794" height="1123"></canvas></div>
+<p class="small">啶∴た啶啶侧啶� 啶ぞ啶膏お啷嬥ぐ啷嵿 啶啶熰 35 脳 45 mm 啶灌啷� 啶掂ぞ啶膏啶むさ啶苦 啶啶班た啶傕 啶嗋啶距ぐ 啶曕 啶侧た啶� Print 啶膏啶掂ぞ啶� 啶啶� Scale = 100% / Actual Size 啶氞啶ㄠ啶傕イ</p>
+</div>
+</section>
 
+<section id="id" class="page">
+<div class="card">
+<h2>馃 ID Card Editor PRO</h2>
+<div class="status">Front 啶斷ぐ Back 啶曕 啶呧げ啶�-啶呧げ啶� 啶囙ぎ啷囙 啶氞啶ㄠ啶傕イ A4 啶啶班啶掂啶 啶啶� 啶︵啶ㄠ啶� 啶膏ぞ啶囙ぁ 啶膏ぞ啶� 啶︵た啶栢ぞ啶� 啶︵啶傕啷€啷�</div>
+<div class="controls">
+<div class="row">
+<div><label>Front Side 啶啶熰</label><input type="file" id="idFrontFile" accept="image/*" onchange="loadOne(this,'idFront')"></div>
+<div><label>Back Side 啶啶熰</label><input type="file" id="idBackFile" accept="image/*" onchange="loadOne(this,'idBack')"></div>
+<div><label>啶ぞ啶� 啶曕 啶囙啶距</label><select id="idUnit" onchange="drawID()"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="in">Inch</option></select></div>
+<div><label>啶曕ぞ啶班啶� 啶氞啶∴ぜ啶距</label><input id="idW" type="number" value="86" min="20" step="0.1" oninput="drawID()"></div>
+<div><label>啶曕ぞ啶班啶� 啶娻啶氞ぞ啶�</label><input id="idH" type="number" value="54" min="20" step="0.1" oninput="drawID()"></div>
+<div><label>A4 Layout</label><select id="idLayout" onchange="drawID()"><option value="side">Front 啶斷ぐ Back 啶膏ぞ啶�-啶膏ぞ啶�</option><option value="stack">Front 啶娻お啶�, Back 啶ㄠ啶氞</option><option value="front">啶曕啶掂げ Front</option><option value="back">啶曕啶掂げ Back</option></select></div>
+</div>
+<h3>Front Crop / 啶忇ぁ啶苦</h3>
+<div class="row">
+<div><label>Crop Zoom</label><input id="frontZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>Crop X</label><input id="frontX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Crop Y</label><input id="frontY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="frontBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="frontContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="frontRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
+</div>
+<h3>Back Crop / 啶忇ぁ啶苦</h3>
+<div class="row">
+<div><label>Crop Zoom</label><input id="backZoom" type="range" min="100" max="250" value="100" oninput="drawID()"></div><div><label>Crop X</label><input id="backX" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Crop Y</label><input id="backY" type="range" min="-50" max="50" value="0" oninput="drawID()"></div><div><label>Brightness</label><input id="backBright" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Contrast</label><input id="backContrast" type="range" min="50" max="180" value="100" oninput="drawID()"></div><div><label>Rotation</label><input id="backRotate" type="range" min="-180" max="180" value="0" oninput="drawID()"></div>
+</div>
+<div class="row">
+<div class="checkline"><input type="checkbox" id="idBorder" checked onchange="drawID()"><label for="idBorder">啶曕ぞ啶班啶� 啶啶班啶∴ぐ</label></div><div><label>Border Color</label><input type="color" id="idBorderColor" value="#222222" oninput="drawID()"></div><div><label>Border 啶啶熰ぞ啶� (px)</label><input type="number" id="idBorderWidth" value="2" min="0" max="20" oninput="drawID()"></div>
+</div>
+<button class="toolbtn" onclick="drawID()">A4 Preview 啶呧お啶∴啶�</button><button class="toolbtn green" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','png')">PNG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('idCanvas','ID_Card_Front_Back_A4','webp')">WebP 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('idCanvas','id')">Print Out</button><button class="toolbtn gray" onclick="resetID()">Reset</button>
+</div>
+<div class="preview"><canvas id="idCanvas" class="sheet" width="794" height="1123"></canvas></div>
+<p class="small">啶す 啶熰啶� 啶嗋お啶曕 啶︵た啶� 啶灌啶� 啶曕ぞ啶班啶� 啶曕 啶囙ぎ啷囙 啶曕 A4 啶ぐ 啶掂啶さ啶膏啶ムた啶� 啶曕ぐ啶むぞ 啶灌啷� 啶嗋ぇ啶苦啶距ぐ啶苦 啶す啶氞ぞ啶�-啶い啷嵿ぐ 啶曕 啶溹ぞ啶ㄠ啶距ぐ啷€ 啶う啶侧え啷� 啶ぞ 啶溹ぞ啶侧じ啶距啷€ 啶曕 啶侧た啶� 啶夃お啶啶� 啶� 啶曕ぐ啷囙啷�</p>
+</div>
+</section>
+
+<section id="joint" class="page"><div class="card"><h2>馃懃 Joint Photo Maker</h2><label>啶忇 啶ぞ 啶呧ぇ啶苦 啶啶熰 啶氞啶ㄠ啶�</label><input type="file" id="jointFiles" accept="image/*" multiple onchange="loadJoint(this)"><div class="row"><div><label>啶曕啶侧ぎ</label><select id="jointCols" onchange="drawJoint()"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div><div><label>啶啶熰 啶氞啶∴ぜ啶距 (mm)</label><input type="number" id="jointW" value="65" oninput="drawJoint()"></div><div><label>啶啶熰 啶娻啶氞ぞ啶� (mm)</label><input type="number" id="jointH" value="80" oninput="drawJoint()"></div><div><label>Gap (mm)</label><input type="number" id="jointGap" value="4" oninput="drawJoint()"></div></div><button class="toolbtn" onclick="drawJoint()">Preview</button><button class="toolbtn green" onclick="exportCanvas('jointCanvas','Joint_Photos','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('jointCanvas','Joint_Photos','jpeg')">JPEG 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('jointCanvas','Joint_Photos','png')">PNG 啶膏啶�</button><button class="toolbtn gray" onclick="printCanvas('jointCanvas','joint')">Print</button><div class="preview"><canvas id="jointCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
+
+<section id="whatsapp" class="page"><div class="card"><h2>馃搫 Document Studio</h2><label>啶啶熰/啶∴啶曕啶啶啶傕 啶囙ぎ啷囙 啶氞啶ㄠ啶�</label><input type="file" id="docFile" accept="image/*" onchange="loadOne(this,'doc')"><div class="row"><div><label>Paper Size</label><select id="docPaper" onchange="drawDoc()"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select></div><div><label>Orientation</label><select id="docOrientation" onchange="drawDoc()"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div><label>Zoom</label><input type="range" id="docZoom" min="50" max="200" value="100" oninput="drawDoc()"></div><div><label>Rotation</label><input type="range" id="docRotate" min="-180" max="180" value="0" oninput="drawDoc()"></div><div><label>Brightness</label><input type="range" id="docBright" min="50" max="180" value="100" oninput="drawDoc()"></div><div><label>Contrast</label><input type="range" id="docContrast" min="50" max="180" value="100" oninput="drawDoc()"></div></div><button class="toolbtn" onclick="drawDoc()">Preview</button><button class="toolbtn green" onclick="exportCanvas('docCanvas','Document','pdf')">PDF 啶膏啶�</button><button class="toolbtn" onclick="exportCanvas('docCanvas','Document','jpeg')">JPEG</button><button class="toolbtn" onclick="exportCanvas('docCanvas','Document','png')">PNG</button><button class="toolbtn gray" onclick="printCanvas('docCanvas','whatsapp')">Print</button><div class="preview"><canvas id="docCanvas" class="sheet" width="794" height="1123"></canvas></div></div></section>
+
+<section id="pdf" class="page"><div class="card"><h2>馃摎 PDF Professional Studio</h2><div class="status">啶囙ぎ啷囙 啶膏 PDF, 啶曕 PDF 啶溹啶∴ぜ啶ㄠぞ 啶斷ぐ 啶氞啶ㄠ 啶灌啶� 啶啶� 啶呧げ啶� 啶曕ぐ啶ㄠぞ啷�</div><h3>1. Image to PDF</h3><input type="file" id="pdfImages" accept="image/*" multiple><button class="toolbtn green" onclick="imagesToPDF()">啶膏き啷€ 啶囙ぎ啷囙 PDF 啶啶� 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>2. PDF Merge</h3><input type="file" id="mergeFiles" accept="application/pdf" multiple><button class="toolbtn" onclick="mergePDF()">PDF 啶溹啶∴ぜ啶曕ぐ 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>3. PDF Split</h3><input type="file" id="splitFile" accept="application/pdf"><label>啶啶� 啶ㄠ啶ぐ (啶夃う啶距す啶班ぃ: 1,3,5)</label><input id="splitPages" placeholder="1,2,3"><button class="toolbtn" onclick="splitPDF()">啶氞啶ㄠ 啶灌啶� 啶啶� 啶膏啶� 啶曕ぐ啷囙</button><hr><h3>4. PDF Print</h3><input type="file" id="printFile" accept="application/pdf"><button class="toolbtn" onclick="printPDF()">PDF 啶栢啶侧啶� / Print 啶曕ぐ啷囙</button><p class="small">PDF 啶膏啶掂た啶оぞ啶撪 啶曕 啶侧た啶� 啶囙啶熰ぐ啶ㄠ啶� 啶斷ぐ PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ CDN 啶曕ぞ 啶侧啶� 啶灌啶ㄠぞ 啶嗋さ啶多啶 啶灌啷�</p></div></section>
+
+<section id="bills" class="page"><div class="card"><h2>馃挕 Bill Payment & Recharge</h2><p>啶ㄠ啶氞 啶嗋ぇ啶苦啶距ぐ啶苦 啶啶班啶熰げ 啶栢啶侧啶� 啶た啶� 啶ぞ 啶班た啶氞ぞ啶班啶� 啶啶班ぞ 啶曕ぐ啷囙啷�</p><div class="grid service">
+<div class="card"><h3>啶た啶溹げ啷€ 啶た啶�</h3><a href="https://energy.rajasthan.gov.in/" target="_blank" rel="noopener">啶班ぞ啶溹じ啷嵿ぅ啶距え 啶た啶溹げ啷€ 啶掂た啶ぞ啶�</a><a href="https://www.rajdiscoms.com/" target="_blank" rel="noopener">Rajasthan DISCOM</a></div>
+<div class="card"><h3>啶啶ぞ啶囙げ 啶班た啶氞ぞ啶班啶�</h3><a href="https://www.jio.com/" target="_blank" rel="noopener">Jio</a><a href="https://www.airtel.in/" target="_blank" rel="noopener">Airtel</a><a href="https://www.myvi.in/" target="_blank" rel="noopener">Vi</a><a href="https://www.bsnl.co.in/" target="_blank" rel="noopener">BSNL</a></div>
+<div class="card"><h3>DTH / TV</h3><a href="https://www.tataplay.com/" target="_blank" rel="noopener">Tata Play</a><a href="https://www.dishtv.in/" target="_blank" rel="noopener">Dish TV</a><a href="https://www.airtel.in/dth" target="_blank" rel="noopener">Airtel Digital TV</a></div>
+<div class="card"><h3>FASTag</h3><a href="https://fastag.ihmcl.com/" target="_blank" rel="noopener">IHMCL FASTag</a><a href="https://www.npci.org.in/" target="_blank" rel="noopener">NPCI</a></div>
+<div class="card"><h3>啶呧え啷嵿く 啶た啶�</h3><a href="https://www.bharatbillpay.com/" target="_blank" rel="noopener">Bharat BillPay</a><a href="https://www.npci.org.in/what-we-do/bharat-billpay/product-overview" target="_blank" rel="noopener">BBPS 啶溹ぞ啶ㄠ啶距ぐ啷€</a></div>
+<div class="card"><h3>啶啶傕 / 啶侧啶� 啶溹ぞ啶ㄠ啶距ぐ啷€</h3><a href="https://www.rbi.org.in/" target="_blank" rel="noopener">RBI</a><a href="https://www.bankofbaroda.in/" target="_blank" rel="noopener">Bank of Baroda</a><a href="https://sbi.co.in/" target="_blank" rel="noopener">SBI</a></div>
+</div></div></section>
+<section id="gas" class="page"><div class="card"><h2>馃敟 LPG Gas Booking</h2><div class="grid service"><div class="card"><h3>Indane Gas</h3><a href="https://cx.indianoil.in/" target="_blank" rel="noopener">Indane Online Booking</a></div><div class="card"><h3>Bharat Gas</h3><a href="https://my.ebharatgas.com/" target="_blank" rel="noopener">Bharat Gas Booking</a></div><div class="card"><h3>HP Gas</h3><a href="https://myhpgas.in/" target="_blank" rel="noopener">HP Gas Booking</a></div></div></div></section>
+<section id="gov" class="page"><div class="card"><h2>馃彌锔� 啶膏ぐ啶曕ぞ啶班 啶戉え啶侧ぞ啶囙え 啶膏啶掂ぞ啶忇</h2><div class="grid service">
+<div class="card"><h3>啶す啶氞ぞ啶� 啶忇さ啶� 啶︵じ啷嵿い啶距さ啷囙</h3><a href="https://uidai.gov.in/" target="_blank" rel="noopener">Aadhaar Services</a><a href="https://janapp.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Aadhaar</a><a href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Voter Services</a><a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener">Passport</a></div>
+<div class="card"><h3>啶班ぞ啶溹じ啷嵿ぅ啶距え 啶膏啶掂ぞ啶忇</h3><a href="https://sso.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan SSO</a><a href="https://emitra.rajasthan.gov.in/" target="_blank" rel="noopener">e-Mitra</a><a href="https://apnakhata.rajasthan.gov.in/" target="_blank" rel="noopener">Apna Khata</a><a href="https://jansoochna.rajasthan.gov.in/" target="_blank" rel="noopener">Jan Soochna</a></div>
+<div class="card"><h3>啶曕た啶膏ぞ啶� 啶忇さ啶� 啶多啶班ぎ啶苦</h3><a href="https://pmkisan.gov.in/" target="_blank" rel="noopener">PM Kisan</a><a href="https://eshram.gov.in/" target="_blank" rel="noopener">e-Shram</a><a href="https://maandhan.in/" target="_blank" rel="noopener">Maandhan</a><a href="https://pmfby.gov.in/" target="_blank" rel="noopener">Fasal Bima</a></div>
+<div class="card"><h3>啶啶溹え啶距啶�</h3><a href="https://www.myscheme.gov.in/" target="_blank" rel="noopener">My Scheme</a><a href="https://nfsa.gov.in/" target="_blank" rel="noopener">Ration / NFSA</a><a href="https://nsap.nic.in/" target="_blank" rel="noopener">Social Assistance</a><a href="https://www.india.gov.in/" target="_blank" rel="noopener">National Portal</a></div>
+</div></div></section>
+<section id="forms" class="page"><div class="card"><h2>馃摑 Forms, Results & Education</h2><div class="grid service">
+<div class="card"><h3>啶ぐ啷嵿い啷€ 啶斷ぐ 啶ぐ啷€啶曕啶粪ぞ</h3><a href="https://rssb.rajasthan.gov.in/" target="_blank" rel="noopener">Rajasthan Staff Selection Board</a><a href="https://rpsc.rajasthan.gov.in/" target="_blank" rel="noopener">RPSC</a><a href="https://ssc.gov.in/" target="_blank" rel="noopener">SSC</a><a href="https://upsc.gov.in/" target="_blank" rel="noopener">UPSC</a></div>
+<div class="card"><h3>啶班た啶溹げ啷嵿 啶斷ぐ 啶多た啶曕啶粪ぞ</h3><a href="https://rajeduboard.rajasthan.gov.in/" target="_blank" rel="noopener">RBSE Result</a><a href="https://www.cbse.gov.in/" target="_blank" rel="noopener">CBSE</a><a href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarship</a><a href="https://hte.rajasthan.gov.in/" target="_blank" rel="noopener">Higher Education Rajasthan</a></div>
+<div class="card"><h3>啶呧え啷嵿く 啶啶班啶�</h3><a href="https://www.ncs.gov.in/" target="_blank" rel="noopener">National Career Service</a><a href="https://www.indiapost.gov.in/" target="_blank" rel="noopener">India Post</a><a href="https://www.incometax.gov.in/" target="_blank" rel="noopener">Income Tax</a><a href="https://www.gst.gov.in/" target="_blank" rel="noopener">GST Portal</a></div>
+</div></div></section>
+<section id="booking" class="page"><div class="card"><h2>馃帿 Online Booking Services</h2><div class="grid service"><div class="card"><h3>啶班啶侧さ啷�</h3><a href="https://www.irctc.co.in/" target="_blank" rel="noopener">IRCTC Train Booking</a></div><div class="card"><h3>啶じ</h3><a href="https://rsrtconline.rajasthan.gov.in/" target="_blank" rel="noopener">RSRTC Bus Booking</a></div><div class="card"><h3>啶灌さ啶距 啶ぞ啶む啶班ぞ</h3><a href="https://www.airindia.com/" target="_blank" rel="noopener">Air India</a></div><div class="card"><h3>啶ぐ啷嵿く啶熰え</h3><a href="https://www.rajasthantourism.gov.in/" target="_blank" rel="noopener">Rajasthan Tourism</a></div></div></div></section>
+</div>
+<footer><h3>Gramin Grahak Sewa PRO 3.0</h3><p>啶∴た啶溹た啶熰げ 啶膏啶掂ぞ 鈥� 啶椸啶班ぞ啶啶� 啶掂た啶曕ぞ啶� 鈥� 啶溹え啶むぞ 啶曕 啶膏啶掂た啶оぞ</p><p class="small" style="color:white">啶す 啶膏啶掂ぞ 啶啶班啶熰げ 啶灌啷� 啶掂ぞ啶膏啶むさ啶苦 啶啶椸い啶距え 啶斷ぐ 啶啶曕た啶傕 啶膏啶啶оた啶� 啶嗋ぇ啶苦啶距ぐ啶苦 啶掂啶じ啶距啶� 啶ぐ 啶灌 啶啶班 啶灌啶椸啷�</p></footer>
 <script>
-let images={};
-let jointImages=[];
-
-function showPage(id,btn){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
- if(btn)btn.classList.add('active');
- window.scrollTo(0,0);
-}
-
-function loadImage(input,canvasId){
- const file=input.files[0];
- if(!file)return;
- const url=URL.createObjectURL(file);
- const img=new Image();
- img.onload=()=>{
-  images[canvasId]=img;
-  if(canvasId==='photoCanvas')drawPhotoSheet();
-  if(canvasId==='idCanvas')drawID();
-  if(canvasId==='docCanvas')drawDoc();
-  URL.revokeObjectURL(url);
- };
- img.src=url;
-}
-
-function drawFit(ctx,img,x,y,w,h,zoom=1,rotate=0){
- ctx.save();
- ctx.translate(x+w/2,y+h/2);
- ctx.rotate(rotate*Math.PI/180);
- let scale=Math.max(w/img.width,h/img.height)*zoom;
- let iw=img.width*scale,ih=img.height*scale;
- ctx.drawImage(img,-iw/2,-ih/2,iw,ih);
- ctx.restore();
-}
-
-function drawPhotoSheet(){
- const c=document.getElementById('photoCanvas'),ctx=c.getContext('2d');
- ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
- const img=images.photoCanvas;if(!img)return;
- let count=+document.getElementById('photoCount').value;
- let w=+document.getElementById('photoW').value*3.78;
- let h=+document.getElementById('photoH').value*3.78;
- let gap=+document.getElementById('photoGap').value*3.78;
- let bright=+document.getElementById('photoBright').value;
- let contrast=+document.getElementById('photoContrast').value;
- ctx.filter=`brightness(${bright}%) contrast(${contrast}%)`;
- let cols=Math.max(1,Math.floor((c.width-30)/(w+gap)));
- let rows=Math.ceil(count/cols);
- let totalW=cols*w+(cols-1)*gap;
- let totalH=rows*h+(rows-1)*gap;
- let sx=(c.width-totalW)/2,sy=(c.height-totalH)/2;
- for(let i=0;i<count;i++){
-  let x=sx+(i%cols)*(w+gap),y=sy+Math.floor(i/cols)*(h+gap);
-  ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
-  drawFit(ctx,img,x,y,w,h);ctx.restore();
- }
- ctx.filter='none';
-}
-
-function drawID(){
- const c=document.getElementById('idCanvas'),ctx=c.getContext('2d');
- ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
- const img=images.idCanvas;if(!img)return;
- let zoom=+document.getElementById('idZoom').value/100;
- let bright=+document.getElementById('idBright').value;
- let contrast=+document.getElementById('idContrast').value;
- let rot=+document.getElementById('idRotate').value;
- ctx.filter=`brightness(${bright}%) contrast(${contrast}%)`;
- drawFit(ctx,img,0,0,c.width,c.height,zoom,rot);
- ctx.filter='none';
-}
-
-function resetID(){
- ['idZoom','idBright','idContrast'].forEach((id)=>{
-  document.getElementById(id).value=id==='idZoom'?100:100;
- });
- document.getElementById('idRotate').value=0;drawID();
-}
-
-function drawDoc(){
- const c=document.getElementById('docCanvas'),ctx=c.getContext('2d');
- ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
- const img=images.docCanvas;if(!img)return;
- let z=+document.getElementById('docZoom').value/100;
- let b=+document.getElementById('docBright').value;
- let co=+document.getElementById('docContrast').value;
- let r=+document.getElementById('docRotate').value;
- ctx.filter=`brightness(${b}%) contrast(${co}%)`;
- drawFit(ctx,img,0,0,c.width,c.height,z,r);
- ctx.filter='none';
-}
-
-function loadJoint(input){
- jointImages=[];
- [...input.files].forEach(file=>{
-  const url=URL.createObjectURL(file),img=new Image();
-  img.onload=()=>{jointImages.push(img);drawJoint();URL.revokeObjectURL(url)};
-  img.src=url;
- });
-}
-
-function drawJoint(){
- const c=document.getElementById('jointCanvas'),ctx=c.getContext('2d');
- ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
- if(!jointImages.length)return;
- let cols=+document.getElementById('jointCols').value;
- let w=+document.getElementById('jointW').value*3.78;
- let h=+document.getElementById('jointH').value*3.78;
- let gap=+document.getElementById('jointGap').value*3.78;
- let rows=Math.ceil(jointImages.length/cols);
- let totalW=cols*w+(cols-1)*gap,totalH=rows*h+(rows-1)*gap;
- let sx=(c.width-totalW)/2,sy=(c.height-totalH)/2;
- jointImages.forEach((img,i)=>{
-  let x=sx+(i%cols)*(w+gap),y=sy+Math.floor(i/cols)*(h+gap);
-  ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();drawFit(ctx,img,x,y,w,h);ctx.restore();
- });
-}
-
-function saveCanvasPDF(canvasId,name){
- const {jsPDF}=window.jspdf;
- const c=document.getElementById(canvasId);
- const pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
- pdf.addImage(c.toDataURL('image/jpeg',0.95),'JPEG',0,0,210,297);
- pdf.save(name+'.pdf');
-}
-
-async function imagesToPDF(){
- const files=[...document.getElementById('pdfImages').files];
- if(!files.length)return alert('पहले इमेज चुनें');
- const {jsPDF}=window.jspdf;
- const pdf=new jsPDF();
- for(let i=0;i<files.length;i++){
-  const data=await fileToDataURL(files[i]);
-  const img=await createImage(data);
-  if(i)pdf.addPage();
-  const pageW=210,pageH=297,ratio=Math.min(pageW/img.width,pageH/img.height);
-  const w=img.width*ratio,h=img.height*ratio;
-  pdf.addImage(data,'JPEG',(pageW-w)/2,(pageH-h)/2,w,h);
- }
- pdf.save('Images_to_PDF.pdf');
-}
-
-function fileToDataURL(file){
- return new Promise((resolve,reject)=>{
-  const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);
- });
-}
-function createImage(src){
- return new Promise((resolve,reject)=>{
-  const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=src;
- });
-}
-
-async function mergePDF(){
- try{
-  const files=[...document.getElementById('mergeFiles').files];
-  if(!files.length)return alert('PDF फाइलें चुनें');
-  const merged=await PDFLib.PDFDocument.create();
-  for(const f of files){
-   const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());
-   const pages=await merged.copyPages(src,src.getPageIndices());
-   pages.forEach(p=>merged.addPage(p));
-  }
-  downloadBytes(await merged.save(),'Merged.pdf','application/pdf');
- }catch(e){alert('PDF जोड़ने में समस्या: '+e.message)}
-}
-
-async function splitPDF(){
- try{
-  const file=document.getElementById('splitFile').files[0];
-  if(!file)return alert('PDF चुनें');
-  const nums=document.getElementById('splitPages').value.split(',').map(x=>parseInt(x.trim(),10)-1).filter(x=>Number.isInteger(x)&&x>=0);
-  if(!nums.length)return alert('सही पेज नंबर लिखें');
-  const src=await PDFLib.PDFDocument.load(await file.arrayBuffer());
-  const out=await PDFLib.PDFDocument.create();
-  const valid=nums.filter(n=>n<src.getPageCount());
-  if(!valid.length)return alert('दिए गए पेज नंबर PDF में नहीं हैं');
-  const pages=await out.copyPages(src,valid);
-  pages.forEach(p=>out.addPage(p));
-  downloadBytes(await out.save(),'Split_Pages.pdf','application/pdf');
- }catch(e){alert('PDF अलग करने में समस्या: '+e.message)}
-}
-
-function downloadBytes(bytes,name,type){
- const blob=new Blob([bytes],{type});
- const url=URL.createObjectURL(blob);
- const a=document.createElement('a');a.href=url;a.download=name;a.click();
- setTimeout(()=>URL.revokeObjectURL(url),1500);
-}
-
-function printPDF(){
- const f=document.getElementById('printFile').files[0];
- if(!f)return alert('PDF फाइल चुनें');
- const url=URL.createObjectURL(f);
- const w=window.open(url,'_blank');
- if(!w)alert('ब्राउज़र में pop-up की अनुमति दें।');
-}
+const images={};let jointImages=[];
+const $=id=>document.getElementById(id);
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active','printing'));$(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function loadOne(input,key){const f=input.files&&input.files[0];if(!f)return;if(!f.type.startsWith('image/')){alert('啶曕啶く啶� 啶囙ぎ啷囙 啶ぞ啶囙げ 啶氞啶ㄠ啶傕イ');return}const url=URL.createObjectURL(f),img=new Image();img.onload=()=>{images[key]=img;URL.revokeObjectURL(url);({photo:drawPhotoSheet,idFront:drawID,idBack:drawID,doc:drawDoc})[key]?.()};img.onerror=()=>alert('啶囙ぎ啷囙 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');img.src=url}
+function mmValue(v,u){return u==='cm'?v*10:u==='in'?v*25.4:v}
+function paperCanvas(canvasId,paper='a4',orientation='portrait'){const c=$(canvasId);let w=794,h=1123;if(paper==='a5'){w=559;h=794}else if(paper==='letter'){w=816;h=1056}if(orientation==='landscape')[w,h]=[h,w];c.width=w;c.height=h;return c}
+function drawCropped(ctx,img,x,y,w,h,opt={}){if(!img)return;ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.translate(x+w/2,y+h/2);ctx.rotate((opt.rotate||0)*Math.PI/180);const iw=img.width,ih=img.height;let scale=Math.max(w/iw,h/ih)*(Number(opt.zoom||100)/100);let dw=iw*scale,dh=ih*scale;let ox=(Number(opt.x||0)/100)*Math.max(0,dw-w),oy=(Number(opt.y||0)/100)*Math.max(0,dh-h);ctx.filter=`brightness(${opt.bright||100}%) contrast(${opt.contrast||100}%)`;ctx.drawImage(img,-dw/2-ox,-dh/2-oy,dw,dh);ctx.restore();ctx.filter='none'}
+function photoOptions(){return{zoom:$('photoZoom').value,x:$('photoX').value,y:$('photoY').value,bright:$('photoBright').value,contrast:$('photoContrast').value}}
+function drawPhotoSheet(){const c=paperCanvas('photoCanvas',$('photoPaper').value);const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const img=images.photo;if(!img)return;const unit=$('photoUnit').value,w=mmValue(+$('photoW').value,unit)*3.78,h=mmValue(+$('photoH').value,unit)*3.78,gap=mmValue(+$('photoGap').value,unit)*3.78;if(!(w>0&&h>0)){alert('啶啶熰 啶曕 啶膏す啷€ 啶膏ぞ啶囙 啶ぐ啷囙啷�');return}const count=+$('photoCount').value,cols=Math.max(1,Math.floor((c.width-30)/(w+gap))),rows=Math.ceil(count/cols),tw=cols*w+(cols-1)*gap,th=rows*h+(rows-1)*gap;if(th>c.height-30){alert('啶囙い啶ㄠ 啶啶熰 啶囙じ 啶啶ぐ 啶ぐ 啶た啶� 啶ㄠす啷€啶� 啶灌啶傕啷€啷� 啶啶熰 啶膏啶栢啶ぞ 啶ぞ 啶膏ぞ啶囙 啶曕ぎ 啶曕ぐ啷囙啷�');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2;const ratio=$('photoRatio').value;for(let i=0;i<count;i++){let x=sx+(i%cols)*(w+gap),y=sy+Math.floor(i/cols)*(h+gap);let opt=photoOptions();if(ratio!=='free'){const target=+ratio,actual=w/h;if(actual>target){const nw=h*target;drawCropped(ctx,img,x+(w-nw)/2,y,nw,h,opt)}else{const nh=w/target;drawCropped(ctx,img,x,y+(h-nh)/2,w,nh,opt)}}else drawCropped(ctx,img,x,y,w,h,opt);if($('photoBorder').checked){ctx.strokeStyle=$('photoBorderColor').value;ctx.lineWidth=+$('photoBorderWidth').value;ctx.strokeRect(x,y,w,h)}}}
+function idOpt(side){return{zoom:$(`${side}Zoom`).value,x:$(`${side}X`).value,y:$(`${side}Y`).value,bright:$(`${side}Bright`).value,contrast:$(`${side}Contrast`).value,rotate:$(`${side}Rotate`).value}}
+function drawID(){const c=paperCanvas('idCanvas','a4');const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);const front=images.idFront,back=images.idBack,unit=$('idUnit').value,w=mmValue(+$('idW').value,unit)*3.78,h=mmValue(+$('idH').value,unit)*3.78;if(!(w>0&&h>0))return;const layout=$('idLayout').value,margin=55,gap=45;let positions=[];if(layout==='side'){const total=2*w+gap;if(total>c.width-2*margin){alert('啶曕ぞ啶班啶� 啶氞啶∴ぜ啶距 A4 啶ぐ 啶膏ぞ啶�-啶膏ぞ啶� 啶た啶� 啶ㄠす啷€啶� 啶灌啶椸啷�');return}positions=[{x:(c.width-total)/2,y:(c.height-h)/2,img:front,side:'front'},{x:(c.width-total)/2+w+gap,y:(c.height-h)/2,img:back,side:'back'}]}else if(layout==='stack'){if(2*h+gap>c.height-2*margin){alert('啶曕ぞ啶班啶� 啶娻啶氞ぞ啶� A4 啶ぐ 啶娻お啶�-啶ㄠ啶氞 啶た啶� 啶ㄠす啷€啶� 啶灌啶椸啷�');return}positions=[{x:(c.width-w)/2,y:(c.height-(2*h+gap))/2,img:front,side:'front'},{x:(c.width-w)/2,y:(c.height-(2*h+gap))/2+h+gap,img:back,side:'back'}]}else{let side=layout;positions=[{x:(c.width-w)/2,y:(c.height-h)/2,img:side==='front'?front:back,side}]}
+positions.forEach(p=>{if(p.img)drawCropped(ctx,p.img,p.x,p.y,w,h,idOpt(p.side));else{ctx.fillStyle='#f3f5f8';ctx.fillRect(p.x,p.y,w,h);ctx.fillStyle='#555';ctx.font='bold 20px Arial';ctx.textAlign='center';ctx.fillText(p.side==='front'?'FRONT SIDE IMAGE':'BACK SIDE IMAGE',p.x+w/2,p.y+h/2)}if($('idBorder').checked){ctx.strokeStyle=$('idBorderColor').value;ctx.lineWidth=+$('idBorderWidth').value;ctx.strokeRect(p.x,p.y,w,h)}})}
+function loadJoint(input){jointImages=[];Array.from(input.files||[]).forEach(file=>{if(!file.type.startsWith('image/'))return;const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{jointImages.push(img);URL.revokeObjectURL(url);drawJoint()};img.src=url})}
+function drawJoint(){const c=paperCanvas('jointCanvas');const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);if(!jointImages.length)return;const cols=+$('jointCols').value,w=+$('jointW').value*3.78,h=+$('jointH').value*3.78,g=+$('jointGap').value*3.78,rows=Math.ceil(jointImages.length/cols),tw=cols*w+(cols-1)*g,th=rows*h+(rows-1)*g;if(tw>c.width-20||th>c.height-20){alert('啶啶熰 啶囙じ A4 啶多啶� 啶啶� 啶た啶� 啶ㄠす啷€啶� 啶灌 啶班す啷€ 啶灌啶傕イ');return}const sx=(c.width-tw)/2,sy=(c.height-th)/2;jointImages.forEach((img,i)=>drawCropped(ctx,img,sx+(i%cols)*(w+g),sy+Math.floor(i/cols)*(h+g),w,h))}
+function drawDoc(){const c=paperCanvas('docCanvas',$('docPaper').value,$('docOrientation').value),ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);const img=images.doc;if(!img)return;const margin=35;drawCropped(ctx,img,margin,margin,c.width-2*margin,c.height-2*margin,{zoom:$('docZoom').value,rotate:$('docRotate').value,bright:$('docBright').value,contrast:$('docContrast').value})}
+function canvasBlob(canvas,type){return new Promise(resolve=>canvas.toBlob(resolve,type,.95))}
+async function exportCanvas(id,name,format){const c=$(id);if(format==='pdf'){if(!window.jspdf?.jsPDF){alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ 啶囙啶熰ぐ啶ㄠ啶� 啶曕え啷囙啷嵿ざ啶� 啶溹ぞ啶佮啷囙啷�');return}const {jsPDF}=window.jspdf;const pdf=new jsPDF({orientation:c.width>c.height?'landscape':'portrait',unit:'mm',format:[c.width/3.78,c.height/3.78]});pdf.addImage(c.toDataURL('image/jpeg',.95),'JPEG',0,0,c.width/3.78,c.height/3.78);pdf.save(name+'.pdf');return}const mime=format==='jpeg'?'image/jpeg':format==='png'?'image/png':'image/webp';const blob=await canvasBlob(c,mime);if(!blob){alert('啶囙じ 啶啶班啶啶� 啶啶� 啶膏啶� 啶ㄠす啷€啶� 啶灌 啶ぞ啶ぞ啷�');return}downloadBlob(blob,name+'.'+(format==='jpeg'?'jpg':format))}
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function printCanvas(id,page){const c=$(id);const win=window.open('','_blank');if(!win){alert('Print 啶掂た啶傕ぁ啷� 啶栢啶侧え啷� 啶膏 啶班啶曕 啶椸啷� 啶曕啶く啶� Pop-up 啶呧え啷佮ぎ啶むた 啶︵啶傕イ');return}const data=c.toDataURL('image/png');win.document.write(`<!doctype html><html><head><title>Print</title><style>@page{size:A4;margin:0}html,body{margin:0;padding:0}img{display:block;width:100%;height:100%;object-fit:contain}</style></head><body><img src="${data}"><script>window.onload=()=>{window.focus();window.print()}<\/script></body></html>`);win.document.close()}
+function resetPhoto(){['photoZoom','photoBright','photoContrast'].forEach(id=>$(id).value=100);['photoX','photoY'].forEach(id=>$(id).value=0);$('photoRatio').value='free';$('photoBorder').checked=true;drawPhotoSheet()}
+function resetID(){['frontZoom','frontBright','frontContrast','backZoom','backBright','backContrast'].forEach(id=>$(id).value=100);['frontX','frontY','frontRotate','backX','backY','backRotate'].forEach(id=>$(id).value=0);$('idUnit').value='mm';$('idW').value=86;$('idH').value=54;$('idLayout').value='side';drawID()}
+async function imagesToPDF(){const files=Array.from($('pdfImages').files||[]);if(!files.length){alert('啶す啶侧 啶囙ぎ啷囙 啶氞啶ㄠ啶傕イ');return}if(!window.jspdf?.jsPDF){alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶夃お啶侧が啷嵿ぇ 啶ㄠす啷€啶� 啶灌啷�');return}const {jsPDF}=window.jspdf;let pdf;for(let i=0;i<files.length;i++){const data=await fileData(files[i]);const im=await imageFrom(data);const orient=im.width>im.height?'landscape':'portrait';if(!pdf)pdf=new jsPDF({orientation:orient,unit:'mm',format:'a4'});else pdf.addPage('a4',orient);const pw=orient==='landscape'?297:210,ph=orient==='landscape'?210:297,scale=Math.min(pw/im.width,ph/im.height),w=im.width*scale,h=im.height*scale;pdf.addImage(data,'JPEG',(pw-w)/2,(ph-h)/2,w,h)}pdf.save('Images_to_PDF.pdf')}
+function fileData(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file)})}
+function imageFrom(src){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src})}
+async function mergePDF(){const files=Array.from($('mergeFiles').files||[]);if(!files.length)return alert('PDF 啶ぞ啶囙げ啷囙 啶氞啶ㄠ啶傕イ');if(!window.PDFLib)return alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');try{const out=await PDFLib.PDFDocument.create();for(const f of files){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());const pages=await out.copyPages(src,src.getPageIndices());pages.forEach(p=>out.addPage(p))}downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Merged.pdf')}catch(e){alert('PDF 啶溹啶∴ぜ啶ㄠ 啶啶� 啶膏ぎ啶膏啶ぞ: '+e.message)}}
+async function splitPDF(){const f=$('splitFile').files[0],raw=$('splitPages').value;if(!f)return alert('PDF 啶氞啶ㄠ啶傕イ');if(!raw.trim())return alert('啶啶� 啶ㄠ啶ぐ 啶侧た啶栢啶傕イ');if(!window.PDFLib)return alert('PDF 啶侧ぞ啶囙が啷嵿ぐ啷囙ぐ啷€ 啶侧啶� 啶ㄠす啷€啶� 啶灌啶堗イ');try{const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),nums=raw.split(',').map(x=>parseInt(x.trim(),10)-1);if(nums.some(n=>!Number.isInteger(n)||n<0||n>=src.getPageCount()))return alert('啶啶� 啶ㄠ啶ぐ PDF 啶啶� 啶夃お啶侧が啷嵿ぇ 啶ㄠす啷€啶� 啶灌啷�');const out=await PDFLib.PDFDocument.create(),pages=await out.copyPages(src,nums);pages.forEach(p=>out.addPage(p));downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Selected_Pages.pdf')}catch(e){alert('PDF 啶呧げ啶� 啶曕ぐ啶ㄠ 啶啶� 啶膏ぎ啶膏啶ぞ: '+e.message)}}
+async function printPDF(){const f=$('printFile').files[0];if(!f)return alert('PDF 啶氞啶ㄠ啶傕イ');const url=URL.createObjectURL(f),w=window.open(url,'_blank');if(!w)alert('Pop-up 啶呧え啷佮ぎ啶むた 啶︵啶傕イ')}
+drawPhotoSheet();drawID();drawJoint();drawDoc();
 </script>
-</body>
-</html>
+</body></html>

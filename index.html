@@ -4,871 +4,772 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123b79">
+
 <title>Gramin Grahak Sewa | Digital Service Centre</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#edf3fb;color:#172554}
+:root{
+ --blue:#123b79;
+ --navy:#092653;
+ --orange:#f58220;
+ --green:#138a4b;
+ --red:#dc3545;
+ --white:#fff;
+ --light:#edf3fb;
+}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:var(--light);
+ color:#172554;
+}
 button,input,select{font:inherit}
 button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
 a{text-decoration:none;color:inherit}
-:root{--blue:#123b79;--navy:#092653;--orange:#f58220;--green:#138a4b}
-header{background:linear-gradient(120deg,#092653,#1767b4);color:white;padding:18px 12px;text-align:center;border-bottom:5px solid var(--orange)}
-.logo{width:75px;height:75px;margin:auto;border-radius:50%;background:white;color:#123b79;display:flex;justify-content:center;align-items:center;font-size:25px;font-weight:bold;border:4px solid #ffb22c}
+
+header{
+ background:linear-gradient(120deg,#092653,#1767b4);
+ color:white;
+ padding:18px 12px;
+ text-align:center;
+ border-bottom:5px solid var(--orange);
+}
+.logo{
+ width:75px;height:75px;margin:auto;
+ border-radius:50%;
+ background:white;color:#123b79;
+ display:flex;justify-content:center;align-items:center;
+ font-size:25px;font-weight:bold;
+ border:4px solid #f58220;
+}
 header h1{margin:10px 0 5px;font-size:27px}
-header p{margin:5px;font-size:13px}
-.topbar{background:#092653;color:white;padding:10px;text-align:center;font-size:13px}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:12px;background:white;box-shadow:0 2px 8px #0002}
-nav a{padding:9px 13px;border-radius:7px;color:#123b79;font-weight:bold;font-size:13px}
+header p{margin:5px;font-size:14px}
+.header-tag{
+ display:inline-block;background:#ffffff20;
+ border:1px solid #ffffff60;
+ padding:7px 12px;border-radius:20px;
+ margin-top:8px;font-size:12px;
+}
+
+nav{
+ background:#fff;
+ display:flex;gap:8px;justify-content:center;
+ flex-wrap:wrap;padding:10px;
+ box-shadow:0 3px 10px #00000012;
+ position:sticky;top:0;z-index:100;
+}
+nav a{
+ padding:9px 13px;border-radius:20px;
+ background:#e5efff;color:#123b79;
+ font-weight:bold;font-size:13px;
+}
 nav a:hover{background:#123b79;color:white}
-.hero{margin:15px auto;max-width:1200px;padding:25px 15px;background:linear-gradient(120deg,#123b79,#258bd1);color:white;border-radius:12px;text-align:center}
-.hero h2{margin:5px;font-size:24px}
-.hero p{font-size:14px;line-height:1.7}
-.container{max-width:1200px;margin:auto;padding:12px}
-.section-title{background:linear-gradient(90deg,#123b79,#267bc0);color:white;padding:13px;border-radius:8px;margin:20px 0 13px;font-size:19px}
-.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
-.service-card{background:white;border-radius:10px;padding:15px 8px;text-align:center;border:1px solid #d7e3f2;box-shadow:0 3px 9px #00000012;transition:.2s}
-.service-card:hover{transform:translateY(-3px);box-shadow:0 5px 14px #0002}
-.service-icon{font-size:30px;margin-bottom:8px}
-.service-card h3{font-size:14px;margin:5px 0;color:#123b79}
-.service-card p{font-size:11px;color:#64748b;margin:5px 0}
-.service-card a{display:block;background:#123b79;color:white;padding:8px;border-radius:6px;margin-top:9px;font-size:12px}
-.studio-panel{background:white;border-radius:12px;padding:15px;margin:15px 0;box-shadow:0 3px 12px #0001}
-.studio-buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
-.studio-buttons button{border:0;padding:13px 8px;border-radius:8px;background:#e6efff;color:#123b79;font-weight:bold}
-.studio-buttons button:hover{background:#123b79;color:white}
-.studio-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}
-.preview-box{min-width:0;min-height:160px;background:#f1f5f9;border:2px dashed #94a3b8;border-radius:9px;padding:10px;text-align:center}
-.preview-box canvas{max-width:100%;height:auto}
-.preview-box h4{margin:5px}
-input[type=file]{width:100%;padding:10px;background:#f1f5f9;border-radius:7px;margin:8px 0}
-.tool-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.tool-row button{border:0;padding:10px 13px;border-radius:6px;background:#138a4b;color:white}
-.tool-row button.secondary{background:#123b79}
-.tool-row button.danger{background:#dc3545}
-input[type=range]{width:100%}
-.control{background:#f8fafc;border:1px solid #dbe4ef;padding:10px;border-radius:8px;margin:7px 0}
-.control label{display:block;font-size:13px;font-weight:bold;margin-bottom:5px}
-.editor-layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:15px}
-.editor-card{background:#f8fafc;border:1px solid #d6e1ef;padding:12px;border-radius:10px;min-width:0}
-.editor-card h3{color:#123b79}
-.editor-card button{border:0;padding:9px;margin:3px;border-radius:6px;background:#1767b4;color:white}
-.editor-card input,.editor-card select{width:100%;padding:9px;margin:5px 0;border:1px solid #ccd5e2;border-radius:6px}
-.editor-canvas{max-width:100%;height:auto;background:white;border:1px solid #ccc}
-.photo-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-footer{background:#092653;color:white;padding:25px 10px;text-align:center;margin-top:25px;font-size:13px}
-@media(max-width:600px){
+
+.hero{
+ margin:15px;padding:25px 15px;
+ border-radius:14px;text-align:center;color:white;
+ background:linear-gradient(120deg,#123b79,#0879bd,#138a4b);
+ box-shadow:0 5px 15px #0002;
+}
+.hero h2{margin:0 0 10px;font-size:25px}
+.hero p{margin:5px 0;line-height:1.6}
+
+.section{
+ margin:15px;padding:16px;
+ background:white;border-radius:13px;
+ box-shadow:0 3px 12px #00000012;
+ border-top:4px solid var(--orange);
+}
+.section-title{
+ text-align:center;color:#123b79;
+ font-size:21px;margin:0 0 7px;
+}
+.section-subtitle{
+ text-align:center;color:#64748b;
+ font-size:13px;margin:0 0 18px;
+}
+
+.panel{
+ background:#f3f7ff;border:1px solid #d5e2f5;
+ border-radius:12px;padding:13px;margin-bottom:14px;
+}
+.panel h3{margin:0 0 12px;color:#123b79;font-size:17px}
+.form-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ gap:10px;
+}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:bold;color:#334155}
+.field input,.field select{
+ width:100%;padding:10px;border:1px solid #cbd5e1;
+ border-radius:7px;background:white;min-width:0;
+}
+.action-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(125px,1fr));
+ gap:8px;margin-top:12px;
+}
+.btn{
+ border:0;border-radius:7px;padding:10px 12px;
+ color:white;font-weight:bold;font-size:13px;
+ background:#1767b4;
+}
+.btn:hover{filter:brightness(.92)}
+.btn-green{background:#138a4b}
+.btn-orange{background:#f58220}
+.btn-red{background:#dc3545}
+.btn-dark{background:#334155}
+.btn-purple{background:#7045b5}
+
+.editor-layout{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;
+}
+.editor-card{
+ min-width:0;border:1px solid #d5e2f5;
+ border-radius:10px;padding:10px;background:#fff;
+}
+.editor-card h3{
+ text-align:center;margin:0 0 10px;
+ color:#123b79;font-size:16px;
+}
+.canvas-wrap{
+ width:100%;min-height:190px;
+ background:#e2e8f0;border:2px dashed #94a3b8;
+ border-radius:8px;display:flex;
+ justify-content:center;align-items:center;
+ overflow:hidden;padding:8px;
+}
+.canvas-wrap canvas{
+ display:block;max-width:100%;max-height:300px;
+ background:white;
+}
+.canvas-placeholder{
+ color:#64748b;font-size:13px;text-align:center;
+}
+.preview-label{
+ text-align:center;font-size:12px;color:#64748b;
+ margin:7px 0;
+}
+.tool-row{
+ display:flex;flex-wrap:wrap;gap:7px;
+ margin-top:10px;justify-content:center;
+}
+.tool-row button{flex:1 1 90px}
+.status{
+ padding:10px;border-radius:7px;
+ background:#e8f5ee;color:#17623a;
+ font-size:13px;margin-top:10px;
+}
+.note{
+ background:#fff7e8;border-left:4px solid #f58220;
+ padding:10px;border-radius:5px;
+ font-size:13px;line-height:1.5;margin-top:12px;
+}
+@media(max-width:650px){
  header h1{font-size:22px}
- .hero h2{font-size:20px}
- .studio-preview,.photo-preview-grid{grid-template-columns:1fr}
- nav a{font-size:11px;padding:8px}
+ .editor-layout{grid-template-columns:1fr}
+ .section{margin:9px;padding:12px}
+ nav{position:relative}
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
- 🇮🇳 भारत सरकार एवं राजस्थान की डिजिटल सेवाओं का एक केंद्र 🇮🇳
-</div>
-
 <header>
  <div class="logo">GGS</div>
  <h1>GRAMIN GRAHAK SEWA</h1>
  <p>ग्रामीण ग्राहक सेवा केंद्र</p>
- <p>CSC • E-MITRA • DIGITAL SERVICES • PHOTO STUDIO</p>
+ <div class="header-tag">
+  CSC • E-MITRA • DIGITAL SERVICES • PHOTO STUDIO
+ </div>
 </header>
 
 <nav>
- <a href="#home">🏠 Home</a>
- <a href="#idstudio">🪪 ID Card Studio</a>
- <a href="#passport">📸 Passport Studio</a>
- <a href="#a4sheet">🖨️ A4 Photo Sheet</a>
- <a href="#online">🌐 Online Services</a>
- <a href="#banking">🏦 Banking</a>
- <a href="#contact">☎ Contact</a>
+ <a href="#home">होम</a>
+ <a href="#id-studio">ID Card Studio</a>
+ <a href="#passport-studio">Passport Photo</a>
+ <a href="#a4-studio">A4 Photo Sheet</a>
+ <a href="#online-services">Online Services</a>
+ <a href="#rajasthan-services">राजस्थान सेवाएँ</a>
+ <a href="#contact">संपर्क</a>
 </nav>
-
-<main class="container">
 
 <section class="hero" id="home">
  <h2>आपका अपना डिजिटल सेवा केंद्र</h2>
- <p>
- सभी सरकारी ऑनलाइन सेवाएँ, आधार, पैन, वोटर ID,
- किसान सेवाएँ, पंचायत सेवाएँ, जमीन रिकॉर्ड,
- बैंकिंग, बिल भुगतान एवं फोटो प्रिंटिंग सुविधाएँ।
+ <p>एक ही वेबसाइट पर फोटो एडिटिंग, ID कार्ड प्रिंटिंग और ऑनलाइन सरकारी सेवाएँ।</p>
+ <p>CSC | E-Mitra | Banking | Panchayat | Farmer | Land Records</p>
+</section>
+
+<!-- ADVANCED ID CARD STUDIO -->
+<section class="section" id="id-studio">
+ <h2 class="section-title">🪪 Advanced ID Card Studio</h2>
+ <p class="section-subtitle">
+  Front और Back फोटो अपलोड करें, एडिट करें और दोनों का Preview देखें।
  </p>
- <p>एक वेबसाइट – अनेक डिजिटल सुविधाएँ</p>
-</section>
 
-<h2 class="section-title">📸 Photo & ID Card Studio</h2>
-
-<div class="service-grid">
- <div class="service-card">
-  <div class="service-icon">🪪</div>
-  <h3>ID Card Studio</h3>
-  <p>Front & Back Editing</p>
-  <a href="#idstudio">Open Studio</a>
- </div>
- <div class="service-card">
-  <div class="service-icon">📷</div>
-  <h3>Passport Photo Studio</h3>
-  <p>Passport & Stamp Size</p>
-  <a href="#passport">Open Studio</a>
- </div>
- <div class="service-card">
-  <div class="service-icon">🖨️</div>
-  <h3>A4 Photo Sheet</h3>
-  <p>Multiple Photo Printing</p>
-  <a href="#a4sheet">Open Tool</a>
- </div>
-</div>
-
-<h2 class="section-title" id="idstudio">🪪 Advanced ID Card Studio</h2>
-<div class="studio-panel">
- <h3>अपना ID Card अपलोड करें</h3>
- <input type="file" id="idImage" accept="image/*">
- <div class="tool-row">
-  <button onclick="loadIDImage()">Upload Image</button>
-  <button class="secondary" onclick="resetID()">Reset</button>
- </div>
- <div class="studio-buttons">
-  <button onclick="editID('crop')">✂️ Crop</button>
-  <button onclick="editID('resize')">📐 Resize</button>
-  <button onclick="editID('rotateRight')">🔄 Rotate</button>
-  <button onclick="editID('zoomIn')">➕ Zoom In</button>
-  <button onclick="editID('zoomOut')">➖ Zoom Out</button>
-  <button onclick="editID('flipH')">↔️ Flip</button>
-  <button onclick="editID('gray')">⚫ Grayscale</button>
-  <button onclick="editID('resetFilter')">♻️ Reset Effects</button>
- </div>
- <div class="studio-preview">
-  <div class="preview-box"><h4>FRONT SIDE</h4><canvas id="idFront"></canvas></div>
-  <div class="preview-box"><h4>BACK SIDE</h4><canvas id="idBack"></canvas></div>
- </div>
- <p>Front और Back के अलग-अलग अपलोड एवं एडिटिंग विकल्प अगले भाग में हैं।</p>
-</div>
-
-<h2 class="section-title" id="passport">📸 Advanced Passport Photo Studio</h2>
-<div class="studio-panel">
- <h3>Passport Photo Upload</h3>
- <input type="file" id="passportImage" accept="image/*">
- <div class="tool-row">
-  <button onclick="loadPassportImage()">Upload Photo</button>
-  <button class="secondary" onclick="resetPassport()">Reset</button>
- </div>
- <div class="studio-buttons">
-  <button onclick="passportEdit('crop')">✂️ Crop</button>
-  <button onclick="passportEdit('resize')">📐 Resize</button>
-  <button onclick="passportEdit('rotateRight')">🔄 Rotate</button>
-  <button onclick="passportEdit('zoomIn')">➕ Zoom In</button>
-  <button onclick="passportEdit('zoomOut')">➖ Zoom Out</button>
-  <button onclick="passportEdit('gray')">⚫ Grayscale</button>
-  <button onclick="passportEdit('sepia')">Sepia</button>
-  <button onclick="passportEdit('resetFilter')">Reset Effects</button>
- </div>
- <div class="studio-preview">
-  <div class="preview-box"><h4>PHOTO PREVIEW</h4><canvas id="passportCanvas"></canvas></div>
-  <div class="preview-box"><h4>PRINT PREVIEW</h4><canvas id="passportPrint"></canvas></div>
- </div>
-</div>
-
-<h2 class="section-title" id="a4sheet">🖨️ A4 Photo Sheet</h2>
-<div class="studio-panel">
- <h3>A4 पेपर पर फोटो प्रिंट</h3>
- <div class="control">
-  <label>फोटो की संख्या</label>
-  <select id="a4Count">
-   <option value="4">4 Photos</option>
-   <option value="6">6 Photos</option>
-   <option value="8" selected>8 Photos</option>
-   <option value="12">12 Photos</option>
-   <option value="16">16 Photos</option>
-   <option value="20">20 Photos</option>
-  </select>
- </div>
- <div class="control">
-  <label>पेपर का साइज</label>
-  <select id="a4Size">
-   <option value="A4">A4</option>
-   <option value="A5">A5</option>
-  </select>
- </div>
- <button onclick="generateA4Sheet()">Generate A4 Sheet</button>
- <button onclick="printA4Sheet()">Print A4</button>
- <canvas id="a4Canvas" style="max-width:100%;height:auto"></canvas>
-</div>
-
-<h2 class="section-title" id="online">🌐 All Online Government Services</h2>
-<div class="service-grid">
-
-<div class="service-card"><div class="service-icon">🪪</div><h3>आधार कार्ड / Aadhaar</h3><a href="https://uidai.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">💳</div><h3>पैन कार्ड / PAN</h3><a href="https://www.incometax.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">🗳️</div><h3>वोटर ID</h3><a href="https://voters.eci.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">🚗</div><h3>ड्राइविंग लाइसेंस</h3><a href="https://parivahan.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">👷</div><h3>ई-श्रम कार्ड</h3><a href="https://eshram.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">🏥</div><h3>आयुष्मान भारत</h3><a href="https://beneficiary.nha.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">👨‍🌾</div><h3>PM किसान</h3><a href="https://pmkisan.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">📘</div><h3>APAAR ID</h3><a href="https://apaar.education.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">🏥</div><h3>ABHA Card</h3><a href="https://abha.abdm.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">🛂</div><h3>Passport Seva</h3><a href="https://www.passportindia.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">📄</div><h3>जन्म प्रमाण पत्र</h3><a href="https://crsorgi.gov.in/" target="_blank">Official Portal</a></div>
-<div class="service-card"><div class="service-icon">📑</div><h3>EPFO / PF</h3><a href="https://www.epfindia.gov.in/" target="_blank">Official Portal</a></div>
-
-</div>
-
-<h2 class="section-title">🏛️ Rajasthan Government Services</h2>
-<div class="service-grid">
-<div class="service-card"><div class="service-icon">🌐</div><h3>ई-मित्र / E-Mitra</h3><a href="https://emitra.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">📜</div><h3>जन सूचना पोर्टल</h3><a href="https://jansoochna.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">👨‍👩‍👧</div><h3>जन आधार</h3><a href="https://janaadhaar.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">🏡</div><h3>ई-ग्राम स्वराज</h3><a href="https://egramswaraj.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">🌾</div><h3>राज किसान</h3><a href="https://rajkisan.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">🗺️</div><h3>अपना खाता / जमाबंदी</h3><a href="https://apnakhata.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-</div>
-
-<h2 class="section-title" id="banking">🏦 Banking & Financial Services</h2>
-<div class="service-grid">
-<div class="service-card"><div class="service-icon">🏦</div><h3>भारतीय स्टेट बैंक</h3><a href="https://sbi.co.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">💰</div><h3>इंडिया पोस्ट पेमेंट बैंक</h3><a href="https://www.ippbonline.com/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">📱</div><h3>NPCI</h3><a href="https://www.npci.org.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">💳</div><h3>RuPay</h3><a href="https://www.rupay.co.in/" target="_blank">Open Portal</a></div>
-</div>
-
-<h2 class="section-title">💡 Bill Payment & Recharge</h2>
-<div class="service-grid">
-<div class="service-card"><div class="service-icon">⚡</div><h3>बिजली बिल</h3><a href="https://www.bijlimitra.com/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">💧</div><h3>पानी बिल</h3><a href="https://phedwater.rajasthan.gov.in/" target="_blank">Open Portal</a></div>
-<div class="service-card"><div class="service-icon">🔥</div><h3>गैस सिलेंडर</h3><a href="https://cx.indianoil.in/" target="_blank">Open Portal</a></div>
-</div>
-
-<h2 class="section-title" id="contact">☎ Contact & Help</h2>
-<div class="studio-panel">
- <h3>GRAMIN GRAHAK SEWA</h3>
- <p>आपका अपना डिजिटल सेवा केंद्र।</p>
- <p>सभी सेवाओं के लिए संबंधित आधिकारिक पोर्टल का उपयोग करें।</p>
-</div>
-
-</main>
-
-<footer>
- <h3>GRAMIN GRAHAK SEWA</h3>
- <p>Digital India • Digital Rajasthan</p>
- <p>© 2026 Gramin Grahak Sewa. All Rights Reserved.</p>
-</footer>
-
-<!-- ================= ID CARD ADVANCED EDITOR ================= -->
-
-<style>
-.advanced-studio{background:#fff;padding:15px;margin:15px 0;border-radius:12px;box-shadow:0 3px 12px #0001}
-.advanced-studio h3{color:#123b79}
-.editor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.editor-panel{background:#f3f7fc;padding:12px;border:1px solid #d5e0ef;border-radius:10px;min-width:0}
-.editor-panel button{border:0;background:#1767b4;color:white;padding:9px;border-radius:6px;margin:3px}
-.editor-panel button:hover{background:#092653}
-.editor-panel select,.editor-panel input[type=color],.editor-panel input[type=number]{width:100%;padding:9px;margin:5px 0;border:1px solid #ccd5e2;border-radius:6px}
-.editor-panel input[type=range]{width:100%}
-.editor-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.editor-preview canvas{max-width:100%;height:auto;background:white;border:1px solid #aaa}
-.editor-actions{display:flex;flex-wrap:wrap;gap:5px}
-.editor-actions button{flex:1 1 105px}
-.tool-label{font-weight:bold;font-size:13px;display:block;margin-top:10px}
-@media(max-width:600px){.editor-preview{grid-template-columns:1fr}}
-</style>
-
-<section class="advanced-studio" id="advancedID">
- <h2 class="section-title">🪪 Advanced ID Card Editing Studio</h2>
-
- <div class="editor-grid">
-
-  <div class="editor-panel">
-   <h3>1. Front Side Upload</h3>
-   <input type="file" id="frontUpload" accept="image/*">
-   <div class="editor-actions">
-    <button onclick="uploadSide('front')">Upload Front</button>
-    <button onclick="downloadID('front')">Download Front</button>
+ <div class="panel">
+  <h3>कार्ड सेटिंग</h3>
+  <div class="form-grid">
+   <div class="field">
+    <label for="idCardSize">कार्ड का साइज चुनें</label>
+    <select id="idCardSize">
+     <option value="85.6,54">ATM / PVC Card – 85.6 × 54 mm</option>
+     <option value="86,54">PAN Card – 86 × 54 mm</option>
+     <option value="90,55">ID Card – 90 × 55 mm</option>
+     <option value="100,65">Large ID Card – 100 × 65 mm</option>
+     <option value="105,148">A6 Card – 105 × 148 mm</option>
+    </select>
    </div>
-   <canvas id="frontEditor" width="600" height="380"></canvas>
-  </div>
-
-  <div class="editor-panel">
-   <h3>2. Back Side Upload</h3>
-   <input type="file" id="backUpload" accept="image/*">
-   <div class="editor-actions">
-    <button onclick="uploadSide('back')">Upload Back</button>
-    <button onclick="downloadID('back')">Download Back</button>
+   <div class="field">
+    <label for="idBackground">कार्ड बैकग्राउंड</label>
+    <input type="color" id="idBackground" value="#ffffff">
    </div>
-   <canvas id="backEditor" width="600" height="380"></canvas>
+   <div class="field">
+    <label for="idSide">एडिटिंग साइड</label>
+    <select id="idSide">
+     <option value="front">Front Side</option>
+     <option value="back">Back Side</option>
+    </select>
+   </div>
   </div>
-
  </div>
 
- <div class="editor-panel">
-  <h3>3. Select Editing Side</h3>
-  <select id="idSide">
-   <option value="front">Front Side</option>
-   <option value="back">Back Side</option>
-  </select>
+ <div class="editor-layout">
 
-  <span class="tool-label">ID Card Size</span>
-  <select id="idCardSize">
-   <option value="600,380">Standard ID Card</option>
-   <option value="640,400">PVC Card</option>
-   <option value="600,950">Portrait Card</option>
-   <option value="800,500">Large Card</option>
-   <option value="500,500">Square Card</option>
-  </select>
-  <button onclick="applyIDSize()">Apply Size</button>
- </div>
-
- <div class="editor-grid">
-
-  <div class="editor-panel">
-   <h3>4. Basic Editing Tools</h3>
-   <div class="editor-actions">
-    <button onclick="editID('crop')">✂️ Crop</button>
-    <button onclick="editID('square')">Square Crop</button>
-    <button onclick="editID('resize')">Resize</button>
-    <button onclick="editID('original')">Original Size</button>
-    <button onclick="editID('fit')">Fit Image</button>
-    <button onclick="editID('rotateLeft')">↶ Rotate Left</button>
-    <button onclick="editID('rotateRight')">↷ Rotate Right</button>
-    <button onclick="editID('rotate180')">Rotate 180°</button>
-    <button onclick="editID('flipH')">↔ Flip Horizontal</button>
-    <button onclick="editID('flipV')">↕ Flip Vertical</button>
-    <button onclick="editID('zoomIn')">Zoom In +</button>
-    <button onclick="editID('zoomOut')">Zoom Out −</button>
-    <button onclick="editID('zoomReset')">Reset Zoom</button>
+  <!-- FRONT SIDE -->
+  <div class="editor-card">
+   <h3>🟦 FRONT SIDE</h3>
+   <div class="field">
+    <label for="frontUpload">Front फोटो अपलोड करें</label>
+    <input type="file" id="frontUpload" accept="image/*">
+   </div>
+   <div class="preview-label">Front Live Preview</div>
+   <div class="canvas-wrap">
+    <canvas id="frontCanvas" width="500" height="315"></canvas>
+   </div>
+   <div class="tool-row">
+    <button class="btn btn-green" onclick="idAction('front')">Front Select</button>
+    <button class="btn" onclick="idAction('crop')">Crop</button>
+    <button class="btn" onclick="idAction('resize')">Resize</button>
+    <button class="btn" onclick="idAction('zoomIn')">Zoom +</button>
+    <button class="btn" onclick="idAction('zoomOut')">Zoom -</button>
+    <button class="btn btn-orange" onclick="idAction('rotate')">Rotate</button>
    </div>
   </div>
 
-  <div class="editor-panel">
-   <h3>5. Brightness & Colour</h3>
-
-   <span class="tool-label">Brightness</span>
-   <input type="range" id="idBrightness" min="0" max="200" value="100" oninput="setIDFilter('brightness',this.value)">
-
-   <span class="tool-label">Contrast</span>
-   <input type="range" id="idContrast" min="0" max="200" value="100" oninput="setIDFilter('contrast',this.value)">
-
-   <span class="tool-label">Saturation</span>
-   <input type="range" id="idSaturation" min="0" max="200" value="100" oninput="setIDFilter('saturate',this.value)">
-
-   <div class="editor-actions">
-    <button onclick="editID('gray')">Grayscale</button>
-    <button onclick="editID('sepia')">Sepia</button>
-    <button onclick="editID('invert')">Invert</button>
-    <button onclick="editID('resetFilter')">Reset Colour</button>
+  <!-- BACK SIDE -->
+  <div class="editor-card">
+   <h3>🟩 BACK SIDE</h3>
+   <div class="field">
+    <label for="backUpload">Back फोटो अपलोड करें</label>
+    <input type="file" id="backUpload" accept="image/*">
+   </div>
+   <div class="preview-label">Back Live Preview</div>
+   <div class="canvas-wrap">
+    <canvas id="backCanvas" width="500" height="315"></canvas>
+   </div>
+   <div class="tool-row">
+    <button class="btn btn-green" onclick="idAction('back')">Back Select</button>
+    <button class="btn" onclick="idAction('crop')">Crop</button>
+    <button class="btn" onclick="idAction('resize')">Resize</button>
+    <button class="btn" onclick="idAction('zoomIn')">Zoom +</button>
+    <button class="btn" onclick="idAction('zoomOut')">Zoom -</button>
+    <button class="btn btn-orange" onclick="idAction('rotate')">Rotate</button>
    </div>
   </div>
 
-  <div class="editor-panel">
-   <h3>6. Background & Effects</h3>
-   <span class="tool-label">Background Colour</span>
-   <input type="color" id="idBackground" value="#ffffff">
-   <button onclick="changeIDBackground()">Apply Background</button>
+ </div>
 
-   <div class="editor-actions">
-    <button onclick="editID('warm')">Warm Effect</button>
-    <button onclick="editID('cool')">Cool Effect</button>
-    <button onclick="editID('sharpen')">High Contrast</button>
-    <button onclick="editID('mirror')">Mirror</button>
-    <button onclick="editID('resetAll')">Reset All</button>
+ <div class="panel">
+  <h3>🎨 Photo Editing Tools</h3>
+  <div class="form-grid">
+   <div class="field">
+    <label for="brightness">Brightness</label>
+    <input type="range" id="brightness" min="0" max="200" value="100">
+   </div>
+   <div class="field">
+    <label for="contrast">Contrast</label>
+    <input type="range" id="contrast" min="0" max="200" value="100">
+   </div>
+   <div class="field">
+    <label for="saturation">Saturation</label>
+    <input type="range" id="saturation" min="0" max="200" value="100">
+   </div>
+   <div class="field">
+    <label for="idBgColor">Background Color</label>
+    <input type="color" id="idBgColor" value="#ffffff">
    </div>
   </div>
 
-  <div class="editor-panel">
-   <h3>7. Save & Print</h3>
-   <div class="editor-actions">
-    <button onclick="downloadID('front')">Download Front</button>
-    <button onclick="downloadID('back')">Download Back</button>
-    <button onclick="downloadID('both')">Download Both</button>
-    <button onclick="printID()">Print ID Card</button>
-    <button onclick="resetAdvancedID()">Reset Studio</button>
-   </div>
+  <div class="action-grid">
+   <button class="btn" onclick="idAction('apply')">Apply Changes</button>
+   <button class="btn btn-dark" onclick="idAction('reset')">Reset Photo</button>
+   <button class="btn btn-orange" onclick="idAction('flip')">Flip Photo</button>
+   <button class="btn btn-purple" onclick="idAction('fit')">Fit to Card</button>
   </div>
+ </div>
 
+ <div class="panel">
+  <h3>📄 Download और Print</h3>
+  <div class="action-grid">
+   <button class="btn btn-green" onclick="idAction('downloadFront')">Download Front</button>
+   <button class="btn btn-green" onclick="idAction('downloadBack')">Download Back</button>
+   <button class="btn btn-orange" onclick="idAction('downloadBoth')">Download Both</button>
+   <button class="btn btn-dark" onclick="idAction('print')">Print ID Card</button>
+  </div>
+ </div>
+
+ <div class="note">
+  नोट: फोटो को सही साइज में फिट करना और सामान्य रंग-सुधार ब्राउज़र में किया जा सकता है।
+  असली Background Removal के लिए अलग AI सेवा/API की जरूरत होगी।
+ </div>
+
+ <div id="idStatus" class="status">
+  Front और Back फोटो अपलोड करके एडिटिंग शुरू करें।
  </div>
 </section>
+    const printWindow = window.open("", "_blank");
 
-
-<!-- ================= PASSPORT PHOTO ADVANCED STUDIO ================= -->
-
-<section class="advanced-studio" id="passportAdvanced">
- <h2 class="section-title">📸 Advanced Passport Photo Studio</h2>
-
- <div class="editor-grid">
-
-  <div class="editor-panel">
-   <h3>1. Upload Passport Photo</h3>
-   <input type="file" id="passportUpload2" accept="image/*">
-   <button onclick="uploadPassportAdvanced()">Upload Photo</button>
-   <canvas id="passportOriginal" width="500" height="600"></canvas>
-  </div>
-
-  <div class="editor-panel">
-   <h3>2. Edited Photo Preview</h3>
-   <canvas id="passportEdited" width="500" height="600"></canvas>
-   <div class="editor-actions">
-    <button onclick="downloadPassport('png')">Download PNG</button>
-    <button onclick="downloadPassport('jpeg')">Download JPG</button>
-   </div>
-  </div>
-
- </div>
-
- <div class="editor-grid">
-
-  <div class="editor-panel">
-   <h3>3. Photo Size</h3>
-   <span class="tool-label">Select Photo Size</span>
-   <select id="passportSize">
-    <option value="35,45">35 × 45 mm</option>
-    <option value="25,35">25 × 35 mm</option>
-    <option value="30,40">30 × 40 mm</option>
-    <option value="40,50">40 × 50 mm</option>
-    <option value="50,50">50 × 50 mm</option>
-    <option value="passport">Passport Standard</option>
-   </select>
-
-   <span class="tool-label">Print Quality</span>
-   <select id="passportQuality">
-    <option value="150">150 DPI</option>
-    <option value="300" selected>300 DPI</option>
-    <option value="600">600 DPI</option>
-   </select>
-
-   <span class="tool-label">Photo Layout</span>
-   <select id="passportLayout">
-    <option value="1">Single Photo</option>
-    <option value="4">4 Photos</option>
-    <option value="6">6 Photos</option>
-    <option value="8" selected>8 Photos</option>
-    <option value="12">12 Photos</option>
-    <option value="16">16 Photos</option>
-   </select>
-
-   <button onclick="applyPassportSize()">Apply Photo Size</button>
-   <button onclick="generatePassportLayout()">Generate Layout</button>
-  </div>
-
-  <div class="editor-panel">
-   <h3>4. Crop & Resize Tools</h3>
-   <div class="editor-actions">
-    <button onclick="passportEdit('crop')">Crop</button>
-    <button onclick="passportEdit('square')">Square Crop</button>
-    <button onclick="passportEdit('resize')">Resize</button>
-    <button onclick="passportEdit('fit')">Fit Image</button>
-    <button onclick="passportEdit('rotateLeft')">Rotate Left</button>
-    <button onclick="passportEdit('rotateRight')">Rotate Right</button>
-    <button onclick="passportEdit('rotate180')">Rotate 180°</button>
-    <button onclick="passportEdit('flipH')">Flip Horizontal</button>
-    <button onclick="passportEdit('flipV')">Flip Vertical</button>
-    <button onclick="passportEdit('zoomIn')">Zoom In</button>
-    <button onclick="passportEdit('zoomOut')">Zoom Out</button>
-    <button onclick="passportEdit('zoomReset')">Reset Zoom</button>
-   </div>
-  </div>
-
-  <div class="editor-panel">
-   <h3>5. Brightness & Colour Tools</h3>
-
-   <span class="tool-label">Brightness</span>
-   <input type="range" id="passportBrightness" min="0" max="200" value="100" oninput="setPassportFilter('brightness',this.value)">
-
-   <span class="tool-label">Contrast</span>
-   <input type="range" id="passportContrast" min="0" max="200" value="100" oninput="setPassportFilter('contrast',this.value)">
-
-   <span class="tool-label">Saturation</span>
-   <input type="range" id="passportSaturation" min="0" max="200" value="100" oninput="setPassportFilter('saturate',this.value)">
-
-   <div class="editor-actions">
-    <button onclick="passportEdit('gray')">Grayscale</button>
-    <button onclick="passportEdit('sepia')">Sepia</button>
-    <button onclick="passportEdit('invert')">Invert</button>
-    <button onclick="passportEdit('resetFilter')">Reset Colour</button>
-   </div>
-  </div>
-
-  <div class="editor-panel">
-   <h3>6. Background & Border</h3>
-
-   <span class="tool-label">Background Colour</span>
-   <input type="color" id="passportBackground" value="#ffffff">
-   <button onclick="changePassportBackground()">Apply Background</button>
-
-   <span class="tool-label">Background Presets</span>
-   <div class="editor-actions">
-    <button onclick="passportPreset('#ffffff')">White</button>
-    <button onclick="passportPreset('#eaf3ff')">Light Blue</button>
-    <button onclick="passportPreset('#d9f5e5')">Light Green</button>
-    <button onclick="passportPreset('#f5e6d3')">Cream</button>
-   </div>
-
-   <span class="tool-label">Photo Border</span>
-   <select id="passportBorder">
-    <option value="0">No Border</option>
-    <option value="1">Thin Border</option>
-    <option value="3">Medium Border</option>
-    <option value="6">Thick Border</option>
-   </select>
-   <button onclick="addPassportBorder()">Apply Border</button>
-  </div>
-
-  <div class="editor-panel">
-   <h3>7. Final Photo Actions</h3>
-   <div class="editor-actions">
-    <button onclick="downloadPassport('png')">Save PNG</button>
-    <button onclick="downloadPassport('jpeg')">Save JPG</button>
-    <button onclick="printPassport()">Print Photo</button>
-    <button onclick="resetPassportAdvanced()">Reset Studio</button>
-   </div>
-  </div>
-
- </div>
-</section>
-
-<script>
-/* =====================================
-   PART 3/3 – PHOTO & ID CARD STUDIO
-   ===================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const $ = id => document.getElementById(id);
-
-  let frontImage = null;
-  let backImage = null;
-  let currentSide = "front";
-  let uploadedPhoto = null;
-
-  let settings = {
-    zoom: 1,
-    brightness: 100,
-    contrast: 100,
-    rotate: 0,
-    background: "#ffffff"
-  };
-
-  // Canvas setup
-  function createCanvas(id) {
-    return $(id);
-  }
-
-  const frontCanvas = createCanvas("frontCanvas");
-  const backCanvas = createCanvas("backCanvas");
-
-  const frontCtx = frontCanvas?.getContext("2d");
-  const backCtx = backCanvas?.getContext("2d");
-
-  // Image loader
-  function loadImage(file, callback) {
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      alert("कृपया सही फोटो चुनें");
-      return;
+    if (!printWindow) {
+        alert("Popup Allow करें।");
+        return;
     }
 
-    const reader = new FileReader();
-
-    reader.onload = e => {
-      const img = new Image();
-
-      img.onload = () => callback(img);
-      img.src = e.target.result;
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-  // Photo upload
-  function uploadPhoto(side, file) {
-    loadImage(file, img => {
-      if (side === "front") frontImage = img;
-      else backImage = img;
-
-      drawAll();
+    const images = Array.from(files).map(file => {
+        return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(file);
+        });
     });
-  }
 
-  function drawCard(canvas, ctx, image, side) {
-    if (!canvas || !ctx) return;
+    Promise.all(images).then(results => {
 
-    const w = canvas.width;
-    const h = canvas.height;
+        printWindow.document.write(`
+            <html>
+            <head>
+                <title>Image PDF</title>
+                <style>
+                    body{margin:0}
+                    img{width:100%;display:block;page-break-after:always}
+                    @page{size:A4;margin:10mm}
+                </style>
+            </head>
+            <body>
+                ${results.map(src => `<img src="${src}">`).join("")}
+            </body>
+            </html>
+        `);
 
-    ctx.clearRect(0, 0, w, h);
+        printWindow.document.close();
 
-    ctx.fillStyle = settings.background;
-    ctx.fillRect(0, 0, w, h);
+        printWindow.onload = () => {
+            printWindow.print();
+        };
+    });
+}
 
-    ctx.save();
+// DOCUMENT PRINT
 
-    ctx.filter =
-      `brightness(${settings.brightness}%) contrast(${settings.contrast}%)`;
+function printDocument() {
 
-    if (image) {
-      const scale = Math.max(
-        w / image.width,
-        h / image.height
-      ) * settings.zoom;
+    const file = document.getElementById("documentUpload").files[0];
 
-      const iw = image.width * scale;
-      const ih = image.height * scale;
-
-      ctx.translate(w / 2, h / 2);
-      ctx.rotate(settings.rotate * Math.PI / 180);
-
-      ctx.drawImage(
-        image,
-        -iw / 2,
-        -ih / 2,
-        iw,
-        ih
-      );
+    if (!file) {
+        alert("पहले डॉक्यूमेंट चुनें।");
+        return;
     }
 
-    ctx.restore();
+    const url = URL.createObjectURL(file);
+    const win = window.open(url, "_blank");
 
-    // Card border
-    ctx.strokeStyle = "#222";
-    ctx.lineWidth = 3;
-    ctx.strokeRect(2, 2, w - 4, h - 4);
+    if (!win) {
+        alert("Popup Allow करें।");
+    }
+}
 
-    // Side label
-    ctx.fillStyle = "#123b79";
-    ctx.font = "bold 22px Arial";
-    ctx.fillText(
-      side === "front" ? "FRONT SIDE" : "BACK SIDE",
-      15,
-      30
-    );
-  }
+// IMAGE CROP
 
-  // Draw both previews
-  function drawAll() {
-    drawCard(frontCanvas, frontCtx, frontImage, "front");
-    drawCard(backCanvas, backCtx, backImage, "back");
-  }
+function openCropTool() {
 
-  // Front photo upload
-  $("frontUpload")?.addEventListener("change", e => {
-    uploadPhoto("front", e.target.files[0]);
-  });
+    const file = document.getElementById("cropUpload").files[0];
 
-  // Back photo upload
-  $("backUpload")?.addEventListener("change", e => {
-    uploadPhoto("back", e.target.files[0]);
-  });
+    if (!file) {
+        alert("पहले फोटो अपलोड करें।");
+        return;
+    }
 
-  // Photo controls
-  $("zoomIn")?.addEventListener("click", () => {
-    settings.zoom = Math.min(3, settings.zoom + 0.1);
-    drawAll();
-  });
-
-  $("zoomOut")?.addEventListener("click", () => {
-    settings.zoom = Math.max(0.2, settings.zoom - 0.1);
-    drawAll();
-  });
-
-  $("brightness")?.addEventListener("input", e => {
-    settings.brightness = Number(e.target.value);
-    drawAll();
-  });
-
-  $("contrast")?.addEventListener("input", e => {
-    settings.contrast = Number(e.target.value);
-    drawAll();
-  });
-
-  $("rotate")?.addEventListener("click", () => {
-    settings.rotate = (settings.rotate + 90) % 360;
-    drawAll();
-  });
-
-  // Background colour
-  $("backgroundColor")?.addEventListener("input", e => {
-    settings.background = e.target.value;
-    drawAll();
-  });
-
-  // Reset
-  $("resetEdit")?.addEventListener("click", () => {
-    settings = {
-      zoom: 1,
-      brightness: 100,
-      contrast: 100,
-      rotate: 0,
-      background: "#ffffff"
-    };
-
-    if ($("brightness")) $("brightness").value = 100;
-    if ($("contrast")) $("contrast").value = 100;
-
-    drawAll();
-  });
-
-  // Front / Back view
-  function showSide(side) {
-    currentSide = side;
-
-    document.querySelectorAll(".card-preview").forEach(el => {
-      el.style.display = "none";
-    });
-
-    const selected = $(side + "Preview");
-
-    if (selected) selected.style.display = "block";
-  }
-
-  $("showFront")?.addEventListener("click", () => showSide("front"));
-  $("showBack")?.addEventListener("click", () => showSide("back"));
-
-  $("showBoth")?.addEventListener("click", () => {
-    currentSide = "both";
-
-    document.querySelectorAll(".card-preview").forEach(el => {
-      el.style.display = "block";
-    });
-  });
-
-  // Text editing
-  function updateText(inputId, canvas, ctx) {
-    const input = $(inputId);
-    if (!input || !canvas || !ctx) return;
-
-    drawAll();
-
-    ctx.save();
-    ctx.fillStyle = "#111";
-    ctx.font = "bold 25px Arial";
-    ctx.fillText(input.value, 20, canvas.height - 35);
-    ctx.restore();
-  }
-
-  $("frontName")?.addEventListener("input", () => {
-    updateText("frontName", frontCanvas, frontCtx);
-  });
-
-  $("backName")?.addEventListener("input", () => {
-    updateText("backName", backCanvas, backCtx);
-  });
-
-  // A4 sheet
-  function makeA4() {
-    const sheet = document.createElement("canvas");
-
-    sheet.width = 2480;
-    sheet.height = 3508;
-
-    const ctx = sheet.getContext("2d");
-
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, sheet.width, sheet.height);
-
-    const margin = 120;
-    const gap = 100;
-    const cardW = 1000;
-    const cardH = 630;
-
-    const cards = [
-      frontCanvas,
-      backCanvas
-    ];
-
-    cards.forEach((card, i) => {
-      if (!card) return;
-
-      const x = margin;
-      const y = margin + i * (cardH + gap);
-
-      ctx.drawImage(card, x, y, cardW, cardH);
-    });
-
-    return sheet;
-  }
-
-  // Download A4
-  $("downloadA4")?.addEventListener("click", () => {
-    const sheet = makeA4();
-
-    const link = document.createElement("a");
-    link.download = "ID-Card-A4.png";
-    link.href = sheet.toDataURL("image/png");
-    link.click();
-  });
-
-  // Print
-  $("printA4")?.addEventListener("click", () => {
-    const sheet = makeA4();
-    const image = sheet.toDataURL("image/png");
+    const url = URL.createObjectURL(file);
 
     const win = window.open("", "_blank");
 
     if (!win) {
-      alert("Print करने के लिए Popup Allow करें");
-      return;
+        alert("Popup Allow करें।");
+        return;
     }
 
     win.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>A4 ID Card Print</title>
-        <style>
-          @page {
-            size: A4 portrait;
-            margin: 0;
-          }
-          body {
-            margin: 0;
-            padding: 0;
-          }
-          img {
-            width: 210mm;
-            height: 297mm;
-            display: block;
-          }
-        </style>
-      </head>
-      <body>
-        <img src="${image}">
-        <script>
-          window.onload = () => {
-            window.print();
-          };
-        <\/script>
-      </body>
-      </html>
+        <html>
+        <head>
+            <title>Image Crop</title>
+            <style>
+                body{text-align:center;font-family:Arial;padding:20px}
+                img{max-width:90%;max-height:70vh}
+            </style>
+        </head>
+        <body>
+            <h2>Image Crop Preview</h2>
+            <img src="${url}">
+            <p>फोटो को डाउनलोड करने के लिए नीचे बटन दबाएं।</p>
+            <a href="${url}" download="cropped-photo.jpg">Download Image</a>
+        </body>
+        </html>
     `);
 
     win.document.close();
-  });
+}
 
-  // Individual card download
-  $("downloadFront")?.addEventListener("click", () => {
-    downloadCanvas(frontCanvas, "Front-ID-Card.png");
-  });
+// IMAGE RESIZE
 
-  $("downloadBack")?.addEventListener("click", () => {
-    downloadCanvas(backCanvas, "Back-ID-Card.png");
-  });
+function resizeImage() {
 
-  function downloadCanvas(canvas, filename) {
-    if (!canvas) return;
+    const file = document.getElementById("cropUpload").files[0];
 
-    const link = document.createElement("a");
-    link.download = filename;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  }
+    if (!file) {
+        alert("पहले Crop Upload में फोटो चुनें।");
+        return;
+    }
 
-  // Initial preview
-  drawAll();
+    const width = Number(document.getElementById("resizeWidth").value);
+    const height = Number(document.getElementById("resizeHeight").value);
 
-  console.log("Photo & ID Card Studio JavaScript Loaded");
+    if (width <= 0 || height <= 0) {
+        alert("सही Width और Height डालें।");
+        return;
+    }
 
-});
-</script>
+    const img = new Image();
+
+    img.onload = function() {
+
+        const canvas = document.createElement("canvas");
+
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        const link = document.createElement("a");
+
+        link.download = "resized-image.png";
+        link.href = canvas.toDataURL("image/png");
+
+        link.click();
+
+        URL.revokeObjectURL(img.src);
+    };
+
+    img.src = URL.createObjectURL(file);
+}
+
+// LIVE PASSPORT CONTROLS
+
+document.getElementById("passportBg").addEventListener(
+    "input", drawPassportPhoto
+);
+
+document.getElementById("passportBrightness").addEventListener(
+    "input", drawPassportPhoto
+);
+
+document.getElementById("passportZoom").addEventListener(
+    "input", drawPassportPhoto
+);
+
+document.getElementById("idZoom").addEventListener(
+    "input", updateIDPreview
+);
+
+document.getElementById("idBrightness").addEventListener(
+    "input", updateIDPreview
+);
+
+document.getElementById("idRotation").addEventListener(
+    "input", updateIDPreview
+);
+
+</script><!-- =================================
+     PART 3 : WEBSITE DESIGN CSS
+================================= -->
+
+<style>
+
+.section{
+    padding:25px;
+    margin:20px auto;
+    max-width:1400px;
+    background:#ffffff;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.section-heading h2{
+    color:#123b79;
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.section-heading p{
+    color:#64748b;
+}
+
+.tool-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.tool-card{
+    padding:22px;
+    text-align:center;
+    border-radius:15px;
+    background:linear-gradient(145deg,#eef5ff,#ffffff);
+    border:1px solid #dbeafe;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+
+.tool-icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.tool-card h3{
+    color:#123b79;
+}
+
+.tool-card p{
+    color:#64748b;
+    font-size:14px;
+    min-height:38px;
+}
+
+button{
+    border:0;
+    padding:11px 18px;
+    background:linear-gradient(90deg,#123b79,#0879d9);
+    color:white;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px;
+}
+
+button:hover{
+    opacity:.85;
+    transform:translateY(-1px);
+}
+
+input,select,textarea{
+    width:100%;
+    padding:11px;
+    margin:7px 0 14px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    background:#fff;
+}
+
+.studio-panel{
+    display:grid;
+    grid-template-columns:minmax(280px,380px) 1fr;
+    gap:25px;
+}
+
+.studio-toolbar{
+    background:#f1f5f9;
+    padding:18px;
+    border-radius:13px;
+}
+
+.studio-toolbar label{
+    display:block;
+    font-weight:bold;
+    color:#123b79;
+}
+
+.id-preview-area,
+.passport-preview-area{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:13px;
+    padding:20px;
+    overflow:auto;
+}
+
+.id-preview-area h3,
+.passport-preview-area h3{
+    color:#123b79;
+    text-align:center;
+}
+
+.id-card-preview{
+    position:relative;
+    width:85.6mm;
+    height:54mm;
+    max-width:100%;
+    margin:15px auto 25px;
+    background:#fff;
+    border:1px solid #64748b;
+    border-radius:5px;
+    overflow:hidden;
+    box-shadow:0 4px 12px #cbd5e1;
+    padding:8px;
+}
+
+.id-card-title{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:#123b79;
+    border-bottom:1px solid #ddd;
+    padding-bottom:4px;
+}
+
+.id-card-preview img{
+    max-width:55px;
+    max-height:65px;
+    object-fit:cover;
+    margin:8px;
+}
+
+.id-card-info{
+    font-size:10px;
+    line-height:1.5;
+}
+
+.id-card-info p{
+    margin:2px 0;
+}
+
+.passport-preview-area{
+    text-align:center;
+}
+
+#passportCanvas{
+    width:180px;
+    height:225px;
+    max-width:100%;
+    background:white;
+    border:1px solid #cbd5e1;
+    object-fit:contain;
+}
+
+.a4-preview{
+    margin:20px auto;
+}
+
+.passport-a4-paper{
+    width:210mm;
+    min-height:297mm;
+    margin:15px auto;
+    padding:10mm;
+    background:white;
+    box-shadow:0 2px 12px #94a3b8;
+    display:grid;
+    grid-template-columns:repeat(2,35mm);
+    grid-auto-rows:45mm;
+    justify-content:center;
+    align-content:start;
+    gap:8mm;
+}
+
+.passport-print-photo{
+    width:35mm;
+    height:45mm;
+    object-fit:fill;
+    border:0.2mm solid #ddd;
+}
+
+.button-group{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+
+@media(max-width:800px){
+
+    .studio-panel{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:15px;
+        margin:12px;
+    }
+
+    .section-heading h2{
+        font-size:22px;
+    }
+
+    .passport-a4-paper{
+        transform:scale(.75);
+        transform-origin:top center;
+        margin-bottom:-70mm;
+    }
+}
+
+@media print{
+
+    @page{
+        size:A4;
+        margin:0;
+    }
+
+    body *{
+        visibility:hidden;
+    }
+
+    #passportSheet,
+    #passportSheet *{
+        visibility:visible;
+    }
+
+    #passportSheet{
+        position:absolute;
+        left:0;
+        top:0;
+        width:210mm;
+        margin:0;
+    }
+
+    .passport-a4-paper{
+        width:210mm;
+        height:297mm;
+        min-height:297mm;
+        margin:0;
+        padding:10mm;
+        box-shadow:none;
+        transform:none;
+    }
+
+    .passport-print-photo{
+        print-color-adjust:exact;
+        -webkit-print-color-adjust:exact;
+    }
+
+}
+
+</style>

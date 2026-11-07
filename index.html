@@ -4,45 +4,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gramin Grahak Sewa - Photo & ID Studio</title>
+<title>Gramin Grahak Sewa Professional</title>
 <style>
+:root{--blue:#0873b9;--green:#087b45;--dark:#102d48;--bg:#eef2f7;--card:#fff;--text:#172033}
+body.dark{--bg:#111827;--card:#1f2937;--text:#f3f4f6;--dark:#071b30}
 *{box-sizing:border-box}
-body{margin:0;background:#eef2f7;color:#172033;font-family:Arial,sans-serif}
-header{background:linear-gradient(110deg,#087b45,#0873b9);color:white;text-align:center;padding:20px}
-header h1{margin:0}
-nav{background:#073d69;padding:12px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-weight:bold}
-.hero{text-align:center;background:white;padding:20px}
-.layout{display:grid;grid-template-columns:220px minmax(0,1fr) 250px;gap:12px;padding:12px}
-.panel,.main-panel,.preview-area,.service-section{background:white;padding:15px;border-radius:10px;box-shadow:0 2px 8px #0001}
-h3{color:#0873b9;margin-top:0}
-button{cursor:pointer}
-.tool{display:block;width:100%;padding:10px;margin:5px 0;border:0;border-radius:7px;background:#e6f1fb;color:#07558b;font-weight:bold;text-align:left}
-.action{width:100%;padding:11px;margin:5px 0;border:0;border-radius:7px;background:#0873b9;color:white;font-weight:bold}
-.green{background:#087b45}
-.red{background:#bd3030}
-.control{margin:10px 0}
-.control label{display:block;font-size:13px;font-weight:bold;margin-bottom:5px}
-.control input,.control select{width:100%;padding:9px;border:1px solid #bbb;border-radius:6px}
-#canvasWrap{position:relative;background:#dfe5ed;min-height:330px;display:flex;align-items:center;justify-content:center;overflow:auto;padding:12px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{background:linear-gradient(110deg,#087b45,#0873b9);color:white;padding:18px;text-align:center}
+header h1{margin:0;font-size:26px}
+header p{margin:6px 0 0}
+nav{background:var(--dark);display:flex;gap:8px;flex-wrap:wrap;padding:10px;justify-content:center}
+nav button{background:transparent;color:white;border:0;padding:10px;cursor:pointer;font-weight:bold}
+nav button:hover{background:#ffffff22;border-radius:6px}
+.container{padding:14px;max-width:1500px;margin:auto}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);color:var(--text);padding:16px;border-radius:12px;box-shadow:0 2px 9px #0001;margin-bottom:14px}
+h2,h3{color:var(--blue);margin-top:0}
+.grid{display:grid;grid-template-columns:220px minmax(0,1fr) 250px;gap:12px;align-items:start}
+.btn{border:0;border-radius:7px;padding:11px;background:#e6f1fb;color:#07558b;font-weight:bold;cursor:pointer;margin:4px 0}
+.btn.block{display:block;width:100%;text-align:left}
+.primary{background:var(--blue);color:white}
+.success{background:var(--green);color:white}
+.danger{background:#bd3030;color:white}
+input,select,textarea{width:100%;padding:10px;border:1px solid #b8c3d1;border-radius:6px;background:var(--card);color:var(--text)}
+label{display:block;font-size:13px;font-weight:bold;margin:10px 0 5px}
+.field{margin:10px 0}
+#canvasWrap{min-height:350px;background:#dce4ed;display:flex;justify-content:center;align-items:center;position:relative;overflow:auto;padding:12px;border-radius:8px}
 #editor{max-width:100%;height:auto;display:none;touch-action:none}
-#cropLayer{position:absolute;inset:12px;pointer-events:none}
-#cropBox{position:absolute;border:2px dashed red;background:#ffffff22;display:none}
-.note{font-size:12px;color:#667085}
-.preview-area{margin:12px}
-.a4{width:210mm;min-height:297mm;background:white;margin:15px auto;padding:8mm;display:flex;flex-wrap:wrap;align-content:flex-start;gap:3mm;box-shadow:0 2px 8px #0003}
-.print-card{display:flex;flex-direction:column;gap:2mm;break-inside:avoid}
-.print-card img{object-fit:contain;border:1px solid #bbb}
-.services{padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.service-section a{display:block;padding:9px;margin:5px 0;background:#e8f2fc;color:#07558b;text-decoration:none;border-radius:6px}
-footer{background:#073d69;color:white;text-align:center;padding:20px}
-#pdfFrame{width:100%;height:450px;display:none}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
+#cropBox{position:absolute;border:2px dashed red;background:#ffffff33;display:none;pointer-events:none}
+#empty{color:#4b5b6e;text-align:center}
+.preview{background:#dce4ed;padding:10px;border-radius:8px;overflow:auto}
+.a4{width:210mm;min-height:297mm;background:white;color:#111;margin:10px auto;padding:8mm;display:flex;flex-wrap:wrap;align-content:flex-start;gap:3mm;overflow:hidden}
+.a4 img{object-fit:contain;display:block}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:9px;border-bottom:1px solid #ddd;text-align:left}
+.table th{background:#e6f1fb;color:#07558b}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.stat{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 2px 8px #0001}
+.stat strong{font-size:25px;color:var(--blue);display:block}
+.small{font-size:12px;color:#778399}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.service a{display:block;padding:10px;margin:5px 0;background:#e6f1fb;border-radius:6px;text-decoration:none;color:#07558b}
+#pdfFrame{width:100%;height:500px;display:none}
+footer{text-align:center;padding:20px;background:var(--dark);color:white}
+@media(max-width:950px){.grid{grid-template-columns:1fr}}
 @media print{
  @page{size:A4 portrait;margin:0}
  body *{visibility:hidden}
  #printArea,#printArea *{visibility:visible}
  #printArea{position:absolute;left:0;top:0;width:210mm;min-height:297mm;margin:0;padding:8mm;box-shadow:none}
+ .no-print{display:none!important}
 }
 </style>
 </head>
@@ -50,420 +62,608 @@ footer{background:#073d69;color:white;text-align:center;padding:20px}
 
 <header>
 <h1>🇮🇳 GRAMIN GRAHAK SEWA</h1>
-<p>Digital Service Centre | Photo • Document • ID Card • Printing</p>
+<p>Professional Digital Service Centre</p>
+<p>Photo Studio • Document Studio • ID Card • Customer Management</p>
 </header>
 
-<nav>
-<a href="#studio">Photo Studio</a>
-<a href="#print">A4 Print Preview</a>
-<a href="#services">Government Services</a>
+<nav class="no-print">
+<button onclick="showPage('dashboard')">🏠 Dashboard</button>
+<button onclick="showPage('photo')">📸 Photo Studio</button>
+<button onclick="showPage('idcard')">🪪 ID Card</button>
+<button onclick="showPage('document')">📄 Document / PDF</button>
+<button onclick="showPage('customers')">👥 Customers</button>
+<button onclick="showPage('receipt')">🧾 Receipt</button>
+<button onclick="showPage('services')">🌐 Services</button>
+<button onclick="toggleDark()">🌙 Theme</button>
 </nav>
 
-<section class="hero">
-<h2>All in One Photo & Document Studio</h2>
-<p>फोटो एडिटिंग, Crop, ID Card और A4 Printing</p>
+<div class="container">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page active">
+<div class="card">
+<h2>Professional Dashboard</h2>
+<p>आपके डिजिटल सेवा केंद्र का स्वागत है।</p>
+</div>
+<div class="stats">
+<div class="stat">कुल ग्राहक<strong id="totalCustomers">0</strong></div>
+<div class="stat">आज के ग्राहक<strong id="todayCustomers">0</strong></div>
+<div class="stat">सेवाएँ<strong>20+</strong></div>
+<div class="stat">सॉफ्टवेयर<strong>PRO</strong></div>
+</div>
+<div class="card">
+<h3>Quick Access</h3>
+<button class="btn primary" onclick="showPage('photo')">Photo Studio खोलें</button>
+<button class="btn primary" onclick="showPage('idcard')">ID Card Studio खोलें</button>
+<button class="btn primary" onclick="showPage('customers')">नया ग्राहक जोड़ें</button>
+<button class="btn primary" onclick="showPage('receipt')">रसीद बनाएँ</button>
+</div>
+<div class="card">
+<h3>Backup & Restore</h3>
+<button class="btn success" onclick="backupData()">Download Backup</button>
+<input type="file" id="restoreFile" accept=".json" onchange="restoreData(event)">
+<label>Backup Restore करने के लिए JSON फाइल चुनें</label>
+<p class="small">ग्राहक रिकॉर्ड इसी ब्राउज़र में सेव होते हैं। समय-समय पर Backup डाउनलोड करें।</p>
+</div>
 </section>
 
-<div class="layout" id="studio">
-
-<!-- LEFT TOOLS -->
-<aside class="panel">
-<h3>🛠️ Editing Tools</h3>
-
-<button class="tool" onclick="photoInput.click()">📷 Photo Upload</button>
-<input type="file" id="photoInput" accept="image/*" hidden>
-
-<button class="tool" onclick="startCrop()">✂️ Crop Tool चालू करें</button>
-<button class="tool" onclick="applyCrop()">✔ Crop Apply करें</button>
-<button class="tool" onclick="cancelCrop()">✖ Crop Cancel करें</button>
-
-<button class="tool" onclick="rotate(-90)">↶ Rotate Left</button>
-<button class="tool" onclick="rotate(90)">↷ Rotate Right</button>
-<button class="tool" onclick="flip()">↔ Flip</button>
-<button class="tool" onclick="grayscale()">⚫ Grayscale</button>
-<button class="tool" onclick="resetPhoto()">⟲ Reset Photo</button>
-
+<!-- PHOTO STUDIO -->
+<section id="photo" class="page">
+<h2>📸 Professional Photo Studio</h2>
+<div class="grid">
+<aside class="card">
+<h3>Editing Tools</h3>
+<button class="btn block" onclick="document.getElementById('photoFile').click()">📷 फोटो अपलोड</button>
+<input type="file" id="photoFile" accept="image/*" hidden>
+<button class="btn block" onclick="startCrop()">✂️ Crop चालू</button>
+<button class="btn block success" onclick="applyCrop()">Crop Apply</button>
+<button class="btn block" onclick="cancelCrop()">Crop Cancel</button>
+<button class="btn block" onclick="rotatePhoto(-90)">↶ Rotate Left</button>
+<button class="btn block" onclick="rotatePhoto(90)">↷ Rotate Right</button>
+<button class="btn block" onclick="flipPhoto()">↔ Flip</button>
+<button class="btn block" onclick="toggleGray()">Grayscale</button>
+<button class="btn block" onclick="undoPhoto()">↶ Undo</button>
+<button class="btn block" onclick="redoPhoto()">↷ Redo</button>
+<button class="btn block" onclick="resetPhoto()">Reset</button>
 <hr>
-<h3>🪪 ID Card Upload</h3>
-<button class="tool" onclick="frontInput.click()">Front Upload</button>
-<input type="file" id="frontInput" accept="image/*" hidden>
-<button class="tool" onclick="backInput.click()">Back Upload</button>
-<input type="file" id="backInput" accept="image/*" hidden>
-
-<p class="note">Crop करने के लिए फोटो पर माउस या उंगली से खींचकर हिस्सा चुनें। फिर Crop Apply दबाएँ।</p>
-</aside>
-
-<!-- CENTER -->
-<main class="main-panel">
-<h3>🖼️ Photo Editor Preview</h3>
-<div id="canvasWrap">
-<canvas id="editor"></canvas>
-<div id="cropLayer"><div id="cropBox"></div></div>
-<div id="empty">अपनी फोटो अपलोड करें</div>
-</div>
-
-<div class="control">
-<label>Brightness</label>
-<input type="range" id="brightness" min="0" max="200" value="100">
-</div>
-<div class="control">
-<label>Contrast</label>
-<input type="range" id="contrast" min="0" max="200" value="100">
-</div>
-<div class="control">
-<label>Background</label>
-<select id="bg">
+<h3>Photo Settings</h3>
+<label>Brightness</label><input id="brightness" type="range" min="0" max="200" value="100">
+<label>Contrast</label><input id="contrast" type="range" min="0" max="200" value="100">
+<label>Background Colour</label>
+<select id="photoBg">
 <option value="#ffffff">White</option>
 <option value="#d9eaff">Light Blue</option>
 <option value="#eeeeee">Light Grey</option>
 <option value="#f5e6d3">Cream</option>
 </select>
-</div>
+</aside>
 
-<div class="control">
-<label>Photo Size</label>
-<select id="preset">
+<main class="card">
+<h3>Photo Editing Canvas</h3>
+<div id="canvasWrap">
+<canvas id="editor"></canvas>
+<div id="cropBox"></div>
+<div id="empty">यहाँ अपनी फोटो अपलोड करें</div>
+</div>
+<label>Photo Size Preset</label>
+<select id="photoPreset">
 <option value="35,45">Passport 35 × 45 mm</option>
 <option value="25,35">Small 25 × 35 mm</option>
 <option value="50,50">Square 50 × 50 mm</option>
 <option value="85.6,53.98">ID Card 85.6 × 53.98 mm</option>
 <option value="custom">Custom</option>
 </select>
+<div class="field">
+<label>Width (mm)</label><input type="number" id="photoW" value="35">
 </div>
-<div class="control">
-<label>Width (mm)</label>
-<input type="number" id="width" value="35" min="1" max="210">
+<div class="field">
+<label>Height (mm)</label><input type="number" id="photoH" value="45">
 </div>
-<div class="control">
-<label>Height (mm)</label>
-<input type="number" id="height" value="45" min="1" max="297">
-</div>
-
-<button class="action green" onclick="downloadPhoto()">Download Edited Photo</button>
-<button class="action" onclick="updatePreview()">Update A4 Preview</button>
-<button class="action" onclick="window.print()">Print A4 Sheet</button>
+<button class="btn success" onclick="downloadPhoto()">Download Photo</button>
+<button class="btn primary" onclick="makePhotoSheet()">A4 Photo Preview</button>
 </main>
 
-<!-- RIGHT SETTINGS -->
-<aside class="panel">
-<h3>⚙️ Print Settings</h3>
-
-<div class="control">
-<label>Print Type</label>
-<select id="printType">
-<option value="photo">Photo Only</option>
-<option value="front">ID Front Only</option>
-<option value="back">ID Back Only</option>
-<option value="both">Front + Back</option>
-</select>
-</div>
-
-<div class="control">
-<label>ID Card Width (mm)</label>
-<input type="number" id="cardW" value="85.6" min="10" max="210">
-</div>
-<div class="control">
-<label>ID Card Height (mm)</label>
-<input type="number" id="cardH" value="53.98" min="10" max="297">
-</div>
-<div class="control">
-<label>कितने ID Card चाहिए?</label>
-<input type="number" id="cardCount" value="4" min="1" max="100">
-</div>
-<div class="control">
-<label>एक शीट में कॉलम</label>
-<select id="columns">
-<option value="1">1 Column</option>
-<option value="2" selected>2 Columns</option>
-<option value="3">3 Columns</option>
-</select>
-</div>
-<div class="control">
+<aside class="card">
+<h3>Photo Sheet Settings</h3>
+<label>कितनी फोटो चाहिए?</label>
+<input type="number" id="photoCopies" value="8" min="1" max="100">
 <label>Gap (mm)</label>
-<input type="number" id="gap" value="3" min="0" max="20">
-</div>
-<div class="control">
-<label>Orientation</label>
-<select id="orientation">
-<option value="portrait">Portrait</option>
-<option value="landscape">Landscape</option>
+<input type="number" id="photoGap" value="3">
+<label>एक लाइन में फोटो</label>
+<select id="photoColumns">
+<option value="2">2</option>
+<option value="3" selected>3</option>
+<option value="4">4</option>
+<option value="5">5</option>
 </select>
-</div>
-
-<button class="action green" onclick="updatePreview()">Preview Update</button>
-<button class="action" onclick="window.print()">Print Now</button>
-
-<hr>
-<h3>📄 PDF Tool</h3>
-<input type="file" id="pdfInput" accept="application/pdf">
-<button class="action" onclick="openPDF()">Open PDF</button>
+<button class="btn success block" onclick="makePhotoSheet()">Update Preview</button>
+<button class="btn primary block" onclick="printSheet()">Print A4</button>
+<p class="small">AI Background Removal के लिए अलग AI इंजन/API जोड़ना होगा।</p>
 </aside>
-</div>
-
-<!-- A4 PREVIEW -->
-<section class="preview-area" id="print">
-<h2>📃 A4 Live Print Preview</h2>
-<p class="note">Front + Back मोड में हर कार्ड के नीचे उसका Back रखा जाएगा।</p>
-<div id="printArea" class="a4">
-<p>फोटो या ID Card अपलोड करके Preview Update दबाएँ।</p>
 </div>
 </section>
 
-<section class="preview-area">
-<h2>📄 PDF Preview</h2>
+<!-- ID CARD STUDIO -->
+<section id="idcard" class="page">
+<h2>🪪 Professional ID Card Studio</h2>
+<div class="grid">
+<aside class="card">
+<h3>Upload Cards</h3>
+<label>Front Side</label>
+<input type="file" id="frontFile" accept="image/*">
+<label>Back Side</label>
+<input type="file" id="backFile" accept="image/*">
+<label>Card Preset</label>
+<select id="cardPreset">
+<option value="85.6,53.98">Aadhaar / PAN / Voter / DL - 85.6 × 53.98 mm</option>
+<option value="90,55">90 × 55 mm</option>
+<option value="88,58">88 × 58 mm</option>
+<option value="100,65">100 × 65 mm</option>
+<option value="custom">Custom</option>
+</select>
+<label>Width (mm)</label><input id="idW" type="number" value="85.6">
+<label>Height (mm)</label><input id="idH" type="number" value="53.98">
+</aside>
+<main class="card">
+<h3>ID Card Preview</h3>
+<div class="preview" style="display:flex;gap:12px;flex-wrap:wrap">
+<div><p>Front</p><img id="frontPreview" style="width:240px;max-width:100%;border:1px solid #aaa"></div>
+<div><p>Back</p><img id="backPreview" style="width:240px;max-width:100%;border:1px solid #aaa"></div>
+</div>
+<label>Print Mode</label>
+<select id="idMode">
+<option value="both">Front + Back</option>
+<option value="front">Front Only</option>
+<option value="back">Back Only</option>
+</select>
+<label>कितने कार्ड प्रिंट करने हैं?</label>
+<input type="number" id="idCopies" value="4" min="1" max="100">
+<button class="btn success" onclick="makeIDSheet()">Update A4 Preview</button>
+<button class="btn primary" onclick="printSheet()">Print ID Cards</button>
+</main>
+<aside class="card">
+<h3>Print Settings</h3>
+<label>Columns</label>
+<select id="idColumns"><option>1</option><option selected>2</option><option>3</option></select>
+<label>Gap (mm)</label><input type="number" id="idGap" value="3">
+<p class="small">Front और Back हर कार्ड के एक सेट में साथ रखे जाएँगे।</p>
+</aside>
+</div>
+</section>
+
+<!-- DOCUMENT -->
+<section id="document" class="page">
+<h2>📄 Document / PDF Studio</h2>
+<div class="card">
+<label>PDF फाइल चुनें</label>
+<input type="file" id="pdfFile" accept="application/pdf">
+<button class="btn primary" onclick="openPDF()">Open PDF</button>
+<button class="btn success" onclick="printPDF()">Print PDF</button>
 <iframe id="pdfFrame"></iframe>
+</div>
+<div class="card">
+<h3>Image Document Tools</h3>
+<label>Image या Scan अपलोड करें</label>
+<input type="file" id="docImageFile" accept="image/*">
+<img id="docImagePreview" style="max-width:100%;max-height:350px;display:none">
+<button class="btn primary" onclick="downloadDocumentImage()">Download Document Image</button>
+<p class="small">PDF Merge, Split और Compress के लिए अतिरिक्त PDF इंजन जोड़ना होगा।</p>
+</div>
+</section>
+
+<!-- CUSTOMER MANAGEMENT -->
+<section id="customers" class="page">
+<h2>👥 Customer Management</h2>
+<div class="card">
+<h3>नया ग्राहक जोड़ें</h3>
+<label>ग्राहक का नाम</label><input id="customerName" placeholder="पूरा नाम">
+<label>मोबाइल नंबर</label><input id="customerPhone" inputmode="numeric" placeholder="10 अंकों का मोबाइल नंबर">
+<label>काम / सेवा</label><input id="customerWork" placeholder="जैसे आधार प्रिंट, फोटो, फॉर्म">
+<label>राशि (₹)</label><input id="customerAmount" type="number" min="0" value="0">
+<label>नोट</label><textarea id="customerNote" rows="2"></textarea>
+<button class="btn success" onclick="addCustomer()">Save Customer</button>
+<button class="btn primary" onclick="backupData()">Export Backup</button>
+</div>
+<div class="card">
+<h3>ग्राहक रिकॉर्ड</h3>
+<input id="customerSearch" placeholder="नाम या मोबाइल से खोजें" oninput="renderCustomers()">
+<div style="overflow:auto">
+<table class="table">
+<thead><tr><th>नाम</th><th>मोबाइल</th><th>काम</th><th>राशि</th><th>तारीख</th><th>Action</th></tr></thead>
+<tbody id="customerRows"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- RECEIPT -->
+<section id="receipt" class="page">
+<h2>🧾 Receipt Maker</h2>
+<div class="card">
+<label>रसीद नंबर</label><input id="receiptNo">
+<label>ग्राहक का नाम</label><input id="receiptName">
+<label>मोबाइल</label><input id="receiptPhone">
+<label>सेवा का नाम</label><input id="receiptWork">
+<label>राशि (₹)</label><input id="receiptAmount" type="number" value="0">
+<button class="btn success" onclick="makeReceipt()">रसीद तैयार करें</button>
+<button class="btn primary" onclick="window.print()">Print Receipt</button>
+</div>
+<div class="card" id="receiptArea">
+<h2 style="text-align:center">GRAMIN GRAHAK SEWA</h2>
+<h3 style="text-align:center">ग्राहक सेवा रसीद</h3>
+<p>रसीद नंबर: <span id="rNo">-</span></p>
+<p>ग्राहक का नाम: <span id="rName">-</span></p>
+<p>मोबाइल: <span id="rPhone">-</span></p>
+<p>सेवा: <span id="rWork">-</span></p>
+<h3>कुल राशि: ₹<span id="rAmount">0</span></h3>
+<p>धन्यवाद! फिर पधारें।</p>
+</div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-<h2 style="text-align:center;color:#0873b9">🌐 Government Services</h2>
-<div class="services">
-
-<div class="service-section">
-<h3>🪪 पहचान सेवाएँ</h3>
-<a href="https://uidai.gov.in/" target="_blank">आधार कार्ड</a>
+<section id="services" class="page">
+<h2>🌐 Government Services</h2>
+<div class="service-grid">
+<div class="card service"><h3>पहचान सेवाएँ</h3>
+<a href="https://uidai.gov.in/" target="_blank">Aadhaar</a>
 <a href="https://www.pan.utiitsl.com/" target="_blank">PAN Card</a>
 <a href="https://voters.eci.gov.in/" target="_blank">Voter ID</a>
-<a href="https://www.passportindia.gov.in/" target="_blank">Passport</a>
-</div>
-
-<div class="service-section">
-<h3>🏢 राजस्थान सेवाएँ</h3>
+<a href="https://www.passportindia.gov.in/" target="_blank">Passport</a></div>
+<div class="card service"><h3>राजस्थान सेवाएँ</h3>
 <a href="https://sso.rajasthan.gov.in/" target="_blank">Rajasthan SSO</a>
 <a href="https://emitra.rajasthan.gov.in/" target="_blank">ई-मित्र</a>
 <a href="https://apnakhata.rajasthan.gov.in/" target="_blank">अपना खाता</a>
-<a href="https://bhunaksha.rajasthan.gov.in/" target="_blank">भू-नक्शा</a>
-</div>
-
-<div class="service-section">
-<h3>🌾 किसान सेवाएँ</h3>
+<a href="https://bhunaksha.rajasthan.gov.in/" target="_blank">भू-नक्शा</a></div>
+<div class="card service"><h3>किसान सेवाएँ</h3>
 <a href="https://pmkisan.gov.in/" target="_blank">PM Kisan</a>
 <a href="https://pmfby.gov.in/" target="_blank">फसल बीमा</a>
-<a href="https://agri.rajasthan.gov.in/" target="_blank">राजस्थान कृषि विभाग</a>
-</div>
-
-<div class="service-section">
-<h3>🎓 शिक्षा सेवाएँ</h3>
+<a href="https://agri.rajasthan.gov.in/" target="_blank">कृषि विभाग</a></div>
+<div class="card service"><h3>शिक्षा / श्रमिक</h3>
 <a href="https://scholarships.gov.in/" target="_blank">Scholarship</a>
 <a href="https://www.digilocker.gov.in/" target="_blank">DigiLocker</a>
-<a href="https://rajeduboard.rajasthan.gov.in/" target="_blank">RBSE</a>
-</div>
-
-<div class="service-section">
-<h3>👷 श्रमिक सेवाएँ</h3>
 <a href="https://eshram.gov.in/" target="_blank">ई-श्रम</a>
-<a href="https://www.epfindia.gov.in/" target="_blank">EPFO</a>
-<a href="https://nsap.nic.in/" target="_blank">Pension Services</a>
-</div>
-
-<div class="service-section">
-<h3>🚗 वाहन सेवाएँ</h3>
+<a href="https://www.epfindia.gov.in/" target="_blank">EPFO</a></div>
+<div class="card service"><h3>वाहन / स्वास्थ्य</h3>
 <a href="https://parivahan.gov.in/" target="_blank">Parivahan</a>
-<a href="https://sarathi.parivahan.gov.in/" target="_blank">Driving Licence</a>
-</div>
-
-<div class="service-section">
-<h3>🏥 स्वास्थ्य सेवाएँ</h3>
 <a href="https://abdm.gov.in/" target="_blank">ABDM</a>
-<a href="https://beneficiary.nha.gov.in/" target="_blank">Ayushman Bharat</a>
-</div>
-
-<div class="service-section">
-<h3>🛡️ सुरक्षा</h3>
-<a href="https://cybercrime.gov.in/" target="_blank">Cyber Crime Portal</a>
-<a href="https://www.cert-in.org.in/" target="_blank">CERT-In</a>
-</div>
-
+<a href="https://beneficiary.nha.gov.in/" target="_blank">Ayushman Bharat</a></div>
+<div class="card service"><h3>सुरक्षा</h3>
+<a href="https://cybercrime.gov.in/" target="_blank">Cyber Crime</a>
+<a href="https://www.cert-in.org.in/" target="_blank">CERT-In</a></div>
 </div>
 </section>
 
+<!-- SHARED PRINT AREA -->
+<section class="card">
+<h3>📃 A4 Print Preview</h3>
+<div id="printArea" class="a4">
+<p>अपनी फोटो या ID कार्ड चुनें और Preview Update दबाएँ।</p>
+</div>
+</section>
+
+</div>
+
 <footer>
 <strong>GRAMIN GRAHAK SEWA</strong>
-<p>आपकी सेवा में सदैव</p>
+<p>Professional Digital Service Centre</p>
 </footer>
 
 <script>
+// PAGE NAVIGATION
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
+}
+function toggleDark(){document.body.classList.toggle("dark");}
+
+// PHOTO EDITOR
 const canvas=document.getElementById("editor");
 const ctx=canvas.getContext("2d");
-const photoInput=document.getElementById("photoInput");
-const frontInput=document.getElementById("frontInput");
-const backInput=document.getElementById("backInput");
-let original=null,photo=null,front=null,back=null;
-let angle=0,flipped=false,gray=false;
-let cropping=false,startX=0,startY=0,rect=null;
+let photo=null,originalPhoto=null,rotation=0,flipped=false,gray=false;
+let cropActive=false,cropStart=null,cropRect=null,undoStack=[],redoStack=[];
 
-function readImage(file,callback){
+function saveHistory(){
+ if(!photo)return;
+ undoStack.push(canvas.toDataURL());
+ if(undoStack.length>20)undoStack.shift();
+ redoStack=[];
+}
+function loadImageFile(file,callback){
  if(!file)return;
- if(!file.type.startsWith("image/")){alert("कृपया फोटो फाइल चुनें");return;}
+ if(!file.type.startsWith("image/")){alert("कृपया Image फाइल चुनें");return;}
  const reader=new FileReader();
  reader.onload=e=>{
-  const img=new Image();
-  img.onload=()=>callback(img);
-  img.src=e.target.result;
+  const im=new Image();
+  im.onload=()=>callback(im);
+  im.src=e.target.result;
  };
  reader.readAsDataURL(file);
 }
-photoInput.onchange=e=>readImage(e.target.files[0],img=>{
- original=img;photo=img;angle=0;flipped=false;gray=false;
- canvas.style.display="block";
- document.getElementById("empty").style.display="none";
- draw();
-});
-frontInput.onchange=e=>readImage(e.target.files[0],img=>{front=img;updatePreview();});
-backInput.onchange=e=>readImage(e.target.files[0],img=>{back=img;updatePreview();});
-
-function draw(){
+document.getElementById("photoFile").onchange=e=>{
+ loadImageFile(e.target.files[0],im=>{
+  photo=im;originalPhoto=im;rotation=0;flipped=false;gray=false;
+  undoStack=[];redoStack=[];
+  canvas.style.display="block";
+  document.getElementById("empty").style.display="none";
+  drawPhoto();
+ });
+};
+function drawPhoto(){
  if(!photo)return;
- const a=((angle%360)+360)%360;
- const sideways=a===90||a===270;
- canvas.width=sideways?photo.height:photo.width;
- canvas.height=sideways?photo.width:photo.height;
- ctx.fillStyle=document.getElementById("bg").value;
+ const a=((rotation%360)+360)%360;
+ const side=a===90||a===270;
+ canvas.width=side?photo.height:photo.width;
+ canvas.height=side?photo.width:photo.height;
+ ctx.fillStyle=document.getElementById("photoBg").value;
  ctx.fillRect(0,0,canvas.width,canvas.height);
  ctx.save();
  ctx.translate(canvas.width/2,canvas.height/2);
- ctx.rotate(angle*Math.PI/180);
+ ctx.rotate(rotation*Math.PI/180);
  ctx.scale(flipped?-1:1,1);
  ctx.filter=`brightness(${brightness.value}%) contrast(${contrast.value}%) ${gray?"grayscale(100%)":""}`;
  ctx.drawImage(photo,-photo.width/2,-photo.height/2);
  ctx.restore();
  ctx.filter="none";
 }
-function rotate(d){if(!photo)return;angle+=d;draw();}
-function flip(){if(!photo)return;flipped=!flipped;draw();}
-function grayscale(){if(!photo)return;gray=!gray;draw();}
+brightness.oninput=drawPhoto;
+contrast.oninput=drawPhoto;
+photoBg.onchange=drawPhoto;
+function rotatePhoto(deg){if(!photo)return;saveHistory();rotation+=deg;drawPhoto();}
+function flipPhoto(){if(!photo)return;saveHistory();flipped=!flipped;drawPhoto();}
+function toggleGray(){if(!photo)return;saveHistory();gray=!gray;drawPhoto();}
 function resetPhoto(){
- if(!original)return;
- photo=original;angle=0;flipped=false;gray=false;
- brightness.value=100;contrast.value=100;draw();
+ if(!originalPhoto)return;
+ saveHistory();photo=originalPhoto;rotation=0;flipped=false;gray=false;
+ brightness.value=100;contrast.value=100;drawPhoto();
 }
-brightness.oninput=draw;
-contrast.oninput=draw;
-bg.onchange=draw;
-preset.onchange=()=>{
- if(preset.value==="custom")return;
- const v=preset.value.split(",");
- width.value=v[0];height.value=v[1];
-};
+function undoPhoto(){
+ if(!undoStack.length)return;
+ redoStack.push(canvas.toDataURL());
+ restoreCanvas(undoStack.pop());
+}
+function redoPhoto(){
+ if(!redoStack.length)return;
+ undoStack.push(canvas.toDataURL());
+ restoreCanvas(redoStack.pop());
+}
+function restoreCanvas(src){
+ const im=new Image();im.onload=()=>{photo=im;rotation=0;flipped=false;gray=false;drawPhoto();};im.src=src;
+}
 
+// CROP TOOL
 function startCrop(){
  if(!photo){alert("पहले फोटो अपलोड करें");return;}
- cropping=true;rect=null;
- document.getElementById("cropBox").style.display="none";
- alert("अब फोटो पर माउस या उंगली से खींचकर Crop Area चुनें।");
+ cropActive=true;cropRect=null;
+ alert("फोटो पर माउस या उंगली से खींचकर Crop Area चुनें।");
 }
-function getPoint(e){
+function point(e){
  const r=canvas.getBoundingClientRect();
- return {
-  x:Math.max(0,Math.min(canvas.width,(e.clientX-r.left)*canvas.width/r.width)),
-  y:Math.max(0,Math.min(canvas.height,(e.clientY-r.top)*canvas.height/r.height))
- };
+ return {x:Math.max(0,Math.min(canvas.width,(e.clientX-r.left)*canvas.width/r.width)),
+ y:Math.max(0,Math.min(canvas.height,(e.clientY-r.top)*canvas.height/r.height))};
 }
 canvas.addEventListener("pointerdown",e=>{
- if(!cropping)return;
+ if(!cropActive)return;
  e.preventDefault();canvas.setPointerCapture(e.pointerId);
- const p=getPoint(e);startX=p.x;startY=p.y;
- rect={x:startX,y:startY,w:0,h:0};
+ cropStart=point(e);
+ cropRect={x:cropStart.x,y:cropStart.y,w:0,h:0};
 });
 canvas.addEventListener("pointermove",e=>{
- if(!cropping||!rect)return;
- const p=getPoint(e);
- rect={x:Math.min(startX,p.x),y:Math.min(startY,p.y),
- w:Math.abs(p.x-startX),h:Math.abs(p.y-startY)};
+ if(!cropActive||!cropStart)return;
+ const p=point(e);
+ cropRect={x:Math.min(cropStart.x,p.x),y:Math.min(cropStart.y,p.y),
+ w:Math.abs(p.x-cropStart.x),h:Math.abs(p.y-cropStart.y)};
  const box=document.getElementById("cropBox");
- const cr=canvas.getBoundingClientRect();
- const wr=document.getElementById("canvasWrap").getBoundingClientRect();
+ const r=canvas.getBoundingClientRect(),wrap=document.getElementById("canvasWrap").getBoundingClientRect();
  box.style.display="block";
- box.style.left=(cr.left-wr.left+rect.x*cr.width/canvas.width)+"px";
- box.style.top=(cr.top-wr.top+rect.y*cr.height/canvas.height)+"px";
- box.style.width=(rect.w*cr.width/canvas.width)+"px";
- box.style.height=(rect.h*cr.height/canvas.height)+"px";
+ box.style.left=(r.left-wrap.left+cropRect.x*r.width/canvas.width)+"px";
+ box.style.top=(r.top-wrap.top+cropRect.y*r.height/canvas.height)+"px";
+ box.style.width=(cropRect.w*r.width/canvas.width)+"px";
+ box.style.height=(cropRect.h*r.height/canvas.height)+"px";
 });
-canvas.addEventListener("pointerup",()=>{});
 function applyCrop(){
- if(!cropping||!rect||rect.w<5||rect.h<5){alert("पहले Crop Area चुनें");return;}
+ if(!cropActive||!cropRect||cropRect.w<5||cropRect.h<5){alert("पहले Crop Area चुनें");return;}
+ saveHistory();
  const c=document.createElement("canvas");
- c.width=Math.round(rect.w);c.height=Math.round(rect.h);
- c.getContext("2d").drawImage(canvas,rect.x,rect.y,rect.w,rect.h,0,0,c.width,c.height);
- const img=new Image();
- img.onload=()=>{
-  photo=img;original=img;angle=0;flipped=false;gray=false;
-  cropping=false;rect=null;
-  document.getElementById("cropBox").style.display="none";
-  draw();
- };
- img.src=c.toDataURL("image/png");
+ c.width=Math.round(cropRect.w);c.height=Math.round(cropRect.h);
+ c.getContext("2d").drawImage(canvas,cropRect.x,cropRect.y,cropRect.w,cropRect.h,0,0,c.width,c.height);
+ const im=new Image();
+ im.onload=()=>{photo=im;originalPhoto=im;rotation=0;flipped=false;gray=false;drawPhoto();};
+ im.src=c.toDataURL("image/png");
+ cancelCrop();
 }
 function cancelCrop(){
- cropping=false;rect=null;
+ cropActive=false;cropStart=null;cropRect=null;
  document.getElementById("cropBox").style.display="none";
 }
-
 function downloadPhoto(){
+ if(!photo){alert("फोटो अपलोड करें");return;}
+ const a=document.createElement("a");a.href=canvas.toDataURL("image/png");
+ a.download="gramin-photo.png";a.click();
+}
+photoPreset.onchange=()=>{
+ if(photoPreset.value==="custom")return;
+ const v=photoPreset.value.split(",");
+ photoW.value=v[0];photoH.value=v[1];
+};
+function makePhotoSheet(){
  if(!photo){alert("पहले फोटो अपलोड करें");return;}
- const a=document.createElement("a");
- a.href=canvas.toDataURL("image/png");
- a.download="edited-photo.png";a.click();
-}
-function imageURL(img){
- if(!img)return null;
- const c=document.createElement("canvas");
- c.width=img.naturalWidth;c.height=img.naturalHeight;
- c.getContext("2d").drawImage(img,0,0);
- return c.toDataURL("image/png");
-}
-
-function updatePreview(){
  const area=document.getElementById("printArea");
  area.innerHTML="";
- const type=document.getElementById("printType").value;
- const count=Math.max(1,Math.min(100,Number(cardCount.value)||1));
- const gapValue=Math.max(0,Number(gap.value)||0);
- const cw=Number(cardW.value)||85.6;
- const ch=Number(cardH.value)||53.98;
- const col=Math.max(1,Number(columns.value)||2);
-
- if(type==="photo"){
-  if(!photo){area.textContent="पहले फोटो अपलोड करें";return;}
-  const src=canvas.toDataURL("image/png");
-  const w=Number(width.value)||35,h=Number(height.value)||45;
-  for(let i=0;i<count;i++)addPrintImage(src,w,h,gapValue);
-  return;
- }
-
- let f=type==="back"?null:front;
- let b=type==="front"?null:back;
- if(type==="front"&&!front){area.textContent="Front फोटो अपलोड करें";return;}
- if(type==="back"&&!back){area.textContent="Back फोटो अपलोड करें";return;}
- if(type==="both"&&!front&&!back){area.textContent="Front और Back फोटो अपलोड करें";return;}
-
+ const count=Math.max(1,Math.min(100,Number(photoCopies.value)||1));
+ const w=Number(photoW.value)||35,h=Number(photoH.value)||45;
+ const cols=Number(photoColumns.value)||3;
  area.style.display="grid";
- area.style.gridTemplateColumns=`repeat(${col}, ${cw}mm)`;
- area.style.gridAutoRows="max-content";
- area.style.gap=gapValue+"mm";
+ area.style.gridTemplateColumns=`repeat(${cols}, ${w}mm)`;
+ area.style.gap=(Number(photoGap.value)||0)+"mm";
+ const src=canvas.toDataURL("image/png");
  for(let i=0;i<count;i++){
-  const card=document.createElement("div");
-  card.className="print-card";
-  card.style.width=cw+"mm";
-  if(f){const im=document.createElement("img");im.src=imageURL(f);im.style.width=cw+"mm";im.style.height=ch+"mm";card.appendChild(im);}
-  if(b){const im=document.createElement("img");im.src=imageURL(b);im.style.width=cw+"mm";im.style.height=ch+"mm";card.appendChild(im);}
-  area.appendChild(card);
+  const im=document.createElement("img");im.src=src;
+  im.style.width=w+"mm";im.style.height=h+"mm";area.appendChild(im);
  }
 }
-function addPrintImage(src,w,h,g){
- const im=document.createElement("img");
- im.src=src;im.style.width=w+"mm";im.style.height=h+"mm";
- im.style.objectFit="contain";im.style.marginRight=g+"mm";im.style.marginBottom=g+"mm";
- document.getElementById("printArea").appendChild(im);
+
+// ID CARD
+let frontImg=null,backImg=null;
+frontFile.onchange=e=>loadImageFile(e.target.files[0],im=>{
+ frontImg=im;frontPreview.src=imageData(im);
+});
+backFile.onchange=e=>loadImageFile(e.target.files[0],im=>{
+ backImg=im;backPreview.src=imageData(im);
+});
+function imageData(im){
+ const c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;
+ c.getContext("2d").drawImage(im,0,0);return c.toDataURL("image/png");
 }
+cardPreset.onchange=()=>{
+ if(cardPreset.value==="custom")return;
+ const v=cardPreset.value.split(",");
+ idW.value=v[0];idH.value=v[1];
+};
+function makeIDSheet(){
+ const mode=idMode.value;
+ if((mode==="front"&&!frontImg)||(mode==="back"&&!backImg)||
+ (mode==="both"&&!frontImg&&!backImg)){
+  alert("चुने गए मोड के अनुसार ID फोटो अपलोड करें");return;
+ }
+ const area=document.getElementById("printArea");area.innerHTML="";
+ const count=Math.max(1,Math.min(100,Number(idCopies.value)||1));
+ const w=Number(idW.value)||85.6,h=Number(idH.value)||53.98;
+ const cols=Number(idColumns.value)||2;
+ area.style.display="grid";
+ area.style.gridTemplateColumns=`repeat(${cols}, ${w}mm)`;
+ area.style.gap=(Number(idGap.value)||0)+"mm";
+ for(let i=0;i<count;i++){
+  const group=document.createElement("div");
+  group.style.width=w+"mm";group.style.display="flex";
+  group.style.flexDirection="column";group.style.gap="2mm";
+  if(mode!=="back"&&frontImg)addCardImage(group,frontImg,w,h);
+  if(mode!=="front"&&backImg)addCardImage(group,backImg,w,h);
+  area.appendChild(group);
+ }
+}
+function addCardImage(group,img,w,h){
+ const im=document.createElement("img");im.src=imageData(img);
+ im.style.width=w+"mm";im.style.height=h+"mm";
+ im.style.objectFit="contain";im.style.border="1px solid #aaa";
+ group.appendChild(im);
+}
+function printSheet(){window.print();}
+
+// PDF
+let pdfURL=null;
 function openPDF(){
- const file=document.getElementById("pdfInput").files[0];
- if(!file){alert("पहले PDF अपलोड करें");return;}
- if(file.type!=="application/pdf"){alert("कृपया PDF चुनें");return;}
- const frame=document.getElementById("pdfFrame");
- frame.src=URL.createObjectURL(file);
- frame.style.display="block";
+ const file=pdfFile.files[0];
+ if(!file){alert("PDF फाइल चुनें");return;}
+ if(file.type!=="application/pdf"){alert("PDF फाइल चुनें");return;}
+ if(pdfURL)URL.revokeObjectURL(pdfURL);
+ pdfURL=URL.createObjectURL(file);
+ pdfFrame.src=pdfURL;pdfFrame.style.display="block";
 }
+function printPDF(){
+ if(!pdfURL){alert("पहले PDF खोलें");return;}
+ pdfFrame.contentWindow.print();
+}
+let documentImageURL=null;
+docImageFile.onchange=e=>loadImageFile(e.target.files[0],im=>{
+ documentImageURL=imageData(im);docImagePreview.src=documentImageURL;
+ docImagePreview.style.display="block";
+});
+function downloadDocumentImage(){
+ if(!documentImageURL){alert("पहले Image अपलोड करें");return;}
+ const a=document.createElement("a");a.href=documentImageURL;
+ a.download="document-scan.png";a.click();
+}
+
+// CUSTOMER MANAGEMENT
+const STORAGE_KEY="gramin_grahak_customers_v1";
+function getCustomers(){
+ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");}
+ catch(e){return [];}
+}
+function saveCustomers(list){localStorage.setItem(STORAGE_KEY,JSON.stringify(list));}
+function addCustomer(){
+ const name=customerName.value.trim();
+ const phone=customerPhone.value.trim();
+ const work=customerWork.value.trim();
+ if(!name||!phone||!work){alert("नाम, मोबाइल और काम भरें");return;}
+ if(!/^[0-9]{10}$/.test(phone)){alert("मोबाइल नंबर 10 अंकों का होना चाहिए");return;}
+ const list=getCustomers();
+ list.unshift({
+  id:Date.now(),name,phone,work,
+  amount:Number(customerAmount.value)||0,
+  note:customerNote.value,
+  date:new Date().toLocaleDateString("en-IN")
+ });
+ saveCustomers(list);
+ customerName.value="";customerPhone.value="";
+ customerWork.value="";customerAmount.value=0;customerNote.value="";
+ renderCustomers();updateDashboard();
+ alert("ग्राहक रिकॉर्ड सेव हो गया");
+}
+function renderCustomers(){
+ const q=customerSearch.value.toLowerCase();
+ const list=getCustomers().filter(c=>
+  c.name.toLowerCase().includes(q)||c.phone.includes(q)||c.work.toLowerCase().includes(q));
+ customerRows.innerHTML="";
+ list.forEach(c=>{
+  const tr=document.createElement("tr");
+  [c.name,c.phone,c.work,"₹"+c.amount,c.date].forEach(v=>{
+   const td=document.createElement("td");td.textContent=v;tr.appendChild(td);
+  });
+  const td=document.createElement("td");
+  const del=document.createElement("button");del.textContent="Delete";
+  del.className="btn danger";
+  del.onclick=()=>deleteCustomer(c.id);
+  td.appendChild(del);tr.appendChild(td);customerRows.appendChild(tr);
+ });
+}
+function deleteCustomer(id){
+ if(!confirm("यह रिकॉर्ड हटाएँ?"))return;
+ saveCustomers(getCustomers().filter(c=>c.id!==id));
+ renderCustomers();updateDashboard();
+}
+function updateDashboard(){
+ const list=getCustomers();
+ totalCustomers.textContent=list.length;
+ const today=new Date().toLocaleDateString("en-IN");
+ todayCustomers.textContent=list.filter(c=>c.date===today).length;
+}
+function backupData(){
+ const data={app:"Gramin Grahak Sewa",version:1,customers:getCustomers()};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+ a.download="gramin-grahak-backup.json";a.click();
+ URL.revokeObjectURL(a.href);
+}
+function restoreData(e){
+ const file=e.target.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);
+   if(!Array.isArray(data.customers))throw new Error();
+   if(!confirm("मौजूदा ग्राहक रिकॉर्ड बदलकर Backup Restore करें?"))return;
+   saveCustomers(data.customers);renderCustomers();updateDashboard();
+   alert("Backup Restore हो गया");
+  }catch(err){alert("यह सही Backup फाइल नहीं है");}
+ };
+ reader.readAsText(file);
+}
+
+// RECEIPT
+function makeReceipt(){
+ rNo.textContent=receiptNo.value||("GGS-"+Date.now());
+ rName.textContent=receiptName.value||"-";
+ rPhone.textContent=receiptPhone.value||"-";
+ rWork.textContent=receiptWork.value||"-";
+ rAmount.textContent=Number(receiptAmount.value)||0;
+}
+
+// INITIALIZE
+renderCustomers();
+updateDashboard();
+receiptNo.value="GGS-"+Date.now();
 </script>
 </body>
 </html>

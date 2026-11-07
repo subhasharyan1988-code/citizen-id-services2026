@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -7,34 +8,44 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#eaf0fa;font-family:Arial,sans-serif;color:#172554}
+body{
+ margin:0;background:#eaf1fc;color:#172554;
+ font-family:Arial,sans-serif
+}
 button,input,select{font:inherit}
 button{cursor:pointer}
 .app{max-width:1250px;margin:auto;padding:12px}
 .header{
- background:linear-gradient(120deg,#123b91,#087f8c,#12a66a);
- color:white;text-align:center;padding:22px 12px;border-radius:16px;
+ background:linear-gradient(120deg,#102d79,#087e9c,#09a66b);
+ color:white;text-align:center;padding:22px 12px;
+ border-radius:16px;box-shadow:0 5px 18px #123b9140
 }
 .header h1{font-size:25px;margin:0 0 8px}
 .header p{margin:0;font-size:14px}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}
+.tabs{
+ display:flex;flex-wrap:wrap;gap:8px;
+ justify-content:center;margin:15px 0
+}
 .tabs button{
  border:0;border-radius:9px;padding:12px 15px;
- background:#244da5;color:white;font-weight:bold
+ background:#234b9b;color:white;font-weight:bold
 }
 .tabs button.active{background:#e87512}
 .panel{
- display:none;background:white;padding:16px;border-radius:13px;
- margin:12px 0;box-shadow:0 3px 12px #00000012
+ display:none;background:white;padding:16px;
+ border-radius:13px;margin:12px 0;
+ box-shadow:0 3px 12px #00000012
 }
 .panel.active{display:block}
 .panel h2{font-size:20px;color:#1455a0;margin:0 0 14px}
-.panel h3{font-size:16px;margin:8px 0;color:#1455a0}
+.panel h3{font-size:16px;color:#1455a0}
 .grid{
  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
  gap:11px;margin:12px 0
 }
-.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+.field label{
+ display:block;font-size:13px;font-weight:bold;margin-bottom:6px
+}
 .field input,.field select{
  width:100%;padding:10px;border:1px solid #cbd5e1;
  border-radius:8px;background:white;min-width:0
@@ -50,15 +61,24 @@ button{cursor:pointer}
 .btn.red{background:#c83232}
 .btn.dark{background:#334155}
 .btn.purple{background:#673ab7}
+.btn:active{transform:scale(.97)}
 .preview{
  background:#e9edf5;border:2px dashed #9aabc5;
- border-radius:12px;padding:12px;margin-top:12px;text-align:center;
- overflow:auto
+ border-radius:12px;padding:10px;margin-top:12px;
+ text-align:center;overflow:auto
 }
-.preview canvas{max-width:100%;height:auto;background:white;display:block;margin:8px auto}
+.preview canvas{
+ max-width:100%;height:auto;background:white;
+ display:block;margin:8px auto
+}
 .preview-title{font-weight:bold;color:#1455a0}
-.preview-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.preview-card{background:#edf2fa;border-radius:10px;padding:9px;min-width:0}
+.preview-row{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.preview-card{
+ background:#edf2fa;border-radius:10px;
+ padding:9px;min-width:0;overflow:hidden
+}
 .preview-card canvas{width:100%;height:auto;background:white}
 .status{
  padding:10px;background:#eff6ff;border-radius:8px;
@@ -72,10 +92,11 @@ button{cursor:pointer}
 }
 .counts button.selected{background:#1459a6;color:white}
 hr{border:0;border-top:1px solid #e2e8f0;margin:16px 0}
+.small{font-size:12px;color:#64748b}
 @media(max-width:600px){
  .app{padding:7px}
  .panel{padding:10px}
- .header h1{font-size:20px}
+ .header h1{font-size:19px}
  .tabs button{padding:10px;font-size:12px}
  .preview-row{gap:5px}
  .btn{padding:10px;font-size:12px}
@@ -100,387 +121,433 @@ hr{border:0;border-top:1px solid #e2e8f0;margin:16px 0}
 
 <!-- ID CARD STUDIO -->
 <section class="panel active" id="idPanel">
- <h2>🪪 ID Card Editing Studio</h2>
+<h2>🪪 ID Card Editing Studio</h2>
 
- <div class="grid">
-  <div class="field">
-   <label>ID Card Type</label>
-   <select id="idType">
-    <option>Custom ID Card</option>
-    <option>Aadhaar Card</option>
-    <option>PAN Card</option>
-    <option>Voter ID</option>
-    <option>Ayushman Card</option>
-    <option>ABHA Card</option>
-    <option>e-Shram Card</option>
-    <option>Jan Aadhaar Card</option>
-    <option>Bhamashah Card</option>
-    <option>Driving Licence</option>
-    <option>Ration Card</option>
-    <option>Labour Card</option>
-    <option>Kisan Card</option>
-    <option>Student ID Card</option>
-    <option>School ID Card</option>
-    <option>College ID Card</option>
-    <option>Employee ID Card</option>
-    <option>Other ID Card</option>
-   </select>
-  </div>
-  <div class="field">
-   <label>Card Width (mm)</label>
-   <input id="idW" type="number" value="86" min="20" max="200">
-  </div>
-  <div class="field">
-   <label>Card Height (mm)</label>
-   <input id="idH" type="number" value="54" min="20" max="200">
-  </div>
-  <div class="field">
-   <label>Front / Back Gap (mm)</label>
-   <input id="idGap" type="number" value="5" min="0" max="30">
-  </div>
+<div class="grid">
+ <div class="field">
+  <label>ID Card Type</label>
+  <select id="idType">
+   <option>Custom ID Card</option>
+   <option>Aadhaar Card</option>
+   <option>PAN Card</option>
+   <option>Voter ID</option>
+   <option>Ayushman Card</option>
+   <option>ABHA Card</option>
+   <option>e-Shram Card</option>
+   <option>Jan Aadhaar Card</option>
+   <option>Bhamashah Card</option>
+   <option>Driving Licence</option>
+   <option>Ration Card</option>
+   <option>Labour Card</option>
+   <option>Kisan Card</option>
+   <option>Student ID Card</option>
+   <option>School ID Card</option>
+   <option>College ID Card</option>
+   <option>Employee ID Card</option>
+   <option>Other ID Card</option>
+  </select>
  </div>
+ <div class="field">
+  <label>Width (mm)</label>
+  <input id="idW" type="number" value="86" min="20" max="200">
+ </div>
+ <div class="field">
+  <label>Height (mm)</label>
+  <input id="idH" type="number" value="54" min="20" max="200">
+ </div>
+ <div class="field">
+  <label>Front / Back Gap (mm)</label>
+  <input id="idGap" type="number" value="5" min="0" max="30">
+ </div>
+</div>
 
- <div class="preview-row">
-  <div class="preview-card">
-   <b>FRONT SIDE</b>
-   <input type="file" id="idFrontFile" accept="image/*">
-   <canvas id="idFrontCanvas" width="430" height="270"></canvas>
-  </div>
-  <div class="preview-card">
-   <b>BACK SIDE</b>
-   <input type="file" id="idBackFile" accept="image/*">
-   <canvas id="idBackCanvas" width="430" height="270"></canvas>
-  </div>
+<div class="preview-row">
+ <div class="preview-card">
+  <b>FRONT SIDE</b>
+  <input type="file" id="idFrontFile" accept="image/*">
+  <canvas id="idFrontCanvas" width="344" height="216"></canvas>
  </div>
+ <div class="preview-card">
+  <b>BACK SIDE</b>
+  <input type="file" id="idBackFile" accept="image/*">
+  <canvas id="idBackCanvas" width="344" height="216"></canvas>
+ </div>
+</div>
 
- <h3>🛠️ Editing Tools (दोनों साइड पर लागू)</h3>
- <div class="grid">
-  <div class="field">
-   <label>Zoom / Crop</label>
-   <input id="idZoom" type="range" min="50" max="250" value="100">
-  </div>
-  <div class="field">
-   <label>Brightness</label>
-   <input id="idBrightness" type="range" min="0" max="200" value="100">
-  </div>
-  <div class="field">
-   <label>Contrast</label>
-   <input id="idContrast" type="range" min="0" max="200" value="100">
-  </div>
-  <div class="field">
-   <label>Background Color</label>
-   <input id="idBg" type="color" value="#ffffff">
-  </div>
-  <div class="field">
-   <label>Horizontal Position</label>
-   <input id="idX" type="range" min="-100" max="100" value="0">
-  </div>
-  <div class="field">
-   <label>Vertical Position</label>
-   <input id="idY" type="range" min="-100" max="100" value="0">
-  </div>
+<h3>🛠️ ID Card Editing Tools</h3>
+<div class="grid">
+ <div class="field">
+  <label>Zoom / Crop</label>
+  <input id="idZoom" type="range" min="50" max="300" value="100">
  </div>
+ <div class="field">
+  <label>Brightness</label>
+  <input id="idBrightness" type="range" min="0" max="200" value="100">
+ </div>
+ <div class="field">
+  <label>Contrast</label>
+  <input id="idContrast" type="range" min="0" max="200" value="100">
+ </div>
+ <div class="field">
+  <label>Background Color</label>
+  <input id="idBg" type="color" value="#ffffff">
+ </div>
+ <div class="field">
+  <label>Horizontal Position</label>
+  <input id="idX" type="range" min="-100" max="100" value="0">
+ </div>
+ <div class="field">
+  <label>Vertical Position</label>
+  <input id="idY" type="range" min="-100" max="100" value="0">
+ </div>
+</div>
 
- <div class="actions">
-  <button class="btn" onclick="idRotate(-90)">↶ Rotate Left</button>
-  <button class="btn" onclick="idRotate(90)">Rotate Right ↷</button>
-  <button class="btn" onclick="idFlip()">↔ Flip</button>
-  <button class="btn orange" onclick="idReset()">Reset Editing</button>
-  <button class="btn green" onclick="makeID()">Final Preview</button>
-  <button class="btn green" onclick="downloadCanvas('idFinal','png','ID-Card')">PNG Save</button>
-  <button class="btn orange" onclick="downloadCanvas('idFinal','jpeg','ID-Card')">JPEG Save</button>
-  <button class="btn" onclick="printCanvas('idFinal','ID Card')">Print</button>
- </div>
+<div class="actions">
+ <button class="btn" id="idLeft">↶ Rotate Left</button>
+ <button class="btn" id="idRight">Rotate Right ↷</button>
+ <button class="btn" id="idFlip">↔ Flip</button>
+ <button class="btn orange" id="idReset">Reset</button>
+ <button class="btn red" id="idClear">Clear All</button>
+ <button class="btn green" id="idMake">Final Preview</button>
+ <button class="btn green" data-download="idFinal" data-name="ID-Card" data-format="png">PNG Save</button>
+ <button class="btn orange" data-download="idFinal" data-name="ID-Card" data-format="jpeg">JPEG Save</button>
+ <button class="btn purple" id="idPrint">Print / PDF</button>
+</div>
 
- <div class="preview">
-  <div class="preview-title">FRONT + BACK FINAL PREVIEW</div>
-  <canvas id="idFinal" width="900" height="650"></canvas>
- </div>
- <div class="status" id="idStatus">Front और Back की फोटो अपलोड करें।</div>
+<div class="preview">
+ <div class="preview-title">FRONT + BACK FINAL PREVIEW</div>
+ <canvas id="idFinal" width="900" height="300"></canvas>
+</div>
+<div class="status" id="idStatus">Front और Back की फोटो अपलोड करें।</div>
 </section>
 
 <!-- SINGLE PHOTO -->
 <section class="panel" id="singlePanel">
- <h2>📸 Single Photo Editing Studio</h2>
+<h2>📸 Single Photo Editing Studio</h2>
 
+<div class="field">
+ <label>अपनी फोटो चुनें</label>
+ <input type="file" id="singleFile" accept="image/*">
+</div>
+
+<div class="grid">
  <div class="field">
-  <label>अपनी फोटो चुनें</label>
-  <input type="file" id="singleFile" accept="image/*">
+  <label>Photo Width (mm)</label>
+  <input id="singleW" type="number" value="35" min="5" max="150">
  </div>
+ <div class="field">
+  <label>Photo Height (mm)</label>
+  <input id="singleH" type="number" value="45" min="5" max="200">
+ </div>
+ <div class="field">
+  <label>Brightness</label>
+  <input id="singleBrightness" type="range" min="0" max="200" value="100">
+ </div>
+ <div class="field">
+  <label>Contrast</label>
+  <input id="singleContrast" type="range" min="0" max="200" value="100">
+ </div>
+ <div class="field">
+  <label>Zoom / Crop</label>
+  <input id="singleZoom" type="range" min="50" max="300" value="100">
+ </div>
+ <div class="field">
+  <label>Background</label>
+  <input id="singleBg" type="color" value="#ffffff">
+ </div>
+ <div class="field">
+  <label>Horizontal Position</label>
+  <input id="singleX" type="range" min="-100" max="100" value="0">
+ </div>
+ <div class="field">
+  <label>Vertical Position</label>
+  <input id="singleY" type="range" min="-100" max="100" value="0">
+ </div>
+</div>
 
- <div class="grid">
-  <div class="field"><label>Width (mm)</label>
-   <input id="singleW" type="number" value="35" min="5" max="150"></div>
-  <div class="field"><label>Height (mm)</label>
-   <input id="singleH" type="number" value="45" min="5" max="200"></div>
-  <div class="field"><label>Brightness</label>
-   <input id="singleBrightness" type="range" min="0" max="200" value="100"></div>
-  <div class="field"><label>Contrast</label>
-   <input id="singleContrast" type="range" min="0" max="200" value="100"></div>
-  <div class="field"><label>Zoom / Crop</label>
-   <input id="singleZoom" type="range" min="50" max="250" value="100"></div>
-  <div class="field"><label>Background</label>
-   <input id="singleBg" type="color" value="#ffffff"></div>
-  <div class="field"><label>Horizontal Position</label>
-   <input id="singleX" type="range" min="-100" max="100" value="0"></div>
-  <div class="field"><label>Vertical Position</label>
-   <input id="singleY" type="range" min="-100" max="100" value="0"></div>
- </div>
+<div class="actions">
+ <button class="btn" id="singleLeft">↶ Rotate Left</button>
+ <button class="btn" id="singleRight">Rotate Right ↷</button>
+ <button class="btn" id="singleFlip">↔ Flip</button>
+ <button class="btn orange" id="singleReset">Reset</button>
+ <button class="btn green" id="singlePreview">Preview</button>
+ <button class="btn green" data-download="singleCanvas" data-name="Single-Photo" data-format="png">PNG Save</button>
+ <button class="btn orange" data-download="singleCanvas" data-name="Single-Photo" data-format="jpeg">JPEG Save</button>
+ <button class="btn purple" id="singlePrint">Print / PDF</button>
+</div>
 
- <div class="actions">
-  <button class="btn" onclick="singleRotate(-90)">↶ Rotate</button>
-  <button class="btn" onclick="singleRotate(90)">Rotate ↷</button>
-  <button class="btn" onclick="singleFlip()">↔ Flip</button>
-  <button class="btn orange" onclick="singleReset()">Reset</button>
-  <button class="btn green" onclick="drawSingle()">Preview</button>
-  <button class="btn green" onclick="downloadCanvas('singleCanvas','png','Single-Photo')">PNG Save</button>
-  <button class="btn orange" onclick="downloadCanvas('singleCanvas','jpeg','Single-Photo')">JPEG Save</button>
-  <button class="btn" onclick="printCanvas('singleCanvas','Single Photo')">Print</button>
- </div>
-
- <div class="preview">
-  <b>Single Photo Preview</b>
-  <canvas id="singleCanvas" width="350" height="450"></canvas>
- </div>
- <div class="status" id="singleStatus">फोटो अपलोड करें।</div>
+<div class="preview">
+ <b>Single Photo Preview</b>
+ <canvas id="singleCanvas" width="350" height="450"></canvas>
+</div>
+<div class="status" id="singleStatus">फोटो अपलोड करें।</div>
 </section>
 
 <!-- JOINT PHOTO -->
 <section class="panel" id="jointPanel">
- <h2>👥 Joint Photo Maker Studio</h2>
+<h2>👥 Joint Photo Maker Studio</h2>
 
- <div class="grid">
-  <div class="field">
-   <label>पहली फोटो</label>
-   <input type="file" id="jointFile1" accept="image/*">
-  </div>
-  <div class="field">
-   <label>दूसरी फोटो</label>
-   <input type="file" id="jointFile2" accept="image/*">
-  </div>
-  <div class="field">
-   <label>Layout</label>
-   <select id="jointLayout">
-    <option value="side">Side by Side</option>
-    <option value="vertical">ऊपर-नीचे</option>
-   </select>
-  </div>
-  <div class="field">
-   <label>Photo Gap (mm)</label>
-   <input id="jointGap" type="number" value="3" min="0" max="30">
-  </div>
-  <div class="field">
-   <label>Background</label>
-   <input id="jointBg" type="color" value="#ffffff">
-  </div>
+<div class="grid">
+ <div class="field">
+  <label>पहली फोटो</label>
+  <input type="file" id="jointFile1" accept="image/*">
  </div>
+ <div class="field">
+  <label>दूसरी फोटो</label>
+  <input type="file" id="jointFile2" accept="image/*">
+ </div>
+ <div class="field">
+  <label>Layout</label>
+  <select id="jointLayout">
+   <option value="side">Side by Side</option>
+   <option value="vertical">ऊपर-नीचे</option>
+  </select>
+ </div>
+ <div class="field">
+  <label>Photo Gap (mm)</label>
+  <input id="jointGap" type="number" value="3" min="0" max="30">
+ </div>
+ <div class="field">
+  <label>Background</label>
+  <input id="jointBg" type="color" value="#ffffff">
+ </div>
+ <div class="field">
+  <label>Zoom</label>
+  <input id="jointZoom" type="range" min="50" max="250" value="100">
+ </div>
+</div>
 
- <div class="actions">
-  <button class="btn" onclick="makeJoint()">Joint Preview</button>
-  <button class="btn green" onclick="downloadCanvas('jointCanvas','png','Joint-Photo')">PNG Save</button>
-  <button class="btn orange" onclick="downloadCanvas('jointCanvas','jpeg','Joint-Photo')">JPEG Save</button>
-  <button class="btn" onclick="printCanvas('jointCanvas','Joint Photo')">Print</button>
-  <button class="btn red" onclick="clearJoint()">Clear All</button>
- </div>
+<div class="actions">
+ <button class="btn" id="jointMake">Joint Preview</button>
+ <button class="btn green" data-download="jointCanvas" data-name="Joint-Photo" data-format="png">PNG Save</button>
+ <button class="btn orange" data-download="jointCanvas" data-name="Joint-Photo" data-format="jpeg">JPEG Save</button>
+ <button class="btn purple" id="jointPrint">Print / PDF</button>
+ <button class="btn red" id="jointClear">Clear All</button>
+</div>
 
- <div class="preview">
-  <b>Joint Photo Preview</b>
-  <canvas id="jointCanvas" width="900" height="500"></canvas>
- </div>
- <div class="status" id="jointStatus">दो फोटो अपलोड करें।</div>
+<div class="preview">
+ <b>Joint Photo Preview</b>
+ <canvas id="jointCanvas" width="900" height="500"></canvas>
+</div>
+<div class="status" id="jointStatus">दो फोटो अपलोड करें।</div>
 </section>
 
-<!-- A4 SHEET -->
+<!-- A4 PHOTO SHEET -->
 <section class="panel" id="sheetPanel">
- <h2>📄 A4 Photo Sheet & ID Print Studio</h2>
+<h2>📄 A4 Photo Sheet & ID Print Studio</h2>
 
- <div class="grid">
-  <div class="field">
-   <label>Photo Source</label>
-   <select id="sheetSource">
-    <option value="single">Single Photo</option>
-    <option value="joint">Joint Photo</option>
-    <option value="front">ID Front</option>
-    <option value="back">ID Back</option>
-    <option value="both">ID Front + Back</option>
-   </select>
-  </div>
-  <div class="field">
-   <label>Paper Size</label>
-   <select id="sheetPaper">
-    <option value="A4">A4</option>
-    <option value="A5">A5</option>
-    <option value="A3">A3</option>
-    <option value="custom">Custom</option>
-   </select>
-  </div>
-  <div class="field">
-   <label>Orientation</label>
-   <select id="sheetOrientation">
-    <option value="portrait">Portrait</option>
-    <option value="landscape">Landscape</option>
-   </select>
-  </div>
-  <div class="field">
-   <label>Custom Width (mm)</label>
-   <input id="customW" type="number" value="210">
-  </div>
-  <div class="field">
-   <label>Custom Height (mm)</label>
-   <input id="customH" type="number" value="297">
-  </div>
- </div>
-
+<div class="grid">
  <div class="field">
-  <label>एक पेज पर फोटो की संख्या</label>
-  <div class="counts" id="photoCounts">
-   <button data-count="2">2</button>
-   <button data-count="4">4</button>
-   <button data-count="6">6</button>
-   <button data-count="8" class="selected">8</button>
-   <button data-count="10">10</button>
-   <button data-count="12">12</button>
-   <button data-count="15">15</button>
-   <button data-count="16">16</button>
-   <button data-count="20">20</button>
-   <button data-count="25">25</button>
-   <button data-count="30">30</button>
-   <button data-count="35">35</button>
-   <button data-count="40">40</button>
-   <button data-count="45">45</button>
-   <button data-count="50">50</button>
-  </div>
+  <label>Photo Source</label>
+  <select id="sheetSource">
+   <option value="single">Single Photo</option>
+   <option value="joint">Joint Photo</option>
+   <option value="front">ID Front</option>
+   <option value="back">ID Back</option>
+   <option value="both">ID Front + Back</option>
+  </select>
  </div>
+ <div class="field">
+  <label>Paper Size</label>
+  <select id="sheetPaper">
+   <option value="A4">A4</option>
+   <option value="A5">A5</option>
+   <option value="A3">A3</option>
+   <option value="custom">Custom</option>
+  </select>
+ </div>
+ <div class="field">
+  <label>Orientation</label>
+  <select id="sheetOrientation">
+   <option value="portrait">Portrait</option>
+   <option value="landscape">Landscape</option>
+  </select>
+ </div>
+ <div class="field">
+  <label>Custom Width (mm)</label>
+  <input id="customW" type="number" value="210" min="50" max="1000">
+ </div>
+ <div class="field">
+  <label>Custom Height (mm)</label>
+  <input id="customH" type="number" value="297" min="50" max="1000">
+ </div>
+</div>
 
- <div class="grid">
-  <div class="field"><label>Photo Width (mm)</label>
-   <input id="sheetW" type="number" value="35" min="5" max="200"></div>
-  <div class="field"><label>Photo Height (mm)</label>
-   <input id="sheetH" type="number" value="45" min="5" max="280"></div>
-  <div class="field"><label>Gap (mm)</label>
-   <input id="sheetGap" type="number" value="3" min="0" max="30"></div>
-  <div class="field"><label>Margin (mm)</label>
-   <input id="sheetMargin" type="number" value="10" min="0" max="40"></div>
-  <div class="field"><label>Columns</label>
-   <input id="sheetCols" type="number" value="2" min="1" max="10"></div>
-  <div class="field"><label>Print Quality (DPI)</label>
-   <select id="sheetDpi">
-    <option value="150">150 DPI</option>
-    <option value="200">200 DPI</option>
-    <option value="300" selected>300 DPI</option>
-   </select>
-  </div>
+<div class="field">
+ <label>एक पेज पर फोटो की संख्या</label>
+ <div class="counts" id="photoCounts">
+  <button data-count="2">2</button>
+  <button data-count="4">4</button>
+  <button data-count="6">6</button>
+  <button data-count="8" class="selected">8</button>
+  <button data-count="10">10</button>
+  <button data-count="12">12</button>
+  <button data-count="15">15</button>
+  <button data-count="16">16</button>
+  <button data-count="20">20</button>
+  <button data-count="25">25</button>
+  <button data-count="30">30</button>
+  <button data-count="35">35</button>
+  <button data-count="40">40</button>
+  <button data-count="45">45</button>
+  <button data-count="50">50</button>
  </div>
+</div>
 
- <div class="actions">
-  <button class="btn" onclick="makePhotoSheet()">🔄 A4 Preview</button>
-  <button class="btn green" onclick="downloadCanvas('sheetCanvas','png','A4-Photo-Sheet')">PNG Save</button>
-  <button class="btn orange" onclick="downloadCanvas('sheetCanvas','jpeg','A4-Photo-Sheet')">JPEG Save</button>
-  <button class="btn purple" onclick="saveSheetPDF()">📥 Save PDF</button>
-  <button class="btn" onclick="printSheet()">🖨️ Print</button>
-  <button class="btn red" onclick="clearSheet()">Clear All</button>
+<div class="grid">
+ <div class="field">
+  <label>Photo Width (mm)</label>
+  <input id="sheetW" type="number" value="35" min="5" max="200">
  </div>
+ <div class="field">
+  <label>Photo Height (mm)</label>
+  <input id="sheetH" type="number" value="45" min="5" max="280">
+ </div>
+ <div class="field">
+  <label>Gap (mm)</label>
+  <input id="sheetGap" type="number" value="3" min="0" max="30">
+ </div>
+ <div class="field">
+  <label>Margin (mm)</label>
+  <input id="sheetMargin" type="number" value="10" min="0" max="40">
+ </div>
+ <div class="field">
+  <label>Columns</label>
+  <input id="sheetCols" type="number" value="2" min="1" max="10">
+ </div>
+ <div class="field">
+  <label>Print Quality</label>
+  <select id="sheetDpi">
+   <option value="150">150 DPI</option>
+   <option value="200">200 DPI</option>
+   <option value="300" selected>300 DPI</option>
+  </select>
+ </div>
+</div>
 
- <div class="preview">
-  <b>A4 PAPER FINAL PREVIEW</b>
-  <canvas id="sheetCanvas" width="1240" height="1754"></canvas>
- </div>
- <div class="status" id="sheetStatus">फोटो चुनें और A4 Preview दबाएं।</div>
+<div class="actions">
+ <button class="btn" id="sheetMake">🔄 A4 Preview</button>
+ <button class="btn green" data-download="sheetCanvas" data-name="A4-Photo-Sheet" data-format="png">PNG Save</button>
+ <button class="btn orange" data-download="sheetCanvas" data-name="A4-Photo-Sheet" data-format="jpeg">JPEG Save</button>
+ <button class="btn purple" id="sheetPDF">📥 Save PDF / Print</button>
+ <button class="btn red" id="sheetClear">Clear All</button>
+</div>
+
+<div class="preview">
+ <b>A4 PAPER FINAL PREVIEW</b>
+ <canvas id="sheetCanvas" width="1240" height="1754"></canvas>
+</div>
+<div class="status" id="sheetStatus">फोटो चुनें और A4 Preview दबाएं।</div>
 </section>
 
 <footer class="note" style="text-align:center;padding:15px">
- Advanced Photo & ID Card Studio
+ Advanced Photo & ID Card Studio | Local Photo Editing
 </footer>
-
 </div>
 
-
 <script>
-/* ======================================
-   COMPLETE STUDIO JAVASCRIPT
-====================================== */
+"use strict";
 
 const $ = id => document.getElementById(id);
 
-const images = {
- front:null, back:null, single:null, joint1:null, joint2:null
+const images={
+ front:null,back:null,single:null,joint1:null,joint2:null
 };
 
-const rotation = {id:0,single:0};
-const flip = {id:false,single:false};
-let photoCount = 8;
-let sheetReady = false;
-let idReady = false;
-let jointReady = false;
+const state={
+ id:{rotation:0,flip:false},
+ single:{rotation:0,flip:false},
+ count:8,
+ idReady:false,
+ jointReady:false,
+ sheetReady:false
+};
 
-/* ---------- TABS ---------- */
-
-document.querySelectorAll('.tabs button').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  $(btn.dataset.tab).classList.add('active');
- });
-});
-
-/* ---------- IMAGE LOADING ---------- */
-
-function loadImage(file,callback){
- if(!file)return;
- if(!file.type.startsWith('image/')){
-  alert('कृपया सही इमेज फाइल चुनें।');
-  return;
- }
- const reader=new FileReader();
- reader.onload=e=>{
-  const img=new Image();
-  img.onload=()=>callback(img);
-  img.onerror=()=>alert('फोटो लोड नहीं हुई।');
-  img.src=e.target.result;
- };
- reader.onerror=()=>alert('फाइल पढ़ने में समस्या हुई।');
- reader.readAsDataURL(file);
+function setStatus(id,msg){
+ $(id).textContent=msg;
 }
 
-/* ---------- CANVAS HELPERS ---------- */
+function mm(value){
+ return Math.max(0,Number(value)||0);
+}
 
-function canvas(id){
+function number(id,def,min,max){
+ return Math.min(max,Math.max(min,Number($(id).value)||def));
+}
+
+function getCanvas(id){
  return $(id);
 }
 
 function clearCanvas(c){
- const ctx=c.getContext('2d');
+ const ctx=c.getContext("2d");
  ctx.clearRect(0,0,c.width,c.height);
  return ctx;
 }
 
-function drawEdited(ctx,img,x,y,w,h,options={}){
+/* TABS */
+
+document.querySelectorAll(".tabs button").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+  btn.classList.add("active");
+  $(btn.dataset.tab).classList.add("active");
+ });
+});
+
+/* LOAD IMAGE */
+
+function loadImage(file,callback){
+ if(!file)return;
+ if(!file.type.startsWith("image/")){
+  alert("कृपया सही इमेज फाइल चुनें।");
+  return;
+ }
+ if(file.size>25*1024*1024){
+  alert("फोटो 25 MB से छोटी चुनें।");
+  return;
+ }
+
+ const reader=new FileReader();
+
+ reader.onload=e=>{
+  const img=new Image();
+  img.onload=()=>callback(img);
+  img.onerror=()=>alert("फोटो लोड नहीं हुई।");
+  img.src=e.target.result;
+ };
+ reader.onerror=()=>alert("फाइल पढ़ने में समस्या हुई।");
+ reader.readAsDataURL(file);
+}
+
+/* IMAGE EDITING ENGINE */
+
+function drawEdited(ctx,img,x,y,w,h,opt={}){
  if(!img)return;
 
- const zoom=options.zoom||1;
- const angle=(options.rotation||0)*Math.PI/180;
- const bg=options.bg||'#ffffff';
- const brightness=options.brightness??100;
- const contrast=options.contrast??100;
- const px=options.x||0;
- const py=options.y||0;
- const flipped=options.flip||false;
+ const zoom=Number(opt.zoom)||1;
+ const angle=(opt.rotation||0)*Math.PI/180;
+ const px=(opt.x||0)*w/200;
+ const py=(opt.y||0)*h/200;
 
  ctx.save();
+
  ctx.beginPath();
  ctx.rect(x,y,w,h);
  ctx.clip();
 
- ctx.fillStyle=bg;
+ ctx.fillStyle=opt.bg||"#ffffff";
  ctx.fillRect(x,y,w,h);
 
- ctx.translate(x+w/2+px*w/200,y+h/2+py*h/200);
+ ctx.translate(x+w/2+px,y+h/2+py);
  ctx.rotate(angle);
- ctx.scale(flipped?-1:1,1);
+ ctx.scale(opt.flip?-1:1,1);
 
  const factor=Math.max(w/img.width,h/img.height)*zoom;
- ctx.filter=`brightness(${brightness}%) contrast(${contrast}%)`;
+
+ ctx.filter=
+  `brightness(${opt.brightness??100}%) contrast(${opt.contrast??100}%)`;
 
  ctx.drawImage(
   img,
@@ -491,372 +558,469 @@ function drawEdited(ctx,img,x,y,w,h,options={}){
  );
 
  ctx.restore();
- ctx.filter='none';
+ ctx.filter="none";
 }
+
+/* DOWNLOAD */
 
 function downloadCanvas(id,format,name){
- const c=canvas(id);
- if(!c.width || !c.height){
-  alert('पहले Preview बनाएं।');
+ const c=getCanvas(id);
+ if(!c.width||!c.height){
+  alert("पहले Preview बनाएं।");
   return;
  }
+
  try{
-  const mime=format==='jpeg'?'image/jpeg':'image/png';
-  const link=document.createElement('a');
-  link.download=name+(format==='jpeg'?'.jpg':'.png');
-  link.href=c.toDataURL(mime,0.95);
-  link.click();
+  const mime=format==="jpeg"?"image/jpeg":"image/png";
+  const url=c.toDataURL(mime,.95);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download=name+(format==="jpeg"?".jpg":".png");
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
  }catch(e){
-  alert('डाउनलोड नहीं हो पाया।');
+  alert("डाउनलोड नहीं हो पाया।");
  }
 }
 
-/* ---------- PRINT / PDF ---------- */
+document.querySelectorAll("[data-download]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  downloadCanvas(
+   btn.dataset.download,
+   btn.dataset.format,
+   btn.dataset.name
+  );
+ });
+});
 
-function printImage(data,title,width,height,unit='mm'){
- const win=window.open('','_blank');
- if(!win){
-  alert('प्रिंट विंडो ब्लॉक है। Browser में Pop-ups Allow करें।');
+/* PRINT ENGINE */
+
+function printCanvas(id,title,width,height){
+ const c=getCanvas(id);
+
+ if(!c.width||!c.height){
+  alert("पहले Preview बनाएं।");
   return;
  }
 
- const html=`
+ const w=width||210;
+ const h=height||297;
+
+ const win=window.open("","_blank");
+ if(!win){
+  alert("Browser में Pop-ups Allow करें।");
+  return;
+ }
+
+ const data=c.toDataURL("image/png");
+
+ win.document.open();
+ win.document.write(`
  <!DOCTYPE html>
  <html>
  <head>
  <title>${title}</title>
  <style>
- @page{size:${width}${unit} ${height}${unit};margin:0}
+ @page{size:${w}mm ${h}mm;margin:0}
  *{box-sizing:border-box}
- html,body{margin:0;padding:0;background:white}
- img{display:block;width:100%;height:100%;object-fit:fill}
+ html,body{
+  margin:0;padding:0;width:${w}mm;height:${h}mm;
+  background:white
+ }
+ img{
+  display:block;width:${w}mm;height:${h}mm;
+  object-fit:fill
+ }
  </style>
  </head>
  <body>
  <img src="${data}">
  <script>
  window.onload=function(){
-  setTimeout(function(){window.focus();window.print()},500);
+  setTimeout(function(){
+   window.focus();
+   window.print();
+  },600);
  };
  <\/script>
  </body>
- </html>`;
-
- win.document.open();
- win.document.write(html);
+ </html>
+ `);
  win.document.close();
 }
 
-function printCanvas(id,title){
- const c=canvas(id);
- if(!c.width || !c.height){
-  alert('पहले Preview बनाएं।');
-  return;
- }
- const data=c.toDataURL('image/png');
- printImage(data,title,c.width,c.height,'px');
-}
-
-/* ---------- ID CARD ---------- */
+/* ID CARD */
 
 function idOptions(){
  return {
-  zoom:+$('idZoom').value/100,
-  brightness:+$('idBrightness').value,
-  contrast:+$('idContrast').value,
-  bg:$('idBg').value,
-  x:+$('idX').value,
-  y:+$('idY').value,
-  rotation:rotation.id,
-  flip:flip.id
+  zoom:+$("idZoom").value/100,
+  brightness:+$("idBrightness").value,
+  contrast:+$("idContrast").value,
+  bg:$("idBg").value,
+  x:+$("idX").value,
+  y:+$("idY").value,
+  rotation:state.id.rotation,
+  flip:state.id.flip
  };
 }
 
-function drawIDPreviews(){
+function renderID(){
  const settings=idOptions();
 
- ['front','back'].forEach(side=>{
+ ["front","back"].forEach(side=>{
   const img=images[side];
-  if(!img)return;
-
-  const c=canvas(side==='front'?'idFrontCanvas':'idBackCanvas');
+  const c=getCanvas(side==="front"?"idFrontCanvas":"idBackCanvas");
   const ctx=clearCanvas(c);
-  drawEdited(ctx,img,0,0,c.width,c.height,settings);
-  ctx.strokeStyle='#334155';
-  ctx.lineWidth=3;
-  ctx.strokeRect(1,1,c.width-2,c.height-2);
+
+  if(img){
+   drawEdited(ctx,img,0,0,c.width,c.height,settings);
+   ctx.strokeStyle="#334155";
+   ctx.lineWidth=2;
+   ctx.strokeRect(1,1,c.width-2,c.height-2);
+  }
  });
 }
 
 function loadID(side,file){
  loadImage(file,img=>{
   images[side]=img;
-  drawIDPreviews();
-  $('idStatus').textContent=side.toUpperCase()+' फोटो अपलोड हो गई।';
+  renderID();
+  state.idReady=false;
+  setStatus("idStatus",side.toUpperCase()+" फोटो अपलोड हो गई।");
  });
 }
 
-$('idFrontFile').addEventListener('change',e=>loadID('front',e.target.files[0]));
-$('idBackFile').addEventListener('change',e=>loadID('back',e.target.files[0]));
+$("idFrontFile").addEventListener("change",e=>loadID("front",e.target.files[0]));
+$("idBackFile").addEventListener("change",e=>loadID("back",e.target.files[0]));
 
-['idZoom','idBrightness','idContrast','idBg','idX','idY']
-.forEach(id=>$(id).addEventListener('input',drawIDPreviews));
+[
+ "idZoom","idBrightness","idContrast","idBg","idX","idY"
+].forEach(id=>{
+ $(id).addEventListener("input",renderID);
+});
 
 function makeID(){
- if(!images.front || !images.back){
-  alert('Front और Back दोनों फोटो चुनें।');
+ if(!images.front||!images.back){
+  alert("Front और Back दोनों फोटो चुनें।");
   return;
  }
 
- const w=Math.max(20,Math.min(200,+$('idW').value||86));
- const h=Math.max(20,Math.min(200,+$('idH').value||54));
- const gap=Math.max(0,Math.min(30,+$('idGap').value||0));
+ const w=number("idW",86,20,200);
+ const h=number("idH",54,20,200);
+ const gap=number("idGap",5,0,30);
 
- const scale=6;
+ const scale=4;
  const W=Math.round(w*scale);
  const H=Math.round(h*scale);
  const G=Math.round(gap*scale);
+ const pad=12;
 
- const c=canvas('idFinal');
- c.width=W*2+G+40;
- c.height=H+40;
+ const c=getCanvas("idFinal");
+ c.width=W*2+G+pad*2;
+ c.height=H+pad*2;
 
  const ctx=clearCanvas(c);
- ctx.fillStyle='white';
+ ctx.fillStyle="#ffffff";
  ctx.fillRect(0,0,c.width,c.height);
 
- const s=idOptions();
- drawEdited(ctx,images.front,10,20,W,H,s);
- drawEdited(ctx,images.back,30+W+G,20,W,H,s);
+ const opt=idOptions();
 
- ctx.strokeStyle='#111827';
- ctx.lineWidth=3;
- ctx.strokeRect(10,20,W,H);
- ctx.strokeRect(30+W+G,20,W,H);
+ drawEdited(ctx,images.front,pad,pad,W,H,opt);
+ drawEdited(ctx,images.back,pad+W+G,pad,W,H,opt);
 
- idReady=true;
- $('idStatus').textContent='Front और Back का प्रीव्यू तैयार है।';
+ ctx.strokeStyle="#222222";
+ ctx.lineWidth=2;
+ ctx.strokeRect(pad,pad,W,H);
+ ctx.strokeRect(pad+W+G,pad,W,H);
+
+ state.idReady=true;
+ c.dataset.width=w*2+gap;
+ c.dataset.height=h;
+
+ setStatus("idStatus","Front + Back Final Preview तैयार है।");
 }
 
-function idRotate(deg){
- rotation.id=(rotation.id+deg+360)%360;
- drawIDPreviews();
-}
-function idFlip(){
- flip.id=!flip.id;
- drawIDPreviews();
-}
-function idReset(){
- rotation.id=0;
- flip.id=false;
- ['idZoom','idBrightness','idContrast'].forEach(id=>$(id).value=100);
- $('idBg').value='#ffffff';
- $('idX').value=0;
- $('idY').value=0;
- drawIDPreviews();
+function resetID(){
+ state.id.rotation=0;
+ state.id.flip=false;
+
+ ["idZoom","idBrightness","idContrast"].forEach(id=>$(id).value=100);
+ $("idBg").value="#ffffff";
+ $("idX").value=0;
+ $("idY").value=0;
+ renderID();
 }
 
-/* ---------- SINGLE PHOTO ---------- */
+function clearID(){
+ images.front=null;
+ images.back=null;
+ $("idFrontFile").value="";
+ $("idBackFile").value="";
+ ["idFrontCanvas","idBackCanvas","idFinal"].forEach(id=>clearCanvas(getCanvas(id)));
+ state.idReady=false;
+ setStatus("idStatus","ID Card साफ कर दिया गया।");
+}
+
+$("idLeft").onclick=()=>{state.id.rotation=(state.id.rotation+270)%360;renderID()};
+$("idRight").onclick=()=>{state.id.rotation=(state.id.rotation+90)%360;renderID()};
+$("idFlip").onclick=()=>{state.id.flip=!state.id.flip;renderID()};
+$("idReset").onclick=resetID;
+$("idClear").onclick=clearID;
+$("idMake").onclick=makeID;
+
+$("idPrint").onclick=()=>{
+ if(!state.idReady)makeID();
+ if(state.idReady){
+  printCanvas("idFinal","ID Card",number("idW",86,20,200)*2+number("idGap",5,0,30),number("idH",54,20,200));
+ }
+};
+
+/* SINGLE PHOTO */
 
 function singleOptions(){
  return {
-  zoom:+$('singleZoom').value/100,
-  brightness:+$('singleBrightness').value,
-  contrast:+$('singleContrast').value,
-  bg:$('singleBg').value,
-  x:+$('singleX').value,
-  y:+$('singleY').value,
-  rotation:rotation.single,
-  flip:flip.single
+  zoom:+$("singleZoom").value/100,
+  brightness:+$("singleBrightness").value,
+  contrast:+$("singleContrast").value,
+  bg:$("singleBg").value,
+  x:+$("singleX").value,
+  y:+$("singleY").value,
+  rotation:state.single.rotation,
+  flip:state.single.flip
  };
 }
-
-$('singleFile').addEventListener('change',e=>{
- loadImage(e.target.files[0],img=>{
-  images.single=img;
-  drawSingle();
-  $('singleStatus').textContent='फोटो तैयार है।';
- });
-});
 
 function drawSingle(){
  if(!images.single)return;
 
- const w=Math.max(5,Math.min(150,+$('singleW').value||35));
- const h=Math.max(5,Math.min(200,+$('singleH').value||45));
+ const w=number("singleW",35,5,150);
+ const h=number("singleH",45,5,200);
 
- const c=canvas('singleCanvas');
- c.width=Math.round(w*10);
- c.height=Math.round(h*10);
+ const c=getCanvas("singleCanvas");
+ const scale=10;
+
+ c.width=Math.round(w*scale);
+ c.height=Math.round(h*scale);
 
  const ctx=clearCanvas(c);
  drawEdited(ctx,images.single,0,0,c.width,c.height,singleOptions());
- $('singleStatus').textContent='Single Photo Preview तैयार है।';
+
+ c.dataset.width=w;
+ c.dataset.height=h;
+
+ setStatus("singleStatus","Single Photo Preview तैयार है।");
 }
+
+$("singleFile").addEventListener("change",e=>{
+ loadImage(e.target.files[0],img=>{
+  images.single=img;
+  drawSingle();
+ });
+});
 
 [
- 'singleW','singleH','singleBrightness','singleContrast',
- 'singleZoom','singleBg','singleX','singleY'
-].forEach(id=>$(id).addEventListener('input',drawSingle));
+ "singleW","singleH","singleBrightness","singleContrast",
+ "singleZoom","singleBg","singleX","singleY"
+].forEach(id=>$(id).addEventListener("input",drawSingle));
 
-function singleRotate(deg){
- rotation.single=(rotation.single+deg+360)%360;
+$("singleLeft").onclick=()=>{
+ state.single.rotation=(state.single.rotation+270)%360;
  drawSingle();
-}
-function singleFlip(){
- flip.single=!flip.single;
+};
+$("singleRight").onclick=()=>{
+ state.single.rotation=(state.single.rotation+90)%360;
  drawSingle();
-}
-function singleReset(){
- rotation.single=0;
- flip.single=false;
- ['singleBrightness','singleContrast','singleZoom'].forEach(id=>$(id).value=100);
- $('singleBg').value='#ffffff';
- $('singleX').value=0;
- $('singleY').value=0;
+};
+$("singleFlip").onclick=()=>{
+ state.single.flip=!state.single.flip;
  drawSingle();
-}
+};
+$("singlePreview").onclick=drawSingle;
 
-/* ---------- JOINT PHOTO ---------- */
+$("singleReset").onclick=()=>{
+ state.single.rotation=0;
+ state.single.flip=false;
+ ["singleBrightness","singleContrast","singleZoom"].forEach(id=>$(id).value=100);
+ $("singleBg").value="#ffffff";
+ $("singleX").value=0;
+ $("singleY").value=0;
+ drawSingle();
+};
 
-$('jointFile1').addEventListener('change',e=>{
- loadImage(e.target.files[0],img=>{
-  images.joint1=img;
-  $('jointStatus').textContent='पहली फोटो तैयार है।';
- });
-});
-$('jointFile2').addEventListener('change',e=>{
- loadImage(e.target.files[0],img=>{
-  images.joint2=img;
-  $('jointStatus').textContent='दूसरी फोटो तैयार है।';
- });
-});
+$("singlePrint").onclick=()=>{
+ if(!images.single){alert("पहले फोटो चुनें।");return}
+ drawSingle();
+ printCanvas("singleCanvas","Single Photo",
+ number("singleW",35,5,150),
+ number("singleH",45,5,200));
+};
+
+/* JOINT PHOTO */
 
 function makeJoint(){
- if(!images.joint1 || !images.joint2){
-  alert('दोनों फोटो अपलोड करें।');
+ if(!images.joint1||!images.joint2){
+  alert("दोनों फोटो अपलोड करें।");
   return;
  }
 
- const c=canvas('jointCanvas');
- const ctx=clearCanvas(c);
- const layout=$('jointLayout').value;
- const gap=Math.max(0,+$('jointGap').value||0)*10;
+ const c=getCanvas("jointCanvas");
+ const layout=$("jointLayout").value;
+ const gap=number("jointGap",3,0,30)*10;
+ const zoom=+$("jointZoom").value/100;
 
  c.width=900;
- c.height=layout==='side'?500:1000;
+ c.height=layout==="side"?500:1000;
 
- ctx.fillStyle=$('jointBg').value;
+ const ctx=clearCanvas(c);
+ ctx.fillStyle=$("jointBg").value;
  ctx.fillRect(0,0,c.width,c.height);
 
- if(layout==='side'){
+ if(layout==="side"){
   const w=(c.width-gap)/2;
-  drawEdited(ctx,images.joint1,0,0,w,c.height);
-  drawEdited(ctx,images.joint2,w+gap,0,w,c.height);
+  drawEdited(ctx,images.joint1,0,0,w,c.height,{zoom});
+  drawEdited(ctx,images.joint2,w+gap,0,w,c.height,{zoom});
  }else{
   const h=(c.height-gap)/2;
-  drawEdited(ctx,images.joint1,0,0,c.width,h);
-  drawEdited(ctx,images.joint2,0,h+gap,c.width,h);
+  drawEdited(ctx,images.joint1,0,0,c.width,h,{zoom});
+  drawEdited(ctx,images.joint2,0,h+gap,c.width,h,{zoom});
  }
 
- jointReady=true;
- $('jointStatus').textContent='Joint Photo तैयार है।';
+ state.jointReady=true;
+ c.dataset.width=210;
+ c.dataset.height=layout==="side"?116.7:233.3;
+
+ setStatus("jointStatus","Joint Photo तैयार है।");
 }
 
-function clearJoint(){
- images.joint1=null;
- images.joint2=null;
- $('jointFile1').value='';
- $('jointFile2').value='';
- clearCanvas(canvas('jointCanvas'));
- jointReady=false;
- $('jointStatus').textContent='Joint Photo साफ कर दिया गया।';
-}
-
-/* ---------- PHOTO COUNT ---------- */
-
-document.querySelectorAll('#photoCounts button').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('#photoCounts button')
-   .forEach(b=>b.classList.remove('selected'));
-  btn.classList.add('selected');
-  photoCount=+btn.dataset.count;
+$("jointFile1").addEventListener("change",e=>{
+ loadImage(e.target.files[0],img=>{
+  images.joint1=img;
+  setStatus("jointStatus","पहली फोटो अपलोड हो गई।");
+ });
+});
+$("jointFile2").addEventListener("change",e=>{
+ loadImage(e.target.files[0],img=>{
+  images.joint2=img;
+  setStatus("jointStatus","दूसरी फोटो अपलोड हो गई।");
  });
 });
 
-/* ---------- A4 PHOTO SOURCE ---------- */
+$("jointMake").onclick=makeJoint;
+$("jointLayout").addEventListener("change",()=>{if(state.jointReady)makeJoint()});
+$("jointGap").addEventListener("input",()=>{if(state.jointReady)makeJoint()});
+$("jointBg").addEventListener("input",()=>{if(state.jointReady)makeJoint()});
+$("jointZoom").addEventListener("input",()=>{if(state.jointReady)makeJoint()});
+
+$("jointClear").onclick=()=>{
+ images.joint1=null;
+ images.joint2=null;
+ $("jointFile1").value="";
+ $("jointFile2").value="";
+ clearCanvas(getCanvas("jointCanvas"));
+ state.jointReady=false;
+ setStatus("jointStatus","Joint Photo साफ कर दिया गया।");
+};
+
+$("jointPrint").onclick=()=>{
+ if(!state.jointReady){makeJoint();if(!state.jointReady)return}
+ const c=getCanvas("jointCanvas");
+ printCanvas("jointCanvas","Joint Photo",+c.dataset.width,+c.dataset.height);
+};
+
+/* PHOTO COUNT */
+
+document.querySelectorAll("#photoCounts button").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll("#photoCounts button")
+   .forEach(b=>b.classList.remove("selected"));
+  btn.classList.add("selected");
+  state.count=+btn.dataset.count;
+ });
+});
+
+/* SHEET SOURCE */
 
 function getSheetSources(){
- const type=$('sheetSource').value;
- if(type==='single' && images.single)return [images.single];
- if(type==='joint' && jointReady)return [canvas('jointCanvas')];
- if(type==='front' && images.front)return [images.front];
- if(type==='back' && images.back)return [images.back];
- if(type==='both' && images.front && images.back)
-  return [images.front,images.back];
+ const type=$("sheetSource").value;
+
+ if(type==="single"&&images.single)return [getCanvas("singleCanvas")];
+ if(type==="joint"&&state.jointReady)return [getCanvas("jointCanvas")];
+ if(type==="front"&&images.front)return [getCanvas("idFrontCanvas")];
+ if(type==="back"&&images.back)return [getCanvas("idBackCanvas")];
+ if(type==="both"&&images.front&&images.back){
+  return [getCanvas("idFrontCanvas"),getCanvas("idBackCanvas")];
+ }
  return [];
 }
 
-/* ---------- A4 PAPER ---------- */
+/* A4 SHEET */
 
 function makePhotoSheet(){
  const sources=getSheetSources();
+
  if(!sources.length){
-  alert('चुना हुआ फोटो सोर्स पहले अपलोड और तैयार करें।');
-  return;
+  alert("चुना हुआ फोटो पहले अपलोड और तैयार करें।");
+  return false;
  }
 
- const paper=$('sheetPaper').value;
- const orientation=$('sheetOrientation').value;
- const dpi=+$('sheetDpi').value;
+ const paper=$("sheetPaper").value;
+ const orientation=$("sheetOrientation").value;
+ const dpi=number("sheetDpi",300,150,300);
 
  const sizes={
   A4:[210,297],
   A5:[148,210],
   A3:[297,420],
   custom:[
-   Math.max(50,+$('customW').value||210),
-   Math.max(50,+$('customH').value||297)
+   number("customW",210,50,1000),
+   number("customH",297,50,1000)
   ]
  };
 
  let [pw,ph]=sizes[paper];
- if(orientation==='landscape')[pw,ph]=[ph,pw];
 
- const count=photoCount;
- const cols=Math.max(1,Math.min(10,+$('sheetCols').value||2));
- const gap=Math.max(0,+$('sheetGap').value||0);
- const margin=Math.max(0,+$('sheetMargin').value||0);
- const fw=Math.max(5,+$('sheetW').value||35);
- const fh=Math.max(5,+$('sheetH').value||45);
+ if(orientation==="landscape"){
+  [pw,ph]=[ph,pw];
+ }
+
+ const count=state.count;
+ const cols=number("sheetCols",2,1,10);
+ const rows=Math.ceil(count/cols);
+ const gap=number("sheetGap",3,0,30);
+ const margin=number("sheetMargin",10,0,40);
+ const fw=number("sheetW",35,5,200);
+ const fh=number("sheetH",45,5,280);
 
  const innerW=pw-2*margin;
  const innerH=ph-2*margin;
 
  if(fw*cols+gap*(cols-1)>innerW){
-  alert('फोटो की चौड़ाई या कॉलम अधिक हैं। सेटिंग कम करें।');
-  return;
+  alert("फोटो की चौड़ाई या Columns अधिक हैं।");
+  return false;
  }
 
- const rows=Math.ceil(count/cols);
  if(fh*rows+gap*(rows-1)>innerH){
-  alert('इतने फोटो इस पेपर में फिट नहीं होंगे। फोटो संख्या या साइज कम करें।');
-  return;
+  alert("फोटो इस पेपर में फिट नहीं होंगे। फोटो संख्या या साइज कम करें।");
+  return false;
  }
 
  const pxPerMm=dpi/25.4;
- const c=canvas('sheetCanvas');
+ const c=getCanvas("sheetCanvas");
 
- c.width=Math.round(pw*pxPerMm);
- c.height=Math.round(ph*pxPerMm);
+ const newW=Math.round(pw*pxPerMm);
+ const newH=Math.round(ph*pxPerMm);
 
- if(c.width>7000 || c.height>7000){
-  alert('बहुत अधिक पेपर रिजॉल्यूशन है। DPI कम करें।');
-  return;
+ if(newW>7000||newH>7000){
+  alert("रिजॉल्यूशन अधिक है। DPI कम करें।");
+  return false;
  }
 
+ c.width=newW;
+ c.height=newH;
+
  const ctx=clearCanvas(c);
- ctx.fillStyle='white';
+ ctx.fillStyle="#ffffff";
  ctx.fillRect(0,0,c.width,c.height);
 
  for(let i=0;i<count;i++){
@@ -870,111 +1034,75 @@ function makePhotoSheet(){
 
   const src=sources[i%sources.length];
 
-  drawEdited(ctx,src,x,y,w,h);
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x,y,w,h);
+  ctx.clip();
 
-  ctx.strokeStyle='#999999';
+  ctx.drawImage(src,x,y,w,h);
+  ctx.restore();
+
+  ctx.strokeStyle="#888888";
   ctx.lineWidth=1;
   ctx.strokeRect(x,y,w,h);
  }
 
- c.dataset.paper=paper;
- c.dataset.orientation=orientation;
  c.dataset.width=pw;
  c.dataset.height=ph;
- sheetReady=true;
+ c.dataset.paper=paper;
+ c.dataset.orientation=orientation;
 
- $('sheetStatus').textContent=
-  count+' फोटो तैयार। पेपर: '+paper+
-  ' | '+orientation+' | '+dpi+' DPI';
+ state.sheetReady=true;
+
+ setStatus(
+  "sheetStatus",
+  count+" फोटो तैयार | "+paper+" | "+orientation+
+  " | "+dpi+" DPI | "+cols+" Columns"
+ );
+
+ return true;
 }
 
-/* ---------- A4 PRINT & PDF ---------- */
+$("sheetMake").onclick=makePhotoSheet;
 
-function printSheet(){
- if(!sheetReady){
-  makePhotoSheet();
-  if(!sheetReady)return;
- }
+$("sheetPDF").onclick=()=>{
+ if(!state.sheetReady&&!makePhotoSheet())return;
 
- const c=canvas('sheetCanvas');
- const width=+c.dataset.width;
- const height=+c.dataset.height;
+ const c=getCanvas("sheetCanvas");
+ printCanvas(
+  "sheetCanvas",
+  "Photo Sheet",
+  +c.dataset.width,
+  +c.dataset.height
+ );
+};
 
- const win=window.open('','_blank');
- if(!win){
-  alert('Browser Pop-up Allow करें।');
-  return;
- }
+/* CLEAR SHEET */
 
- const data=c.toDataURL('image/png');
+$("sheetClear").onclick=()=>{
+ clearCanvas(getCanvas("sheetCanvas"));
+ state.sheetReady=false;
+ setStatus("sheetStatus","A4 Preview साफ कर दिया गया।");
+};
 
- win.document.open();
- win.document.write(`
- <!DOCTYPE html>
- <html>
- <head>
- <title>A4 Photo Sheet</title>
- <style>
- @page{size:${width}mm ${height}mm;margin:0}
- *{box-sizing:border-box}
- html,body{margin:0;padding:0;width:100%;height:100%}
- img{display:block;width:100%;height:100%}
- </style>
- </head>
- <body>
- <img src="${data}">
- <script>
- window.onload=function(){
-  setTimeout(function(){
-   window.focus();
-   window.print();
-  },700);
- };
- <\/script>
- </body>
- </html>
- `);
- win.document.close();
-}
+/* PAPER / SIZE CHANGES */
 
-function saveSheetPDF(){
- if(!sheetReady){
-  makePhotoSheet();
-  if(!sheetReady)return;
- }
- printSheet();
-}
+[
+ "sheetPaper","sheetOrientation","customW","customH",
+ "sheetW","sheetH","sheetGap","sheetMargin","sheetCols","sheetDpi"
+].forEach(id=>{
+ $(id).addEventListener("change",()=>{
+  state.sheetReady=false;
+ });
+});
 
-/* ---------- CLEAR A4 ---------- */
+/* STARTUP */
 
-function clearSheet(){
- clearCanvas(canvas('sheetCanvas'));
- sheetReady=false;
- $('sheetStatus').textContent='A4 Preview साफ कर दिया गया।';
-}
-
-/* ---------- ID FRONT/BACK RESET ---------- */
-
-function clearID(){
- images.front=null;
- images.back=null;
- $('idFrontFile').value='';
- $('idBackFile').value='';
- clearCanvas(canvas('idFrontCanvas'));
- clearCanvas(canvas('idBackCanvas'));
- clearCanvas(canvas('idFinal'));
- idReady=false;
- $('idStatus').textContent='ID Card फोटो साफ कर दी गई।';
-}
-
-/* ---------- STARTUP ---------- */
-
-$('idStatus').textContent='Front और Back फोटो चुनें।';
-$('singleStatus').textContent='Single Photo अपलोड करें।';
-$('jointStatus').textContent='दो फोटो अपलोड करें।';
-$('sheetStatus').textContent='A4 के लिए फोटो चुनें।';
+setStatus("idStatus","Front और Back फोटो चुनें।");
+setStatus("singleStatus","Single Photo अपलोड करें।");
+setStatus("jointStatus","दो फोटो अपलोड करें।");
+setStatus("sheetStatus","A4 के लिए फोटो चुनें।");
 
 </script>
-
 </body>
 </html>

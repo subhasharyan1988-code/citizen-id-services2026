@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -394,5 +393,588 @@ hr{border:0;border-top:1px solid #e2e8f0;margin:16px 0}
 </footer>
 
 </div>
+
+
+<script>
+/* ======================================
+   COMPLETE STUDIO JAVASCRIPT
+====================================== */
+
+const $ = id => document.getElementById(id);
+
+const images = {
+ front:null, back:null, single:null, joint1:null, joint2:null
+};
+
+const rotation = {id:0,single:0};
+const flip = {id:false,single:false};
+let photoCount = 8;
+let sheetReady = false;
+let idReady = false;
+let jointReady = false;
+
+/* ---------- TABS ---------- */
+
+document.querySelectorAll('.tabs button').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  $(btn.dataset.tab).classList.add('active');
+ });
+});
+
+/* ---------- IMAGE LOADING ---------- */
+
+function loadImage(file,callback){
+ if(!file)return;
+ if(!file.type.startsWith('image/')){
+  alert('कृपया सही इमेज फाइल चुनें।');
+  return;
+ }
+ const reader=new FileReader();
+ reader.onload=e=>{
+  const img=new Image();
+  img.onload=()=>callback(img);
+  img.onerror=()=>alert('फोटो लोड नहीं हुई।');
+  img.src=e.target.result;
+ };
+ reader.onerror=()=>alert('फाइल पढ़ने में समस्या हुई।');
+ reader.readAsDataURL(file);
+}
+
+/* ---------- CANVAS HELPERS ---------- */
+
+function canvas(id){
+ return $(id);
+}
+
+function clearCanvas(c){
+ const ctx=c.getContext('2d');
+ ctx.clearRect(0,0,c.width,c.height);
+ return ctx;
+}
+
+function drawEdited(ctx,img,x,y,w,h,options={}){
+ if(!img)return;
+
+ const zoom=options.zoom||1;
+ const angle=(options.rotation||0)*Math.PI/180;
+ const bg=options.bg||'#ffffff';
+ const brightness=options.brightness??100;
+ const contrast=options.contrast??100;
+ const px=options.x||0;
+ const py=options.y||0;
+ const flipped=options.flip||false;
+
+ ctx.save();
+ ctx.beginPath();
+ ctx.rect(x,y,w,h);
+ ctx.clip();
+
+ ctx.fillStyle=bg;
+ ctx.fillRect(x,y,w,h);
+
+ ctx.translate(x+w/2+px*w/200,y+h/2+py*h/200);
+ ctx.rotate(angle);
+ ctx.scale(flipped?-1:1,1);
+
+ const factor=Math.max(w/img.width,h/img.height)*zoom;
+ ctx.filter=`brightness(${brightness}%) contrast(${contrast}%)`;
+
+ ctx.drawImage(
+  img,
+  -img.width*factor/2,
+  -img.height*factor/2,
+  img.width*factor,
+  img.height*factor
+ );
+
+ ctx.restore();
+ ctx.filter='none';
+}
+
+function downloadCanvas(id,format,name){
+ const c=canvas(id);
+ if(!c.width || !c.height){
+  alert('पहले Preview बनाएं।');
+  return;
+ }
+ try{
+  const mime=format==='jpeg'?'image/jpeg':'image/png';
+  const link=document.createElement('a');
+  link.download=name+(format==='jpeg'?'.jpg':'.png');
+  link.href=c.toDataURL(mime,0.95);
+  link.click();
+ }catch(e){
+  alert('डाउनलोड नहीं हो पाया।');
+ }
+}
+
+/* ---------- PRINT / PDF ---------- */
+
+function printImage(data,title,width,height,unit='mm'){
+ const win=window.open('','_blank');
+ if(!win){
+  alert('प्रिंट विंडो ब्लॉक है। Browser में Pop-ups Allow करें।');
+  return;
+ }
+
+ const html=`
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <title>${title}</title>
+ <style>
+ @page{size:${width}${unit} ${height}${unit};margin:0}
+ *{box-sizing:border-box}
+ html,body{margin:0;padding:0;background:white}
+ img{display:block;width:100%;height:100%;object-fit:fill}
+ </style>
+ </head>
+ <body>
+ <img src="${data}">
+ <script>
+ window.onload=function(){
+  setTimeout(function(){window.focus();window.print()},500);
+ };
+ <\/script>
+ </body>
+ </html>`;
+
+ win.document.open();
+ win.document.write(html);
+ win.document.close();
+}
+
+function printCanvas(id,title){
+ const c=canvas(id);
+ if(!c.width || !c.height){
+  alert('पहले Preview बनाएं।');
+  return;
+ }
+ const data=c.toDataURL('image/png');
+ printImage(data,title,c.width,c.height,'px');
+}
+
+/* ---------- ID CARD ---------- */
+
+function idOptions(){
+ return {
+  zoom:+$('idZoom').value/100,
+  brightness:+$('idBrightness').value,
+  contrast:+$('idContrast').value,
+  bg:$('idBg').value,
+  x:+$('idX').value,
+  y:+$('idY').value,
+  rotation:rotation.id,
+  flip:flip.id
+ };
+}
+
+function drawIDPreviews(){
+ const settings=idOptions();
+
+ ['front','back'].forEach(side=>{
+  const img=images[side];
+  if(!img)return;
+
+  const c=canvas(side==='front'?'idFrontCanvas':'idBackCanvas');
+  const ctx=clearCanvas(c);
+  drawEdited(ctx,img,0,0,c.width,c.height,settings);
+  ctx.strokeStyle='#334155';
+  ctx.lineWidth=3;
+  ctx.strokeRect(1,1,c.width-2,c.height-2);
+ });
+}
+
+function loadID(side,file){
+ loadImage(file,img=>{
+  images[side]=img;
+  drawIDPreviews();
+  $('idStatus').textContent=side.toUpperCase()+' फोटो अपलोड हो गई।';
+ });
+}
+
+$('idFrontFile').addEventListener('change',e=>loadID('front',e.target.files[0]));
+$('idBackFile').addEventListener('change',e=>loadID('back',e.target.files[0]));
+
+['idZoom','idBrightness','idContrast','idBg','idX','idY']
+.forEach(id=>$(id).addEventListener('input',drawIDPreviews));
+
+function makeID(){
+ if(!images.front || !images.back){
+  alert('Front और Back दोनों फोटो चुनें।');
+  return;
+ }
+
+ const w=Math.max(20,Math.min(200,+$('idW').value||86));
+ const h=Math.max(20,Math.min(200,+$('idH').value||54));
+ const gap=Math.max(0,Math.min(30,+$('idGap').value||0));
+
+ const scale=6;
+ const W=Math.round(w*scale);
+ const H=Math.round(h*scale);
+ const G=Math.round(gap*scale);
+
+ const c=canvas('idFinal');
+ c.width=W*2+G+40;
+ c.height=H+40;
+
+ const ctx=clearCanvas(c);
+ ctx.fillStyle='white';
+ ctx.fillRect(0,0,c.width,c.height);
+
+ const s=idOptions();
+ drawEdited(ctx,images.front,10,20,W,H,s);
+ drawEdited(ctx,images.back,30+W+G,20,W,H,s);
+
+ ctx.strokeStyle='#111827';
+ ctx.lineWidth=3;
+ ctx.strokeRect(10,20,W,H);
+ ctx.strokeRect(30+W+G,20,W,H);
+
+ idReady=true;
+ $('idStatus').textContent='Front और Back का प्रीव्यू तैयार है।';
+}
+
+function idRotate(deg){
+ rotation.id=(rotation.id+deg+360)%360;
+ drawIDPreviews();
+}
+function idFlip(){
+ flip.id=!flip.id;
+ drawIDPreviews();
+}
+function idReset(){
+ rotation.id=0;
+ flip.id=false;
+ ['idZoom','idBrightness','idContrast'].forEach(id=>$(id).value=100);
+ $('idBg').value='#ffffff';
+ $('idX').value=0;
+ $('idY').value=0;
+ drawIDPreviews();
+}
+
+/* ---------- SINGLE PHOTO ---------- */
+
+function singleOptions(){
+ return {
+  zoom:+$('singleZoom').value/100,
+  brightness:+$('singleBrightness').value,
+  contrast:+$('singleContrast').value,
+  bg:$('singleBg').value,
+  x:+$('singleX').value,
+  y:+$('singleY').value,
+  rotation:rotation.single,
+  flip:flip.single
+ };
+}
+
+$('singleFile').addEventListener('change',e=>{
+ loadImage(e.target.files[0],img=>{
+  images.single=img;
+  drawSingle();
+  $('singleStatus').textContent='फोटो तैयार है।';
+ });
+});
+
+function drawSingle(){
+ if(!images.single)return;
+
+ const w=Math.max(5,Math.min(150,+$('singleW').value||35));
+ const h=Math.max(5,Math.min(200,+$('singleH').value||45));
+
+ const c=canvas('singleCanvas');
+ c.width=Math.round(w*10);
+ c.height=Math.round(h*10);
+
+ const ctx=clearCanvas(c);
+ drawEdited(ctx,images.single,0,0,c.width,c.height,singleOptions());
+ $('singleStatus').textContent='Single Photo Preview तैयार है।';
+}
+
+[
+ 'singleW','singleH','singleBrightness','singleContrast',
+ 'singleZoom','singleBg','singleX','singleY'
+].forEach(id=>$(id).addEventListener('input',drawSingle));
+
+function singleRotate(deg){
+ rotation.single=(rotation.single+deg+360)%360;
+ drawSingle();
+}
+function singleFlip(){
+ flip.single=!flip.single;
+ drawSingle();
+}
+function singleReset(){
+ rotation.single=0;
+ flip.single=false;
+ ['singleBrightness','singleContrast','singleZoom'].forEach(id=>$(id).value=100);
+ $('singleBg').value='#ffffff';
+ $('singleX').value=0;
+ $('singleY').value=0;
+ drawSingle();
+}
+
+/* ---------- JOINT PHOTO ---------- */
+
+$('jointFile1').addEventListener('change',e=>{
+ loadImage(e.target.files[0],img=>{
+  images.joint1=img;
+  $('jointStatus').textContent='पहली फोटो तैयार है।';
+ });
+});
+$('jointFile2').addEventListener('change',e=>{
+ loadImage(e.target.files[0],img=>{
+  images.joint2=img;
+  $('jointStatus').textContent='दूसरी फोटो तैयार है।';
+ });
+});
+
+function makeJoint(){
+ if(!images.joint1 || !images.joint2){
+  alert('दोनों फोटो अपलोड करें।');
+  return;
+ }
+
+ const c=canvas('jointCanvas');
+ const ctx=clearCanvas(c);
+ const layout=$('jointLayout').value;
+ const gap=Math.max(0,+$('jointGap').value||0)*10;
+
+ c.width=900;
+ c.height=layout==='side'?500:1000;
+
+ ctx.fillStyle=$('jointBg').value;
+ ctx.fillRect(0,0,c.width,c.height);
+
+ if(layout==='side'){
+  const w=(c.width-gap)/2;
+  drawEdited(ctx,images.joint1,0,0,w,c.height);
+  drawEdited(ctx,images.joint2,w+gap,0,w,c.height);
+ }else{
+  const h=(c.height-gap)/2;
+  drawEdited(ctx,images.joint1,0,0,c.width,h);
+  drawEdited(ctx,images.joint2,0,h+gap,c.width,h);
+ }
+
+ jointReady=true;
+ $('jointStatus').textContent='Joint Photo तैयार है।';
+}
+
+function clearJoint(){
+ images.joint1=null;
+ images.joint2=null;
+ $('jointFile1').value='';
+ $('jointFile2').value='';
+ clearCanvas(canvas('jointCanvas'));
+ jointReady=false;
+ $('jointStatus').textContent='Joint Photo साफ कर दिया गया।';
+}
+
+/* ---------- PHOTO COUNT ---------- */
+
+document.querySelectorAll('#photoCounts button').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('#photoCounts button')
+   .forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  photoCount=+btn.dataset.count;
+ });
+});
+
+/* ---------- A4 PHOTO SOURCE ---------- */
+
+function getSheetSources(){
+ const type=$('sheetSource').value;
+ if(type==='single' && images.single)return [images.single];
+ if(type==='joint' && jointReady)return [canvas('jointCanvas')];
+ if(type==='front' && images.front)return [images.front];
+ if(type==='back' && images.back)return [images.back];
+ if(type==='both' && images.front && images.back)
+  return [images.front,images.back];
+ return [];
+}
+
+/* ---------- A4 PAPER ---------- */
+
+function makePhotoSheet(){
+ const sources=getSheetSources();
+ if(!sources.length){
+  alert('चुना हुआ फोटो सोर्स पहले अपलोड और तैयार करें।');
+  return;
+ }
+
+ const paper=$('sheetPaper').value;
+ const orientation=$('sheetOrientation').value;
+ const dpi=+$('sheetDpi').value;
+
+ const sizes={
+  A4:[210,297],
+  A5:[148,210],
+  A3:[297,420],
+  custom:[
+   Math.max(50,+$('customW').value||210),
+   Math.max(50,+$('customH').value||297)
+  ]
+ };
+
+ let [pw,ph]=sizes[paper];
+ if(orientation==='landscape')[pw,ph]=[ph,pw];
+
+ const count=photoCount;
+ const cols=Math.max(1,Math.min(10,+$('sheetCols').value||2));
+ const gap=Math.max(0,+$('sheetGap').value||0);
+ const margin=Math.max(0,+$('sheetMargin').value||0);
+ const fw=Math.max(5,+$('sheetW').value||35);
+ const fh=Math.max(5,+$('sheetH').value||45);
+
+ const innerW=pw-2*margin;
+ const innerH=ph-2*margin;
+
+ if(fw*cols+gap*(cols-1)>innerW){
+  alert('फोटो की चौड़ाई या कॉलम अधिक हैं। सेटिंग कम करें।');
+  return;
+ }
+
+ const rows=Math.ceil(count/cols);
+ if(fh*rows+gap*(rows-1)>innerH){
+  alert('इतने फोटो इस पेपर में फिट नहीं होंगे। फोटो संख्या या साइज कम करें।');
+  return;
+ }
+
+ const pxPerMm=dpi/25.4;
+ const c=canvas('sheetCanvas');
+
+ c.width=Math.round(pw*pxPerMm);
+ c.height=Math.round(ph*pxPerMm);
+
+ if(c.width>7000 || c.height>7000){
+  alert('बहुत अधिक पेपर रिजॉल्यूशन है। DPI कम करें।');
+  return;
+ }
+
+ const ctx=clearCanvas(c);
+ ctx.fillStyle='white';
+ ctx.fillRect(0,0,c.width,c.height);
+
+ for(let i=0;i<count;i++){
+  const col=i%cols;
+  const row=Math.floor(i/cols);
+
+  const x=(margin+col*(fw+gap))*pxPerMm;
+  const y=(margin+row*(fh+gap))*pxPerMm;
+  const w=fw*pxPerMm;
+  const h=fh*pxPerMm;
+
+  const src=sources[i%sources.length];
+
+  drawEdited(ctx,src,x,y,w,h);
+
+  ctx.strokeStyle='#999999';
+  ctx.lineWidth=1;
+  ctx.strokeRect(x,y,w,h);
+ }
+
+ c.dataset.paper=paper;
+ c.dataset.orientation=orientation;
+ c.dataset.width=pw;
+ c.dataset.height=ph;
+ sheetReady=true;
+
+ $('sheetStatus').textContent=
+  count+' फोटो तैयार। पेपर: '+paper+
+  ' | '+orientation+' | '+dpi+' DPI';
+}
+
+/* ---------- A4 PRINT & PDF ---------- */
+
+function printSheet(){
+ if(!sheetReady){
+  makePhotoSheet();
+  if(!sheetReady)return;
+ }
+
+ const c=canvas('sheetCanvas');
+ const width=+c.dataset.width;
+ const height=+c.dataset.height;
+
+ const win=window.open('','_blank');
+ if(!win){
+  alert('Browser Pop-up Allow करें।');
+  return;
+ }
+
+ const data=c.toDataURL('image/png');
+
+ win.document.open();
+ win.document.write(`
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <title>A4 Photo Sheet</title>
+ <style>
+ @page{size:${width}mm ${height}mm;margin:0}
+ *{box-sizing:border-box}
+ html,body{margin:0;padding:0;width:100%;height:100%}
+ img{display:block;width:100%;height:100%}
+ </style>
+ </head>
+ <body>
+ <img src="${data}">
+ <script>
+ window.onload=function(){
+  setTimeout(function(){
+   window.focus();
+   window.print();
+  },700);
+ };
+ <\/script>
+ </body>
+ </html>
+ `);
+ win.document.close();
+}
+
+function saveSheetPDF(){
+ if(!sheetReady){
+  makePhotoSheet();
+  if(!sheetReady)return;
+ }
+ printSheet();
+}
+
+/* ---------- CLEAR A4 ---------- */
+
+function clearSheet(){
+ clearCanvas(canvas('sheetCanvas'));
+ sheetReady=false;
+ $('sheetStatus').textContent='A4 Preview साफ कर दिया गया।';
+}
+
+/* ---------- ID FRONT/BACK RESET ---------- */
+
+function clearID(){
+ images.front=null;
+ images.back=null;
+ $('idFrontFile').value='';
+ $('idBackFile').value='';
+ clearCanvas(canvas('idFrontCanvas'));
+ clearCanvas(canvas('idBackCanvas'));
+ clearCanvas(canvas('idFinal'));
+ idReady=false;
+ $('idStatus').textContent='ID Card फोटो साफ कर दी गई।';
+}
+
+/* ---------- STARTUP ---------- */
+
+$('idStatus').textContent='Front और Back फोटो चुनें।';
+$('singleStatus').textContent='Single Photo अपलोड करें।';
+$('jointStatus').textContent='दो फोटो अपलोड करें।';
+$('sheetStatus').textContent='A4 के लिए फोटो चुनें।';
+
+</script>
+
 </body>
 </html>

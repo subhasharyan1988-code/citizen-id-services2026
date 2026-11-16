@@ -7,48 +7,58 @@
 <meta name="theme-color" content="#123b79">
 <title>Gramin Grahak Sewa PRO 5.0</title>
 <style>
-:root{--blue:#123b79;--light:#eef4ff;--gold:#ffb52e;--green:#138a52}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f2f5fa;color:#17243b}
-header{background:linear-gradient(120deg,#102c60,#1764b5);color:white;padding:17px 14px;text-align:center}
+body{margin:0;background:#f1f4fa;color:#17243b;font-family:Arial,"Noto Sans Devanagari",sans-serif}
+header{background:linear-gradient(120deg,#102b5b,#1976c9);color:white;text-align:center;padding:20px 10px}
 header h1{margin:0;font-size:24px}
-header p{margin:7px 0 0;font-size:13px}
-nav{background:#fff;display:flex;gap:7px;padding:10px;overflow-x:auto;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0001}
-button,.btn{border:0;border-radius:8px;padding:11px 14px;background:var(--blue);color:white;cursor:pointer;font-weight:bold}
-button:hover,.btn:hover{filter:brightness(1.12)}
-nav button{white-space:nowrap;background:#e9effa;color:#163b70}
-nav button.active{background:var(--blue);color:white}
-main{max-width:1200px;margin:auto;padding:15px}
-.panel{background:white;padding:17px;border-radius:13px;box-shadow:0 3px 15px #182c5010;margin-bottom:15px}
-h2{font-size:19px;margin:0 0 13px;color:#123b79}
-h3{font-size:16px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ccd5e4;border-radius:8px;margin:6px 0 12px;font-size:15px}
-label{font-weight:bold;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px}
-.service{border:1px solid #e0e7f1;border-radius:12px;padding:14px 8px;text-align:center;background:white;cursor:pointer;min-height:110px;transition:.2s}
-.service:hover{transform:translateY(-3px);box-shadow:0 5px 14px #123b7920}
-.service .ico{font-size:30px;display:block;margin-bottom:9px}
-.service strong{font-size:13px;line-height:1.5}
-.hidden{display:none!important}
+header p{font-size:12px}
+nav{display:flex;gap:7px;overflow:auto;background:white;padding:10px;position:sticky;top:0;z-index:10;box-shadow:0 2px 7px #0002}
+button{border:0;background:#164a91;color:white;border-radius:8px;padding:11px 14px;font-weight:bold;cursor:pointer}
+button:active{transform:scale(.98)}
+nav button{white-space:nowrap;background:#e8effb;color:#164a91}
+nav button.active{background:#164a91;color:white}
+main{max-width:1250px;margin:auto;padding:12px}
+.panel{background:white;border-radius:13px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #0000000c}
+h2{font-size:19px;color:#164a91;margin:0 0 14px}
+h3{font-size:15px}
+input,select{width:100%;padding:11px;margin:5px 0 12px;border:1px solid #ccd5e2;border-radius:7px;font-size:14px}
+input[type=range]{padding:0}
+label{font-size:13px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px}
+.service{border:1px solid #e2e8f0;padding:13px 6px;text-align:center;border-radius:11px;cursor:pointer;background:white}
+.service:hover{background:#eef5ff}
+.service span{display:block;font-size:28px;margin-bottom:8px}
+.service strong{font-size:13px}
 .row{display:flex;gap:10px;flex-wrap:wrap}
-.row>*{flex:1;min-width:120px}
-.green{background:var(--green)}
-.red{background:#c62828}
-.orange{background:#e68a00}
+.row>*{flex:1;min-width:110px}
+.tools{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.green{background:#12834e}
+.orange{background:#db8500}
+.red{background:#c53232}
 .gray{background:#667085}
-.small{font-size:12px;color:#69778d}
-.stat{background:#edf4ff;padding:13px;border-radius:10px;text-align:center}
-.stat b{display:block;font-size:23px;color:#123b79}
-table{width:100%;border-collapse:collapse;font-size:13px}
-td,th{padding:10px;border-bottom:1px solid #e4e8ef;text-align:left}
-.tablewrap{overflow-x:auto}
-.badge{padding:4px 8px;border-radius:20px;background:#e0f5e8;color:#137345;font-size:11px}
-footer{text-align:center;color:#718096;padding:20px;font-size:12px}
-.preview{max-width:100%;max-height:360px;object-fit:contain;border:1px solid #ddd;margin:10px auto;display:block}
-.toolbar{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
-.toolbar button{font-size:12px}
-.notice{padding:12px;border-radius:9px;background:#fff6df;color:#745000;font-size:13px;margin:10px 0}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17243b;color:white;padding:12px 18px;border-radius:10px;z-index:20;display:none}
+.purple{background:#7045a5}
+.small{font-size:12px;color:#738097}
+.preview{display:block;max-width:100%;max-height:330px;margin:10px auto;object-fit:contain}
+canvas{max-width:100%;height:auto;border:1px solid #ccd5e2;background:white}
+.canvaswrap{overflow:auto;text-align:center}
+.editor{background:#f6f8fc;padding:12px;border-radius:10px;margin:10px 0}
+.badge{background:#d9f4e4;color:#137342;border-radius:20px;padding:5px 10px;font-size:12px}
+.stat{background:#edf4ff;text-align:center;border-radius:9px;padding:14px}
+.stat b{display:block;font-size:22px;color:#164a91}
+.hidden{display:none!important}
+.notice{background:#fff5db;color:#795500;padding:12px;border-radius:8px;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+td,th{border-bottom:1px solid #ddd;padding:9px;text-align:left}
+.tablewrap{overflow:auto}
+footer{text-align:center;padding:20px;color:#758197}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17243b;color:white;padding:12px 18px;border-radius:9px;display:none;z-index:50}
+@media(max-width:600px){
+header h1{font-size:20px}
+main{padding:8px}
+.panel{padding:12px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@page{size:A4;margin:0}
 </style>
 </head>
 <body>
@@ -56,576 +66,744 @@ footer{text-align:center;color:#718096;padding:20px;font-size:12px}
 <header>
 <h1>🇮🇳 ग्रामीण ग्राहक सेवा केंद्र</h1>
 <p>GRAMIN GRAHAK SEWA | PROFESSIONAL PRO 5.0</p>
-<p>Document • Photo • Online • Digital Services</p>
+<p>DOCUMENT • PHOTO • ONLINE • DIGITAL SERVICES</p>
 </header>
 
-<nav id="nav">
-<button class="active" onclick="showPage('home',this)">🏠 Home</button>
-<button onclick="showPage('services',this)">📋 103 सेवाएँ</button>
-<button onclick="showPage('photo',this)">📸 Photo Studio</button>
-<button onclick="showPage('pdf',this)">📄 PDF Studio</button>
-<button onclick="showPage('idcard',this)">🪪 ID Card</button>
-<button onclick="showPage('payment',this)">💳 Payment</button>
-<button onclick="showPage('adminLogin',this)">🔐 Admin</button>
-<button onclick="showPage('customerLogin',this)">👤 Customer Login</button>
+<nav>
+<button onclick="page('home',this)" class="active">🏠 Home</button>
+<button onclick="page('services',this)">📋 103 सेवाएँ</button>
+<button onclick="page('photo',this)">📸 Photo Studio</button>
+<button onclick="page('idcard',this)">🪪 ID Card Editor</button>
+<button onclick="page('pdf',this)">📄 PDF Studio</button>
+<button onclick="page('customer',this)">👤 Customer</button>
+<button onclick="page('payment',this)">💳 Payment</button>
+<button onclick="page('adminLogin',this)">🔐 Admin</button>
 </nav>
 
 <main>
 
 <!-- HOME -->
-<section id="home" class="page">
-<div class="panel" style="background:linear-gradient(120deg,#123b79,#2675c5);color:white">
+<section id="home" class="pg">
+<div class="panel" style="background:linear-gradient(120deg,#123b79,#2775c1);color:white">
 <h2 style="color:white;font-size:24px">आपका अपना डिजिटल सेवा केंद्र</h2>
-<p>एक ही वेबसाइट पर 103 डिजिटल सेवाएँ और फोटो/PDF एडिटिंग टूल।</p>
-<div class="row">
-<button class="green" onclick="showPage('services')">सभी सेवाएँ खोलें</button>
-<button style="background:#ffb52e;color:#222" onclick="showPage('photo')">Photo Studio</button>
-</div>
+<p>103 डिजिटल सेवाएँ, Photo Editing, ID Card और PDF Studio।</p>
+<button class="green" onclick="page('services')">सभी सेवाएँ खोलें</button>
 </div>
 <div class="grid">
-<div class="stat"><b>103</b>कुल सेवाएँ</div>
-<div class="stat"><b>₹100</b>ग्राहक फीस</div>
-<div class="stat"><b>PRO 5.0</b>संस्करण</div>
-<div class="stat"><b>24×7</b>डिजिटल पोर्टल</div>
+<div class="stat"><b>103</b>सेवाएँ</div>
+<div class="stat"><b>₹100</b>Customer Fee</div>
+<div class="stat"><b>5.0</b>PRO Version</div>
 </div>
 <div class="panel">
-<h2>महत्वपूर्ण सेवाएँ</h2>
-<div class="grid" id="quickServices"></div>
+<h2>मुख्य डिजिटल टूल</h2>
+<div class="grid">
+<div class="service" onclick="page('photo')"><span>📸</span><strong>Photo Studio</strong></div>
+<div class="service" onclick="page('idcard')"><span>🪪</span><strong>ID Card Editor</strong></div>
+<div class="service" onclick="page('pdf')"><span>📄</span><strong>PDF Studio</strong></div>
+<div class="service" onclick="page('services')"><span>🌐</span><strong>Government Services</strong></div>
 </div>
-<div class="panel">
-<h2>Admin Master Access</h2>
-<p>Admin Login के बाद फीस, UPI भुगतान और Customer Login के बिना सभी सेवाएँ इस्तेमाल कर सकते हैं।</p>
-<button onclick="showPage('adminLogin')">Admin Login</button>
 </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="page hidden">
+<section id="services" class="pg hidden">
 <div class="panel">
-<h2>📋 सभी 103 डिजिटल सेवाएँ</h2>
-<input id="search" placeholder="सेवा खोजें..." oninput="renderServices()">
-<select id="category" onchange="renderServices()">
-<option value="">सभी श्रेणियाँ</option>
-</select>
-<p class="small" id="serviceCount"></p>
-<div class="grid" id="serviceGrid"></div>
+<h2>📋 103 सरकारी एवं डिजिटल सेवाएँ</h2>
+<input id="search" placeholder="सेवा का नाम खोजें..." oninput="renderServices()">
+<select id="cat" onchange="renderServices()"><option value="">सभी श्रेणियाँ</option></select>
+<p id="count" class="small"></p>
+<div id="serviceGrid" class="grid"></div>
 </div>
 </section>
 
 <!-- PHOTO STUDIO -->
-<section id="photo" class="page hidden">
+<section id="photo" class="pg hidden">
 <div class="panel">
-<h2>📸 Photo Studio</h2>
-<label>फोटो चुनें</label>
-<input type="file" accept="image/*" id="photoFile" onchange="loadImage(this,'photoPreview')">
-<img id="photoPreview" class="preview hidden">
+<h2>📸 Professional Photo Studio</h2>
+
+<label>फोटो अपलोड करें</label>
+<input type="file" accept="image/*" onchange="loadFile(this,'photoImg')">
+<img id="photoImg" class="preview hidden">
+
+<div class="editor">
+<h3>✂️ Crop & Resize Tools</h3>
 <div class="row">
-<div><label>चौड़ाई (mm)</label><input id="photoW" type="number" value="35"></div>
-<div><label>ऊँचाई (mm)</label><input id="photoH" type="number" value="45"></div>
-<div><label>फोटो संख्या</label><select id="photoCount">
+<div><label>Width (mm)</label><input id="pw" type="number" value="35"></div>
+<div><label>Height (mm)</label><input id="ph" type="number" value="45"></div>
+<div><label>फोटो संख्या</label>
+<select id="pc">
 <option>2</option><option>4</option><option selected>8</option><option>12</option><option>16</option><option>20</option><option>32</option><option>50</option>
 </select></div>
 </div>
-<label>Brightness</label><input type="range" id="brightness" min="50" max="150" value="100">
-<label>Contrast</label><input type="range" id="contrast" min="50" max="150" value="100">
-<div class="toolbar">
-<button onclick="makePhotoSheet()">A4 शीट तैयार करें</button>
-<button class="green" onclick="printCanvas('photoCanvas')">Print / PDF</button>
-<button class="orange" onclick="downloadCanvas('photoCanvas')">JPEG डाउनलोड</button>
+<label>Crop Mode</label>
+<select id="pcrop">
+<option value="cover">Fill / Crop</option>
+<option value="contain">Fit / पूरा फोटो</option>
+</select>
+<div class="row">
+<div><label>Zoom</label><input type="range" id="pzoom" min="100" max="200" value="100"></div>
+<div><label>Horizontal Position</label><input type="range" id="px" min="0" max="100" value="50"></div>
+<div><label>Vertical Position</label><input type="range" id="py" min="0" max="100" value="50"></div>
 </div>
-<canvas id="photoCanvas" style="width:100%;border:1px solid #ddd"></canvas>
+</div>
+
+<div class="editor">
+<h3>🎨 Brightness & Contrast – Live Preview</h3>
+<label>Brightness</label>
+<input type="range" id="pb" min="0" max="200" value="100">
+<label>Contrast</label>
+<input type="range" id="pcon" min="0" max="200" value="100">
+<p class="small">सभी बदलाव शीट पर लाइव दिखाई देंगे।</p>
+</div>
+
+<div class="editor">
+<h3>🖼️ Photo Border Settings</h3>
+<label>Border</label>
+<select id="pborder">
+<option value="none">No Border</option>
+<option value="black">Black</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+<option value="white">White</option>
+</select>
+<div class="row">
+<div><label>Border Width (px)</label><input id="pbw" type="number" value="2" min="0" max="20"></div>
+<div><label>Gap (mm)</label><input id="pgap" type="number" value="3" min="0" max="20"></div>
+</div>
+</div>
+
+<div class="tools">
+<button onclick="makePhoto()">A4 शीट तैयार करें</button>
+<button class="green" onclick="printCanvas('photoCanvas')">🖨️ Print / PDF</button>
+<button class="orange" onclick="downloadCanvas('photoCanvas','Photo-Sheet.jpg')">JPEG</button>
+<button class="purple" onclick="downloadCanvas('photoCanvas','Photo-Sheet.png','image/png')">PNG</button>
+<button class="gray" onclick="resetPhoto()">Reset</button>
+</div>
+<div class="canvaswrap"><canvas id="photoCanvas" width="794" height="1123"></canvas></div>
+</div>
+</section>
+
+<!-- ID CARD EDITOR -->
+<section id="idcard" class="pg hidden">
+<div class="panel">
+<h2>🪪 Advanced ID Card Editor</h2>
+
+<label>Select ID Card Size</label>
+<select id="idPreset" onchange="presetID()">
+<option value="85.6,53.98">Aadhaar / PAN / Voter / DL – Standard 85.6 × 53.98 mm</option>
+<option value="86,54">86 × 54 mm</option>
+<option value="90,55">90 × 55 mm</option>
+<option value="88,58">88 × 58 mm</option>
+<option value="100,65">100 × 65 mm</option>
+<option value="105,70">105 × 70 mm</option>
+<option value="120,80">120 × 80 mm</option>
+<option value="custom">Custom Size</option>
+</select>
+
+<div class="row">
+<div><label>Width (mm)</label><input id="iw" type="number" value="85.6"></div>
+<div><label>Height (mm)</label><input id="ih" type="number" value="53.98"></div>
+</div>
+
+<div class="notice">Front और Back दोनों कार्ड A4 पेपर पर बराबर आकार में साथ-साथ प्रिंट होंगे। दोनों की अलग-अलग Editing उपलब्ध है।</div>
+
+<!-- FRONT -->
+<div class="editor">
+<h3>🟦 FRONT SIDE – अलग Editing</h3>
+<input type="file" accept="image/*" onchange="loadFile(this,'frontImg')">
+<img id="frontImg" class="preview hidden">
+
+<label>Crop Mode</label>
+<select id="fcrop" onchange="updateIDPreview()">
+<option value="cover">Fill / Crop</option>
+<option value="contain">Fit / पूरा फोटो</option>
+</select>
+<div class="row">
+<div><label>Zoom</label><input type="range" id="fz" min="100" max="200" value="100"></div>
+<div><label>Brightness</label><input type="range" id="fb" min="0" max="200" value="100"></div>
+<div><label>Contrast</label><input type="range" id="fcon" min="0" max="200" value="100"></div>
+</div>
+<div class="row">
+<div><label>Horizontal Crop</label><input type="range" id="fx" min="0" max="100" value="50"></div>
+<div><label>Vertical Crop</label><input type="range" id="fy" min="0" max="100" value="50"></div>
+</div>
+<div class="tools">
+<button onclick="resetSide('front')">Front Reset</button>
+<button onclick="printCanvas('frontPreviewCanvas')">Front Print</button>
+</div>
+<div class="canvaswrap"><canvas id="frontPreviewCanvas" width="400" height="252"></canvas></div>
+</div>
+
+<!-- BACK -->
+<div class="editor">
+<h3>🟩 BACK SIDE – अलग Editing</h3>
+<input type="file" accept="image/*" onchange="loadFile(this,'backImg')">
+<img id="backImg" class="preview hidden">
+
+<label>Crop Mode</label>
+<select id="bcrop" onchange="updateIDPreview()">
+<option value="cover">Fill / Crop</option>
+<option value="contain">Fit / पूरा फोटो</option>
+</select>
+<div class="row">
+<div><label>Zoom</label><input type="range" id="bz" min="100" max="200" value="100"></div>
+<div><label>Brightness</label><input type="range" id="bb" min="0" max="200" value="100"></div>
+<div><label>Contrast</label><input type="range" id="bcon" min="0" max="200" value="100"></div>
+</div>
+<div class="row">
+<div><label>Horizontal Crop</label><input type="range" id="bx" min="0" max="100" value="50"></div>
+<div><label>Vertical Crop</label><input type="range" id="by" min="0" max="100" value="50"></div>
+</div>
+<div class="tools">
+<button onclick="resetSide('back')">Back Reset</button>
+<button onclick="printCanvas('backPreviewCanvas')">Back Print</button>
+</div>
+<div class="canvaswrap"><canvas id="backPreviewCanvas" width="400" height="252"></canvas></div>
+</div>
+
+<div class="editor">
+<h3>🖼️ Card Border</h3>
+<select id="iborder" onchange="updateIDPreview()">
+<option value="none">No Border</option>
+<option value="black">Black</option>
+<option value="blue">Blue</option>
+<option value="red">Red</option>
+</select>
+<label>Border Width</label>
+<input type="range" id="ibw" min="0" max="12" value="2">
+</div>
+
+<div class="tools">
+<button class="green" onclick="makeIDSheet()">A4 Front + Back Sheet</button>
+<button class="orange" onclick="printCanvas('idCanvas')">🖨️ A4 Print / Save PDF</button>
+<button onclick="downloadCanvas('idCanvas','ID-Card-Sheet.png','image/png')">PNG डाउनलोड</button>
+<button class="gray" onclick="resetID()">Reset All</button>
+</div>
+<div class="canvaswrap"><canvas id="idCanvas" width="794" height="1123"></canvas></div>
+<p class="small">नोट: A4 शीट पर दोनों कार्ड एक ही लाइन में रखे जाएँगे। वास्तविक प्रिंट आकार प्रिंटर के Scale सेटिंग पर निर्भर करता है। Print में Actual Size / 100% चुनें।</p>
 </div>
 </section>
 
 <!-- PDF STUDIO -->
-<section id="pdf" class="page hidden">
+<section id="pdf" class="pg hidden">
 <div class="panel">
 <h2>📄 PDF Studio</h2>
 <label>Image या PDF चुनें</label>
-<input type="file" id="pdfFile" accept="image/*,application/pdf" onchange="pdfLoad(this)">
-<img id="pdfPreview" class="preview hidden">
-<p class="notice">Image को A4 PDF के रूप में Print / Save PDF कर सकते हैं। पहले से मौजूद PDF को ब्राउज़र में खोलें।</p>
-<div class="toolbar">
-<button onclick="printPreview('pdfPreview')">Print / Save PDF</button>
-<button class="green" onclick="downloadImage('pdfPreview')">Image डाउनलोड</button>
+<input type="file" id="pdfInput" accept="image/*,application/pdf" onchange="pdfLoad(this)">
+<img id="pdfImg" class="preview hidden">
+<div class="tools">
+<button class="green" onclick="printPDF()">🖨️ Print / Save PDF</button>
+<button onclick="downloadPDFImage()">Image Download</button>
 </div>
-</div>
-</section>
-
-<!-- ID CARD -->
-<section id="idcard" class="page hidden">
-<div class="panel">
-<h2>🪪 ID Card Editor</h2>
-<label>Front फोटो</label>
-<input type="file" accept="image/*" onchange="loadImage(this,'frontPreview')">
-<img id="frontPreview" class="preview hidden">
-<label>Back फोटो (वैकल्पिक)</label>
-<input type="file" accept="image/*" onchange="loadImage(this,'backPreview')">
-<img id="backPreview" class="preview hidden">
-<div class="row">
-<div><label>Card Width (mm)</label><input type="number" id="cardW" value="86"></div>
-<div><label>Card Height (mm)</label><input type="number" id="cardH" value="54"></div>
-</div>
-<div class="toolbar">
-<button onclick="makeIDSheet()">A4 ID Sheet</button>
-<button class="green" onclick="printCanvas('idCanvas')">Print / Save PDF</button>
-</div>
-<canvas id="idCanvas" style="width:100%;border:1px solid #ddd"></canvas>
+<p class="notice">PDF फाइल चुनने पर वह नए टैब में खुलेगी। Image चुनने पर Print से Save as PDF कर सकते हैं।</p>
 </div>
 </section>
 
-<!-- CUSTOMER LOGIN -->
-<section id="customerLogin" class="page hidden">
+<!-- CUSTOMER -->
+<section id="customer" class="pg hidden">
 <div class="panel">
-<h2>👤 Customer Login / Registration</h2>
-<div id="customerLoginBox">
-<label>Username</label><input id="cuUser" placeholder="अपना Username">
-<label>Password</label><input id="cuPass" type="password" placeholder="Password">
-<div class="row">
+<h2>👤 Customer Login</h2>
+<label>Username</label><input id="cu" placeholder="Username">
+<label>Password</label><input id="cp" type="password" placeholder="Password">
+<div class="tools">
 <button onclick="customerLogin()">Login</button>
-<button class="green" onclick="registerCustomer()">नया Registration</button>
+<button class="green" onclick="register()">Registration</button>
+<button class="gray" onclick="customerLogout()">Logout</button>
 </div>
-</div>
-<div id="customerArea" class="hidden">
-<h3>Customer Dashboard</h3>
-<p id="customerWelcome"></p>
-<p id="customerStatus"></p>
-<button onclick="showPage('payment')">₹100 फीस जमा करें</button>
-<button class="gray" onclick="logout()">Logout</button>
-</div>
+<div id="customerInfo"></div>
 </div>
 </section>
 
 <!-- PAYMENT -->
-<section id="payment" class="page hidden">
+<section id="payment" class="pg hidden">
 <div class="panel">
 <h2>💳 Customer Payment</h2>
-<p>Customer Service Access Fee: <b>₹100</b></p>
-<p class="notice">यह Manual UPI भुगतान व्यवस्था है। Admin द्वारा पुष्टि होने के बाद ही ग्राहक का एक्सेस सक्रिय होगा।</p>
-<div id="paymentBox">
-<label>अपना Username</label><input id="payUser" placeholder="Customer Username">
-<label>UPI ID</label><input id="upiID" placeholder="अपना UPI ID यहाँ सेट करें">
-<div class="grid">
-<button onclick="payUPI('phonepe')">🟣 PhonePe</button>
-<button onclick="payUPI('gpay')">🔵 Google Pay</button>
-<button onclick="payUPI('paytm')">🔵 Paytm</button>
-<button onclick="payUPI('upi')">🟢 अन्य UPI</button>
+<p>Service Access Fee: <b>₹100</b></p>
+<label>Username</label><input id="payUser">
+<label>Admin UPI ID</label><input id="payUPI" readonly>
+<div class="tools">
+<button onclick="upiPay('phonepe')">PhonePe</button>
+<button onclick="upiPay('gpay')">Google Pay</button>
+<button onclick="upiPay('paytm')">Paytm</button>
+<button onclick="upiPay('upi')">Other UPI</button>
 </div>
-<label>Transaction ID / UTR</label><input id="utr" placeholder="भुगतान के बाद UTR नंबर">
-<button class="green" onclick="submitPayment()">Payment Approval के लिए भेजें</button>
-</div>
+<label>UTR / Transaction ID</label><input id="utr">
+<button class="green" onclick="submitPayment()">Approval के लिए भेजें</button>
 </div>
 </section>
 
 <!-- ADMIN LOGIN -->
-<section id="adminLogin" class="page hidden">
+<section id="adminLogin" class="pg hidden">
 <div class="panel">
-<h2>🔐 Admin Secure Login</h2>
+<h2>🔐 Admin Login</h2>
 <div id="adminSetup" class="hidden">
-<div class="notice">पहली बार उपयोग: अपना नया Admin Password बनाएँ। इसे सुरक्षित रखें।</div>
-<label>नया Admin Password</label><input type="password" id="newAdminPass">
-<label>Confirm Password</label><input type="password" id="confirmAdminPass">
-<button onclick="setupAdmin()">Admin Password सेट करें</button>
+<p>पहली बार अपना Admin Password बनाएँ।</p>
+<input type="password" id="newPass" placeholder="New Password">
+<input type="password" id="confirmPass" placeholder="Confirm Password">
+<button onclick="setupAdmin()">Password सेट करें</button>
 </div>
 <div id="adminLoginBox">
-<label>Admin Password</label><input type="password" id="adminPass" placeholder="Admin Password">
+<input type="password" id="adminPass" placeholder="Admin Password">
 <button onclick="adminLogin()">Admin Login</button>
 </div>
 </div>
 </section>
 
 <!-- ADMIN PANEL -->
-<section id="adminPanel" class="page hidden">
+<section id="adminPanel" class="pg hidden">
 <div class="panel">
-<h2>👑 Admin Master Dashboard</h2>
-<badge class="badge">ADMIN FULL ACCESS</badge>
-<p>Admin Mode सक्रिय है। फीस और Customer Login की कोई बाध्यता नहीं।</p>
-<div class="grid">
-<div class="stat"><b id="totalCustomers">0</b>Customers</div>
-<div class="stat"><b id="pendingCount">0</b>Pending Payments</div>
+<h2>👑 ADMIN MASTER DASHBOARD</h2>
+<span class="badge">FULL ACCESS – NO PAYMENT REQUIRED</span>
+<div class="grid" style="margin-top:15px">
+<div class="stat"><b id="usersCount">0</b>Customers</div>
+<div class="stat"><b id="pendingCount">0</b>Pending</div>
 <div class="stat"><b id="approvedCount">0</b>Approved</div>
 <div class="stat"><b>103</b>Services</div>
 </div>
-<div class="toolbar">
-<button onclick="showPage('services')">103 सेवाएँ</button>
-<button onclick="showPage('photo')">Photo Studio</button>
-<button onclick="showPage('pdf')">PDF Studio</button>
-<button onclick="showPage('idcard')">ID Card</button>
-<button class="gray" onclick="logout()">Logout</button>
+<div class="tools">
+<button onclick="page('services')">103 Services</button>
+<button onclick="page('photo')">Photo Studio</button>
+<button onclick="page('idcard')">ID Card</button>
+<button onclick="page('pdf')">PDF Studio</button>
+<button class="red" onclick="adminLogout()">Logout</button>
 </div>
 </div>
 <div class="panel">
-<h2>👥 Customer List</h2>
+<h2>Customer List</h2>
 <div class="tablewrap"><table>
 <thead><tr><th>Username</th><th>Status</th><th>Action</th></tr></thead>
-<tbody id="customerTable"></tbody>
+<tbody id="userTable"></tbody>
 </table></div>
 </div>
 <div class="panel">
-<h2>💰 Payment Approval</h2>
+<h2>Payment Approval</h2>
 <div class="tablewrap"><table>
-<thead><tr><th>Username</th><th>UTR</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
-<tbody id="paymentTable"></tbody>
+<thead><tr><th>User</th><th>UTR</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+<tbody id="payTable"></tbody>
 </table></div>
 </div>
 <div class="panel">
 <h2>⚙️ Website Settings</h2>
-<label>UPI ID (अपनी वास्तविक UPI ID डालें)</label>
-<input id="settingUPI" placeholder="yourname@upi">
-<button onclick="saveSettings()">Settings Save</button>
-<button class="red" onclick="adminLogout()">Admin Logout</button>
+<label>UPI ID</label>
+<input id="adminUPI" placeholder="yourname@upi">
+<button onclick="saveUPI()">Save UPI ID</button>
 </div>
 </section>
-
 </main>
-<footer>© 2026 Gramin Grahak Sewa PRO 5.0 | Digital Service Centre</footer>
+
+<footer>© 2026 Gramin Grahak Sewa PRO 5.0</footer>
 <div id="toast"></div>
 
 <script>
-// ==========================================
-// GRAMIN GRAHAK SEWA PRO 5.0
-// ==========================================
-
+// ==================================
+// CORE
+// ==================================
 const $=id=>document.getElementById(id);
-const get=(key,def=[])=>{try{return JSON.parse(localStorage.getItem(key))??def}catch(e){return def}};
-const put=(key,val)=>localStorage.setItem(key,JSON.stringify(val));
-let isAdmin=false,currentCustomer=null;
-
-function toast(msg){
-$('toast').textContent=msg;$('toast').style.display='block';
-setTimeout(()=>$('toast').style.display='none',2600);
+let isAdmin=false,currentUser=null;
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
+const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function msg(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2500)}
+function page(id,btn){
+if(['services','photo','idcard','pdf'].includes(id)&&!isAdmin&&!(currentUser&&currentUser.approved)){
+msg('Customer Login और Payment Approval जरूरी है');
+id='customer';
 }
-function showPage(id,btn){
-if(id==='adminPanel'&&!isAdmin){id='adminLogin';}
-if(id==='services'||id==='photo'||id==='pdf'||id==='idcard'){
-if(!isAdmin&&!customerHasAccess()){
-toast('पहले Customer Login और Payment Approval जरूरी है।');
-id='customerLogin';
-}}
-document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+document.querySelectorAll('.pg').forEach(x=>x.classList.add('hidden'));
 $(id).classList.remove('hidden');
-document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
 if(btn)btn.classList.add('active');
 if(id==='adminPanel')renderAdmin();
-if(id==='adminLogin')checkAdminSetup();
+if(id==='adminLogin')checkSetup();
+if(id==='payment')$('payUPI').value=localStorage.getItem('ggs_upi')||'';
 }
-function customerHasAccess(){
-return !!(currentCustomer&&currentCustomer.approved);
-}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
+// ==================================
 // 103 SERVICES
-const rawServices=[
-['🪪','आधार कार्ड','Aadhaar','https://uidai.gov.in/'],
-['🆔','जन आधार कार्ड','Rajasthan','https://janaadhaar.rajasthan.gov.in/'],
-['🗳️','वोटर कार्ड','Identity','https://voters.eci.gov.in/'],
-['🛂','पासपोर्ट सेवा','Identity','https://www.passportindia.gov.in/'],
-['🚗','ड्राइविंग लाइसेंस','Transport','https://parivahan.gov.in/'],
-['🚘','वाहन रजिस्ट्रेशन','Transport','https://parivahan.gov.in/'],
-['📜','ई-श्रम कार्ड','Labour','https://eshram.gov.in/'],
-['👷','श्रमिक कार्ड','Labour','https://labour.rajasthan.gov.in/'],
-['🌾','PM किसान','Farmer','https://pmkisan.gov.in/'],
-['🌱','किसान पंजीकरण','Farmer','https://agriculture.rajasthan.gov.in/'],
-['🌾','फसल बीमा','Farmer','https://pmfby.gov.in/'],
-['💳','किसान क्रेडिट कार्ड','Farmer','https://www.myscheme.gov.in/'],
-['🏦','बैंक खाता जानकारी','Bank','https://www.rbi.org.in/'],
-['💰','PM जनधन योजना','Bank','https://pmjdy.gov.in/'],
-['👴','अटल पेंशन योजना','Bank','https://www.npscra.nsdl.co.in/'],
-['👵','PM मानधन योजना','Bank','https://maandhan.in/'],
-['🏠','आवास योजना','Government','https://pmaymis.gov.in/'],
-['🚽','स्वच्छ भारत योजना','Government','https://swachhbharatmission.ddws.gov.in/'],
-['🍚','राशन कार्ड','Rajasthan','https://food.rajasthan.gov.in/'],
-['📋','जन सूचना पोर्टल','Rajasthan','https://jansoochna.rajasthan.gov.in/'],
-['🌐','राजस्थान SSO','Rajasthan','https://sso.rajasthan.gov.in/'],
-['🏢','ई-मित्र','Rajasthan','https://emitra.rajasthan.gov.in/'],
-['🌍','अपना खाता','Land','https://apnakhata.rajasthan.gov.in/'],
-['📃','जमाबंदी नकल','Land','https://apnakhata.rajasthan.gov.in/'],
-['🗺️','भू नक्शा','Land','https://bhunaksha.rajasthan.gov.in/'],
-['📄','जाति प्रमाण पत्र','Certificate','https://sso.rajasthan.gov.in/'],
-['📄','मूल निवास प्रमाण पत्र','Certificate','https://sso.rajasthan.gov.in/'],
-['📄','आय प्रमाण पत्र','Certificate','https://sso.rajasthan.gov.in/'],
-['📄','जन्म प्रमाण पत्र','Certificate','https://pehchan.raj.nic.in/'],
-['📄','मृत्यु प्रमाण पत्र','Certificate','https://pehchan.raj.nic.in/'],
-['💍','विवाह प्रमाण पत्र','Certificate','https://pehchan.raj.nic.in/'],
-['🎓','छात्रवृत्ति आवेदन','Education','https://scholarships.gov.in/'],
-['📚','स्कूल प्रवेश','Education','https://rajshaladarpan.rajasthan.gov.in/'],
-['🎓','बोर्ड रिजल्ट','Education','https://rajeduboard.rajasthan.gov.in/'],
-['📝','सरकारी नौकरी आवेदन','Education','https://sso.rajasthan.gov.in/'],
-['📋','SSC आवेदन','Education','https://ssc.gov.in/'],
-['🚆','रेलवे भर्ती','Education','https://www.rrbapply.gov.in/'],
-['🏛️','UPSC आवेदन','Education','https://upsc.gov.in/'],
-['👮','राजस्थान पुलिस','Education','https://police.rajasthan.gov.in/'],
-['💡','बिजली बिल','Bill','https://energy.rajasthan.gov.in/'],
-['💧','पानी बिल','Bill','https://phedwater.rajasthan.gov.in/'],
-['📱','मोबाइल रिचार्ज','Recharge','https://www.jio.com/'],
-['📡','DTH रिचार्ज','Recharge','https://www.tataplay.com/'],
-['🔥','गैस बुकिंग','Gas','https://cx.indianoil.in/'],
-['🛢️','Indane Gas','Gas','https://cx.indianoil.in/'],
-['🛢️','Bharat Gas','Gas','https://my.ebharatgas.com/'],
-['🛢️','HP Gas','Gas','https://myhpgas.in/'],
-['🚘','FASTag','Transport','https://fastag.ihmcl.com/'],
-['💳','EMI भुगतान','Bank','https://www.rbi.org.in/'],
-['💸','UPI भुगतान','Payment','https://www.npci.org.in/'],
-['🏥','आयुष्मान भारत','Health','https://beneficiary.nha.gov.in/'],
-['🏥','ABHA हेल्थ ID','Health','https://abha.abdm.gov.in/'],
-['💉','स्वास्थ्य योजना','Health','https://www.myscheme.gov.in/'],
-['👩','महिला सहायता योजना','Government','https://sso.rajasthan.gov.in/'],
-['👶','आंगनवाड़ी जानकारी','Government','https://wcd.rajasthan.gov.in/'],
-['👨‍👩‍👧','पेंशन योजना','Government','https://ssp.rajasthan.gov.in/'],
-['👴','वृद्धावस्था पेंशन','Government','https://ssp.rajasthan.gov.in/'],
-['♿','दिव्यांग पेंशन','Government','https://ssp.rajasthan.gov.in/'],
-['👩‍🦳','विधवा पेंशन','Government','https://ssp.rajasthan.gov.in/'],
-['🏡','मनरेगा जॉब कार्ड','Government','https://nrega.nic.in/'],
-['👷','मनरेगा भुगतान','Government','https://nrega.nic.in/'],
-['🏘️','ग्राम पंचायत जानकारी','Rajasthan','https://egramswaraj.gov.in/'],
-['📊','ई-ग्राम स्वराज','Rajasthan','https://egramswaraj.gov.in/'],
-['📑','RTI ऑनलाइन','Government','https://rtionline.gov.in/'],
-['🗳️','चुनाव जानकारी','Government','https://eci.gov.in/'],
-['📄','पैन कार्ड','Identity','https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html'],
-['🔍','पैन स्थिति','Identity','https://www.incometax.gov.in/'],
-['💰','इनकम टैक्स','Tax','https://www.incometax.gov.in/'],
-['📑','GST पोर्टल','Tax','https://www.gst.gov.in/'],
-['🏢','उद्योग आधार / Udyam','Business','https://udyamregistration.gov.in/'],
-['🛍️','व्यापार पंजीकरण','Business','https://www.mca.gov.in/'],
-['📋','FSSAI लाइसेंस','Business','https://foscos.fssai.gov.in/'],
-['🏬','दुकान स्थापना','Business','https://labour.rajasthan.gov.in/'],
-['📦','डाक सेवा','Other','https://www.indiapost.gov.in/'],
-['✉️','स्पीड पोस्ट','Other','https://www.indiapost.gov.in/'],
-['🚉','रेलवे टिकट','Other','https://www.irctc.co.in/'],
-['🚌','बस टिकट','Other','https://rsrtconline.rajasthan.gov.in/'],
-['✈️','हवाई टिकट जानकारी','Other','https://www.airindia.com/'],
-['🏨','होटल बुकिंग','Other','https://www.irctctourism.com/'],
-['📱','Jio रिचार्ज','Recharge','https://www.jio.com/'],
-['📱','Airtel रिचार्ज','Recharge','https://www.airtel.in/'],
-['📱','Vi रिचार्ज','Recharge','https://www.myvi.in/'],
-['📱','BSNL रिचार्ज','Recharge','https://www.bsnl.co.in/'],
-['📺','Dish TV','Recharge','https://www.dishtv.in/'],
-['📺','Airtel Digital TV','Recharge','https://www.airtel.in/digital-tv'],
-['📺','Tata Play','Recharge','https://www.tataplay.com/'],
-['📃','बिजली कनेक्शन आवेदन','Bill','https://energy.rajasthan.gov.in/'],
-['💡','बिजली शिकायत','Bill','https://energy.rajasthan.gov.in/'],
-['💧','पानी कनेक्शन','Bill','https://phedwater.rajasthan.gov.in/'],
-['🏠','प्रधानमंत्री आवास ग्रामीण','Government','https://pmayg.nic.in/'],
-['🌳','वन एवं पर्यावरण जानकारी','Government','https://forest.rajasthan.gov.in/'],
-['🐄','पशुपालन योजना','Farmer','https://animalhusbandry.rajasthan.gov.in/'],
-['🐮','पशु बीमा जानकारी','Farmer','https://animalhusbandry.rajasthan.gov.in/'],
-['🌾','कृषि मंडी भाव','Farmer','https://mandibhav.rajasthan.gov.in/'],
-['🌱','बीज एवं खाद जानकारी','Farmer','https://agriculture.rajasthan.gov.in/'],
-['🧑‍🌾','किसान पोर्टल','Farmer','https://farmer.gov.in/'],
-['🧾','ई-चालान','Transport','https://echallan.parivahan.gov.in/'],
-['🚘','वाहन टैक्स','Transport','https://parivahan.gov.in/'],
-['🪪','RC डाउनलोड','Transport','https://parivahan.gov.in/'],
-['🪪','लर्निंग लाइसेंस','Transport','https://sarathi.parivahan.gov.in/'],
-['📄','डिजिलॉकर','Other','https://www.digilocker.gov.in/'],
-['📱','उमंग ऐप','Other','https://web.umang.gov.in/'],
-['🔎','सरकारी योजना खोजें','Government','https://www.myscheme.gov.in/'],
-['📃','ई-कोर्ट जानकारी','Government','https://ecourts.gov.in/'],
-['⚖️','कानूनी सहायता','Government','https://nalsa.gov.in/'],
-['📚','ओपन स्कूल','Education','https://rajeduboard.rajasthan.gov.in/'],
-['📝','परीक्षा आवेदन','Education','https://sso.rajasthan.gov.in/'],
-['📊','रिजल्ट एवं मेरिट सूची','Education','https://rajeduboard.rajasthan.gov.in/']
-];
-const services=rawServices.slice(0,103).map((s,i)=>({id:i+1,icon:s[0],name:s[1],cat:s[2],url:s[3]}));
+// ==================================
+const S=[
+["🪪","आधार कार्ड","Identity","https://uidai.gov.in/"],
+["🆔","जन आधार कार्ड","Rajasthan","https://janaadhaar.rajasthan.gov.in/"],
+["🗳️","वोटर कार्ड","Identity","https://voters.eci.gov.in/"],
+["🛂","पासपोर्ट","Identity","https://www.passportindia.gov.in/"],
+["🚗","ड्राइविंग लाइसेंस","Transport","https://parivahan.gov.in/"],
+["🚘","वाहन रजिस्ट्रेशन","Transport","https://parivahan.gov.in/"],
+["📜","ई श्रम कार्ड","Labour","https://eshram.gov.in/"],
+["👷","श्रमिक कार्ड","Labour","https://labour.rajasthan.gov.in/"],
+["🌾","PM किसान","Farmer","https://pmkisan.gov.in/"],
+["🌱","किसान पंजीकरण","Farmer","https://agriculture.rajasthan.gov.in/"],
+["🌾","फसल बीमा","Farmer","https://pmfby.gov.in/"],
+["💳","किसान क्रेडिट कार्ड","Farmer","https://www.myscheme.gov.in/"],
+["🏦","बैंकिंग जानकारी","Bank","https://www.rbi.org.in/"],
+["💰","जन धन योजना","Bank","https://pmjdy.gov.in/"],
+["👴","अटल पेंशन योजना","Bank","https://www.npscra.nsdl.co.in/"],
+["👵","मानधन योजना","Bank","https://maandhan.in/"],
+["🏠","आवास योजना","Government","https://pmaymis.gov.in/"],
+["🚽","स्वच्छ भारत","Government","https://swachhbharatmission.ddws.gov.in/"],
+["🍚","राशन कार्ड","Rajasthan","https://food.rajasthan.gov.in/"],
+["📋","जन सूचना","Rajasthan","https://jansoochna.rajasthan.gov.in/"],
+["🌐","राजस्थान SSO","Rajasthan","https://sso.rajasthan.gov.in/"],
+["🏢","ई-मित्र","Rajasthan","https://emitra.rajasthan.gov.in/"],
+["🌍","अपना खाता","Land","https://apnakhata.rajasthan.gov.in/"],
+["📃","जमाबंदी","Land","https://apnakhata.rajasthan.gov.in/"],
+["🗺️","भू नक्शा","Land","https://bhunaksha.rajasthan.gov.in/"],
+["📄","जाति प्रमाण पत्र","Certificate","https://sso.rajasthan.gov.in/"],
+["📄","मूल निवास","Certificate","https://sso.rajasthan.gov.in/"],
+["📄","आय प्रमाण पत्र","Certificate","https://sso.rajasthan.gov.in/"],
+["📄","जन्म प्रमाण पत्र","Certificate","https://pehchan.raj.nic.in/"],
+["📄","मृत्यु प्रमाण पत्र","Certificate","https://pehchan.raj.nic.in/"],
+["💍","विवाह प्रमाण पत्र","Certificate","https://pehchan.raj.nic.in/"],
+["🎓","छात्रवृत्ति","Education","https://scholarships.gov.in/"],
+["📚","स्कूल प्रवेश","Education","https://rajshaladarpan.rajasthan.gov.in/"],
+["🎓","बोर्ड रिजल्ट","Education","https://rajeduboard.rajasthan.gov.in/"],
+["📝","सरकारी नौकरी","Education","https://sso.rajasthan.gov.in/"],
+["📋","SSC आवेदन","Education","https://ssc.gov.in/"],
+["🚆","रेलवे भर्ती","Education","https://www.rrbapply.gov.in/"],
+["🏛️","UPSC","Education","https://upsc.gov.in/"],
+["👮","राजस्थान पुलिस","Education","https://police.rajasthan.gov.in/"],
+["💡","बिजली बिल","Bill","https://energy.rajasthan.gov.in/"],
+["💧","पानी बिल","Bill","https://phedwater.rajasthan.gov.in/"],
+["📱","मोबाइल रिचार्ज","Recharge","https://www.jio.com/"],
+["📡","DTH रिचार्ज","Recharge","https://www.tataplay.com/"],
+["🔥","गैस बुकिंग","Gas","https://cx.indianoil.in/"],
+["🛢️","Indane Gas","Gas","https://cx.indianoil.in/"],
+["🛢️","Bharat Gas","Gas","https://my.ebharatgas.com/"],
+["🛢️","HP Gas","Gas","https://myhpgas.in/"],
+["🚘","FASTag","Transport","https://fastag.ihmcl.com/"],
+["💳","EMI जानकारी","Bank","https://www.rbi.org.in/"],
+["💸","UPI जानकारी","Payment","https://www.npci.org.in/"],
+["🏥","आयुष्मान भारत","Health","https://beneficiary.nha.gov.in/"],
+["🏥","ABHA Health ID","Health","https://abha.abdm.gov.in/"],
+["💉","स्वास्थ्य योजना","Health","https://www.myscheme.gov.in/"],
+["👩","महिला योजना","Government","https://sso.rajasthan.gov.in/"],
+["👶","आंगनवाड़ी","Government","https://wcd.rajasthan.gov.in/"],
+["👨‍👩‍👧","पेंशन योजना","Government","https://ssp.rajasthan.gov.in/"],
+["👴","वृद्धावस्था पेंशन","Government","https://ssp.rajasthan.gov.in/"],
+["♿","दिव्यांग पेंशन","Government","https://ssp.rajasthan.gov.in/"],
+["👩‍🦳","विधवा पेंशन","Government","https://ssp.rajasthan.gov.in/"],
+["🏡","मनरेगा जॉब कार्ड","Government","https://nrega.nic.in/"],
+["👷","मनरेगा भुगतान","Government","https://nrega.nic.in/"],
+["🏘️","ग्राम पंचायत","Rajasthan","https://egramswaraj.gov.in/"],
+["📊","ई ग्राम स्वराज","Rajasthan","https://egramswaraj.gov.in/"],
+["📑","RTI ऑनलाइन","Government","https://rtionline.gov.in/"],
+["🗳️","चुनाव जानकारी","Government","https://eci.gov.in/"],
+["💳","PAN Card Apply","Identity","https://www.pan.utiitsl.com/"],
+["🔵","PAN Card Protean Apply","Identity","https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"],
+["🔎","PAN Status","Identity","https://www.incometax.gov.in/"],
+["📑","PAN Correction","Identity","https://www.pan.utiitsl.com/"],
+["📑","PAN Reprint","Identity","https://www.pan.utiitsl.com/"],
+["💰","Income Tax","Tax","https://www.incometax.gov.in/"],
+["📑","GST Portal","Tax","https://www.gst.gov.in/"],
+["🏢","Udyam Registration","Business","https://udyamregistration.gov.in/"],
+["🛍️","व्यापार पंजीकरण","Business","https://www.mca.gov.in/"],
+["📋","FSSAI लाइसेंस","Business","https://foscos.fssai.gov.in/"],
+["🏬","दुकान स्थापना","Business","https://labour.rajasthan.gov.in/"],
+["📦","डाक सेवा","Other","https://www.indiapost.gov.in/"],
+["✉️","स्पीड पोस्ट","Other","https://www.indiapost.gov.in/"],
+["🚉","रेलवे टिकट","Other","https://www.irctc.co.in/"],
+["🚌","बस टिकट","Other","https://rsrtconline.rajasthan.gov.in/"],
+["✈️","हवाई टिकट","Other","https://www.airindia.com/"],
+["🏨","होटल बुकिंग","Other","https://www.irctctourism.com/"],
+["📱","Jio Recharge","Recharge","https://www.jio.com/"],
+["📱","Airtel Recharge","Recharge","https://www.airtel.in/"],
+["📱","Vi Recharge","Recharge","https://www.myvi.in/"],
+["📱","BSNL Recharge","Recharge","https://www.bsnl.co.in/"],
+["📺","Dish TV","Recharge","https://www.dishtv.in/"],
+["📺","Airtel Digital TV","Recharge","https://www.airtel.in/digital-tv"],
+["📺","Tata Play","Recharge","https://www.tataplay.com/"],
+["💡","बिजली कनेक्शन","Bill","https://energy.rajasthan.gov.in/"],
+["⚡","बिजली शिकायत","Bill","https://energy.rajasthan.gov.in/"],
+["💧","पानी कनेक्शन","Bill","https://phedwater.rajasthan.gov.in/"],
+["🏠","PM आवास ग्रामीण","Government","https://pmayg.nic.in/"],
+["🌳","वन एवं पर्यावरण","Government","https://forest.rajasthan.gov.in/"],
+["🐄","पशुपालन योजना","Farmer","https://animalhusbandry.rajasthan.gov.in/"],
+["🐮","पशु बीमा","Farmer","https://animalhusbandry.rajasthan.gov.in/"],
+["🌾","मंडी भाव","Farmer","https://mandibhav.rajasthan.gov.in/"],
+["🌱","बीज एवं खाद","Farmer","https://agriculture.rajasthan.gov.in/"],
+["🧑‍🌾","किसान पोर्टल","Farmer","https://farmer.gov.in/"],
+["🧾","ई चालान","Transport","https://echallan.parivahan.gov.in/"],
+["🚘","वाहन टैक्स","Transport","https://parivahan.gov.in/"],
+["🪪","RC डाउनलोड","Transport","https://parivahan.gov.in/"],
+["🪪","लर्निंग लाइसेंस","Transport","https://sarathi.parivahan.gov.in/"],
+["📄","DigiLocker","Other","https://www.digilocker.gov.in/"],
+["📱","UMANG","Other","https://web.umang.gov.in/"],
+["🔎","सरकारी योजना खोजें","Government","https://www.myscheme.gov.in/"]
+].slice(0,103);
+
 function renderServices(){
-const q=($('search')?.value||'').toLowerCase();
-const c=$('category')?.value||'';
-const list=services.filter(s=>(s.name.toLowerCase().includes(q)||s.cat.toLowerCase().includes(q))&&(!c||s.cat===c));
-$('serviceCount').textContent=`दिखाई जा रही सेवाएँ: ${list.length} / 103`;
-$('serviceGrid').innerHTML=list.map(s=>`<div class="service" onclick="openService(${s.id})"><span class="ico">${s.icon}</span><strong>${s.name}</strong><p class="small">${s.cat}</p></div>`).join('');
+const q=$('search').value.toLowerCase(),c=$('cat').value;
+let arr=S.filter(x=>(x[1]+' '+x[2]).toLowerCase().includes(q)&&(!c||x[2]===c));
+$('count').textContent=`कुल ${arr.length} सेवाएँ / 103`;
+$('serviceGrid').innerHTML=arr.map(x=>`<div class="service" onclick="openService('${encodeURIComponent(x[3])}')"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join('');
 }
-function openService(id){
-const s=services.find(x=>x.id===id);
-if(!s)return;
-if(!isAdmin&&!customerHasAccess()){toast('पहले Customer Login और Approval जरूरी है');showPage('customerLogin');return;}
-window.open(s.url,'_blank','noopener');
-}
+function openService(url){window.open(decodeURIComponent(url),'_blank','noopener')}
 function initServices(){
-const cats=[...new Set(services.map(s=>s.cat))];
-$('category').innerHTML='<option value="">सभी श्रेणियाँ</option>'+cats.map(c=>`<option>${c}</option>`).join('');
-$('quickServices').innerHTML=services.slice(0,8).map(s=>`<div class="service" onclick="openService(${s.id})"><span class="ico">${s.icon}</span><strong>${s.name}</strong></div>`).join('');
+$('cat').innerHTML='<option value="">सभी श्रेणियाँ</option>'+[...new Set(S.map(x=>x[2]))].map(c=>`<option>${c}</option>`).join('');
 renderServices();
 }
 
-// ADMIN
-function checkAdminSetup(){
-const exists=!!localStorage.getItem('ggs_admin_hash');
-$('adminSetup').classList.toggle('hidden',exists);
-$('adminLoginBox').classList.toggle('hidden',!exists);
-}
-async function hashPassword(p){
-const data=new TextEncoder().encode(p);
-const hash=await crypto.subtle.digest('SHA-256',data);
-return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-async function setupAdmin(){
-const p=$('newAdminPass').value,c=$('confirmAdminPass').value;
-if(p.length<8)return toast('कम से कम 8 अक्षर का Password रखें');
-if(p!==c)return toast('दोनों Password समान नहीं हैं');
-localStorage.setItem('ggs_admin_hash',await hashPassword(p));
-toast('Admin Password सेट हो गया');
-checkAdminSetup();
-}
-async function adminLogin(){
-const p=$('adminPass').value;
-if(!p)return toast('Password डालें');
-if(await hashPassword(p)!==localStorage.getItem('ggs_admin_hash'))return toast('गलत Admin Password');
-isAdmin=true;currentCustomer=null;
-toast('Admin Login सफल');
-showPage('adminPanel');
-}
-function adminLogout(){isAdmin=false;showPage('home');toast('Admin Logout');}
-
-// CUSTOMER
-function registerCustomer(){
-const u=$('cuUser').value.trim(),p=$('cuPass').value;
-if(u.length<3||p.length<6)return toast('Username और 6 अक्षर का Password जरूरी');
-let users=get('ggs_users',{});
-if(users[u])return toast('यह Username पहले से मौजूद है');
-users[u]={password:p,approved:false,created:new Date().toLocaleDateString('hi-IN')};
-put('ggs_users',users);
-toast('Registration सफल। अब Login करें');
-}
-function customerLogin(){
-const u=$('cuUser').value.trim(),p=$('cuPass').value;
-let users=get('ggs_users',{});
-if(!users[u]||users[u].password!==p)return toast('गलत Username या Password');
-currentCustomer={username:u,approved:users[u].approved};
-$('customerLoginBox').classList.add('hidden');
-$('customerArea').classList.remove('hidden');
-$('customerWelcome').textContent='स्वागत है: '+u;
-$('customerStatus').textContent=currentCustomer.approved?'आपका अकाउंट Approved है। सभी सेवाएँ उपलब्ध हैं।':'आपका अकाउंट Pending है। ₹100 फीस जमा करें और Approval प्राप्त करें।';
-toast('Customer Login सफल');
-}
-function logout(){
-currentCustomer=null;isAdmin=false;
-$('customerLoginBox').classList.remove('hidden');
-$('customerArea').classList.add('hidden');
-showPage('home');toast('Logout सफल');
-}
-
-// PAYMENT
-function payUPI(app){
-const upi=$('settingUPI').value||localStorage.getItem('ggs_upi')||'';
-const user=$('payUser').value.trim()||currentCustomer?.username||'';
-if(!upi)return toast('Admin से UPI ID सेट करवाएँ');
-if(!user)return toast('Username डालें');
-const uri=`upi://pay?pa=${encodeURIComponent(upi)}&pn=${encodeURIComponent('Gramin Grahak Sewa')}&am=100&cu=INR&tn=${encodeURIComponent('Service Fee '+user)}`;
-if(app==='phonepe')window.location.href='phonepe://pay?'+uri.split('?')[1];
-else if(app==='gpay')window.location.href='tez://upi/pay?'+uri.split('?')[1];
-else if(app==='paytm')window.location.href='paytmmp://pay?'+uri.split('?')[1];
-else window.location.href=uri;
-}
-function submitPayment(){
-const u=$('payUser').value.trim(),utr=$('utr').value.trim();
-if(!u||!utr)return toast('Username और UTR जरूरी हैं');
-let users=get('ggs_users',{});
-if(!users[u])return toast('Customer Username नहीं मिला');
-let payments=get('ggs_payments',[]);
-if(payments.some(p=>p.utr===utr))return toast('यह UTR पहले भेजा जा चुका है');
-payments.push({username:u,utr,amount:100,status:'Pending',date:new Date().toLocaleString('hi-IN')});
-put('ggs_payments',payments);
-toast('Payment Approval के लिए भेज दिया गया');
-}
-
-// ADMIN PANEL
-function renderAdmin(){
-const users=get('ggs_users',{});
-const payments=get('ggs_payments',[]);
-$('totalCustomers').textContent=Object.keys(users).length;
-$('pendingCount').textContent=payments.filter(p=>p.status==='Pending').length;
-$('approvedCount').textContent=payments.filter(p=>p.status==='Approved').length;
-$('customerTable').innerHTML=Object.entries(users).map(([u,v])=>`<tr><td>${esc(u)}</td><td>${v.approved?'Approved':'Pending'}</td><td><button class="red" onclick="deleteCustomer('${encodeURIComponent(u)}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="3">कोई Customer नहीं</td></tr>';
-$('paymentTable').innerHTML=payments.map((p,i)=>`<tr><td>${esc(p.username)}</td><td>${esc(p.utr)}</td><td>₹${p.amount}</td><td>${p.status}</td><td>${p.status==='Pending'?`<button class="green" onclick="approvePayment(${i})">Approve</button>`:'—'}</td></tr>`).join('')||'<tr><td colspan="5">कोई Payment नहीं</td></tr>';
-$('settingUPI').value=localStorage.getItem('ggs_upi')||'';
-}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function approvePayment(i){
-let payments=get('ggs_payments',[]),users=get('ggs_users',{});
-const p=payments[i];
-if(!p||!users[p.username])return toast('Customer नहीं मिला');
-p.status='Approved';users[p.username].approved=true;
-put('ggs_payments',payments);put('ggs_users',users);
-renderAdmin();toast('Customer Approved');
-}
-function deleteCustomer(u){
-u=decodeURIComponent(u);
-if(!confirm('इस Customer को हटाना है?'))return;
-let users=get('ggs_users',{});
-delete users[u];put('ggs_users',users);
-renderAdmin();toast('Customer हटाया गया');
-}
-function saveSettings(){
-const upi=$('settingUPI').value.trim();
-if(!upi)return toast('UPI ID डालें');
-localStorage.setItem('ggs_upi',upi);toast('Settings Save हो गईं');
-}
-
-// IMAGE / PRINT TOOLS
-function loadImage(input,id){
+// ==================================
+// IMAGE LOADING AND DRAWING
+// ==================================
+function loadFile(input,id){
 const file=input.files[0];if(!file)return;
-if(!file.type.startsWith('image/'))return toast('कृपया Image चुनें');
+if(!file.type.startsWith('image/'))return msg('सही Image चुनें');
+const img=$(id);
 const reader=new FileReader();
-reader.onload=e=>{$(id).src=e.target.result;$(id).classList.remove('hidden');};
+reader.onload=e=>{
+img.onload=()=>{
+img.classList.remove('hidden');
+if(id==='photoImg')makePhoto();
+else updateIDPreview();
+};
+img.src=e.target.result;
+};
 reader.readAsDataURL(file);
 }
-function pdfLoad(input){
-const file=input.files[0];if(!file)return;
-if(file.type==='application/pdf'){window.open(URL.createObjectURL(file),'_blank');return;}
-loadImage(input,'pdfPreview');
+function drawCrop(ctx,img,x,y,w,h,mode,zoom=100,posX=50,posY=50,brightness=100,contrast=100){
+if(!img||!img.complete||!img.naturalWidth)return;
+ctx.save();
+ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+ctx.fillStyle='white';ctx.fillRect(x,y,w,h);
+ctx.filter=`brightness(${brightness}%) contrast(${contrast}%)`;
+let scale=mode==='contain'?Math.min(w/img.naturalWidth,h/img.naturalHeight):Math.max(w/img.naturalWidth,h/img.naturalHeight);
+scale*=zoom/100;
+let dw=img.naturalWidth*scale,dh=img.naturalHeight*scale;
+let dx=x-(dw-w)*posX/100,dy=y-(dh-h)*posY/100;
+ctx.drawImage(img,dx,dy,dw,dh);
+ctx.restore();
 }
-function makePhotoSheet(){
-const img=$('photoPreview');if(!img.src)return toast('पहले फोटो चुनें');
-const canvas=$('photoCanvas'),ctx=canvas.getContext('2d');
-canvas.width=794;canvas.height=1123;ctx.fillStyle='#fff';ctx.fillRect(0,0,794,1123);
-let w=Number($('photoW').value)*3.78,h=Number($('photoH').value)*3.78;
-let n=Number($('photoCount').value),gap=10;
-let cols=Math.floor((794-gap)/(w+gap));
-if(cols<1)return toast('फोटो की चौड़ाई कम करें');
-ctx.filter=`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%)`;
-for(let i=0;i<n;i++){
+function drawBorder(ctx,x,y,w,h,color,width){
+if(color==='none'||width<=0)return;
+ctx.save();ctx.strokeStyle=color;ctx.lineWidth=width;
+ctx.strokeRect(x+width/2,y+width/2,w-width,h-width);ctx.restore();
+}
+function mm(v){return v*794/210}
+function makePhoto(){
+const img=$('photoImg');if(!img.src||!img.naturalWidth)return;
+const c=$('photoCanvas'),ctx=c.getContext('2d');
+c.width=794;c.height=1123;
+ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
+let w=mm(+$('pw').value),h=mm(+$('ph').value);
+let gap=mm(+$('pgap').value),count=+$('pc').value;
+if(w<=0||h<=0||w>794||h>1123)return msg('Photo Size सही रखें');
+let cols=Math.max(1,Math.floor((794-gap)/(w+gap)));
+let color=$('pborder').value,bw=+$('pbw').value;
+let done=0;
+for(let i=0;i<count;i++){
 let x=gap+(i%cols)*(w+gap),y=gap+Math.floor(i/cols)*(h+gap);
 if(y+h>1123)break;
-ctx.drawImage(img,x,y,w,h);
+drawCrop(ctx,img,x,y,w,h,$('pcrop').value,+$('pzoom').value,+$('px').value,+$('py').value,+$('pb').value,+$('pcon').value);
+drawBorder(ctx,x,y,w,h,color,bw);done++;
 }
-ctx.filter='none';toast('Photo Sheet तैयार');
+msg(done+' फोटो तैयार');
 }
-function makeIDSheet(){
-const f=$('frontPreview'),b=$('backPreview');
-if(!f.src)return toast('Front फोटो चुनें');
-const c=$('idCanvas'),ctx=c.getContext('2d');
-c.width=794;c.height=1123;ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
-let w=Number($('cardW').value)*3.78,h=Number($('cardH').value)*3.78;
-let x=35,y=35;
-ctx.drawImage(f,x,y,w,h);
-if(b.src)ctx.drawImage(b,x,y+h+20,w,h);
-toast('ID Card A4 Sheet तैयार');
-}
-function printCanvas(id){
-const c=$(id);
-if(!c.width)return toast('पहले शीट तैयार करें');
-printData(c.toDataURL('image/png'));
-}
-function printPreview(id){
-const img=$(id);if(!img.src)return toast('पहले Image चुनें');
-printData(img.src);
-}
-function printData(src){
-const w=window.open('','_blank');
-if(!w)return toast('Pop-up Allow करें');
-w.document.write(`<html><head><title>Print</title><style>@page{size:A4;margin:10mm}body{margin:0;text-align:center}img{max-width:100%;max-height:275mm;object-fit:contain}</style></head><body><img src="${src}"><script>window.onload=()=>setTimeout(()=>window.print(),500)<\/script></body></html>`);
-w.document.close();
-}
-function downloadCanvas(id){
-const c=$(id);if(!c.width)return toast('पहले शीट तैयार करें');
-const a=document.createElement('a');a.href=c.toDataURL('image/jpeg',.95);a.download='GGS-Photo-Sheet.jpg';a.click();
-}
-function downloadImage(id){
-const img=$(id);if(!img.src)return toast('पहले Image चुनें');
-const a=document.createElement('a');a.href=img.src;a.download='GGS-Image.png';a.click();
+function resetPhoto(){
+['pzoom','pb','pcon'].forEach((id,i)=>$(id).value=[100,100,100][i]);
+$('px').value=50;$('py').value=50;$('pcrop').value='cover';
+$('pborder').value='none';$('pbw').value=2;makePhoto();
 }
 
-// INITIALIZE
+// ==================================
+// ID CARD EDITOR
+// ==================================
+function presetID(){
+let v=$('idPreset').value;
+if(v==='custom')return;
+let a=v.split(',');
+$('iw').value=a[0];$('ih').value=a[1];updateIDPreview();
+}
+function sideDraw(side){
+let front=side==='front',img=$(front?'frontImg':'backImg');
+let c=$(front?'frontPreviewCanvas':'backPreviewCanvas'),ctx=c.getContext('2d');
+c.width=400;c.height=252;
+ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
+if(img.src&&img.naturalWidth){
+drawCrop(ctx,img,0,0,c.width,c.height,
+$(front?'fcrop':'bcrop').value,
++$(front?'fz':'bz').value, +$(front?'fx':'bx').value,
++$(front?'fy':'by').value,+$(front?'fb':'bb').value,+$(front?'fcon':'bcon').value);
+}
+drawBorder(ctx,0,0,c.width,c.height,$('iborder').value,+$('ibw').value);
+}
+function updateIDPreview(){
+sideDraw('front');sideDraw('back');
+}
+function resetSide(side){
+let prefix=side==='front'?'f':'b';
+['z','b','con'].forEach((x,i)=>$(prefix+x).value=[100,100,100][i]);
+$(prefix+'x').value=50;$(prefix+'y').value=50;
+$(prefix+'crop').value='cover';updateIDPreview();
+}
+function resetID(){
+resetSide('front');resetSide('back');
+$('iborder').value='none';$('ibw').value=2;
+updateIDPreview();
+}
+function makeIDSheet(){
+let f=$('frontImg'),b=$('backImg');
+if(!f.src||!f.naturalWidth)return msg('Front फोटो चुनें');
+if(!b.src||!b.naturalWidth)return msg('Back फोटो चुनें');
+let c=$('idCanvas'),ctx=c.getContext('2d');
+c.width=794;c.height=1123;
+ctx.fillStyle='white';ctx.fillRect(0,0,794,1123);
+let w=mm(+$('iw').value),h=mm(+$('ih').value);
+if(w<=0||h<=0||w*2+40>794||h>1123)return msg('दोनों कार्ड एक लाइन में फिट होने के लिए Size कम करें');
+let gap=mm(8),x1=(794-(2*w+gap))/2,x2=x1+w+gap,y=(1123-h)/2;
+drawCrop(ctx,f,x1,y,w,h,$('fcrop').value,+$('fz').value,+$('fx').value,+$('fy').value,+$('fb').value,+$('fcon').value);
+drawBorder(ctx,x1,y,w,h,$('iborder').value,+$('ibw').value);
+drawCrop(ctx,b,x2,y,w,h,$('bcrop').value,+$('bz').value,+$('bx').value,+$('by').value,+$('bb').value,+$('bcon').value);
+drawBorder(ctx,x2,y,w,h,$('iborder').value,+$('ibw').value);
+ctx.fillStyle='#555';ctx.font='12px Arial';
+ctx.fillText('FRONT',x1,y-10);ctx.fillText('BACK',x2,y-10);
+msg('Front + Back A4 Sheet तैयार');
+}
+
+// LIVE PREVIEW EVENTS
+[
+'pw','ph','pc','pcrop','pzoom','px','py','pb','pcon','pborder','pbw','pgap'
+].forEach(id=>$(id).addEventListener('input',()=>{if($('photoImg').naturalWidth)makePhoto()}));
+
+[
+'iw','ih','fcrop','fz','fx','fy','fb','fcon','bcrop','bz','bx','by','bb','bcon','iborder','ibw'
+].forEach(id=>$(id).addEventListener('input',updateIDPreview));
+
+// ==================================
+// PRINT / DOWNLOAD
+// ==================================
+function printCanvas(id){
+const c=$(id);
+if(!c.width)return msg('पहले शीट तैयार करें');
+const url=c.toDataURL('image/png');
+const w=window.open('','_blank');
+if(!w)return msg('Browser Pop-up Allow करें');
+w.document.write('<html><head><title>GGS Print</title><style>@page{size:A4;margin:0}body{margin:0;text-align:center}img{width:210mm;height:297mm;object-fit:contain;display:block}</style></head><body><img src="'+url+'"><script>window.onload=()=>setTimeout(()=>window.print(),500)<\/script></body></html>');
+w.document.close();
+}
+function downloadCanvas(id,name,type='image/jpeg'){
+let c=$(id);if(!c.width)return msg('पहले शीट तैयार करें');
+let a=document.createElement('a');
+a.href=c.toDataURL(type,.95);a.download=name;a.click();
+}
+function pdfLoad(input){
+let f=input.files[0];if(!f)return;
+if(f.type==='application/pdf'){
+let url=URL.createObjectURL(f);window.open(url,'_blank');return;
+}
+loadFile(input,'pdfImg');
+}
+function printPDF(){if(!$('pdfImg').src)return msg('पहले Image चुनें');printImage($('pdfImg').src)}
+function printImage(src){
+let w=window.open('','_blank');
+if(!w)return msg('Pop-up Allow करें');
+w.document.write('<html><body style="margin:0;text-align:center"><img src="'+src+'" style="max-width:100%;max-height:98vh"><script>onload=()=>setTimeout(()=>print(),500)<\/script></body></html>');
+w.document.close();
+}
+function downloadPDFImage(){
+let img=$('pdfImg');if(!img.src)return msg('पहले Image चुनें');
+let a=document.createElement('a');a.href=img.src;a.download='GGS-Image.png';a.click();
+}
+
+// ==================================
+// ADMIN AUTHENTICATION
+// ==================================
+async function hash(p){
+let b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(p));
+return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+function checkSetup(){
+let ok=!!localStorage.getItem('ggs_admin_hash');
+$('adminSetup').classList.toggle('hidden',ok);
+$('adminLoginBox').classList.toggle('hidden',!ok);
+}
+async function setupAdmin(){
+let p=$('newPass').value,c=$('confirmPass').value;
+if(p.length<8||p!==c)return msg('8 अक्षर का समान Password रखें');
+localStorage.setItem('ggs_admin_hash',await hash(p));
+checkSetup();msg('Admin Password सेट हो गया');
+}
+async function adminLogin(){
+if(await hash($('adminPass').value)!==localStorage.getItem('ggs_admin_hash'))return msg('गलत Password');
+isAdmin=true;currentUser=null;
+page('adminPanel');msg('Admin Master Access सक्रिय');
+}
+function adminLogout(){isAdmin=false;page('home');msg('Admin Logout सफल')}
+
+// ==================================
+// CUSTOMER / PAYMENT
+// ==================================
+function register(){
+let u=$('cu').value.trim(),p=$('cp').value;
+if(u.length<3||p.length<6)return msg('Username और 6 अक्षर Password जरूरी');
+let users=get('ggs_users',{});
+if(users[u])return msg('Username पहले से मौजूद है');
+users[u]={password:p,approved:false};
+put('ggs_users',users);msg('Registration सफल');
+}
+function customerLogin(){
+let u=$('cu').value.trim(),p=$('cp').value,users=get('ggs_users',{});
+if(!users[u]||users[u].password!==p)return msg('गलत Username या Password');
+currentUser={username:u,approved:users[u].approved};
+$('customerInfo').innerHTML='<p>स्वागत है '+esc(u)+'</p><p>'+(currentUser.approved?'Account Approved':'Payment Approval Pending')+'</p>';
+msg('Login सफल');
+}
+function customerLogout(){currentUser=null;$('customerInfo').innerHTML='';msg('Logout सफल')}
+function saveUPI(){
+let v=$('adminUPI').value.trim();
+if(!v)return msg('UPI ID डालें');
+localStorage.setItem('ggs_upi',v);msg('UPI Save हुआ');
+}
+function upiPay(app){
+let u=$('payUser').value.trim(),upi=localStorage.getItem('ggs_upi');
+if(!u||!upi)return msg('Username और UPI ID जरूरी');
+let params='pa='+encodeURIComponent(upi)+'&pn=Gramin%20Grahak%20Sewa&am=100&cu=INR&tn='+encodeURIComponent('Fee '+u);
+let scheme=app==='phonepe'?'phonepe://pay?':app==='gpay'?'tez://upi/pay?':app==='paytm'?'paytmmp://pay?':'upi://pay?';
+location.href=scheme+params;
+}
+function submitPayment(){
+let u=$('payUser').value.trim(),utr=$('utr').value.trim();
+let users=get('ggs_users',{}),payments=get('ggs_payments',[]);
+if(!users[u]||!utr)return msg('सही Username और UTR डालें');
+if(payments.some(p=>p.utr===utr))return msg('UTR पहले दर्ज है');
+payments.push({username:u,utr,amount:100,status:'Pending'});
+put('ggs_payments',payments);msg('Approval के लिए भेजा गया');
+}
+
+// ==================================
+// ADMIN PANEL
+// ==================================
+function renderAdmin(){
+let users=get('ggs_users',{}),payments=get('ggs_payments',[]);
+$('usersCount').textContent=Object.keys(users).length;
+$('pendingCount').textContent=payments.filter(p=>p.status==='Pending').length;
+$('approvedCount').textContent=payments.filter(p=>p.status==='Approved').length;
+$('userTable').innerHTML=Object.entries(users).map(([u,v])=>
+`<tr><td>${esc(u)}</td><td>${v.approved?'Approved':'Pending'}</td><td><button class="red" onclick="removeUser('${encodeURIComponent(u)}')">Delete</button></td></tr>`
+).join('');
+$('payTable').innerHTML=payments.map((p,i)=>
+`<tr><td>${esc(p.username)}</td><td>${esc(p.utr)}</td><td>₹${p.amount}</td><td>${p.status}</td><td>${p.status==='Pending'?`<button class="green" onclick="approve(${i})">Approve</button>`:'Done'}</td></tr>`
+).join('');
+$('adminUPI').value=localStorage.getItem('ggs_upi')||'';
+}
+function approve(i){
+let p=get('ggs_payments',[]),u=get('ggs_users',{});
+if(!p[i]||!u[p[i].username])return msg('Customer नहीं मिला');
+p[i].status='Approved';u[p[i].username].approved=true;
+put('ggs_payments',p);put('ggs_users',u);
+renderAdmin();msg('Customer Approved');
+}
+function removeUser(u){
+u=decodeURIComponent(u);
+if(!confirm('Customer हटाएँ?'))return;
+let users=get('ggs_users',{});
+delete users[u];put('ggs_users',users);renderAdmin();
+}
+
+// START
 initServices();
-checkAdminSetup();
+checkSetup();
+updateIDPreview();
 </script>
 </body>
 </html>

@@ -1496,5 +1496,569 @@ $('featuredGrid').innerHTML=
 
 </script>
 
+
+<style>
+.ggs-extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ggs-extra-card{background:#f8fbff;border:1px solid #d7e4f5;border-radius:12px;padding:13px}
+.ggs-extra-card h3{margin:3px 0 10px}
+.ggs-extra-card input,.ggs-extra-card select,.ggs-extra-card textarea{width:100%;padding:9px;border:1px solid #bdcce0;border-radius:8px;margin:5px 0}
+.ggs-extra-card input[type=file]{background:white}
+.ggs-extra-status{background:#eff6ff;padding:9px;border-radius:8px;margin-top:8px;font-size:13px;white-space:pre-wrap}
+.ggs-extra-preview{max-width:100%;max-height:360px;display:block;margin:8px auto;background:white}
+.ggs-extra-small{font-size:12px;color:#64748b;line-height:1.5}
+.ggs-extra-actions{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+.ggs-extra-actions button{border:0;border-radius:8px;padding:10px 12px;color:white;background:#1754b4;font-weight:bold}
+.ggs-extra-actions .ggs-green{background:#07865c}
+.ggs-extra-actions .ggs-orange{background:#e87512}
+.ggs-extra-actions .ggs-purple{background:#673ab7}
+.ggs-extra-actions .ggs-red{background:#c83232}
+@media(max-width:600px){.ggs-extra-card{padding:10px}}
+</style>
+
+<!-- नई नेविगेशन बटन -->
+<script>
+(function(){
+ const nav=document.querySelector('nav');
+ if(nav && !document.getElementById('ggsToolsNav')){
+   const b=document.createElement('button');
+   b.id='ggsToolsNav';
+   b.textContent='📄 PDF & Print Tools';
+   b.onclick=()=>ggsShowExtra();
+   nav.appendChild(b);
+ }
+})();
+</script>
+
+<section class="container" id="ggsExtraPage" style="display:none">
+ <div class="box">
+  <h2>🧰 Advanced Photo, WhatsApp Document & PDF Tools</h2>
+  <p class="note">ये अतिरिक्त टूल आपके पुराने Photo Studio और Online Services को हटाए बिना जोड़े गए हैं।</p>
+  <div class="tabs" id="ggsExtraTabs">
+   <button class="active" data-extra="passport">📸 Advanced Passport</button>
+   <button data-extra="document">📄 Document Print</button>
+   <button data-extra="pdfmerge">PDF Merge</button>
+   <button data-extra="pdfsplit">PDF Split</button>
+   <button data-extra="pdfrotate">PDF Rotate</button>
+   <button data-extra="pdfcompress">PDF Compress</button>
+  </div>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-passport">
+  <h2>📸 Advanced Passport Photo Studio</h2>
+  <div class="ggs-extra-grid">
+   <div class="ggs-extra-card">
+    <label><b>फोटो चुनें</b></label>
+    <input type="file" id="ggsPassFile" accept="image/*">
+    <label><b>फोटो का आकार</b></label>
+    <select id="ggsPassPreset">
+     <option value="35x45">Passport 35 × 45 mm</option>
+     <option value="25x35">25 × 35 mm</option>
+     <option value="2x2">2 × 2 inch (51 × 51 mm)</option>
+     <option value="custom">Custom Size</option>
+    </select>
+    <div class="ggs-extra-grid">
+     <div><label>चौड़ाई (mm)</label><input id="ggsPassW" type="number" value="35" min="10" max="100"></div>
+     <div><label>ऊँचाई (mm)</label><input id="ggsPassH" type="number" value="45" min="10" max="150"></div>
+    </div>
+    <label>Copies</label><input id="ggsPassCopies" type="number" value="8" min="1" max="100">
+    <label>DPI</label>
+    <select id="ggsPassDpi">
+     <option>150</option><option>200</option><option selected>300</option>
+    </select>
+   </div>
+
+   <div class="ggs-extra-card">
+    <label>Zoom</label><input id="ggsPassZoom" type="range" min="50" max="250" value="100">
+    <label>Horizontal Position</label><input id="ggsPassX" type="range" min="-100" max="100" value="0">
+    <label>Vertical Position</label><input id="ggsPassY" type="range" min="-100" max="100" value="0">
+    <label>Brightness</label><input id="ggsPassBright" type="range" min="0" max="200" value="100">
+    <label>Contrast</label><input id="ggsPassContrast" type="range" min="0" max="200" value="100">
+    <label>Background Colour</label><input id="ggsPassBg" type="color" value="#ffffff">
+    <div class="ggs-extra-actions">
+     <button id="ggsPassLeft">↶ Rotate</button>
+     <button id="ggsPassRight">Rotate ↷</button>
+     <button id="ggsPassFlip">↔ Flip</button>
+     <button class="ggs-orange" id="ggsPassReset">Reset</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="ggs-extra-actions">
+   <button class="ggs-green" id="ggsPassPreview">Preview Photo Sheet</button>
+   <button class="ggs-green" id="ggsPassSave">PNG Save</button>
+   <button class="ggs-orange" id="ggsPassPrint">Print / Save PDF</button>
+  </div>
+  <canvas id="ggsPassCanvas" class="ggs-extra-preview" width="900" height="1200"></canvas>
+  <div class="ggs-extra-status" id="ggsPassStatus">पहले फोटो चुनें।</div>
+  <p class="ggs-extra-small">यह टूल फोटो को crop/resize और colour adjustment करता है। यह सरकारी फोटो सत्यापन या biometric editing का विकल्प नहीं है।</p>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-document" style="display:none">
+  <h2>📄 WhatsApp Document / Photo Print</h2>
+  <div class="ggs-extra-grid">
+   <div class="ggs-extra-card">
+    <label><b>PDF या फोटो फाइल चुनें</b></label>
+    <input type="file" id="ggsDocFiles" accept="application/pdf,image/*" multiple>
+    <label>Paper Size</label>
+    <select id="ggsDocPaper">
+     <option value="A4">A4</option>
+     <option value="A5">A5</option>
+     <option value="A3">A3</option>
+     <option value="Letter">Letter</option>
+     <option value="Legal">Legal</option>
+    </select>
+    <label>Orientation</label>
+    <select id="ggsDocOrientation">
+     <option value="portrait">Portrait</option>
+     <option value="landscape">Landscape</option>
+    </select>
+    <label>Copies</label>
+    <input type="number" id="ggsDocCopies" value="1" min="1" max="100">
+    <label>Page Range (PDF) — उदाहरण: 1-3,5</label>
+    <input id="ggsDocRange" placeholder="खाली छोड़ें = सभी पेज">
+   </div>
+
+   <div class="ggs-extra-card">
+    <label>Print Scaling</label>
+    <select id="ggsDocFit">
+     <option value="contain">Fit to page</option>
+     <option value="actual">Actual size</option>
+    </select>
+    <label>Print Colour</label>
+    <select id="ggsDocColor">
+     <option value="color">Colour</option>
+     <option value="grayscale">Black & White</option>
+    </select>
+    <label>Margins</label>
+    <select id="ggsDocMargin">
+     <option value="5">5 mm</option>
+     <option value="0">0 mm</option>
+     <option value="10">10 mm</option>
+    </select>
+    <div class="ggs-extra-actions">
+     <button class="ggs-green" id="ggsDocPreview">Preview / Prepare</button>
+     <button class="ggs-orange" id="ggsDocPrint">Print</button>
+     <button class="ggs-purple" id="ggsDocShare">WhatsApp Share</button>
+    </div>
+   </div>
+  </div>
+  <div id="ggsDocPreviewArea" class="ggs-extra-preview"></div>
+  <div class="ggs-extra-status" id="ggsDocStatus">एक या अधिक PDF/फोटो चुनें।</div>
+  <p class="ggs-extra-small">WhatsApp Share आपके फोन/ब्राउज़र के Share विकल्प से फाइल भेजने की कोशिश करेगा। यदि फाइल शेयर समर्थित न हो, तो WhatsApp चैट खुलेगी; उस स्थिति में फाइल को चैट में अलग से attach करना होगा।</p>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-pdfmerge" style="display:none">
+  <h2>📚 PDF Merge — कई PDF जोड़ें</h2>
+  <input type="file" id="ggsMergeFiles" accept="application/pdf" multiple>
+  <div class="ggs-extra-actions">
+   <button class="ggs-green" id="ggsMergeGo">Merge PDF और Download</button>
+  </div>
+  <div class="ggs-extra-status" id="ggsMergeStatus">कम से कम दो PDF चुनें।</div>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-pdfsplit" style="display:none">
+  <h2>✂️ PDF Split — पेज अलग करें</h2>
+  <input type="file" id="ggsSplitFile" accept="application/pdf">
+  <label>Page Range — उदाहरण: 1-3,5,8-10</label>
+  <input id="ggsSplitRange" placeholder="खाली छोड़ें = हर पेज की अलग PDF">
+  <div class="ggs-extra-actions">
+   <button class="ggs-green" id="ggsSplitGo">Split PDF</button>
+  </div>
+  <div class="ggs-extra-status" id="ggsSplitStatus">PDF चुनें और पेज नंबर लिखें।</div>
+  <div id="ggsSplitDownloads"></div>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-pdfrotate" style="display:none">
+  <h2>🔄 PDF Rotate — पेज घुमाएँ</h2>
+  <input type="file" id="ggsRotateFile" accept="application/pdf">
+  <label>कितने डिग्री घुमाना है?</label>
+  <select id="ggsRotateDegrees">
+   <option value="90">90°</option>
+   <option value="180">180°</option>
+   <option value="270">270°</option>
+  </select>
+  <label>Page Range — खाली = सभी पेज</label>
+  <input id="ggsRotateRange" placeholder="उदाहरण: 1-2,4">
+  <div class="ggs-extra-actions">
+   <button class="ggs-green" id="ggsRotateGo">Rotate और Download</button>
+  </div>
+  <div class="ggs-extra-status" id="ggsRotateStatus">PDF चुनें।</div>
+ </div>
+
+ <div class="box ggs-extra-panel" id="ggs-pdfcompress" style="display:none">
+  <h2>🗜️ PDF Compress — PDF का आकार कम करें</h2>
+  <input type="file" id="ggsCompressFile" accept="application/pdf">
+  <label>Quality</label>
+  <select id="ggsCompressQuality">
+   <option value="0.45">अधिक Compression</option>
+   <option value="0.65" selected>Medium</option>
+   <option value="0.82">High Quality</option>
+  </select>
+  <label>Resolution (DPI)</label>
+  <select id="ggsCompressDpi">
+   <option>72</option>
+   <option selected>100</option>
+   <option>150</option>
+  </select>
+  <div class="ggs-extra-actions">
+   <button class="ggs-green" id="ggsCompressGo">Compress और Download</button>
+  </div>
+  <div class="ggs-extra-status" id="ggsCompressStatus">PDF चुनें।</div>
+  <p class="ggs-extra-small">Compression के लिए पेज image में बदलकर नई PDF बनाई जाती है। इससे फाइल छोटी हो सकती है, लेकिन searchable text/selectable text हट सकता है और quality कम हो सकती है।</p>
+ </div>
+</section>
+
+<!-- PDF libraries: इंटरनेट कनेक्शन आवश्यक -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+(function(){
+ const $x=id=>document.getElementById(id);
+ const extra=document.getElementById('ggsExtraPage');
+ let passImg=null, passRotation=0, passFlip=false, passReady=false;
+ let docFiles=[], docShareFiles=[];
+
+ window.ggsShowExtra=function(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  extra.style.display='block';
+  extra.scrollIntoView({behavior:'smooth'});
+ };
+
+ document.querySelectorAll('[data-extra]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+   document.querySelectorAll('.ggs-extra-panel').forEach(p=>p.style.display='none');
+   document.querySelectorAll('[data-extra]').forEach(b=>b.classList.remove('active'));
+   $x('ggs-'+btn.dataset.extra).style.display='block';
+   btn.classList.add('active');
+  });
+ });
+
+ function status(id,msg){$x(id).textContent=msg;}
+
+ function downloadBlob(blob,name){
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;
+  a.download=name;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+ }
+
+ function parsePages(range,total){
+  if(!range.trim())return Array.from({length:total},(_,i)=>i);
+  const out=new Set();
+  range.split(',').forEach(part=>{
+   const p=part.trim().split('-').map(Number);
+   if(p.length===1&&Number.isInteger(p[0])&&p[0]>=1&&p[0]<=total)
+    out.add(p[0]-1);
+   else if(p.length===2&&p.every(Number.isInteger)&&p[0]>=1&&p[1]>=p[0]&&p[1]<=total){
+    for(let n=p[0];n<=p[1];n++)out.add(n-1);
+   }else{
+    throw new Error('Page range गलत है। उदाहरण: 1-3,5');
+   }
+  });
+  return [...out].sort((a,b)=>a-b);
+ }
+
+ function requirePDFLib(){
+  if(!window.PDFLib)
+   throw new Error('PDF library load नहीं हुई। इंटरनेट चालू करके पेज Refresh करें।');
+  return window.PDFLib;
+ }
+
+ /* ADVANCED PASSPORT PHOTO */
+
+ $x('ggsPassFile').addEventListener('change',e=>{
+  const f=e.target.files[0];
+  if(!f)return;
+  if(!f.type.startsWith('image/')){
+   status('ggsPassStatus','Image file चुनें।');
+   return;
+  }
+  const u=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{
+   passImg=im;
+   passRotation=0;
+   passFlip=false;
+   status('ggsPassStatus','फोटो लोड हो गई। अब Preview Photo Sheet दबाएँ।');
+   URL.revokeObjectURL(u);
+  };
+  im.onerror=()=>status('ggsPassStatus','फोटो पढ़ी नहीं जा सकी।');
+  im.src=u;
+ });
+
+ $x('ggsPassPreset').onchange=()=>{
+  const v=$x('ggsPassPreset').value;
+  if(v==='35x45'){
+   $x('ggsPassW').value=35;$x('ggsPassH').value=45;
+  }
+  if(v==='25x35'){
+   $x('ggsPassW').value=25;$x('ggsPassH').value=35;
+  }
+  if(v==='2x2'){
+   $x('ggsPassW').value=51;$x('ggsPassH').value=51;
+  }
+ };
+
+ $x('ggsPassLeft').onclick=()=>{
+  passRotation=(passRotation+270)%360;
+ };
+ $x('ggsPassRight').onclick=()=>{
+  passRotation=(passRotation+90)%360;
+ };
+ $x('ggsPassFlip').onclick=()=>{
+  passFlip=!passFlip;
+ };
+
+ $x('ggsPassReset').onclick=()=>{
+  passRotation=0;
+  passFlip=false;
+  ['ggsPassZoom','ggsPassBright','ggsPassContrast'].forEach(id=>$x(id).value=100);
+  $x('ggsPassX').value=0;
+  $x('ggsPassY').value=0;
+  $x('ggsPassBg').value='#ffffff';
+ };
+
+ function drawPassportPhoto(ctx,x,y,w,h){
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x,y,w,h);
+  ctx.clip();
+  ctx.fillStyle=$x('ggsPassBg').value;
+  ctx.fillRect(x,y,w,h);
+
+  if(passImg){
+   ctx.translate(
+    x+w/2+(+$x('ggsPassX').value)*w/200,
+    y+h/2+(+$x('ggsPassY').value)*h/200
+   );
+   ctx.rotate(passRotation*Math.PI/180);
+   ctx.scale(passFlip?-1:1,1);
+   const zoom=+$x('ggsPassZoom').value/100;
+   const factor=Math.max(w/passImg.width,h/passImg.height)*zoom;
+   ctx.filter=`brightness(${$x('ggsPassBright').value}%) contrast(${$x('ggsPassContrast').value}%)`;
+   ctx.drawImage(
+    passImg,
+    -passImg.width*factor/2,
+    -passImg.height*factor/2,
+    passImg.width*factor,
+    passImg.height*factor
+   );
+  }
+  ctx.restore();
+ }
+
+ function makePassportPreview(){
+  if(!passImg)throw new Error('पहले फोटो चुनें।');
+
+  const dpi=+$x('ggsPassDpi').value;
+  const scale=dpi/25.4;
+  const w=+$x('ggsPassW').value;
+  const h=+$x('ggsPassH').value;
+  const n=Math.max(1,Math.min(100,+$x('ggsPassCopies').value||1));
+
+  if(w<=0||h<=0)throw new Error('फोटो का आकार सही भरें।');
+
+  const cols=Math.max(1,Math.floor((210-20+3)/(w+3)));
+  const rows=Math.ceil(n/cols);
+  const gap=3,margin=10,paperW=210;
+  const paperH=Math.max(297,2*margin+rows*h+(rows-1)*gap);
+
+  const c=$x('ggsPassCanvas');
+  c.width=Math.round(paperW*scale);
+  c.height=Math.round(paperH*scale);
+
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='white';
+  ctx.fillRect(0,0,c.width,c.height);
+
+  for(let i=0;i<n;i++){
+   const x=(margin+(i%cols)*(w+gap))*scale;
+   const y=(margin+Math.floor(i/cols)*(h+gap))*scale;
+   drawPassportPhoto(ctx,x,y,w*scale,h*scale);
+   ctx.strokeStyle='#999';
+   ctx.lineWidth=1;
+   ctx.strokeRect(x,y,w*scale,h*scale);
+  }
+
+  passReady=true;
+  status('ggsPassStatus',`${n} फोटो तैयार। ${paperW} × ${paperH} mm, ${dpi} DPI`);
+ }
+
+ $x('ggsPassPreview').onclick=()=>{
+  try{makePassportPreview();}
+  catch(e){status('ggsPassStatus',e.message);}
+ };
+
+ $x('ggsPassSave').onclick=()=>{
+  if(!passReady){
+   status('ggsPassStatus','पहले Preview बनाएँ।');
+   return;
+  }
+  $x('ggsPassCanvas').toBlob(b=>downloadBlob(b,'Advanced-Passport-Photo.png'));
+ };
+
+ $x('ggsPassPrint').onclick=()=>{
+  if(!passReady){
+   status('ggsPassStatus','पहले Preview बनाएँ।');
+   return;
+  }
+  const c=$x('ggsPassCanvas');
+  const win=window.open('','_blank');
+  if(!win){alert('Pop-up Allow करें।');return;}
+  const u=c.toDataURL('image/png');
+  win.document.write(`
+   <html><head><title>Passport Photo Sheet</title>
+   <style>
+    @page{size:A4;margin:0}
+    body{margin:0}
+    img{width:210mm;height:auto;display:block}
+   </style></head>
+   <body><img src="${u}" onload="setTimeout(()=>print(),400)"></body></html>
+  `);
+  win.document.close();
+ };
+
+ /* DOCUMENT PRINT AND WHATSAPP SHARE */
+
+ $x('ggsDocFiles').onchange=e=>{
+  docFiles=[...e.target.files];
+  docShareFiles=docFiles;
+  status('ggsDocStatus',`${docFiles.length} फाइल चुनी गईं।`);
+ };
+
+ function paperMM(){
+  const sizes={
+   A4:[210,297],
+   A5:[148,210],
+   A3:[297,420],
+   Letter:[215.9,279.4],
+   Legal:[215.9,355.6]
+  };
+  let [w,h]=sizes[$x('ggsDocPaper').value];
+  if($x('ggsDocOrientation').value==='landscape')[w,h]=[h,w];
+  return [w,h];
+ }
+
+ async function prepareDocumentPrint(){
+  if(!docFiles.length)throw new Error('पहले PDF या फोटो चुनें।');
+  if(!window.pdfjsLib)
+   throw new Error('PDF.js लोड नहीं हुई। इंटरनेट चालू करके Refresh करें।');
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc=
+   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  const area=$x('ggsDocPreviewArea');
+  area.innerHTML='';
+  docShareFiles=[];
+
+  const [pw,ph]=paperMM();
+  const margin=+$x('ggsDocMargin').value;
+  const pages=[];
+
+  for(const file of docFiles){
+   if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf')){
+    const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+    const indices=parsePages($x('ggsDocRange').value,pdf.numPages);
+
+    for(const ix of indices){
+     const page=await pdf.getPage(ix+1);
+     const vp=page.getViewport({scale:1});
+     const scale=Math.min((pw-2*margin)/vp.width,(ph-2*margin)/vp.height);
+     const canvas=document.createElement('canvas');
+     const v=page.getViewport({scale:scale*2});
+     canvas.width=Math.ceil(v.width);
+     canvas.height=Math.ceil(v.height);
+     await page.render({
+      canvasContext:canvas.getContext('2d'),
+      viewport:v
+     }).promise;
+     pages.push(canvas);
+    }
+   }else if(file.type.startsWith('image/')){
+    const u=URL.createObjectURL(file);
+    const im=new Image();
+    await new Promise((res,rej)=>{
+     im.onload=res;im.onerror=rej;im.src=u;
+    });
+    const cv=document.createElement('canvas');
+    const ratio=Math.min((pw-2*margin)/im.width,(ph-2*margin)/im.height);
+    cv.width=Math.round(im.width*ratio*2);
+    cv.height=Math.round(im.height*ratio*2);
+    cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+    URL.revokeObjectURL(u);
+    pages.push(cv);
+   }
+  }
+
+  if(!pages.length)throw new Error('दिए गए page range में कोई पेज नहीं मिला।');
+
+  const copies=Math.max(1,Math.min(100,+$x('ggsDocCopies').value||1));
+  const body=document.createElement('div');
+  body.id='ggsPrintPages';
+
+  for(let copy=0;copy<copies;copy++){
+   for(const cv of pages){
+    const img=document.createElement('img');
+    img.src=cv.toDataURL('image/jpeg',.92);
+    img.style.cssText=
+     `width:${pw-2*margin}mm;height:${ph-2*margin}mm;object-fit:${$x('ggsDocFit').value==='actual'?'none':'contain'};filter:${$x('ggsDocColor').value==='grayscale'?'grayscale(1)':'none'};display:block;margin:${margin}mm auto;page-break-after:always`;
+    body.appendChild(img);
+   }
+  }
+
+  area.appendChild(body);
+  docShareFiles=docFiles;
+  status('ggsDocStatus',`${pages.length} पेज तैयार। Copies: ${copies}. Print दबाएँ।`);
+ }
+
+ $x('ggsDocPreview').onclick=async()=>{
+  try{await prepareDocumentPrint();}
+  catch(e){status('ggsDocStatus',e.message);}
+ };
+
+ $x('ggsDocPrint').onclick=()=>{
+  const area=$x('ggsDocPreviewArea');
+  if(!area.querySelector('img')){
+   status('ggsDocStatus','पहले Preview / Prepare दबाएँ।');
+   return;
+  }
+
+  const [w,h]=paperMM();
+  const win=window.open('','_blank');
+  if(!win){alert('Pop-up Allow करें।');return;}
+
+  win.document.write(`
+   <html><head><title>Document Print</title>
+   <style>
+    @page{size:${w}mm ${h}mm;margin:0}
+    body{margin:0}
+    img{box-sizing:border-box}
+   </style></head>
+   <body>${area.innerHTML}
+   <script>
+    window.onload=()=>setTimeout(()=>window.print(),500)
+   <\/script>
+   </body></html>
+  `);
+  win.document.close();
+ };
+
+ $x('ggsDocShare').onclick=async()=>{
+  if(!docFiles.length){
+   status('ggsDocStatus','पहले फाइल चुनें।');
+   return;
+  }
+
+  try{
+   if(navigator.canShare&&navigator.share&&navigator.canShare({files:docFiles})){
+    await navigator.share({
+     files:docFiles,
+     title:'Documents',
+     text:'दस्तावेज'
+    });
+   }else{
+    wind
 </body>
 </html>

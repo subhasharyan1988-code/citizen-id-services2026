@@ -2045,20 +2045,274 @@ $('featuredGrid').innerHTML=
   win.document.close();
  };
 
- $x('ggsDocShare').onclick=async()=>{
+$x('ggsDocShare').onclick=async()=>{
   if(!docFiles.length){
-   status('ggsDocStatus','पहले फाइल चुनें।');
+   status('ggsDocStatus','पहले PDF या फोटो चुनें।');
    return;
   }
 
   try{
-   if(navigator.canShare&&navigator.share&&navigator.canShare({files:docFiles})){
+   if(navigator.canShare && navigator.share &&
+      navigator.canShare({files:docFiles})){
     await navigator.share({
      files:docFiles,
-     title:'Documents',
+     title:'Gramin Grahak Sewa Documents',
      text:'दस्तावेज'
     });
    }else{
-    wind
+    window.open('https://wa.me/','_blank');
+    status('ggsDocStatus',
+     'WhatsApp खुल गया है। अब चैट में Attach विकल्प से फाइल चुनें।');
+   }
+  }catch(e){
+   if(e.name!=='AbortError'){
+    status('ggsDocStatus','Share नहीं हो पाया। फाइल अलग से WhatsApp में Attach करें।');
+   }
+  }
+ };
+
+ /* PDF COMMON HELPERS */
+
+ function getPDFLib(){
+  if(!window.PDFLib)throw new Error('PDF library लोड नहीं हुई। इंटरनेट चालू करें और Refresh करें।');
+  return window.PDFLib;
+ }
+
+ async function readPDF(file){
+  if(!file)throw new Error('पहले PDF फाइल चुनें।');
+  const lib=getPDFLib();
+  return await lib.PDFDocument.load(await file.arrayBuffer());
+ }
+
+ function selectedFile(id){
+  return $x(id).files[0];
+ }
+
+ function downloadPDFBytes(bytes,name){
+  const blob=new Blob([bytes],{type:'application/pdf'});
+  downloadBlob(blob,name);
+ }
+
+ /* PDF MERGE */
+
+ $x('ggsMergeGo').onclick=async()=>{
+  try{
+   const files=[...$x('ggsMergeFiles').files];
+   if(files.length<2)throw new Error('कम से कम दो PDF चुनें।');
+
+   const {PDFDocument}=getPDFLib();
+   const merged=await PDFDocument.create();
+
+   for(const file of files){
+    const pdf=await readPDF(file);
+    const copied=await merged.copyPages(pdf,pdf.getPageIndices());
+    copied.forEach(page=>merged.addPage(page));
+   }
+
+   const bytes=await merged.save();
+   downloadPDFBytes(bytes,'Merged-PDF.pdf');
+   status('ggsMergeStatus','सभी PDF सफलतापूर्वक जोड़ दी गईं।');
+  }catch(e){
+   status('ggsMergeStatus',e.message);
+  }
+ };
+
+ /* PDF SPLIT */
+
+ $x('ggsSplitGo').onclick=async()=>{
+  try{
+   const pdf=await readPDF(selectedFile('ggsSplitFile'));
+   const total=pdf.getPageCount();
+   const range=$x('ggsSplitRange').value;
+   const pages=parsePages(range,total);
+
+   if(!pages.length)throw new Error('कोई पेज चयनित नहीं है।');
+
+   const {PDFDocument}=getPDFLib();
+   const area=$x('ggsSplitDownloads');
+   area.innerHTML='';
+
+   for(let i=0;i<pages.length;i++){
+    const newPDF=await PDFDocument.create();
+    const copied=await newPDF.copyPages(pdf,[pages[i]]);
+    copied.forEach(p=>newPDF.addPage(p));
+
+    const bytes=await newPDF.save();
+    const blob=new Blob([bytes],{type:'application/pdf'});
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=`Page-${pages[i]+1}.pdf`;
+    a.textContent=`Download Page ${pages[i]+1}`;
+    a.style.cssText='display:block;margin:8px;padding:10px;background:#1754b4;color:white;border-radius:8px;text-decoration:none';
+
+    area.appendChild(a);
+   }
+
+   status('ggsSplitStatus',pages.length+' अलग PDF पेज तैयार हैं।');
+  }catch(e){
+   status('ggsSplitStatus',e.message);
+  }
+ };
+
+ /* PDF ROTATE */
+
+ $x('ggsRotateGo').onclick=async()=>{
+  try{
+   const pdf=await readPDF(selectedFile('ggsRotateFile'));
+   const total=pdf.getPageCount();
+   const range=$x('ggsRotateRange').value;
+   const pages=parsePages(range,total);
+   const degrees=+$x('ggsRotateDegrees').value;
+
+   pages.forEach(index=>{
+    const page=pdf.getPage(index);
+    const old=page.getRotation().angle;
+    page.setRotation(PDFLib.degrees((old+degrees)%360));
+   });
+
+   const bytes=await pdf.save();
+   downloadPDFBytes(bytes,'Rotated-PDF.pdf');
+   status('ggsRotateStatus',pages.length+' पेज Rotate करके डाउनलोड कर दिए गए।');
+  }catch(e){
+   status('ggsRotateStatus',e.message);
+  }
+ };
+
+ /* PDF COMPRESS */
+
+ $x('ggsCompressGo').onclick=async()=>{
+  try{
+   if(!window.pdfjsLib)throw new Error('PDF.js लोड नहीं हुई। इंटरनेट चालू करें।');
+
+   const file=selectedFile('ggsCompressFile');
+   if(!file)throw new Error('पहले PDF चुनें।');
+
+   pdfjsLib.GlobalWorkerOptions.workerSrc=
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+   const quality=+$x('ggsCompressQuality').value;
+   const dpi=+$x('ggsCompressDpi').value;
+   const scale=dpi/72;
+
+   const pdf=await pdfjsLib.getDocument({
+    data:await file.arrayBuffer()
+   }).promise;
+
+   const {PDFDocument}=getPDFLib();
+   const output=await PDFDocument.create();
+
+   status('ggsCompressStatus','PDF Compression शुरू हो गई है...');
+
+   for(let i=1;i<=pdf.numPages;i++){
+    const page=await pdf.getPage(i);
+    const viewport=page.getViewport({scale});
+    const canvas=document.createElement('canvas');
+
+    canvas.width=Math.ceil(viewport.width);
+    canvas.height=Math.ceil(viewport.height);
+
+    await page.render({
+     canvasContext:canvas.getContext('2d'),
+     viewport:viewport
+    }).promise;
+
+    const jpg=canvas.toDataURL('image/jpeg',quality);
+    const image=await output.embedJpg(jpg);
+
+    const original=page.getViewport({scale:1});
+
+    const newPage=output.addPage([
+     original.width,
+     original.height
+    ]);
+
+    newPage.drawImage(image,{
+     x:0,
+     y:0,
+     width:original.width,
+     height:original.height
+    });
+
+    canvas.width=1;
+    canvas.height=1;
+
+    status('ggsCompressStatus',
+     'Compression चल रही है: '+i+' / '+pdf.numPages+' पेज');
+   }
+
+   const bytes=await output.save({
+    useObjectStreams:true
+   });
+
+   downloadPDFBytes(bytes,'Compressed-PDF.pdf');
+
+   status('ggsCompressStatus',
+    'Compression पूरी हुई। नई PDF डाउनलोड हो गई। ध्यान दें: searchable text हट सकता है।');
+
+  }catch(e){
+   status('ggsCompressStatus',e.message);
+  }
+ };
+
+ /* EXTRA TOOL INITIALIZATION */
+
+ document.querySelectorAll('[data-extra]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+   document.querySelectorAll('.ggs-extra-panel').forEach(p=>{
+    p.style.display='none';
+   });
+
+   document.querySelectorAll('[data-extra]').forEach(b=>{
+    b.classList.remove('active');
+   });
+
+   const panel=$x('ggs-'+btn.dataset.extra);
+   if(panel)panel.style.display='block';
+
+   btn.classList.add('active');
+  });
+ });
+
+})();
+</script>
+
+<style>
+/* PROFESSIONAL RESPONSIVE IMPROVEMENTS */
+
+html{scroll-behavior:smooth}
+body{line-height:1.5}
+button{transition:.2s ease}
+button:active{transform:scale(.97)}
+.service{transition:transform .2s,box-shadow .2s}
+.service:hover{
+ transform:translateY(-3px);
+ box-shadow:0 6px 18px #0002
+}
+.box{border:1px solid #e2eaf5}
+nav{box-shadow:0 3px 10px #0002}
+nav button{white-space:nowrap}
+input:focus,select:focus{
+ outline:2px solid #60a5fa;
+ border-color:#1459a6
+}
+#ggsExtraPage{max-width:1350px;margin:auto;padding:12px}
+#ggsExtraPage .ggs-extra-panel{
+ background:white;
+ border-radius:13px;
+ padding:15px;
+ margin:12px 0;
+ box-shadow:0 3px 12px #0001
+}
+@media(max-width:600px){
+ #ggsExtraPage{padding:7px}
+ #ggsExtraPage .ggs-extra-panel{padding:10px}
+ .ggs-extra-actions button{font-size:12px}
+}
+</style>
+
 </body>
 </html>
+
+ 

@@ -42,6 +42,7 @@ button{border:0;padding:10px 13px;border-radius:8px;color:white;background:#1769
 button.green{background:#168b50}
 button.orange{background:#ed851d}
 button.dark{background:#39465a}
+button.active{background:#ed851d;outline:3px solid #ffd6a6}
 .preview{width:100%;min-height:180px;background:repeating-conic-gradient(#eee 0% 25%,white 0% 50%) 50%/20px 20px;border:1px solid #ccd5e2;border-radius:9px;overflow:auto;display:flex;align-items:center;justify-content:center;margin:12px 0}
 canvas{max-width:100%;height:auto}
 .hint{font-size:12px;color:#667085;line-height:1.6}
@@ -49,10 +50,24 @@ canvas{max-width:100%;height:auto}
 .row>*{flex:1;min-width:110px}
 .sidebox{border:2px solid #dce6f3;padding:12px;border-radius:12px;margin:12px 0;background:#f9fbff}
 .sidebox h4{color:#123b79;margin:5px 0 12px}
+.side-select{display:flex;gap:10px;flex-wrap:wrap}
+.side-select button{flex:1;min-width:130px;padding:14px}
+#printArea{display:none}
+.a4-preview{background:#e8edf5;padding:15px;border-radius:12px;text-align:center}
+.a4-paper{background:white;width:100%;max-width:500px;margin:10px auto;padding:12px;box-shadow:0 2px 12px #0002}
+.a4-paper canvas{width:100%;height:auto;display:block}
 footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:30px}
 @media(max-width:600px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  header h1{font-size:21px}
+}
+@page{size:A4 portrait;margin:10mm}
+@media print{
+ body{background:white!important}
+ body *{visibility:hidden!important}
+ #printArea,#printArea *{visibility:visible!important}
+ #printArea{display:block!important;position:absolute!important;left:0!important;top:0!important;width:190mm!important;height:auto!important;background:white!important}
+ #printArea img{display:block!important;width:190mm!important;height:auto!important}
 }
 </style>
 </head>
@@ -77,8 +92,8 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <main>
 
 <section id="services">
-<h2>🏛️ सभी ऑनलाइन सेवाएं</h2>
-<input class="search" id="search" placeholder="🔍 सेवा खोजें...">
+<h2>🏛️ सभी ऑनलाइन सेवाएं | All Online Services</h2>
+<input class="search" id="search" placeholder="🔍 सेवा खोजें / Search Services...">
 <div id="servicesList"></div>
 </section>
 
@@ -88,50 +103,59 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 
 <div class="toolgrid">
 
-<!-- ID CARD FRONT BACK EDITOR -->
+<!-- ID CARD MAKER - SHARED EDIT TOOL -->
 <div class="panel" style="grid-column:1/-1">
 <h3>🪪 ID CARD PHOTO MAKER – FRONT & BACK</h3>
 
-<label>कार्ड चुनें</label>
+<label>कार्ड चुनें | Select Card</label>
 <select id="cardType">
-<option>आधार कार्ड</option>
-<option>PAN कार्ड</option>
-<option>Voter ID कार्ड</option>
+<option>आधार कार्ड | Aadhaar Card</option>
+<option>PAN कार्ड | PAN Card</option>
+<option>Voter ID कार्ड | Voter ID Card</option>
 <option>Driving Licence</option>
-<option>ई-श्रम कार्ड</option>
-<option>आयुष्मान कार्ड</option>
-<option>जन आधार कार्ड</option>
-<option>PVC ID कार्ड</option>
-<option>Custom कार्ड</option>
+<option>ई-श्रम कार्ड | E-Shram Card</option>
+<option>आयुष्मान कार्ड | Ayushman Card</option>
+<option>जन आधार कार्ड | Jan Aadhaar Card</option>
+<option>PVC ID कार्ड | PVC ID Card</option>
+<option>Custom कार्ड | Custom Card</option>
 </select>
 
-<p class="hint">Front और Back दोनों तरफ की फोटो अलग-अलग अपलोड और एडिट कर सकते हैं।</p>
-
-<div class="toolgrid">
+<div class="sidebox">
+<h4>1. एडिट करने वाली साइड चुनें | Select Side to Edit</h4>
+<div class="side-select">
+<button type="button" id="selectFront" class="active" onclick="selectIDSide('front')">🔵 FRONT SIDE</button>
+<button type="button" id="selectBack" class="dark" onclick="selectIDSide('back')">🟢 BACK SIDE</button>
+</div>
+<p class="hint" id="activeSideText">अभी Front Side चुनी हुई है।</p>
+</div>
 
 <div class="sidebox">
-<h4>🔵 FRONT SIDE EDIT TOOL</h4>
+<h4>2. चुनी हुई साइड की फोटो अपलोड करें | Upload Selected Side</h4>
+<label id="uploadLabel">Front फोटो अपलोड करें</label>
+<input type="file" id="activeIDFile" accept="image/*">
+<p class="hint">पहले Front चुनें और उसकी फोटो अपलोड करें। फिर Back चुनकर उसकी फोटो अपलोड करें।</p>
+</div>
 
-<label>Front फोटो अपलोड करें</label>
-<input type="file" id="frontFile" accept="image/*">
+<div class="sidebox">
+<h4>3. एक ही Edit Tool – Selected Side Only</h4>
 
 <label>Brightness</label>
-<input type="range" id="frontBright" min="0" max="200" value="100">
+<input type="range" id="idBright" min="0" max="200" value="100">
 
 <label>Contrast</label>
-<input type="range" id="frontContrast" min="0" max="200" value="100">
+<input type="range" id="idContrast" min="0" max="200" value="100">
 
 <label>Zoom</label>
-<input type="range" id="frontZoom" min="50" max="200" value="100">
+<input type="range" id="idZoom" min="50" max="200" value="100">
 
 <label>Crop Horizontal</label>
-<input type="range" id="frontX" min="-100" max="100" value="0">
+<input type="range" id="idX" min="-100" max="100" value="0">
 
 <label>Crop Vertical</label>
-<input type="range" id="frontY" min="-100" max="100" value="0">
+<input type="range" id="idY" min="-100" max="100" value="0">
 
 <label>Rotate</label>
-<select id="frontRotate">
+<select id="idRotate">
 <option value="0">0°</option>
 <option value="90">90°</option>
 <option value="180">180°</option>
@@ -139,91 +163,67 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 </select>
 
 <label>Border</label>
-<select id="frontBorder">
-<option value="none">बिना बॉर्डर</option>
-<option value="black">काला</option>
-<option value="blue">नीला</option>
-<option value="red">लाल</option>
-<option value="green">हरा</option>
+<select id="idBorder">
+<option value="none">बिना बॉर्डर | No Border</option>
+<option value="black">काला | Black</option>
+<option value="blue">नीला | Blue</option>
+<option value="red">लाल | Red</option>
+<option value="green">हरा | Green</option>
 </select>
 
+<div class="row">
+<button onclick="drawIDSide(activeSide)">Preview अपडेट</button>
+<button class="dark" onclick="resetIDSide()">Reset Selected Side</button>
+</div>
+<p class="hint">ध्यान दें: इन टूल से केवल चुनी हुई साइड में बदलाव होगा। दूसरी साइड सुरक्षित रहेगी।</p>
+</div>
+
+<div class="sidebox">
+<h4>4. दोनों साइड का अलग-अलग Preview | Side Preview</h4>
+<div class="toolgrid">
+<div>
+<b>🔵 FRONT SIDE</b>
 <div class="preview">
 <canvas id="frontCanvas" width="1000" height="630"></canvas>
 </div>
-
-<button onclick="drawIDSide('front')">Preview अपडेट</button>
 <button class="green" onclick="downloadCanvas('frontCanvas','ID-Front.png')">⬇ Front डाउनलोड</button>
-<button class="dark" onclick="resetIDSide('front')">Reset Front</button>
 </div>
-
-<div class="sidebox">
-<h4>🟢 BACK SIDE EDIT TOOL</h4>
-
-<label>Back फोटो अपलोड करें</label>
-<input type="file" id="backFile" accept="image/*">
-
-<label>Brightness</label>
-<input type="range" id="backBright" min="0" max="200" value="100">
-
-<label>Contrast</label>
-<input type="range" id="backContrast" min="0" max="200" value="100">
-
-<label>Zoom</label>
-<input type="range" id="backZoom" min="50" max="200" value="100">
-
-<label>Crop Horizontal</label>
-<input type="range" id="backX" min="-100" max="100" value="0">
-
-<label>Crop Vertical</label>
-<input type="range" id="backY" min="-100" max="100" value="0">
-
-<label>Rotate</label>
-<select id="backRotate">
-<option value="0">0°</option>
-<option value="90">90°</option>
-<option value="180">180°</option>
-<option value="270">270°</option>
-</select>
-
-<label>Border</label>
-<select id="backBorder">
-<option value="none">बिना बॉर्डर</option>
-<option value="black">काला</option>
-<option value="blue">नीला</option>
-<option value="red">लाल</option>
-<option value="green">हरा</option>
-</select>
-
+<div>
+<b>🟢 BACK SIDE</b>
 <div class="preview">
 <canvas id="backCanvas" width="1000" height="630"></canvas>
 </div>
-
-<button onclick="drawIDSide('back')">Preview अपडेट</button>
 <button class="green" onclick="downloadCanvas('backCanvas','ID-Back.png')">⬇ Back डाउनलोड</button>
-<button class="dark" onclick="resetIDSide('back')">Reset Back</button>
+</div>
 </div>
 </div>
 
 <div class="sidebox">
-<h4>📄 FRONT + BACK दोनों एक साथ देखें</h4>
-<div class="toolgrid">
-<div class="preview">
-<canvas id="bothCanvas" width="1000" height="650"></canvas>
+<h4>5. A4 पेपर पर Front + Back साथ में | A4 Print Preview</h4>
+<p class="hint">दोनों फोटो A4 Portrait पेपर पर बराबर आकार में एक ही लाइन में दिखाई देंगी।</p>
+<div class="a4-preview">
+<div class="a4-paper">
+<canvas id="a4Canvas" width="1240" height="1754"></canvas>
 </div>
 </div>
-<button class="orange" onclick="makeBoth()">दोनों का Preview</button>
-<button class="green" onclick="downloadCanvas('bothCanvas','ID-Front-Back.png')">⬇ दोनों डाउनलोड</button>
+<div class="row">
+<button class="orange" onclick="makeA4Preview()">🔄 A4 Preview अपडेट करें</button>
+<button class="green" onclick="printIDCard()">🖨️ A4 Print Out</button>
+<button class="dark" onclick="downloadCanvas('a4Canvas','ID-Front-Back-A4.png')">⬇ A4 डाउनलोड</button>
+</div>
+<p class="hint">प्रिंट करते समय A4 पेपर और Actual Size / 100% Scale चुनें। प्रिंटर की सेटिंग के अनुसार वास्तविक आकार में थोड़ा अंतर हो सकता है।</p>
+</div>
+
 <p class="hint">यह फोटो एडिट और प्रिंट लेआउट टूल है। यह सरकारी पहचान-पत्र जारी या संशोधित नहीं करता। वास्तविक कार्ड की जानकारी में बदलाव केवल संबंधित अधिकृत पोर्टल से करें।</p>
-</div>
 </div>
 
 <!-- PASSPORT PHOTO -->
 <div class="panel">
 <h3>📷 Passport Photo Sheet Maker</h3>
-<label>फोटो चुनें</label>
+<label>फोटो चुनें | Select Photo</label>
 <input type="file" id="passFile" accept="image/*">
 
-<label>फोटो की संख्या</label>
+<label>फोटो की संख्या | Number of Photos</label>
 <select id="passCount">
 <option>2</option><option>4</option><option>6</option>
 <option selected>8</option><option>12</option><option>15</option>
@@ -232,13 +232,13 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <option>50</option>
 </select>
 
-<label>पेपर का आकार</label>
+<label>पेपर का आकार | Paper Size</label>
 <select id="paperSize">
 <option value="A4">A4 Paper</option>
 <option value="4x6">4 × 6 Photo Paper</option>
 </select>
 
-<label>फोटो का साइज</label>
+<label>फोटो का साइज | Photo Size</label>
 <select id="passSize">
 <option value="35,45">35 × 45 mm</option>
 <option value="25,35">25 × 35 mm</option>
@@ -281,10 +281,10 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <!-- JOINT PHOTO -->
 <div class="panel">
 <h3>👥 Joint Photo Maker</h3>
-<label>पहली फोटो</label>
+<label>पहली फोटो | First Photo</label>
 <input type="file" id="jointA" accept="image/*">
 
-<label>दूसरी फोटो</label>
+<label>दूसरी फोटो | Second Photo</label>
 <input type="file" id="jointB" accept="image/*">
 
 <label>पहली फोटो Zoom</label>
@@ -319,7 +319,7 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <div class="panel">
 <h3>🖼️ GENERAL PHOTO EDITOR</h3>
 
-<label>फोटो अपलोड करें</label>
+<label>फोटो अपलोड करें | Upload Photo</label>
 <input type="file" id="generalFile" accept="image/*">
 
 <label>Crop Horizontal</label>
@@ -339,12 +339,10 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 
 <label>Brightness</label>
 <input type="range" id="genBright" min="0" max="200" value="100">
-
 <label id="brightnessValue">Brightness: 100%</label>
 
 <label>Contrast</label>
 <input type="range" id="genContrast" min="0" max="200" value="100">
-
 <label id="contrastValue">Contrast: 100%</label>
 
 <label>Rotate</label>
@@ -379,16 +377,15 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <!-- PDF TOOLS -->
 <section id="pdf">
 <h2>📄 PDF TOOLS</h2>
-
 <div class="toolgrid">
 <div class="panel">
-<h3>PDF Merge</h3>
+<h3>PDF Merge | PDF जोड़ें</h3>
 <input type="file" id="mergeFiles" accept="application/pdf" multiple>
 <button class="green" onclick="mergePDF()">PDF जोड़ें</button>
 </div>
 
 <div class="panel">
-<h3>PDF Rotate</h3>
+<h3>PDF Rotate | PDF घुमाएं</h3>
 <input type="file" id="rotateFile" accept="application/pdf">
 <select id="rotateAngle">
 <option value="90">90°</option>
@@ -399,9 +396,9 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 </div>
 
 <div class="panel">
-<h3>PDF Split</h3>
+<h3>PDF Split | PDF पेज अलग करें</h3>
 <input type="file" id="splitFile" accept="application/pdf">
-<label>पेज नंबर: 1,2,3</label>
+<label>पेज नंबर | Page Numbers: 1,2,3</label>
 <input id="splitPages" placeholder="1,3,5">
 <button class="green" onclick="splitPDF()">पेज अलग करें</button>
 </div>
@@ -409,7 +406,7 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 </section>
 
 <section id="contact">
-<h2>☎ संपर्क</h2>
+<h2>☎ संपर्क | Contact</h2>
 <div class="panel">
 <p>WhatsApp: 8890922880</p>
 <a href="https://wa.me/918890922880">WhatsApp पर संपर्क करें</a>
@@ -425,6 +422,11 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 <p class="hint" style="color:#dbeafe">सरकारी सेवाओं के लिए संबंधित आधिकारिक पोर्टल के नियम लागू होंगे।</p>
 </footer>
 
+<!-- PRINT ONLY -->
+<div id="printArea">
+<img id="printA4Image" alt="A4 ID Card Front Back Print">
+</div>
+
 <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 
 <script>
@@ -435,147 +437,155 @@ footer{text-align:center;background:#10265b;color:white;padding:25px;margin-top:
 
 const services=[
 
-["आधार कार्ड डाउनलोड","आधार","🪪","https://myaadhaar.uidai.gov.in/"],
-["आधार PVC कार्ड","आधार","💳","https://myaadhaar.uidai.gov.in/"],
-["आधार पता अपडेट","आधार","🏠","https://myaadhaar.uidai.gov.in/"],
-["आधार अपडेट स्टेटस","आधार","🔍","https://myaadhaar.uidai.gov.in/"],
-["आधार केंद्र खोजें","आधार","📍","https://uidai.gov.in/"],
+["आधार कार्ड डाउनलोड","Aadhaar","आधार","🪪","https://myaadhaar.uidai.gov.in/"],
+["आधार PVC कार्ड","Aadhaar","आधार","💳","https://myaadhaar.uidai.gov.in/"],
+["आधार पता अपडेट","Aadhaar Address Update","आधार","🏠","https://myaadhaar.uidai.gov.in/"],
+["आधार अपडेट स्टेटस","Aadhaar Update Status","आधार","🔍","https://myaadhaar.uidai.gov.in/"],
+["आधार केंद्र खोजें","Find Aadhaar Centre","आधार","📍","https://uidai.gov.in/"],
 
-["PAN कार्ड आवेदन","PAN","🆔","https://www.incometax.gov.in/"],
-["PAN कार्ड सुधार","PAN","✏️","https://www.protean-tinpan.com/"],
-["PAN डाउनलोड","PAN","📥","https://www.incometax.gov.in/"],
-["PAN-Aadhaar लिंक","PAN","🔗","https://www.incometax.gov.in/"],
+["PAN कार्ड आवेदन","PAN Card Apply","PAN","🆔","https://www.incometax.gov.in/"],
+["PAN कार्ड सुधार","PAN Card Correction","PAN","✏️","https://www.protean-tinpan.com/"],
+["PAN डाउनलोड","Download PAN Card","PAN","📥","https://www.incometax.gov.in/"],
+["PAN-Aadhaar लिंक","Link PAN with Aadhaar","PAN","🔗","https://www.incometax.gov.in/"],
 
-["जन आधार कार्ड","जन आधार","👨‍👩‍👧","https://janaadhaar.rajasthan.gov.in/"],
-["जन आधार संशोधन","जन आधार","📝","https://janaadhaar.rajasthan.gov.in/"],
-["जन आधार डाउनलोड","जन आधार","📥","https://janaadhaar.rajasthan.gov.in/"],
+["जाति प्रमाण पत्र","Caste Certificate","प्रमाण पत्र","📜","https://sso.rajasthan.gov.in/"],
+["निवास प्रमाण पत्र","Residence Certificate","प्रमाण पत्र","🏠","https://sso.rajasthan.gov.in/"],
+["मूल निवास प्रमाण पत्र","Domicile Certificate","प्रमाण पत्र","📃","https://sso.rajasthan.gov.in/"],
+["आय प्रमाण पत्र","Income Certificate","प्रमाण पत्र","💰","https://sso.rajasthan.gov.in/"],
+["पुलिस चरित्र प्रमाण पत्र","Police Character Certificate","पुलिस सेवा","👮","https://police.rajasthan.gov.in/portal/CitizenServicesNew"],
+["पुलिस सत्यापन","Police Verification","पुलिस सेवा","🔍","https://police.rajasthan.gov.in/portal/CitizenServicesNew"],
+["किरायेदार पुलिस सत्यापन","Tenant Police Verification","पुलिस सेवा","🏠","https://police.rajasthan.gov.in/portal/CitizenServicesNew"],
+["नौकर / कर्मचारी पुलिस सत्यापन","Servant / Employee Verification","पुलिस सेवा","📋","https://police.rajasthan.gov.in/portal/CitizenServicesNew"],
 
-["ई-मित्र पोर्टल","ई-मित्र","🏢","https://emitra.rajasthan.gov.in/"],
-["ई-मित्र आवेदन स्थिति","ई-मित्र","📋","https://emitra.rajasthan.gov.in/"],
-["ई-मित्र प्रमाण पत्र","ई-मित्र","📜","https://emitra.rajasthan.gov.in/"],
+["जन आधार कार्ड","Jan Aadhaar Card","जन आधार","👨‍👩‍👧","https://janaadhaar.rajasthan.gov.in/"],
+["जन आधार संशोधन","Jan Aadhaar Correction","जन आधार","📝","https://janaadhaar.rajasthan.gov.in/"],
+["जन आधार डाउनलोड","Download Jan Aadhaar","जन आधार","📥","https://janaadhaar.rajasthan.gov.in/"],
 
-["CSC Digital Seva","CSC","🖥️","https://digitalseva.csc.gov.in/"],
-["CSC रजिस्ट्रेशन","CSC","📝","https://register.csc.gov.in/"],
+["ई-मित्र पोर्टल","e-Mitra Portal","ई-मित्र","🏢","https://emitra.rajasthan.gov.in/"],
+["ई-मित्र आवेदन स्थिति","e-Mitra Application Status","ई-मित्र","📋","https://emitra.rajasthan.gov.in/"],
+["ई-मित्र प्रमाण पत्र","e-Mitra Certificates","ई-मित्र","📜","https://emitra.rajasthan.gov.in/"],
 
-["जन सूचना पोर्टल","पंचायत","📊","https://jansoochna.rajasthan.gov.in/Scheme/Index"],
-["ई-ग्राम स्वराज","पंचायत","🏛️","https://egramswaraj.gov.in/"],
-["मेरी पंचायत","पंचायत","🏘️","https://meripanchayat.gov.in/"],
-["राजस्थान पंचायती राज","पंचायत","🏢","https://rajpanchayat.rajasthan.gov.in/"],
+["CSC Digital Seva","CSC Digital Seva","CSC","🖥️","https://digitalseva.csc.gov.in/"],
+["CSC रजिस्ट्रेशन","CSC Registration","CSC","📝","https://register.csc.gov.in/"],
 
-["मनरेगा जॉब कार्ड","मनरेगा","🧑‍🌾","https://nrega.nic.in/"],
-["मनरेगा मस्टर रोल","मनरेगा","📋","https://nrega.nic.in/"],
-["मनरेगा भुगतान स्थिति","मनरेगा","💰","https://nrega.nic.in/"],
-["मनरेगा कार्य रिपोर्ट","मनरेगा","📈","https://nrega.nic.in/"],
+["जन सूचना पोर्टल","Jan Soochna Portal","पंचायत","📊","https://jansoochna.rajasthan.gov.in/Scheme/Index"],
+["ई-ग्राम स्वराज","e-Gram Swaraj","पंचायत","🏛️","https://egramswaraj.gov.in/"],
+["मेरी पंचायत","Meri Panchayat","पंचायत","🏘️","https://meripanchayat.gov.in/"],
+["राजस्थान पंचायती राज","Rajasthan Panchayati Raj","पंचायत","🏢","https://rajpanchayat.rajasthan.gov.in/"],
 
-["वोटर ID आवेदन","वोटर ID","🗳️","https://voters.eci.gov.in/"],
-["वोटर ID डाउनलोड","वोटर ID","📥","https://voters.eci.gov.in/"],
-["वोटर लिस्ट","वोटर ID","📃","https://voters.eci.gov.in/"],
+["मनरेगा जॉब कार्ड","MGNREGA Job Card","मनरेगा","🧑‍🌾","https://nrega.nic.in/"],
+["मनरेगा मस्टर रोल","MGNREGA Muster Roll","मनरेगा","📋","https://nrega.nic.in/"],
+["मनरेगा भुगतान स्थिति","MGNREGA Payment Status","मनरेगा","💰","https://nrega.nic.in/"],
+["मनरेगा कार्य रिपोर्ट","MGNREGA Work Report","मनरेगा","📈","https://nrega.nic.in/"],
 
-["राशन कार्ड","राशन","🍚","https://food.rajasthan.gov.in/"],
-["राशन कार्ड संशोधन","राशन","✏️","https://food.rajasthan.gov.in/"],
+["वोटर ID आवेदन","Voter ID Apply","वोटर ID","🗳️","https://voters.eci.gov.in/"],
+["वोटर ID डाउनलोड","Download Voter ID","वोटर ID","📥","https://voters.eci.gov.in/"],
+["वोटर लिस्ट","Voter List","वोटर ID","📃","https://voters.eci.gov.in/"],
 
-["ड्राइविंग लाइसेंस","परिवहन","🚘","https://parivahan.gov.in/"],
-["लर्निंग लाइसेंस","परिवहन","🛵","https://parivahan.gov.in/"],
-["DL नवीनीकरण","परिवहन","🔄","https://parivahan.gov.in/"],
-["वाहन RC जानकारी","परिवहन","🚗","https://parivahan.gov.in/"],
-["ट्रैफिक चालान","परिवहन","🚦","https://echallan.parivahan.gov.in/"],
+["राशन कार्ड","Ration Card","राशन","🍚","https://food.rajasthan.gov.in/"],
+["राशन कार्ड संशोधन","Ration Card Correction","राशन","✏️","https://food.rajasthan.gov.in/"],
 
-["जमाबंदी नकल","भूमि","🌾","https://apnakhata.rajasthan.gov.in/"],
-["नामांतरण स्थिति","भूमि","📝","https://apnakhata.rajasthan.gov.in/"],
-["खसरा जानकारी","भूमि","🔢","https://apnakhata.rajasthan.gov.in/"],
-["भू नक्शा","भूमि","🗺️","https://bhunaksha.rajasthan.gov.in/"],
-["गिरदावरी जानकारी","भूमि","🌱","https://apnakhata.rajasthan.gov.in/"],
+["ड्राइविंग लाइसेंस","Driving Licence","परिवहन","🚘","https://parivahan.gov.in/"],
+["लर्निंग लाइसेंस","Learning Licence","परिवहन","🛵","https://parivahan.gov.in/"],
+["DL नवीनीकरण","Driving Licence Renewal","परिवहन","🔄","https://parivahan.gov.in/"],
+["वाहन RC जानकारी","Vehicle RC Details","परिवहन","🚗","https://parivahan.gov.in/"],
+["ट्रैफिक चालान","Traffic Challan","परिवहन","🚦","https://echallan.parivahan.gov.in/"],
 
-["PM किसान योजना","किसान","👨‍🌾","https://pmkisan.gov.in/"],
-["PM किसान स्टेटस","किसान","🔍","https://pmkisan.gov.in/"],
-["फसल बीमा","किसान","🌾","https://pmfby.gov.in/"],
+["जमाबंदी नकल","Jamabandi Copy","भूमि","🌾","https://apnakhata.rajasthan.gov.in/"],
+["नामांतरण स्थिति","Mutation Status","भूमि","📝","https://apnakhata.rajasthan.gov.in/"],
+["खसरा जानकारी","Khasra Details","भूमि","🔢","https://apnakhata.rajasthan.gov.in/"],
+["भू नक्शा","Land Map","भूमि","🗺️","https://bhunaksha.rajasthan.gov.in/"],
+["गिरदावरी जानकारी","Girdawari Details","भूमि","🌱","https://apnakhata.rajasthan.gov.in/"],
 
-["वृद्धावस्था पेंशन","पेंशन","👴","https://ssp.rajasthan.gov.in/"],
-["विधवा पेंशन","पेंशन","👩","https://ssp.rajasthan.gov.in/"],
-["दिव्यांग पेंशन","पेंशन","♿","https://ssp.rajasthan.gov.in/"],
+["PM किसान योजना","PM Kisan Scheme","किसान","👨‍🌾","https://pmkisan.gov.in/"],
+["PM किसान स्टेटस","PM Kisan Status","किसान","🔍","https://pmkisan.gov.in/"],
+["फसल बीमा","Crop Insurance","किसान","🌾","https://pmfby.gov.in/"],
 
-["आयुष्मान कार्ड","स्वास्थ्य","🏥","https://beneficiary.nha.gov.in/"],
-["ABHA हेल्थ ID","स्वास्थ्य","🩺","https://abha.abdm.gov.in/"],
+["वृद्धावस्था पेंशन","Old Age Pension","पेंशन","👴","https://ssp.rajasthan.gov.in/"],
+["विधवा पेंशन","Widow Pension","पेंशन","👩","https://ssp.rajasthan.gov.in/"],
+["दिव्यांग पेंशन","Disability Pension","पेंशन","♿","https://ssp.rajasthan.gov.in/"],
 
-["स्कॉलरशिप आवेदन","शिक्षा","🎓","https://scholarships.gov.in/"],
-["राजस्थान बोर्ड रिजल्ट","शिक्षा","📚","https://rajeduboard.rajasthan.gov.in/"],
-["शाला दर्पण","शिक्षा","🏫","https://rajshaladarpan.rajasthan.gov.in/"],
+["आयुष्मान कार्ड","Ayushman Card","स्वास्थ्य","🏥","https://beneficiary.nha.gov.in/"],
+["ABHA हेल्थ ID","ABHA Health ID","स्वास्थ्य","🩺","https://abha.abdm.gov.in/"],
 
-["ई-श्रम कार्ड","रोजगार","👷","https://eshram.gov.in/"],
-["रोजगार पंजीकरण","रोजगार","💼","https://employment.livelihoods.rajasthan.gov.in/"],
-["नेशनल करियर सर्विस","रोजगार","🔎","https://www.ncs.gov.in/"],
+["स्कॉलरशिप आवेदन","Scholarship Apply","शिक्षा","🎓","https://scholarships.gov.in/"],
+["राजस्थान बोर्ड रिजल्ट","Rajasthan Board Result","शिक्षा","📚","https://rajeduboard.rajasthan.gov.in/"],
+["शाला दर्पण","Shala Darpan","शिक्षा","🏫","https://rajshaladarpan.rajasthan.gov.in/"],
 
-["RTI ऑनलाइन","RTI","📩","https://rtionline.gov.in/"],
-["राजस्थान RTI","RTI","⚖️","https://rti.rajasthan.gov.in/"],
+["ई-श्रम कार्ड","e-Shram Card","रोजगार","👷","https://eshram.gov.in/"],
+["रोजगार पंजीकरण","Employment Registration","रोजगार","💼","https://employment.livelihoods.rajasthan.gov.in/"],
+["नेशनल करियर सर्विस","National Career Service","रोजगार","🔎","https://www.ncs.gov.in/"],
 
-["पासपोर्ट आवेदन","पासपोर्ट","🛂","https://www.passportindia.gov.in/"],
-["पासपोर्ट स्टेटस","पासपोर्ट","🔍","https://www.passportindia.gov.in/"],
+["RTI ऑनलाइन","RTI Online","RTI","📩","https://rtionline.gov.in/"],
+["राजस्थान RTI","Rajasthan RTI","RTI","⚖️","https://rti.rajasthan.gov.in/"],
 
-["बैंकिंग जानकारी","बैंकिंग","🏦","https://www.rbi.org.in/"],
-["AEPS जानकारी","बैंकिंग","💳","https://www.npci.org.in/"],
-["DBT जानकारी","बैंकिंग","🔗","https://dbtbharat.gov.in/"],
-["बैंक शिकायत","बैंकिंग","📣","https://cms.rbi.org.in/"],
+["पासपोर्ट आवेदन","Passport Apply","पासपोर्ट","🛂","https://www.passportindia.gov.in/"],
+["पासपोर्ट स्टेटस","Passport Status","पासपोर्ट","🔍","https://www.passportindia.gov.in/"],
 
-["LIC प्रीमियम भुगतान","बीमा","🛡️","https://licindia.in/"],
-["LIC पॉलिसी जानकारी","बीमा","📑","https://licindia.in/"],
+["बैंकिंग जानकारी","Banking Information","बैंकिंग","🏦","https://www.rbi.org.in/"],
+["AEPS जानकारी","AEPS Information","बैंकिंग","💳","https://www.npci.org.in/"],
+["DBT जानकारी","DBT Information","बैंकिंग","🔗","https://dbtbharat.gov.in/"],
+["बैंक शिकायत","Bank Complaint","बैंकिंग","📣","https://cms.rbi.org.in/"],
 
-["GST पोर्टल","व्यापार","🧾","https://www.gst.gov.in/"],
-["इनकम टैक्स","व्यापार","💼","https://www.incometax.gov.in/"],
-["उद्यम रजिस्ट्रेशन","व्यापार","🏭","https://udyamregistration.gov.in/"],
-["FSSAI लाइसेंस","व्यापार","🍽️","https://foscos.fssai.gov.in/"],
+["LIC प्रीमियम भुगतान","LIC Premium Payment","बीमा","🛡️","https://licindia.in/"],
+["LIC पॉलिसी जानकारी","LIC Policy Information","बीमा","📑","https://licindia.in/"],
 
-["बिजली बिल भुगतान - ई-मित्र","बिल भुगतान","💡","https://emitra.rajasthan.gov.in/"],
-["बिजली विभाग - राजस्थान","बिल भुगतान","⚡","https://energy.rajasthan.gov.in/"],
-["Bijli Mitra","बिल भुगतान","🔌","https://www.bijlimitra.com/"],
-["जन सूचना बिजली बिल जानकारी","बिल भुगतान","📊","https://jansoochna.rajasthan.gov.in/"],
+["GST पोर्टल","GST Portal","व्यापार","🧾","https://www.gst.gov.in/"],
+["इनकम टैक्स","Income Tax","व्यापार","💼","https://www.incometax.gov.in/"],
+["उद्यम रजिस्ट्रेशन","Udyam Registration","व्यापार","🏭","https://udyamregistration.gov.in/"],
+["FSSAI लाइसेंस","FSSAI Licence","व्यापार","🍽️","https://foscos.fssai.gov.in/"],
 
-["पानी बिल जानकारी","बिल भुगतान","🚰","https://urban.rajasthan.gov.in/"],
+["बिजली बिल भुगतान - ई-मित्र","Electricity Bill - e-Mitra","बिल भुगतान","💡","https://emitra.rajasthan.gov.in/"],
+["बिजली विभाग - राजस्थान","Rajasthan Electricity Department","बिल भुगतान","⚡","https://energy.rajasthan.gov.in/"],
+["Bijli Mitra","Bijli Mitra","बिल भुगतान","🔌","https://www.bijlimitra.com/"],
+["जन सूचना बिजली बिल जानकारी","Electricity Bill Information","बिल भुगतान","📊","https://jansoochna.rajasthan.gov.in/"],
 
-["Indane Gas Booking","गैस बुकिंग","🔥","https://cx.indianoil.in/"],
-["Bharat Gas Booking","गैस बुकिंग","🔥","https://my.ebharatgas.com/"],
-["HP Gas Booking","गैस बुकिंग","🔥","https://myhpgas.in/"],
-["LPG गैस जानकारी","गैस बुकिंग","🛢️","https://mylpg.in/"],
+["पानी बिल जानकारी","Water Bill Information","बिल भुगतान","🚰","https://urban.rajasthan.gov.in/"],
 
-["मोबाइल रिचार्ज","रिचार्ज","📱","https://www.bharatbillpay.com/"],
-["DTH / TV रिचार्ज","रिचार्ज","📺","https://www.bharatbillpay.com/"],
-["FASTag रिचार्ज","रिचार्ज","🚘","https://fastag.ihmcl.com/"],
-["EMI / किस्त जानकारी","रिचार्ज","💳","https://www.rbi.org.in/"],
+["Indane Gas Booking","Indane Gas Booking","गैस बुकिंग","🔥","https://cx.indianoil.in/"],
+["Bharat Gas Booking","Bharat Gas Booking","गैस बुकिंग","🔥","https://my.ebharatgas.com/"],
+["HP Gas Booking","HP Gas Booking","गैस बुकिंग","🔥","https://myhpgas.in/"],
+["LPG गैस जानकारी","LPG Gas Information","गैस बुकिंग","🛢️","https://mylpg.in/"],
 
-["ट्रेन टिकट","यात्रा","🚆","https://www.irctc.co.in/"],
+["मोबाइल रिचार्ज","Mobile Recharge","रिचार्ज","📱","https://www.bharatbillpay.com/"],
+["DTH / TV रिचार्ज","DTH / TV Recharge","रिचार्ज","📺","https://www.bharatbillpay.com/"],
+["FASTag रिचार्ज","FASTag Recharge","रिचार्ज","🚘","https://fastag.ihmcl.com/"],
+["EMI / किस्त जानकारी","EMI / Installment Information","रिचार्ज","💳","https://www.rbi.org.in/"],
 
-["सरकारी योजनाएं","सरकारी योजना","🇮🇳","https://www.myscheme.gov.in/"],
-["राजस्थान SSO","सरकारी योजना","🔐","https://sso.rajasthan.gov.in/"],
-["राजस्थान संपर्क","सरकारी योजना","☎️","https://sampark.rajasthan.gov.in/"],
+["ट्रेन टिकट","Train Ticket Booking","यात्रा","🚆","https://www.irctc.co.in/"],
 
-["eCourts केस स्टेटस","कानूनी","⚖️","https://ecourts.gov.in/"],
-["डिजिलॉकर","दस्तावेज","📂","https://www.digilocker.gov.in/"],
-["UMANG","दस्तावेज","📲","https://web.umang.gov.in/"],
+["सरकारी योजनाएं","Government Schemes","सरकारी योजना","🇮🇳","https://www.myscheme.gov.in/"],
+["राजस्थान SSO","Rajasthan SSO","सरकारी योजना","🔐","https://sso.rajasthan.gov.in/"],
+["राजस्थान संपर्क","Rajasthan Sampark","सरकारी योजना","☎️","https://sampark.rajasthan.gov.in/"],
 
-["माई स्कीम","सरकारी योजना","📚","https://www.myscheme.gov.in/"],
-["रेलवे PNR","यात्रा","🚉","https://www.indianrail.gov.in/"],
-["पोस्ट ऑफिस सेवाएं","डाक","📮","https://www.indiapost.gov.in/"],
-["सुकन्या समृद्धि जानकारी","बैंकिंग","👧","https://www.indiapost.gov.in/"],
+["eCourts केस स्टेटस","eCourts Case Status","कानूनी","⚖️","https://ecourts.gov.in/"],
+["डिजिलॉकर","DigiLocker","दस्तावेज","📂","https://www.digilocker.gov.in/"],
+["UMANG","UMANG","दस्तावेज","📲","https://web.umang.gov.in/"],
 
-["EPFO पासबुक","रोजगार","📘","https://passbook.epfindia.gov.in/"],
-["ESIC जानकारी","रोजगार","🏥","https://www.esic.gov.in/"],
+["माई स्कीम","My Scheme","सरकारी योजना","📚","https://www.myscheme.gov.in/"],
+["रेलवे PNR","Railway PNR Status","यात्रा","🚉","https://www.indianrail.gov.in/"],
+["पोस्ट ऑफिस सेवाएं","Post Office Services","डाक","📮","https://www.indiapost.gov.in/"],
+["सुकन्या समृद्धि जानकारी","Sukanya Samriddhi Information","बैंकिंग","👧","https://www.indiapost.gov.in/"],
 
-/* PMAY OFFICIAL PORTALS */
+["EPFO पासबुक","EPFO Passbook","रोजगार","📘","https://passbook.epfindia.gov.in/"],
+["ESIC जानकारी","ESIC Information","रोजगार","🏥","https://www.esic.gov.in/"],
 
-["PM आवास योजना ग्रामीण (PMAY-G)","सरकारी योजना","🏡","https://pmayg.nic.in/"],
-["PMAY-G ऑनलाइन आवेदन - UMANG","सरकारी योजना","📝","https://web.umang.gov.in/landing/department/pmayg.html"],
-["PM आवास योजना शहरी (PMAY-U)","सरकारी योजना","🏢","https://pmay-urban.gov.in/"],
-["PMAY-U 2.0 आवेदन पोर्टल","सरकारी योजना","📝","https://pmaymis.gov.in/PMAYMIS2_2024/PmayDefault.aspx"],
+["PM आवास योजना ग्रामीण","PM Awas Yojana Gramin (PMAY-G)","सरकारी योजना","🏡","https://pmayg.nic.in/"],
+["PMAY-G ऑनलाइन आवेदन - UMANG","PMAY-G Online Information - UMANG","सरकारी योजना","📝","https://web.umang.gov.in/landing/department/pmayg.html"],
+["PM आवास योजना शहरी","PM Awas Yojana Urban (PMAY-U)","सरकारी योजना","🏢","https://pmay-urban.gov.in/"],
+["PMAY-U 2.0 आवेदन पोर्टल","PMAY-U 2.0 Application Portal","सरकारी योजना","📝","https://pmaymis.gov.in/PMAYMIS2_2024/PmayDefault.aspx"],
 
-["स्वच्छ भारत मिशन","सरकारी योजना","🧹","https://swachhbharatmission.ddws.gov.in/"],
-["जल जीवन मिशन","सरकारी योजना","🚰","https://jaljeevanmission.gov.in/"],
-["उज्ज्वला योजना","गैस बुकिंग","🔥","https://www.pmuy.gov.in/"],
-["राष्ट्रीय खाद्य सुरक्षा","राशन","🌾","https://nfsa.gov.in/"],
-["किसान पोर्टल","किसान","🚜","https://farmer.gov.in/"],
-["आयुष्मान भारत","स्वास्थ्य","💊","https://pmjay.gov.in/"],
-["राष्ट्रीय छात्रवृत्ति","शिक्षा","🎓","https://scholarships.gov.in/"],
-["डाक जीवन बीमा","बीमा","📮","https://pli.indiapost.gov.in/"],
-["राजस्थान पुलिस","सरकारी योजना","👮","https://police.rajasthan.gov.in/"],
-["राजस्थान हाईकोर्ट","कानूनी","⚖️","https://hcraj.nic.in/"]
+["स्वच्छ भारत मिशन","Swachh Bharat Mission","सरकारी योजना","🧹","https://swachhbharatmission.ddws.gov.in/"],
+["जल जीवन मिशन","Jal Jeevan Mission","सरकारी योजना","🚰","https://jaljeevanmission.gov.in/"],
+["उज्ज्वला योजना","Ujjwala Yojana","गैस बुकिंग","🔥","https://www.pmuy.gov.in/"],
+["राष्ट्रीय खाद्य सुरक्षा","National Food Security","राशन","🌾","https://nfsa.gov.in/"],
+["किसान पोर्टल","Farmer Portal","किसान","🚜","https://farmer.gov.in/"],
+["आयुष्मान भारत","Ayushman Bharat","स्वास्थ्य","💊","https://pmjay.gov.in/"],
+["राष्ट्रीय छात्रवृत्ति","National Scholarship Portal","शिक्षा","🎓","https://scholarships.gov.in/"],
+["डाक जीवन बीमा","Postal Life Insurance","बीमा","📮","https://pli.indiapost.gov.in/"],
+["राजस्थान पुलिस","Rajasthan Police","पुलिस सेवा","👮","https://police.rajasthan.gov.in/"],
+["राजस्थान पुलिस नागरिक सेवाएं","Rajasthan Police Citizen Services","पुलिस सेवा","🚔","https://police.rajasthan.gov.in/portal/CitizenServicesNew"],
+["राजस्थान हाईकोर्ट","Rajasthan High Court","कानूनी","⚖️","https://hcraj.nic.in/"]
 
 ];
 
@@ -585,13 +595,13 @@ const serviceList=document.getElementById("servicesList");
 
 function showServices(){
  const q=document.getElementById("search").value.toLowerCase().trim();
- const filtered=services.filter(s=>(s[0]+" "+s[1]).toLowerCase().includes(q));
+ const filtered=services.filter(s=>(s[0]+" "+s[1]+" "+s[2]).toLowerCase().includes(q));
 
  serviceList.innerHTML="";
  const groups={};
 
  filtered.forEach(s=>{
-  (groups[s[1]]??=[]).push(s);
+  (groups[s[2]]??=[]).push(s);
  });
 
  Object.keys(groups).forEach(cat=>{
@@ -606,20 +616,23 @@ function showServices(){
   groups[cat].forEach(s=>{
    const a=document.createElement("a");
    a.className="service";
-   a.href=s[3];
+   a.href=s[4];
    a.target="_blank";
    a.rel="noopener noreferrer";
 
    const icon=document.createElement("span");
-   icon.textContent=s[2];
+   icon.textContent=s[3];
 
    const name=document.createElement("div");
    name.textContent=s[0];
 
-   const small=document.createElement("small");
-   small.textContent="आधिकारिक पोर्टल खोलें ↗";
+   const english=document.createElement("small");
+   english.textContent=s[1];
 
-   a.append(icon,name,small);
+   const small=document.createElement("small");
+   small.textContent="आधिकारिक पोर्टल खोलें | Open Official Portal ↗";
+
+   a.append(icon,name,english,small);
    grid.appendChild(a);
   });
 
@@ -627,7 +640,7 @@ function showServices(){
  });
 
  if(!filtered.length){
-  serviceList.textContent="कोई सेवा नहीं मिली।";
+  serviceList.textContent="कोई सेवा नहीं मिली | No service found.";
  }
 }
 
@@ -680,8 +693,6 @@ function borderColor(v){
  }[v]||null;
 }
 
-/* COMMON IMAGE DRAW FUNCTION */
-
 function drawPhoto(ctx,img,x,y,w,h,options={}){
 
  if(!img)return;
@@ -692,24 +703,20 @@ function drawPhoto(ctx,img,x,y,w,h,options={}){
  const rotate=Number(options.rotate||0);
  const offsetX=Number(options.offsetX||0);
  const offsetY=Number(options.offsetY||0);
-
  const crop=Number(options.crop||100);
- const factor=Math.max(w/img.width,h/img.height)*zoom*(100/crop);
 
+ const factor=Math.max(w/img.width,h/img.height)*zoom*(100/crop);
  const dw=img.width*factor;
  const dh=img.height*factor;
 
  ctx.save();
-
  ctx.beginPath();
  ctx.rect(x,y,w,h);
  ctx.clip();
 
  ctx.translate(x+w/2+offsetX,y+h/2+offsetY);
  ctx.rotate(rotate*Math.PI/180);
-
  ctx.filter="brightness("+bright+"%) contrast("+contrast+"%)";
-
  ctx.drawImage(img,-dw/2,-dh/2,dw,dh);
 
  ctx.filter="none";
@@ -727,29 +734,98 @@ function drawBorder(ctx,x,y,w,h,color,width=8){
 
 
 /* ==================================
-   ID CARD FRONT / BACK
+   ID CARD - ONE SHARED EDIT TOOL
 ================================== */
 
-["front","back"].forEach(side=>{
+let activeSide="front";
 
- const fileId=side+"File";
+const idDefaults={
+ bright:100,
+ contrast:100,
+ zoom:100,
+ x:0,
+ y:0,
+ rotate:"0",
+ border:"none"
+};
 
- document.getElementById(fileId).addEventListener("change",e=>{
-  loadImage(e.target.files[0],side,()=>drawIDSide(side));
+const idSettings={
+ front:{...idDefaults},
+ back:{...idDefaults}
+};
+
+function selectIDSide(side){
+
+ activeSide=side;
+
+ document.getElementById("selectFront").classList.toggle("active",side==="front");
+ document.getElementById("selectBack").classList.toggle("active",side==="back");
+
+ document.getElementById("selectFront").classList.toggle("dark",side!=="front");
+ document.getElementById("selectBack").classList.toggle("dark",side!=="back");
+
+ document.getElementById("activeSideText").textContent=
+  side==="front"?"अभी Front Side चुनी हुई है। अब Edit Tool केवल Front पर काम करेगा।":
+  "अभी Back Side चुनी हुई है। अब Edit Tool केवल Back पर काम करेगा।";
+
+ document.getElementById("uploadLabel").textContent=
+  side==="front"?"Front फोटो अपलोड करें":"Back फोटो अपलोड करें";
+
+ loadIDControls();
+}
+
+function loadIDControls(){
+
+ const s=idSettings[activeSide];
+
+ document.getElementById("idBright").value=s.bright;
+ document.getElementById("idContrast").value=s.contrast;
+ document.getElementById("idZoom").value=s.zoom;
+ document.getElementById("idX").value=s.x;
+ document.getElementById("idY").value=s.y;
+ document.getElementById("idRotate").value=s.rotate;
+ document.getElementById("idBorder").value=s.border;
+
+ const file=document.getElementById("activeIDFile");
+ file.value="";
+}
+
+function saveIDControls(){
+
+ const s=idSettings[activeSide];
+
+ s.bright=document.getElementById("idBright").value;
+ s.contrast=document.getElementById("idContrast").value;
+ s.zoom=document.getElementById("idZoom").value;
+ s.x=document.getElementById("idX").value;
+ s.y=document.getElementById("idY").value;
+ s.rotate=document.getElementById("idRotate").value;
+ s.border=document.getElementById("idBorder").value;
+}
+
+document.getElementById("activeIDFile").addEventListener("change",e=>{
+ loadImage(e.target.files[0],activeSide,()=>{
+  drawIDSide(activeSide);
+  makeA4Preview();
  });
+});
 
- ["Bright","Contrast","Zoom","X","Y","Rotate","Border"].forEach(name=>{
-  document.getElementById(side+name).addEventListener("input",()=>drawIDSide(side));
+[
+ "idBright","idContrast","idZoom","idX","idY","idRotate","idBorder"
+].forEach(id=>{
+ document.getElementById(id).addEventListener("input",()=>{
+  saveIDControls();
+  drawIDSide(activeSide);
+  makeA4Preview();
  });
-
 });
 
 function drawIDSide(side){
 
  const c=document.getElementById(side+"Canvas");
  const ctx=c.getContext("2d");
-
  const img=images[side];
+ const s=idSettings[side];
 
  ctx.clearRect(0,0,c.width,c.height);
  ctx.fillStyle="#eaf0f8";
@@ -770,12 +846,12 @@ function drawIDSide(side){
 
  if(img){
   drawPhoto(ctx,img,x,y,w,h,{
-   bright:document.getElementById(side+"Bright").value,
-   contrast:document.getElementById(side+"Contrast").value,
-   zoom:document.getElementById(side+"Zoom").value,
-   offsetX:Number(document.getElementById(side+"X").value)*3,
-   offsetY:Number(document.getElementById(side+"Y").value)*3,
-   rotate:document.getElementById(side+"Rotate").value
+   bright:s.bright,
+   contrast:s.contrast,
+   zoom:s.zoom,
+   offsetX:Number(s.x)*3,
+   offsetY:Number(s.y)*3,
+   rotate:s.rotate
   });
  }else{
   ctx.fillStyle="#8994a5";
@@ -784,50 +860,90 @@ function drawIDSide(side){
   ctx.fillText("यहां फोटो अपलोड करें",500,330);
  }
 
- drawBorder(
-  ctx,x,y,w,h,
-  borderColor(document.getElementById(side+"Border").value),8
- );
-
+ drawBorder(ctx,x,y,w,h,borderColor(s.border),8);
  ctx.textAlign="left";
 }
 
-function resetIDSide(side){
+function resetIDSide(){
 
- ["Bright","Contrast","Zoom"].forEach(name=>{
-  document.getElementById(side+name).value=100;
- });
-
- ["X","Y"].forEach(name=>{
-  document.getElementById(side+name).value=0;
- });
-
- document.getElementById(side+"Rotate").value=0;
- document.getElementById(side+"Border").value="none";
-
- drawIDSide(side);
+ idSettings[activeSide]={...idDefaults};
+ loadIDControls();
+ drawIDSide(activeSide);
+ makeA4Preview();
 }
 
 document.getElementById("cardType").addEventListener("input",()=>{
  drawIDSide("front");
  drawIDSide("back");
+ makeA4Preview();
 });
 
-function makeBoth(){
 
- const c=document.getElementById("bothCanvas");
+/* ==================================
+   A4 FRONT + BACK PRINT PREVIEW
+================================== */
+
+function makeA4Preview(){
+
+ const c=document.getElementById("a4Canvas");
  const ctx=c.getContext("2d");
+
+ c.width=1240;
+ c.height=1754;
 
  ctx.fillStyle="white";
  ctx.fillRect(0,0,c.width,c.height);
 
  ctx.fillStyle="#123b79";
- ctx.font="bold 28px Arial";
  ctx.textAlign="center";
- ctx.fillText("FRONT + BACK",500,35);
+ ctx.font="bold 34px Arial";
+ ctx.fillText("ID CARD FRONT + BACK",620,100);
 
- ctx.drawImage(document.getElementById("frontCanvas"),0,50,490,570);
- ctx.drawImage(document.getElementById("backCanvas"),510,50,490,570);
+ ctx.fillStyle="#333";
+ ctx.font="bold 22px Arial";
+ ctx.fillText("FRONT SIDE",335,340);
+ ctx.fillText("BACK SIDE",905,340);
+
+ const front=document.getElementById("frontCanvas");
+ const back=document.getElementById("backCanvas");
+
+ const cardW=500;
+ const cardH=315;
+ const startY=390;
+
+ ctx.drawImage(front,85,startY,cardW,cardH);
+ ctx.drawImage(back,655,startY,cardW,cardH);
+
+ ctx.strokeStyle="#222";
+ ctx.lineWidth=3;
+ ctx.strokeRect(85,startY,cardW,cardH);
+ ctx.strokeRect(655,startY,cardW,cardH);
+
+ ctx.fillStyle="#555";
+ ctx.font="18px Arial";
+ ctx.fillText("Front Side",335,startY+cardH+45);
+ ctx.fillText("Back Side",905,startY+cardH+45);
+
+ ctx.fillStyle="#888";
+ ctx.font="16px Arial";
+ ctx.fillText("A4 PAPER PRINT PREVIEW",620,1660);
+}
+
+function printIDCard(){
+
+ if(!images.front || !images.back){
+  alert("प्रिंट करने से पहले Front और Back दोनों फोटो अपलोड करें।");
+  return;
+ }
+
+ makeA4Preview();
+
+ const canvas=document.getElementById("a4Canvas");
+ document.getElementById("printA4Image").src=canvas.toDataURL("image/png");
+
+ setTimeout(()=>{
+  window.print();
+ },400);
 }
 
 
@@ -907,10 +1023,7 @@ function makePassport(){
    rotate:document.getElementById("passRotate").value
   });
 
-  drawBorder(
-   ctx,x,y,pw,ph,
-   borderColor(document.getElementById("passBorder").value),3
-  );
+  drawBorder(ctx,x,y,pw,ph,borderColor(document.getElementById("passBorder").value),3);
  }
 
  ctx.textAlign="left";
@@ -958,10 +1071,7 @@ function makeJoint(){
   });
  }
 
- drawBorder(
-  ctx,4,4,992,642,
-  borderColor(document.getElementById("jointBorder").value),8
- );
+ drawBorder(ctx,4,4,992,642,borderColor(document.getElementById("jointBorder").value),8);
 }
 
 
@@ -1001,7 +1111,6 @@ function drawGeneral(){
  document.getElementById("contrastValue").textContent="Contrast: "+contrast+"%";
 
  if(images.general){
-
   drawPhoto(ctx,images.general,0,0,w,h,{
    bright:bright,
    contrast:contrast,
@@ -1011,14 +1120,9 @@ function drawGeneral(){
    offsetY:Number(document.getElementById("genY").value)*h/100,
    rotate:Number(document.getElementById("genRotate").value)
   });
-
  }
 
- drawBorder(
-  ctx,2,2,w-4,h-4,
-  borderColor(document.getElementById("genBorder").value),
-  Math.max(3,Math.round(w/200))
- );
+ drawBorder(ctx,2,2,w-4,h-4,borderColor(document.getElementById("genBorder").value),Math.max(3,Math.round(w/200)));
 }
 
 function resetGeneral(){
@@ -1081,14 +1185,11 @@ async function mergePDF(){
  }
 
  try{
-
   const out=await L.PDFDocument.create();
 
   for(const f of files){
-
    const src=await L.PDFDocument.load(await f.arrayBuffer());
    const pages=await out.copyPages(src,src.getPageIndices());
-
    pages.forEach(p=>out.addPage(p));
   }
 
@@ -1112,7 +1213,6 @@ async function rotatePDF(){
  }
 
  try{
-
   const pdf=await L.PDFDocument.load(await f.arrayBuffer());
   const angle=Number(document.getElementById("rotateAngle").value);
 
@@ -1140,7 +1240,6 @@ async function splitPDF(){
  }
 
  try{
-
   const src=await L.PDFDocument.load(await f.arrayBuffer());
 
   const nums=document.getElementById("splitPages").value
@@ -1155,7 +1254,6 @@ async function splitPDF(){
 
   const out=await L.PDFDocument.create();
   const pages=await out.copyPages(src,nums);
-
   pages.forEach(p=>out.addPage(p));
 
   savePDF(await out.save(),"Selected-Pages.pdf");
@@ -1168,9 +1266,10 @@ async function splitPDF(){
 
 /* INITIAL PREVIEWS */
 
+selectIDSide("front");
 drawIDSide("front");
 drawIDSide("back");
-makeBoth();
+makeA4Preview();
 makePassport();
 makeJoint();
 drawGeneral();

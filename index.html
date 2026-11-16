@@ -7,930 +7,656 @@
 <meta name="theme-color" content="#123b79">
 <title>Gramin Grahak Sewa | Digital Service Centre</title>
 
-<!-- PDF Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <style>
-:root{
- --blue:#123b79;
- --blue2:#1d5bb5;
- --light:#eef4ff;
- --orange:#f59e0b;
- --green:#15965c;
- --red:#dc3545;
- --dark:#17243a;
- --white:#fff;
- --border:#dce4f0;
- --shadow:0 5px 18px rgba(20,50,90,.10);
-}
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,"Noto Sans Devanagari",sans-serif;
- background:#f4f7fc;
- color:var(--dark);
-}
-header{
- background:linear-gradient(120deg,#092c63,#1e5eb1);
- color:white;
- padding:15px 20px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:12px;
- flex-wrap:wrap;
- box-shadow:var(--shadow);
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fc;color:#1b2940}
+header{background:linear-gradient(120deg,#09285b,#2879d3);color:white;padding:17px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
-.logo{
- width:48px;height:48px;border-radius:12px;
- background:white;color:var(--blue);
- display:grid;place-items:center;
- font-size:25px;font-weight:bold;
-}
-.brand h1{font-size:21px;margin:0}
-.brand p{font-size:12px;margin:5px 0 0;color:#dceaff}
-.header-right{font-size:12px;text-align:right}
-nav{
- display:flex;gap:7px;flex-wrap:wrap;
- background:white;padding:10px 15px;
- border-bottom:1px solid var(--border);
- position:sticky;top:0;z-index:10;
-}
-nav button{
- border:0;background:#edf3ff;color:var(--blue);
- padding:10px 14px;border-radius:8px;
- font-weight:bold;cursor:pointer;
-}
-nav button.active,nav button:hover{
- background:var(--blue);color:white;
-}
-.container{max-width:1250px;margin:auto;padding:18px}
-.page{display:none}
-.page.active{display:block}
-.hero{
- background:linear-gradient(120deg,#123b79,#2875d1);
- color:white;border-radius:17px;padding:25px;
- box-shadow:var(--shadow);
-}
-.hero h2{margin:0 0 10px;font-size:25px}
-.hero p{margin:0;line-height:1.7;color:#e9f2ff}
-.section-title{
- font-size:20px;margin:25px 0 14px;
- color:var(--blue);
-}
-.grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
- gap:14px;
-}
-.card{
- background:white;border:1px solid var(--border);
- border-radius:13px;padding:17px;
- box-shadow:var(--shadow);
-}
-.tool-card{cursor:pointer;transition:.2s}
-.tool-card:hover{transform:translateY(-3px);border-color:#8eb4ef}
-.tool-icon{font-size:30px;margin-bottom:10px}
-.tool-card h3{font-size:16px;margin:5px 0 7px}
-.tool-card p{font-size:12px;color:#66758b;line-height:1.5;margin:0}
-.panel{
- background:white;border:1px solid var(--border);
- border-radius:13px;padding:18px;margin-bottom:16px;
- box-shadow:var(--shadow);
-}
-.panel h3{margin:0 0 15px;color:var(--blue)}
+.logo{width:50px;height:50px;border-radius:14px;background:white;color:#123b79;display:grid;place-items:center;font-size:26px;font-weight:bold}
+.brand h1{font-size:20px;margin:0}
+.brand p{font-size:12px;margin:5px 0 0}
+.head-actions{display:flex;gap:8px;flex-wrap:wrap}
+.head-actions a{color:white;text-decoration:none;padding:10px 13px;border-radius:9px;font-weight:bold;font-size:13px}
+.whatsapp{background:#159b59}.youtube{background:#e52525}
+nav{display:flex;gap:7px;flex-wrap:wrap;padding:10px;background:white;position:sticky;top:0;z-index:10}
+nav button{background:#edf3fc;color:#123b79;border:0;padding:11px 14px;border-radius:9px;font-weight:bold;cursor:pointer}
+nav button.active{background:#123b79;color:white}
+.container{max-width:1300px;margin:auto;padding:16px}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(120deg,#123b79,#2879d3);color:white;padding:25px;border-radius:16px}
+.hero h2{margin:0 0 10px}.hero p{line-height:1.7}
+.section-title{font-size:21px;color:#123b79;margin:25px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px}
+.card,.panel{background:white;border:1px solid #e0e7f0;border-radius:13px;padding:15px;box-shadow:0 4px 14px #123b7910}
+.tool-card{cursor:pointer;transition:.2s}.tool-card:hover,.service-card:hover{transform:translateY(-3px)}
+.icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:24px;margin-bottom:9px;color:white}
+.card h3{font-size:14px;margin:5px 0}
+.card p{font-size:12px;color:#738097;line-height:1.5}
+.service-card{display:flex;align-items:center;gap:10px;cursor:pointer;min-height:78px}
+.service-card .icon{flex-shrink:0;margin:0;width:42px;height:42px}
+.service-card h3{font-size:13px}
 label{display:block;font-size:13px;font-weight:bold;margin:12px 0 6px}
-input,select,textarea{
- width:100%;padding:10px;border:1px solid #ccd7e6;
- border-radius:8px;font-size:14px;background:white;
-}
-input[type="range"]{padding:0}
-input[type="checkbox"]{width:auto}
-button,.btn{
- border:0;background:var(--blue2);color:white;
- padding:10px 15px;border-radius:8px;
- cursor:pointer;font-weight:bold;font-size:13px;
-}
-button:hover,.btn:hover{filter:brightness(1.08)}
-button.secondary{background:#65758b}
-button.success{background:var(--green)}
-button.warning{background:var(--orange);color:#222}
-button.danger{background:var(--red)}
-button.light{background:#eaf1fc;color:var(--blue)}
+input,select{width:100%;padding:10px;border:1px solid #cbd6e5;border-radius:8px;background:white}
+input[type=range],input[type=checkbox]{width:auto}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.btn{border:0;border-radius:8px;padding:10px 14px;background:#1764bd;color:white;font-weight:bold;cursor:pointer}
+.green{background:#15965c}.orange{background:#f5a623;color:#222}.red{background:#dc3545}.light{background:#eaf1fc;color:#123b79}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.preview{
- min-height:180px;background:#f0f3f8;border:1px dashed #aebdd1;
- border-radius:10px;display:flex;align-items:center;
- justify-content:center;padding:12px;overflow:auto;
-}
-.preview canvas,.preview img{max-width:100%;height:auto}
-.muted{font-size:12px;color:#6b7788;line-height:1.6}
-.status{padding:10px;border-radius:8px;background:#edf5ff;margin-top:10px;font-size:13px}
+.preview{min-height:150px;background:#f0f3f8;border:1px dashed #aebdd1;border-radius:10px;display:flex;justify-content:center;align-items:center;padding:10px;overflow:auto;margin-top:12px}
+.preview canvas{max-width:100%;height:auto}
+.muted{font-size:12px;color:#748096;line-height:1.6}
 .hidden{display:none!important}
-.service-search{margin-bottom:14px}
-.service-card{display:flex;align-items:center;gap:10px}
-.service-card .tool-icon{font-size:23px;margin:0}
-.service-card a{color:var(--blue2);font-weight:bold;text-decoration:none}
-footer{
- background:#102e5d;color:white;text-align:center;
- padding:20px;margin-top:35px;font-size:12px;
-}
-#toast{
- position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
- background:#17243a;color:white;padding:12px 18px;
- border-radius:9px;display:none;z-index:100;
- max-width:90%;text-align:center;
-}
-@media(max-width:600px){
- header{padding:12px}
- .brand h1{font-size:17px}
- .header-right{display:none}
- nav{position:static}
- nav button{flex:1 1 auto;padding:9px;font-size:12px}
- .container{padding:12px}
- .hero{padding:20px}
- .hero h2{font-size:21px}
-}
-@media print{
- body{background:white}
- body *{visibility:hidden}
- #printArea,#printArea *{visibility:visible}
- #printArea{position:absolute;left:0;top:0;width:100%}
-}
+.toolbar,.category-bar{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.toolbar button,.category-bar button{border:0;border-radius:8px;padding:9px 12px;background:#eaf1fc;color:#123b79;cursor:pointer}
+.toolbar button.active,.category-bar button.active{background:#123b79;color:white}
+.status{background:#edf5ff;padding:10px;border-radius:8px;font-size:13px;margin-top:10px}
+footer{background:#102d5b;color:white;text-align:center;padding:22px;margin-top:30px}
+#toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17243a;color:white;padding:12px 18px;border-radius:9px;z-index:100}
+@media(max-width:600px){header{padding:12px}.brand h1{font-size:17px}.container{padding:11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{position:static}nav button{flex:1}}
+@media print{body *{visibility:hidden!important}#printArea,#printArea *{visibility:visible!important}#printArea{display:block!important;position:absolute;top:0;left:0;width:100%}}
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="brand">
-  <div class="logo">G</div>
-  <div>
-   <h1>GRAMIN GRAHAK SEWA</h1>
-   <p>Digital Service Centre | आपका अपना डिजिटल सेवा केंद्र</p>
-  </div>
- </div>
- <div class="header-right">
-  <div>ONLINE SERVICES</div>
-  <div>Photo Studio • PDF Tools • Printing</div>
- </div>
+<div class="brand"><div class="logo">G</div><div><h1>GRAMIN GRAHAK SEWA</h1><p>Digital Service Centre</p></div></div>
+<div class="head-actions">
+<a class="whatsapp" href="https://wa.me/918890922880" target="_blank">🟢 WhatsApp</a>
+<a class="youtube" href="https://www.youtube.com/@3dcomedysubhash" target="_blank">▶ YouTube</a>
+</div>
 </header>
 
 <nav>
- <button class="active" data-page="home">🏠 Home</button>
- <button data-page="studio">📸 Photo Studio</button>
- <button data-page="services">🌐 Online Services</button>
- <button data-page="pdf">📄 PDF Tools</button>
- <button data-page="help">☎ Help</button>
+<button class="active" data-page="home">🏠 Home</button>
+<button data-page="studio">📸 Photo Studio</button>
+<button data-page="services">🌐 103 Services</button>
+<button data-page="pdf">📄 PDF Tools</button>
+<button data-page="contact">☎ Contact</button>
 </nav>
 
 <main class="container">
 
-<!-- HOME -->
 <section class="page active" id="home">
- <div class="hero">
-  <h2>आपका स्वागत है!</h2>
-  <p>एक ही जगह पर फोटो एडिटिंग, ID कार्ड, पासपोर्ट फोटो, फोटो शीट, PDF और ऑनलाइन सरकारी सेवाओं की जानकारी प्राप्त करें।</p>
-  <div class="actions">
-   <button class="warning" onclick="showPage('studio')">Photo Studio खोलें</button>
-   <button class="light" onclick="showPage('services')">Online Services देखें</button>
-  </div>
- </div>
-
- <h2 class="section-title">📸 Photo Studio</h2>
- <div class="grid">
-  <div class="card tool-card" onclick="openTool('id')">
-   <div class="tool-icon">🪪</div><h3>ID Card Front + Back</h3>
-   <p>दोनों तरफ की फोटो एक साथ तैयार करें।</p>
-  </div>
-  <div class="card tool-card" onclick="openTool('passport')">
-   <div class="tool-icon">📷</div><h3>Passport Photo</h3>
-   <p>पासपोर्ट साइज फोटो बनाएं।</p>
-  </div>
-  <div class="card tool-card" onclick="openTool('joint')">
-   <div class="tool-icon">👥</div><h3>Joint Photo Maker</h3>
-   <p>दो फोटो को एक साथ जोड़ें।</p>
-  </div>
-  <div class="card tool-card" onclick="openTool('sheet')">
-   <div class="tool-icon">🖨️</div><h3>A4 Photo Sheet</h3>
-   <p>A4, A3 और A5 पर फोटो लगाएं।</p>
-  </div>
- </div>
-
- <h2 class="section-title">📄 PDF & Print Tools</h2>
- <div class="grid">
-  <div class="card tool-card" onclick="openTool('merge')"><div class="tool-icon">📚</div><h3>PDF Merge</h3><p>कई PDF को एक PDF बनाएं।</p></div>
-  <div class="card tool-card" onclick="openTool('split')"><div class="tool-icon">✂️</div><h3>PDF Split</h3><p>PDF के पेज अलग करें।</p></div>
-  <div class="card tool-card" onclick="openTool('rotate')"><div class="tool-icon">🔄</div><h3>PDF Rotate</h3><p>PDF पेज घुमाएं।</p></div>
-  <div class="card tool-card" onclick="openTool('compress')"><div class="tool-icon">📦</div><h3>PDF Compress</h3><p>PDF का आकार कम करें।</p></div>
-  <div class="card tool-card" onclick="openTool('document')"><div class="tool-icon">🖨️</div><h3>Document Print</h3><p>PDF प्रिंट करें।</p></div>
- </div>
-
- <h2 class="section-title">🌐 मुख्य ऑनलाइन सेवाएं</h2>
- <div class="grid">
-  <div class="card tool-card" onclick="showPage('services')"><div class="tool-icon">🆔</div><h3>Aadhaar Services</h3><p>आधार से जुड़ी सेवाएं।</p></div>
-  <div class="card tool-card" onclick="showPage('services')"><div class="tool-icon">💳</div><h3>PAN Card</h3><p>पैन कार्ड सेवाएं।</p></div>
-  <div class="card tool-card" onclick="showPage('services')"><div class="tool-icon">🏠</div><h3>Jan Aadhaar</h3><p>जन आधार सेवाएं।</p></div>
-  <div class="card tool-card" onclick="showPage('services')"><div class="tool-icon">🗳️</div><h3>Voter ID</h3><p>मतदाता सेवाएं।</p></div>
- </div>
+<div class="hero">
+<h2>आपका स्वागत है – Gramin Grahak Sewa</h2>
+<p>फोटो एडिटिंग, ID कार्ड, पासपोर्ट फोटो, फोटो शीट, PDF टूल्स और 103 ऑनलाइन सेवाएं एक ही जगह।</p>
+<div class="actions">
+<button class="btn orange" onclick="openTool('id')">📸 Photo Studio खोलें</button>
+<button class="btn" onclick="showPage('services')">🌐 सभी सेवाएं देखें</button>
+</div>
+</div>
+<h2 class="section-title">📸 Photo Editing Studio</h2>
+<div class="grid">
+<div class="card tool-card" onclick="openTool('id')"><div class="icon" style="background:#2563eb">🪪</div><h3>ID Card Front + Back</h3><p>दोनों तरफ की फोटो तैयार करें।</p></div>
+<div class="card tool-card" onclick="openTool('passport')"><div class="icon" style="background:#e11d48">📷</div><h3>Passport Photo</h3><p>पासपोर्ट फोटो और कॉपी शीट।</p></div>
+<div class="card tool-card" onclick="openTool('joint')"><div class="icon" style="background:#7c3aed">👥</div><h3>Joint Photo</h3><p>दो फोटो एक साथ जोड़ें।</p></div>
+<div class="card tool-card" onclick="openTool('sheet')"><div class="icon" style="background:#0d9488">🖨️</div><h3>Photo Sheet</h3><p>A4, A3, A5 शीट।</p></div>
+</div>
+<h2 class="section-title">🌐 मुख्य ऑनलाइन सेवाएं</h2>
+<div class="grid" id="homeServices"></div>
 </section>
 
-<!-- PHOTO STUDIO -->
 <section class="page" id="studio">
- <h2 class="section-title">📸 Photo Studio</h2>
- <div class="grid">
-  <div class="card tool-card" onclick="selectTool('id')"><div class="tool-icon">🪪</div><h3>ID Card Front + Back</h3><p>सामने और पीछे की फोटो।</p></div>
-  <div class="card tool-card" onclick="selectTool('passport')"><div class="tool-icon">📷</div><h3>Passport Photo</h3><p>पासपोर्ट फोटो तैयार करें।</p></div>
-  <div class="card tool-card" onclick="selectTool('joint')"><div class="tool-icon">👥</div><h3>Joint Photo</h3><p>दो फोटो जोड़ें।</p></div>
-  <div class="card tool-card" onclick="selectTool('sheet')"><div class="tool-icon">🖨️</div><h3>Photo Sheet</h3><p>एक शीट पर कई फोटो।</p></div>
- </div>
+<h2 class="section-title">📸 Photo Editing Studio</h2>
+<div class="toolbar">
+<button class="active" onclick="selectTool('id',this)">ID Card</button>
+<button onclick="selectTool('passport',this)">Passport Photo</button>
+<button onclick="selectTool('joint',this)">Joint Photo</button>
+<button onclick="selectTool('sheet',this)">Photo Sheet</button>
+</div>
 
- <div id="idTool" class="tool-panel hidden">
-  <div class="panel">
-   <h3>🪪 ID Card Front + Back Studio</h3>
-   <div class="row">
-    <div><label>Front Photo</label><input type="file" id="idFront" accept="image/*"></div>
-    <div><label>Back Photo</label><input type="file" id="idBack" accept="image/*"></div>
-   </div>
-   <div class="row">
-    <div><label>Card Width (mm)</label><input id="idW" type="number" value="85.6" step="0.1"></div>
-    <div><label>Card Height (mm)</label><input id="idH" type="number" value="53.98" step="0.1"></div>
-    <div><label>दोनों कार्ड के बीच दूरी (mm)</label><input id="idGap" type="number" value="3" step="0.5"></div>
-   </div>
-   <div class="row">
-    <div><label>Brightness</label><input id="idBright" type="range" min="50" max="160" value="100"></div>
-    <div><label>Contrast</label><input id="idContrast" type="range" min="50" max="160" value="100"></div>
-   </div>
-   <label>Background</label>
-   <select id="idBg"><option value="#ffffff">White</option><option value="#eeeeee">Light Grey</option><option value="#dcecff">Light Blue</option></select>
-   <div class="actions">
-    <button onclick="makeID()">Preview बनाएं</button>
-    <button class="success" onclick="downloadCanvas('idCanvas','ID-Card.png')">PNG Download</button>
-    <button class="warning" onclick="printCanvas('idCanvas')">Print</button>
-   </div>
-   <div class="preview"><canvas id="idCanvas"></canvas></div>
-   <p class="muted">सामान्य ID कार्ड का आकार लगभग 85.6 × 53.98 mm होता है। प्रिंट करते समय Actual Size / 100% चुनें और प्रिंटर की सेटिंग जांचें।</p>
-  </div>
- </div>
+<div class="tool-panel" id="idTool">
+<div class="panel">
+<h3>🪪 ID Card Front + Back Editor</h3>
+<div class="row">
+<div><label>Front Photo</label><input type="file" id="idFront" accept="image/*"></div>
+<div><label>Back Photo</label><input type="file" id="idBack" accept="image/*"></div>
+</div>
+<label>Card Size</label>
+<select id="cardPreset" onchange="cardPresetChange()">
+<option value="85.6,53.98">ATM / PVC ID Card 85.6 × 53.98 mm</option>
+<option value="86,54">86 × 54 mm</option>
+<option value="90,55">90 × 55 mm</option>
+<option value="100,65">100 × 65 mm</option>
+<option value="custom">Custom Size</option>
+</select>
+<div class="row">
+<div><label>Width mm</label><input type="number" id="idW" value="85.6"></div>
+<div><label>Height mm</label><input type="number" id="idH" value="53.98"></div>
+<div><label>Gap mm</label><input type="number" id="idGap" value="3"></div>
+</div>
+<div class="row">
+<div><label>Brightness</label><input type="range" id="idBright" min="50" max="160" value="100"></div>
+<div><label>Contrast</label><input type="range" id="idContrast" min="50" max="160" value="100"></div>
+<div><label>Zoom</label><input type="range" id="idZoom" min="50" max="200" value="100"></div>
+</div>
+<div class="row">
+<div><label>Background</label><input type="color" id="idBg" value="#ffffff"></div>
+<div><label>Front Rotation</label><select id="idFrontRot"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+<div><label>Back Rotation</label><select id="idBackRot"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="makeID()">Preview / Apply Edit</button>
+<button class="btn green" onclick="downloadCanvas('idCanvas','ID-Card.png')">Download PNG</button>
+<button class="btn orange" onclick="printCanvas('idCanvas')">Print</button>
+</div>
+<div class="preview"><canvas id="idCanvas"></canvas></div>
+</div>
+</div>
 
- <div id="passportTool" class="tool-panel hidden">
-  <div class="panel">
-   <h3>📷 Passport Photo Studio</h3>
-   <label>अपनी फोटो चुनें</label><input type="file" id="passFile" accept="image/*">
-   <div class="row">
-    <div><label>Photo Width (mm)</label><input type="number" id="passW" value="35"></div>
-    <div><label>Photo Height (mm)</label><input type="number" id="passH" value="45"></div>
-    <div><label>Zoom</label><input type="range" id="passZoom" min="80" max="180" value="100"></div>
-   </div>
-   <div class="row">
-    <div><label>Brightness</label><input type="range" id="passBright" min="50" max="160" value="100"></div>
-    <div><label>Contrast</label><input type="range" id="passContrast" min="50" max="160" value="100"></div>
-   </div>
-   <label>Background</label>
-   <select id="passBg"><option value="#ffffff">White</option><option value="#dcecff">Light Blue</option><option value="#eeeeee">Light Grey</option></select>
-   <div class="actions">
-    <button onclick="makePassport()">Preview</button>
-    <button class="success" onclick="downloadCanvas('passCanvas','Passport-Photo.png')">Download PNG</button>
-    <button class="warning" onclick="printCanvas('passCanvas')">Print</button>
-   </div>
-   <div class="preview"><canvas id="passCanvas"></canvas></div>
-   <p class="muted">यह फोटो को चुने गए आकार में फिट करता है। आधिकारिक आवेदन के लिए संबंधित विभाग द्वारा बताए गए फोटो आकार और पृष्ठभूमि का पालन करें।</p>
-  </div>
- </div>
+<div class="tool-panel hidden" id="passportTool">
+<div class="panel">
+<h3>📷 Passport Photo Editor</h3>
+<label>फोटो अपलोड करें</label><input type="file" id="passFile" accept="image/*">
+<div class="row">
+<div><label>Width mm</label><input type="number" id="passW" value="35"></div>
+<div><label>Height mm</label><input type="number" id="passH" value="45"></div>
+<div><label>Zoom</label><input type="range" id="passZoom" min="50" max="200" value="100"></div>
+</div>
+<div class="row">
+<div><label>Brightness</label><input type="range" id="passBright" min="50" max="160" value="100"></div>
+<div><label>Contrast</label><input type="range" id="passContrast" min="50" max="160" value="100"></div>
+<div><label>Background</label><input type="color" id="passBg" value="#ffffff"></div>
+</div>
+<div class="row">
+<div><label>Rotation</label><select id="passRotation"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+<div><label>कितनी फोटो चाहिए?</label>
+<select id="passCopies">
+<option>2</option><option>4</option><option>6</option><option>8</option><option>12</option><option>15</option><option>20</option><option>25</option><option>30</option><option>40</option><option>50</option>
+</select></div>
+<div><label>Paper Size</label><select id="passPaper"><option>A4</option><option>A5</option><option>A3</option></select></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="makePassport()">Preview बनाएं</button>
+<button class="btn green" onclick="downloadCanvas('passCanvas','Passport-Photo.png')">Single Photo Download</button>
+<button class="btn orange" onclick="makePassportSheet()">Multiple Copies Sheet</button>
+<button class="btn" onclick="printCanvas('passSheetCanvas')">Sheet Print</button>
+</div>
+<div class="preview"><canvas id="passCanvas"></canvas></div>
+<h3>Multiple Copies Sheet Preview</h3>
+<div class="preview"><canvas id="passSheetCanvas"></canvas></div>
+</div>
+</div>
 
- <div id="jointTool" class="tool-panel hidden">
-  <div class="panel">
-   <h3>👥 Joint Photo Maker</h3>
-   <div class="row">
-    <div><label>पहली फोटो</label><input type="file" id="joint1" accept="image/*"></div>
-    <div><label>दूसरी फोटो</label><input type="file" id="joint2" accept="image/*"></div>
-   </div>
-   <div class="row">
-    <div><label>Layout</label><select id="jointLayout"><option value="horizontal">Side by Side</option><option value="vertical"> ऊपर-नीचे </option></select></div>
-    <div><label>Background</label><input type="color" id="jointBg" value="#ffffff"></div>
-   </div>
-   <div class="actions">
-    <button onclick="makeJoint()">फोटो जोड़ें</button>
-    <button class="success" onclick="downloadCanvas('jointCanvas','Joint-Photo.png')">Download PNG</button>
-    <button class="warning" onclick="printCanvas('jointCanvas')">Print</button>
-   </div>
-   <div class="preview"><canvas id="jointCanvas"></canvas></div>
-  </div>
- </div>
+<div class="tool-panel hidden" id="jointTool">
+<div class="panel">
+<h3>👥 Joint Photo Maker</h3>
+<div class="row">
+<div><label>पहली फोटो</label><input type="file" id="joint1" accept="image/*"></div>
+<div><label>दूसरी फोटो</label><input type="file" id="joint2" accept="image/*"></div>
+</div>
+<div class="row">
+<div><label>Layout</label><select id="jointLayout"><option value="horizontal">Side by Side</option><option value="vertical">ऊपर-नीचे</option></select></div>
+<div><label>Background</label><input type="color" id="jointBg" value="#ffffff"></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="makeJoint()">फोटो जोड़ें</button>
+<button class="btn green" onclick="downloadCanvas('jointCanvas','Joint-Photo.png')">Download</button>
+<button class="btn orange" onclick="printCanvas('jointCanvas')">Print</button>
+</div>
+<div class="preview"><canvas id="jointCanvas"></canvas></div>
+</div>
+</div>
 
- <div id="sheetTool" class="tool-panel hidden">
-  <div class="panel">
-   <h3>🖨️ A4 / A3 / A5 Photo Sheet</h3>
-   <label>फोटो चुनें</label><input type="file" id="sheetFiles" accept="image/*" multiple>
-   <div class="row">
-    <div><label>Paper Size</label><select id="sheetPaper"><option value="A4">A4</option><option value="A3">A3</option><option value="A5">A5</option></select></div>
-    <div><label>Photo Width (mm)</label><input id="sheetW" type="number" value="35"></div>
-    <div><label>Photo Height (mm)</label><input id="sheetH" type="number" value="45"></div>
-    <div><label>Copies</label><input id="sheetCopies" type="number" min="1" max="100" value="8"></div>
-   </div>
-   <div class="row">
-    <div><label>Margin (mm)</label><input id="sheetMargin" type="number" value="5"></div>
-    <div><label>Gap (mm)</label><input id="sheetGap" type="number" value="3"></div>
-   </div>
-   <div class="actions">
-    <button onclick="makeSheet()">Sheet बनाएं</button>
-    <button class="success" onclick="downloadCanvas('sheetCanvas','Photo-Sheet.png')">Download PNG</button>
-    <button class="warning" onclick="printCanvas('sheetCanvas')">Print</button>
-   </div>
-   <div class="preview"><canvas id="sheetCanvas"></canvas></div>
-   <p class="muted">प्रिंट में वास्तविक माप के लिए Print Settings में Scale = 100% या Actual Size रखें।</p>
-  </div>
- </div>
+<div class="tool-panel hidden" id="sheetTool">
+<div class="panel">
+<h3>🖨️ Photo Sheet Maker</h3>
+<label>एक या अधिक फोटो चुनें</label><input type="file" id="sheetFiles" accept="image/*" multiple>
+<div class="row">
+<div><label>Paper Size</label><select id="sheetPaper"><option>A4</option><option>A3</option><option>A5</option></select></div>
+<div><label>Photo Width mm</label><input id="sheetW" type="number" value="35"></div>
+<div><label>Photo Height mm</label><input id="sheetH" type="number" value="45"></div>
+<div><label>Copies</label><input id="sheetCopies" type="number" min="1" max="100" value="8"></div>
+<div><label>Margin mm</label><input id="sheetMargin" type="number" value="5"></div>
+<div><label>Gap mm</label><input id="sheetGap" type="number" value="3"></div>
+</div>
+<div class="actions">
+<button class="btn" onclick="makeSheet()">Sheet बनाएं</button>
+<button class="btn green" onclick="downloadCanvas('sheetCanvas','Photo-Sheet.png')">Download PNG</button>
+<button class="btn orange" onclick="printCanvas('sheetCanvas')">Print</button>
+</div>
+<div class="preview"><canvas id="sheetCanvas"></canvas></div>
+</div>
+</div>
 </section>
 
-<!-- ONLINE SERVICES -->
 <section class="page" id="services">
- <h2 class="section-title">🌐 Online Government Services</h2>
- <input class="service-search" id="serviceSearch" placeholder="सेवा खोजें... जैसे Aadhaar, PAN, Voter" oninput="filterServices()">
- <div class="grid" id="serviceGrid"></div>
- <p class="muted">नोट: ये संबंधित सेवाओं के आधिकारिक पोर्टल के लिंक हैं। कुछ सेवाओं के लिए अधिकृत लॉगिन, OTP या विभागीय अनुमति जरूरी हो सकती है।</p>
+<h2 class="section-title">🌐 103 Online Services</h2>
+<div class="panel">
+<label>सेवा खोजें</label><input id="serviceSearch" placeholder="Aadhaar, PAN, Voter..." oninput="filterServices()">
+<label>Category</label><select id="serviceCategory" onchange="filterServices()"><option value="">सभी कैटेगरी</option></select>
+<div class="status" id="serviceCount">कुल 103 सेवाएं</div>
+</div>
+<div class="grid" id="serviceGrid"></div>
 </section>
 
-<!-- PDF TOOLS -->
 <section class="page" id="pdf">
- <h2 class="section-title">📄 PDF & Document Tools</h2>
-
- <div class="panel">
-  <h3>📚 PDF Merge – PDF जोड़ें</h3>
-  <label>दो या अधिक PDF चुनें</label>
-  <input type="file" id="mergeFiles" accept="application/pdf" multiple>
-  <div class="actions"><button onclick="mergePDF()">PDF Merge करें</button></div>
-  <div id="mergeStatus" class="status hidden"></div>
- </div>
-
- <div class="panel">
-  <h3>✂️ PDF Split – पेज अलग करें</h3>
-  <label>PDF चुनें</label><input type="file" id="splitFile" accept="application/pdf">
-  <label>पेज नंबर / रेंज</label>
-  <input id="splitRange" placeholder="उदाहरण: 1-3,5,8-10">
-  <p class="muted">खाली छोड़ने पर हर पेज की अलग PDF बनाई जाएगी।</p>
-  <div class="actions"><button onclick="splitPDF()">Split PDF</button></div>
-  <div id="splitStatus" class="status hidden"></div>
- </div>
-
- <div class="panel">
-  <h3>🔄 PDF Rotate – पेज घुमाएं</h3>
-  <label>PDF चुनें</label><input type="file" id="rotateFile" accept="application/pdf">
-  <div class="row">
-   <div><label>किस दिशा में घुमाएं?</label><select id="rotateDegree"><option value="90">90° Right</option><option value="180">180°</option><option value="270">270° Left</option></select></div>
-   <div><label>पेज</label><input id="rotatePages" placeholder="खाली = सभी पेज"></div>
-  </div>
-  <div class="actions"><button onclick="rotatePDF()">Rotate PDF</button></div>
-  <div id="rotateStatus" class="status hidden"></div>
- </div>
-
- <div class="panel">
-  <h3>📦 PDF Compress – PDF का आकार कम करें</h3>
-  <label>PDF चुनें</label><input type="file" id="compressFile" accept="application/pdf">
-  <label>Image Quality</label><select id="compressQuality"><option value="0.75">High Quality</option><option value="0.55" selected>Medium Quality</option><option value="0.35">Low Size</option></select>
-  <p class="muted">यह टूल PDF पेजों को इमेज में बदलकर नई PDF बनाता है। टेक्स्ट सर्च और कॉपी करने की सुविधा खत्म हो सकती है।</p>
-  <div class="actions"><button onclick="compressPDF()">Compress PDF</button></div>
-  <div id="compressStatus" class="status hidden"></div>
- </div>
-
- <div class="panel">
-  <h3>🖨️ Document Print – PDF प्रिंट</h3>
-  <label>PDF चुनें</label><input type="file" id="printFile" accept="application/pdf">
-  <div class="row">
-   <div><label>Page Size</label><select id="printPaper"><option>A4</option><option>A3</option><option>A5</option></select></div>
-   <div><label>Orientation</label><select id="printOrientation"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
-  </div>
-  <div class="actions"><button onclick="preparePDFPrint()">PDF Print Preview</button></div>
- </div>
+<h2 class="section-title">📄 PDF & Print Tools</h2>
+<div class="panel">
+<h3>📚 PDF Merge</h3>
+<label>PDF फाइलें चुनें</label><input type="file" id="mergeFiles" accept="application/pdf" multiple>
+<div class="actions"><button class="btn" onclick="mergePDF()">PDF Merge करें</button></div>
+<div id="mergeStatus" class="status hidden"></div>
+</div>
+<div class="panel">
+<h3>✂️ PDF Split</h3>
+<label>PDF चुनें</label><input type="file" id="splitFile" accept="application/pdf">
+<label>Page Range (जैसे 1-3,5,8-10)</label><input id="splitRange" placeholder="खाली = हर पेज अलग">
+<div class="actions"><button class="btn" onclick="splitPDF()">Split PDF</button></div>
+<div id="splitStatus" class="status hidden"></div>
+</div>
+<div class="panel">
+<h3>🔄 PDF Rotate</h3>
+<label>PDF चुनें</label><input type="file" id="rotateFile" accept="application/pdf">
+<div class="row">
+<div><label>Rotation</label><select id="rotateDegree"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+<div><label>Pages</label><input id="rotatePages" placeholder="खाली = सभी पेज"></div>
+</div>
+<div class="actions"><button class="btn" onclick="rotatePDF()">Rotate PDF</button></div>
+<div id="rotateStatus" class="status hidden"></div>
+</div>
+<div class="panel">
+<h3>📦 PDF Compress</h3>
+<label>PDF चुनें</label><input type="file" id="compressFile" accept="application/pdf">
+<label>Quality</label><select id="compressQuality"><option value=".75">High Quality</option><option value=".55" selected>Medium Quality</option><option value=".35">Low Size</option></select>
+<p class="muted">इस प्रक्रिया में PDF पेज इमेज बनते हैं और टेक्स्ट सर्च/कॉपी सुविधा हट सकती है।</p>
+<div class="actions"><button class="btn" onclick="compressPDF()">Compress PDF</button></div>
+<div id="compressStatus" class="status hidden"></div>
+</div>
 </section>
 
-<!-- HELP -->
-<section class="page" id="help">
- <h2 class="section-title">☎ Help & Contact</h2>
- <div class="panel">
-  <h3>Gramin Grahak Sewa</h3>
-  <p>डिजिटल सेवाओं और फोटो प्रिंटिंग से संबंधित सहायता के लिए संपर्क करें।</p>
-  <label>केंद्र का नाम</label><input value="Gramin Grahak Sewa" readonly>
-  <label>मोबाइल नंबर</label><input id="helpPhone" placeholder="अपना मोबाइल नंबर लिखें">
-  <label>पता</label><textarea id="helpAddress" placeholder="अपना केंद्र का पता लिखें"></textarea>
-  <div class="actions"><button onclick="saveContact()">जानकारी सेव करें</button></div>
-  <p class="muted">यह जानकारी इसी ब्राउज़र में सेव होगी।</p>
- </div>
- <div class="panel">
-  <h3>जरूरी जानकारी</h3>
-  <ul>
-   <li>ग्राहक का OTP या पासवर्ड किसी से साझा न करें।</li>
-   <li>सरकारी पोर्टल पर आवेदन करने से पहले विवरण जांचें।</li>
-   <li>प्रिंट करते समय Paper Size और Scale जांचें।</li>
-   <li>ग्राहक की निजी फाइलें काम पूरा होने पर डिवाइस से हटा दें।</li>
-  </ul>
- </div>
+<section class="page" id="contact">
+<h2 class="section-title">☎ Contact Us</h2>
+<div class="grid">
+<div class="card"><div class="icon" style="background:#159b59">🟢</div><h3>WhatsApp</h3><p>8890922880</p><a class="btn green" href="https://wa.me/918890922880" target="_blank">संपर्क करें</a></div>
+<div class="card"><div class="icon" style="background:#dc2626">▶</div><h3>YouTube</h3><p>3D Comedy Subhash</p><a class="btn red" href="https://www.youtube.com/@3dcomedysubhash" target="_blank">Channel खोलें</a></div>
+</div>
 </section>
 
 </main>
-
 <div id="printArea" class="hidden"></div>
 <div id="toast"></div>
-
-<footer>
- GRAMIN GRAHAK SEWA | Digital Service Centre<br>
- Photo Studio • Online Services • PDF Tools
-</footer>
+<footer>GRAMIN GRAHAK SEWA | Digital Service Centre<br>WhatsApp: 8890922880</footer>
 
 <script>
-/* ---------------- NAVIGATION ---------------- */
-
+/* NAVIGATION */
 function showPage(id){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- const page=document.getElementById(id);
- if(page) page.classList.add('active');
-
- document.querySelectorAll('nav button').forEach(b=>{
-  b.classList.toggle('active',b.dataset.page===id);
- });
- document.querySelectorAll('.tool-panel').forEach(p=>p.classList.add('hidden'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
  window.scrollTo({top:0,behavior:'smooth'});
 }
-
-document.querySelectorAll('nav button').forEach(btn=>{
- btn.addEventListener('click',()=>showPage(btn.dataset.page));
-});
-
-function openTool(id){
- showPage('studio');
- selectTool(id);
-}
-
-function selectTool(id){
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function openTool(id){showPage('studio');selectTool(id)}
+function selectTool(id,btn){
  document.querySelectorAll('.tool-panel').forEach(p=>p.classList.add('hidden'));
- const el=document.getElementById(id+'Tool');
- if(el) el.classList.remove('hidden');
- if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+ document.getElementById(id+'Tool').classList.remove('hidden');
+ document.querySelectorAll('.toolbar button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
 }
-
-/* ---------------- COMMON HELPERS ---------------- */
-
-function toast(message){
- const t=document.getElementById('toast');
- t.textContent=message;
- t.style.display='block';
- clearTimeout(window.toastTimer);
- window.toastTimer=setTimeout(()=>t.style.display='none',3500);
+function toast(m){
+ const t=document.getElementById('toast');t.textContent=m;t.style.display='block';
+ clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',3000);
 }
-
 function readImage(file){
- return new Promise((resolve,reject)=>{
-  if(!file){reject(new Error('फोटो चुनें'));return}
-  const img=new Image();
-  const url=URL.createObjectURL(file);
-  img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};
-  img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('फोटो नहीं खुल सकी'))};
+ return new Promise((res,rej)=>{
+  if(!file){rej(new Error('पहले फोटो अपलोड करें'));return}
+  const url=URL.createObjectURL(file),img=new Image();
+  img.onload=()=>{URL.revokeObjectURL(url);res(img)};
+  img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('फोटो नहीं खुली'))};
   img.src=url;
  });
 }
-
-function downloadCanvas(canvasId,filename){
- const c=document.getElementById(canvasId);
- if(!c || !c.width){toast('पहले Preview बनाएं');return}
- const a=document.createElement('a');
- a.download=filename;
- a.href=c.toDataURL('image/png');
- a.click();
+function downloadCanvas(id,name){
+ const c=document.getElementById(id);
+ if(!c.width){toast('पहले Preview बनाएं');return}
+ const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=name;a.click();
+}
+function printCanvas(id){
+ const c=document.getElementById(id);
+ if(!c.width){toast('पहले Preview बनाएं');return}
+ const area=document.getElementById('printArea');area.innerHTML='';
+ const img=new Image();img.src=c.toDataURL('image/png');img.style.width='100%';img.style.height='auto';
+ area.appendChild(img);area.classList.remove('hidden');window.print();area.classList.add('hidden');area.innerHTML='';
+}
+function fitImage(ctx,img,x,y,w,h,zoom=1,rotation=0){
+ ctx.save();ctx.translate(x+w/2,y+h/2);ctx.rotate(rotation*Math.PI/180);
+ let iw=img.width,ih=img.height;
+ if(rotation%180!==0)[iw,ih]=[ih,iw];
+ const s=Math.max(w/iw,h/ih)*zoom;
+ ctx.drawImage(img,-img.width*s/2,-img.height*s/2,img.width*s,img.height*s);
+ ctx.restore();
+}
+function cardPresetChange(){
+ const v=document.getElementById('cardPreset').value;
+ if(v!=='custom'){const a=v.split(',');idW.value=a[0];idH.value=a[1]}
 }
 
-function printCanvas(canvasId){
- const c=document.getElementById(canvasId);
- if(!c || !c.width){toast('पहले Preview बनाएं');return}
- const area=document.getElementById('printArea');
- area.innerHTML='';
- area.classList.remove('hidden');
- const img=document.createElement('img');
- img.src=c.toDataURL('image/png');
- img.style.display='block';
- img.style.maxWidth='100%';
- img.style.height='auto';
- area.appendChild(img);
- window.print();
- area.classList.add('hidden');
- area.innerHTML='';
-}
-
-function drawFit(ctx,img,x,y,w,h,mode='cover'){
- const scale=mode==='contain'
-  ?Math.min(w/img.width,h/img.height)
-  :Math.max(w/img.width,h/img.height);
- const sw=w/scale,sh=h/scale;
- const sx=(img.width-sw)/2,sy=(img.height-sh)/2;
- ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
-}
-
-/* ---------------- ID CARD ---------------- */
-
+/* ID CARD EDITOR */
 async function makeID(){
  try{
-  const front=await readImage(document.getElementById('idFront').files[0]);
-  const back=await readImage(document.getElementById('idBack').files[0]);
-  const w=Number(document.getElementById('idW').value);
-  const h=Number(document.getElementById('idH').value);
-  const gap=Number(document.getElementById('idGap').value);
-  if(w<=0||h<=0||gap<0) throw new Error('कार्ड का आकार सही लिखें');
-
-  const scale=6,margin=10;
-  const cw=Math.round(w*scale),ch=Math.round(h*scale),g=Math.round(gap*scale);
-  const c=document.getElementById('idCanvas');
-  c.width=margin*2+cw*2+g;
-  c.height=margin*2+ch;
-  const ctx=c.getContext('2d');
-  ctx.fillStyle=document.getElementById('idBg').value;
-  ctx.fillRect(0,0,c.width,c.height);
-
-  const filter=`brightness(${document.getElementById('idBright').value}%) contrast(${document.getElementById('idContrast').value}%)`;
-  ctx.filter=filter;
-  drawFit(ctx,front,margin,margin,cw,ch);
-  drawFit(ctx,back,margin+cw+g,margin,cw,ch);
-  ctx.filter='none';
-  ctx.strokeStyle='#999';
-  ctx.lineWidth=1;
-  ctx.strokeRect(margin,margin,cw,ch);
-  ctx.strokeRect(margin+cw+g,margin,cw,ch);
+  const f=await readImage(idFront.files[0]),b=await readImage(idBack.files[0]);
+  const w=+idW.value,h=+idH.value,g=+idGap.value;
+  if(w<=0||h<=0||g<0)throw Error('कार्ड का आकार सही लिखें');
+  const s=6,margin=12,cw=Math.round(w*s),ch=Math.round(h*s),gap=Math.round(g*s);
+  const c=idCanvas;c.width=margin*2+cw*2+gap;c.height=margin*2+ch;
+  const ctx=c.getContext('2d');ctx.fillStyle=idBg.value;ctx.fillRect(0,0,c.width,c.height);
+  ctx.filter=`brightness(${idBright.value}%) contrast(${idContrast.value}%)`;
+  const z=+idZoom.value/100;
+  fitImage(ctx,f,margin,margin,cw,ch,z,+idFrontRot.value);
+  fitImage(ctx,b,margin+cw+gap,margin,cw,ch,z,+idBackRot.value);
+  ctx.filter='none';ctx.strokeStyle='#999';ctx.lineWidth=1;
+  ctx.strokeRect(margin,margin,cw,ch);ctx.strokeRect(margin+cw+gap,margin,cw,ch);
   toast('ID Card Preview तैयार है');
- }catch(e){toast(e.message||'फोटो अपलोड करें')}
+ }catch(e){toast(e.message)}
 }
 
-/* ---------------- PASSPORT PHOTO ---------------- */
-
+/* PASSPORT PHOTO */
 async function makePassport(){
  try{
-  const img=await readImage(document.getElementById('passFile').files[0]);
-  const w=Number(document.getElementById('passW').value);
-  const h=Number(document.getElementById('passH').value);
-  if(w<=0||h<=0) throw new Error('सही फोटो आकार लिखें');
-  const scale=8;
-  const c=document.getElementById('passCanvas');
-  c.width=Math.round(w*scale);c.height=Math.round(h*scale);
-  const ctx=c.getContext('2d');
-  ctx.fillStyle=document.getElementById('passBg').value;
-  ctx.fillRect(0,0,c.width,c.height);
-  ctx.filter=`brightness(${document.getElementById('passBright').value}%) contrast(${document.getElementById('passContrast').value}%)`;
-  const zoom=Number(document.getElementById('passZoom').value)/100;
-  const base=Math.max(c.width/img.width,c.height/img.height)*zoom;
-  const dw=img.width*base,dh=img.height*base;
-  ctx.drawImage(img,(c.width-dw)/2,(c.height-dh)/2,dw,dh);
-  ctx.filter='none';
-  toast('Passport Photo तैयार है');
- }catch(e){toast(e.message||'फोटो चुनें')}
+  const img=await readImage(passFile.files[0]),w=+passW.value,h=+passH.value;
+  if(w<=0||h<=0)throw Error('फोटो का आकार सही लिखें');
+  const s=8,c=passCanvas;c.width=Math.round(w*s);c.height=Math.round(h*s);
+  const ctx=c.getContext('2d');ctx.fillStyle=passBg.value;ctx.fillRect(0,0,c.width,c.height);
+  ctx.filter=`brightness(${passBright.value}%) contrast(${passContrast.value}%)`;
+  fitImage(ctx,img,0,0,c.width,c.height,+passZoom.value/100,+passRotation.value);
+  ctx.filter='none';toast('Passport Photo तैयार है');
+ }catch(e){toast(e.message)}
+}
+async function makePassportSheet(){
+ try{
+  await makePassport();const src=passCanvas;
+  if(!src.width)throw Error('फोटो अपलोड करें');
+  const sizes={A4:[210,297],A5:[148,210],A3:[297,420]};
+  const [mw,mh]=sizes[passPaper.value],s=5,c=passSheetCanvas;
+  c.width=mw*s;c.height=mh*s;
+  const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
+  const pw=+passW.value*s,ph=+passH.value*s,g=3*s,m=5*s;
+  const cols=Math.floor((c.width-2*m+g)/(pw+g));
+  const rows=Math.floor((c.height-2*m+g)/(ph+g));
+  const total=+passCopies.value,available=cols*rows;
+  if(available<1)throw Error('फोटो पेपर से बड़ी है');
+  for(let i=0;i<Math.min(total,available);i++){
+   const x=m+(i%cols)*(pw+g),y=m+Math.floor(i/cols)*(ph+g);
+   ctx.drawImage(src,x,y,pw,ph);ctx.strokeStyle='#aaa';ctx.strokeRect(x,y,pw,ph);
+  }
+  toast(`शीट तैयार: ${Math.min(total,available)} फोटो`);
+ }catch(e){toast(e.message)}
 }
 
-/* ---------------- JOINT PHOTO ---------------- */
-
+/* JOINT PHOTO */
 async function makeJoint(){
  try{
-  const a=await readImage(document.getElementById('joint1').files[0]);
-  const b=await readImage(document.getElementById('joint2').files[0]);
-  const c=document.getElementById('jointCanvas');
-  const ctx=c.getContext('2d');
-  const layout=document.getElementById('jointLayout').value;
-  const bg=document.getElementById('jointBg').value;
-  const gap=20;
-  if(layout==='horizontal'){
-   const h=600,w=800;
-   c.width=w*2+gap;c.height=h;
-   ctx.fillStyle=bg;ctx.fillRect(0,0,c.width,c.height);
-   drawFit(ctx,a,0,0,w,h);
-   drawFit(ctx,b,w+gap,0,w,h);
+  const a=await readImage(joint1.files[0]),b=await readImage(joint2.files[0]);
+  const c=jointCanvas,ctx=c.getContext('2d');ctx.fillStyle=jointBg.value;
+  if(jointLayout.value==='horizontal'){
+   c.width=820;c.height=400;ctx.fillRect(0,0,c.width,c.height);
+   fitImage(ctx,a,0,0,400,400);fitImage(ctx,b,420,0,400,400);
   }else{
-   const w=800,h=600;
-   c.width=w;c.height=h*2+gap;
-   ctx.fillStyle=bg;ctx.fillRect(0,0,c.width,c.height);
-   drawFit(ctx,a,0,0,w,h);
-   drawFit(ctx,b,0,h+gap,w,h);
+   c.width=600;c.height=1220;ctx.fillRect(0,0,c.width,c.height);
+   fitImage(ctx,a,0,0,600,600);fitImage(ctx,b,0,620,600,600);
   }
   toast('Joint Photo तैयार है');
- }catch(e){toast(e.message||'दोनों फोटो चुनें')}
+ }catch(e){toast(e.message)}
 }
 
-/* ---------------- PHOTO SHEET ---------------- */
-
+/* GENERAL PHOTO SHEET */
 async function makeSheet(){
  try{
-  const files=[...document.getElementById('sheetFiles').files];
-  if(!files.length) throw new Error('फोटो चुनें');
-  const imgs=[];
-  for(const f of files) imgs.push(await readImage(f));
-
-  const paper=document.getElementById('sheetPaper').value;
+  const files=[...sheetFiles.files];if(!files.length)throw Error('फोटो चुनें');
+  const imgs=[];for(const f of files)imgs.push(await readImage(f));
   const sizes={A4:[210,297],A3:[297,420],A5:[148,210]};
-  const [mmW,mmH]=sizes[paper];
-  const scale=5;
-  const c=document.getElementById('sheetCanvas');
-  c.width=mmW*scale;c.height=mmH*scale;
-  const ctx=c.getContext('2d');
+  const [mw,mh]=sizes[sheetPaper.value],s=5,c=sheetCanvas;
+  c.width=mw*s;c.height=mh*s;const ctx=c.getContext('2d');
   ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
-
-  const pw=Number(document.getElementById('sheetW').value)*scale;
-  const ph=Number(document.getElementById('sheetH').value)*scale;
-  const margin=Number(document.getElementById('sheetMargin').value)*scale;
-  const gap=Number(document.getElementById('sheetGap').value)*scale;
-  const copies=Math.max(1,Math.min(100,Number(document.getElementById('sheetCopies').value)||1));
-  if(pw<=0||ph<=0) throw new Error('फोटो का आकार सही लिखें');
-
-  const cols=Math.max(1,Math.floor((c.width-2*margin+gap)/(pw+gap)));
-  const rows=Math.max(1,Math.floor((c.height-2*margin+gap)/(ph+gap)));
-  if(cols*rows<1) throw new Error('फोटो का आकार पेपर से बड़ा है');
-
-  for(let i=0;i<Math.min(copies,cols*rows);i++){
-   const img=imgs[i%imgs.length];
-   const x=margin+(i%cols)*(pw+gap);
-   const y=margin+Math.floor(i/cols)*(ph+gap);
-   drawFit(ctx,img,x,y,pw,ph);
-   ctx.strokeStyle='#aaa';ctx.lineWidth=1;ctx.strokeRect(x,y,pw,ph);
+  const pw=+sheetW.value*s,ph=+sheetH.value*s,m=+sheetMargin.value*s,g=+sheetGap.value*s;
+  if(pw<=0||ph<=0)throw Error('फोटो आकार सही लिखें');
+  const cols=Math.floor((c.width-2*m+g)/(pw+g)),rows=Math.floor((c.height-2*m+g)/(ph+g));
+  const total=Math.min(100,Math.max(1,+sheetCopies.value));
+  if(cols<1||rows<1)throw Error('फोटो पेपर से बड़ी है');
+  for(let i=0;i<Math.min(total,cols*rows);i++){
+   const x=m+(i%cols)*(pw+g),y=m+Math.floor(i/cols)*(ph+g);
+   fitImage(ctx,imgs[i%imgs.length],x,y,pw,ph);ctx.strokeStyle='#aaa';ctx.strokeRect(x,y,pw,ph);
   }
-  toast(`Photo Sheet तैयार: ${Math.min(copies,cols*rows)} फोटो`);
- }catch(e){toast(e.message||'Sheet नहीं बन सकी')}
+  toast('Photo Sheet तैयार है');
+ }catch(e){toast(e.message)}
 }
 
-/* ---------------- ONLINE SERVICE DIRECTORY ---------------- */
-
+/* 103 ONLINE SERVICES */
 const services=[
- {cat:'Aadhaar',name:'UIDAI My Aadhaar',url:'https://myaadhaar.uidai.gov.in/',icon:'🆔'},
- {cat:'Aadhaar',name:'UIDAI Official Website',url:'https://uidai.gov.in/',icon:'🆔'},
- {cat:'PAN Card',name:'Income Tax e-Filing',url:'https://www.incometax.gov.in/',icon:'💳'},
- {cat:'PAN Card',name:'Protean PAN Services',url:'https://www.protean-tinpan.com/',icon:'💳'},
- {cat:'PAN Card',name:'UTIITSL PAN Services',url:'https://www.pan.utiitsl.com/',icon:'💳'},
- {cat:'Jan Aadhaar',name:'Rajasthan Jan Aadhaar',url:'https://janaadhaar.rajasthan.gov.in/',icon:'🏠'},
- {cat:'e-Mitra',name:'Rajasthan e-Mitra',url:'https://emitra.rajasthan.gov.in/',icon:'🏢'},
- {cat:'SSO',name:'Rajasthan SSO Portal',url:'https://sso.rajasthan.gov.in/',icon:'🔐'},
- {cat:'Voter ID',name:'Voters Services Portal',url:'https://voters.eci.gov.in/',icon:'🗳️'},
- {cat:'Voter ID',name:'Election Commission',url:'https://eci.gov.in/',icon:'🗳️'},
- {cat:'Ration Card',name:'Rajasthan Food Department',url:'https://food.rajasthan.gov.in/',icon:'🌾'},
- {cat:'Ration Card',name:'NFSA Portal',url:'https://nfsa.gov.in/',icon:'🌾'},
- {cat:'Driving Licence',name:'Parivahan Sewa',url:'https://parivahan.gov.in/',icon:'🚗'},
- {cat:'Driving Licence',name:'Sarathi Portal',url:'https://sarathi.parivahan.gov.in/',icon:'🚗'},
- {cat:'e-Shram',name:'e-Shram Portal',url:'https://eshram.gov.in/',icon:'👷'},
- {cat:'Labour',name:'Shram Suvidha Portal',url:'https://shramsuvidha.gov.in/',icon:'👷'},
- {cat:'Banking',name:'RBI Official Website',url:'https://www.rbi.org.in/',icon:'🏦'},
- {cat:'Banking',name:'SBI Online',url:'https://onlinesbi.sbi/',icon:'🏦'},
- {cat:'Education',name:'National Scholarship Portal',url:'https://scholarships.gov.in/',icon:'🎓'},
- {cat:'Education',name:'DigiLocker',url:'https://www.digilocker.gov.in/',icon:'📚'},
- {cat:'Education',name:'CBSE Official Website',url:'https://www.cbse.gov.in/',icon:'📚'},
- {cat:'Government',name:'UMANG Portal',url:'https://web.umang.gov.in/',icon:'🇮🇳'},
- {cat:'Government',name:'National Portal of India',url:'https://www.india.gov.in/',icon:'🇮🇳'},
- {cat:'Government',name:'Public Grievance Portal',url:'https://pgportal.gov.in/',icon:'📢'},
- {cat:'Government',name:'RTI Online',url:'https://rtionline.gov.in/',icon:'📄'},
- {cat:'Employment',name:'National Career Service',url:'https://www.ncs.gov.in/',icon:'💼'},
- {cat:'Employment',name:'Rajasthan Employment',url:'https://employment.livelihoods.rajasthan.gov.in/',icon:'💼'},
- {cat:'Land',name:'Apna Khata Rajasthan',url:'https://apnakhata.rajasthan.gov.in/',icon:'🌍'},
- {cat:'Land',name:'Bhu Naksha Rajasthan',url:'https://bhunaksha.rajasthan.gov.in/',icon:'🗺️'},
- {cat:'Pension',name:'Rajasthan Social Security Pension',url:'https://ssp.rajasthan.gov.in/',icon:'👴'},
- {cat:'Health',name:'Ayushman Bharat',url:'https://beneficiary.nha.gov.in/',icon:'🏥'},
- {cat:'Health',name:'ABHA Health ID',url:'https://abha.abdm.gov.in/',icon:'🏥'},
- {cat:'Farmer',name:'PM Kisan',url:'https://pmkisan.gov.in/',icon:'🌱'},
- {cat:'Farmer',name:'PM Fasal Bima Yojana',url:'https://pmfby.gov.in/',icon:'🌱'},
- {cat:'Passport',name:'Passport Seva',url:'https://www.passportindia.gov.in/',icon:'🛂'}
+['Aadhaar','Aadhaar Card Download','🆔','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar PVC Card Order','💳','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar Update Status','🔄','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar Address Update','🏠','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar Document Update','📄','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar Bank Seeding Status','🏦','https://myaadhaar.uidai.gov.in/'],
+['Aadhaar','Aadhaar Enrolment Centre','📍','https://uidai.gov.in/'],
+['Aadhaar','UIDAI Official Website','🌐','https://uidai.gov.in/'],
+['PAN Card','New PAN Application','🪪','https://www.protean-tinpan.com/'],
+['PAN Card','PAN Correction','✏️','https://www.protean-tinpan.com/'],
+['PAN Card','PAN Reprint','🖨️','https://www.protean-tinpan.com/'],
+['PAN Card','Instant e-PAN','⚡','https://www.incometax.gov.in/'],
+['PAN Card','PAN-Aadhaar Link Status','🔗','https://www.incometax.gov.in/'],
+['Jan Aadhaar','Jan Aadhaar Official Portal','🏠','https://janaadhaar.rajasthan.gov.in/'],
+['Jan Aadhaar','Jan Aadhaar Enrollment','📝','https://janaadhaar.rajasthan.gov.in/'],
+['Jan Aadhaar','Jan Aadhaar Update','✏️','https://janaadhaar.rajasthan.gov.in/'],
+['Jan Aadhaar','Jan Aadhaar Status','🔍','https://janaadhaar.rajasthan.gov.in/'],
+['Jan Aadhaar','Jan Aadhaar E-Card','💳','https://janaadhaar.rajasthan.gov.in/'],
+['e-Mitra','e-Mitra Portal','🏢','https://emitra.rajasthan.gov.in/'],
+['e-Mitra','Rajasthan SSO Login','🔐','https://sso.rajasthan.gov.in/'],
+['e-Mitra','SSO Registration','📝','https://sso.rajasthan.gov.in/'],
+['e-Mitra','Rajasthan Certificate Services','📜','https://sso.rajasthan.gov.in/'],
+['e-Mitra','Rajasthan Service Status','🔎','https://emitra.rajasthan.gov.in/'],
+['Voter ID','New Voter Registration Form 6','🗳️','https://voters.eci.gov.in/'],
+['Voter ID','Voter ID Correction Form 8','✏️','https://voters.eci.gov.in/'],
+['Voter ID','Voter ID Transfer','🔁','https://voters.eci.gov.in/'],
+['Voter ID','Download e-EPIC','📥','https://voters.eci.gov.in/'],
+['Voter ID','Search Voter List','🔍','https://electoralsearch.eci.gov.in/'],
+['Ration Card','Ration Card Rajasthan','🌾','https://food.rajasthan.gov.in/'],
+['Ration Card','Ration Card Application','📝','https://food.rajasthan.gov.in/'],
+['Ration Card','Ration Card Member Addition','👨‍👩‍👧','https://food.rajasthan.gov.in/'],
+['Ration Card','Ration Card Correction','✏️','https://food.rajasthan.gov.in/'],
+['Ration Card','NFSA Beneficiary Search','🔎','https://nfsa.gov.in/'],
+['Driving Licence','Learner Licence Application','🚗','https://sarathi.parivahan.gov.in/'],
+['Driving Licence','Driving Licence Application','🚘','https://sarathi.parivahan.gov.in/'],
+['Driving Licence','Driving Licence Renewal','🔄','https://sarathi.parivahan.gov.in/'],
+['Driving Licence','DL Correction / Duplicate','🪪','https://sarathi.parivahan.gov.in/'],
+['Driving Licence','Driving Test Slot Booking','📅','https://sarathi.parivahan.gov.in/'],
+['Driving Licence','Vehicle Registration Services','🚙','https://parivahan.gov.in/'],
+['e-Shram','e-Shram Registration','👷','https://eshram.gov.in/'],
+['e-Shram','e-Shram Card Download','💳','https://eshram.gov.in/'],
+['e-Shram','e-Shram Update','✏️','https://eshram.gov.in/'],
+['e-Shram','Labour Ministry Portal','🏗️','https://labour.gov.in/'],
+['e-Shram','Shram Suvidha Portal','🧰','https://shramsuvidha.gov.in/'],
+['Education','DigiLocker','📚','https://www.digilocker.gov.in/'],
+['Education','ABC Academic Bank of Credits','🎓','https://www.abc.gov.in/'],
+['Education','CBSE Official Website','🏫','https://www.cbse.gov.in/'],
+['Education','RBSE Rajasthan Board','📖','https://rajeduboard.rajasthan.gov.in/'],
+['Education','University of Rajasthan','🎓','https://www.uniraj.ac.in/'],
+['Education','NTA Examination Portal','📝','https://nta.ac.in/'],
+['Education','National Academic Depository','📂','https://nad.gov.in/'],
+['Education','UDISE Plus','🏫','https://udiseplus.gov.in/'],
+['Scholarship','National Scholarship Portal','🏅','https://scholarships.gov.in/'],
+['Scholarship','Rajasthan Scholarship Portal','🎓','https://sje.rajasthan.gov.in/'],
+['Scholarship','Social Justice Department','🤝','https://sje.rajasthan.gov.in/'],
+['Scholarship','National Fellowship Information','📘','https://www.education.gov.in/'],
+['Land Records','Apna Khata Jamabandi','🌍','https://apnakhata.rajasthan.gov.in/'],
+['Land Records','Bhu Naksha Rajasthan','🗺️','https://bhunaksha.rajasthan.gov.in/'],
+['Land Records','Land Record Mutation Information','📑','https://apnakhata.rajasthan.gov.in/'],
+['Land Records','Revenue Department Rajasthan','🏛️','https://landrevenue.rajasthan.gov.in/'],
+['Land Records','Registration & Stamps','🖋️','https://igrs.rajasthan.gov.in/'],
+['Land Records','e-Panjiyan Rajasthan','📜','https://epanjiyan.rajasthan.gov.in/'],
+['Farmer','PM Kisan Registration','🌱','https://pmkisan.gov.in/'],
+['Farmer','PM Kisan Beneficiary Status','🔎','https://pmkisan.gov.in/'],
+['Farmer','PM Fasal Bima Yojana','🌾','https://pmfby.gov.in/'],
+['Farmer','Kisan Credit Card Information','💳','https://www.myscheme.gov.in/'],
+['Farmer','Soil Health Card','🧪','https://soilhealth.dac.gov.in/'],
+['Farmer','Agriculture Department Rajasthan','🚜','https://agriculture.rajasthan.gov.in/'],
+['Farmer','e-NAM Farmer Portal','🧺','https://www.enam.gov.in/'],
+['Pension','Rajasthan Social Security Pension','👴','https://ssp.rajasthan.gov.in/'],
+['Pension','Pension Payment Status','💰','https://ssp.rajasthan.gov.in/'],
+['Pension','NSAP Pension Portal','🧓','https://nsap.nic.in/'],
+['Pension','Jeevan Pramaan','📄','https://jeevanpramaan.gov.in/'],
+['Health','Ayushman Bharat Beneficiary','🏥','https://beneficiary.nha.gov.in/'],
+['Health','ABHA Health Account','🩺','https://abha.abdm.gov.in/'],
+['Health','Ayushman Bharat PM-JAY','💊','https://pmjay.gov.in/'],
+['Health','Rajasthan Medical & Health','⚕️','https://medical.rajasthan.gov.in/'],
+['Health','eSanjeevani Telemedicine','👨‍⚕️','https://esanjeevani.mohfw.gov.in/'],
+['Government','UMANG Services','🇮🇳','https://web.umang.gov.in/'],
+['Government','National Portal of India','🏛️','https://www.india.gov.in/'],
+['Government','RTI Online','📄','https://rtionline.gov.in/'],
+['Government','CPGRAMS Public Grievance','📢','https://pgportal.gov.in/'],
+['Government','MyScheme Government Schemes','📋','https://www.myscheme.gov.in/'],
+['Government','Digital India','💻','https://www.digitalindia.gov.in/'],
+['Government','National Consumer Helpline','☎️','https://consumerhelpline.gov.in/'],
+['Government','Rajasthan Government Portal','🏢','https://rajasthan.gov.in/'],
+['Banking','SBI Online Banking','🏦','https://onlinesbi.sbi/'],
+['Banking','RBI Official Portal','🏛️','https://www.rbi.org.in/'],
+['Banking','PM Jan Dhan Yojana','💳','https://pmjdy.gov.in/'],
+['Banking','NPCI Aadhaar Mapper Information','🔗','https://www.npci.org.in/'],
+['Banking','National Pension System','💰','https://enps.nsdl.com/'],
+['Passport','Passport Seva','🛂','https://www.passportindia.gov.in/'],
+['Passport','Passport Application Status','🔎','https://www.passportindia.gov.in/'],
+['Employment','National Career Service','💼','https://www.ncs.gov.in/'],
+['Employment','Rajasthan Employment Portal','👔','https://employment.livelihoods.rajasthan.gov.in/'],
+['Employment','Skill India Digital','🛠️','https://www.skillindiadigital.gov.in/'],
+['Business','Udyam Registration','🏭','https://udyamregistration.gov.in/'],
+['Business','GST Portal','🧾','https://www.gst.gov.in/'],
+['Business','Income Tax e-Filing','💵','https://www.incometax.gov.in/'],
+['Business','GeM Government Marketplace','🛒','https://gem.gov.in/'],
+['Business','Startup India','🚀','https://www.startupindia.gov.in/'],
+['Utility','Electricity Bill Rajasthan','💡','https://energy.rajasthan.gov.in/'],
+['Utility','Jal Jeevan Mission','🚰','https://jaljeevanmission.gov.in/'],
+['Utility','LPG Gas Booking','🔥','https://www.mylpg.in/'],
+['Utility','Indian Railways','🚆','https://www.irctc.co.in/'],
+['Utility','India Post','📮','https://www.indiapost.gov.in/'],
+['Utility','Speed Post Tracking','📦','https://www.indiapost.gov.in/']
 ];
 
-function renderServices(list){
- const grid=document.getElementById('serviceGrid');
- grid.innerHTML='';
- list.forEach(s=>{
-  const div=document.createElement('div');
-  div.className='card service-card';
-  const icon=document.createElement('div');
-  icon.className='tool-icon';icon.textContent=s.icon;
-  const content=document.createElement('div');
-  const title=document.createElement('div');
-  title.textContent=s.name;
-  title.style.fontWeight='bold';
-  const cat=document.createElement('div');
-  cat.className='muted';cat.textContent=s.cat;
-  const link=document.createElement('a');
-  link.href=s.url;link.target='_blank';link.rel='noopener noreferrer';
-  link.textContent='वेबसाइट खोलें ↗';
-  content.append(title,cat,link);
-  div.append(icon,content);
-  grid.appendChild(div);
+const colors=['#2563eb','#e11d48','#7c3aed','#0d9488','#ea580c','#16a34a','#d97706','#0891b2','#9333ea','#db2777'];
+function renderServices(list,target){
+ const el=document.getElementById(target);el.innerHTML='';
+ list.forEach((s,i)=>{
+  const div=document.createElement('div');div.className='card service-card';
+  const icon=document.createElement('div');icon.className='icon';icon.style.background=colors[i%colors.length];icon.textContent=s[2];
+  const body=document.createElement('div');const h=document.createElement('h3');h.textContent=s[1];
+  const small=document.createElement('p');small.textContent=s[0];
+  body.append(h,small);div.append(icon,body);
+  div.addEventListener('click',()=>window.open(s[3],'_blank','noopener'));
+  el.appendChild(div);
  });
 }
 function filterServices(){
- const q=document.getElementById('serviceSearch').value.toLowerCase();
- renderServices(services.filter(s=>(s.name+' '+s.cat).toLowerCase().includes(q)));
+ const q=serviceSearch.value.toLowerCase().trim(),cat=serviceCategory.value;
+ const list=services.filter(s=>(!cat||s[0]===cat)&&(!q||(s[0]+' '+s[1]).toLowerCase().includes(q)));
+ renderServices(list,'serviceGrid');
+ serviceCount.textContent=`${list.length} सेवाएं दिखाई जा रही हैं`;
 }
-renderServices(services);
-
-/* ---------------- PDF HELPERS ---------------- */
-
-if(window.pdfjsLib){
- pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+function showAllServices(){serviceSearch.value='';serviceCategory.value='';filterServices()}
+function initServices(){
+ const cats=[...new Set(services.map(s=>s[0]))];
+ cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;serviceCategory.appendChild(o)});
+ renderServices(services,'serviceGrid');renderServices(services.slice(0,8),'homeServices');
+ serviceCount.textContent='कुल '+services.length+' सेवाएं';
 }
+initServices();
 
-function showStatus(id,msg){
- const el=document.getElementById(id);
- el.textContent=msg;el.classList.remove('hidden');
-}
-function downloadBlob(blob,name){
- const url=URL.createObjectURL(blob);
- const a=document.createElement('a');
- a.href=url;a.download=name;a.click();
+/* PDF TOOLS */
+async function pdfDownload(bytes,name){
+ const blob=new Blob([bytes],{type:'application/pdf'}),url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download=name;a.click();
  setTimeout(()=>URL.revokeObjectURL(url),3000);
 }
-function parsePageRange(value,total){
- if(!value.trim()) return Array.from({length:total},(_,i)=>i);
- const pages=new Set();
- value.split(',').forEach(part=>{
+async function mergePDF(){
+ try{
+  if(!window.PDFLib)throw Error('PDF library लोड नहीं हुई। इंटरनेट चालू करें।');
+  const files=[...mergeFiles.files];if(files.length<2)throw Error('कम से कम 2 PDF चुनें');
+  const out=await PDFLib.PDFDocument.create();
+  for(const f of files){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());const pages=await out.copyPages(src,src.getPageIndices());pages.forEach(p=>out.addPage(p))}
+  await pdfDownload(await out.save(),'Merged-PDF.pdf');mergeStatus.classList.remove('hidden');mergeStatus.textContent='PDF Merge सफल हुआ';
+ }catch(e){toast(e.message)}
+}
+function parseRange(range,total){
+ if(!range.trim())return Array.from({length:total},(_,i)=>i);
+ const set=new Set();
+ range.split(',').forEach(part=>{
   const p=part.trim();
   if(p.includes('-')){
    const [a,b]=p.split('-').map(Number);
-   if(!Number.isInteger(a)||!Number.isInteger(b)||a<1||b<a||b>total) throw new Error('पेज रेंज सही लिखें');
-   for(let i=a;i<=b;i++) pages.add(i-1);
+   if(!Number.isInteger(a)||!Number.isInteger(b)||a<1||b<a||b>total)throw Error('Page range गलत है');
+   for(let i=a;i<=b;i++)set.add(i-1);
   }else{
-   const n=Number(p);
-   if(!Number.isInteger(n)||n<1||n>total) throw new Error('पेज नंबर सही लिखें');
-   pages.add(n-1);
+   const n=Number(p);if(!Number.isInteger(n)||n<1||n>total)throw Error('Page number गलत है');set.add(n-1);
   }
  });
- return [...pages].sort((a,b)=>a-b);
+ return [...set].sort((a,b)=>a-b);
 }
-
-/* ---------------- PDF MERGE ---------------- */
-
-async function mergePDF(){
- try{
-  const files=[...document.getElementById('mergeFiles').files];
-  if(files.length<2) throw new Error('कम से कम दो PDF चुनें');
-  const merged=await PDFLib.PDFDocument.create();
-  for(const file of files){
-   const bytes=await file.arrayBuffer();
-   const pdf=await PDFLib.PDFDocument.load(bytes);
-   const pages=await merged.copyPages(pdf,pdf.getPageIndices());
-   pages.forEach(p=>merged.addPage(p));
-  }
-  const bytes=await merged.save();
-  downloadBlob(new Blob([bytes],{type:'application/pdf'}),'Merged-PDF.pdf');
-  showStatus('mergeStatus','PDF सफलतापूर्वक Merge हो गई।');
- }catch(e){showStatus('mergeStatus','त्रुटि: '+e.message)}
-}
-
-/* ---------------- PDF SPLIT ---------------- */
-
 async function splitPDF(){
  try{
-  const file=document.getElementById('splitFile').files[0];
-  if(!file) throw new Error('PDF चुनें');
-  const pdf=await PDFLib.PDFDocument.load(await file.arrayBuffer());
-  const range=document.getElementById('splitRange').value;
-  const pages=parsePageRange(range,pdf.getPageCount());
-  if(!range.trim()){
-   for(let i=0;i<pages.length;i++){
-    const out=await PDFLib.PDFDocument.create();
-    const [p]=await out.copyPages(pdf,[pages[i]]);
-    out.addPage(p);
-    const bytes=await out.save();
-    downloadBlob(new Blob([bytes],{type:'application/pdf'}),`Page-${i+1}.pdf`);
+  if(!window.PDFLib)throw Error('PDF library लोड नहीं हुई');
+  const f=splitFile.files[0];if(!f)throw Error('PDF चुनें');
+  const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),ids=parseRange(splitRange.value,src.getPageCount());
+  if(!splitRange.value.trim()){
+   for(let i=0;i<ids.length;i++){
+    const out=await PDFLib.PDFDocument.create(),p=await out.copyPages(src,[ids[i]]);out.addPage(p[0]);
+    await pdfDownload(await out.save(),`Page-${i+1}.pdf`);
    }
   }else{
-   const out=await PDFLib.PDFDocument.create();
-   const copied=await out.copyPages(pdf,pages);
-   copied.forEach(p=>out.addPage(p));
-   downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Split-Pages.pdf');
+   const out=await PDFLib.PDFDocument.create(),p=await out.copyPages(src,ids);p.forEach(x=>out.addPage(x));
+   await pdfDownload(await out.save(),'Split-PDF.pdf');
   }
-  showStatus('splitStatus','Split प्रक्रिया पूरी हुई।');
- }catch(e){showStatus('splitStatus','त्रुटि: '+e.message)}
+  splitStatus.classList.remove('hidden');splitStatus.textContent='PDF Split सफल हुआ';
+ }catch(e){toast(e.message)}
 }
-
-/* ---------------- PDF ROTATE ---------------- */
-
 async function rotatePDF(){
  try{
-  const file=document.getElementById('rotateFile').files[0];
-  if(!file) throw new Error('PDF चुनें');
-  const pdf=await PDFLib.PDFDocument.load(await file.arrayBuffer());
-  const pages=parsePageRange(document.getElementById('rotatePages').value,pdf.getPageCount());
-  const degree=Number(document.getElementById('rotateDegree').value);
-  pages.forEach(i=>{
-   const p=pdf.getPage(i);
-   const current=p.getRotation().angle||0;
-   p.setRotation(PDFLib.degrees((current+degree)%360));
-  });
-  downloadBlob(new Blob([await pdf.save()],{type:'application/pdf'}),'Rotated-PDF.pdf');
-  showStatus('rotateStatus','PDF Rotate हो गई।');
- }catch(e){showStatus('rotateStatus','त्रुटि: '+e.message)}
+  if(!window.PDFLib)throw Error('PDF library लोड नहीं हुई');
+  const f=rotateFile.files[0];if(!f)throw Error('PDF चुनें');
+  const pdf=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+  const ids=parseRange(rotatePages.value,pdf.getPageCount()),deg=+rotateDegree.value;
+  ids.forEach(i=>{const p=pdf.getPage(i);p.setRotation(PDFLib.degrees(p.getRotation().angle+deg))});
+  await pdfDownload(await pdf.save(),'Rotated-PDF.pdf');
+  rotateStatus.classList.remove('hidden');rotateStatus.textContent='PDF Rotate सफल हुआ';
+ }catch(e){toast(e.message)}
 }
-
-/* ---------------- PDF COMPRESS ---------------- */
-
 async function compressPDF(){
  try{
-  const file=document.getElementById('compressFile').files[0];
-  if(!file) throw new Error('PDF चुनें');
-  if(!window.pdfjsLib) throw new Error('PDF Library उपलब्ध नहीं है');
-  const quality=Number(document.getElementById('compressQuality').value);
-  const source=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
-  const out=await PDFLib.PDFDocument.create();
-
-  for(let i=1;i<=source.numPages;i++){
-   const page=await source.getPage(i);
-   const viewport=page.getViewport({scale:1.5});
-   const canvas=document.createElement('canvas');
-   canvas.width=Math.ceil(viewport.width);
-   canvas.height=Math.ceil(viewport.height);
-   const ctx=canvas.getContext('2d');
-   await page.render({canvasContext:ctx,viewport}).promise;
-
-   const jpg=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',quality));
-   if(!jpg) throw new Error('पेज इमेज नहीं बन सकी');
-   const bytes=await jpg.arrayBuffer();
-   const image=await out.embedJpg(bytes);
-   const original=await source.getPage(i);
-   const view=original.view;
-   const width=view[2]-view[0],height=view[3]-view[1];
-   const p=out.addPage([width,height]);
-   p.drawImage(image,{x:0,y:0,width,height});
-   canvas.width=1;canvas.height=1;
+  if(!window.pdfjsLib||!window.PDFLib)throw Error('PDF libraries लोड नहीं हुईं');
+  const f=compressFile.files[0];if(!f)throw Error('PDF चुनें');
+  const data=await f.arrayBuffer(),pdf=await pdfjsLib.getDocument({data:new Uint8Array(data)}).promise;
+  const out=await PDFLib.PDFDocument.create(),quality=+compressQuality.value;
+  for(let i=1;i<=pdf.numPages;i++){
+   const page=await pdf.getPage(i),vp=page.getViewport({scale:1.5});
+   const c=document.createElement('canvas');c.width=Math.round(vp.width);c.height=Math.round(vp.height);
+   await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+   const jpg=await new Promise(r=>c.toBlob(r,'image/jpeg',quality));
+   const bytes=await jpg.arrayBuffer(),image=await out.embedJpg(bytes);
+   const p=out.addPage([vp.width,vp.height]);p.drawImage(image,{x:0,y:0,width:vp.width,height:vp.height});
+   c.width=1;c.height=1;
   }
-  downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'Compressed-PDF.pdf');
-  showStatus('compressStatus','नई PDF तैयार है। ध्यान दें: इसमें पेज इमेज के रूप में हैं।');
- }catch(e){showStatus('compressStatus','त्रुटि: '+e.message)}
+  await pdfDownload(await out.save(),'Compressed-PDF.pdf');
+  compressStatus.classList.remove('hidden');compressStatus.textContent='Compressed PDF तैयार है';
+ }catch(e){toast(e.message)}
 }
-
-/* ---------------- PDF DOCUMENT PRINT ---------------- */
-
 async function preparePDFPrint(){
  try{
-  const file=document.getElementById('printFile').files[0];
-  if(!file) throw new Error('PDF चुनें');
-  if(!window.pdfjsLib) throw new Error('PDF Library उपलब्ध नहीं है');
-  const pdf=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
-  const paper=document.getElementById('printPaper').value;
-  const orientation=document.getElementById('printOrientation').value;
-  const dims={A4:[210,297],A3:[297,420],A5:[148,210]};
-  let [w,h]=dims[paper];
-  if(orientation==='landscape') [w,h]=[h,w];
-
-  const area=document.getElementById('printArea');
-  area.innerHTML='';
-  area.classList.remove('hidden');
-
-  const style=document.createElement('style');
-  style.textContent=`
-   @page{size:${w}mm ${h}mm;margin:0}
-   @media print{
-    body{margin:0!important}
-    #printArea{display:block!important}
-    .pdf-print-page{
-     width:${w}mm;height:${h}mm;
-     display:flex;align-items:center;justify-content:center;
-     page-break-after:always;overflow:hidden;
-    }
-    .pdf-print-page canvas{max-width:100%;max-height:100%;object-fit:contain}
-   }`;
-  area.appendChild(style);
-
+  if(!window.pdfjsLib)throw Error('PDF library लोड नहीं हुई');
+  const f=printFile.files[0];if(!f)throw Error('PDF चुनें');
+  const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await f.arrayBuffer())}).promise;
+  const area=document.getElementById('printArea');area.innerHTML='';
   for(let i=1;i<=pdf.numPages;i++){
-   const page=await pdf.getPage(i);
-   const base=page.getViewport({scale:1});
-   const maxW=w*96/25.4,maxH=h*96/25.4;
-   const scale=Math.min(maxW/base.width,maxH/base.height);
-   const viewport=page.getViewport({scale});
-   const canvas=document.createElement('canvas');
-   canvas.width=Math.ceil(viewport.width);
-   canvas.height=Math.ceil(viewport.height);
-   await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
-   const wrap=document.createElement('div');
-   wrap.className='pdf-print-page';
-   wrap.appendChild(canvas);
-   area.appendChild(wrap);
+   const page=await pdf.getPage(i),vp=page.getViewport({scale:1.5});
+   const c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;
+   await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
+   const img=new Image();img.src=c.toDataURL('image/png');img.style.width='100%';img.style.display='block';img.style.pageBreakAfter='always';
+   area.appendChild(img);
   }
-  window.print();
-  area.classList.add('hidden');
-  area.innerHTML='';
- }catch(e){
-  toast('Print त्रुटि: '+e.message);
-  const area=document.getElementById('printArea');
-  area.classList.add('hidden');area.innerHTML='';
- }
+  area.classList.remove('hidden');window.print();area.classList.add('hidden');
+ }catch(e){toast(e.message)}
 }
-
-/* ---------------- CONTACT DETAILS ---------------- */
-
-function saveContact(){
- const phone=document.getElementById('helpPhone').value.trim();
- const address=document.getElementById('helpAddress').value.trim();
- try{
-  localStorage.setItem('ggsPhone',phone);
-  localStorage.setItem('ggsAddress',address);
-  toast('जानकारी सेव हो गई');
- }catch(e){toast('इस ब्राउज़र में जानकारी सेव नहीं हो सकी')}
-}
-try{
- document.getElementById('helpPhone').value=localStorage.getItem('ggsPhone')||'';
- document.getElementById('helpAddress').value=localStorage.getItem('ggsAddress')||'';
-}catch(e){}
-
-/* ---------------- START ---------------- */
-showPage('home');
 </script>
 </body>
 </html>

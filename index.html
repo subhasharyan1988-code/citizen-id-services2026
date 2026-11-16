@@ -3,315 +3,367 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#123b79">
-<title>Gramin Grahak Sewa PRO 6.0</title>
+<title>Gramin Grahak Sewa PRO 6.1</title>
 <style>
-:root{--navy:#102b59;--blue:#1769aa;--bg:#f1f5fb;--green:#168653;--red:#d83b48;--orange:#ed941c}
+:root{--navy:#102b59;--blue:#1769aa;--green:#168653;--red:#d83b48;--orange:#ed941c;--bg:#f1f5fb}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:#243247;font-family:Arial,"Noto Sans Devanagari",sans-serif}
-header{background:linear-gradient(120deg,#102b59,#187bc1);color:#fff;padding:18px}
-.head{max-width:1300px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{font-size:23px;font-weight:bold}.brand small{display:block;font-size:12px;font-weight:normal;margin-top:5px}
+header{background:linear-gradient(120deg,#102b59,#187bc1);color:white;padding:18px}
+.head{max-width:1300px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-size:22px;font-weight:bold}.brand small{display:block;font-size:12px;font-weight:normal;margin-top:5px}
 nav{position:sticky;top:0;z-index:20;background:white;padding:9px;display:flex;gap:7px;justify-content:center;flex-wrap:wrap;box-shadow:0 2px 8px #0002}
-button,.btn{border:0;border-radius:8px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
+button,.btn{border:0;border-radius:8px;padding:10px 14px;background:var(--blue);color:white;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block}
 button:hover,.btn:hover{filter:brightness(1.12)}
 nav button{background:#eaf1fa;color:#17375f;font-size:13px}
 button.red{background:var(--red)}button.green{background:var(--green)}button.orange{background:var(--orange)}
 main{max-width:1300px;margin:20px auto;padding:0 12px}
 .page{display:none}.page.active{display:block}
-.panel{background:#fff;padding:18px;border-radius:13px;margin-bottom:16px;box-shadow:0 3px 14px #18365d10}
+.panel{background:white;padding:17px;border-radius:13px;margin-bottom:16px;box-shadow:0 3px 14px #18365d10}
 h2{color:var(--navy);margin:0 0 14px}h3{margin-top:0}
-input,select,textarea{width:100%;padding:11px;border:1px solid #cbd5e2;border-radius:7px;margin:6px 0 13px;font-size:15px}
-label{font-size:14px;font-weight:bold}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
-.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:160px}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
 .stat{background:#edf4ff;padding:15px;border-radius:10px;text-align:center}
 .stat strong{display:block;font-size:25px;color:var(--navy)}
+input,select,textarea{width:100%;padding:11px;border:1px solid #cbd5e2;border-radius:7px;margin:6px 0 13px;font-size:15px}
+label{font-size:14px;font-weight:bold}
 .service{border-radius:12px;padding:14px 8px;text-align:center;color:white;min-height:112px}
 .service .emoji{font-size:27px}.service b{display:block;font-size:13px;margin:7px 0}
-.service button{background:#fff;color:#19385d;padding:7px 10px;font-size:12px}
+.service button{background:white;color:#19385d;padding:7px 10px;font-size:12px}
 .tag{display:inline-block;background:#e5f5ec;color:#137746;border-radius:30px;padding:5px 10px;font-size:12px;margin:3px}
-.muted{color:#718096;font-size:13px}.good{color:#13824d}.bad{color:#c32d3b}
+.muted{color:#718096;font-size:13px}
+.good{color:#13824d}.bad{color:#c32d3b}
 .card{padding:13px;border:1px solid #e1e7ef;border-radius:10px;margin:9px 0}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:9px;border-bottom:1px solid #e5eaf0;text-align:left}
-th{background:#edf3fa}
-.tablewrap{overflow-x:auto}
 .preview{background:#e9edf3;padding:10px;text-align:center;overflow:auto}
 canvas{max-width:100%;height:auto;background:white;border:1px solid #aaa}
 footer{background:#102b59;color:white;text-align:center;padding:25px 12px;margin-top:30px}
 footer a{color:#ffe08b}
 .hidden{display:none!important}
+hr{border:0;border-top:1px solid #e3e8ef;margin:18px 0}
 @media(max-width:600px){.brand{font-size:18px}nav button{padding:8px;font-size:11px}.panel{padding:13px}}
 </style>
 </head>
 <body>
+
 <header>
-<div class="head">
- <div class="brand">🇮🇳 ग्रामीण ग्राहक सेवा केंद्र
-  <small>Gramin Grahak Sewa | Ultimate Business Edition PRO 6.0</small>
+ <div class="head">
+  <div class="brand">🇮🇳 ग्रामीण ग्राहक सेवा केंद्र
+   <small>Gramin Grahak Sewa | Ultimate Professional PRO 6.1</small>
+  </div>
+  <div id="status">डिजिटल सेवाओं का एक ही स्थान</div>
  </div>
- <div id="status">डिजिटल सेवाओं का एक ही स्थान</div>
-</div>
 </header>
 
 <nav>
-<button onclick="go('home')">🏠 Home</button>
-<button onclick="go('services')">📋 Services</button>
-<button onclick="go('photo')">📸 Photo</button>
-<button onclick="go('idcard')">🪪 ID Card</button>
-<button onclick="go('pdf')">📄 PDF Studio</button>
-<button onclick="go('customer')">👤 Customer</button>
-<button onclick="go('payment')">💳 Payment</button>
-<button onclick="go('adminLogin')">🔐 Admin</button>
+ <button onclick="go('home')">🏠 Home</button>
+ <button onclick="go('services')">📋 Services</button>
+ <button onclick="go('photo')">📸 Photo Studio</button>
+ <button onclick="go('idcard')">🪪 ID Card</button>
+ <button onclick="go('pdf')">📄 PDF Studio</button>
+ <button onclick="go('customer')">👤 Customer</button>
+ <button onclick="go('payment')">💳 Payment</button>
+ <button onclick="go('adminLogin')">🔐 Admin</button>
 </nav>
 
 <main>
 
-<!-- HOME -->
 <section id="home" class="page active">
-<div class="panel" style="background:linear-gradient(120deg,#e3f0ff,#fff)">
- <h2>आपका अपना डिजिटल ग्राहक सेवा केंद्र</h2>
- <p>सरकारी सेवाएँ, दस्तावेज, फोटो एडिटिंग, PDF और ऑनलाइन सुविधाएँ एक ही प्लेटफॉर्म पर।</p>
- <span class="tag">PRO 6.0</span><span class="tag">103+ Services</span><span class="tag">Photo Studio</span><span class="tag">PDF Tools</span>
- <div class="row" style="margin-top:15px">
-  <button onclick="go('services')">सभी सेवाएँ देखें</button>
-  <button onclick="go('customer')">Customer Login</button>
-  <button onclick="go('payment')">₹100 सदस्यता भुगतान</button>
+ <div class="panel" style="background:linear-gradient(120deg,#e3f0ff,#fff)">
+  <h2>आपका अपना डिजिटल ग्राहक सेवा केंद्र</h2>
+  <p>सरकारी सेवाएँ, दस्तावेज, फोटो एडिटिंग, ID Card, PDF और ऑनलाइन सुविधाएँ एक ही प्लेटफॉर्म पर।</p>
+  <span class="tag">PRO 6.1</span><span class="tag">103+ Services</span><span class="tag">Photo Studio</span><span class="tag">ID Card Editor</span>
+  <div class="row" style="margin-top:15px">
+   <button onclick="go('services')">सभी सेवाएँ देखें</button>
+   <button onclick="go('customer')">Customer Login</button>
+   <button onclick="go('payment')">₹100 सदस्यता भुगतान</button>
+  </div>
  </div>
-</div>
-<div class="grid">
- <div class="stat"><strong id="homeServices">103</strong>डिजिटल सेवाएँ</div>
- <div class="stat"><strong>₹100</strong>ग्राहक सदस्यता</div>
- <div class="stat"><strong id="homeCustomers">0</strong>रजिस्टर्ड ग्राहक</div>
- <div class="stat"><strong>PRO 6.0</strong>वेबसाइट संस्करण</div>
-</div>
-<div class="panel">
-<h2>प्रमुख टूल</h2>
-<div class="grid">
- <div class="service" style="background:#1769aa" onclick="go('photo')"><div class="emoji">📸</div><b>Passport Photo Maker</b><button>Open</button></div>
- <div class="service" style="background:#168653" onclick="go('idcard')"><div class="emoji">🪪</div><b>ID Card Editor</b><button>Open</button></div>
- <div class="service" style="background:#7545a6" onclick="go('pdf')"><div class="emoji">📄</div><b>PDF Studio</b><button>Open</button></div>
- <div class="service" style="background:#d17b19" onclick="go('payment')"><div class="emoji">💳</div><b>UPI Payment</b><button>Open</button></div>
-</div>
-</div>
-<div class="panel">
-<h2>संपर्क सहायता</h2>
-<a class="btn green" href="https://wa.me/918890922880" target="_blank">WhatsApp: 8890922880</a>
-<a class="btn red" href="https://www.youtube.com/@3dcomedysubhash" target="_blank">▶ YouTube Channel</a>
-</div>
+ <div class="grid">
+  <div class="stat"><strong id="homeServices">103</strong>डिजिटल सेवाएँ</div>
+  <div class="stat"><strong>₹100</strong>ग्राहक सदस्यता</div>
+  <div class="stat"><strong id="homeCustomers">0</strong>रजिस्टर्ड ग्राहक</div>
+  <div class="stat"><strong>PRO 6.1</strong>वेबसाइट संस्करण</div>
+ </div>
+ <div class="panel">
+  <h2>प्रमुख टूल</h2>
+  <div class="grid">
+   <div class="service" style="background:#1769aa" onclick="go('photo')"><div class="emoji">📸</div><b>Passport Photo Maker</b><button>Open</button></div>
+   <div class="service" style="background:#168653" onclick="go('idcard')"><div class="emoji">🪪</div><b>ID Card Editor</b><button>Open</button></div>
+   <div class="service" style="background:#7545a6" onclick="go('pdf')"><div class="emoji">📄</div><b>PDF Studio</b><button>Open</button></div>
+   <div class="service" style="background:#d17b19" onclick="go('payment')"><div class="emoji">💳</div><b>UPI Payment</b><button>Open</button></div>
+  </div>
+ </div>
+ <div class="panel">
+  <h2>संपर्क सहायता</h2>
+  <a class="btn green" href="https://wa.me/918890922880" target="_blank" rel="noopener">WhatsApp: 8890922880</a>
+  <a class="btn red" href="https://www.youtube.com/@3dcomedysubhash" target="_blank" rel="noopener">▶ YouTube Channel</a>
+ </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="page">
-<div class="panel">
-<h2>📋 सरकारी एवं डिजिटल सेवाएँ</h2>
-<input id="serviceSearch" placeholder="सेवा का नाम खोजें..." oninput="renderServices()">
-<div class="muted">किसी सेवा को खोलने के लिए Open बटन दबाएँ। सरकारी पोर्टल अपने नियमों के अनुसार खुलेंगे।</div>
-<div id="serviceGrid" class="grid" style="margin-top:15px"></div>
-</div>
+ <div class="panel">
+  <h2>📋 सरकारी एवं डिजिटल सेवाएँ</h2>
+  <input id="serviceSearch" placeholder="सेवा का नाम खोजें..." oninput="renderServices()">
+  <p class="muted">सेवा खोलने के लिए Open बटन दबाएँ। सरकारी पोर्टल अपने नियमों के अनुसार खुलेंगे।</p>
+  <div id="serviceGrid" class="grid"></div>
+ </div>
 </section>
 
-<!-- CUSTOMER -->
 <section id="customer" class="page">
-<div class="panel">
-<h2>👤 Customer Registration / Login</h2>
-<div class="row">
-<div>
-<h3>नया ग्राहक रजिस्ट्रेशन</h3>
-<label>पूरा नाम</label><input id="regName" placeholder="ग्राहक का नाम">
-<label>मोबाइल नंबर</label><input id="regMobile" maxlength="10" placeholder="10 अंकों का मोबाइल">
-<label>Username</label><input id="regUser" placeholder="अपना Username">
-<label>Password</label><input id="regPass" type="password" placeholder="कम से कम 6 अक्षर">
-<button onclick="register()">रजिस्ट्रेशन करें</button>
-</div>
-<div>
-<h3>Customer Login</h3>
-<label>Username</label><input id="loginUser" placeholder="Username">
-<label>Password</label><input id="loginPass" type="password" placeholder="Password">
-<button onclick="loginCustomer()">Login करें</button>
-<p id="customerMsg"></p>
-<button class="orange" onclick="go('payment')">₹100 भुगतान करें</button>
-<button class="red" onclick="customerLogout()">Logout</button>
-</div>
-</div>
-</div>
-<div class="panel">
-<h3>ग्राहक की स्थिति</h3>
-<p id="customerStatus">कृपया Login करें।</p>
-</div>
+ <div class="panel">
+  <h2>👤 Customer Registration / Login</h2>
+  <div class="row">
+   <div>
+    <h3>नया ग्राहक रजिस्ट्रेशन</h3>
+    <label>पूरा नाम</label><input id="regName" placeholder="ग्राहक का नाम">
+    <label>मोबाइल नंबर</label><input id="regMobile" maxlength="10" placeholder="10 अंकों का मोबाइल">
+    <label>Username</label><input id="regUser" placeholder="अपना Username">
+    <label>Password</label><input id="regPass" type="password" placeholder="कम से कम 6 अक्षर">
+    <button onclick="register()">रजिस्ट्रेशन करें</button>
+   </div>
+   <div>
+    <h3>Customer Login</h3>
+    <label>Username</label><input id="loginUser" placeholder="Username">
+    <label>Password</label><input id="loginPass" type="password" placeholder="Password">
+    <button onclick="loginCustomer()">Login करें</button>
+    <p id="customerMsg"></p>
+    <button class="orange" onclick="go('payment')">₹100 भुगतान करें</button>
+    <button class="red" onclick="customerLogout()">Logout</button>
+   </div>
+  </div>
+ </div>
+ <div class="panel"><h3>ग्राहक की स्थिति</h3><p id="customerStatus">कृपया Login करें।</p></div>
 </section>
 
-<!-- PAYMENT -->
 <section id="payment" class="page">
-<div class="panel">
-<h2>💳 ₹100 Customer Membership Payment</h2>
-<p>भुगतान UPI ऐप में स्वयं करें। भुगतान सफल होने के बाद UTR नंबर जमा करें।</p>
-<h3>UPI ID: <span id="upiText">subhasharyan001@ybl</span></h3>
-<button onclick="copyUPI()">UPI ID Copy</button>
-<div class="grid" style="margin-top:15px">
-<button style="background:#5f259f" onclick="payUPI()">🟣 UPI ऐप से भुगतान</button>
-<button style="background:#168653" onclick="copyUPI()">UPI ID Copy करें</button>
-<a class="btn green" href="https://wa.me/918890922880" target="_blank">WhatsApp सहायता</a>
-</div>
-<p class="muted">UPI ऐप खुलना आपके मोबाइल और इंस्टॉल किए गए ऐप पर निर्भर करता है।</p>
-<hr>
-<h3>UTR / Transaction ID जमा करें</h3>
-<label>Customer Username</label><input id="paymentUser" placeholder="Username">
-<label>UTR नंबर</label><input id="paymentUTR" placeholder="Transaction UTR">
-<button onclick="submitPayment()">Admin Approval के लिए भेजें</button>
-<p id="paymentMsg"></p>
-</div>
+ <div class="panel">
+  <h2>💳 ₹100 Customer Membership Payment</h2>
+  <p>UPI ऐप में भुगतान करें। भुगतान सफल होने के बाद UTR नंबर जमा करें।</p>
+  <h3>UPI ID: <span id="upiText">subhasharyan001@ybl</span></h3>
+  <button onclick="copyUPI()">UPI ID Copy</button>
+  <div class="grid" style="margin-top:15px">
+   <button style="background:#5f259f" onclick="payUPI()">🟣 UPI ऐप से भुगतान</button>
+   <button style="background:#168653" onclick="copyUPI()">UPI ID Copy करें</button>
+   <a class="btn green" href="https://wa.me/918890922880" target="_blank" rel="noopener">WhatsApp सहायता</a>
+  </div>
+  <p class="muted">UPI ऐप खुलना आपके मोबाइल और इंस्टॉल किए गए ऐप पर निर्भर करता है।</p>
+  <hr>
+  <h3>UTR / Transaction ID जमा करें</h3>
+  <label>Customer Username</label><input id="paymentUser" placeholder="Username">
+  <label>UTR नंबर</label><input id="paymentUTR" placeholder="Transaction UTR">
+  <button onclick="submitPayment()">Admin Approval के लिए भेजें</button>
+  <p id="paymentMsg"></p>
+ </div>
 </section>
 
-<!-- PHOTO -->
 <section id="photo" class="page">
-<div class="panel">
-<h2>📸 Advanced Passport Photo Studio</h2>
-<label>फोटो अपलोड करें</label><input type="file" id="photoFile" accept="image/*" onchange="loadPhoto(event)">
-<div class="row">
-<div><label>फोटो संख्या</label><select id="photoCount" onchange="drawPhoto()"><option>2</option><option>4</option><option>6</option><option>8</option><option selected>12</option><option>16</option><option>20</option><option>32</option><option>50</option></select></div>
-<div><label>Brightness</label><input id="brightness" type="range" min="50" max="160" value="100" oninput="drawPhoto()"></div>
-<div><label>Contrast</label><input id="contrast" type="range" min="50" max="160" value="100" oninput="drawPhoto()"></div>
-</div>
-<div class="preview"><canvas id="photoCanvas" width="794" height="1123"></canvas></div>
-<div class="row">
-<button onclick="downloadCanvas('photoCanvas','Passport-Photo.png','image/png')">PNG Download</button>
-<button onclick="downloadCanvas('photoCanvas','Passport-Photo.jpg','image/jpeg')">JPG Download</button>
-<button onclick="printCanvas('photoCanvas')">Print / Save PDF</button>
-</div>
-</div>
+ <div class="panel">
+  <h2>📸 Passport Photo Maker PRO 6.1</h2>
+  <label>फोटो अपलोड करें</label>
+  <input type="file" id="photoFile" accept="image/*" onchange="loadPhoto(event)">
+  <div class="row">
+   <div><label>फोटो संख्या</label>
+    <select id="photoCount" onchange="drawPhoto()">
+     <option>2</option><option>4</option><option>6</option><option>8</option><option selected>12</option><option>16</option><option>20</option><option>32</option><option>50</option>
+    </select>
+   </div>
+   <div><label>Photo Size</label>
+    <select id="photoSize" onchange="drawPhoto()">
+     <option value="35,45" selected>Passport 35 × 45 mm</option>
+     <option value="25,35">Small 25 × 35 mm</option>
+     <option value="30,40">30 × 40 mm</option>
+     <option value="40,50">40 × 50 mm</option>
+     <option value="50,50">50 × 50 mm</option>
+     <option value="custom">Custom / Default Layout</option>
+    </select>
+   </div>
+  </div>
+
+  <div class="panel">
+   <h3>✂️ Crop और Zoom Controls</h3>
+   <label>Zoom</label><input id="photoZoom" type="range" min="100" max="300" value="100" oninput="drawPhoto()">
+   <label>Horizontal Crop (दाएँ-बाएँ)</label><input id="photoX" type="range" min="-100" max="100" value="0" oninput="drawPhoto()">
+   <label>Vertical Crop (ऊपर-नीचे)</label><input id="photoY" type="range" min="-100" max="100" value="0" oninput="drawPhoto()">
+   <button onclick="resetPhotoCrop()">Reset Crop</button>
+  </div>
+
+  <div class="panel">
+   <h3>Brightness और Contrast</h3>
+   <label>Brightness</label><input id="brightness" type="range" min="50" max="160" value="100" oninput="drawPhoto()">
+   <label>Contrast</label><input id="contrast" type="range" min="50" max="160" value="100" oninput="drawPhoto()">
+  </div>
+
+  <div class="panel">
+   <h3>🖼️ Photo Border Settings</h3>
+   <label><input type="checkbox" id="photoBorder" checked style="width:auto" onchange="drawPhoto()"> Border लगाएँ</label>
+   <label>Border Color</label><input type="color" id="photoBorderColor" value="#000000" onchange="drawPhoto()">
+   <label>Border Width</label><input type="range" id="photoBorderWidth" min="0" max="10" value="2" oninput="drawPhoto()">
+  </div>
+
+  <h3>📄 A4 Live Preview</h3>
+  <div class="preview"><canvas id="photoCanvas" width="794" height="1123"></canvas></div>
+  <div class="row">
+   <button onclick="drawPhoto()">Live Preview</button>
+   <button onclick="downloadCanvas('photoCanvas','Passport-Photo.png','image/png')">PNG Download</button>
+   <button onclick="downloadCanvas('photoCanvas','Passport-Photo.jpg','image/jpeg')">JPG Download</button>
+   <button onclick="printCanvas('photoCanvas')">🖨️ Print / PDF</button>
+  </div>
+ </div>
 </section>
 
-<!-- ID CARD -->
 <section id="idcard" class="page">
-<div class="panel">
-<h2>🪪 ID Card Editor – A4 Layout</h2>
-<label>Front Image</label><input type="file" id="frontFile" accept="image/*" onchange="loadID(event,'front')">
-<label>Back Image</label><input type="file" id="backFile" accept="image/*" onchange="loadID(event,'back')">
-<div class="row">
-<div><label>चौड़ाई (mm)</label><input id="cardW" type="number" value="85.6" min="20"></div>
-<div><label>ऊँचाई (mm)</label><input id="cardH" type="number" value="53.98" min="20"></div>
-</div>
-<div class="row">
-<button onclick="drawID()">Preview बनाएं</button>
-<button onclick="printCanvas('idCanvas')">Print / PDF</button>
-<button onclick="downloadCanvas('idCanvas','ID-Card.png','image/png')">PNG Download</button>
-</div>
-<div class="preview"><canvas id="idCanvas" width="794" height="1123"></canvas></div>
-</div>
+ <div class="panel">
+  <h2>🪪 Advanced ID Card Editor PRO 6.1</h2>
+  <label>ID Card Size Select करें</label>
+  <select id="cardPreset" onchange="applyCardPreset()">
+   <option value="85.6,53.98">Aadhaar / PAN / Voter / DL – 85.6 × 53.98 mm</option>
+   <option value="86,54">Standard Card – 86 × 54 mm</option>
+   <option value="90,55">90 × 55 mm</option>
+   <option value="88,58">88 × 58 mm</option>
+   <option value="100,65">100 × 65 mm</option>
+   <option value="105,70">105 × 70 mm</option>
+   <option value="120,80">120 × 80 mm</option>
+   <option value="custom">Custom Size</option>
+  </select>
+  <div class="row">
+   <div><label>Width (mm)</label><input id="cardW" type="number" value="85.6" min="20" max="200" step="0.1" oninput="drawID()"></div>
+   <div><label>Height (mm)</label><input id="cardH" type="number" value="53.98" min="20" max="200" step="0.1" oninput="drawID()"></div>
+  </div>
+
+  <div class="row">
+   <div class="panel">
+    <h3>🟦 FRONT SIDE EDITOR</h3>
+    <label>Front Image</label><input type="file" id="frontFile" accept="image/*" onchange="loadID(event,'front')">
+    <label>Zoom</label><input type="range" id="frontZoom" min="100" max="300" value="100" oninput="drawID()">
+    <label>Horizontal Crop</label><input type="range" id="frontX" min="-100" max="100" value="0" oninput="drawID()">
+    <label>Vertical Crop</label><input type="range" id="frontY" min="-100" max="100" value="0" oninput="drawID()">
+    <label>Brightness</label><input type="range" id="frontBright" min="50" max="160" value="100" oninput="drawID()">
+    <label>Contrast</label><input type="range" id="frontContrast" min="50" max="160" value="100" oninput="drawID()">
+    <button onclick="resetIDSide('front')">Reset Front</button>
+   </div>
+   <div class="panel">
+    <h3>🟩 BACK SIDE EDITOR</h3>
+    <label>Back Image</label><input type="file" id="backFile" accept="image/*" onchange="loadID(event,'back')">
+    <label>Zoom</label><input type="range" id="backZoom" min="100" max="300" value="100" oninput="drawID()">
+    <label>Horizontal Crop</label><input type="range" id="backX" min="-100" max="100" value="0" oninput="drawID()">
+    <label>Vertical Crop</label><input type="range" id="backY" min="-100" max="100" value="0" oninput="drawID()">
+    <label>Brightness</label><input type="range" id="backBright" min="50" max="160" value="100" oninput="drawID()">
+    <label>Contrast</label><input type="range" id="backContrast" min="50" max="160" value="100" oninput="drawID()">
+    <button onclick="resetIDSide('back')">Reset Back</button>
+   </div>
+  </div>
+
+  <h3>📄 A4 LIVE PRINT PREVIEW – FRONT + BACK</h3>
+  <p class="muted">Front और Back एक ही A4 पेज पर बराबर में दिखेंगे।</p>
+  <div class="preview"><canvas id="idCanvas" width="794" height="1123"></canvas></div>
+  <div class="row">
+   <button onclick="drawID()">Refresh Preview</button>
+   <button onclick="printCanvas('idCanvas')">🖨️ Print / Save PDF</button>
+   <button onclick="downloadCanvas('idCanvas','ID-Card-A4.png','image/png')">PNG Download</button>
+   <button onclick="downloadCanvas('idCanvas','ID-Card-A4.jpg','image/jpeg')">JPG Download</button>
+  </div>
+ </div>
 </section>
 
-<!-- PDF -->
 <section id="pdf" class="page">
-<div class="panel">
-<h2>📄 PDF Studio</h2>
-<p>Image को A4 पेज पर लगाकर Print या Save as PDF करें।</p>
-<label>Image Upload</label><input type="file" id="pdfFile" accept="image/*" onchange="loadPDFImage(event)">
-<div class="preview"><canvas id="pdfCanvas" width="794" height="1123"></canvas></div>
-<div class="row">
-<button onclick="printCanvas('pdfCanvas')">Print / Save PDF</button>
-<button onclick="downloadCanvas('pdfCanvas','Document.png','image/png')">PNG Download</button>
-</div>
-</div>
+ <div class="panel">
+  <h2>📄 PDF Studio</h2>
+  <p>Image को A4 पेज पर लगाकर Print या Save as PDF करें।</p>
+  <label>Image Upload</label><input type="file" id="pdfFile" accept="image/*" onchange="loadPDFImage(event)">
+  <div class="preview"><canvas id="pdfCanvas" width="794" height="1123"></canvas></div>
+  <div class="row">
+   <button onclick="printCanvas('pdfCanvas')">Print / Save PDF</button>
+   <button onclick="downloadCanvas('pdfCanvas','Document.png','image/png')">PNG Download</button>
+  </div>
+ </div>
 </section>
 
-<!-- ADMIN LOGIN -->
 <section id="adminLogin" class="page">
-<div class="panel">
-<h2>🔐 Admin Login</h2>
-<div id="firstSetup">
-<h3>पहली बार Admin Password बनाएँ</h3>
-<label>नया Admin Password</label><input id="adminNew" type="password">
-<label>Confirm Password</label><input id="adminConfirm" type="password">
-<button onclick="setupAdmin()">Admin Password सेट करें</button>
-</div>
-<div id="adminLoginForm" class="hidden">
-<label>Admin Password</label><input id="adminPassword" type="password">
-<button onclick="loginAdmin()">Admin Login</button>
-</div>
-<p id="adminLoginMsg"></p>
-</div>
+ <div class="panel">
+  <h2>🔐 Admin Login</h2>
+  <div id="firstSetup">
+   <h3>पहली बार Admin Password बनाएँ</h3>
+   <label>नया Admin Password</label><input id="adminNew" type="password">
+   <label>Confirm Password</label><input id="adminConfirm" type="password">
+   <button onclick="setupAdmin()">Admin Password सेट करें</button>
+  </div>
+  <div id="adminLoginForm" class="hidden">
+   <label>Admin Password</label><input id="adminPassword" type="password">
+   <button onclick="loginAdmin()">Admin Login</button>
+  </div>
+  <p id="adminLoginMsg"></p>
+ </div>
 </section>
 
-<!-- ADMIN DASHBOARD -->
 <section id="admin" class="page">
-<div class="panel">
-<div class="row">
-<div><h2>⚙️ Admin Dashboard – PRO 6.0</h2><span class="tag">Full Access / No Payment Required</span></div>
-<div><button class="red" onclick="logoutAdmin()">Admin Logout</button></div>
-</div>
-<div class="grid">
-<div class="stat"><strong id="statCustomers">0</strong>कुल ग्राहक</div>
-<div class="stat"><strong id="statApproved">0</strong>Approved ग्राहक</div>
-<div class="stat"><strong id="statPending">0</strong>Pending भुगतान</div>
-<div class="stat"><strong id="statRevenue">₹0</strong>Approved भुगतान</div>
-</div>
-</div>
+ <div class="panel">
+  <div class="row">
+   <div><h2>⚙️ Admin Dashboard – PRO 6.1</h2><span class="tag">Full Access / No Payment Required</span></div>
+   <div><button class="red" onclick="logoutAdmin()">Admin Logout</button></div>
+  </div>
+  <div class="grid">
+   <div class="stat"><strong id="statCustomers">0</strong>कुल ग्राहक</div>
+   <div class="stat"><strong id="statApproved">0</strong>Approved ग्राहक</div>
+   <div class="stat"><strong id="statPending">0</strong>Pending भुगतान</div>
+   <div class="stat"><strong id="statRevenue">₹0</strong>Approved भुगतान</div>
+  </div>
+ </div>
 
-<div class="panel">
-<h3>💳 Payment Approval</h3>
-<div id="adminPayments"></div>
-</div>
+ <div class="panel"><h3>💳 Payment Approval</h3><div id="adminPayments"></div></div>
+ <div class="panel"><h3>👥 Customer Management</h3><div id="adminCustomers"></div></div>
 
-<div class="panel">
-<h3>👥 Customer Management</h3>
-<div id="adminCustomers"></div>
-</div>
+ <div class="panel">
+  <h3>📊 Business Reports</h3>
+  <div class="row">
+   <button onclick="exportCustomers()">Customer CSV Download</button>
+   <button onclick="exportPayments()">Payment CSV Download</button>
+   <button onclick="printReport()">Report Print</button>
+  </div>
+  <div id="reportSummary"></div>
+ </div>
 
-<div class="panel">
-<h3>📊 Business Reports</h3>
-<div class="row">
-<button onclick="exportCustomers()">Customer CSV Download</button>
-<button onclick="exportPayments()">Payment CSV Download</button>
-<button onclick="printReport()">Report Print</button>
-</div>
-<div id="reportSummary"></div>
-</div>
+ <div class="panel">
+  <h3>🛠️ Service Management</h3>
+  <label>नई सेवा का नाम</label><input id="newServiceName" placeholder="सेवा का नाम">
+  <label>Emoji Icon</label><input id="newServiceIcon" placeholder="उदाहरण: 🏛️">
+  <label>Official Website URL</label><input id="newServiceURL" placeholder="https://...">
+  <button onclick="addService()">नई सेवा जोड़ें</button>
+  <div id="manageServices" style="margin-top:12px"></div>
+ </div>
 
-<div class="panel">
-<h3>🛠️ Service Management</h3>
-<label>नई सेवा का नाम</label><input id="newServiceName" placeholder="सेवा का नाम">
-<label>Emoji Icon</label><input id="newServiceIcon" placeholder="उदाहरण: 🏛️">
-<label>Official Website URL</label><input id="newServiceURL" placeholder="https://...">
-<button onclick="addService()">नई सेवा जोड़ें</button>
-<div id="manageServices" style="margin-top:12px"></div>
-</div>
+ <div class="panel">
+  <h3>⚙️ Website Settings</h3>
+  <label>UPI ID</label><input id="settingUPI">
+  <label>WhatsApp नंबर (देश कोड सहित)</label><input id="settingWhatsApp" value="918890922880">
+  <label>YouTube URL</label><input id="settingYoutube" value="https://www.youtube.com/@3dcomedysubhash">
+  <button onclick="saveSettings()">Settings Save करें</button>
+ </div>
 
-<div class="panel">
-<h3>⚙️ Website Settings</h3>
-<label>UPI ID</label><input id="settingUPI">
-<label>WhatsApp नंबर (देश कोड सहित)</label><input id="settingWhatsApp" value="918890922880">
-<label>YouTube URL</label><input id="settingYoutube" value="https://www.youtube.com/@3dcomedysubhash">
-<button onclick="saveSettings()">Settings Save करें</button>
-</div>
+ <div class="panel">
+  <h3>🔑 Admin Password Change</h3>
+  <label>पुराना Password</label><input id="oldAdminPass" type="password">
+  <label>नया Password</label><input id="newAdminPass" type="password">
+  <button onclick="changeAdminPassword()">Password बदलें</button>
+ </div>
 
-<div class="panel">
-<h3>🔑 Admin Password Change</h3>
-<label>पुराना Password</label><input id="oldAdminPass" type="password">
-<label>नया Password</label><input id="newAdminPass" type="password">
-<button onclick="changeAdminPassword()">Password बदलें</button>
-</div>
-
-<div class="panel">
-<h3>💾 Backup & Restore</h3>
-<p class="muted">Backup में इस ब्राउज़र के ग्राहक, भुगतान, सेवाएँ और सेटिंग्स शामिल होंगे।</p>
-<div class="row">
-<button onclick="backupData()">Backup Download</button>
-<label class="btn" style="text-align:center">Backup Restore<input type="file" accept=".json" style="display:none" onchange="restoreData(event)"></label>
-</div>
-</div>
+ <div class="panel">
+  <h3>💾 Backup & Restore</h3>
+  <p class="muted">Backup में इस ब्राउज़र के ग्राहक, भुगतान, सेवाएँ और सेटिंग्स शामिल होंगे।</p>
+  <div class="row">
+   <button onclick="backupData()">Backup Download</button>
+   <label class="btn" style="text-align:center">Backup Restore<input type="file" accept=".json" style="display:none" onchange="restoreData(event)"></label>
+  </div>
+ </div>
 </section>
-
 </main>
 
 <footer>
-<h3>Gramin Grahak Sewa PRO 6.0</h3>
-<p>Document • Photo • Online • Digital Services</p>
-<p>WhatsApp: <a id="footerWhatsApp" href="https://wa.me/918890922880" target="_blank">8890922880</a></p>
-<p>YouTube: <a id="footerYoutube" href="https://www.youtube.com/@3dcomedysubhash" target="_blank">3D Comedy Subhash</a></p>
-<p>© 2026 Gramin Grahak Sewa</p>
+ <h3>Gramin Grahak Sewa PRO 6.1</h3>
+ <p>Document • Photo • Online • Digital Services</p>
+ <p>WhatsApp: <a id="footerWhatsApp" href="https://wa.me/918890922880" target="_blank" rel="noopener">8890922880</a></p>
+ <p>YouTube: <a id="footerYoutube" href="https://www.youtube.com/@3dcomedysubhash" target="_blank" rel="noopener">3D Comedy Subhash</a></p>
+ <p>© 2026 Gramin Grahak Sewa</p>
 </footer>
 
 <script>
@@ -319,6 +371,7 @@ footer a{color:#ffe08b}
 const $=id=>document.getElementById(id);
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
 const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
 let admin=false,customer=null,photo=null,front=null,back=null,pdfImage=null;
 
 const defaultServices=[
@@ -437,7 +490,7 @@ const defaultServices=[
 function services(){return read('ggs_services',defaultServices)}
 function go(id){
  if(['services','photo','idcard','pdf'].includes(id)&&!hasAccess())return;
- if(id==='admin'&&!admin){id='adminLogin'}
+ if(id==='admin'&&!admin)id='adminLogin';
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
  $(id).classList.add('active');
  if(id==='services')renderServices();
@@ -534,6 +587,8 @@ function renderAdmin(){
  $('reportSummary').innerHTML=`<p>कुल ग्राहक: ${c.length} | Approved: ${c.filter(x=>x.approved).length} | कुल Approved भुगतान: ₹${p.filter(x=>x.status==='Approved').reduce((a,x)=>a+(+x.amount||0),0)}</p>`;
  $('manageServices').innerHTML=services().map((s,i)=>`<div class="card">${s[1]} ${s[0]} <button class="red" onclick="deleteService(${i})">Delete</button></div>`).join('');
  $('settingUPI').value=upi();
+ $('settingWhatsApp').value=localStorage.getItem('ggs_whatsapp')||'918890922880';
+ $('settingYoutube').value=localStorage.getItem('ggs_youtube')||'https://www.youtube.com/@3dcomedysubhash';
 }
 function approve(i){
  const p=read('ggs_payments',[]),c=read('ggs_customers',[]);
@@ -554,7 +609,7 @@ function resetCustomerPassword(i){
  const c=read('ggs_customers',[]);if(!c[i])return;
  const p=prompt('ग्राहक के लिए नया अस्थायी पासवर्ड लिखें:');
  if(!p||p.length<6){alert('कम से कम 6 अक्षर का पासवर्ड रखें।');return}
- c[i].pass=p;save('ggs_customers',c);alert('ग्राहक पासवर्ड बदल दिया गया। ग्राहक को नया पासवर्ड सुरक्षित तरीके से दें।');
+ c[i].pass=p;save('ggs_customers',c);alert('ग्राहक पासवर्ड बदल दिया गया।');
 }
 function addService(){
  const n=$('newServiceName').value.trim(),icon=$('newServiceIcon').value.trim()||'🌐',url=$('newServiceURL').value.trim();
@@ -579,8 +634,7 @@ function updateContact(){
  const wa=localStorage.getItem('ggs_whatsapp')||'918890922880';
  const yt=localStorage.getItem('ggs_youtube')||'https://www.youtube.com/@3dcomedysubhash';
  $('footerWhatsApp').href='https://wa.me/'+wa;$('footerWhatsApp').textContent=wa;
- $('footerYoutube').href=yt;
- $('upiText').textContent=upi();
+ $('footerYoutube').href=yt;$('upiText').textContent=upi();
 }
 function changeAdminPassword(){
  const old=$('oldAdminPass').value,n=$('newAdminPass').value;
@@ -610,7 +664,7 @@ function printReport(){
 }
 function backupData(){
  const keys=['ggs_customers','ggs_payments','ggs_services','ggs_upi','ggs_whatsapp','ggs_youtube','ggs_admin_pass'];
- const data={version:'6.0',date:new Date().toISOString(),items:{}};
+ const data={version:'6.1',date:new Date().toISOString(),items:{}};
  keys.forEach(k=>data.items[k]=localStorage.getItem(k));
  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='GGS-PRO6-Backup.json';a.click();URL.revokeObjectURL(a.href);
@@ -619,70 +673,132 @@ function restoreData(e){
  const f=e.target.files[0];if(!f)return;
  const r=new FileReader();
  r.onload=()=>{
- try{
- const data=JSON.parse(r.result);
- if(!data.items)throw new Error('Invalid');
- if(!confirm('मौजूदा डेटा बदल जाएगा। क्या Backup Restore करना है?'))return;
- Object.entries(data.items).forEach(([k,v])=>{if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)});
- alert('Backup Restore हो गया। पेज Reload होगा।');location.reload();
- }catch(err){alert('Backup फाइल सही नहीं है।')}
+  try{
+   const data=JSON.parse(r.result);
+   if(!data.items)throw new Error('Invalid');
+   if(!confirm('मौजूदा डेटा बदल जाएगा। क्या Backup Restore करना है?'))return;
+   Object.entries(data.items).forEach(([k,v])=>{if(k.startsWith('ggs_')){if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}});
+   alert('Backup Restore हो गया। पेज Reload होगा।');location.reload();
+  }catch(err){alert('Backup फाइल सही नहीं है।')}
  };
  r.readAsText(f);
 }
+
+/* PHOTO STUDIO */
 function loadPhoto(e){
  const f=e.target.files[0];if(!f)return;
- photo=new Image();photo.onload=drawPhoto;photo.src=URL.createObjectURL(f);
+ const im=new Image();
+ im.onload=()=>{photo=im;drawPhoto();};
+ im.src=URL.createObjectURL(f);
+}
+function resetPhotoCrop(){
+ $('photoZoom').value=100;$('photoX').value=0;$('photoY').value=0;
+ $('brightness').value=100;$('contrast').value=100;drawPhoto();
+}
+function drawCover(ctx,img,x,y,w,h,zoom,cropX,cropY,bright,contrast){
+ if(!img)return;
+ const scale=Math.max(w/img.width,h/img.height)*(zoom/100);
+ const sw=w/scale,sh=h/scale;
+ const maxX=Math.max(0,img.width-sw),maxY=Math.max(0,img.height-sh);
+ const sx=maxX/2+(cropX/100)*(maxX/2);
+ const sy=maxY/2+(cropY/100)*(maxY/2);
+ ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+ ctx.filter=`brightness(${bright}%) contrast(${contrast}%)`;
+ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+ ctx.filter='none';ctx.restore();
 }
 function drawPhoto(){
- const c=$('photoCanvas'),x=c.getContext('2d');
- x.fillStyle='white';x.fillRect(0,0,c.width,c.height);
+ const c=$('photoCanvas');if(!c)return;
+ const ctx=c.getContext('2d');
+ ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);
  if(!photo)return;
- const n=+$('photoCount').value,cols=n<=4?2:n<=12?3:4,rows=Math.ceil(n/cols);
- const w=120,h=150,g=18,totalW=cols*w+(cols-1)*g,totalH=rows*h+(rows-1)*g;
- const sx=(c.width-totalW)/2,sy=Math.max(25,(c.height-totalH)/2);
- x.filter=`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%)`;
- for(let i=0;i<n;i++){
-  const xx=sx+(i%cols)*(w+g),yy=sy+Math.floor(i/cols)*(h+g);
-  x.drawImage(photo,xx,yy,w,h);x.filter='none';x.strokeStyle='#555';x.strokeRect(xx,yy,w,h);
-  x.filter=`brightness(${$('brightness').value}%) contrast(${$('contrast').value}%)`;
+ const count=+$('photoCount').value;
+ const size=$('photoSize').value.split(',');
+ let w=120,h=150;
+ if(size.length===2){w=+size[0]*3.78;h=+size[1]*3.78}
+ const gap=14,cols=count<=4?2:count<=12?3:4,rows=Math.ceil(count/cols);
+ const totalW=cols*w+(cols-1)*gap,totalH=rows*h+(rows-1)*gap;
+ const fit=Math.min(1,(c.width-35)/totalW,(c.height-35)/totalH);
+ w*=fit;h*=fit;
+ const g=gap*fit;
+ const sx=(c.width-(cols*w+(cols-1)*g))/2;
+ const sy=(c.height-(rows*h+(rows-1)*g))/2;
+ for(let i=0;i<count;i++){
+  const x=sx+(i%cols)*(w+g),y=sy+Math.floor(i/cols)*(h+g);
+  drawCover(ctx,photo,x,y,w,h,+$('photoZoom').value,+$('photoX').value,+$('photoY').value,+$('brightness').value,+$('contrast').value);
+  if($('photoBorder').checked){
+   ctx.save();ctx.strokeStyle=$('photoBorderColor').value;
+   ctx.lineWidth=+$('photoBorderWidth').value;ctx.strokeRect(x,y,w,h);ctx.restore();
+  }
  }
- x.filter='none';
+}
+
+/* ID CARD EDITOR */
+function applyCardPreset(){
+ const v=$('cardPreset').value;
+ if(v==='custom')return;
+ const p=v.split(',');
+ $('cardW').value=p[0];$('cardH').value=p[1];drawID();
 }
 function loadID(e,side){
  const f=e.target.files[0];if(!f)return;
- const im=new Image();im.onload=()=>{if(side==='front')front=im;else back=im;drawID()};
+ const im=new Image();
+ im.onload=()=>{if(side==='front')front=im;else back=im;drawID();};
  im.src=URL.createObjectURL(f);
 }
-function drawID(){
- const c=$('idCanvas'),x=c.getContext('2d');
- x.fillStyle='white';x.fillRect(0,0,c.width,c.height);
- const w=+$('cardW').value*794/210,h=+$('cardH').value*1123/297,gap=24;
- if(w*2+gap>c.width||h>c.height){alert('दोनों कार्ड A4 पर फिट नहीं हो रहे। कार्ड का आकार कम करें।');return}
- const sx=(c.width-(w*2+gap))/2,sy=(c.height-h)/2;
- if(front)x.drawImage(front,sx,sy,w,h);
- if(back)x.drawImage(back,sx+w+gap,sy,w,h);
- x.strokeStyle='#777';x.strokeRect(sx,sy,w,h);x.strokeRect(sx+w+gap,sy,w,h);
+function resetIDSide(side){
+ ['Zoom','X','Y'].forEach(s=>$(side+s).value=s==='Zoom'?100:0);
+ $(side+'Bright').value=100;$(side+'Contrast').value=100;drawID();
 }
+function drawID(){
+ const c=$('idCanvas');if(!c)return;
+ const ctx=c.getContext('2d');
+ ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);
+ const cardW=Math.max(20,+$('cardW').value||85.6);
+ const cardH=Math.max(20,+$('cardH').value||53.98);
+ const margin=5,gap=4;
+ const availableW=210-margin*2,availableH=297-margin*2;
+ const scale=Math.min(794/210,1123/297,availableW/(cardW*2+gap),availableH/cardH);
+ const w=cardW*scale,h=cardH*scale,g=gap*scale;
+ const totalW=w*2+g,x1=(c.width-totalW)/2,x2=x1+w+g,y=(c.height-h)/2;
+ function drawSide(img,side,x){
+  if(img){
+   drawCover(ctx,img,x,y,w,h,+$(side+'Zoom').value,+$(side+'X').value,+$(side+'Y').value,+$(side+'Bright').value,+$(side+'Contrast').value);
+  }
+  ctx.save();ctx.strokeStyle='#222';ctx.lineWidth=1;ctx.strokeRect(x,y,w,h);ctx.restore();
+ }
+ drawSide(front,'front',x1);
+ drawSide(back,'back',x2);
+}
+
+/* PDF STUDIO */
 function loadPDFImage(e){
  const f=e.target.files[0];if(!f)return;
- pdfImage=new Image();pdfImage.onload=()=>{
- const c=$('pdfCanvas'),x=c.getContext('2d');x.fillStyle='white';x.fillRect(0,0,c.width,c.height);
- const scale=Math.min(740/pdfImage.width,1050/pdfImage.height);
- const w=pdfImage.width*scale,h=pdfImage.height*scale;
- x.drawImage(pdfImage,(c.width-w)/2,(c.height-h)/2,w,h);
- };pdfImage.src=URL.createObjectURL(f);
+ pdfImage=new Image();
+ pdfImage.onload=()=>{
+  const c=$('pdfCanvas'),x=c.getContext('2d');
+  x.fillStyle='white';x.fillRect(0,0,c.width,c.height);
+  const scale=Math.min(740/pdfImage.width,1050/pdfImage.height);
+  const w=pdfImage.width*scale,h=pdfImage.height*scale;
+  x.drawImage(pdfImage,(c.width-w)/2,(c.height-h)/2,w,h);
+ };
+ pdfImage.src=URL.createObjectURL(f);
 }
 function downloadCanvas(id,name,type){
  if(!hasAccess())return;
- const a=document.createElement('a');a.download=name;a.href=$(id).toDataURL(type,.95);a.click();
+ const c=$(id);
+ const a=document.createElement('a');
+ a.download=name;a.href=c.toDataURL(type,.95);a.click();
 }
 function printCanvas(id){
  if(!hasAccess())return;
- const data=$(id).toDataURL('image/png'),w=window.open('','_blank');
+ const data=$(id).toDataURL('image/png');
+ const w=window.open('','_blank');
  if(!w){alert('Popup Block हुआ है। Browser में Popups Allow करें।');return}
- w.document.write('<html><head><title>Print</title><style>@page{size:A4;margin:5mm}body{margin:0;text-align:center}img{width:100%;height:auto;max-height:285mm;object-fit:contain}</style></head><body><img src="'+data+'"><script>window.onload=()=>window.print()<\/script></body></html>');
+ w.document.write('<html><head><title>Print</title><style>@page{size:A4 portrait;margin:5mm}body{margin:0;text-align:center}img{width:100%;height:auto;max-height:285mm;object-fit:contain}</style></head><body><img src="'+data+'"><script>window.onload=()=>window.print()<\/script></body></html>');
  w.document.close();
 }
+
 function init(){
  if(localStorage.getItem('ggs_admin_pass')){
   $('firstSetup').classList.add('hidden');$('adminLoginForm').classList.remove('hidden');
@@ -690,6 +806,7 @@ function init(){
  $('upiText').textContent=upi();
  $('homeCustomers').textContent=read('ggs_customers',[]).length;
  updateContact();renderServices();
+ drawPhoto();drawID();
 }
 init();
 </script>

@@ -3,45 +3,46 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#123b79">
-<title>Gramin Grahak Sewa PRO 4.0</title>
+<title>Gramin Grahak Sewa PRO 5.0</title>
 
 <style>
 :root{
- --blue:#123b79;--light:#edf3ff;--green:#12834b;
- --red:#d83b48;--orange:#ef8b22;--dark:#17243a;
+ --blue:#123b79;--blue2:#1767c2;--green:#12834b;
+ --red:#d83b48;--orange:#e78319;--dark:#17243a;
+ --light:#edf3ff;
 }
 *{box-sizing:border-box}
 body{
- margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;
- background:#f3f6fb;color:#17243a
+ margin:0;background:#f3f6fb;color:var(--dark);
+ font-family:Arial,"Noto Sans Devanagari",sans-serif
 }
+button{cursor:pointer;border:0;font-weight:bold}
 header{
  background:linear-gradient(120deg,#102e63,#1766bd);
- color:white;padding:17px 15px;display:flex;
- justify-content:space-between;align-items:center;gap:10px;
- flex-wrap:wrap;box-shadow:0 3px 12px #0002
+ color:white;padding:15px;display:flex;
+ justify-content:space-between;align-items:center;
+ gap:10px;flex-wrap:wrap;box-shadow:0 3px 12px #0002
 }
-header h1{font-size:21px;margin:0}
-header small{opacity:.85}
-button{cursor:pointer;border:0;font-weight:bold}
+header h1{font-size:20px;margin:0 0 5px}
+header small{opacity:.9}
 .topbtn{
- background:white;color:#123b79;border-radius:9px;
- padding:10px 13px;margin:3px
+ background:white;color:var(--blue);
+ padding:10px 13px;border-radius:9px;margin:3px
 }
 .layout{display:flex;min-height:calc(100vh - 75px)}
 .sidebar{
- width:230px;background:#fff;padding:12px;
+ width:235px;background:white;padding:12px;
  box-shadow:2px 0 8px #0001;flex-shrink:0
 }
 .sidebar button{
  width:100%;text-align:left;padding:12px 10px;
- margin:4px 0;background:#f3f6fc;border-radius:9px;
- color:#263c5c;font-size:14px
+ margin:4px 0;background:#f3f6fc;
+ border-radius:9px;color:#263c5c;font-size:14px
 }
-.sidebar button:hover,.sidebar button.active{
- background:#dce9ff;color:#123b79
+.sidebar button.active,.sidebar button:hover{
+ background:#dce9ff;color:var(--blue)
 }
 main{padding:18px;flex:1;min-width:0}
 .section{display:none}
@@ -50,31 +51,31 @@ main{padding:18px;flex:1;min-width:0}
  background:white;padding:18px;border-radius:14px;
  margin-bottom:16px;box-shadow:0 3px 13px #0000000c
 }
-h2{margin:0 0 15px;color:#123b79}
-h3{margin:8px 0 12px}
+h2{margin:0 0 15px;color:var(--blue)}
+h3{margin:12px 0}
+p{line-height:1.6}
 .grid{
  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
  gap:12px
 }
 .service{
- min-height:90px;border-radius:12px;padding:12px;
- background:#fff;border:1px solid #e2e9f4;
- box-shadow:0 2px 7px #0000000b;
- color:#243957;text-align:center;line-height:1.5
+ min-height:100px;border-radius:12px;padding:12px;
+ background:white;border:1px solid #e2e9f4;
+ box-shadow:0 2px 7px #0000000b;color:#243957;
+ text-align:center;line-height:1.5;transition:.2s
 }
 .service:hover{border-color:#367de0;transform:translateY(-2px)}
 .ico{
- display:block;width:37px;height:37px;border-radius:11px;
- margin:0 auto 8px;color:white;line-height:37px;
- font-size:20px;background:#2872c9
+ display:grid;place-items:center;width:39px;height:39px;
+ border-radius:12px;margin:0 auto 8px;color:white;font-size:21px
 }
 .btn{
- padding:12px 16px;border-radius:9px;color:white;
- background:#1767c2;margin:5px 3px
+ padding:12px 16px;border-radius:9px;
+ color:white;background:var(--blue2);margin:5px 3px
 }
-.green{background:#12834b}
-.red{background:#d83b48}
-.orange{background:#e78319}
+.green{background:var(--green)}
+.red{background:var(--red)}
+.orange{background:var(--orange)}
 .gray{background:#52647c}
 input,select,textarea{
  width:100%;padding:12px;margin:7px 0 13px;
@@ -99,24 +100,26 @@ label{font-weight:bold;font-size:14px}
  background:white;padding:17px;border-radius:12px;
  box-shadow:0 2px 9px #0001
 }
-.stat strong{display:block;font-size:24px;color:#1767c2}
+.stat strong{
+ display:block;font-size:24px;color:var(--blue2);margin-bottom:5px
+}
 .modal{
  display:none;position:fixed;inset:0;background:#07152dcc;
  z-index:1000;align-items:center;justify-content:center;padding:15px
 }
 .modal.show{display:flex}
 .modalbox{
- background:white;width:100%;max-width:430px;
+ background:white;width:100%;max-width:440px;
  border-radius:15px;padding:20px;max-height:92vh;overflow:auto
 }
-.modalbox h2{margin-top:0}
 .payment-app{
- display:flex;align-items:center;gap:10px;
- padding:13px;border:1px solid #e1e7f0;border-radius:12px;
- background:white;width:100%;margin:8px 0;text-align:left
+ display:flex;align-items:center;gap:12px;
+ padding:13px;border:1px solid #e1e7f0;
+ border-radius:12px;background:white;
+ width:100%;margin:8px 0;text-align:left
 }
 .appicon{
- width:42px;height:42px;border-radius:12px;
+ width:43px;height:43px;border-radius:12px;
  color:white;display:grid;place-items:center;font-size:21px
 }
 .appicon.g{background:#4285f4}
@@ -127,10 +130,17 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{border:1px solid #dce3ee;padding:9px;text-align:left}
 th{background:#edf3ff}
 .tablewrap{overflow-x:auto}
-#photoPreview{
+.preview{
  max-width:100%;max-height:300px;display:block;
  margin:12px auto;border:1px solid #ddd
 }
+.badge{
+ display:inline-block;padding:5px 9px;border-radius:20px;
+ background:#e6efff;color:#174c91;font-size:12px;font-weight:bold
+}
+.toolrow{display:flex;flex-wrap:wrap;gap:7px}
+.toolrow>*{flex:1;min-width:130px}
+.hidden{display:none!important}
 footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 @media(max-width:760px){
  .layout{display:block}
@@ -152,7 +162,7 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 <header>
  <div>
   <h1>🏛️ ग्रामीण डिजिटल ग्राहक सेवा केंद्र</h1>
-  <small>Gramin Grahak Sewa | Professional PRO 4.0</small>
+  <small>Gramin Grahak Sewa | Professional PRO 5.0</small>
  </div>
  <div>
   <button class="topbtn" onclick="openLogin()">Customer Login</button>
@@ -161,68 +171,144 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 </header>
 
 <div class="layout">
+
 <nav class="sidebar">
- <button class="active" onclick="showSection('home',this)">🏠 Dashboard</button>
- <button onclick="showSection('services',this)">🌐 103 Online Services</button>
- <button onclick="showSection('photo',this)">📸 Photo Studio</button>
- <button onclick="showSection('payment',this)">💳 UPI Payment</button>
- <button onclick="showSection('account',this)">👤 Customer Account</button>
- <button onclick="showSection('admin',this)">🔐 Admin Panel</button>
- <button onclick="showSection('contact',this)">☎️ Contact</button>
+ <button class="active" data-section="home" onclick="showSection('home',this)">🏠 Dashboard</button>
+ <button data-section="services" onclick="showSection('services',this)">🌐 103 Online Services</button>
+ <button data-section="photo" onclick="showSection('photo',this)">📸 Photo Studio</button>
+ <button data-section="idcard" onclick="showSection('idcard',this)">🪪 ID Card Studio</button>
+ <button data-section="payment" onclick="showSection('payment',this)">💳 UPI Payment</button>
+ <button data-section="account" onclick="showSection('account',this)">👤 Customer Account</button>
+ <button data-section="admin" onclick="showSection('admin',this)">🔐 Admin Panel</button>
+ <button data-section="contact" onclick="showSection('contact',this)">☎️ Contact</button>
 </nav>
 
 <main>
 
+<!-- HOME -->
 <section id="home" class="section active">
  <div class="card">
-  <h2>नमस्कार! स्वागत है</h2>
-  <p>Gramin Grahak Sewa में आपका स्वागत है। सभी डिजिटल सेवाओं का उपयोग करने के लिए पहले ग्राहक Registration और Login करें।</p>
-  <button class="btn" onclick="openRegister()">नया ग्राहक Registration</button>
+  <h2>नमस्कार! स्वागत है 🙏</h2>
+  <p>Gramin Grahak Sewa PRO 5.0 में आपका स्वागत है।</p>
+  <p>डिजिटल सेवाओं का उपयोग करने के लिए पहले Registration और Login करें।</p>
+  <button class="btn" onclick="openRegister()">नया Registration</button>
   <button class="btn green" onclick="openLogin()">Customer Login</button>
  </div>
 
  <div class="stats">
-  <div class="stat"><strong>103</strong>कुल सेवाएँ</div>
+  <div class="stat"><strong id="serviceCount">103</strong>कुल सेवाएँ</div>
   <div class="stat"><strong>₹100</strong>सदस्यता शुल्क</div>
   <div class="stat"><strong id="homeStatus">Guest</strong>Login स्थिति</div>
+  <div class="stat"><strong id="homeMembership">Inactive</strong>सदस्यता</div>
  </div>
 
  <div class="card">
   <h3>महत्वपूर्ण सूचना</h3>
   <div class="notice">
-   ग्राहक को सेवाएँ इस्तेमाल करने के लिए मोबाइल नंबर और पासवर्ड से Login करना होगा। ₹100 भुगतान के बाद Admin Approval मिलने पर सेवाएँ सक्रिय होंगी।
+   Registration के बाद ग्राहक Login कर सकता है।
+   सभी डिजिटल सेवाओं के लिए ₹100 सदस्यता शुल्क और Admin Approval आवश्यक है।
+  </div>
+  <div class="success">
+   भुगतान की जाँच Admin द्वारा UTR नंबर के आधार पर की जाएगी।
   </div>
  </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services" class="section">
  <div class="card">
-  <h2>🌐 सभी 103 डिजिटल सेवाएँ</h2>
+  <h2>🌐 103 डिजिटल सेवाएँ</h2>
   <input id="serviceSearch" placeholder="सेवा खोजें..." oninput="renderServices()">
   <div id="serviceList"></div>
  </div>
 </section>
 
+<!-- PHOTO STUDIO -->
 <section id="photo" class="section">
  <div class="card">
-  <h2>📸 Photo Studio</h2>
+  <h2>📸 Passport Photo Studio</h2>
   <label>फोटो चुनें</label>
   <input type="file" id="photoFile" accept="image/*" onchange="previewPhoto(event)">
-  <img id="photoPreview" alt="Photo Preview" style="display:none">
-  <button class="btn" onclick="printPhoto()">🖨️ Print Photo</button>
-  <div class="notice">यह प्रारंभिक फोटो Preview और Print सुविधा है। पेशेवर पासपोर्ट लेआउट और PDF संपादन के लिए आगे अलग Photo Studio मॉड्यूल जोड़ा जा सकता है।</div>
+  <img id="photoPreview" class="preview" alt="Photo Preview" style="display:none">
+
+  <label>फोटो की संख्या</label>
+  <select id="photoCount">
+   <option value="4">4 फोटो</option>
+   <option value="6">6 फोटो</option>
+   <option value="8">8 फोटो</option>
+   <option value="12">12 फोटो</option>
+   <option value="16" selected>16 फोटो</option>
+   <option value="20">20 फोटो</option>
+   <option value="32">32 फोटो</option>
+  </select>
+
+  <label>फोटो का आकार</label>
+  <select id="photoSize">
+   <option value="35,45">Passport 35 × 45 mm</option>
+   <option value="25,35">Small 25 × 35 mm</option>
+   <option value="40,50">40 × 50 mm</option>
+  </select>
+
+  <div class="toolrow">
+   <button class="btn" onclick="makePassport()">Sheet तैयार करें</button>
+   <button class="btn green" onclick="printPassport()">Print / Save PDF</button>
+  </div>
+  <div id="passportStatus" class="notice">पहले फोटो चुनें।</div>
+  <canvas id="passportCanvas" class="preview hidden"></canvas>
  </div>
 </section>
 
+<!-- ID CARD STUDIO -->
+<section id="idcard" class="section">
+ <div class="card">
+  <h2>🪪 ID Card Studio</h2>
+
+  <label>ID Card Front फोटो</label>
+  <input type="file" id="frontFile" accept="image/*" onchange="loadIDPhoto(event,'front')">
+
+  <label>ID Card Back फोटो</label>
+  <input type="file" id="backFile" accept="image/*" onchange="loadIDPhoto(event,'back')">
+
+  <div class="grid">
+   <div>
+    <p><b>Front Preview</b></p>
+    <img id="frontPreview" class="preview" alt="Front Preview" style="display:none">
+   </div>
+   <div>
+    <p><b>Back Preview</b></p>
+    <img id="backPreview" class="preview" alt="Back Preview" style="display:none">
+   </div>
+  </div>
+
+  <label>कार्ड का आकार</label>
+  <select id="cardSize">
+   <option value="85.6,54">Standard ID Card 85.6 × 54 mm</option>
+   <option value="86,54">86 × 54 mm</option>
+   <option value="90,55">90 × 55 mm</option>
+   <option value="100,65">100 × 65 mm</option>
+  </select>
+
+  <div class="toolrow">
+   <button class="btn" onclick="prepareIDCard()">Preview Sheet</button>
+   <button class="btn green" onclick="printIDCard()">Print / Save PDF</button>
+  </div>
+  <div id="idStatus" class="notice">Front और Back फोटो चुनें।</div>
+  <canvas id="idCanvas" class="preview hidden"></canvas>
+ </div>
+</section>
+
+<!-- PAYMENT -->
 <section id="payment" class="section">
  <div class="card">
   <h2>💳 UPI Membership Payment</h2>
+
   <div style="text-align:center;background:#edf3ff;padding:18px;border-radius:12px">
    <h1 style="font-size:38px;color:#123b79;margin:5px">₹100</h1>
    <b>SUBHASH CHAND</b><br>
-   <span>UPI ID: subhasharyan001@ybl</span>
+   <span id="upiDisplay">subhasharyan001@ybl</span>
   </div>
-  <h3 style="margin-top:18px">अपना UPI ऐप चुनें</h3>
+
+  <h3>अपना UPI ऐप चुनें</h3>
 
   <button class="payment-app" onclick="launchUPI('gpay')">
    <span class="appicon g">G</span>
@@ -248,18 +334,28 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 
   <hr>
   <h3>भुगतान विवरण जमा करें</h3>
+
   <label>ग्राहक का नाम</label>
   <input id="payName" placeholder="अपना नाम">
+
   <label>मोबाइल नंबर</label>
   <input id="payMobile" inputmode="numeric" maxlength="10" placeholder="10 अंकों का मोबाइल नंबर">
+
   <label>Transaction ID / UTR</label>
   <input id="utr" placeholder="भुगतान के बाद UTR नंबर भरें">
+
   <button class="btn green" onclick="submitPayment()">भुगतान विवरण भेजें</button>
-  <p id="paymentMsg"></p>
-  <div class="notice">भुगतान पूरा होने के बाद UTR नंबर भरें। Admin जाँच करके आपकी सदस्यता सक्रिय करेगा। केवल UPI ऐप खोलना भुगतान की पुष्टि नहीं है।</div>
+  <div id="paymentMsg"></div>
+
+  <div class="notice">
+   UPI ऐप से भुगतान करने के बाद UTR नंबर जमा करें।
+   Admin भुगतान की जाँच करके सदस्यता सक्रिय करेगा।
+   केवल UPI ऐप खोलना भुगतान की पुष्टि नहीं है।
+  </div>
  </div>
 </section>
 
+<!-- ACCOUNT -->
 <section id="account" class="section">
  <div class="card">
   <h2>👤 Customer Account</h2>
@@ -270,34 +366,77 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
  </div>
 </section>
 
+<!-- ADMIN -->
 <section id="admin" class="section">
  <div class="card">
   <h2>🔐 Admin Panel</h2>
+
   <div id="adminLoginArea">
-   <p>पहली बार Admin Password बनाएँ या अपने Admin Password से Login करें।</p>
-   <label>Admin Password</label>
-   <input id="adminPass" type="password" placeholder="Admin Password">
-   <button class="btn" onclick="adminLogin()">Admin Login</button>
-   <div id="adminSetupArea"></div>
+   <div id="adminSetupInfo" class="notice">
+    पहली बार Admin Panel खोल रहे हैं तो अपना नया Admin Password बनाएँ।
+   </div>
+
+   <label id="adminPassLabel">Admin Password</label>
+   <input id="adminPass" type="password" placeholder="अपना Admin Password">
+
+   <button class="btn green" id="adminLoginBtn" onclick="adminLogin()">Admin Login / Password बनाएँ</button>
+   <div id="adminMessage"></div>
   </div>
+
   <div id="adminDashboard" style="display:none">
+   <div class="success">Admin Login सफल। आपका Dashboard खुल गया है।</div>
+
    <h3>Admin Dashboard</h3>
-   <div id="adminStats"></div>
-   <h3>Payment Requests</h3>
-   <div class="tablewrap"><table>
-    <thead><tr><th>नाम</th><th>मोबाइल</th><th>UTR</th><th>स्थिति</th><th>कार्य</th></tr></thead>
-    <tbody id="paymentRows"></tbody>
-   </table></div>
-   <h3>Customer List</h3>
-   <div class="tablewrap"><table>
-    <thead><tr><th>नाम</th><th>मोबाइल</th><th>स्थिति</th></tr></thead>
-    <tbody id="customerRows"></tbody>
-   </table></div>
+   <div id="adminStats" class="stats"></div>
+
+   <h3>💳 Payment Requests</h3>
+   <div class="tablewrap">
+    <table>
+     <thead>
+      <tr>
+       <th>नाम</th><th>मोबाइल</th><th>UTR</th>
+       <th>स्थिति</th><th>कार्य</th>
+      </tr>
+     </thead>
+     <tbody id="paymentRows"></tbody>
+    </table>
+   </div>
+
+   <h3>👥 Customer List</h3>
+   <div class="tablewrap">
+    <table>
+     <thead>
+      <tr><th>नाम</th><th>मोबाइल</th><th>स्थिति</th></tr>
+     </thead>
+     <tbody id="customerRows"></tbody>
+    </table>
+   </div>
+
+   <hr>
+   <h3>🔑 Admin Password बदलें</h3>
+
+   <label>पुराना Password</label>
+   <input id="oldAdminPass" type="password">
+
+   <label>नया Password</label>
+   <input id="newAdminPass" type="password">
+
+   <label>नया Password दोबारा लिखें</label>
+   <input id="confirmAdminPass" type="password">
+
+   <button class="btn orange" onclick="changeAdminPassword()">Password बदलें</button>
+
+   <p class="notice">
+    Password कम से कम 8 अक्षर का रखें।
+    Password भूलने पर इस ब्राउज़र के स्थानीय डेटा को रीसेट करना पड़ सकता है।
+   </p>
+
    <button class="btn red" onclick="adminLogout()">Admin Logout</button>
   </div>
  </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="section">
  <div class="card">
   <h2>☎️ संपर्क करें</h2>
@@ -314,9 +453,9 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 </main>
 </div>
 
-<footer>Gramin Grahak Sewa PRO 4.0 | Digital Service Centre</footer>
+<footer>Gramin Grahak Sewa PRO 5.0 | Digital Service Centre</footer>
 
-<!-- CUSTOMER LOGIN MODAL -->
+<!-- CUSTOMER LOGIN -->
 <div class="modal" id="loginModal">
  <div class="modalbox">
   <h2>Customer Login</h2>
@@ -330,7 +469,7 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
  </div>
 </div>
 
-<!-- REGISTER MODAL -->
+<!-- CUSTOMER REGISTRATION -->
 <div class="modal" id="registerModal">
  <div class="modalbox">
   <h2>नया ग्राहक Registration</h2>
@@ -350,18 +489,21 @@ footer{text-align:center;color:#758198;padding:20px;font-size:13px}
 <script>
 "use strict";
 
-/* ==============================
-   BASIC DATABASE - LOCAL STORAGE
-================================ */
+/* ==================================
+   DATABASE
+================================== */
+
 const KEY={
- users:"ggs_users_v4",
- payments:"ggs_payments_v4",
- admin:"ggs_admin_v4"
+ users:"ggs_users_v5",
+ payments:"ggs_payments_v5",
+ admin:"ggs_admin_v5"
 };
 
 function get(key){
- try{return JSON.parse(localStorage.getItem(key)||"[]")}
- catch(e){return []}
+ try{
+  const value=JSON.parse(localStorage.getItem(key)||"[]");
+  return Array.isArray(value)?value:[];
+ }catch(e){return []}
 }
 function put(key,value){
  localStorage.setItem(key,JSON.stringify(value));
@@ -375,15 +517,32 @@ let currentUser="";
 let adminLogged=false;
 let pendingSection="";
 let photoURL="";
+let frontURL="";
+let backURL="";
+let passportReady=false;
+let idReady=false;
 
-/* ==============================
-   103 SERVICES
-================================ */
+const UPI_ID="subhasharyan001@ybl";
+const PAYEE="SUBHASH CHAND";
+
+/* Password hashing: Web Crypto SHA-256 */
+async function hashPassword(password){
+ if(!window.crypto || !crypto.subtle){
+  throw new Error("इस ब्राउज़र में सुरक्षित Password सुविधा उपलब्ध नहीं है। HTTPS या आधुनिक ब्राउज़र इस्तेमाल करें।");
+ }
+ const data=new TextEncoder().encode(password);
+ const hash=await crypto.subtle.digest("SHA-256",data);
+ return Array.from(new Uint8Array(hash))
+  .map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+/* ==================================
+   103 OFFICIAL SERVICE LINKS
+================================== */
+
 const serviceGroups=[
 {
- name:"राजस्थान सरकारी सेवाएँ",
- icon:"🏛️",
- base:"https://sso.rajasthan.gov.in/",
+ name:"राजस्थान सरकारी सेवाएँ",icon:"🏛️",
  items:[
  ["Rajasthan SSO","https://sso.rajasthan.gov.in/"],
  ["e-Mitra","https://emitra.rajasthan.gov.in/"],
@@ -462,7 +621,6 @@ const serviceGroups=[
 {
  name:"शिक्षा एवं रोजगार",icon:"🎓",
  items:[
- ["DigiShakti","https://www.myscheme.gov.in/"],
  ["National Scholarship","https://scholarships.gov.in/"],
  ["NTA","https://nta.ac.in/"],
  ["CBSE","https://www.cbse.gov.in/"],
@@ -473,7 +631,8 @@ const serviceGroups=[
  ["Skill India","https://www.skillindiadigital.gov.in/"],
  ["National Career Service","https://www.ncs.gov.in/"],
  ["Apprenticeship India","https://www.apprenticeshipindia.gov.in/"],
- ["SWAYAM","https://swayam.gov.in/"]
+ ["SWAYAM","https://swayam.gov.in/"],
+ ["DIKSHA","https://diksha.gov.in/"]
 ]},
 {
  name:"सरकारी योजनाएँ",icon:"📋",
@@ -533,14 +692,6 @@ const serviceGroups=[
 ]}
 ];
 
-const services=[];
-serviceGroups.forEach(group=>{
- group.items.forEach(item=>{
-  services.push({name:item[0],url:item[1],category:group.name,icon:group.icon});
- });
-});
-
-/* 103 entries complete करने के लिए अलग-अलग सरकारी सूचना लिंक */
 const extraServices=[
  ["PM Surya Ghar","https://pmsuryaghar.gov.in/"],
  ["National Voters Service","https://voters.eci.gov.in/"],
@@ -548,9 +699,7 @@ const extraServices=[
  ["Rajasthan High Court","https://hcraj.nic.in/"],
  ["Supreme Court","https://www.sci.gov.in/"],
  ["eCourts","https://ecourts.gov.in/"],
- ["National Scholarship Portal","https://scholarships.gov.in/"],
  ["National Health Portal","https://www.nhp.gov.in/"],
- ["CoWIN","https://www.cowin.gov.in/"],
  ["Food Department Rajasthan","https://food.rajasthan.gov.in/"],
  ["Ration Card Services","https://food.rajasthan.gov.in/"],
  ["PDS Portal","https://nfsa.gov.in/"],
@@ -562,10 +711,8 @@ const extraServices=[
  ["Sukanya Samriddhi","https://www.indiapost.gov.in/"],
  ["PM Jeevan Jyoti Bima","https://jansuraksha.gov.in/"],
  ["PM Suraksha Bima","https://jansuraksha.gov.in/"],
- ["National Apprenticeship","https://www.apprenticeshipindia.gov.in/"],
  ["Digital India","https://www.digitalindia.gov.in/"],
  ["Bharat Kosh","https://bharatkosh.gov.in/"],
- ["National Scholarship Info","https://scholarships.gov.in/"],
  ["Rajasthan Staff Selection","https://rssb.rajasthan.gov.in/"],
  ["RPSC","https://rpsc.rajasthan.gov.in/"],
  ["UPSC","https://upsc.gov.in/"],
@@ -573,99 +720,134 @@ const extraServices=[
  ["Railway Recruitment","https://www.rrbcdg.gov.in/"],
  ["India Code","https://www.indiacode.nic.in/"],
  ["National Consumer Portal","https://consumerhelpline.gov.in/"],
- ["National Career Portal","https://www.ncs.gov.in/"],
  ["PMEGP","https://www.kviconline.gov.in/"],
  ["KVIC","https://www.kvic.gov.in/"],
- ["Startup Rajasthan","https://industries.rajasthan.gov.in/"],
  ["Rajasthan Industries","https://industries.rajasthan.gov.in/"],
  ["Rajasthan Labour Department","https://labour.rajasthan.gov.in/"],
- ["Building Worker Welfare","https://labour.rajasthan.gov.in/"],
- ["National Scholarship Search","https://www.myscheme.gov.in/"],
- ["Rajasthan Women Commission","https://rscw.rajasthan.gov.in/"],
+ ["Women Commission Rajasthan","https://rscw.rajasthan.gov.in/"],
  ["Women Helpline","https://wcd.rajasthan.gov.in/"],
- ["Child Helpline","https://www.childlineindia.org/"],
  ["National Legal Services","https://nalsa.gov.in/"],
  ["Rajasthan Legal Services","https://rlsa.gov.in/"],
  ["Public Grievance","https://pgportal.gov.in/"],
- ["CPGRAMS","https://pgportal.gov.in/"],
  ["National Archives","https://www.nationalarchives.nic.in/"],
  ["National Digital Library","https://ndl.iitkgp.ac.in/"],
  ["ePathshala","https://epathshala.nic.in/"],
- ["DIKSHA","https://diksha.gov.in/"],
- ["National Apprenticeship Portal","https://www.apprenticeshipindia.gov.in/"],
  ["Rajasthan Skill Development","https://skill.rajasthan.gov.in/"]
 ];
 
+const services=[];
+serviceGroups.forEach(group=>{
+ group.items.forEach(item=>{
+  services.push({
+   name:item[0],url:item[1],category:group.name,icon:group.icon
+  });
+ });
+});
 extraServices.forEach(item=>{
- services.push({name:item[0],url:item[1],category:"अन्य महत्वपूर्ण सेवाएँ",icon:"🌐"});
+ services.push({
+  name:item[0],url:item[1],
+  category:"अन्य महत्वपूर्ण सेवाएँ",icon:"🌐"
+ });
 });
 
-/* सुनिश्चित करें कि सेवा संख्या 103 हो */
-while(services.length>103) services.pop();
+/* Exactly 103 entries */
+services.splice(103);
+document.getElementById("serviceCount").textContent=services.length;
 
-function renderServices(){
- const box=document.getElementById("serviceList");
- if(!box)return;
- const q=(document.getElementById("serviceSearch")?.value||"").toLowerCase();
- let html="";
- serviceGroups.forEach(group=>{
-  const matches=services.filter(s=>s.category===group.name && s.name.toLowerCase().includes(q));
-  if(!matches.length)return;
-  html+=`<h3>${group.icon} ${group.name}</h3><div class="grid">`;
-  matches.forEach(s=>{
-   html+=`<button class="service" data-url="${s.url}" onclick="openService(this.dataset.url)">
-   <span class="ico">${s.icon}</span>${s.name}</button>`;
-  });
-  html+="</div>";
- });
- const extras=services.filter(s=>s.category==="अन्य महत्वपूर्ण सेवाएँ" && s.name.toLowerCase().includes(q));
- if(extras.length){
-  html+="<h3>🌐 अन्य महत्वपूर्ण सेवाएँ</h3><div class='grid'>";
-  extras.forEach(s=>{
-   html+=`<button class="service" data-url="${s.url}" onclick="openService(this.dataset.url)">
-   <span class="ico">${s.icon}</span>${s.name}</button>`;
-  });
-  html+="</div>";
- }
- box.innerHTML=html||"कोई सेवा नहीं मिली।";
-}
+const colors=[
+ "#2872c9","#16834c","#e78319","#7b49b5",
+ "#d83b48","#087e8b","#536d9b","#b45b20"
+];
 
-/* ==============================
-   SECTION NAVIGATION
-================================ */
+/* ==================================
+   NAVIGATION
+================================== */
+
 function showSection(id,btn){
- const protectedSections=["services","photo"];
+ const protectedSections=["services","photo","idcard"];
+
  if(protectedSections.includes(id)){
   const user=get(KEY.users).find(u=>u.mobile===currentUser);
+
   if(!user){
-   pendingSection=id;openLogin();
-   alert("इस सुविधा के लिए Login अनिवार्य है।");
+   pendingSection=id;
+   openLogin();
+   alert("इस सुविधा के लिए Customer Login जरूरी है।");
    return;
   }
+
   if(!user.active){
-   alert("आपकी सदस्यता अभी सक्रिय नहीं है। ₹100 भुगतान करें और Admin Approval प्राप्त करें।");
+   alert("आपकी सदस्यता अभी सक्रिय नहीं है। पहले ₹100 भुगतान करें और Admin Approval प्राप्त करें।");
    id="payment";
   }
  }
+
+ if(id==="admin" && !adminLogged){
+  document.getElementById("adminLoginArea").style.display="block";
+  document.getElementById("adminDashboard").style.display="none";
+  updateAdminLoginUI();
+ }
+
  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
  const section=document.getElementById(id);
  if(section)section.classList.add("active");
+
  document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
- if(btn)btn.classList.add("active");
+
+ const selected=btn || document.querySelector('[data-section="'+id+'"]');
+ if(selected)selected.classList.add("active");
+
  if(id==="account")refreshAccount();
  if(id==="admin")refreshAdmin();
  if(id==="services")renderServices();
+ if(id==="payment")fillPaymentDetails();
+ updateHome();
 }
+
 function openService(url){
  if(!url || !/^https:\/\//i.test(url)){
-  alert("इस सेवा का सही लिंक उपलब्ध नहीं है।");return;
+  alert("इस सेवा का सही लिंक उपलब्ध नहीं है।");
+  return;
  }
  window.open(url,"_blank","noopener,noreferrer");
 }
 
-/* ==============================
-   MODAL AND CUSTOMER ACCOUNT
-================================ */
+function renderServices(){
+ const box=document.getElementById("serviceList");
+ const q=(document.getElementById("serviceSearch").value||"").toLowerCase();
+ let html="";
+
+ const groups=[...new Set(services.map(s=>s.category))];
+
+ groups.forEach(group=>{
+  const matches=services.filter(s=>
+   s.category===group && s.name.toLowerCase().includes(q)
+  );
+  if(!matches.length)return;
+
+  const icon=services.find(s=>s.category===group).icon;
+  html+=`<h3>${icon} ${escapeHTML(group)}</h3><div class="grid">`;
+
+  matches.forEach(s=>{
+   const color=colors[services.indexOf(s)%colors.length];
+   html+=`
+    <button class="service" data-url="${escapeHTML(s.url)}"
+      onclick="openService(this.dataset.url)">
+     <span class="ico" style="background:${color}">${s.icon}</span>
+     ${escapeHTML(s.name)}
+    </button>`;
+  });
+
+  html+="</div>";
+ });
+
+ box.innerHTML=html||"कोई सेवा नहीं मिली।";
+}
+
+/* ==================================
+   CUSTOMER REGISTRATION AND LOGIN
+================================== */
+
 function openLogin(){
  closeModal("registerModal");
  document.getElementById("loginModal").classList.add("show");
@@ -677,90 +859,151 @@ function openRegister(){
 function closeModal(id){
  document.getElementById(id).classList.remove("show");
 }
-function registerUser(){
+
+function validMobile(mobile){
+ return /^[6-9]\d{9}$/.test(mobile);
+}
+
+async function registerUser(){
  const name=document.getElementById("regName").value.trim();
  const mobile=document.getElementById("regMobile").value.trim();
  const pass=document.getElementById("regPass").value;
  const pass2=document.getElementById("regPass2").value;
 
- if(!name||!mobile||!pass||!pass2)return alert("सभी जानकारी भरें।");
- if(!/^[6-9]\d{9}$/.test(mobile))return alert("सही 10 अंकों का मोबाइल नंबर भरें।");
- if(pass.length<6)return alert("पासवर्ड कम से कम 6 अक्षर का होना चाहिए।");
- if(pass!==pass2)return alert("दोनों पासवर्ड एक जैसे नहीं हैं।");
+ if(!name||!mobile||!pass||!pass2){
+  alert("सभी जानकारी भरें।");return;
+ }
+ if(!validMobile(mobile)){
+  alert("सही 10 अंकों का मोबाइल नंबर भरें।");return;
+ }
+ if(pass.length<6){
+  alert("पासवर्ड कम से कम 6 अक्षर का होना चाहिए।");return;
+ }
+ if(pass!==pass2){
+  alert("दोनों पासवर्ड एक जैसे नहीं हैं।");return;
+ }
 
  const users=get(KEY.users);
- if(users.some(u=>u.mobile===mobile))return alert("यह मोबाइल नंबर पहले से Registered है।");
+ if(users.some(u=>u.mobile===mobile)){
+  alert("यह मोबाइल नंबर पहले से Registered है।");return;
+ }
 
- users.push({
-  name,mobile,pass,active:false,
-  created:new Date().toLocaleString("en-IN")
- });
- put(KEY.users,users);
- alert("Registration सफल। अब मोबाइल और पासवर्ड से Login करें।");
- closeModal("registerModal");
- document.getElementById("loginMobile").value=mobile;
- openLogin();
+ try{
+  const passwordHash=await hashPassword(pass);
+  users.push({
+   name,mobile,passwordHash,
+   active:false,
+   created:new Date().toLocaleString("en-IN")
+  });
+  put(KEY.users,users);
+
+  alert("Registration सफल। अब Login करें।");
+  closeModal("registerModal");
+  document.getElementById("loginMobile").value=mobile;
+  openLogin();
+ }catch(e){
+  alert(e.message);
+ }
 }
-function customerLogin(){
+
+async function customerLogin(){
  const mobile=document.getElementById("loginMobile").value.trim();
  const pass=document.getElementById("loginPassword").value;
- if(!mobile||!pass)return alert("मोबाइल नंबर और पासवर्ड दोनों अनिवार्य हैं।");
- const user=get(KEY.users).find(u=>u.mobile===mobile && u.pass===pass);
- if(!user)return alert("मोबाइल नंबर या पासवर्ड गलत है।");
 
- currentUser=mobile;
- closeModal("loginModal");
- document.getElementById("loginPassword").value="";
- updateHome();
- refreshAccount();
+ if(!mobile||!pass){
+  alert("मोबाइल नंबर और पासवर्ड दोनों भरें।");return;
+ }
 
- const next=pendingSection||"home";
- pendingSection="";
- showSection(next);
- alert("Login सफल। स्वागत है "+user.name);
+ try{
+  const passwordHash=await hashPassword(pass);
+  const user=get(KEY.users).find(u=>
+   u.mobile===mobile && u.passwordHash===passwordHash
+  );
+
+  if(!user){
+   alert("मोबाइल नंबर या पासवर्ड गलत है।");return;
+  }
+
+  currentUser=mobile;
+  sessionStorage.setItem("ggs_customer_session",mobile);
+
+  closeModal("loginModal");
+  document.getElementById("loginPassword").value="";
+
+  updateHome();
+  refreshAccount();
+
+  const next=pendingSection||"home";
+  pendingSection="";
+  showSection(next);
+
+  alert("Login सफल। स्वागत है "+user.name);
+ }catch(e){
+  alert(e.message);
+ }
 }
+
 function logout(){
  currentUser="";
+ sessionStorage.removeItem("ggs_customer_session");
  updateHome();
  refreshAccount();
- document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
- document.getElementById("home").classList.add("active");
+ showSection("home");
  alert("आप Logout हो गए हैं।");
 }
+
 function updateHome(){
- const status=document.getElementById("homeStatus");
- status.textContent=currentUser?"Login":"Guest";
+ const user=get(KEY.users).find(u=>u.mobile===currentUser);
+ document.getElementById("homeStatus").textContent=user?"Login":"Guest";
+ document.getElementById("homeMembership").textContent=
+  user?(user.active?"Active":"Pending"):"Inactive";
 }
-function refreshAccount(){
- const box=document.getElementById("accountDetails");
- if(!currentUser){box.innerHTML="कृपया Login करें।";return;}
- const u=get(KEY.users).find(x=>x.mobile===currentUser);
- if(!u){currentUser="";box.innerHTML="कृपया Login करें।";return;}
- box.innerHTML=`
- <p><b>नाम:</b> ${escapeHTML(u.name)}</p>
- <p><b>मोबाइल:</b> ${escapeHTML(u.mobile)}</p>
- <p><b>सदस्यता:</b> ${u.active?"सक्रिय":"अभी सक्रिय नहीं"}</p>
- <p><b>शुल्क:</b> ₹100</p>
- <button class="btn" onclick="showSection('payment')">भुगतान करें</button>`;
-}
+
 function escapeHTML(str){
  return String(str).replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
  }[c]));
 }
 
-/* ==============================
+function refreshAccount(){
+ const box=document.getElementById("accountDetails");
+ const user=get(KEY.users).find(u=>u.mobile===currentUser);
+
+ if(!user){
+  currentUser="";
+  box.innerHTML="कृपया पहले Login करें।";
+  return;
+ }
+
+ const status=user.active?
+  '<span class="badge">सक्रिय</span>':
+  '<span class="badge">अभी सक्रिय नहीं</span>';
+
+ box.innerHTML=`
+  <p><b>नाम:</b> ${escapeHTML(user.name)}</p>
+  <p><b>मोबाइल:</b> ${escapeHTML(user.mobile)}</p>
+  <p><b>सदस्यता:</b> ${status}</p>
+  <p><b>सदस्यता शुल्क:</b> ₹100</p>
+  <button class="btn" onclick="showSection('payment')">भुगतान करें</button>
+ `;
+}
+
+/* ==================================
    UPI PAYMENT
-================================ */
-const UPI_ID="subhasharyan001@ybl";
-const PAYEE="SUBHASH CHAND";
+================================== */
+
 function upiURL(){
- const p=new URLSearchParams({
-  pa:UPI_ID,pn:PAYEE,am:"100",cu:"INR",
+ const params=new URLSearchParams({
+  pa:UPI_ID,
+  pn:PAYEE,
+  am:"100",
+  cu:"INR",
   tn:"Gramin Grahak Sewa Membership"
  });
- return "upi://pay?"+p.toString();
+ return "upi://pay?"+params.toString();
 }
+
 function launchUPI(app){
  const query=upiURL().replace("upi://pay?","");
  const packages={
@@ -768,17 +1011,24 @@ function launchUPI(app){
   phonepe:"com.phonepe.app",
   paytm:"net.one97.paytm"
  };
- if(app==="other"){
-  window.location.href=upiURL();return;
- }
- const pkg=packages[app];
- if(!pkg){window.location.href=upiURL();return;}
 
- // Android intent scheme targets the selected app.
+ if(app==="other"){
+  window.location.href=upiURL();
+  return;
+ }
+
+ const pkg=packages[app];
+ if(!pkg){
+  window.location.href=upiURL();
+  return;
+ }
+
  const intent="intent://pay?"+query+
- "#Intent;scheme=upi;package="+pkg+";end";
+  "#Intent;scheme=upi;package="+pkg+";end";
+
  window.location.href=intent;
 }
+
 async function copyUPI(){
  try{
   await navigator.clipboard.writeText(UPI_ID);
@@ -787,143 +1037,488 @@ async function copyUPI(){
   prompt("UPI ID कॉपी करें:",UPI_ID);
  }
 }
+
+function fillPaymentDetails(){
+ const user=get(KEY.users).find(u=>u.mobile===currentUser);
+ if(user){
+  document.getElementById("payName").value=user.name;
+  document.getElementById("payMobile").value=user.mobile;
+ }
+ document.getElementById("upiDisplay").textContent=UPI_ID;
+}
+
 function submitPayment(){
  const name=document.getElementById("payName").value.trim();
  const mobile=document.getElementById("payMobile").value.trim();
  const utr=document.getElementById("utr").value.trim();
- if(!name||!mobile||!utr)return alert("नाम, मोबाइल और UTR भरना जरूरी है।");
- if(!/^[6-9]\d{9}$/.test(mobile))return alert("सही मोबाइल नंबर भरें।");
- if(utr.length<8)return alert("कृपया सही UTR / Transaction ID भरें।");
+
+ if(!name||!mobile||!utr){
+  alert("नाम, मोबाइल और UTR भरना जरूरी है।");return;
+ }
+ if(!validMobile(mobile)){
+  alert("सही मोबाइल नंबर भरें।");return;
+ }
+ if(utr.length<8){
+  alert("सही UTR / Transaction ID भरें।");return;
+ }
 
  const payments=get(KEY.payments);
- if(payments.some(p=>p.utr.toLowerCase()===utr.toLowerCase()))
-  return alert("यह UTR पहले जमा किया जा चुका है।");
+
+ if(payments.some(p=>p.utr.toLowerCase()===utr.toLowerCase())){
+  alert("यह UTR पहले जमा किया जा चुका है।");return;
+ }
+
+ const user=get(KEY.users).find(u=>u.mobile===mobile);
+ if(!user){
+  alert("इस मोबाइल नंबर से Customer Registration नहीं मिला।");return;
+ }
 
  payments.push({
   name,mobile,utr,amount:100,
   status:"Pending",
   date:new Date().toLocaleString("en-IN")
  });
+
  put(KEY.payments,payments);
 
  document.getElementById("paymentMsg").innerHTML=
- "<span style='color:green'>भुगतान विवरण जमा हो गया है। Admin Approval की प्रतीक्षा करें।</span>";
+  '<div class="success">भुगतान विवरण जमा हो गया है। Admin Approval की प्रतीक्षा करें।</div>';
+
+ document.getElementById("utr").value="";
  alert("भुगतान विवरण जमा हो गया।");
 }
 
-/* ==============================
-   ADMIN SETUP AND LOGIN
-================================ */
-function adminLogin(){
- const pass=document.getElementById("adminPass").value;
- if(!pass)return alert("Admin Password भरें।");
- let admin=getAdmin();
+/* ==================================
+   ADMIN PASSWORD SETUP AND LOGIN
+================================== */
 
- if(!admin){
-  if(!confirm("पहली बार Admin Password बनाना है?"))return;
-  if(pass.length<8)return alert("Admin Password कम से कम 8 अक्षर का रखें।");
-  localStorage.setItem(KEY.admin,JSON.stringify({pass:pass}));
-  alert("Admin Password बन गया। अब दोबारा Login करें।");
-  document.getElementById("adminPass").value="";
-  return;
+function updateAdminLoginUI(){
+ const admin=getAdmin();
+ const label=document.getElementById("adminPassLabel");
+ const button=document.getElementById("adminLoginBtn");
+ const info=document.getElementById("adminSetupInfo");
+
+ if(admin){
+  label.textContent="Admin Password";
+  button.textContent="Admin Login";
+  info.textContent="अपना बनाया हुआ Admin Password डालकर Login करें।";
+ }else{
+  label.textContent="नया Admin Password बनाएँ";
+  button.textContent="Admin Password सेट करें";
+  info.textContent="पहली बार Admin Panel खोल रहे हैं। अपना निजी Admin Password बनाएँ।";
  }
- if(admin.pass!==pass)return alert("Admin Password गलत है।");
- adminLogged=true;
- document.getElementById("adminLoginArea").style.display="none";
- document.getElementById("adminDashboard").style.display="block";
- refreshAdmin();
 }
+
+async function adminLogin(){
+ const pass=document.getElementById("adminPass").value;
+
+ if(!pass){
+  alert("Admin Password भरें।");return;
+ }
+
+ try{
+  const admin=getAdmin();
+  const passwordHash=await hashPassword(pass);
+
+  if(!admin){
+   if(pass.length<8){
+    alert("Admin Password कम से कम 8 अक्षर का रखें।");return;
+   }
+
+   if(!confirm("क्या यही आपका नया Admin Password रखना है?")){
+    return;
+   }
+
+   localStorage.setItem(KEY.admin,JSON.stringify({
+    passwordHash,
+    created:new Date().toLocaleString("en-IN")
+   }));
+
+   document.getElementById("adminPass").value="";
+   document.getElementById("adminMessage").innerHTML=
+    '<div class="success">Admin Password सफलतापूर्वक बन गया। अब Login करें।</div>';
+
+   updateAdminLoginUI();
+   return;
+  }
+
+  if(admin.passwordHash!==passwordHash){
+   alert("Admin Password गलत है।");return;
+  }
+
+  adminLogged=true;
+  document.getElementById("adminPass").value="";
+  document.getElementById("adminLoginArea").style.display="none";
+  document.getElementById("adminDashboard").style.display="block";
+
+  refreshAdmin();
+  alert("Admin Login सफल।");
+ }catch(e){
+  alert(e.message);
+ }
+}
+
 function adminLogout(){
  adminLogged=false;
  document.getElementById("adminLoginArea").style.display="block";
  document.getElementById("adminDashboard").style.display="none";
  document.getElementById("adminPass").value="";
+ updateAdminLoginUI();
 }
+
+async function changeAdminPassword(){
+ if(!adminLogged){
+  alert("पहले Admin Login करें।");return;
+ }
+
+ const oldPass=document.getElementById("oldAdminPass").value;
+ const newPass=document.getElementById("newAdminPass").value;
+ const confirmPass=document.getElementById("confirmAdminPass").value;
+
+ if(!oldPass||!newPass||!confirmPass){
+  alert("सभी Password भरें।");return;
+ }
+ if(newPass.length<8){
+  alert("नया Password कम से कम 8 अक्षर का रखें।");return;
+ }
+ if(newPass!==confirmPass){
+  alert("नया Password और Confirm Password एक जैसे नहीं हैं।");return;
+ }
+
+ try{
+  const admin=getAdmin();
+  const oldHash=await hashPassword(oldPass);
+
+  if(!admin||admin.passwordHash!==oldHash){
+   alert("पुराना Admin Password गलत है।");return;
+  }
+
+  const newHash=await hashPassword(newPass);
+  localStorage.setItem(KEY.admin,JSON.stringify({
+   passwordHash:newHash,
+   changed:new Date().toLocaleString("en-IN")
+  }));
+
+  document.getElementById("oldAdminPass").value="";
+  document.getElementById("newAdminPass").value="";
+  document.getElementById("confirmAdminPass").value="";
+
+  alert("Admin Password सफलतापूर्वक बदल दिया गया।");
+ }catch(e){
+  alert(e.message);
+ }
+}
+
+/* ==================================
+   ADMIN DASHBOARD
+================================== */
+
 function refreshAdmin(){
  if(!adminLogged)return;
+
  const users=get(KEY.users);
  const payments=get(KEY.payments);
- document.getElementById("adminStats").innerHTML=
- `<div class="stats">
- <div class="stat"><strong>${users.length}</strong>कुल ग्राहक</div>
- <div class="stat"><strong>${payments.filter(p=>p.status==="Pending").length}</strong>Pending भुगतान</div>
- <div class="stat"><strong>${users.filter(u=>u.active).length}</strong>Active ग्राहक</div>
- </div>`;
 
- const rows=document.getElementById("paymentRows");
- rows.innerHTML=payments.map((p,i)=>`
- <tr>
- <td>${escapeHTML(p.name)}</td>
- <td>${escapeHTML(p.mobile)}</td>
- <td>${escapeHTML(p.utr)}</td>
- <td>${escapeHTML(p.status)}</td>
- <td>
- ${p.status==="Pending"?
- `<button class="btn green" onclick="approvePayment(${i})">Approve</button>
- <button class="btn red" onclick="rejectPayment(${i})">Reject</button>`:"-"}
- </td>
- </tr>`).join("")||"<tr><td colspan='5'>कोई भुगतान नहीं</td></tr>";
+ document.getElementById("adminStats").innerHTML=`
+  <div class="stat"><strong>${users.length}</strong>कुल ग्राहक</div>
+  <div class="stat"><strong>${payments.filter(p=>p.status==="Pending").length}</strong>Pending भुगतान</div>
+  <div class="stat"><strong>${users.filter(u=>u.active).length}</strong>Active ग्राहक</div>
+  <div class="stat"><strong>₹${payments.filter(p=>p.status==="Approved").reduce((sum,p)=>sum+Number(p.amount||0),0)}</strong>Approved भुगतान</div>
+ `;
 
- document.getElementById("customerRows").innerHTML=users.map(u=>`
- <tr><td>${escapeHTML(u.name)}</td>
- <td>${escapeHTML(u.mobile)}</td>
- <td>${u.active?"Active":"Pending"}</td></tr>`).join("");
+ document.getElementById("paymentRows").innerHTML=
+ payments.map((p,i)=>`
+  <tr>
+   <td>${escapeHTML(p.name)}</td>
+   <td>${escapeHTML(p.mobile)}</td>
+   <td>${escapeHTML(p.utr)}</td>
+   <td>${escapeHTML(p.status)}</td>
+   <td>
+    ${p.status==="Pending"?
+     `<button class="btn green" onclick="approvePayment(${i})">Approve</button>
+      <button class="btn red" onclick="rejectPayment(${i})">Reject</button>`:"-"}
+   </td>
+  </tr>
+ `).join("")||"<tr><td colspan='5'>कोई भुगतान नहीं</td></tr>";
+
+ document.getElementById("customerRows").innerHTML=
+ users.map(u=>`
+  <tr>
+   <td>${escapeHTML(u.name)}</td>
+   <td>${escapeHTML(u.mobile)}</td>
+   <td>${u.active?"Active":"Pending"}</td>
+  </tr>
+ `).join("")||"<tr><td colspan='3'>कोई ग्राहक नहीं</td></tr>";
 }
+
 function approvePayment(index){
+ if(!adminLogged)return;
+
  const payments=get(KEY.payments);
  const p=payments[index];
  if(!p)return;
- if(!confirm("क्या UTR जाँचकर इस ग्राहक को Approve करना है?"))return;
 
- p.status="Approved";
- put(KEY.payments,payments);
+ if(!confirm("क्या आपने UTR और बैंक भुगतान जाँच लिया है? Approve करने पर ग्राहक की सदस्यता Active होगी।")){
+  return;
+ }
+
  const users=get(KEY.users);
  const user=users.find(u=>u.mobile===p.mobile);
- if(user)user.active=true;
+
+ if(!user){
+  alert("इस भुगतान से संबंधित ग्राहक नहीं मिला।");
+  return;
+ }
+
+ p.status="Approved";
+ p.approvedDate=new Date().toLocaleString("en-IN");
+ user.active=true;
+
+ put(KEY.payments,payments);
  put(KEY.users,users);
+
  refreshAdmin();
- alert("ग्राहक की सदस्यता सक्रिय कर दी गई।");
+ updateHome();
+ refreshAccount();
+
+ alert("भुगतान Approve और सदस्यता Active कर दी गई।");
 }
+
 function rejectPayment(index){
+ if(!adminLogged)return;
+
  const payments=get(KEY.payments);
  if(!payments[index])return;
+
  if(!confirm("क्या इस भुगतान अनुरोध को Reject करना है?"))return;
+
  payments[index].status="Rejected";
  put(KEY.payments,payments);
  refreshAdmin();
+ alert("भुगतान अनुरोध Reject कर दिया गया।");
 }
 
-/* ==============================
-   PHOTO PREVIEW AND PRINT
-================================ */
+/* ==================================
+   PHOTO STUDIO
+================================== */
+
 function previewPhoto(event){
  const file=event.target.files?.[0];
  if(!file)return;
- if(!file.type.startsWith("image/"))return alert("कृपया फोटो फाइल चुनें।");
+
+ if(!file.type.startsWith("image/")){
+  alert("कृपया सही फोटो फाइल चुनें।");return;
+ }
+
  if(photoURL)URL.revokeObjectURL(photoURL);
  photoURL=URL.createObjectURL(file);
+
  const img=document.getElementById("photoPreview");
- img.src=photoURL;img.style.display="block";
+ img.src=photoURL;
+ img.style.display="block";
+ passportReady=false;
 }
-function printPhoto(){
- const img=document.getElementById("photoPreview");
- if(!img.src||img.style.display==="none")return alert("पहले फोटो चुनें।");
+
+function loadImage(src){
+ return new Promise((resolve,reject)=>{
+  const img=new Image();
+  img.onload=()=>resolve(img);
+  img.onerror=()=>reject(new Error("फोटो लोड नहीं हुई।"));
+  img.src=src;
+ });
+}
+
+async function makePassport(){
+ if(!photoURL){
+  alert("पहले फोटो चुनें।");return;
+ }
+
+ try{
+  const img=await loadImage(photoURL);
+  const count=Number(document.getElementById("photoCount").value);
+  const [wmm,hmm]=document.getElementById("photoSize").value.split(",").map(Number);
+
+  const dpi=96;
+  const mm=n=>Math.round(n*dpi/25.4);
+  const cardW=mm(wmm),cardH=mm(hmm);
+  const gap=mm(3);
+  const pageW=794,pageH=1123;
+  const cols=Math.max(1,Math.floor((pageW-gap)/(cardW+gap)));
+  const rows=Math.ceil(count/cols);
+
+  const canvas=document.getElementById("passportCanvas");
+  canvas.width=pageW;
+  canvas.height=pageH;
+
+  const ctx=canvas.getContext("2d");
+  ctx.fillStyle="white";
+  ctx.fillRect(0,0,pageW,pageH);
+
+  for(let i=0;i<count;i++){
+   const row=Math.floor(i/cols);
+   const col=i%cols;
+   const x=gap+col*(cardW+gap);
+   const y=gap+row*(cardH+gap);
+
+   if(y+cardH>pageH)break;
+
+   ctx.save();
+   ctx.beginPath();
+   ctx.rect(x,y,cardW,cardH);
+   ctx.clip();
+
+   const scale=Math.max(cardW/img.width,cardH/img.height);
+   const sw=img.width*scale;
+   const sh=img.height*scale;
+   ctx.drawImage(img,x+(cardW-sw)/2,y+(cardH-sh)/2,sw,sh);
+   ctx.restore();
+
+   ctx.strokeStyle="#999";
+   ctx.lineWidth=1;
+   ctx.strokeRect(x,y,cardW,cardH);
+  }
+
+  canvas.classList.remove("hidden");
+  passportReady=true;
+  document.getElementById("passportStatus").textContent=
+   "Passport Sheet तैयार है। Print / Save PDF पर क्लिक करें।";
+ }catch(e){
+  alert(e.message);
+ }
+}
+
+function printCanvas(canvas,title){
+ const data=canvas.toDataURL("image/png");
  const w=window.open("","_blank");
- if(!w)return alert("Print Window खुल नहीं पाई। Pop-ups की अनुमति दें।");
+
+ if(!w){
+  alert("Print Window नहीं खुली। Browser में Pop-ups Allow करें।");
+  return;
+ }
+
  w.document.write(`
- <!DOCTYPE html><html><head><title>Photo Print</title>
- <style>body{text-align:center;margin:20px}img{max-width:95%;max-height:90vh}</style>
- </head><body><img src="${img.src}" onload="window.print()"></body></html>`);
+  <!DOCTYPE html><html><head><title>${title}</title>
+  <style>
+   @page{size:A4 portrait;margin:0}
+   body{margin:0;text-align:center}
+   img{width:210mm;height:297mm;object-fit:contain}
+  </style></head>
+  <body><img src="${data}" onload="window.print()"></body></html>
+ `);
  w.document.close();
 }
 
-/* ==============================
+function printPassport(){
+ if(!passportReady){
+  alert("पहले Passport Sheet तैयार करें।");return;
+ }
+ printCanvas(document.getElementById("passportCanvas"),"Passport Photo");
+}
+
+/* ==================================
+   ID CARD STUDIO
+================================== */
+
+function loadIDPhoto(event,side){
+ const file=event.target.files?.[0];
+ if(!file)return;
+
+ if(!file.type.startsWith("image/")){
+  alert("सही Image फाइल चुनें।");return;
+ }
+
+ const url=URL.createObjectURL(file);
+
+ if(side==="front"){
+  if(frontURL)URL.revokeObjectURL(frontURL);
+  frontURL=url;
+  const img=document.getElementById("frontPreview");
+  img.src=url;img.style.display="block";
+ }else{
+  if(backURL)URL.revokeObjectURL(backURL);
+  backURL=url;
+  const img=document.getElementById("backPreview");
+  img.src=url;img.style.display="block";
+ }
+ idReady=false;
+}
+
+async function prepareIDCard(){
+ if(!frontURL||!backURL){
+  alert("Front और Back दोनों फोटो चुनें।");return;
+ }
+
+ try{
+  const front=await loadImage(frontURL);
+  const back=await loadImage(backURL);
+  const [wmm,hmm]=document.getElementById("cardSize").value.split(",").map(Number);
+  const scale=96/25.4;
+  const cw=Math.round(wmm*scale);
+  const ch=Math.round(hmm*scale);
+
+  const canvas=document.getElementById("idCanvas");
+  canvas.width=794;
+  canvas.height=1123;
+
+  const ctx=canvas.getContext("2d");
+  ctx.fillStyle="white";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  const gap=30;
+  const x=(canvas.width-cw)/2;
+  const y=100;
+
+  function drawCard(img,top){
+   const s=Math.min(cw/img.width,ch/img.height);
+   const dw=img.width*s;
+   const dh=img.height*s;
+
+   ctx.fillStyle="white";
+   ctx.fillRect(x,top,cw,ch);
+   ctx.drawImage(img,x+(cw-dw)/2,top+(ch-dh)/2,dw,dh);
+   ctx.strokeStyle="#777";
+   ctx.lineWidth=1;
+   ctx.strokeRect(x,top,cw,ch);
+  }
+
+  drawCard(front,y);
+  drawCard(back,y+ch+gap);
+
+  canvas.classList.remove("hidden");
+  idReady=true;
+  document.getElementById("idStatus").textContent=
+   "Front और Back कार्ड तैयार हैं। Print / Save PDF पर क्लिक करें।";
+ }catch(e){
+  alert(e.message);
+ }
+}
+
+function printIDCard(){
+ if(!idReady){
+  alert("पहले ID Card Preview तैयार करें।");return;
+ }
+ printCanvas(document.getElementById("idCanvas"),"ID Card Front Back");
+}
+
+/* ==================================
    STARTUP
-================================ */
+================================== */
+
 document.addEventListener("DOMContentLoaded",()=>{
  renderServices();
  updateHome();
  refreshAccount();
+ updateAdminLoginUI();
+ document.getElementById("serviceCount").textContent=services.length;
+
+ const saved=sessionStorage.getItem("ggs_customer_session");
+ if(saved && get(KEY.users).some(u=>u.mobile===saved)){
+  currentUser=saved;
+ }
+
+ updateHome();
+ refreshAccount();
+ fillPaymentDetails();
 });
 </script>
 </body>
